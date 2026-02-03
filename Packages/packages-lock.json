@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.billiotgames.sdmanager": {
+      "version": "https://github.com/Sanghun2/SD-Manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ecf71eeec574a3306021157052445b0ada94b0c5"
+    },
+    "com.billiotgames.uimanager": {
+      "version": "http://github.com/Sanghun2/UI-Manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8c56b9a2886ec861ceb74732030bf24b025aa508"
+    },
     "com.unity.2d.animation": {
       "version": "12.0.2",
       "depth": 0,
