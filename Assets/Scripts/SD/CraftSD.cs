@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CraftSD", menuName = "Scriptable Objects/CraftSD")]

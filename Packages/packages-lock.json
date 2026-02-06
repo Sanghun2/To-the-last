@@ -1,18 +1,46 @@
 {
   "dependencies": {
+    "com.billiotgames.coroutinemanager": {
+      "version": "http://github.com/Sanghun2/Coroutine-Manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7aadba6eeb0d41a7ad94c2428ac006b8aff92e60"
+    },
+    "com.billiotgames.inventory": {
+      "version": "http://github.com/Sanghun2/inventory.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "474290c2e3a7b6e2250482d567f58979e17be43b"
+    },
     "com.billiotgames.sdmanager": {
       "version": "https://github.com/Sanghun2/SD-Manager.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ecf71eeec574a3306021157052445b0ada94b0c5"
+      "hash": "316f28a2672a6f272bdb27be29101e759a07dbb2"
+    },
+    "com.billiotgames.timer": {
+      "version": "http://github.com/Sanghun2/timer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "142b7c73aecacea65b66d9ac2a00dd85e7e59777"
     },
     "com.billiotgames.uimanager": {
       "version": "http://github.com/Sanghun2/UI-Manager.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8c56b9a2886ec861ceb74732030bf24b025aa508"
+      "hash": "cc1b665a1ae14764bfd1aae19b27cee0ff6113cc"
+    },
+    "com.billiotgames.valuecontainer": {
+      "version": "http://github.com/Sanghun2/value-container.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3d9320f4006314f85e3219e2a8ee3c0c806ed43e"
     },
     "com.unity.2d.animation": {
       "version": "12.0.2",

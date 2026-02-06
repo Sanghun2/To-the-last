@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Vertical
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 26986384042478016, guid: 77a324d4608e6ae4581de9ab65883255, type: 3}
+      propertyPath: m_VerticalScrollbarVisibility
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3168296377794713750, guid: 77a324d4608e6ae4581de9ab65883255, type: 3}
+      propertyPath: m_Color.a
+      value: 0.015686275
+      objectReference: {fileID: 0}
     - target: {fileID: 3255080195134129795, guid: 77a324d4608e6ae4581de9ab65883255, type: 3}
       propertyPath: m_Name
       value: Vertical Button Container
