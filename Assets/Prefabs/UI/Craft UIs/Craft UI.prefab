@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressBarUI
   progressBar: {fileID: 5255515571364238362}
+  progressEase: 1
 --- !u!1 &4857312664595859902
 GameObject:
   m_ObjectHideFlags: 0

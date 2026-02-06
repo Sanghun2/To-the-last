@@ -167,7 +167,7 @@ MonoBehaviour:
   pause: 0
   countType: 0
   customTimeScale: 30
-  _currentTime: 0
+  _currentTime: 113400.02
 --- !u!114 &43374697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   _mainTimer: {fileID: 43374696}
-  day: 0
-  hour: 0
-  minute: 0
+  day: 1
+  hour: 7
+  minute: 30
 --- !u!1 &152138270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,11 +1280,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tester
   testJob:
     currentMinutes: 0
-    totalMinutes: 0
+    totalMinutes: 120
   testFocusJob:
     currentMinutes: 0
-    totalMinutes: 90
-    duration: 2.5
+    totalMinutes: 10
+    duration: 1.5
 --- !u!1 &852699586
 GameObject:
   m_ObjectHideFlags: 0

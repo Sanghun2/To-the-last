@@ -9,6 +9,7 @@ public class Tester : MonoBehaviour
     public void DoTask() {
         if (testFocusJob != null) {
             var craftUI = Managers.UI.GetUI<CraftUI>();
+            craftUI.InitProgressUI(0, 1);
             var fJob = new FocusJob(testFocusJob.TotalMinutes, testFocusJob.Duration, (current, total) => {
                 craftUI.UpdateProgressUI(current, total);
             });

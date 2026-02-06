@@ -15,7 +15,7 @@ MonoBehaviour:
   id: bolt
   displayName: "\uB098\uC0AC \uC81C\uC870\uBC95"
   descripiton: "\uB098\uC0AC \uC81C\uC870\uBC95"
-  requireMinutes: 30
+  requireMinutes: 10
   inputs:
   - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
     amount: 2

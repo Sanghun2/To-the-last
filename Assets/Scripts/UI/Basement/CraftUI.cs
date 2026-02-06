@@ -13,8 +13,11 @@ public class CraftUI : UIBase
         itemImageUI.SetImage(itemSD.ItemImage);
     }
 
-    public void UpdateProgressUI(float current, float total) {
-        progressBarUI.UpdateUI(current, total);
+    public void InitProgressUI(float currentValue, float totalValue) {
+        progressBarUI.InitUI(currentValue, totalValue);
+    }
+    public void UpdateProgressUI(float currentValue, float totalValue) {
+        progressBarUI.UpdateUI(currentValue, totalValue);
     }
 
     private void Reset() {

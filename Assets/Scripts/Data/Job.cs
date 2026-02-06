@@ -38,7 +38,6 @@ public class Job
         this.totalMinutes = totalMinutes;
         this.completeCallback = callback;
         this.progressCallback = progressCallback;
-        Debug.Log($"생성자 called");
     }
 
     public void ChangeMinutes(int deltaMinutes) {

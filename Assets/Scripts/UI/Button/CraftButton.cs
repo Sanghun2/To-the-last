@@ -36,7 +36,8 @@ public class CraftButton : ButtonBase, IProgressor
     protected override void ButtonAction() {
         if (Managers.Job.IsFocusJobRunning) return;
 
-        var craftUI = Managers.UI.GetUI<CraftUI>();
+        CraftUI craftUI = Managers.UI.GetUI<CraftUI>();
+        craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
         var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateValue);
         Managers.Job.DoFocusJob(newJob);
     }
