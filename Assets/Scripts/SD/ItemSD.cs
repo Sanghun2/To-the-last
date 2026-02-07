@@ -3,11 +3,9 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "ItemSD", menuName = "Scriptable Objects/ItemSD")]
-public class ItemSD : SDBase
+public class ItemSD : IconSDBase
 {
-    public Sprite ItemImage => itemImage;
-
-    [SerializeField] Sprite itemImage;
+    public Sprite ItemImage => IconImage;
 
     private void OnValidate() {
         RenameAsset(ID, suffix: "_ItemSD");

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: bolt
   displayName: "\uB098\uC0AC"
-  itemImage: {fileID: 21300000, guid: 167ce6a2c5a9347f597d3bb079bb4853, type: 3}
+  descripiton: 
+  iconImage: {fileID: 21300000, guid: fe7e6d841747649b2825814c371a2491, type: 3}

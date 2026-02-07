@@ -15,7 +15,7 @@ MonoBehaviour:
   id: purifier
   displayName: "\uC815\uC218\uAE30"
   descripiton: "\uAC00\uC5F4\uD558\uC5EC \uBB3C\uC744 \uC99D\uB958\uD558\uB294 \uC7A5\uCE58"
-  iconImage: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 9e876a8e953f80a4e859e273e574b63e, type: 3}
   uiPrefabPath: 
   buildingTime: 100
   requirementItems: []

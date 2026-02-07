@@ -3,7 +3,7 @@ using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeSD", menuName = "Scriptable Objects/RecipeSD")]
-public class RecipeSD : SDBase
+public class RecipeSD : IconSDBase
 {
     public int RequireMinutes => requireMinutes;
 
