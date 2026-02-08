@@ -31,6 +31,9 @@ public class Tester : MonoBehaviour
         }
     }
 
+    public void UnlockStructureUI() {
+        Managers.Construction.Unlock(locationIndex);
+    }
     public void SetStructure() {
         Managers.Construction.Construct(locationIndex, targetStructureSD);
     }
@@ -39,6 +42,6 @@ public class Tester : MonoBehaviour
     }
 
     public void ShowBuildList() {
-        Managers.UI.GetUI<BuildingUI>().ShowConstructionList(testStructureSDList);
+        Managers.UI.GetUI<ConstructionUI>().ShowConstructionList(testStructureSDList);
     }
 }

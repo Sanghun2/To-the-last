@@ -21,13 +21,13 @@ public class ConstructionManager : IInitializable
 
     public void Construct(int locationIndex, StructureSD structureSD) {
         if (!IsValidLocation(locationIndex)) return;
-        if (IsOccupied(locationIndex)) return;
+        if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureSD)) return;
 
         FocusJob constructionJob = new FocusJob(
             structureSD.ConstructionTime,
             onProgressChanged: (cv, mv) => {
-                Managers.UI.GetUI<BuildingUI>().UpdateProgressBar(cv, mv);
+                Managers.UI.GetUI<ConstructionUI>().UpdateProgressBar(cv, mv);
             },
             onComplete: () => {
                 ConstructStructure(locationIndex, structureSD);
@@ -42,17 +42,19 @@ public class ConstructionManager : IInitializable
 
     public void Destroy(int locationIndex) {
         if (!IsValidLocation(locationIndex)) { return; }
-        if (!IsOccupied(locationIndex)) { return; }
+        if (IsEmpty(locationIndex)) { return; }
 
-        var targetUI = structureUIContainer.GetStructureUI(locationIndex);
-        var structureSD = targetUI.StructureSD;
+        var targetStructureUI = structureUIContainer.GetStructureUI(locationIndex);
+        var structureSD = targetStructureUI.StructureSD;
+        var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
             structureSD.ConstructionTime,
             onProgressChanged: (cv, mv) => {
-                Managers.UI.GetUI<BuildingUI>().UpdateProgressBar(cv, mv);
+                buildingUI.UpdateProgressBar(cv, mv);
             },
             onComplete: () => {
-                targetUI.ClearStructure();
+                targetStructureUI.ClearStructure();
+                Managers.UI.CloseUI(buildingUI);
             });
         Managers.Job.DoFocusJob(destroyJob);
     }
@@ -95,12 +97,13 @@ public class ConstructionManager : IInitializable
             return true;
         }
 
-        Debug.LogAssertion($"not valid location - index: {targetLocationIndex}, null?{targetUI == null}, state?{targetUI.StructureState}");
+        Debug.LogAssertion($"not valid location - index: {targetLocationIndex}, null?{targetUI == null}, state?{targetUI.CurrentStructureState}");
         return false;
     }
-    private bool IsOccupied(int locationIndex) {
+    private bool IsEmpty(int locationIndex) {
         var targetUI = structureUIContainer.GetStructureUI(locationIndex);
-        if (targetUI != null && targetUI.StructureState == StructureUI.State.Built) {
+        if (targetUI != null && 
+            targetUI.CurrentStructureState == StructureUI.State.Empty) {
             return true;
         }
 
@@ -113,5 +116,16 @@ public class ConstructionManager : IInitializable
     }
     private void ClearTarget() {
         targetStructureSD = null;
+    }
+
+    internal void Unlock(int locationIndex) {
+        var targetUI = structureUIContainer.GetStructureUI(locationIndex);
+        if (targetUI != null && targetUI.IsLocked) {
+            targetUI.UnlockUI();
+        }
+
+        else {
+            Debug.LogAssertion($"unlock failed. ui null? {targetUI == null}, state: {targetUI.CurrentStructureState}");
+        }
     }
 }

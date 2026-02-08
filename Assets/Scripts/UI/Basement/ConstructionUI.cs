@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class BuildingUI : UIBase
+public class ConstructionUI : UIBase
 {
     [SerializeField] BuildContentUIContainer buildContentUIContainer;
     [SerializeField] ProgressBarUI progressBarUI;

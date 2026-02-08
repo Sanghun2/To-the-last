@@ -23,6 +23,9 @@ public class TesterEditor : Editor
         if (GUILayout.Button("Show Build List")) {
             _script.ShowBuildList();
         }
+        if (GUILayout.Button("Unlock Structure")) {
+            _script.UnlockStructureUI();
+        }
         if (GUILayout.Button("Construct Structure")) {
             _script.SetStructure();
         }

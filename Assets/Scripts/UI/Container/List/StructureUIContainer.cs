@@ -12,6 +12,9 @@ public class StructureUIContainer : UIBase
 
         structureUIList.Clear();
         structureUIList = GetComponentsInChildren<StructureUI>().ToList();
+        for (int i = 0; i < structureUIList.Count; i++) {
+            structureUIList[i].InitUI();
+        }
 
         _isInit = true;
     }
