@@ -9,14 +9,17 @@ public class StructureUI : ButtonBase
         Built,
     }
 
+    public StructureSD StructureSD => structureSD;
     public State StructureState => structureState;
 
     [SerializeField] ObjectActivator objectActivator;
     [SerializeField] Image structureImage;
     private State structureState;
+    private StructureSD structureSD;
 
     public void InitStructure(State state, StructureSD structureSD) {
         structureState = state;
+        this.structureSD = structureSD;
         switch (state) {
             case State.Empty:
                 objectActivator.ShowObject(0);
@@ -28,6 +31,10 @@ public class StructureUI : ButtonBase
             default:
                 break;
         }
+    }
+
+    public void ClearStructure() {
+        InitStructure(State.Empty, null);
     }
 
     protected override void ButtonAction() {

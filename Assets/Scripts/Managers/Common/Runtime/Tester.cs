@@ -34,6 +34,9 @@ public class Tester : MonoBehaviour
     public void SetStructure() {
         Managers.Construction.Construct(locationIndex, targetStructureSD);
     }
+    public void Destroy() {
+        Managers.Construction.Destroy(locationIndex);
+    }
 
     public void ShowBuildList() {
         Managers.UI.GetUI<BuildingUI>().ShowConstructionList(testStructureSDList);

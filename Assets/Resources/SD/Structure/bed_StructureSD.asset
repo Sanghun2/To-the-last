@@ -15,7 +15,7 @@ MonoBehaviour:
   id: bed
   displayName: "\uCE68\uB300"
   descripiton: "\uC7A0\uC744 \uC798 \uC218 \uC788\uB294 \uCE68\uB300. "
-  iconImage: {fileID: 21300000, guid: e0de2ac10e0d76a4fbbfa8a0d1c0de13, type: 3}
+  iconImage: {fileID: 21300000, guid: 81919bc1c8584d84cb6e91efb2724a29, type: 3}
   constructionTime: 100
   requirementItems:
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}

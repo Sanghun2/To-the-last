@@ -23,8 +23,11 @@ public class TesterEditor : Editor
         if (GUILayout.Button("Show Build List")) {
             _script.ShowBuildList();
         }
-        if (GUILayout.Button("Set structure to location")) {
+        if (GUILayout.Button("Construct Structure")) {
             _script.SetStructure();
+        }
+        if (GUILayout.Button("Destroy Structure")) {
+            _script.Destroy();
         }
         GUI.enabled = true;
     }

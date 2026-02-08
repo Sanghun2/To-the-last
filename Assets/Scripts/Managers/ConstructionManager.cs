@@ -21,18 +21,43 @@ public class ConstructionManager : IInitializable
 
     public void Construct(int locationIndex, StructureSD structureSD) {
         if (!IsValidLocation(locationIndex)) return;
+        if (IsOccupied(locationIndex)) return;
         if (!IsValidStructure(structureSD)) return;
 
         FocusJob constructionJob = new FocusJob(
             structureSD.ConstructionTime,
+            onProgressChanged: (cv, mv) => {
+                Managers.UI.GetUI<BuildingUI>().UpdateProgressBar(cv, mv);
+            },
             onComplete: () => {
                 ConstructStructure(locationIndex, structureSD);
             });
+
+
         Managers.Job.DoFocusJob(constructionJob, () => { ClearTarget(); });
     }
     public void Construct() {
         Construct(targetLocationIndex, targetStructureSD);
     }
+
+    public void Destroy(int locationIndex) {
+        if (!IsValidLocation(locationIndex)) { return; }
+        if (!IsOccupied(locationIndex)) { return; }
+
+        var targetUI = structureUIContainer.GetStructureUI(locationIndex);
+        var structureSD = targetUI.StructureSD;
+        FocusJob destroyJob = new FocusJob(
+            structureSD.ConstructionTime,
+            onProgressChanged: (cv, mv) => {
+                Managers.UI.GetUI<BuildingUI>().UpdateProgressBar(cv, mv);
+            },
+            onComplete: () => {
+                targetUI.ClearStructure();
+            });
+        Managers.Job.DoFocusJob(destroyJob);
+    }
+
+
     public void Init() {
         if (IsInit) return;
 
@@ -66,11 +91,20 @@ public class ConstructionManager : IInitializable
     private bool IsValidLocation(int targetLocationIndex) {
         // 실제 있고, 설치된 건물 없는지 확인
         var targetUI = structureUIContainer.GetStructureUI(targetLocationIndex);
-        if (targetUI != null && targetUI.StructureState == StructureUI.State.Empty) {
+        if (targetUI != null) {
             return true;
         }
 
         Debug.LogAssertion($"not valid location - index: {targetLocationIndex}, null?{targetUI == null}, state?{targetUI.StructureState}");
+        return false;
+    }
+    private bool IsOccupied(int locationIndex) {
+        var targetUI = structureUIContainer.GetStructureUI(locationIndex);
+        if (targetUI != null && targetUI.StructureState == StructureUI.State.Built) {
+            return true;
+        }
+
+        Debug.Assert(targetUI != null, $"target UI shoudn't be null");
         return false;
     }
 

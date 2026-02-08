@@ -281,6 +281,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8330390095213477136, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 857878602930673426}
     - targetCorrespondingSourceObject: {fileID: 788182764472226794, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9103003139438178779}
@@ -292,6 +295,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6479658303948249697}
   m_SourcePrefab: {fileID: 100100000, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
+--- !u!224 &2863499370495011357 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8330390095213477136, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
+  m_PrefabInstance: {fileID: 6063617675622962957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3192766084896837838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8676386927248246723, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
@@ -328,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingUI
   buildContentUIContainer: {fileID: 9153298554427842217}
+  progressBarUI: {fileID: 4233444152072710951}
 --- !u!224 &6833786004801488103 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 788182764472226794, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
@@ -344,3 +353,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1001 &6486434356457545275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2863499370495011357}
+    m_Modifications:
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506568855886159479, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+      propertyPath: m_Name
+      value: Progress Bar UI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+--- !u!224 &857878602930673426 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5900768455159564585, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+  m_PrefabInstance: {fileID: 6486434356457545275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4233444152072710951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6972775814592279836, guid: c7dee2d82a863ff45b5c58233a525a65, type: 3}
+  m_PrefabInstance: {fileID: 6486434356457545275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a717b8795687643b9107f9e44f2e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressBarUI
