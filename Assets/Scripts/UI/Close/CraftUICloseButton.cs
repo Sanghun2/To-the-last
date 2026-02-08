@@ -4,6 +4,6 @@ using UnityEngine;
 public class CraftUICloseButton : ButtonBase
 {
     protected override void ButtonAction() {
-        Managers.UI.CloseUI<CraftUI>();
+        Managers.UI.CloseUI(Managers.UI.GetUI<CraftUI>());
     }
 }

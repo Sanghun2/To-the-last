@@ -1,10 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tester : MonoBehaviour
 {
+    [Header("[  Job Handler Test  ]")]
     [SerializeField] Job testJob;
     [SerializeField] FocusJob testFocusJob;
+
+    [Space]
+    [Header("[  Build UI Test  ]")]
+    [SerializeField] List<StructureSD> testStructureSDList;
+    [Space]
+    [SerializeField] int locationIndex;
+    [SerializeField] StructureSD targetStructureSD;
 
     public void DoTask() {
         if (testFocusJob != null) {
@@ -20,5 +29,13 @@ public class Tester : MonoBehaviour
         if (testJob != null) {
             Managers.Job.RegisterJob(testJob);
         }
+    }
+
+    public void SetStructure() {
+        Managers.Construction.Construct(locationIndex, targetStructureSD);
+    }
+
+    public void ShowBuildList() {
+        Managers.UI.GetUI<BuildingUI>().ShowConstructionList(testStructureSDList);
     }
 }

@@ -6,14 +6,12 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "StructureSD", menuName = "Scriptable Objects/StructureSD")]
 public class StructureSD : IconSDBase
 {
-    public string UIPrefabPath => uiPrefabPath;
-    public IReadOnlyList<ItemSD> RequirementItems => requirementItems;
+    public IReadOnlyList<Ingredient> RequirementItems => requirementItems;
 
-    public float BuildingTime => buildingTime;
+    public int ConstructionTime => constructionTime;
 
-    [SerializeField] string uiPrefabPath;
-    [SerializeField] float buildingTime = 100;
-    [SerializeField] ItemSD[] requirementItems;
+    [SerializeField] int constructionTime = 100;
+    [SerializeField] Ingredient[] requirementItems;
 
 
     private void OnValidate() {

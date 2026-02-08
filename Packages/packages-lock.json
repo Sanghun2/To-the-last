@@ -19,7 +19,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "316f28a2672a6f272bdb27be29101e759a07dbb2"
+      "hash": "03bb539d3e5d47d2655bdfc097d27e9b0b7f6772"
     },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",
@@ -33,7 +33,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "61b4467d46cf7fd68dcaf4fb1894ba34311f211b"
+      "hash": "2f5bc17b809bad04a3d771ec06568a6bed0b2bdd"
     },
     "com.billiotgames.valuecontainer": {
       "version": "http://github.com/Sanghun2/value-container.git",

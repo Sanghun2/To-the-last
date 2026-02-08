@@ -30,7 +30,7 @@ public class ProgressBarUI : UIBase
             progressTweener.ChangeEndValue(progressor.Rate, tweenDuration, true);
         }
         else {
-            //progressBar.fillAmount = currentValue / maxValue;
+            //progressBar.fillAmount = currentProgress / maxProgress;
             progressTweener = progressBar
                 .DOFillAmount(progressor.Rate, tweenDuration)
                 .SetEase(progressEase);

@@ -63,7 +63,19 @@ public sealed class Managers : MonoBehaviour
             return jobHandler;
         }
     }
+    public static ConstructionManager Construction
+    {
+        get
+        {
+            if (constructionManager == null) {
+                constructionManager = new ConstructionManager();
+            }
 
+            return constructionManager;
+        }
+    }         
+
+    private static ConstructionManager constructionManager;
     private static JobHandler jobHandler;
     private static CoroutineManager coroutineManager;
     private static TimeManager _timeManager;
@@ -85,11 +97,14 @@ public sealed class Managers : MonoBehaviour
 
     private void Awake() {
         SD.TryRegisterSD(new ItemSDContainer("SD/Item"));
+        SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
+        SD.TryRegisterSD(new RecipeSDContainer("SD/Recipe"));
 
         List<IInitializable> initList = new List<IInitializable>() {
             UI.GetUI<TimerUI>(),
             Time,
             Job,
+            Construction,
         };
 
         for (int i = 0; i < initList.Count; i++) {

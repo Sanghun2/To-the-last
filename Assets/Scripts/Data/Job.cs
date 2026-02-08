@@ -72,7 +72,7 @@ public class FocusJob : Job
 
     [SerializeField] protected float duration = 2.5f;
 
-    public FocusJob(int totalMinutes, Action<float, float> progressCallback=null, Action callback=null) : base(totalMinutes, progressCallback, callback) {
+    public FocusJob(int totalMinutes, Action<float, float> onProgressChanged=null, Action onComplete=null) : base(totalMinutes, onProgressChanged, onComplete) {
 
     }
     public FocusJob(int totalMinutes, float duration, Action<float, float> progressCallback=null, Action callback = null) : base(totalMinutes, progressCallback, callback) {

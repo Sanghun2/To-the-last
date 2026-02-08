@@ -7,14 +7,16 @@ public class Structure : IValue
     public enum BuildState {
         Building,
         Built,
+        Destroying,
+        Destroyed
     }
     public enum InteractionState {
         Idle,
         Interacting, // 제작 중 or 상호작용 중
     }
 
-    public float CurrentValue => currentValue;
-    public float MaxValue => maxValue;
+    public float CurrentValue => currentProgress;
+    public float MaxValue => maxProgress;
     public BuildState CurrentState => currentBuildState;
     public InteractionState CurrentInteractionState => currentInteractionState;
 
@@ -24,14 +26,14 @@ public class Structure : IValue
     private InteractionState currentInteractionState;
 
 
-    private float currentValue;
-    private float maxValue; 
+    private float currentProgress;
+    private float maxProgress; 
 
 
     public Structure(StructureSD structureSD) {
         this.structureSD = structureSD;
         currentBuildState = BuildState.Building;
-        currentValue = 0;
-        maxValue = structureSD.BuildingTime;
+        currentProgress = 0;
+        maxProgress = structureSD.ConstructionTime;
     }
 }
