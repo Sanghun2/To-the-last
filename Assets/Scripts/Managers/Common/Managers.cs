@@ -73,8 +73,20 @@ public sealed class Managers : MonoBehaviour
 
             return constructionManager;
         }
-    }         
+    }
+    public static PlayerManager Player
+    {
+        get
+        {
+            if (_playerManager == null) {
+                _playerManager = new PlayerManager();
+            }
 
+            return _playerManager;
+        }
+    }
+
+    private static PlayerManager _playerManager;
     private static ConstructionManager constructionManager;
     private static JobHandler jobHandler;
     private static CoroutineManager coroutineManager;

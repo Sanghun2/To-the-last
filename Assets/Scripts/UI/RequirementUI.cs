@@ -10,6 +10,8 @@ public class RequirementUI : UIBase, IContent
     private string itemID;
     private int itemAmount;
 
+    public bool IsActive => IsOpened;
+
     public void Activate() {
         OpenUI();
     }

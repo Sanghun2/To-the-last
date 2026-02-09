@@ -25,7 +25,7 @@ public class BuildContentUIContainer : ListContainerBase<BuildContentUI>
     }
 
     public void ShowList(IReadOnlyList<StructureSD> stuctureSDList) {
-        var maxCount = Mathf.Max(stuctureSDList.Count, CotentCount);
+        var maxCount = Mathf.Max(stuctureSDList.Count, ContentCount);
         int itemCount = stuctureSDList.Count;
 
         for (int i = 0; i < maxCount; i++) {

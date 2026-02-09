@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: "\uB098\uC0AC"
   descripiton: 
   iconImage: {fileID: 21300000, guid: fe7e6d841747649b2825814c371a2491, type: 3}
+  maxStackCount: 999

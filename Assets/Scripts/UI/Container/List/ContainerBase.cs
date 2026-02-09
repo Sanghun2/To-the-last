@@ -3,6 +3,8 @@ using UnityEngine;
 
 public interface IContent
 {
+    public bool IsActive { get; }
+
     public void Init();
     public void Activate();
     public void Release();

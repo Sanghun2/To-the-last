@@ -10,6 +10,8 @@ public class BuildContentUI : UIBase, IContent
     [SerializeField] RequirementUIContainer requirementUIContainer;
     [SerializeField] TextMeshProUGUI constructionButtonText;
 
+    public bool IsActive => IsOpened;
+
     public void Activate() {
         OpenUI();
     }

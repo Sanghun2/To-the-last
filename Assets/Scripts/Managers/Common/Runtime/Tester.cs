@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 public class Tester : MonoBehaviour
@@ -14,6 +15,18 @@ public class Tester : MonoBehaviour
     [Space]
     [SerializeField] int locationIndex;
     [SerializeField] StructureSD targetStructureSD;
+
+    [Space]
+    [Header("[  Inventory Test  ]")]
+    [SerializeField] ItemSD itemSD;
+    [SerializeField] int amount;
+
+    public void PushItem() {
+        Managers.Player.Inventory.TryPushItem(new ItemStack(itemSD.ToItemData(), amount), out var overflowedStack);
+    }
+    public void PopItem() {
+        Managers.Player.Inventory.TryRemoveItem(itemSD.ID, amount);
+    }
 
     public void DoTask() {
         if (testFocusJob != null) {

@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "93b6913db654a1c2f683753c703e3ba1449d9ad0"
+      "hash": "59aca9c5137f82fd5459275686741ce326e8cc00"
     },
     "com.billiotgames.sdmanager": {
       "version": "https://github.com/Sanghun2/SD-Manager.git",

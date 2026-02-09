@@ -25,7 +25,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
     }
 
     public void ShowList(IReadOnlyList<Ingredient> requirementItems) {
-        var maxCount = Mathf.Max(requirementItems.Count, CotentCount);
+        var maxCount = Mathf.Max(requirementItems.Count, ContentCount);
         int itemCount = requirementItems.Count;
 
         for (int i = 0; i < maxCount; i++) {

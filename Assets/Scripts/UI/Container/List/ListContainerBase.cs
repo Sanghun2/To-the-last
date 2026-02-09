@@ -3,9 +3,15 @@ using UnityEngine;
 
 public abstract class ListContainerBase<TContent> : ContainerBase<TContent> where TContent : Component, IContent
 {
-    public int CotentCount => contentList.Count;
+    public int ContentCount => contentList.Count;
 
     protected List<TContent> contentList = new List<TContent>();
+
+    public override TContent CreateObj(GameObject prefab, Transform parent) {
+        var newObj = base.CreateObj(prefab, parent);
+        contentList.Add(newObj);
+        return newObj;
+    }
 
     public abstract bool TryGetObj(int index, out TContent content);
     public virtual void ReleaseContainer() {

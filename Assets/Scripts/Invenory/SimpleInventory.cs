@@ -1,14 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
-public class TempInventory : InventoryBase
+public class SimpleInventory : InventoryBase
 {
-    [SerializeField] List<ItemStack> itemList = new List<ItemStack>(100);
+    public IReadOnlyList<ItemStack> ItemList => itemList;
+
+    [SerializeField] List<ItemStack> itemList;
     protected Dictionary<string, int> itemCountDict = new Dictionary<string, int>();
+
+    public SimpleInventory(string id, int capacitiy) : base(id, capacitiy) {
+        InitInventory();
+    }
 
     public override void InitInventory() {
         if (isInit) return;
+
+        itemList = new List<ItemStack>(Capacity);
 
         isInit = true;
     }
@@ -26,7 +35,7 @@ public class TempInventory : InventoryBase
     public override bool TryPushItem(ItemStack inputStack, out ItemStack overflowedStack) {
         string itemID = inputStack.ItemData.ItemID;
         int itemCount = GetItemCount(itemID);
-        if (itemCount != 0) {
+        if (itemCount > 0) {
             overflowedStack = null;
             var targetStack = itemList.Find(item => item.ItemData.ItemID.Equals(inputStack.ItemData.ItemID));
             if (targetStack != null) {
@@ -51,15 +60,24 @@ public class TempInventory : InventoryBase
             int resultAmount = Mathf.Min(inputStack.Amount, inputStack.ItemData.MaxStackAmount);
             overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount - resultAmount);
             itemCountDict[itemID] = resultAmount;
+            inputStack.OnAmountChanged -= UpdateItemCount;
             inputStack.OnAmountChanged += UpdateItemCount;
+            var invenUI = Managers.UI.GetUI<InventoryUI>();
+            if (invenUI.IsOpened) {
+                invenUI.ShowInventory(this);
+            }
             return true;
         }
     }
     public override bool TryRemoveItem(string itemID, int targetAmount) {
         int itemCount = GetItemCount(itemID);
         if (itemCount >= targetAmount) {
-            ItemStack targetItem = itemList.Find(item => item.ItemData.ItemID.Equals(itemID));
+            int index = itemList.FindIndex(item => item.ItemData.ItemID.Equals(itemID));
+            ItemStack targetItem = itemList[index];
             if (targetItem.TryRemoveStack(targetAmount)) {
+                if (targetItem.IsNull) {
+                    itemList.RemoveAt(index);
+                }
                 return true;
             }
 

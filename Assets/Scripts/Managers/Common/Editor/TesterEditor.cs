@@ -10,6 +10,16 @@ public class TesterEditor : Editor
         var _script = (Tester)target;
 
         GUI.enabled = Application.isPlaying;
+
+        GUILayout.Label("[  Inventory Test  ]");
+        if (GUILayout.Button("Push Item")) {
+            _script.PushItem();
+        }
+        if (GUILayout.Button("Pop Item")) {
+            _script.PopItem();
+        }
+
+        GUILayout.Space(20);
         GUILayout.Label("[  Job Handler Test  ]");
         if (GUILayout.Button("Reigster Task")) {
             _script.RegisterTask();

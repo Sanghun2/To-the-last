@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: tomatoSoup
   displayName: "\uD1A0\uB9C8\uD1A0 \uD1B5\uC870\uB9BC"
-  itemImage: {fileID: 21300000, guid: ca0ab27868972441e983e8b3ba1af917, type: 3}
+  descripiton: 
+  iconImage: {fileID: 21300000, guid: ca0ab27868972441e983e8b3ba1af917, type: 3}
+  maxStackCount: 999

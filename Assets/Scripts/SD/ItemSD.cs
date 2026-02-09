@@ -6,6 +6,9 @@ using System;
 public class ItemSD : IconSDBase
 {
     public Sprite ItemImage => IconImage;
+    public int MaxStackCount => maxStackCount;
+
+    [SerializeField] int maxStackCount;
 
     private void OnValidate() {
         RenameAsset(ID, suffix: "_ItemSD");
