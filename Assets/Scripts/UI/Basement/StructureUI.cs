@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using BilliotGames;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class StructureUI : ButtonBase
     private State _currrentStructureState;
     private StructureSD structureSD;
     private int index;
+    private Dictionary<State, Action> stateActions = new Dictionary<State, Action>();
 
     public override void InitUI() {
         if (IsInit) return;
@@ -69,22 +71,17 @@ public class StructureUI : ButtonBase
         CurrentStructureState = State.Empty;
     }
 
+    public void RegisterAction(State state, Action buttonAction) {
+        stateActions[state] = buttonAction;
+    }
 
     protected override void ButtonAction() {
-        switch (CurrentStructureState) {
-            case State.Locked:
-                // unlock 하는 ui
-                break;
-            case State.Empty:
-                Managers.UI.OpenUI<ConstructionUI>();
-                break;
-            case State.Built:
-                // 현재 건조물에 해당하는 ui
-                break;
-            default:
-                break;
+        if (stateActions.TryGetValue(CurrentStructureState, out Action action)) {
+            action?.Invoke();
         }
     }
+
+
     private void SetAsDefaultState() {
         CurrentStructureState = State.Locked;
         UpdateObject(State.Locked);

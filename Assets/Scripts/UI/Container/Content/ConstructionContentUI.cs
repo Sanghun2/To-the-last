@@ -4,7 +4,7 @@ using BilliotGames;
 using TMPro;
 using UnityEngine;
 
-public class BuildContentUI : UIBase, IContent
+public class ConstructionContentUI : UIBase, IContent
 {
     [SerializeField] ImageUI itemImage;
     [SerializeField] RequirementUIContainer requirementUIContainer;

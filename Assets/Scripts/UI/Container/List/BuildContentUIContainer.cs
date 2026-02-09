@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildContentUIContainer : ListContainerBase<BuildContentUI>
+public class BuildContentUIContainer : ListContainerBase<ConstructionContentUI>
 {
-    public override BuildContentUI GetObj() {
+    public override ConstructionContentUI GetObj() {
         for (int i = 0; i < contentList.Count; i++) {
             var content = contentList[i];
             if (!content.IsOpened) {
@@ -14,7 +14,7 @@ public class BuildContentUIContainer : ListContainerBase<BuildContentUI>
         return CreateObj(Prefab, ContainerTr);
     }
 
-    public override bool TryGetObj(int index, out BuildContentUI requirementUI) {
+    public override bool TryGetObj(int index, out ConstructionContentUI requirementUI) {
         if (0 <= index && index < contentList.Count) {
             requirementUI = contentList[index];
             return true;
@@ -31,7 +31,7 @@ public class BuildContentUIContainer : ListContainerBase<BuildContentUI>
         for (int i = 0; i < maxCount; i++) {
             if (i < itemCount) {
                 var structureSD = stuctureSDList[i];
-                if (TryGetObj(i, out BuildContentUI buildContentUI)) {
+                if (TryGetObj(i, out ConstructionContentUI buildContentUI)) {
                     buildContentUI.ShowUI(structureSD);
                 }
                 else {

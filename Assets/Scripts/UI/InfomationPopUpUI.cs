@@ -10,13 +10,13 @@ public class PopUpData
 {
     public string Title => title;
     public string Description => description;
-    public IReadOnlyList<UnityAction> ButtonActions => buttonActions;
+    public IReadOnlyList<Action> ButtonActions => buttonActions;
 
     [SerializeField] protected string title;
     [SerializeField] protected string description;
-    private UnityAction[] buttonActions;
+    private Action[] buttonActions;
 
-    public PopUpData(string title, string description, UnityAction[] buttonActions) {
+    public PopUpData(string title, string description, Action[] buttonActions) {
         this.title = title;
         this.description = description;
     }
@@ -29,7 +29,7 @@ public class InfomationPopUpData : PopUpData
     [SerializeField] protected string subText;
     [SerializeField] protected Sprite image;
 
-    public InfomationPopUpData(string mainText, string description, UnityAction[] buttonActions, string subText=null, Sprite image=null) : base(mainText, description, buttonActions) {
+    public InfomationPopUpData(string mainText, string description, Action[] buttonActions, string subText=null, Sprite image=null) : base(mainText, description, buttonActions) {
         this.subText = subText;
         this.image = image;
     }
