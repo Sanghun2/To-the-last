@@ -20,10 +20,10 @@ public class TimerUI : UIBase, IInitializable
     }
 
     private void UpdateDay(int day, int hour, int minute, int deltaMinutes) {
-        dayText.text = $"Day {day}";
+        dayText.SetText("Day {0}", day);
     }
 
     private void UpdateTime(int day, int hour, int minute, int deltaMinutes) {
-        timeText.text = $"{hour:00}:{minute:00}";
+        timeText.SetText("{0:00}:{1:00}", hour, minute);
     }
 }
