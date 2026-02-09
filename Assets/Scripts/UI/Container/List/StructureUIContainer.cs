@@ -14,6 +14,7 @@ public class StructureUIContainer : UIBase
         structureUIList = GetComponentsInChildren<StructureUI>().ToList();
         for (int i = 0; i < structureUIList.Count; i++) {
             structureUIList[i].InitUI();
+            structureUIList[i].AssignIndex(i);
         }
 
         _isInit = true;

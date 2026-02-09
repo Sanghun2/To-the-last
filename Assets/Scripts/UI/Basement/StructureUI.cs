@@ -15,6 +15,7 @@ public class StructureUI : ButtonBase
     public bool CanContruct => _currrentStructureState == State.Empty;
     public bool CanDestroy => _currrentStructureState == State.Built;
     public bool IsLocked => CurrentStructureState == State.Locked;
+    public int Index => index;
 
 
     public StructureSD StructureSD => structureSD;
@@ -36,10 +37,12 @@ public class StructureUI : ButtonBase
     [SerializeField] Image structureImage;
     private State _currrentStructureState;
     private StructureSD structureSD;
+    private int index;
 
     public override void InitUI() {
         if (IsInit) return;
 
+        base.InitUI();
         SetAsDefaultState();
 
         _isInit = true;
@@ -88,5 +91,8 @@ public class StructureUI : ButtonBase
     }
     private void UpdateObject(State state) {
         objectActivator.ShowObject((int)state);
+    }
+    internal void AssignIndex(int index) {
+        this.index = index;
     }
 }
