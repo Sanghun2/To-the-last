@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1acc5a73a94d804b8f45fac178f96d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f19f719ca154c844ac966ef4d226fb8, type: 3}
   m_Name: bed_StructureSD
-  m_EditorClassIdentifier: Assembly-CSharp::StructureSD
+  m_EditorClassIdentifier: Assembly-CSharp::UtilityStructureSD
   id: bed
   displayName: "\uCE68\uB300"
   descripiton: "\uC7A0\uC744 \uC798 \uC218 \uC788\uB294 \uCE68\uB300. "
-  iconImage: {fileID: 21300000, guid: 81919bc1c8584d84cb6e91efb2724a29, type: 3}
+  iconImage: {fileID: 21300000, guid: e0de2ac10e0d76a4fbbfa8a0d1c0de13, type: 3}
   constructionTime: 100
   requirementItems:
-  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
-    amount: 5
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
     amount: 10
+  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+    amount: 3

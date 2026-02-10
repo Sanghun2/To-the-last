@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1acc5a73a94d804b8f45fac178f96d6, type: 3}
+  m_Script: {fileID: 11500000, guid: a7e33b1a176f896448708b50845c9dd0, type: 3}
   m_Name: growbox_StructureSD
-  m_EditorClassIdentifier: Assembly-CSharp::StructureSD
+  m_EditorClassIdentifier: Assembly-CSharp::ProductionStructureSD
   id: growbox
   displayName: "\uC7AC\uBC30 \uC0C1\uC790"
   descripiton: "\uC791\uC740 \uC2DD\uBB3C\uC744 \uD0A4\uC6B8 \uC218 \uC788\uB294
     \uC0C1\uC790"
-  iconImage: {fileID: 21300000, guid: e0de2ac10e0d76a4fbbfa8a0d1c0de13, type: 3}
+  iconImage: {fileID: 21300000, guid: 9e876a8e953f80a4e859e273e574b63e, type: 3}
   constructionTime: 100
   requirementItems:
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}

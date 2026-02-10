@@ -52,6 +52,12 @@ public class InfomationPopUpUI : UIBase
 
     public void InitUI(InfomationPopUpData popUpData) {
         InitUI();
+
+        if (popUpData == null) {
+            Debug.LogError($"<color=red>pop up data null</color>");
+            return;
+        }
+
         if (popUpData.Image != null) {
             image.sprite = popUpData.Image;
             image.gameObject.SetActive(true);

@@ -52,7 +52,10 @@ public class StructureUI : ButtonBase
             "장애물을 제거하고 구역을 확장하시겠습니까?",
             new ActionData[] {
                 new ActionData("취소", () => Managers.UI.CloseUI<InfomationPopUpUI>()),
-                new ActionData("확장", () => Debug.Log($"구역 ({index})을 확장했습니다."))
+                new ActionData("확장", () => {
+                    Managers.UI.CloseUI<InfomationPopUpUI>();
+                    UnlockUI();
+                })
             })));
 
         RegisterAction(State.Empty, new ShowConstructionUIAction());
