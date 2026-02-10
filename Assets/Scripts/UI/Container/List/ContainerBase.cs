@@ -64,6 +64,7 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
     }
     public virtual TContent CreateObj(GameObject prefab, Transform parent) {
         if (!IsInit) InitUI();
+        if (prefab == null) { Debug.LogError($"생성하려는 prefab이 없음"); return null; }
         GameObject obj = Instantiate(prefab, parent);
         return obj.GetComponentInChildren<TContent>();
     }

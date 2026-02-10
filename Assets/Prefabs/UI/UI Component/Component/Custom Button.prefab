@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomButton
   targetButton: {fileID: 6202596991078853280}
+  buttonText: {fileID: 7608252541087400742}
 --- !u!224 &4149969034723157110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5750674059144569643, guid: b645c3a86bd000b498cb4bc383a6020f, type: 3}

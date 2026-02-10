@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using BilliotGames;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class StructureUI : ButtonBase
@@ -39,13 +40,22 @@ public class StructureUI : ButtonBase
     private State _currrentStructureState;
     private StructureSD structureSD;
     private int index;
-    private Dictionary<State, Action> stateActions = new Dictionary<State, Action>();
+    private Dictionary<State, ActionBase> stateActions = new Dictionary<State, ActionBase>();
 
     public override void InitUI() {
         if (IsInit) return;
 
         base.InitUI();
         SetAsDefaultState();
+        RegisterAction(State.Locked, new ShowInfomationAction(new InfomationPopUpData(
+            "구역 확장",
+            "장애물을 제거하고 구역을 확장하시겠습니까?",
+            new ActionData[] {
+                new ActionData("취소", () => Managers.UI.CloseUI<InfomationPopUpUI>()),
+                new ActionData("확장", () => Debug.Log($"구역 ({index})을 확장했습니다."))
+            })));
+
+        RegisterAction(State.Empty, new ShowConstructionUIAction());
 
         _isInit = true;
     }
@@ -71,13 +81,13 @@ public class StructureUI : ButtonBase
         CurrentStructureState = State.Empty;
     }
 
-    public void RegisterAction(State state, Action buttonAction) {
+    public void RegisterAction(State state, ActionBase buttonAction) {
         stateActions[state] = buttonAction;
     }
 
     protected override void ButtonAction() {
-        if (stateActions.TryGetValue(CurrentStructureState, out Action action)) {
-            action?.Invoke();
+        if (stateActions.TryGetValue(CurrentStructureState, out ActionBase action)) {
+            action.Execute();
         }
     }
 

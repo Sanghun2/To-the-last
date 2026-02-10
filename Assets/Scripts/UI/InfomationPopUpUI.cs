@@ -10,15 +10,16 @@ public class PopUpData
 {
     public string Title => title;
     public string Description => description;
-    public IReadOnlyList<Action> ButtonActions => buttonActions;
+    public IReadOnlyList<ActionData> ButtonActions => buttonActions;
 
     [SerializeField] protected string title;
     [SerializeField] protected string description;
-    private Action[] buttonActions;
+    private ActionData[] buttonActions;
 
-    public PopUpData(string title, string description, Action[] buttonActions) {
+    public PopUpData(string title, string description, ActionData[] buttonActions) {
         this.title = title;
         this.description = description;
+        this.buttonActions = buttonActions;
     }
 }
 public class InfomationPopUpData : PopUpData
@@ -29,7 +30,7 @@ public class InfomationPopUpData : PopUpData
     [SerializeField] protected string subText;
     [SerializeField] protected Sprite image;
 
-    public InfomationPopUpData(string mainText, string description, Action[] buttonActions, string subText=null, Sprite image=null) : base(mainText, description, buttonActions) {
+    public InfomationPopUpData(string mainText, string description, ActionData[] buttonActions, string subText=null, Sprite image=null) : base(mainText, description, buttonActions) {
         this.subText = subText;
         this.image = image;
     }
@@ -43,7 +44,14 @@ public class InfomationPopUpUI : UIBase
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] CustomButtonContainer buttonContainer;
 
+    public override void InitUI() {
+        if (IsInit) return;
+        buttonContainer.InitUI();
+        _isInit = true;
+    }
+
     public void InitUI(InfomationPopUpData popUpData) {
+        InitUI();
         if (popUpData.Image != null) {
             image.sprite = popUpData.Image;
             image.gameObject.SetActive(true);
@@ -67,7 +75,8 @@ public class InfomationPopUpUI : UIBase
         buttonContainer.Clear();
         for (int i = 0; i < 2; i++) {
             if (buttonContainer.TryGetObj(i, out CustomButton button)) {
-                button.SetButtonAction(popUpData.ButtonActions[i]);
+                button.InitButton(popUpData.ButtonActions[i]);
+                button.Activate();
             }
         }
     }

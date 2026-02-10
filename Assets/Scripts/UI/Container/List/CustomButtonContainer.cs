@@ -17,7 +17,7 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
             return true;
         }
 
-        Debug.LogError($"max count ({maxButtonCount}) 보다 많은 버튼을 생성할 수 없음");
+        Debug.LogError($"max count ({maxButtonCount}) 보다 많은 버튼을 생성할 수 없음. input index: {index}, current count: {contentList.Count}");
         content = null;
         return false;
     }

@@ -85,7 +85,19 @@ public sealed class Managers : MonoBehaviour
             return _playerManager;
         }
     }
+    public static ActionManager Action
+    {
+        get
+        {
+            if (_actionManager == null) {
+                _actionManager = new ActionManager();
+            }
 
+            return _actionManager;
+        }
+    }
+
+    private static ActionManager _actionManager;
     private static PlayerManager _playerManager;
     private static ConstructionManager constructionManager;
     private static JobHandler jobHandler;
