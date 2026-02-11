@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class StructureUIContainer : UIBase
 {
+    public int Count => structureUIList.Count;
+
     [SerializeField] List<StructureUI> structureUIList = new List<StructureUI>();
+
 
     public override void InitUI() {
         if (IsInit) return;
@@ -13,8 +16,8 @@ public class StructureUIContainer : UIBase
         structureUIList.Clear();
         structureUIList = GetComponentsInChildren<StructureUI>().ToList();
         for (int i = 0; i < structureUIList.Count; i++) {
-            structureUIList[i].InitUI();
             structureUIList[i].AssignIndex(i);
+            structureUIList[i].InitUI();
         }
 
         _isInit = true;

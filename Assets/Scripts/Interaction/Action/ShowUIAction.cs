@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ShowUIAction : ActionBase<StructureSD>
+public class ShowUIAction : ActionBase<Structure>
 {
-    public ShowUIAction(StructureSD structureSD) {
+    public ShowUIAction(Structure structureSD) {
         SetParameter(structureSD);
     }
 

@@ -2272,10 +2272,7 @@ MonoBehaviour:
     currentMinutes: 0
     totalMinutes: 10
     duration: 1.5
-  testStructureSDList:
-  - {fileID: 11400000, guid: 34c11013d6486ba4c8f8a494dd2ec4ac, type: 2}
-  - {fileID: 11400000, guid: b9bfebb9d63f169418106128e36cac52, type: 2}
-  - {fileID: 11400000, guid: f08dd0f688fe26847bead2b96c345723, type: 2}
+  testStructureSDList: []
   locationIndex: 0
   targetStructureSD: {fileID: 11400000, guid: f08dd0f688fe26847bead2b96c345723, type: 2}
   itemSD: {fileID: 11400000, guid: bdba0b37ce3a5dd49ae58ffd115a344a, type: 2}
