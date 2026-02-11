@@ -31,7 +31,8 @@ public class BuildContentUIContainer : ListContainerBase<ConstructionContentUI>
 
         for (int i = 0; i < maxCount; i++) {
             if (i < itemCount) {
-                var structureSD = stuctureSDList[i];
+                StructureSD structureSD = stuctureSDList[i];
+                if (structureSD.Locked) continue;
                 if (TryGetObj(i, out ConstructionContentUI buildContentUI)) {
                     buildContentUI.ShowUI(structureSD);
                 }

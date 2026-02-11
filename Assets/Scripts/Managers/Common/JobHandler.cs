@@ -29,6 +29,9 @@ public class JobHandler : IInitializable
             focusJob.CurrentState = Job.State.Running;
             currentFocusJobID = Managers.Coroutine.StartCoroutine(FocusJobRoutine(focusJob, callback));
         }
+        else {
+            Debug.Log($"현재 실행중인 focus job이 있어 실행 skip됨");
+        }
     }
 
     private IEnumerator FocusJobRoutine(FocusJob focusJob, Action callback=null) {

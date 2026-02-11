@@ -55,6 +55,6 @@ public class Tester : MonoBehaviour
     }
 
     public void ShowBuildList() {
-        Managers.UI.OpenUI<ConstructionUI>().ShowConstructionList(testStructureSDList);
+        Managers.UI.OpenUI<ConstructionUI>().ShowConstructionCatalogs(testStructureSDList);
     }
 }

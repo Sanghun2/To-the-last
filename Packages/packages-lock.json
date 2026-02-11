@@ -19,7 +19,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "03bb539d3e5d47d2655bdfc097d27e9b0b7f6772"
+      "hash": "58a42d3efb20235d21e559004f9bc471925b9962"
     },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",

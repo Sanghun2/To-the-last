@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5288436570069936681}
   - component: {fileID: 2612041972308301133}
   m_Layer: 5
-  m_Name: Build Content UI
+  m_Name: Construction Content UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   itemImage: {fileID: 8365743355028977027}
   requirementUIContainer: {fileID: 2372396367335480219}
   constructionButtonText: {fileID: 7015795748591419950}
+  constructionButton: {fileID: 5450341049523148237}
 --- !u!1001 &179392286832138890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,6 +265,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
+--- !u!114 &5450341049523148237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1762233313503655947, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
+  m_PrefabInstance: {fileID: 6041356326711340486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &7015795748591419950 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3641767907556126696, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}

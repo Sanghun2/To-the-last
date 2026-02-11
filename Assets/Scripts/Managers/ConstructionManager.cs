@@ -8,6 +8,7 @@ public class ConstructionManager : IInitializable
     public bool IsInit => _isInit;
 
     [SerializeField] List<Structure> structureList = new List<Structure>();
+    
     private StructureUIContainer structureUIContainer;
     private int targetLocationIndex;
     private StructureSD targetStructureSD;
@@ -38,6 +39,7 @@ public class ConstructionManager : IInitializable
     }
 
     public void ConstructTarget() {
+        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureSD.ID}");
         PlaceStructure(targetLocationIndex, targetStructureSD);
     }
     public void PlaceStructure(int locationIndex, StructureSD structureSD) {
@@ -130,5 +132,10 @@ public class ConstructionManager : IInitializable
         }
 
         return false;
+    }
+
+    internal bool HasEnoughItems(IReadOnlyList<Ingredient> requirementItems) {
+        Debug.Log("구현 필요");
+        return true;
     }
 }

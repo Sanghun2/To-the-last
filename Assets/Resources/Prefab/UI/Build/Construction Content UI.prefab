@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1942962599490878962, guid: 75638f31073dc18428e53e208dbe9be6, type: 3}
       propertyPath: m_Name
-      value: Build Content UI
+      value: Construction Content UI
       objectReference: {fileID: 0}
     - target: {fileID: 5288436570069936681, guid: 75638f31073dc18428e53e208dbe9be6, type: 3}
       propertyPath: m_Pivot.x

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using BilliotGames;
 using UnityEngine;
@@ -39,7 +40,11 @@ public class StructureUI : ButtonBase
                 })
             })));
 
-        RegisterAction(Structure.StructureState.Empty, new ShowConstructionUIAction());
+        if (Managers.SD.TryGetContainer<StructureSD>(out var container)) {
+            var structureList = container.SDDict.Select(x => x.Value).ToList();
+            var constructionContext = new ConstructionContext(index, structureList);
+            RegisterAction(Structure.StructureState.Empty, new ShowConstructionUIAction(constructionContext));
+        }
         RegisterAction(Structure.StructureState.Built, new ShowUIAction(structure));
 
         _isInit = true;

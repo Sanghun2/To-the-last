@@ -18,7 +18,7 @@ public class ConstructionUI : UIBase
         _isInit = true;
     }
 
-    public void ShowConstructionList(IReadOnlyList<StructureSD> structureList) {
+    public void ShowConstructionCatalogs(IReadOnlyList<StructureSD> structureList) {
         if (structureList == null) {
             Debug.LogError($"show construction failed. list null");
             Managers.UI.OpenUI<InfomationPopUpUI>().InitUI(new InfomationPopUpData(

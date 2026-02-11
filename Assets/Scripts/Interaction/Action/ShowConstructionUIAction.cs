@@ -1,13 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class ShowConstructionUIAction : ActionBase<IReadOnlyList<StructureSD>>
+public readonly struct ConstructionContext
 {
-    //public ShowConstructionUIAction(IReadOnlyList<StructureSD> constructionList) {
-    //    SetParameter(constructionList);
-    //}
+    public readonly int Index => index;
+    public IReadOnlyList<StructureSD> StructureCatalogs => structureCatalogs;
+
+    private readonly int index;
+    private readonly IReadOnlyList<StructureSD> structureCatalogs;
+
+    public ConstructionContext(int index, IReadOnlyList<StructureSD> structureCatalogs) {
+        this.index = index;
+        this.structureCatalogs = structureCatalogs;
+    }
+}
+
+public class ShowConstructionUIAction : ActionBase<ConstructionContext>
+{
+    public ShowConstructionUIAction(ConstructionContext context) {
+        SetParameter(context);
+    }
 
     public override void Execute() {
-        Managers.UI.OpenUI<ConstructionUI>().ShowConstructionList(parameter);
+        Managers.Construction.SetLocationIndex(parameter.Index);
+        Managers.UI.OpenUI<ConstructionUI>().ShowConstructionCatalogs(parameter.StructureCatalogs);
+        Debug.Log($"현재 선택된 index: {parameter.Index}");
     }
 }
