@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using BilliotGames;
+using UnityEngine;
 
 public class ShowUIAction : ActionBase<Structure>
 {
@@ -7,6 +9,9 @@ public class ShowUIAction : ActionBase<Structure>
     }
 
     public override void Execute() {
-        throw new System.NotImplementedException();
+        Type uiType = parameter.StructureSD.GetUIType();
+        if (uiType.Name.Equals(typeof(CraftStructureUI).ToString())) {
+            Managers.UI.OpenUI<CraftStructureUI>();
+        }
     }
 }

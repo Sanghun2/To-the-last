@@ -29,7 +29,7 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
         if (prefab == null) {
             trimmedPath = TrimPath(prefabResourcePath);
             prefab = Resources.Load<GameObject>(PrefabPath);
-            if (prefab == null) { Debug.LogError($"<color=red>{PrefabPath}에 prefab이 존재하지 않음</color>"); return; }
+            if (prefab == null) { Debug.LogError($"<color=red>path: {PrefabPath}에 prefab이 존재하지 않음</color>"); return; }
         }
 
         for (int i = 0; i < initialPrefabCount; i++) {
@@ -43,10 +43,11 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
 
     private string TrimPath(string prefabPath) {
 
+        prefabPath = prefabPath.Replace(".Prefab", "");
+        prefabPath = prefabPath.Replace(".prefab", "");
         int resourcesIndex = prefabPath.IndexOf("Resources/");
         if (resourcesIndex == -1) {
-            Debug.LogError("Resources 폴더를 찾을 수 없습니다.");
-            return null;
+            return prefabPath;
         }
 
         string path = prefabPath.Substring(resourcesIndex + "Resources/".Length);

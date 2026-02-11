@@ -527,7 +527,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3951074449223030232, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3470727395474524070}
+    - targetCorrespondingSourceObject: {fileID: 770572081979784766, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6270196022253395569}
   m_SourcePrefab: {fileID: 100100000, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
+--- !u!1 &1466099444815698464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 770572081979784766, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
+  m_PrefabInstance: {fileID: 2227380299067548702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6270196022253395569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466099444815698464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752d4d9395c849c45ac64a31d7e5ea2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftUICloseButton
+  targetButton: {fileID: 5523425126125442731}
 --- !u!224 &2675437568735443832 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4307744581554413414, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
@@ -554,6 +575,17 @@ MonoBehaviour:
   itemImageUI: {fileID: 1301192991770957088}
   itemDescriptionText: {fileID: 1855524879183096417}
   progressBarUI: {fileID: 155123262124881092}
+--- !u!114 &5523425126125442731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5930707961431421621, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}
+  m_PrefabInstance: {fileID: 2227380299067548702}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &5622846505473948495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5828048861726105425, guid: 3ba89850a3f6d5847af2eaba9d002205, type: 3}

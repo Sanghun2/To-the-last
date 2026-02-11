@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e7e37cfb7ad994fb4c1d6ec15aa458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildContentUIContainer
-  prefabResourcePath: Prefab/UI/Build/Build Content UI
+  prefabResourcePath: Assets/Resources/Prefab/UI/Build/Construction Content UI.prefab
   containerTr: {fileID: 6398532414519105518}
   initialPrefabCount: 10
 --- !u!224 &6398532414519105518 stripped
@@ -196,7 +196,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 571138655990995284, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
       propertyPath: m_Name
-      value: Building Pop Up UI
+      value: Construction Pop Up UI
       objectReference: {fileID: 0}
     - target: {fileID: 7433703533889065127, guid: d8c23b3e9f4761d42a71985859084b17, type: 3}
       propertyPath: m_Pivot.x

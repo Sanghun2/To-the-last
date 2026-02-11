@@ -10,12 +10,12 @@ public interface IProgressor
 
 public class CraftButton : ButtonBase, IProgressor
 {
-    public CraftUI CraftUI
+    public CraftStructureUI CraftUI
     {
         get
         {
             if (_craftUI == null) {
-                _craftUI = Managers.UI.GetUI<CraftUI>();
+                _craftUI = Managers.UI.GetUI<CraftStructureUI>();
             }
 
             return _craftUI;
@@ -24,7 +24,7 @@ public class CraftButton : ButtonBase, IProgressor
 
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] RecipeSD targetRecipeSD;
-    private CraftUI _craftUI;
+    private CraftStructureUI _craftUI;
 
     public void SetText(string text) {
         buttonText.text = text; 
@@ -36,7 +36,7 @@ public class CraftButton : ButtonBase, IProgressor
     protected override void ButtonAction() {
         if (Managers.Job.IsFocusJobRunning) return;
 
-        CraftUI craftUI = Managers.UI.GetUI<CraftUI>();
+        CraftStructureUI craftUI = Managers.UI.GetUI<CraftStructureUI>();
         craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
         var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateValue);
         Managers.Job.DoFocusJob(newJob);

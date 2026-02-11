@@ -8,8 +8,10 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
     protected List<TContent> contentList = new List<TContent>();
 
     public override TContent CreateObj(GameObject prefab, Transform parent) {
+        if (!IsInit) InitUI();
         var newObj = base.CreateObj(prefab, parent);
         contentList.Add(newObj);
+        newObj.Activate();
         return newObj;
     }
 

@@ -10,6 +10,6 @@ public class ProductionStructureSD : StructureSD
     [SerializeField] protected RecipeSD[] productions;
 
     public override Type GetUIType() {
-        return typeof(CraftUI);
+        return typeof(CraftStructureUI);
     }
 }

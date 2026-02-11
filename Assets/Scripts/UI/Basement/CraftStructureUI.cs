@@ -2,7 +2,7 @@
 using BilliotGames;
 using UnityEngine;
 
-public class CraftUI : UIBase
+public class CraftStructureUI : UIBase
 {
     [SerializeField] TitleText popUpTitleText;
     [SerializeField] ImageUI itemImageUI;

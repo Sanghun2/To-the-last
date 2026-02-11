@@ -7,10 +7,10 @@ public class ConstructionManager : IInitializable
 {
     public bool IsInit => _isInit;
 
+    [SerializeField] List<Structure> structureList = new List<Structure>();
     private StructureUIContainer structureUIContainer;
     private int targetLocationIndex;
     private StructureSD targetStructureSD;
-    private List<Structure> structureList = new List<Structure>();
     private bool _isInit;
 
     public void Init() {
@@ -38,9 +38,9 @@ public class ConstructionManager : IInitializable
     }
 
     public void ConstructTarget() {
-        Construct(targetLocationIndex, targetStructureSD);
+        PlaceStructure(targetLocationIndex, targetStructureSD);
     }
-    public void Construct(int locationIndex, StructureSD structureSD) {
+    public void PlaceStructure(int locationIndex, StructureSD structureSD) {
         if (!IsValidLocation(locationIndex)) return;
         if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureSD)) return;

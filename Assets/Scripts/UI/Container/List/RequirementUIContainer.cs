@@ -17,6 +17,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
     public override bool TryGetObj(int index, out RequirementUI requirementUI) {
         if (0 <= index && index < contentList.Count) {
             requirementUI = contentList[index];
+            requirementUI.Activate();
             return true;
         }
 

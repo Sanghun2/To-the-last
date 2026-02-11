@@ -2272,9 +2272,12 @@ MonoBehaviour:
     currentMinutes: 0
     totalMinutes: 10
     duration: 1.5
-  testStructureSDList: []
+  testStructureSDList:
+  - {fileID: 11400000, guid: 4a7e5aeb5c34233488c86b3e3697249e, type: 2}
+  - {fileID: 11400000, guid: ac81775b8cfd31b49a9ee4a2b5ea6b64, type: 2}
+  - {fileID: 11400000, guid: 3be0177dbdbd68a4fba2e84009087e37, type: 2}
   locationIndex: 0
-  targetStructureSD: {fileID: 11400000, guid: f08dd0f688fe26847bead2b96c345723, type: 2}
+  targetStructureSD: {fileID: 11400000, guid: 3be0177dbdbd68a4fba2e84009087e37, type: 2}
   itemSD: {fileID: 11400000, guid: bdba0b37ce3a5dd49ae58ffd115a344a, type: 2}
   amount: 3
 --- !u!1 &852699586
