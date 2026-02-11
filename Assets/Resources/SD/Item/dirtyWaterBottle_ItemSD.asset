@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e59362c602507b499a9b4b003e222c8, type: 3}
-  m_Name: bolt_ItemSD
+  m_Name: dirtyWaterBottle_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
-  id: bolt
-  displayName: "\uB098\uC0AC"
-  descripiton: "\uB098\uC0AC\uB2E4."
-  iconImage: {fileID: 21300000, guid: fe7e6d841747649b2825814c371a2491, type: 3}
+  id: dirtyWaterBottle
+  displayName: "\uBE48 \uBCD1"
+  descripiton: "\uC624\uC5FC\uB41C \uBB3C\uC774 \uB2F4\uAE34 \uBCD1\uC774\uB2E4.\n\uB9C8\uC2DC\uBA74
+    \uAC08\uC99D\uC740 \uD574\uC18C\uB418\uACA0\uC9C0\uB9CC \uB9CE\uC774 \uC544\uD50C
+    \uAC83 \uAC19\uB2E4."
+  iconImage: {fileID: 21300000, guid: 3143496afabba234eb1697d46f9f4a74, type: 3}
   maxStackCount: 999

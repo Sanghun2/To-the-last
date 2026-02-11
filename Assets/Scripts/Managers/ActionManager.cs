@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionManager : IInitializable
 {
-    public bool IsInit => throw new NotImplementedException();
+    public bool IsInit => _isInit;
 
     private Dictionary<Type, ActionBase> actionDict = new Dictionary<Type, ActionBase>();
     private bool _isInit;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSD
   id: bolt
   displayName: "\uB098\uC0AC \uC81C\uC870\uBC95"
-  descripiton: "\uB098\uC0AC \uC81C\uC870\uBC95"
+  descripiton: "\uB098\uC0AC\uB97C \uB9CC\uB4E4 \uC218 \uC788\uB2E4."
   iconImage: {fileID: 21300000, guid: 32c1a63daa048452791ca0456624de7c, type: 3}
   requireMinutes: 10
   inputs:

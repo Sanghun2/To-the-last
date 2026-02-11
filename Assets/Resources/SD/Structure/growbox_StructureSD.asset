@@ -20,4 +20,7 @@ MonoBehaviour:
   constructionTime: 100
   requirementItems:
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 5
+    amount: 10
+  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+    amount: 4
+  productions: []

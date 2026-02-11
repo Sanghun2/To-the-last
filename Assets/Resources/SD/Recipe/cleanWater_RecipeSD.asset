@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b845c23cc615a458f66da23762c2a1, type: 3}
-  m_Name: growbox_RecipeSD
+  m_Name: cleanWater_RecipeSD
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSD
-  id: growbox
-  displayName: "\uC7AC\uBC30 \uC0C1\uC790 \uC81C\uC870\uBC95"
-  descripiton: "\uB098\uC0AC \uC81C\uC870\uBC95"
-  iconImage: {fileID: 21300000, guid: e0de2ac10e0d76a4fbbfa8a0d1c0de13, type: 3}
-  requireMinutes: 100
+  id: cleanWater
+  displayName: "\uC815\uC218 \uBC29\uBC95"
+  descripiton: "\uC624\uC5FC\uB41C \uBB3C\uC744 \uAC78\uB7EC \uAE68\uB057\uD55C \uBB3C\uC744
+    \uB9CC\uB4E0\uB2E4."
+  iconImage: {fileID: 21300000, guid: 746d2f620e49a453698d079d75f5eeb9, type: 3}
+  requireMinutes: 30
   inputs:
+  - itemSD: {fileID: 11400000, guid: e7dcbff3db5628d40a3cd46e473ccfff, type: 2}
+    amount: 1
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
     amount: 2
   outputs:
-  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+  - itemSD: {fileID: 11400000, guid: 6a496772c99f2d74f87f40d020a0ff2c, type: 2}
     amount: 1

@@ -59,6 +59,7 @@ public class StructureUI : ButtonBase
             })));
 
         RegisterAction(State.Empty, new ShowConstructionUIAction());
+        RegisterAction(State.Built, new ShowUIAction(structureSD));
 
         _isInit = true;
     }

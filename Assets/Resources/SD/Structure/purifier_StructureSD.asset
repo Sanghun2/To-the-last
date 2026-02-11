@@ -22,3 +22,5 @@ MonoBehaviour:
     amount: 5
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
     amount: 3
+  productions:
+  - {fileID: 0}

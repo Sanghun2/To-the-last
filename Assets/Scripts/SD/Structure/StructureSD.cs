@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,4 +16,6 @@ public abstract class StructureSD : IconSDBase
     private void OnValidate() {
         RenameAsset(ID, suffix: "_StructureSD");
     }
+
+    public abstract Type GetUIType();
 }
