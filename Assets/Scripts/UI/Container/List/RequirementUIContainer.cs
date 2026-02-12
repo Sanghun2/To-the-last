@@ -14,7 +14,6 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
             if (i < itemCount) {
                 var ingredient = requirementItems[i];
                 RequirementUI requirementUI = GetObj(i);
-                Debug.Log($"slot index: {i}");
                 requirementUI.SetReqirementItem(ingredient.ItemSD, ingredient.Amount);
             }
             else {

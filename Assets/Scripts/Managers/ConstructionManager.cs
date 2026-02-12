@@ -54,13 +54,13 @@ public class ConstructionManager : IInitializable
             },
             onComplete: () => {
                 ConstructStructure(locationIndex, structureSD);
+                Debug.Log($"[{DateTime.Now}] construction complete");
             });
 
 
         Managers.Job.DoFocusJob(constructionJob, () => {
             ClearTargetStructure();
-            Managers.UI.CloseUI<ConstructionUI>();
-            Debug.Log("job completed");
+            //Managers.UI.CloseUI<ConstructionUI>();
         });
     }
 

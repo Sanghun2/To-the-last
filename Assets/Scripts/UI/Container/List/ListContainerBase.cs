@@ -27,6 +27,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
     }
 
     public virtual TContent GetObj(int index) {
+        InitUI();
         TContent obj = null;
         if (0 <= index && index < contentList.Count) {
             obj = contentList[index];

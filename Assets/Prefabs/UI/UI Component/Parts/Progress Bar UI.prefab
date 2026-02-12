@@ -202,3 +202,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProgressBarUI
   progressBar: {fileID: 3029808680437306818}
   progressEase: 1
+  tweenDuration: 0.25

@@ -12,8 +12,8 @@ public class ProgressBarUI : UIBase
     [Space]
     [SerializeField] Image progressBar;
     [SerializeField] Ease progressEase;
+    [SerializeField] float tweenDuration = 0.25f;
     private Tweener progressTweener;
-    private float tweenDuration = 0.2f;
 
     public override void InitUI() {
         UpdateUI(0, 1);
