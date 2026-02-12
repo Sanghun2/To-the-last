@@ -625,17 +625,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1462729424771314274}
   m_SourcePrefab: {fileID: 100100000, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
---- !u!114 &395970535490508320 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 517935562127675520, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
-  m_PrefabInstance: {fileID: 166306343098468000}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966026632511096352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a4cceca488b8a4696357920d9497fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TitleText
 --- !u!224 &865854084930964854 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1029907108870933462, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
@@ -672,6 +661,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3274353762266784942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3404160408123564558, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
+  m_PrefabInstance: {fileID: 166306343098468000}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966026632511096352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
 --- !u!1 &3966026632511096352 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3838472648683634816, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfomationPopUpUI
   image: {fileID: 2289037611556661057}
-  mainText: {fileID: 395970535490508320}
+  mainText: {fileID: 3274353762266784942}
   subText: {fileID: 6278209613284128639}
   descriptionText: {fileID: 6036581060707683928}
   buttonContainer: {fileID: 1382372539339108264}

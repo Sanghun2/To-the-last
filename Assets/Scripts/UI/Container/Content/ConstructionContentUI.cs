@@ -4,12 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConstructionContentUI : UIBase, IContent
+public class ConstructionContentUI : ContentUI, IContent
 {
-    [SerializeField] ImageUI itemImage;
     [SerializeField] RequirementUIContainer requirementUIContainer;
     [SerializeField] TextMeshProUGUI constructionButtonText;
-    [SerializeField] Button constructionButton;
 
     public bool IsActive => IsOpened;
 
@@ -22,7 +20,7 @@ public class ConstructionContentUI : UIBase, IContent
     }
 
     public void ShowUI(StructureSD structureSD) {
-        itemImage.SetImage(structureSD.IconImage);
+        contentImage.SetImage(structureSD.IconImage);
         requirementUIContainer.ShowList(structureSD.RequirementItems);
         constructionButtonText.text = $"건설\n({structureSD.ConstructionTime}분)";
         SetButtonAction(() => {
@@ -38,8 +36,8 @@ public class ConstructionContentUI : UIBase, IContent
     }
 
     private void SetButtonAction(Action buttonAction) {
-        constructionButton.onClick.RemoveAllListeners();
-        constructionButton.onClick.AddListener(() => buttonAction?.Invoke());
+        actionButton.onClick.RemoveAllListeners();
+        actionButton.onClick.AddListener(() => buttonAction?.Invoke());
     }
 
     public void Release() {

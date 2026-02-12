@@ -27,6 +27,6 @@ public class CustomButton : ButtonBase, IContent
     }
 
     protected override void ButtonAction() {
-        // button base의 set button action으로 할당해서 사용
+        // actionButton base의 set actionButton action으로 할당해서 사용
     }
 }

@@ -29,12 +29,12 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
     public virtual TContent GetObj(int index) {
         TContent obj = null;
         if (0 <= index && index < contentList.Count) {
-            obj = CreateObj();
+            obj = contentList[index];
             obj.Activate();
             return obj;
         }
 
-        obj = contentList[index];
+        obj = CreateObj();
         obj.Activate();
         return obj;
     }

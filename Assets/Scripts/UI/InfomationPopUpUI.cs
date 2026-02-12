@@ -39,7 +39,7 @@ public class InfomationPopUpData : PopUpData
 public class InfomationPopUpUI : UIBase
 {
     [SerializeField] Image image;
-    [SerializeField] TitleText mainText;
+    [SerializeField] TextUI mainText;
     [SerializeField] TextMeshProUGUI subText;
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] CustomButtonContainer buttonContainer;
@@ -88,7 +88,7 @@ public class InfomationPopUpUI : UIBase
 
     private void Reset() {
         if (mainText == null) {
-            mainText = GetComponentInChildren<TitleText>();
+            mainText = GetComponentInChildren<TextUI>();
         }
     }
 }

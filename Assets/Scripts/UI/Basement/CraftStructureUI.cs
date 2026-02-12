@@ -7,9 +7,9 @@ public class CraftStructureUI : UIBase
 {
     public RecipeSD TargetRecipeSD => currentRecipeSD;
 
-    [SerializeField] TitleText popUpTitleText;
+    [SerializeField] TextUI popUpTitleText;
     [SerializeField] ImageUI itemImageUI;
-    [SerializeField] DescriptionText itemDescriptionText;
+    [SerializeField] TextUI itemDescriptionText;
     [SerializeField] CraftButton craftButton;
     [SerializeField] ProgressBarUI progressBarUI;
     private RecipeSD currentRecipeSD;
@@ -34,11 +34,11 @@ public class CraftStructureUI : UIBase
 
     private void Reset() {
         if (popUpTitleText == null) {
-            popUpTitleText = GetComponentInChildren<TitleText>();
+            popUpTitleText = GetComponentInChildren<TextUI>();
         }
 
         if (itemDescriptionText == null) {
-            itemDescriptionText = GetComponentInChildren<DescriptionText>();
+            itemDescriptionText = GetComponentInChildren<TextUI>();
         }
 
         if (itemImageUI == null) {

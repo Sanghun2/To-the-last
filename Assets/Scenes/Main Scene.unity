@@ -375,6 +375,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 3470727395474524070, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+      propertyPath: popUpTitleText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470727395474524070, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+      propertyPath: itemDescriptionText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4090863606565512877, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -647,7 +655,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1855524879183096417, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+    - {fileID: 9166200777432859765, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+    - {fileID: 5622846505473948495, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7976865062479749578, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
     - {fileID: 6085854228056829784, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
@@ -660,13 +671,45 @@ PrefabInstance:
     - {fileID: 2809285182313816989, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
     - {fileID: 8724343264718079864, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3846279290254887937, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 168679231}
   m_SourcePrefab: {fileID: 100100000, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
 --- !u!224 &168679228 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5258218363137570869, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
   m_PrefabInstance: {fileID: 168679227}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &168679229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3527726820102053201, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+  m_PrefabInstance: {fileID: 168679227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &168679230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3846279290254887937, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
+  m_PrefabInstance: {fileID: 168679227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &168679231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168679230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
+  targetText: {fileID: 168679229}
 --- !u!1001 &229369896
 PrefabInstance:
   m_ObjectHideFlags: 0
