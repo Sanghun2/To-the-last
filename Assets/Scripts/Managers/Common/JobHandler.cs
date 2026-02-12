@@ -62,6 +62,8 @@ public class JobHandler : IInitializable
         currentFocusJob = null;
         currentFocusJobID = null;
         Managers.Time.OnTimeChanged -= focusJob.ChangeMinutes;
+
+        callback?.Invoke();
     }
     private void ChangeIngameTime(float deltaSeconds) {
         Managers.Time.ChangeTime(deltaSeconds);

@@ -396,8 +396,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8993418424012472055, guid: 89e1044d54e091048b43589e44611117, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1468989893691932203}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4156405178825839754, guid: 89e1044d54e091048b43589e44611117, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3870862761762825062}
   m_SourcePrefab: {fileID: 100100000, guid: 89e1044d54e091048b43589e44611117, type: 3}
+--- !u!1 &3323185395139406699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4156405178825839754, guid: 89e1044d54e091048b43589e44611117, type: 3}
+  m_PrefabInstance: {fileID: 1707101751583113185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3870862761762825062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323185395139406699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d739174e37d16c488127db049e28d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemButtonContainer
+  prefabResourcePath: Assets/Resources/Prefab/UI/Button/Item Button.prefab
+  containerTr: {fileID: 7746153528287658262}
+  initialPrefabCount: 10
 --- !u!224 &5613640055910836003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6509795055974668482, guid: 89e1044d54e091048b43589e44611117, type: 3}
@@ -574,6 +597,7 @@ MonoBehaviour:
   popUpTitleText: {fileID: 5622846505473948495}
   itemImageUI: {fileID: 1301192991770957088}
   itemDescriptionText: {fileID: 1855524879183096417}
+  craftButton: {fileID: 380119453282587872}
   progressBarUI: {fileID: 155123262124881092}
 --- !u!114 &5523425126125442731 stripped
 MonoBehaviour:
@@ -1308,6 +1332,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9859270e2cf289444bd8d335cb7bb1e9, type: 3}
+--- !u!114 &380119453282587872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3886080919451678924, guid: 9859270e2cf289444bd8d335cb7bb1e9, type: 3}
+  m_PrefabInstance: {fileID: 3506147560425843756}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb537543b6ede214ba34a5196c874adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftButton
 --- !u!224 &2837500807252833695 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1713766247318460851, guid: 9859270e2cf289444bd8d335cb7bb1e9, type: 3}

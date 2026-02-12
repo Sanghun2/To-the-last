@@ -1,16 +1,28 @@
 ﻿using System;
 using BilliotGames;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftStructureUI : UIBase
 {
+    public RecipeSD TargetRecipeSD => currentRecipeSD;
+
     [SerializeField] TitleText popUpTitleText;
     [SerializeField] ImageUI itemImageUI;
     [SerializeField] DescriptionText itemDescriptionText;
+    [SerializeField] CraftButton craftButton;
     [SerializeField] ProgressBarUI progressBarUI;
-    
-    public void InitItemData(ItemSD itemSD) {
+    private RecipeSD currentRecipeSD;
+
+    public void SetTitleText(StructureSD structureSD) {
+        popUpTitleText.SetText(structureSD.DisplayName);
+    }
+    public void SetRecipe(RecipeSD recipeSD) {
+        currentRecipeSD = recipeSD;
+    }
+    public void InitSelectedItemData(ItemSD itemSD) {
         itemImageUI.SetImage(itemSD.ItemImage);
+        itemDescriptionText.SetText(itemSD.Description);
     }
 
     public void InitProgressUI(float currentValue, float totalValue) {

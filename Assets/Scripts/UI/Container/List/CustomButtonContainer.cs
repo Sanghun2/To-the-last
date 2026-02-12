@@ -6,20 +6,23 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
 {
     [SerializeField] int maxButtonCount = 2;
 
-    public override bool TryGetObj(int index, out CustomButton content) {
+    public override CustomButton GetObj(int index) {
+        CustomButton content = null;
         if (0 <= index && index < contentList.Count) {
             content = contentList[index];
-            return true;
+            content.Activate();
+            return content;
         }
 
         if (contentList.Count > maxButtonCount) {
             content = CreateObj();
-            return true;
+            content.Activate();
+            return content;
         }
 
         Debug.LogError($"max count ({maxButtonCount}) 보다 많은 버튼을 생성할 수 없음. input index: {index}, current count: {contentList.Count}");
         content = null;
-        return false;
+        return content;
     }
 
     public override CustomButton GetObj() {

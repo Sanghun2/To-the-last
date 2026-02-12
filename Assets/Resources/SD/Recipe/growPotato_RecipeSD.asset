@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: "\uAC10\uC790 \uD0A4\uC6B0\uAE30"
   descripiton: "\uAC10\uC790 \uBAA8\uC885\uC73C\uB85C \uC2F9\uC744 \uD2D4\uC6CC \uAC10\uC790\uB97C
     \uB9CC\uB4E0\uB2E4."
-  iconImage: {fileID: 21300000, guid: 32c1a63daa048452791ca0456624de7c, type: 3}
+  iconImage: {fileID: 21300000, guid: e2fcccf027a9d5e4bb8b830e7bb94406, type: 3}
   requireMinutes: 10
   inputs:
   - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}

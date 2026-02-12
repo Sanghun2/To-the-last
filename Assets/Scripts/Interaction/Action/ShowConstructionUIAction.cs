@@ -24,7 +24,8 @@ public class ShowConstructionUIAction : ActionBase<ConstructionContext>
 
     public override void Execute() {
         Managers.Construction.SetLocationIndex(parameter.Index);
-        Managers.UI.OpenUI<ConstructionUI>().ShowConstructionCatalogs(parameter.StructureCatalogs);
-        Debug.Log($"현재 선택된 index: {parameter.Index}");
+        var ui = Managers.UI.OpenUI<ConstructionUI>();
+        ui.SetProgressBar(0,1);
+        ui.ShowConstructionCatalogs(parameter.StructureCatalogs);
     }
 }

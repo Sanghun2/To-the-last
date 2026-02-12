@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeSD", menuName = "Scriptable Objects/RecipeSD")]
 public class RecipeSD : TimeBasedSD
 {
+    public IReadOnlyList<Ingredient> Inputs => inputs;
+    public IReadOnlyList<Ingredient> Outputs => outputs;
+
     [SerializeField] Ingredient[] inputs;
     [SerializeField] Ingredient[] outputs;
 

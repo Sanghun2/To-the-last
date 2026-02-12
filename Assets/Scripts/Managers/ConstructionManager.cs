@@ -57,7 +57,11 @@ public class ConstructionManager : IInitializable
             });
 
 
-        Managers.Job.DoFocusJob(constructionJob, () => { ClearTargetStructure(); });
+        Managers.Job.DoFocusJob(constructionJob, () => {
+            ClearTargetStructure();
+            Managers.UI.CloseUI<ConstructionUI>();
+            Debug.Log("job completed");
+        });
     }
 
     public void Unlock(int locationIndex) {

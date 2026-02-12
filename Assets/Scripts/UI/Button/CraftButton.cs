@@ -10,7 +10,7 @@ public interface IProgressor
 
 public class CraftButton : ButtonBase, IProgressor
 {
-    public CraftStructureUI CraftUI
+    public CraftStructureUI CachedCraftUI
     {
         get
         {
@@ -23,20 +23,17 @@ public class CraftButton : ButtonBase, IProgressor
     }
 
     [SerializeField] TextMeshProUGUI buttonText;
-    [SerializeField] RecipeSD targetRecipeSD;
     private CraftStructureUI _craftUI;
 
-    public void SetText(string text) {
+    public void SetButtonText(string text) {
         buttonText.text = text; 
-    }
-    public void SetRecipe(RecipeSD recipeSD) {
-        targetRecipeSD = recipeSD;
     }
 
     protected override void ButtonAction() {
         if (Managers.Job.IsFocusJobRunning) return;
 
         CraftStructureUI craftUI = Managers.UI.GetUI<CraftStructureUI>();
+        var targetRecipeSD = craftUI.TargetRecipeSD;
         craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
         var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateValue);
         Managers.Job.DoFocusJob(newJob);
@@ -51,6 +48,6 @@ public class CraftButton : ButtonBase, IProgressor
     }
 
     public void UpdateValue(float currentValue, float totalValue) {
-        CraftUI.UpdateProgressUI(currentValue, totalValue);
+        CachedCraftUI.UpdateProgressUI(currentValue, totalValue);
     }
 }

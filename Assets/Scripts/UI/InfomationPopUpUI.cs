@@ -80,10 +80,9 @@ public class InfomationPopUpUI : UIBase
 
         buttonContainer.Clear();
         for (int i = 0; i < 2; i++) {
-            if (buttonContainer.TryGetObj(i, out CustomButton button)) {
-                button.InitButton(popUpData.ButtonActions[i]);
-                button.Activate();
-            }
+            CustomButton button = buttonContainer.GetObj(i);
+            button.InitButton(popUpData.ButtonActions[i]);
+            button.Activate();
         }
     }
 

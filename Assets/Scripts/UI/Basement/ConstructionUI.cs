@@ -32,6 +32,9 @@ public class ConstructionUI : UIBase
         buildContentUIContainer.ShowList(structureList);
     }
 
+    public void SetProgressBar(float currentValue, float maxValue) {
+        progressBarUI.InitUI(currentValue, maxValue);
+    }
     public void UpdateProgressBar(float currentValue, float maxValue) {
         progressBarUI.UpdateUI(currentValue, maxValue);
     }

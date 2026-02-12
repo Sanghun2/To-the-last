@@ -14,8 +14,30 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
         newObj.Activate();
         return newObj;
     }
+    public override TContent GetObj() {
+        for (int i = 0; i < contentList.Count; i++) {
+            var content = contentList[i];
+            if (!content.IsActive) {
+                content.Activate();
+                return content;
+            }
+        }
 
-    public abstract bool TryGetObj(int index, out TContent content);
+        return CreateObj();
+    }
+
+    public virtual TContent GetObj(int index) {
+        TContent obj = null;
+        if (0 <= index && index < contentList.Count) {
+            obj = CreateObj();
+            obj.Activate();
+            return obj;
+        }
+
+        obj = contentList[index];
+        obj.Activate();
+        return obj;
+    }
     public virtual void ReleaseContainer() {
         for (int i = 0; i < contentList.Count; i++) {
             contentList[i].Release();
