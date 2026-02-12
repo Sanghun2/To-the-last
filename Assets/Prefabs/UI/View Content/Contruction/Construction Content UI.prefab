@@ -51,10 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ae291c579628e4e80bbd0a2cc51e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildDefinitionUI
-  itemImage: {fileID: 8365743355028977027}
+  structureContentUI: {fileID: 7443172634038108782}
   requirementUIContainer: {fileID: 2372396367335480219}
-  constructionButtonText: {fileID: 7015795748591419950}
-  constructionButton: {fileID: 5450341049523148237}
+  constructionButton: {fileID: 2580502037583510889}
 --- !u!1001 &179392286832138890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,35 +257,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4650865545626858624, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
       propertyPath: m_Name
-      value: Build Button
+      value: Construction Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
---- !u!114 &5450341049523148237 stripped
+--- !u!114 &2580502037583510889 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1762233313503655947, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8077484641971736751, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
   m_PrefabInstance: {fileID: 6041356326711340486}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bcdee86fe7af704e84474f6aa6960e1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &7015795748591419950 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3641767907556126696, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
-  m_PrefabInstance: {fileID: 6041356326711340486}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: Assembly-CSharp::CustomButton
 --- !u!224 &9072053810357402447 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3328544189102478985, guid: 28cecbd2a22fbc04caadfe6d6245d633, type: 3}
@@ -394,14 +382,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4748229798794262571, guid: 639ab0e480e673e4f95294dfb8c70d54, type: 3}
   m_PrefabInstance: {fileID: 9076547296701663647}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8365743355028977027 stripped
+--- !u!114 &7443172634038108782 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 715871047453867036, guid: 639ab0e480e673e4f95294dfb8c70d54, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1926742111792614385, guid: 639ab0e480e673e4f95294dfb8c70d54, type: 3}
   m_PrefabInstance: {fileID: 9076547296701663647}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7c16470afec8a4296beb98257a805f, type: 3}
+  m_Script: {fileID: 11500000, guid: 070469985f1ef2244afbc842245ecf35, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ImageUI
+  m_EditorClassIdentifier: Assembly-CSharp::ContentUI

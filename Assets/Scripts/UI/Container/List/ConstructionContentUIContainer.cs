@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildContentUIContainer : ListContainerBase<ConstructionContentUI>
+public class ConstructionContentUIContainer
+    : ListContainerBase<ConstructionContentUI>
 {
     public void ShowList(IReadOnlyList<StructureSD> stuctureSDList) {
         if (!IsInit) InitUI();

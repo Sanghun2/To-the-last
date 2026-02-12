@@ -19,8 +19,10 @@ MonoBehaviour:
   iconImage: {fileID: 21300000, guid: e2fcccf027a9d5e4bb8b830e7bb94406, type: 3}
   requireMinutes: 10
   inputs:
-  - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
-    amount: 2
-  outputs:
-  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+  - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
     amount: 1
+  - itemSD: {fileID: 11400000, guid: 6a496772c99f2d74f87f40d020a0ff2c, type: 2}
+    amount: 1
+  outputs:
+  - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
+    amount: 4

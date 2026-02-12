@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ItemUIBase : UIBase, IContent
+public abstract class ItemUIBase : UIBase, IPool
 {
     [SerializeField] protected Image itemImage;
     [SerializeField] protected TextMeshProUGUI amountText;

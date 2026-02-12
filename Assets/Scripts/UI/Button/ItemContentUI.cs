@@ -3,7 +3,7 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemButton : ButtonBase, IContent
+public class ItemContentUI : ButtonBase, IPool
 {
     [SerializeField] Image itemImage;
     [SerializeField] RecipeSD recipeSD;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,21 +10,32 @@ public class CraftStructureUI : UIBase
     public RecipeSD TargetRecipeSD => currentRecipeSD;
 
     [SerializeField] TextUI popUpTitleText;
-    [SerializeField] ImageUI itemImageUI;
-    [SerializeField] TextUI itemDescriptionText;
+    [SerializeField] DescriptionUI descriptionUI;
+    [SerializeField] ItemButtonContainer itemButtonContainer;
     [SerializeField] CraftButton craftButton;
     [SerializeField] ProgressBarUI progressBarUI;
     private RecipeSD currentRecipeSD;
 
+    public override void InitUI() {
+        if (IsInit) return;
+
+        itemButtonContainer.InitUI();
+
+        _isInit = true;
+    }
+
+    public void ShowList(IReadOnlyList<RecipeSD> recipes) {
+        itemButtonContainer.ShowList(recipes);
+        SetRecipe(recipes.First());
+    }
     public void SetTitleText(StructureSD structureSD) {
         popUpTitleText.SetText(structureSD.DisplayName);
     }
     public void SetRecipe(RecipeSD recipeSD) {
+        if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
         currentRecipeSD = recipeSD;
-    }
-    public void InitSelectedItemData(ItemSD itemSD) {
-        itemImageUI.SetImage(itemSD.ItemImage);
-        itemDescriptionText.SetText(itemSD.Description);
+        ShowDescription(recipeSD);
+        craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
     }
 
     public void InitProgressUI(float currentValue, float totalValue) {
@@ -37,16 +50,11 @@ public class CraftStructureUI : UIBase
             popUpTitleText = GetComponentInChildren<TextUI>();
         }
 
-        if (itemDescriptionText == null) {
-            itemDescriptionText = GetComponentInChildren<TextUI>();
-        }
-
-        if (itemImageUI == null) {
-            itemImageUI = GetComponentInChildren<ImageUI>();
-        }
-
         if (progressBarUI == null) {
             progressBarUI = GetComponentInChildren<ProgressBarUI>();
         }
+    }
+    private void ShowDescription(RecipeSD recipeSD) {
+        descriptionUI.InitContent(recipeSD);
     }
 }

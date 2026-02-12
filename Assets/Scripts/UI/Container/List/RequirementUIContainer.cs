@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RequirementUIContainer : ListContainerBase<RequirementUI>
 {
+    [SerializeField] CustomButton actioButton;
 
     public void ShowList(IReadOnlyList<Ingredient> requirementItems) {
         var maxCount = Mathf.Max(requirementItems.Count, ContentCount);
@@ -12,11 +14,18 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
             if (i < itemCount) {
                 var ingredient = requirementItems[i];
                 RequirementUI requirementUI = GetObj(i);
+                Debug.Log($"slot index: {i}");
                 requirementUI.SetReqirementItem(ingredient.ItemSD, ingredient.Amount);
             }
             else {
                 contentList[i].CloseUI();
             }
+        }
+    }
+
+    private void Reset() {
+        if (actioButton == null) {
+            actioButton = GetComponentInChildren<CustomButton>();
         }
     }
 }

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RequirementUI : UIBase, IContent
+public class RequirementUI : UIBase, IPool
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI amountText;

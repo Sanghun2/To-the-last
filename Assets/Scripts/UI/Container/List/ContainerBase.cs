@@ -2,7 +2,7 @@
 using BilliotGames;
 using UnityEngine;
 
-public interface IContent
+public interface IPool
 {
     public bool IsActive { get; }
 
@@ -11,7 +11,7 @@ public interface IContent
     public void Release();
 }
 
-public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TContent> where TContent : Component, IContent
+public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TContent> where TContent : Component, IPool
 {
     public string PrefabPath => trimmedPath;
     public GameObject Prefab => prefab;

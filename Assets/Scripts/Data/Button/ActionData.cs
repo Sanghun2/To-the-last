@@ -13,4 +13,9 @@ public class ActionData
         this.text = text;
         this.action = action;
     }
+
+    public ActionData(Action action) {
+        this.text = null;
+        this.action = action;
+    }
 }

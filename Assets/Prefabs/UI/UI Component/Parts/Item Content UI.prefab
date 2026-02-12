@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8028169756899706162}
   - component: {fileID: 7211827495632365777}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Action Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,9 +221,9 @@ GameObject:
   - component: {fileID: 4748229798794262571}
   - component: {fileID: 4089776050071161460}
   - component: {fileID: 8758422204187654792}
-  - component: {fileID: 715871047453867036}
+  - component: {fileID: 1926742111792614385}
   m_Layer: 5
-  m_Name: Item Image UI
+  m_Name: Item Content UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &715871047453867036
+--- !u!114 &1926742111792614385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,10 +297,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4516565766440260309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7c16470afec8a4296beb98257a805f, type: 3}
+  m_Script: {fileID: 11500000, guid: 070469985f1ef2244afbc842245ecf35, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ImageUI
-  image: {fileID: 1187549780120407152}
+  m_EditorClassIdentifier: Assembly-CSharp::ContentUI
+  contentImage: {fileID: 1187549780120407152}
+  actionButton: {fileID: 7211827495632365777}
 --- !u!1 &5108517327928167529
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +314,7 @@ GameObject:
   - component: {fileID: 3854876689979150923}
   - component: {fileID: 1187549780120407152}
   m_Layer: 5
-  m_Name: Item Image
+  m_Name: Content Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

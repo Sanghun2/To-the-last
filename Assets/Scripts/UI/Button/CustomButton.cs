@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CustomButton : ButtonBase, IContent
+public class CustomButton : ButtonBase, IPool
 {
     public bool IsActive => IsOpened;
 
@@ -22,11 +22,24 @@ public class CustomButton : ButtonBase, IContent
 
     public void InitButton(ActionData actionData) {
         Init();
-        buttonText.text = actionData.Text;
+        SetButtonText(actionData.Text);
         SetButtonAction(actionData.Action);
     }
 
     protected override void ButtonAction() {
         // actionButton base의 set actionButton action으로 할당해서 사용
+    }
+
+    protected override void Reset() {
+        base.Reset();
+        if (buttonText == null) {
+            buttonText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+    }
+
+    private void SetButtonText(string text) {
+        if (buttonText == null) { return; }
+        buttonText.text = text;
+        buttonText.gameObject.SetActive(!string.IsNullOrEmpty(text));
     }
 }

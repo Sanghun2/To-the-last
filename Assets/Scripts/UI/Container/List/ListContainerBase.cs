@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ListContainerBase<TContent> : ContainerBase<TContent> where TContent : Component, IContent
+public abstract class ListContainerBase<TContent> : ContainerBase<TContent> where TContent : Component, IPool
 {
     public int ContentCount => contentList.Count;
 

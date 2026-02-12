@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ConstructionUI : UIBase
 {
-    [SerializeField] BuildContentUIContainer buildContentUIContainer;
+    [SerializeField] ConstructionContentUIContainer ConstructionContentUIContainer;
     [SerializeField] ProgressBarUI progressBarUI;
 
     public override void InitUI() {
@@ -29,7 +29,7 @@ public class ConstructionUI : UIBase
                 }));
             return;
         }
-        buildContentUIContainer.ShowList(structureList);
+        ConstructionContentUIContainer.ShowList(structureList);
     }
 
     public void SetProgressBar(float currentValue, float maxValue) {

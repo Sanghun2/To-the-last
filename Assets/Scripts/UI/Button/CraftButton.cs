@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IProgressor
 {
-    void UpdateValue(float currentValue, float totalValue);
+    void UpdateProgressBar(float currentValue, float totalValue);
 }
 
 public class CraftButton : ButtonBase, IProgressor
@@ -35,7 +35,7 @@ public class CraftButton : ButtonBase, IProgressor
         CraftStructureUI craftUI = Managers.UI.GetUI<CraftStructureUI>();
         var targetRecipeSD = craftUI.TargetRecipeSD;
         craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
-        var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateValue);
+        var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateProgressBar);
         Managers.Job.DoFocusJob(newJob);
     }
 
@@ -47,7 +47,7 @@ public class CraftButton : ButtonBase, IProgressor
         }
     }
 
-    public void UpdateValue(float currentValue, float totalValue) {
+    public void UpdateProgressBar(float currentValue, float totalValue) {
         CachedCraftUI.UpdateProgressUI(currentValue, totalValue);
     }
 }

@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218d3d375f04a30469c50b6db77c9af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingUI
-  buildContentUIContainer: {fileID: 9153298554427842217}
+  ConstructionContentUIContainer: {fileID: 9153298554427842217}
   progressBarUI: {fileID: 4233444152072710951}
 --- !u!224 &6833786004801488103 stripped
 RectTransform:

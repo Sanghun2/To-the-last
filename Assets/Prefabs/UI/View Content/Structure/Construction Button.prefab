@@ -158,10 +158,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871249218485057245, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
       propertyPath: m_Name
-      value: Build Button
+      value: Construct Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4871249218485057245, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8077484641971736751}
   m_SourcePrefab: {fileID: 100100000, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
+--- !u!114 &1762233313503655947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1974163321720207958, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
+  m_PrefabInstance: {fileID: 220982906997326429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &3641767907556126696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3574519266412506549, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
+  m_PrefabInstance: {fileID: 220982906997326429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &4650865545626858624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4871249218485057245, guid: d2ba127b2e31c114aa2fdf2aacf84461, type: 3}
+  m_PrefabInstance: {fileID: 220982906997326429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8077484641971736751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650865545626858624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcdee86fe7af704e84474f6aa6960e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomButton
+  targetButton: {fileID: 1762233313503655947}
+  buttonText: {fileID: 3641767907556126696}
