@@ -54,7 +54,6 @@ public class ConstructionManager : IInitializable
             },
             onComplete: () => {
                 ConstructStructure(locationIndex, structureSD);
-                Debug.Log($"[{DateTime.Now}] construction complete");
             });
 
 

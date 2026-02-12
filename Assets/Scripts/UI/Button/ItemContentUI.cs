@@ -11,7 +11,7 @@ public class ItemContentUI : ButtonBase, IPool
     public bool IsActive => IsOpened;
 
     public void Init() {
-
+        base.InitUI();
     }
     public void Release() {
         CloseUI();
@@ -32,6 +32,5 @@ public class ItemContentUI : ButtonBase, IPool
     }
 
     protected override void ButtonAction() {
-
     }
 }
