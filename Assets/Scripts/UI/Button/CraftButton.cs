@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using BilliotGames;
 using TMPro;
 using UnityEngine;
@@ -32,10 +33,13 @@ public class CraftButton : ButtonBase, IProgressor
     protected override void ButtonAction() {
         if (Managers.Job.IsFocusJobRunning) return;
 
-        CraftStructureUI craftUI = Managers.UI.GetUI<CraftStructureUI>();
+        CraftStructureUI craftUI = CachedCraftUI;
         var targetRecipeSD = craftUI.TargetRecipeSD;
         craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
-        var newJob = new FocusJob(targetRecipeSD.RequireMinutes, UpdateProgressBar);
+        var newJob = new FocusJob(
+            targetRecipeSD.RequireMinutes,
+            UpdateProgressBar,
+            () => RegisterJob(targetRecipeSD));
         Managers.Job.DoFocusJob(newJob);
     }
 
@@ -49,5 +53,14 @@ public class CraftButton : ButtonBase, IProgressor
 
     public void UpdateProgressBar(float currentValue, float totalValue) {
         CachedCraftUI.UpdateProgressUI(currentValue, totalValue);
+    }
+    private void RegisterJob(RecipeSD recipeSD) {
+        if (recipeSD is DelayedRecipeSD delayedRecipe) {
+            CachedCraftUI.InitProgressUI(0,1);
+            var newJob = new Job(
+                delayedRecipe.CompletionDelayMinutes,
+                UpdateProgressBar);
+            Managers.Job.RegisterJob(newJob);
+        }
     }
 }

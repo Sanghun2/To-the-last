@@ -7,14 +7,15 @@ using UnityEngine.UI;
 
 public class CraftStructureUI : UIBase
 {
-    public RecipeSD TargetRecipeSD => currentRecipeSD;
+    public RecipeSD TargetRecipeSD => selectedRecipeSD;
 
     [SerializeField] TextUI popUpTitleText;
     [SerializeField] DescriptionUI descriptionUI;
     [SerializeField] ItemButtonContainer itemButtonContainer;
     [SerializeField] CraftButton craftButton;
+    [SerializeField] ContentUI progressItemUI;
     [SerializeField] ProgressBarUI progressBarUI;
-    private RecipeSD currentRecipeSD;
+    private RecipeSD selectedRecipeSD;
 
     public override void InitUI() {
         if (IsInit) return;
@@ -33,7 +34,7 @@ public class CraftStructureUI : UIBase
     }
     public void SetRecipe(RecipeSD recipeSD) {
         if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
-        currentRecipeSD = recipeSD;
+        selectedRecipeSD = recipeSD;
         ShowDescription(recipeSD);
         craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
     }

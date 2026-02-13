@@ -20,7 +20,6 @@ public class JobHandler : IInitializable
         //if (IsFocusJobRunning) { Debug.LogError($"Job 충돌. 이미 focusJob 있음. 이런 상태가 발생한다면 queue방식으로 변경"); return this; }
         job.CurrentState = Job.State.Running;
         jobList.Add(job);
-        Debug.Log($"{job} 등록됨");
         return this;
     }
     public void DoFocusJob(FocusJob focusJob, Action callback=null) {
