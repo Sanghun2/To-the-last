@@ -26,4 +26,4 @@ MonoBehaviour:
   outputs:
   - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
     amount: 4
-  completionDelayMinutes: 10
+  completionDelayMinutes: 1

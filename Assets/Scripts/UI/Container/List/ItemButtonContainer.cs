@@ -10,7 +10,7 @@ public class ItemButtonContainer : ListContainerBase<ItemContentUI>
             if (i < recipes.Count) {
                 var recipe = recipes[i];
                 var contentUI = GetObj(i);
-                contentUI.SetRecipe(recipe, () => Managers.UI.GetUI<CraftStructureUI>().SetRecipe(recipe));
+                contentUI.SetRecipe(recipe, () => Managers.Craft.SetCraftTarget(recipe));
             }
             else {
                 contentList[i].CloseUI();

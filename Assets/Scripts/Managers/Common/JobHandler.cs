@@ -16,7 +16,7 @@ public class JobHandler : IInitializable
     private FocusJob currentFocusJob = null;
     private Guid? currentFocusJobID = null;
 
-    public JobHandler RegisterJob(Job job) {
+    public JobHandler RegisterDelayedJob(Job job) {
         //if (IsFocusJobRunning) { Debug.LogError($"Job 충돌. 이미 focusJob 있음. 이런 상태가 발생한다면 queue방식으로 변경"); return this; }
         job.CurrentState = Job.State.Running;
         jobList.Add(job);

@@ -18,6 +18,9 @@ public class TesterEditor : Editor
         if (GUILayout.Button("Pop Item")) {
             _script.PopItem();
         }
+        if (GUILayout.Button("Show Inventory")) {
+            _script.ShowInventory();
+        }
 
         GUILayout.Space(20);
         GUILayout.Label("[  Job Handler Test  ]");

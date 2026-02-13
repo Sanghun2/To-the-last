@@ -27,6 +27,9 @@ public class Tester : MonoBehaviour
     public void PopItem() {
         Managers.Player.Inventory.TryRemoveItem(itemSD.ID, amount);
     }
+    public void ShowInventory() {
+        Managers.UI.OpenUI<InventoryUI>().ShowInventory(Managers.Player.Inventory);
+    }
 
     public void DoTask() {
         if (testFocusJob != null) {
@@ -40,7 +43,7 @@ public class Tester : MonoBehaviour
     }
     public void RegisterTask() {
         if (testJob != null) {
-            Managers.Job.RegisterJob(testJob);
+            Managers.Job.RegisterDelayedJob(testJob);
         }
     }
 

@@ -85,7 +85,31 @@ public sealed class Managers : MonoBehaviour
             return _playerManager;
         }
     }
+    public static CraftManager Craft
+    {
+        get
+        {
+            if (_craftManager == null) {
+                _craftManager = new CraftManager();
+            }
 
+            return _craftManager;
+        }
+    }
+    public static ItemManager Item
+    {
+        get
+        {
+            if (_itemManager == null) {
+                _itemManager = new ItemManager();
+            }
+
+            return _itemManager;
+        }
+    }
+
+    private static ItemManager _itemManager;
+    private static CraftManager _craftManager;
     private static PlayerManager _playerManager;
     private static ConstructionManager constructionManager;
     private static JobHandler jobHandler;

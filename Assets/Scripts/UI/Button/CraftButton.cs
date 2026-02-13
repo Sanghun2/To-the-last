@@ -6,10 +6,10 @@ using UnityEngine;
 
 public interface IProgressor
 {
-    void UpdateProgressBar(float currentValue, float totalValue);
+    void UpdateProgressor(float currentValue, float totalValue);
 }
 
-public class CraftButton : ButtonBase, IProgressor
+public class CraftButton : ButtonBase
 {
     public CraftStructureUI CachedCraftUI
     {
@@ -26,21 +26,45 @@ public class CraftButton : ButtonBase, IProgressor
     [SerializeField] TextMeshProUGUI buttonText;
     private CraftStructureUI _craftUI;
 
+    public override void InitUI() {
+        if (IsInit) return;
+        base.InitUI();
+
+        Managers.Craft.CraftContext.OnStateChanged -= UpdateState;
+        Managers.Craft.CraftContext.OnStateChanged += UpdateState;
+
+        _isInit = true;
+    }
+
+    
+
     public void SetButtonText(string text) {
         buttonText.text = text; 
     }
 
     protected override void ButtonAction() {
+
+    }
+
+    private void Craft() {
         if (Managers.Job.IsFocusJobRunning) return;
 
-        CraftStructureUI craftUI = CachedCraftUI;
-        var targetRecipeSD = craftUI.TargetRecipeSD;
-        craftUI.InitProgressUI(0, targetRecipeSD.RequireMinutes);
-        var newJob = new FocusJob(
-            targetRecipeSD.RequireMinutes,
-            UpdateProgressBar,
-            () => RegisterJob(targetRecipeSD));
-        Managers.Job.DoFocusJob(newJob);
+        var targetRecipeSD = Managers.Craft.CraftTarget;
+
+        if (Managers.Craft.TryCraft(targetRecipeSD,
+            CachedCraftUI.UpdateProgressUI,
+            () => {
+                CachedCraftUI.InitProgressUI(0, 1);
+                Managers.Craft.RegisterDelayedJob(
+                targetRecipeSD,
+                CachedCraftUI.UpdateProgressUI);
+            })) {
+            CachedCraftUI.InitProgressUI(0, 1);
+        }
+    }
+    private void ClaimResult() {
+        Managers.Craft.ClaimCraftResult();
+        CachedCraftUI.InitProgressUI(0, 1);
     }
 
     protected override void Reset() {
@@ -50,17 +74,42 @@ public class CraftButton : ButtonBase, IProgressor
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
-
-    public void UpdateProgressBar(float currentValue, float totalValue) {
-        CachedCraftUI.UpdateProgressUI(currentValue, totalValue);
+    private void UpdateState(CraftContext.State currentState, CraftContext.State state2) {
+        UpdateAction(currentState);
+        UpdateButtonText(currentState);
     }
-    private void RegisterJob(RecipeSD recipeSD) {
-        if (recipeSD is DelayedRecipeSD delayedRecipe) {
-            CachedCraftUI.InitProgressUI(0,1);
-            var newJob = new Job(
-                delayedRecipe.CompletionDelayMinutes,
-                UpdateProgressBar);
-            Managers.Job.RegisterJob(newJob);
+
+    private void UpdateAction(CraftContext.State currentState) {
+        switch (currentState) {
+            case CraftContext.State.None:
+                break;
+            case CraftContext.State.Selected:
+                SetButtonAction(Craft);
+                break;
+            case CraftContext.State.Crafting:
+                break;
+            case CraftContext.State.Completed:
+                SetButtonAction(ClaimResult);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void UpdateButtonText(CraftContext.State currentState) {
+        switch (currentState) {
+            case CraftContext.State.None:
+                break;
+            case CraftContext.State.Selected:
+                break;
+            case CraftContext.State.Crafting:
+                buttonText.text = "제작중";
+                break;
+            case CraftContext.State.Completed:
+                buttonText.text = "획득";
+                break;
+            default:
+                break;
         }
     }
 }

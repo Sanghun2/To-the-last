@@ -61,6 +61,8 @@ public class Job
             currentMinutes = totalMinutes;
             _currentState = State.Completed;
             completeCallback?.Invoke();
+            completeCallback = null;
+            progressCallback = null;
         }
     }
 }

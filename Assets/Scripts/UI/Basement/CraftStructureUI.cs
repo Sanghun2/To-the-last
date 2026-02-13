@@ -7,36 +7,29 @@ using UnityEngine.UI;
 
 public class CraftStructureUI : UIBase
 {
-    public RecipeSD TargetRecipeSD => selectedRecipeSD;
-
     [SerializeField] TextUI popUpTitleText;
     [SerializeField] DescriptionUI descriptionUI;
     [SerializeField] ItemButtonContainer itemButtonContainer;
     [SerializeField] CraftButton craftButton;
-    [SerializeField] ContentUI progressItemUI;
+    [SerializeField] ContentUI selectedItemUI;
     [SerializeField] ProgressBarUI progressBarUI;
-    private RecipeSD selectedRecipeSD;
 
     public override void InitUI() {
         if (IsInit) return;
 
         itemButtonContainer.InitUI();
+        Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
+        Managers.Craft.OnTargetSet += UpdateSelectedRecipe;
 
         _isInit = true;
     }
 
     public void ShowList(IReadOnlyList<RecipeSD> recipes) {
         itemButtonContainer.ShowList(recipes);
-        SetRecipe(recipes.First());
+        UpdateSelectedRecipe(recipes.First());
     }
     public void SetTitleText(StructureSD structureSD) {
         popUpTitleText.SetText(structureSD.DisplayName);
-    }
-    public void SetRecipe(RecipeSD recipeSD) {
-        if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
-        selectedRecipeSD = recipeSD;
-        ShowDescription(recipeSD);
-        craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
     }
 
     public void InitProgressUI(float currentValue, float totalValue) {
@@ -57,5 +50,12 @@ public class CraftStructureUI : UIBase
     }
     private void ShowDescription(RecipeSD recipeSD) {
         descriptionUI.InitContent(recipeSD);
+    }
+
+    private void UpdateSelectedRecipe(RecipeSD recipeSD) {
+        if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
+        ShowDescription(recipeSD);
+        craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
+        selectedItemUI.SetContentImage(recipeSD.IconImage);
     }
 }
