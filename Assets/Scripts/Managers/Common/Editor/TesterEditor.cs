@@ -11,6 +11,12 @@ public class TesterEditor : Editor
 
         GUI.enabled = Application.isPlaying;
 
+        GUILayout.Label("[  Stat Test  ]");
+        if (GUILayout.Button("Change Stat")) {
+            _script.ChangeValue();
+        }
+
+        GUILayout.Space(20);
         GUILayout.Label("[  Inventory Test  ]");
         if (GUILayout.Button("Push Item")) {
             _script.PushItem();

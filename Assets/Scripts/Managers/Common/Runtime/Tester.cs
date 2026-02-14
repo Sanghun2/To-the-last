@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Tester : MonoBehaviour
 {
+    [Header("[  Stat Test  ]")]
+    [SerializeField] Define.Stat targetStat;
+    [SerializeField] float deltaValue = 5;
+
+    [Space]
     [Header("[  Job Handler Test  ]")]
     [SerializeField] Job testJob;
     [SerializeField] FocusJob testFocusJob;
@@ -20,6 +25,10 @@ public class Tester : MonoBehaviour
     [Header("[  Inventory Test  ]")]
     [SerializeField] ItemSD itemSD;
     [SerializeField] int amount;
+
+    public void ChangeValue() {
+        Managers.Player.Player.ChangeStat(targetStat, deltaValue);
+    }
 
     public void PushItem() {
         Managers.Player.Inventory.TryPushItem(new ItemStack(itemSD.ToItemData(), amount), out var overflowedStack);

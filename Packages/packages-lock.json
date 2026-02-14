@@ -21,6 +21,13 @@
       "dependencies": {},
       "hash": "58a42d3efb20235d21e559004f9bc471925b9962"
     },
+    "com.billiotgames.stats": {
+      "version": "http://github.com/Sanghun2/Stats.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "20c7e583e8e2388c27fd75cab0fd0f497fbc65f7"
+    },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",
       "depth": 0,
@@ -40,7 +47,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "3d9320f4006314f85e3219e2a8ee3c0c806ed43e"
+      "hash": "85fad43be66f34ccec51f158a58c64531523fdaf"
     },
     "com.unity.2d.animation": {
       "version": "12.0.2",

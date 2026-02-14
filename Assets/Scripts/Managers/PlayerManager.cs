@@ -4,19 +4,17 @@ using UnityEngine;
 public class PlayerManager : IInitializable
 {
     public bool IsInit => _isInit;
-    public InventoryBase Inventory => _inventory;
+    public InventoryBase Inventory => player.Inventory;
+    public Player Player => player;
 
-    // inven
-    private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
-
-    // stat
+    private Player player = new Player();
 
     private bool _isInit;
 
     public void Init() {
         if (IsInit) return;
 
-
+        player.Init();
 
         _isInit = true;
     }

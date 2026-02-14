@@ -141,6 +141,7 @@ public sealed class Managers : MonoBehaviour
             Time,
             Job,
             Construction,
+            Player,
         };
 
         for (int i = 0; i < initList.Count; i++) {

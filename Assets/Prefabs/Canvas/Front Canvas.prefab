@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       propertyPath: m_Name
-      value: UI Canvas Variant
+      value: Front Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5876670413800338492, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       propertyPath: m_Pivot.x
