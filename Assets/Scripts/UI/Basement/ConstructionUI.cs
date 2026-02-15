@@ -21,7 +21,7 @@ public class ConstructionUI : UIBase
     public void ShowConstructionCatalogs(IReadOnlyList<StructureSD> structureList) {
         if (structureList == null) {
             Debug.LogError($"show construction failed. list null");
-            Managers.UI.OpenUI<InfomationPopUpUI>().InitUI(new InfomationPopUpData(
+            Managers.UI.OpenUI<InfomationPopUpUI>().InitPopUp(new InfomationPopUpData(
                 "알림",
                 "설치 가능한 구조물이 없습니다.",
                 new ActionData[] {

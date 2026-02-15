@@ -15,7 +15,8 @@ MonoBehaviour:
   id: school
   displayName: "\uD559\uAD50"
   descripiton: "\uD559\uAD50"
-  iconImage: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
+  iconImage: {fileID: 21300000, guid: 60f43d6251e46400eaff573952e8a570, type: 3}
+  mainImage: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
   storyDescription: "\uC774 \uD559\uAD50\uB294 \uC7AC\uB09C \uC9C1\uD6C4 \uC544\uC774\uB4E4\uACFC
     \uAC00\uC871\uB4E4\uC774 \uBAA8\uC600\uB358 \uC784\uC2DC \uD53C\uB09C\uCC98\uC600\uB2E4.\n\uAD50\uC2E4\uC740
     \uC219\uC18C\uAC00 \uB418\uACE0, \uCCB4\uC721\uAD00\uC740 \uACF5\uB3D9 \uBC30\uAE09\uC18C\uB85C

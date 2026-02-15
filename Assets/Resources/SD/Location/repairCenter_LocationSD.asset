@@ -15,7 +15,8 @@ MonoBehaviour:
   id: repairCenter
   displayName: "\uC815\uBE44\uC18C"
   descripiton: "\uC815\uBE44\uC18C"
-  iconImage: {fileID: 21300000, guid: 4f1d620beb50daa45867a8d2a0154e73, type: 3}
+  iconImage: {fileID: 21300000, guid: 2c900d6c86102468595a2bd8e0f12fab, type: 3}
+  mainImage: {fileID: 21300000, guid: 4f1d620beb50daa45867a8d2a0154e73, type: 3}
   storyDescription: "\uC774 \uC815\uBE44\uC18C\uB294 \uC7AC\uB09C \uC774\uD6C4\uC5D0\uB3C4
     \uC720\uC77C\uD558\uAC8C \uC804\uAE30\uAC00 \uB4E4\uC5B4\uC624\uB358 \uBA87 \uC548
     \uB418\uB294 \uC7A5\uC18C\uC600\uB2E4.\n\uC0DD\uC874\uC790\uB4E4\uC740 \uCC28\uB7C9\uC744

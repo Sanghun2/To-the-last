@@ -10,7 +10,7 @@ public class PopUpData
 
     [SerializeField] protected string title;
     [SerializeField] protected string description;
-    private ActionData[] buttonActions;
+    protected ActionData[] buttonActions;
 
     public PopUpData(string title, string description, ActionData[] buttonActions) {
         this.title = title;
@@ -19,14 +19,23 @@ public class PopUpData
     }
 }
 
-public class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpData
+public abstract class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpData
 {
     [SerializeField] protected TextUI titleText;
     [SerializeField] protected TextUI descriptionText;
     [SerializeField] protected CustomButtonContainer buttonContainer;
 
-    public virtual void InitUI(TPopUpData popUpData) {
+    public override void InitUI() {
+        if (IsInit) return;
+
+        buttonContainer.InitUI();
+
+        _isInit = true;
+    }
+
+    public virtual void InitPopUp(TPopUpData popUpData) {
         InitUI();
+
         if (popUpData == null) {
             Debug.LogError($"<color=red>pop up data null</color>");
             return;

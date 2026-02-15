@@ -8,6 +8,6 @@ public class ShowInfomationAction : ActionBase<InfomationPopUpData>
 
     public override void Execute() {
         if (parameter == null) { Debug.LogError("보여줄 데이터가 null"); return; } 
-        Managers.UI.OpenUI<InfomationPopUpUI>().InitUI(parameter);
+        Managers.UI.OpenUI<InfomationPopUpUI>().InitPopUp(parameter);
     }
 }

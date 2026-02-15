@@ -7,6 +7,7 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
     [SerializeField] int maxButtonCount = 2;
 
     public override CustomButton GetObj(int index) {
+        InitUI();
         CustomButton content = null;
         if (0 <= index && index < contentList.Count) {
             content = contentList[index];
@@ -26,6 +27,7 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
     }
 
     public override CustomButton GetObj() {
+        InitUI();
         for (int i = 0; i < contentList.Count; i++) {
             var content = contentList[i];
             if (content.IsActive == false) {

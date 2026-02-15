@@ -2,13 +2,18 @@
 using UnityEngine.UI;
 
 
-public class LocationInfoPopUpData : InfomationPopUpData
+public class LocationInfoPopUpData : PopUpData
 {
     public Sprite LocationImage => locationImage;
 
     [SerializeField] Sprite locationImage;
-    public LocationInfoPopUpData(string title, Sprite locationImage, string description, ActionData[] buttonActions, string subText = null, Sprite image = null) : base(title, description, buttonActions, subText, image) {
-        this.locationImage = locationImage;
+
+    public LocationInfoPopUpData(string title, string description, ActionData[] buttonActions) : base(title, description, buttonActions) {
+    }
+
+
+    public LocationInfoPopUpData(LocationSD locationSD, ActionData[] buttonActions) : base (locationSD.DisplayName, locationSD.StoryDescription, buttonActions){
+        locationImage = locationSD.MainImage;
     }
 }
 
@@ -16,8 +21,8 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 {
     [SerializeField] protected Image locationImage;
 
-    public override void InitUI(LocationInfoPopUpData popUpData) {
-        base.InitUI(popUpData);
+    public override void InitPopUp(LocationInfoPopUpData popUpData) {
+        base.InitPopUp(popUpData);
         locationImage.sprite = popUpData.LocationImage;
     }
 }

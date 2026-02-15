@@ -11,6 +11,13 @@ public class TesterEditor : Editor
 
         GUI.enabled = Application.isPlaying;
 
+
+        GUILayout.Label("[  Location Test  ]");
+        if (GUILayout.Button("Show Location")) {
+            _script.ShowLocationPopUp();
+        }
+
+        GUILayout.Space(20);
         GUILayout.Label("[  Stat Test  ]");
         if (GUILayout.Button("Change Stat")) {
             _script.ChangeValue();
@@ -51,6 +58,7 @@ public class TesterEditor : Editor
         if (GUILayout.Button("Destroy Structure")) {
             _script.Destroy();
         }
+
         GUI.enabled = true;
     }
 }

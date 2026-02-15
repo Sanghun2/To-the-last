@@ -7,7 +7,10 @@ using UnityEngine;
 public class LocationSD : IconSDBase
 {
     public IReadOnlyList<LocationData> LocationDataList => locationDataList;
+    public string StoryDescription => storyDescription;
+    public Sprite MainImage => mainImage;
 
+    [SerializeField] Sprite mainImage;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] List<LocationData> locationDataList = new List<LocationData>();
 

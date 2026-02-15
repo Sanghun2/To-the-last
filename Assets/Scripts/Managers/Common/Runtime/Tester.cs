@@ -26,6 +26,19 @@ public class Tester : MonoBehaviour
     [SerializeField] ItemSD itemSD;
     [SerializeField] int amount;
 
+    [Space]
+    [Header("[  Map Test  ]")]
+    [SerializeField] LocationSD locationSD;
+
+    public void ShowLocationPopUp() {
+        Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
+            locationSD,
+            new ActionData[] {
+                new ActionData("확인", () => Managers.UI.CloseTopUI()),
+                new ActionData("진입", null)
+            }));
+    }
+
     public void ChangeValue() {
         Managers.Player.Player.ChangeStat(targetStat, deltaValue);
     }
