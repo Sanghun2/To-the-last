@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
+  m_Name: amusementPark_LocationSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  id: amusementPark
+  displayName: "\uB180\uC774\uACF5\uC6D0"
+  descripiton: "\uB180\uC774\uACF5\uC6D0"
+  iconImage: {fileID: 21300000, guid: 9dad4c154add65544b632911c682563c, type: 3}
+  storyDescription: "\uD55C\uB54C \uC544\uC774\uB4E4\uC758 \uC6C3\uC74C\uC18C\uB9AC\uB85C
+    \uAC00\uB4DD\uD588\uB358 \uC774 \uB180\uC774\uACF5\uC6D0\uC740 \uB300\uC7AC\uC559\uC758
+    \uB0A0, \uAC70\uB300\uD55C \uD568\uC815\uC73C\uB85C \uBCC0\uD588\uC2B5\uB2C8\uB2E4.
+    \uD654\uB824\uD55C \uD68C\uC804\uBAA9\uB9C8\uC758 \uBD88\uBE5B\uC774 \uAEBC\uC9C0\uAE30\uB3C4
+    \uC804\uC5D0 \uBAB0\uB824\uB4E0 \uC880\uBE44 \uB5BC\uB97C \uD53C\uD574 \uC0AC\uB78C\uB4E4\uC740
+    \uB180\uC774\uAE30\uAD6C \uC704\uB85C \uAE30\uC5B4\uC62C\uB77C\uAC00\uBA70 \uD544\uC0AC\uC801\uC73C\uB85C
+    \uBC84\uD17C\uC8E0. \uD558\uC9C0\uB9CC \uBA48\uCDB0\uBC84\uB9B0 \uAE30\uAD6C
+    \uC704\uC5D0\uC11C \uB0B4\uB824\uC624\uC9C0 \uBABB\uD55C \uC774\uB4E4\uC740 \uACB0\uAD6D
+    \uAD76\uC8FC\uB9BC\uACFC \uACF5\uD3EC \uC18D\uC5D0 \uD558\uB098\uB458 \uC4F0\uB7EC\uC838
+    \uAC14\uC2B5\uB2C8\uB2E4. \uC774\uC81C\uB294 \uB179\uC2A8 \uB9D0\uB4E4\uACFC
+    \uAE30\uAD34\uD558\uAC8C \uBA48\uCD98 \uAD00\uB78C\uCC28\uB9CC\uC774 \uADF8\uB0A0\uC758
+    \uBE44\uBA85 \uC18C\uB9AC\uB97C \uC0BC\uD0A8 \uCC44, \uD669\uB7C9\uD55C \uBC14\uB78C\uC5D0
+    \uD754\uB4E4\uB9AC\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+  locationDataList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

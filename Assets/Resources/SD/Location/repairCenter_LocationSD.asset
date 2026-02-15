@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
+  m_Name: repairCenter_LocationSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  id: repairCenter
+  displayName: "\uC815\uBE44\uC18C"
+  descripiton: "\uC815\uBE44\uC18C"
+  iconImage: {fileID: 21300000, guid: 4f1d620beb50daa45867a8d2a0154e73, type: 3}
+  storyDescription: "\uC774 \uC815\uBE44\uC18C\uB294 \uC7AC\uB09C \uC774\uD6C4\uC5D0\uB3C4
+    \uC720\uC77C\uD558\uAC8C \uC804\uAE30\uAC00 \uB4E4\uC5B4\uC624\uB358 \uBA87 \uC548
+    \uB418\uB294 \uC7A5\uC18C\uC600\uB2E4.\n\uC0DD\uC874\uC790\uB4E4\uC740 \uCC28\uB7C9\uC744
+    \uACE0\uCE58\uAC70\uB098 \uC5F0\uB8CC\uB97C \uC5BB\uAE30 \uC704\uD574 \uC774\uACF3\uC744
+    \uBE44\uBC00 \uAC70\uC810\uCC98\uB7FC \uC774\uC6A9\uD588\uB2E4.\n\uD558\uC9C0\uB9CC
+    \uC5B4\uB290 \uB0A0, \uB0B4\uBD80\uC5D0\uC11C \uD3ED\uBC1C\uACFC \uD568\uAED8
+    \uAD50\uC2E0\uC774 \uB04A\uAE30\uACE0 \uC815\uBE44\uC18C\uB294 \uBC84\uB824\uC84C\uB2E4.\n\uC9C0\uAE08\uC740
+    \uB179\uC2A8 \uACF5\uAD6C\uC640 \uBA48\uCD98 \uCC28\uB7C9\uB9CC \uB0A8\uC544
+    \uC788\uC9C0\uB9CC, \uC9C0\uD558 \uC791\uC5C5\uC7A5\uC5D0\uB294 \uC544\uC9C1
+    \uC791\uB3D9\uD558\uB294 \uC124\uBE44\uAC00 \uC788\uB2E4\uB294 \uC18C\uBB38\uC774
+    \uB3C8\uB2E4.\n\uADF8\uB798\uC11C \uC704\uD5D8\uC744 \uC54C\uBA74\uC11C\uB3C4
+    \uC0AC\uB78C\uB4E4\uC740 \uC5EC\uC804\uD788 \uC774 \uC815\uBE44\uC18C\uB97C \uCC3E\uB294\uB2E4."
+  locationDataList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

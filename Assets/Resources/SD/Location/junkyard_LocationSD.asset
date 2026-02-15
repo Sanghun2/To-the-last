@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
+  m_Name: junkyard_LocationSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  id: junkyard
+  displayName: "\uD3D0\uCC28\uC7A5"
+  descripiton: "\uD3D0\uCC28\uC7A5"
+  iconImage: {fileID: 21300000, guid: 22ead23c7c9af7d4c82171e734e14bed, type: 3}
+  storyDescription: "\uC774 \uD3D0\uCC28\uC7A5\uC740 \uB300\uC7AC\uC559 \uC774\uD6C4,
+    \uC0B4\uC544\uB0A8\uC740 \uC790\uB4E4\uC774 \uB9C8\uC9C0\uB9C9 \uD53C\uB09C\uCC98\uB97C
+    \uCC3E\uC544 \uD5E4\uB9E4\uB358 \uACF3\uC774\uC5C8\uC2B5\uB2C8\uB2E4. \uC790\uB3D9\uCC28
+    \uB354\uBBF8 \uC18D\uC5D0\uC11C \uC880\uBE44\uB4E4\uC758 \uC2B5\uACA9\uC744 \uD53C\uD574
+    \uC228\uAC70\uB098, \uC4F8\uBAA8 \uC788\uB294 \uBD80\uD488\uC744 \uCC3E\uC544
+    \uC0DD\uC874\uC744 \uB3C4\uBAA8\uD588\uC8E0. \uD558\uC9C0\uB9CC \uACB0\uAD6D
+    \uC774\uACF3 \uB610\uD55C \uBB34\uC790\uBE44\uD55C \uC138\uC0C1\uC758 \uD76C\uC0DD\uC591\uC774
+    \uB418\uC5C8\uACE0, \uC774\uC81C\uB294 \uB0A1\uC740 \uCC28\uB4E4\uACFC \uD568\uAED8
+    \uC8FD\uC740 \uC880\uBE44\uB4E4\uC758 \uC2DC\uCCB4\uB9CC\uC774 \uB0A8\uC544 \uADF8\uB0A0\uC758
+    \uCC98\uC808\uD588\uB358 \uC2F8\uC6C0\uC744 \uBB35\uBB35\uD788 \uAE30\uC5B5\uD558\uACE0
+    \uC788\uC2B5\uB2C8\uB2E4."
+  locationDataList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

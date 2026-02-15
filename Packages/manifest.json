@@ -2,6 +2,7 @@
   "dependencies": {
     "com.billiotgames.coroutinemanager": "http://github.com/Sanghun2/Coroutine-Manager.git",
     "com.billiotgames.inventory": "http://github.com/Sanghun2/inventory.git",
+    "com.billiotgames.screenoverlay": "http://github.com/Sanghun2/Screen-Overlay.git",
     "com.billiotgames.sdmanager": "https://github.com/Sanghun2/SD-Manager.git",
     "com.billiotgames.stats": "http://github.com/Sanghun2/Stats.git",
     "com.billiotgames.timer": "http://github.com/Sanghun2/timer.git",

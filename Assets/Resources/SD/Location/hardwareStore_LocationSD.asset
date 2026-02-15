@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
+  m_Name: hardwareStore_LocationSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  id: hardwareStore
+  displayName: "\uCCA0\uBB3C\uC810"
+  descripiton: "\uCCA0\uBB3C\uC810"
+  iconImage: {fileID: 21300000, guid: 736665a8b7a89d145bc4050c1eeee596, type: 3}
+  storyDescription: "\uB300\uC7AC\uC559\uC774 \uB2E5\uCCE4\uC744 \uB54C, \uC774 \uCCA0\uBB3C\uC810\uC740
+    \uC808\uB9DD\uC801\uC778 \uCD5C\uD6C4\uC758 \uBCF4\uB8E8\uC600\uC2B5\uB2C8\uB2E4.
+    \uC0DD\uC874\uC790\uB4E4\uC740 \uB9DD\uCE58, \uD1B1, \uD30C\uC774\uD504 \uAC19\uC740
+    \uB3C4\uAD6C\uB4E4\uC744 \uC9D1\uC5B4 \uB4E4\uACE0 \uBAB0\uB824\uB4DC\uB294 \uC880\uBE44
+    \uB5BC\uC5D0 \uB9DE\uC11C \uD544\uC0AC\uC801\uC73C\uB85C \uC2F8\uC6E0\uC8E0.
+    \uC120\uBC18\uB4E4\uC740 \uBC14\uB9AC\uCF00\uC774\uB4DC\uAC00 \uB418\uC5C8\uACE0,
+    \uAE68\uC9C4 \uC720\uB9AC\uCC3D \uC0AC\uC774\uB85C \uB4E4\uC5B4\uC624\uB294 \uBE5B\uC740
+    \uD76C\uBBF8\uD55C \uD76C\uB9DD\uC744 \uBE44\uCDC4\uC2B5\uB2C8\uB2E4. \uD558\uC9C0\uB9CC
+    \uC22B\uC801\uC73C\uB85C \uC555\uB3C4\uB2F9\uD55C \uADF8\uB4E4\uC740 \uACB0\uAD6D
+    \uD558\uB098\uB458 \uC4F0\uB7EC\uC838 \uAC14\uACE0, \uC774\uC81C\uB294 \uB110\uBE0C\uB7EC\uC9C4
+    \uACF5\uAD6C\uB4E4\uACFC \uD54F\uC790\uAD6D\uB9CC\uC774 \uADF8\uB0A0\uC758 \uCC98\uC808\uD588\uB358
+    \uC0AC\uD22C\uB97C \uAE30\uC5B5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+  locationDataList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

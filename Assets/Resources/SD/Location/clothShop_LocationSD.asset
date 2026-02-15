@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
+  m_Name: clothShop_LocationSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  id: clothShop
+  displayName: "\uC637\uAC00\uAC8C"
+  descripiton: "\uC637\uAC00\uAC8C"
+  iconImage: {fileID: 21300000, guid: 438cf744c79265f4394d898a1db93efd, type: 3}
+  storyDescription: "\uC1FC\uC708\uB3C4\uB294 \uAE68\uC9C0\uACE0, \uBA3C\uC9C0 \uB36E\uC778
+    \uB9C8\uB124\uD0B9\uB4E4\uC774 \uAE30\uBB18\uD558\uAC8C \uC11C \uC788\uB294 \uD3D0\uD5C8.\n\uC9C4\uC5F4\uB300\uC5D4
+    \uB0A1\uACE0 \uC0C9\uC774 \uBC14\uB79C \uC637\uB4E4\uC774 \uB0A8\uC544 \uC788\uACE0,
+    \uC77C\uBD80\uB294 \uAE09\uD788 \uB72F\uC5B4\uAC04 \uD754\uC801\uC774 \uBCF4\uC778\uB2E4.\n\uCC9C\uC7A5\uC5D0\uC11C
+    \uB298\uC5B4\uC9C4 \uC804\uC120\uACFC \uAE5C\uBE61\uC774\uB2E4 \uAEBC\uC9C4 \uC870\uBA85\uC774
+    \uC815\uC801\uC744 \uB9CC\uB4E0\uB2E4.\n\uAC89\uC73C\uB860 \uD145 \uBE48 \uD3D0\uD5C8\uC9C0\uB9CC,
+    \uBC29\uD55C\uC6A9 \uCF54\uD2B8\uB098 \uD2BC\uD2BC\uD55C \uAC00\uC8FD \uC7AC\uD0B7
+    \uAC19\uC740 \uC0DD\uC874\uC6A9 \uC758\uB958\uAC00 \uB0A8\uC544 \uC788\uC744
+    \uC218 \uC788\uB294 \uC7A5\uC18C."
+  locationDataList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}
