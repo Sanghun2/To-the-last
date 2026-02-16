@@ -13,6 +13,12 @@ public class TesterEditor : Editor
 
 
         GUILayout.Label("[  Location Test  ]");
+        if (GUILayout.Button("Activate Location")) {
+            _script.ActivateLocation();
+        }
+        if (GUILayout.Button("Deactivate Location")) {
+            _script.DeactivateLocation();
+        }
         if (GUILayout.Button("Show Location")) {
             _script.ShowLocationPopUp();
         }

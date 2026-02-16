@@ -3,7 +3,7 @@ using BilliotGames;
 using UnityEngine;
 
 [Serializable]
-public class Progressor : IValue
+public class Progressor : IValue<float>
 {
     public float Rate => currentValue / maxValue;
     public float CurrentValue => currentValue;

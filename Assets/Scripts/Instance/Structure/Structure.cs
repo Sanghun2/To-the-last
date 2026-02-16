@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
-public class Structure : IValue
+public class Structure : IValue<float>
 {
     public enum StructureState {
         Locked,

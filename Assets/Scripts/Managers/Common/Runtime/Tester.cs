@@ -30,6 +30,13 @@ public class Tester : MonoBehaviour
     [Header("[  Map Test  ]")]
     [SerializeField] LocationSD locationSD;
 
+    public void ActivateLocation() {
+        Managers.Location.AddLocation(locationSD);
+        Managers.Location.TryActivateLocation(locationSD);
+    }
+    public void DeactivateLocation() {
+        Managers.Location.DeactivateLocation(locationSD);
+    }
     public void ShowLocationPopUp() {
         Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
             locationSD,

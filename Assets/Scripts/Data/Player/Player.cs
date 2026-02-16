@@ -28,14 +28,14 @@ public class Player : IInitializable
 
     }
 
-    public void RegisterEvent(Define.Stat targetStat, Action<Value> @event) {
+    public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.RegisterEvent(targetStat.ToID(), @event);
     }
-    public void UnregisterEvent(Define.Stat targetStat, Action<Value> @event) {
+    public void UnregisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.UnregisterEvent(targetStat.ToID(), @event);
     }
 
-    public Value? GetStatValue(Define.Stat targetStat) {
+    public Value<float>? GetStatValue(Define.Stat targetStat) {
         return statContainer.GetStatValue(targetStat.ToID());
     }
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {

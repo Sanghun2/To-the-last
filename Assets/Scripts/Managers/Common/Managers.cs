@@ -107,7 +107,19 @@ public sealed class Managers : MonoBehaviour
             return _itemManager;
         }
     }
+    public static LocationManager Location
+    {
+        get
+        {
+            if (_locationManager == null) {
+                _locationManager = new LocationManager();
+            }
 
+            return _locationManager;
+        }
+    }
+
+    private static LocationManager _locationManager;
     private static ItemManager _itemManager;
     private static CraftManager _craftManager;
     private static PlayerManager _playerManager;

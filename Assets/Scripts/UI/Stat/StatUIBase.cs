@@ -15,5 +15,5 @@ public abstract class StatUIBase : UIBase
         _isInit = true;
     }
 
-    public abstract void UpdateUI(Value value);
+    public abstract void UpdateUI(Value<float> value);
 }
