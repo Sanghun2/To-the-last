@@ -6,13 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LocationSD", menuName = "Scriptable Objects/LocationSD")]
 public class LocationSD : IconSDBase
 {
-    public IReadOnlyList<LocationEvent> LocationEventList => locationEventList;
+    public IReadOnlyList<ExplorationEvent> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
     public Sprite MainImage => mainImage;
 
     [SerializeField] Sprite mainImage;
     [SerializeField][TextArea(1, 20)] string storyDescription;
-    [SerializeField] List<LocationEvent> locationEventList = new List<LocationEvent>();
+    [SerializeField] List<ExplorationEvent> locationEventList = new List<ExplorationEvent>();
 
     private void OnValidate() {
         RenameAsset(ID, suffix:"_LocationSD");
@@ -27,7 +27,7 @@ public class LocationSD : IconSDBase
 }
 
 [Serializable]
-public class LocationEvent
+public class ExplorationEvent
 {
     public int Level => level;
     public int Weight => weight;

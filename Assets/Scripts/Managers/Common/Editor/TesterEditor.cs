@@ -11,7 +11,12 @@ public class TesterEditor : Editor
 
         GUI.enabled = Application.isPlaying;
 
+        GUILayout.Label("[  Location Test  ]");
+        if (GUILayout.Button("Execute Encounter")) {
+            _script.ExecuteEncounter();
+        }
 
+        GUILayout.Space(20);
         GUILayout.Label("[  Location Test  ]");
         if (GUILayout.Button("Activate Location")) {
             _script.ActivateLocation();

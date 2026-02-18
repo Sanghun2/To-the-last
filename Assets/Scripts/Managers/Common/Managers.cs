@@ -118,7 +118,19 @@ public sealed class Managers : MonoBehaviour
             return _locationManager;
         }
     }
+    public static EncounterManager Encounter
+    {
+        get
+        {
+            if (_encounterManager == null) {
+                _encounterManager = new EncounterManager();
+            }
 
+            return _encounterManager;
+        }
+    }
+
+    private static EncounterManager _encounterManager;
     private static LocationManager _locationManager;
     private static ItemManager _itemManager;
     private static CraftManager _craftManager;
@@ -154,6 +166,7 @@ public sealed class Managers : MonoBehaviour
             Job,
             Construction,
             Player,
+            Encounter,
         };
 
         for (int i = 0; i < initList.Count; i++) {

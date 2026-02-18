@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BilliotGames;
+using UnityEditor;
 using UnityEngine;
 
 public class Tester : MonoBehaviour
@@ -29,6 +30,11 @@ public class Tester : MonoBehaviour
     [Space]
     [Header("[  Map Test  ]")]
     [SerializeField] LocationSD locationSD;
+
+    [SerializeField] EncounterSD encounterSD;
+    public void ExecuteEncounter() {
+        Managers.Encounter.ExecuteEncounter(encounterSD);
+    }
 
     public void ActivateLocation() {
         Managers.Location.AddLocation(locationSD);

@@ -26,11 +26,12 @@ public class Location : IValue<int>
         }
     }
 
-    [SerializeField] string locationID;
+    [SerializeField][HideInInspector] string locationID;
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
     [SerializeField] State _currentState;
-    private LocationSD locationSD;
+
+    [NonSerialized] private LocationSD locationSD;
 
     public Location(LocationSD locationSD) {
         this.locationSD = locationSD;
