@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class EncounterBundle<TContext, TSD> : MonoBehaviour
+public abstract class EncounterBundle<TContext, TSD>
     where TContext : EncounterContext<TSD>
     where TSD : EncounterSD
 {

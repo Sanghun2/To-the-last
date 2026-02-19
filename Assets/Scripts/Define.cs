@@ -9,4 +9,10 @@ public class Define
         Mental = 3,
         Temperture = 4,
     }
+
+    public enum SelectionType {
+        None,
+        Consume,
+        Check,
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BilliotGames;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,6 +33,19 @@ public class Tester : MonoBehaviour
     [SerializeField] LocationSD locationSD;
 
     [SerializeField] EncounterSD encounterSD;
+    [SerializeField] CharacterSD characterSD;
+    [SerializeField] string situation;
+    [SerializeField] string[] descriptions;
+
+    public void ShowSelections() {
+        List<SelectionData> list = new List<SelectionData>();
+        for (int i = 0; i < descriptions.Length; i++) {
+            int idx = i;
+            list.Add(new SelectionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
+        }
+        var dd = new DialogData(locationSD, characterSD.IconImage, characterSD.DisplayName, situation, list);
+        Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
+    }
     public void ExecuteEncounter() {
         Managers.Encounter.ExecuteEncounter(encounterSD);
     }

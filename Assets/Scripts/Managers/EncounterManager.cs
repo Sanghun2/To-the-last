@@ -15,7 +15,7 @@ public class EncounterManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        RegisterBundle(new CombatEncounterBundle());
+        RegisterBundle(new BattleEncounterBundle());
         RegisterBundle(new LootEncounterBundle());
         RegisterBundle(new SpecialEncounterBundle());
 

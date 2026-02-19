@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1f8fb0103df4148986443b8f13f38a, type: 3}
+  m_Name: jadon_CharacterSD
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSD
+  id: jadon
+  displayName: "\uC81C\uC774\uB4E0"
+  descripiton: "\uC544\uD3EC\uCE7C\uB9BD\uC2A4\uC5D0\uC11C \uC0B4\uC544\uB0A8\uC740
+    \uC0DD\uC874\uC790"
+  iconImage: {fileID: 21300000, guid: 660be68017b695f42b99969b7abdb662, type: 3}

@@ -41,7 +41,7 @@ public class RequirementUI : UIBase, IPool
         }
     }
 
-    private void UpdateUI(string itemID, int amount) {
+    protected virtual void UpdateUI(string itemID, int amount) {
         if (Managers.SD.TryGetSD(itemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.ItemImage;
         }

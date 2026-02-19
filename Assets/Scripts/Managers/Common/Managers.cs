@@ -156,7 +156,10 @@ public sealed class Managers : MonoBehaviour
     //static Managers _instance;
 
     private void Awake() {
+        SD.TryRegisterSD(new CharacterSDContiner("SD/Character"));
+        SD.TryRegisterSD(new EncounterSDContainer("SD/Encounter"));
         SD.TryRegisterSD(new ItemSDContainer("SD/Item"));
+        SD.TryRegisterSD(new LocationSDContainer("SD/Location"));
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
         SD.TryRegisterSD(new RecipeSDContainer("SD/Recipe"));
 

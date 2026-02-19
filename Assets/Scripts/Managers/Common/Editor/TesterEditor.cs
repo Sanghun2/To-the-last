@@ -10,7 +10,12 @@ public class TesterEditor : Editor
         var _script = (Tester)target;
 
         GUI.enabled = Application.isPlaying;
+        GUILayout.Label("[  Selection Test  ]");
+        if (GUILayout.Button("Show Selections")) {
+            _script.ShowSelections();
+        }
 
+        GUILayout.Space(20);
         GUILayout.Label("[  Location Test  ]");
         if (GUILayout.Button("Execute Encounter")) {
             _script.ExecuteEncounter();
