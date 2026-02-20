@@ -29,7 +29,7 @@ public class InfomationPopUpUI : PopUpUIBase<InfomationPopUpData>
     }
 
     public override void InitPopUp(InfomationPopUpData popUpData) {
-        InitPopUp(popUpData);
+        base.InitPopUp(popUpData);
 
         if (popUpData.Image != null) {
             iconImage.sprite = popUpData.Image;

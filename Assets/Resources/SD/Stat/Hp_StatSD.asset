@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8555757236776af4da546dc4603be337, type: 3}
+  m_Name: Hp_StatSD
+  m_EditorClassIdentifier: Assembly-CSharp::StatSD
+  id: Hp
+  displayName: "\uCCB4\uB825"
+  descripiton: "\uCCB4\uB825\uC774 \uB0A8\uC544\uC788\uB294 \uD55C \uC6C0\uC9C1\uC77C
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uD558\uC9C0\uB9CC \uCCB4\uB825\uC774 \uBC14\uB2E5\uB098\uB294
+    \uC21C\uAC04 \uCC28\uAC00\uC6B4 \uB545\uC5D0 \uC4F0\uB7EC\uC838 \uB354 \uC774\uC0C1
+    \uC6C0\uC9C1\uC77C \uC218 \uC5C6\uC744 \uAC83\uC785\uB2C8\uB2E4."
+  statType: 0
