@@ -12,7 +12,7 @@ public abstract class StatUIBase : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
-        Managers.Player.Player.RegisterEvent(StatType, UpdateUI);
+        Managers.Player.PlayerData.RegisterEvent(StatType, UpdateUI);
 
         _isInit = true;
     }

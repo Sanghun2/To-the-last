@@ -29,7 +29,5 @@ MonoBehaviour:
     \uD558\uB098\uB458 \uC4F0\uB7EC\uC838 \uAC14\uACE0, \uC774\uC81C\uB294 \uB110\uBE0C\uB7EC\uC9C4
     \uACF5\uAD6C\uB4E4\uACFC \uD54F\uC790\uAD6D\uB9CC\uC774 \uADF8\uB0A0\uC758 \uCC98\uC808\uD588\uB358
     \uC0AC\uD22C\uB97C \uAE30\uC5B5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
-  locationDataList:
-  - level: 1
-    weight: 0
-    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}
+  anchoredPosition: {x: 360, y: 95}
+  locationEventList: []

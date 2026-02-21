@@ -35,9 +35,9 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.billiotgames.valuecontainer": "https://github.com/Sanghun2/Value-Container.git"
+        "com.billiotgames.valuecontainer": "https://github.com/Sanghun2/Value-Container.git#1.0.7"
       },
-      "hash": "d66bb2905130d608597807109bca376816482bd7"
+      "hash": "c042f52733107737c804b00848a10085032a33d5"
     },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",

@@ -31,11 +31,30 @@ public class Tester : MonoBehaviour
     [Space]
     [Header("[  Map Test  ]")]
     [SerializeField] LocationSD locationSD;
+    [SerializeField] int progress;
 
+    [Space] 
     [SerializeField] EncounterSD encounterSD;
     [SerializeField] CharacterSD characterSD;
     [SerializeField] string situation;
     [SerializeField] string[] descriptions;
+
+    [Space]
+    [SerializeField] LocationSD startLocationSD;
+    [SerializeField] LocationSD endLocationSD;
+    [SerializeField] float moveDuration = 2f;
+
+    public void MovePointer() {
+        var start = startLocationSD.AnchoredPosition;
+        var end = endLocationSD.AnchoredPosition;
+        Managers.UI.GetUI<LocationPointer>().MovePosition(start, end, moveDuration, () => {
+            Debug.Log($"이동 완료");
+        });
+    }
+    public void PausePointer() {
+        var pointer = Managers.UI.GetUI<LocationPointer>();
+        pointer.PauseMove(!pointer.Pause);
+    }
 
     public void ShowSelections() {
         List<SelectionData> list = new List<SelectionData>();
@@ -51,23 +70,24 @@ public class Tester : MonoBehaviour
     }
 
     public void ActivateLocation() {
-        Managers.Location.AddLocation(locationSD);
-        Managers.Location.TryActivateLocation(locationSD);
+        Managers.Location.UnlockLocation(locationSD.ID, progress);
     }
     public void DeactivateLocation() {
         Managers.Location.DeactivateLocation(locationSD);
     }
     public void ShowLocationPopUp() {
-        Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
-            locationSD,
-            new ActionData[] {
+        if (Managers.Location.TryGetLocation(locationSD, out Location location)) {
+            Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
+           location,
+           new ActionData[] {
                 new ActionData("확인", () => Managers.UI.CloseTopUI()),
                 new ActionData("진입", null)
-            }));
+           }));
+        }
     }
 
     public void ChangeValue() {
-        Managers.Player.Player.ChangeStat(targetStat, deltaValue);
+        Managers.Player.PlayerData.ChangeStat(targetStat, deltaValue);
     }
 
     public void PushItem() {

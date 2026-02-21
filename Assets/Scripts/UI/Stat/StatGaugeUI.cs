@@ -34,7 +34,7 @@ public class StatGaugeUI : StatUIBase
             statSD.Description,
             new ActionData[] {
                 new ActionData("확인", () => {
-                    Managers.Player.Player.UnregisterEvent(StatType, UpdateSubText);
+                    Managers.Player.PlayerData.UnregisterEvent(StatType, UpdateSubText);
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                 })
             },
@@ -42,7 +42,7 @@ public class StatGaugeUI : StatUIBase
             );
 
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();
-        var player = Managers.Player.Player;
+        var player = Managers.Player.PlayerData;
         infoButton.onClick.RemoveAllListeners();
         infoButton.onClick.AddListener(() => {
             infoPopUp.OpenUI();

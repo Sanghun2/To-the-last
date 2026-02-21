@@ -8,18 +8,18 @@ public class SelectionData : ActionData
     }
     public SelectionData(string text, Action action) : base(text, action) {
     }
-    public Define.SelectionType SelectionType => selectionType;
+    public Define.RequirementType RequirementType => requirementType;
     public IReadOnlyList<Ingredient> Requirements => requirements;
 
     protected Ingredient[] requirements;
-    protected Define.SelectionType selectionType;
+    protected Define.RequirementType requirementType;
 
     public SelectionData SetRequirements(Ingredient[] requirements) {
         this.requirements = requirements;
         return this;
     }
-    public SelectionData SetSelectionType(Define.SelectionType type) {
-        selectionType = type;
+    public SelectionData SetSelectionType(Define.RequirementType type) {
+        requirementType = type;
         return this;
     }
 }

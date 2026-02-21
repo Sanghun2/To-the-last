@@ -8,16 +8,18 @@ public class LocationUI : UIBase, IPool
     public bool IsActive => IsOpened;
 
     [SerializeField] ContentUI contentUI;
-    [SerializeField] LocationSD locationSD;
+    [SerializeField] Location location;
 
 
-    public void InitLocation(LocationSD locationSD) {
-        if (locationSD == null) return;
+    public void InitLocation(Location location) {
+        if (location == null || location.LocationSD == null) return;
 
-        this.locationSD = locationSD;
-        SetUIView(locationSD);
-        contentUI.SetButtonAction(() => OpenPopUp(locationSD));
+        this.location = location;
+        SetUIView(location.LocationSD);
+        SetPosition(location.LocationSD.AnchoredPosition);
+        contentUI.SetButtonAction(() => OpenPopUp(location));
     }
+
 
     public void UpdateUI(Location.State currentState, Location.State prevState) {
         switch (currentState) {
@@ -32,6 +34,14 @@ public class LocationUI : UIBase, IPool
                 break;
         }
     }
+    public void SaveCurrentLocationPosition() {
+        if (location == null) { Debug.Log($"target is empty. save location skipped."); return; }
+        var rt = GetComponent<RectTransform>();
+        var targetPos = rt.anchoredPosition;
+
+        location.LocationSD.SetAnchoredPosition(targetPos);
+    }
+
 
     #region Pool
     public void Init() {
@@ -49,13 +59,7 @@ public class LocationUI : UIBase, IPool
     protected override void Start() {
         base.Start();
 
-        InitLocation(locationSD);
-    }
-
-    private void OnValidate() {
-        if (contentUI != null && locationSD != null) {
-            SetUIView(locationSD);
-        }
+        InitLocation(location);
     }
 
     private void Reset() {
@@ -65,12 +69,17 @@ public class LocationUI : UIBase, IPool
     }
 
     private void SetUIView(LocationSD locationSD) {
+        if (locationSD == null) { Debug.Log($"location sd null. location 정보 set 불가"); return; }
         gameObject.name = $"Location UI_{locationSD.ID}";
         contentUI.SetContentImage(locationSD.IconImage);
     }
-    private void OpenPopUp(LocationSD locationSD) {
+    private void SetPosition(Vector2 anchoredPosition) {
+        GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+    }
+    private void OpenPopUp(Location location) {
+        LocationSD locationSD = location.LocationSD;
         Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
-                    locationSD,
+                    location,
                     new ActionData[] {
                         new ActionData("확인", () => Managers.UI.CloseUI<LocationInfoPopUpUI>()),
                         new ActionData("진입", null)

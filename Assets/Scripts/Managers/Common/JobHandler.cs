@@ -12,9 +12,9 @@ public class JobHandler : IInitializable
     private bool isInit;
 
     private List<Job> jobList = new List<Job>(10);
-
     private FocusJob currentFocusJob = null;
     private Guid? currentFocusJobID = null;
+    private bool pause;
 
     public JobHandler RegisterDelayedJob(Job job) {
         //if (IsFocusJobRunning) { Debug.LogError($"Job 충돌. 이미 focusJob 있음. 이런 상태가 발생한다면 queue방식으로 변경"); return this; }
@@ -32,6 +32,9 @@ public class JobHandler : IInitializable
             Debug.Log($"현재 실행중인 focus job이 있어 실행 skip됨");
         }
     }
+    public void PauseJob(bool pause) {
+        this.pause = pause;
+    }
 
     private IEnumerator FocusJobRoutine(FocusJob focusJob, Action callback=null) {
         Managers.Time.PauseTime(true);
@@ -44,9 +47,9 @@ public class JobHandler : IInitializable
         Managers.Time.OnTimeChanged += focusJob.ChangeMinutes;
 
         while (progress < 1) {
-            yield return null;
+            while (pause) { yield return null; }
+
             // progress 계산
-            currentTime += Time.deltaTime;
             progress = currentTime / focusJob.Duration;
 
             // ingame에서 몇 초 흐를지 계산
@@ -55,6 +58,10 @@ public class JobHandler : IInitializable
             float ingameDeltaSeconds = currentIngameSeconds - prevIngameSeconds;
 
             ChangeIngameTime(ingameDeltaSeconds);
+
+            yield return null;
+            currentTime += Time.deltaTime;
+            if (currentTime > focusJob.Duration) currentTime = focusJob.Duration;
         }
 
         Managers.Time.PauseTime(false);

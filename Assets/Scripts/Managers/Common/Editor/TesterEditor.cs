@@ -10,6 +10,21 @@ public class TesterEditor : Editor
         var _script = (Tester)target;
 
         GUI.enabled = Application.isPlaying;
+
+        GUILayout.BeginHorizontal();
+        {
+            GUILayout.Label("[  Pointer Test  ]");
+            if (GUILayout.Button("Move Pointer")) {
+                _script.MovePointer();
+            }
+            if (GUILayout.Button("Pause Pointer")) {
+                _script.PausePointer();
+            }
+        }
+        GUILayout.EndHorizontal();
+
+
+        GUILayout.Space(20);
         GUILayout.Label("[  Selection Test  ]");
         if (GUILayout.Button("Show Selections")) {
             _script.ShowSelections();

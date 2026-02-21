@@ -15,6 +15,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
         return newObj;
     }
     public override TContent GetObj() {
+        InitUI();
         for (int i = 0; i < contentList.Count; i++) {
             var content = contentList[i];
             if (!content.IsActive) {

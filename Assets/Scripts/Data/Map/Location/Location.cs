@@ -25,6 +25,7 @@ public class Location : IValue<int>
             }
         }
     }
+    public LocationSD LocationSD => locationSD;
 
     [SerializeField][HideInInspector] string locationID;
     [SerializeField] int currentProgress;
@@ -41,10 +42,11 @@ public class Location : IValue<int>
     public event Action<int, int> OnProgressChanged;
     public event Action<State, State> OnStateChanged;
 
-    public void InitProgress(int current, int max) {
+    public Location InitProgress(int current, int max) {
         currentProgress = current;
         maxProgress = max;
         OnProgressChanged?.Invoke(current, max);
+        return this;
     }
     public void ChangeProgress(int deltaValue) {
         currentProgress += deltaValue;
@@ -55,14 +57,16 @@ public class Location : IValue<int>
         }
     }
 
-    public void Activate() {
+    public Location Activate() {
         CurrentState = State.Exploring;
+        return this;
     }
-    public void Deactivate() {
+    public Location Deactivate() {
         CurrentState = State.Undiscovered;
+        return this;
     }
 
-    public void ClearEvent() {
+    public void ClearLocationEvent() {
         OnStateChanged = null;
         OnProgressChanged = null;
     }

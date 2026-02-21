@@ -30,7 +30,5 @@ MonoBehaviour:
     \uAE30\uAD34\uD558\uAC8C \uBA48\uCD98 \uAD00\uB78C\uCC28\uB9CC\uC774 \uADF8\uB0A0\uC758
     \uBE44\uBA85 \uC18C\uB9AC\uB97C \uC0BC\uD0A8 \uCC44, \uD669\uB7C9\uD55C \uBC14\uB78C\uC5D0
     \uD754\uB4E4\uB9AC\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
-  locationDataList:
-  - level: 1
-    weight: 0
-    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}
+  anchoredPosition: {x: -306, y: 554}
+  locationEventList: []

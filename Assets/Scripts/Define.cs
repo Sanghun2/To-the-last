@@ -10,7 +10,7 @@ public class Define
         Temperture = 4,
     }
 
-    public enum SelectionType {
+    public enum RequirementType {
         None,
         Consume,
         Check,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
-public class Player : IInitializable
+public class PlayerData : IInitializable
 {
     public InventoryBase Inventory => _inventory;
 
@@ -20,7 +20,7 @@ public class Player : IInitializable
         RegisterStat(Define.Stat.Hungriness, new BoundedStat(100));
         RegisterStat(Define.Stat.Thirst, new BoundedStat(100));
         RegisterStat(Define.Stat.Mental, new BoundedStat(100));
-        RegisterStat(Define.Stat.Temperture, new Stat());
+        RegisterStat(Define.Stat.Temperture, new Stat(36.5f));
 
         _isInit = true;
     }
@@ -30,11 +30,9 @@ public class Player : IInitializable
 
     public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.RegisterEvent(targetStat.ToID(), @event);
-        Debug.Log($"[Test] {targetStat} registered");
     }
     public void UnregisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.UnregisterEvent(targetStat.ToID(), @event);
-        Debug.Log($"[Test] {targetStat} unregistered");
     }
 
     public Value<float>? GetStatValue(Define.Stat targetStat) {

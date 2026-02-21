@@ -170,6 +170,7 @@ public sealed class Managers : MonoBehaviour
             Construction,
             Player,
             Encounter,
+            Location,
         };
 
         for (int i = 0; i < initList.Count; i++) {

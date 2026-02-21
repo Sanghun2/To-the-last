@@ -9,6 +9,7 @@ public class SelectionButton : ButtonBase, IPool
 
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] RequirementUI requirementUI;
+    [SerializeField] GameObject lockObj;
 
     public void Init() {
         if (IsInit) return;
@@ -24,13 +25,16 @@ public class SelectionButton : ButtonBase, IPool
         CloseUI();
     }
 
-    public void InitButton(string text, Action buttonAction, Ingredient ingredient=null) {
+    public void InitButton(string text, Action buttonAction, bool isLocked = false, Ingredient ingredient=null) {
         Init();
         buttonText.text = text;
         SetButtonAction(buttonAction);
 
         // requirement가 필요하면 open ui & init
         //requirementUI.Init(ingredient);
+
+        // 선택 불가능한 선택지인 경우 lock on
+        lockObj.SetActive(isLocked);
     }
 
     protected override void ButtonAction() {
