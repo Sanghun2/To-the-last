@@ -15,4 +15,5 @@ MonoBehaviour:
   id: Hungriness
   displayName: "\uBC30\uACE0\uD514"
   descripiton: "\uBC30\uACE0\uD514"
+  iconImage: {fileID: 21300000, guid: b0ed437e6c5dda74aaa1a515315968b9, type: 3}
   statType: 1

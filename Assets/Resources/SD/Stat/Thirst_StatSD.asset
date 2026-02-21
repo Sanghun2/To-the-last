@@ -15,4 +15,5 @@ MonoBehaviour:
   id: Thirst
   displayName: "\uBAA9\uB9C8\uB984"
   descripiton: "\uBAA9\uB9C8\uB984"
+  iconImage: {fileID: 21300000, guid: a173a96f7e5e5c04cb751d46a26b8fe9, type: 3}
   statType: 2

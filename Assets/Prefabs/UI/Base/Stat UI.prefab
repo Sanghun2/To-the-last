@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatGaugeUI
   statSD: {fileID: 0}
+  statBackgroundImage: {fileID: 3027732348447469697}
   statFillImage: {fileID: 6174804328863542791}
   infoButton: {fileID: 5603666656447441603}
 --- !u!1 &3984545260235137098

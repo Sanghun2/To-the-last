@@ -30,9 +30,11 @@ public class Player : IInitializable
 
     public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.RegisterEvent(targetStat.ToID(), @event);
+        Debug.Log($"[Test] {targetStat} registered");
     }
     public void UnregisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.UnregisterEvent(targetStat.ToID(), @event);
+        Debug.Log($"[Test] {targetStat} unregistered");
     }
 
     public Value<float>? GetStatValue(Define.Stat targetStat) {

@@ -1,4 +1,5 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,5 +48,13 @@ public class InfomationPopUpUI : PopUpUIBase<InfomationPopUpData>
         else {
             subText.gameObject.SetActive(true);
         }
+    }
+
+    public void SetSubText(string text) {
+        subText.SetText(text);
+    }
+
+    protected override void OnClose() {
+
     }
 }

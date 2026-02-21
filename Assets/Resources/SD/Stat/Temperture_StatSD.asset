@@ -15,4 +15,5 @@ MonoBehaviour:
   id: Temperture
   displayName: "\uCCB4\uC628"
   descripiton: "\uCCB4\uC628"
+  iconImage: {fileID: 21300000, guid: 7e07441976c51f14297f2725755ddb46, type: 3}
   statType: 4

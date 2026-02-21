@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StatSD", menuName = "Scriptable Objects/StatSD")]
-public class StatSD : SDBase
+public class StatSD : IconSDBase
 {
     public Define.Stat StatType => statType;
 
