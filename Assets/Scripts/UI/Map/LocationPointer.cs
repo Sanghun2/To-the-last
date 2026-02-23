@@ -17,10 +17,12 @@ public class LocationPointer : UIBase
         }
     }
     public bool Pause => pause;
+    public bool IsMoving => isMoving;
 
     protected RectTransform _rect;
     private Guid currentRoutineID;
     private bool pause;
+    private bool isMoving;
 
     public void MovePosition(Vector2 startPos, Vector2 endPos, float duration, Action callback=null) {
         StopMove(currentRoutineID);
@@ -31,13 +33,16 @@ public class LocationPointer : UIBase
         Managers.Job.PauseJob(pause);
     }
 
-    IEnumerator MoveRoutine(Vector2 startPos, Vector2 endPos, float duration, Action callback=null) {        
+    IEnumerator MoveRoutine(Vector2 startPos, Vector2 endPos, float duration, Action callback=null) {
+        isMoving = true;
         Vector2 currentPos = startPos;
         float percent = 0;
         float currentTime = 0;
 
-        //FocusJob fj = new FocusJob(Vector2.Distance(startPos, endPos));
-        //Managers.Job.DoFocusJob(fj);
+        FocusJob moveJob = new FocusJob(
+            LocationUtility.CalculateDistance(startPos, endPos).ConvertToMinutes(),
+            duration);
+        Managers.Job.DoFocusJob(moveJob);
 
 
         while (percent < 1) {
@@ -52,10 +57,12 @@ public class LocationPointer : UIBase
         }
 
         callback?.Invoke();
+        isMoving = false;
     }
     private void StopMove(Guid currentRoutineID) {
         if (currentRoutineID != default) {
             Managers.Coroutine.StopCoroutine(currentRoutineID);
+            isMoving = false;
         }
     }
 }

@@ -1,11 +1,21 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
 
 public static class LocationUtility
 {
     private static string basementSDID = "basement";
+
+    public static float CalculateDistance(Vector2 startPos, Vector2 endPos) {
+        Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
+        return Vector2.Distance(startPos, endPos);
+    }
+    public static int ConvertToMinutes(this float distance) {
+        var h = (int)(distance / 100);
+        var m = (int)(distance % 100);
+        Debug.Log($"[Test] expected time: {h}시간 {m}분");
+        return h * 60 + m;
+    }
 
     [MenuItem("Tools/Location/Recalculate Location Distances")]
     public static void Recalculate() {
@@ -26,7 +36,7 @@ public static class LocationUtility
             var location = AssetDatabase.LoadAssetAtPath<LocationSD>(path);
 
             if (location.ID.Equals(basementSDID)) continue;
-            float dist = Vector2.Distance(basementPos, location.AnchoredPosition);
+            float dist = CalculateDistance(basementPos, location.AnchoredPosition);
 
             Undo.RecordObject(location, "Recalculate Distance");
             location.SetDistance(dist);

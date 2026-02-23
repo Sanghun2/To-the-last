@@ -9,6 +9,7 @@ public class Job
         Wait,
         Running,
         Completed,
+        Canceled,
     }
 
     public float ProgressRate => currentMinutes / totalMinutes;

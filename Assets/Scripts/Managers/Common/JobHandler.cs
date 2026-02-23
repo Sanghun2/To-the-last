@@ -35,6 +35,13 @@ public class JobHandler : IInitializable
     public void PauseJob(bool pause) {
         this.pause = pause;
     }
+    public void StopFocusJob() {
+        if (IsFocusJobRunning) {
+            currentFocusJob.CurrentState = Job.State.Canceled;
+            Managers.Coroutine.StopCoroutine((Guid)currentFocusJobID);
+            currentFocusJob = null;
+        }
+    }
 
     private IEnumerator FocusJobRoutine(FocusJob focusJob, Action callback=null) {
         Managers.Time.PauseTime(true);
