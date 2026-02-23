@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/LootSelectionSD")]
+[CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/Selection/LootSelectionSD")]
 public class LootSelectionSD : SelectionSD
 {
     public IReadOnlyList<LootData> LootItemDataList => lootList;
