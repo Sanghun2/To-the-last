@@ -140,7 +140,20 @@ public sealed class Managers : MonoBehaviour
             return _selectionSystem;
         }
     }
+    public static DialogManager Dialog
+    {
+        get
+        {
+            if (_dialogManager == null) {
+                _dialogManager = new DialogManager();
+                _dialogManager.Init();
+            }
 
+            return _dialogManager;
+        }
+    }
+
+    private static DialogManager _dialogManager;
     private static SelectionSystem _selectionSystem;
     private static EncounterManager _encounterManager;
     private static LocationManager _locationManager;
@@ -175,6 +188,8 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
         SD.TryRegisterSD(new RecipeSDContainer("SD/Recipe"));
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
+        SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));
+
 
         List<IInitializable> initList = new List<IInitializable>() {
             UI.GetUI<TimerUI>(),
