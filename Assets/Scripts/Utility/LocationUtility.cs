@@ -16,6 +16,9 @@ public static class LocationUtility
         Debug.Log($"[Test] expected time: {h}시간 {m}분");
         return h * 60 + m;
     }
+    public static (int hour, int minutes) ConvertToTime(this float distance) {
+        return ((int)(distance / 100), (int)(distance % 100));
+    }
 
     [MenuItem("Tools/Location/Recalculate Location Distances")]
     public static void Recalculate() {
