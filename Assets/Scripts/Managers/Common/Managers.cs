@@ -129,7 +129,19 @@ public sealed class Managers : MonoBehaviour
             return _encounterManager;
         }
     }
+    public static SelectionSystem Selection
+    {
+        get
+        {
+            if (_selectionSystem == null) {
+                _selectionSystem = new SelectionSystem();
+            }
 
+            return _selectionSystem;
+        }
+    }
+
+    private static SelectionSystem _selectionSystem;
     private static EncounterManager _encounterManager;
     private static LocationManager _locationManager;
     private static ItemManager _itemManager;
@@ -162,6 +174,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new LocationSDContainer("SD/Location"));
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
         SD.TryRegisterSD(new RecipeSDContainer("SD/Recipe"));
+        SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
 
         List<IInitializable> initList = new List<IInitializable>() {
             UI.GetUI<TimerUI>(),

@@ -1,23 +1,34 @@
 ﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 
 public static class LocationUtility
 {
-    private static string basementSDID = "basement";
+    public static string basementSDID = "basement";
 
     public static float CalculateDistance(Vector2 startPos, Vector2 endPos) {
         Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
         return Vector2.Distance(startPos, endPos);
     }
+    public static float CalculateDistance(LocationSD currentLocation, LocationSD destination) {
+        return CalculateDistance(currentLocation.AnchoredPosition, destination.AnchoredPosition);
+    }
     public static int ConvertToMinutes(this float distance) {
-        var h = (int)(distance / 100);
-        var m = (int)(distance % 100);
+        var h = GetHour(distance);
+        var m = GetMinute(distance);
         Debug.Log($"[Test] expected time: {h}시간 {m}분");
         return h * 60 + m;
     }
     public static (int hour, int minutes) ConvertToTime(this float distance) {
-        return ((int)(distance / 100), (int)(distance % 100));
+        return (GetHour(distance), GetMinute(distance));
+    }
+    public static LocationSD ToLocationSD(this string locationID) {
+       if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
+            return targetSD;
+       }
+
+       return null;
     }
 
     [MenuItem("Tools/Location/Recalculate Location Distances")]
@@ -50,7 +61,7 @@ public static class LocationUtility
         Debug.Log("Location distances recalculated");
     }
 
-    static LocationSD FindHomeSD() {
+    private static LocationSD FindHomeSD() {
         var guids = AssetDatabase.FindAssets("t:LocationSD");
 
         foreach (var guid in guids) {
@@ -61,6 +72,14 @@ public static class LocationUtility
                 return sd;
         }
         return null;
+    }
+    private static int GetHour(float distance) {
+        distance /= 2;
+        return (int)(distance / 60);
+    }
+    private static int GetMinute(float distance) {
+        distance /= 2;
+        return (int)(distance % 60);
     }
 }
 #endif

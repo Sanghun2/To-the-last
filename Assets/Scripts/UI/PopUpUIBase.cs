@@ -17,6 +17,10 @@ public class PopUpData
         this.description = description;
         this.buttonActions = buttonActions;
     }
+
+    public void SetButtonActions(ActionData[] buttonActions) {
+        this.buttonActions = buttonActions;
+    }
 }
 
 public abstract class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpData

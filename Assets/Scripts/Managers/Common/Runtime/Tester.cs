@@ -44,6 +44,14 @@ public class Tester : MonoBehaviour
     [SerializeField] LocationSD endLocationSD;
     [SerializeField] float moveDuration = 2f;
 
+    [Space]
+    [SerializeField] LootSelectionSD lootSelectionSD;
+    [SerializeField] float lootMultiflier = 1;
+
+    public void ExecuteSelection() {
+        Managers.Selection.ExecuteSelection(lootSelectionSD, new LootSelectionContext().SetLootCountMultiflier(lootMultiflier));
+    }
+
     public void MovePointer() {
         var start = startLocationSD.AnchoredPosition;
         var end = endLocationSD.AnchoredPosition;
@@ -63,7 +71,7 @@ public class Tester : MonoBehaviour
             int idx = i;
             list.Add(new SelectionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
         }
-        var dd = new DialogData(locationSD, characterSD.IconImage, characterSD.DisplayName, situation, list);
+        var dd = new DialogData(characterSD.IconImage, characterSD.DisplayName, situation, list);
         Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {

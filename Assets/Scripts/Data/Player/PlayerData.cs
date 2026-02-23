@@ -3,15 +3,32 @@ using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
-public class PlayerData : IInitializable
-{
-    public InventoryBase Inventory => _inventory;
+public sealed class PlayerData : IInitializable
+{ 
+    public InventoryBase Inventory
+    {
+        get
+        {
+            Init();
+            return _inventory;
+        }
+    }
 
     public bool IsInit => _isInit;
+
+    public string CurrentLocationID
+    {
+        get
+        {
+            Init();
+            return currentLocationID;
+        }
+    }
 
     private bool _isInit;
     private StatContainer statContainer = new StatContainer();
     private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
+    [SerializeField] private string currentLocationID;
 
     public void Init() {
         if (IsInit) return;
@@ -21,6 +38,10 @@ public class PlayerData : IInitializable
         RegisterStat(Define.Stat.Thirst, new BoundedStat(100));
         RegisterStat(Define.Stat.Mental, new BoundedStat(100));
         RegisterStat(Define.Stat.Temperture, new Stat(36.5f));
+
+        if (string.IsNullOrEmpty(currentLocationID)) {
+            currentLocationID = LocationUtility.basementSDID;
+        }
 
         _isInit = true;
     }
@@ -41,8 +62,15 @@ public class PlayerData : IInitializable
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {
         statContainer.ChangeStat(targetStat.ToID(), deltaValue);
     }
+    public void SetCurrentLocation(string locationID) {
+        currentLocationID = locationID;
+    }
+    public void SetCurrentLocation(LocationSD locationSD) {
+        SetCurrentLocation(locationSD.ID);
+    }
 
     private void RegisterStat(Define.Stat statType, Stat stat) {
         statContainer.RegisterStat(statType.ToID(), stat);
     }
+
 }

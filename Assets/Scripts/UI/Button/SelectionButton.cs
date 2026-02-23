@@ -31,7 +31,7 @@ public class SelectionButton : ButtonBase, IPool
         SetButtonAction(buttonAction);
 
         // requirement가 필요하면 open ui & init
-        //requirementUI.Init(ingredient);
+        //requirementUI.Init(requirement);
 
         // 선택 불가능한 선택지인 경우 lock on
         lockObj.SetActive(isLocked);

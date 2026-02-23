@@ -77,12 +77,6 @@ public class LocationUI : UIBase, IPool
         GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
     }
     private void OpenPopUp(Location location) {
-        LocationSD locationSD = location.LocationSD;
-        Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
-                    location,
-                    new ActionData[] {
-                        new ActionData("확인", () => Managers.UI.CloseUI<LocationInfoPopUpUI>()),
-                        new ActionData("진입", null)
-                    }));
+        Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(location);
     }
 }

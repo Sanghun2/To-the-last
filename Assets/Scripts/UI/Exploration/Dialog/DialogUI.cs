@@ -5,20 +5,17 @@ using UnityEngine.UI;
 
 public class DialogData
 {
-    public LocationSD LocationSD => locationSD;
     public Sprite CharacterImage => characterImage;
     public string CharacterName => characterName;
     public string Description => description;
     public IReadOnlyList<SelectionData> Selections => selections;
 
-    [SerializeField] LocationSD locationSD;
     [SerializeField] Sprite characterImage;
     [SerializeField] string characterName;
     [SerializeField] string description;
     private IReadOnlyList<SelectionData> selections;
 
-    public DialogData(LocationSD locationSD, Sprite characterImage, string characterName, string description, IReadOnlyList<SelectionData> selections) {
-        this.locationSD = locationSD;
+    public DialogData( Sprite characterImage, string characterName, string description, IReadOnlyList<SelectionData> selections) {
         this.characterImage = characterImage;
         this.characterName = characterName;
         this.description = description;
@@ -28,14 +25,12 @@ public class DialogData
 
 public class DialogUI : UIBase
 {
-    [SerializeField] Image backgroundImage;
     [SerializeField] Image characterImage;
     [SerializeField] TextUI characterNameText;
     [SerializeField] TextUI dialogText;
     [SerializeField] SelectionButtonContainer selectionButtonContainer;
 
     public void ShowDialog(DialogData dialogData) {
-        backgroundImage.sprite = dialogData.LocationSD.MainImage;
         characterImage.sprite = dialogData.CharacterImage;
         characterNameText.SetText(dialogData.CharacterName);
         dialogText.SetText(dialogData.Description);

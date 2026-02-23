@@ -7,9 +7,9 @@ using UnityEditor;
 #endif
 
 [CreateAssetMenu(fileName = "LocationSD", menuName = "Scriptable Objects/LocationSD")]
-public class LocationSD : IconSDBase
+public class LocationSD : IconSDBase, IEquatable<LocationSD>
 {
-    public IReadOnlyList<ExplorationEvent> LocationEventList => locationEventList;
+    public IReadOnlyList<EcounterEvent> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
     public Sprite MainImage => mainImage;
     public Vector2 AnchoredPosition => anchoredPosition;
@@ -18,7 +18,7 @@ public class LocationSD : IconSDBase
     [SerializeField] Sprite mainImage;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
-    [SerializeField] List<ExplorationEvent> locationEventList = new List<ExplorationEvent>();
+    [SerializeField] List<EcounterEvent> locationEventList = new List<EcounterEvent>();
     private float distance;
 
     private void OnValidate() {
@@ -48,10 +48,35 @@ public class LocationSD : IconSDBase
     internal void SetDistance(float dist) {
         distance = dist;
     }
+
+    public bool Equals(LocationSD other) {
+        if (other == null) {
+            Debug.Log($"other is null");
+            return false;
+        }
+
+        return ID.Equals(other.ID);
+    }
+    public override bool Equals(object obj){
+        if (obj == null) {
+            Debug.Log($"other is null");
+            return false;
+        }
+        if (obj is LocationSD other) {
+            return Equals(other);
+        }
+        else {
+            Debug.LogError($"wrong type");
+            return false;
+        }
+    }
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
 }
 
 [Serializable]
-public class ExplorationEvent
+public class EcounterEvent
 {
     public int Level => level;
     public int Weight => weight;

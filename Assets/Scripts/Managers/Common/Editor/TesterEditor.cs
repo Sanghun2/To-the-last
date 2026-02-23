@@ -13,6 +13,15 @@ public class TesterEditor : Editor
 
         GUILayout.BeginHorizontal();
         {
+            GUILayout.Label("[  Selection Test  ]");
+            if (GUILayout.Button("Execute Selection")) {
+                _script.ExecuteSelection();
+            }
+        }
+
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        {
             GUILayout.Label("[  Pointer Test  ]");
             if (GUILayout.Button("Move Pointer")) {
                 _script.MovePointer();

@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class SelectionData : ActionData
 {
+
+    public Define.RequirementType RequirementType => requirementType;
+    public Ingredient Requirement => requirement;
+
+    protected Ingredient requirement;
+    protected Define.RequirementType requirementType;
+
+
     public SelectionData(Action action) : base(action) {
     }
     public SelectionData(string text, Action action) : base(text, action) {
     }
-    public Define.RequirementType RequirementType => requirementType;
-    public IReadOnlyList<Ingredient> Requirements => requirements;
+    public SelectionData(SelectionSD selectionSD) : base(selectionSD.Description, null){
+        SetRequirement(selectionSD.Requirement);
+        SetSelectionType(selectionSD.RequirementType);
+    }
 
-    protected Ingredient[] requirements;
-    protected Define.RequirementType requirementType;
 
-    public SelectionData SetRequirements(Ingredient[] requirements) {
-        this.requirements = requirements;
+    public SelectionData SetRequirement(Ingredient requirement) {
+        this.requirement = requirement;
         return this;
     }
     public SelectionData SetSelectionType(Define.RequirementType type) {

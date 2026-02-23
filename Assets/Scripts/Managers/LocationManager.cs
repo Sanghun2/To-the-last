@@ -61,7 +61,12 @@ public class LocationManager : IInitializable
         return false;
     }
     public bool TryGetLocation(LocationSD locationSD, out Location location) {
-        return TryGetLocation(locationSD.ID,out location);
+        if (TryGetLocation(locationSD.ID, out location)) {
+            return true;
+        }
+
+        Debug.LogError($"<color=red>faile to get location</color>");
+        return false;
     }
 
     public bool UnlockLocation(string locationID, int currentProgress=1, Action<Location> onActivated=null) {

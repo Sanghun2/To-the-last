@@ -11,8 +11,15 @@ public class Define
     }
 
     public enum RequirementType {
-        None,
+        Free,
         Consume,
         Check,
     }
+
+    //public enum SelectionType {
+    //    Free,
+    //    Loot,
+    //    Battle,
+    //    Talk,
+    //}
 }

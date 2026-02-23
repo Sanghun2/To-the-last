@@ -23,10 +23,27 @@ public class LocationPointer : UIBase
     private Guid currentRoutineID;
     private bool pause;
     private bool isMoving;
+    private const float MOVE_DURATION = 2f;
 
-    public void MovePosition(Vector2 startPos, Vector2 endPos, float duration, Action callback=null) {
+    internal void SetPosiion(string locationID) {
+        if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
+            var pos = targetSD.AnchoredPosition;
+            Rect.anchoredPosition = pos;
+        }
+        else {
+            Debug.LogError($"faile to find ({locationID}) location SD");
+        }
+    }
+
+    public void MovePosition(Vector2 startPos, Vector2 endPos, float duration = MOVE_DURATION, Action callback = null) {
         StopMove(currentRoutineID);
         currentRoutineID = Managers.Coroutine.StartCoroutine(MoveRoutine(startPos, endPos, duration, callback));
+    }
+    public void MovePosition(LocationSD startLocationSD, LocationSD endLocationSD, float duration = MOVE_DURATION, Action callback = null) {
+        MovePosition(startLocationSD.AnchoredPosition, endLocationSD.AnchoredPosition, duration, callback);
+    }
+    public void MovePosition(Location startLocation, Location endLocation, float duration = MOVE_DURATION, Action callback = null) {
+        MovePosition(startLocation.LocationSD, endLocation.LocationSD, duration, callback);
     }
     internal void PauseMove(bool pause) {
         this.pause = pause;
