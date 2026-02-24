@@ -49,7 +49,7 @@ public class Tester : MonoBehaviour
     [SerializeField] float lootMultiflier = 1;
 
     public void ExecuteSelection() {
-        Managers.Selection.ExecuteSelection(lootSelectionSD, new LootSelectionContext().SetLootCountMultiflier(lootMultiflier));
+        Managers.SelectionSystem.ExecuteSelection(lootSelectionSD, new LootSelectionContext(null).SetLootCountMultiflier(lootMultiflier));
     }
 
     public void MovePointer() {

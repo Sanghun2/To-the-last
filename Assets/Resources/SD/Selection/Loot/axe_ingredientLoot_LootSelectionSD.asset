@@ -19,6 +19,7 @@ MonoBehaviour:
   requirement:
     itemSD: {fileID: 11400000, guid: bc3dc49a89f85b64cbc0f4f7b3728f4c, type: 2}
     amount: 1
+  requireMinutes: 20
   defaultLootCount: 10
   lootList:
   - itemSD: {fileID: 11400000, guid: bdba0b37ce3a5dd49ae58ffd115a344a, type: 2}

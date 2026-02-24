@@ -53,22 +53,24 @@ public class JobHandler : IInitializable
 
         Managers.Time.OnTimeChanged += focusJob.ChangeMinutes;
 
-        while (progress < 1) {
-            while (pause) { yield return null; }
+        if (focusJob.TotalSeconds > 0) {
+            while (progress < 1) {
+                while (pause) { yield return null; }
 
-            // progress 계산
-            progress = currentTime / focusJob.Duration;
+                // progress 계산
+                progress = currentTime / focusJob.Duration;
 
-            // ingame에서 몇 초 흐를지 계산
-            prevIngameSeconds = currentIngameSeconds;
-            currentIngameSeconds = Mathf.Lerp(0, focusJob.TotalSeconds, progress);
-            float ingameDeltaSeconds = currentIngameSeconds - prevIngameSeconds;
+                // ingame에서 몇 초 흐를지 계산
+                prevIngameSeconds = currentIngameSeconds;
+                currentIngameSeconds = Mathf.Lerp(0, focusJob.TotalSeconds, progress);
+                float ingameDeltaSeconds = currentIngameSeconds - prevIngameSeconds;
 
-            ChangeIngameTime(ingameDeltaSeconds);
+                ChangeIngameTime(ingameDeltaSeconds);
 
-            yield return null;
-            currentTime += Time.deltaTime;
-            if (currentTime > focusJob.Duration) currentTime = focusJob.Duration;
+                yield return null;
+                currentTime += Time.deltaTime;
+                if (currentTime > focusJob.Duration) currentTime = focusJob.Duration;
+            }
         }
 
         Managers.Time.PauseTime(false);

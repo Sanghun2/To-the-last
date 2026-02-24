@@ -53,8 +53,10 @@ public class ExplorationUI : UIBase
         EnteranceUI.CloseUI();
         ShowSituationImage(encounterSD.EventImage);
         descriptionText.SetText(encounterSD.Description);
-        Action action = () => { Debug.Log("current action null"); } ;
-        ShowSelections(encounterSD.SelectionList.Select(s => new SelectionData(s, action)).ToList());
+        ShowSelections(encounterSD.SelectionList.Select(s => {
+            Action action = Managers.ActionCreator.CreateActionData(new SelectionActionContext(s, s.RequireMinutes)).Action;
+            return new SelectionData(s, action);
+        }).ToList());
         siuationObj.SetActive(true);
     }
 

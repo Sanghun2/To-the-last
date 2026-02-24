@@ -129,7 +129,7 @@ public sealed class Managers : MonoBehaviour
             return _encounterManager;
         }
     }
-    public static SelectionSystem Selection
+    public static SelectionSystem SelectionSystem
     {
         get
         {
@@ -163,7 +163,19 @@ public sealed class Managers : MonoBehaviour
             return _explorationSystem;
         }
     }
+    public static ActionCreator ActionCreator
+    {
+        get
+        {
+            if (_actionCreator == null) {
+                _actionCreator = new ActionCreator();
+            }
 
+            return _actionCreator;
+        }
+    }
+
+    private static ActionCreator _actionCreator;
     private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;
     private static SelectionSystem _selectionSystem;

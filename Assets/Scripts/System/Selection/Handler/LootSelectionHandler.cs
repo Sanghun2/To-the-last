@@ -10,8 +10,14 @@ using Random = UnityEngine.Random;
 public class LootSelectionContext : SelectionContext
 {
     public float LootCountMutiflier => lootCountMultiflier;
+    public InventoryBase TargetInventory => targetInventory;
 
     [SerializeField] float lootCountMultiflier = 1;
+    [SerializeField] InventoryBase targetInventory;
+
+    public LootSelectionContext(InventoryBase targetInventory) {
+        this.targetInventory = targetInventory;
+    }
 
     public LootSelectionContext SetLootCountMultiflier(float value) {
         lootCountMultiflier = value;
@@ -31,11 +37,22 @@ public class LootSelectionHandler : SelectionHandler<LootSelectionSD, LootSelect
 
         // 추가 보상 조정
 
+#if UNITY_EDITOR
         var sb = new StringBuilder().AppendLine("Looted Item List");
         foreach (var item in itemDict) {
             sb.AppendLine($"{item.Key} - {item.Value}");
         }
         Debug.Log(sb.ToString());
+
+#endif
+        foreach (var item in itemDict) {
+            string itemID = item.Key;
+            int amount = item.Value;
+
+            if (context.TargetInventory.TryPushItem(new ItemStack(new ItemData(itemID, 999), amount), out var overflowedStack)) {
+
+            }
+        }
     }
 
     private Dictionary<string, int> GetAdditionalItems(
