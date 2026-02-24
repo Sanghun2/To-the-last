@@ -71,7 +71,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
 
     #region UI Info
-    public string GetButtonText(Location destination) {
+    private string GetButtonText(Location destination) {
         LocationSD currentSD = Managers.Player.PlayerData.CurrentLocationID.ToLocationSD();
         LocationSD destinationSD = destination.LocationSD;
         if (currentSD.Equals(destinationSD)) {
@@ -80,7 +80,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
         return "이동한다";
     }
-    public Action ExecuteLocationEvent(Location destination) {
+    private Action ExecuteLocationEvent(Location destination) {
         LocationSD currentLocationSD = Managers.Player.PlayerData.CurrentLocationID.ToLocationSD();
         LocationSD endLocationSD = destination.LocationSD;
         if (currentLocationSD.Equals(endLocationSD)) {
@@ -91,7 +91,10 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         }
     }
     private void EnterLocation(Location destination) {
-        Debug.Log($"{destination.LocationSD.DisplayName} 진입");
+        Managers.UI.CloseUI<LocationInfoPopUpUI>();
+        var ui = Managers.UI.OpenUI<ExplorationUI>();
+        ui.InitLocationUI(destination);
+        ui.ShowEnterance();
     }
     private void MoveLocation(LocationSD currentLocationSD, LocationSD endLocationSD) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();

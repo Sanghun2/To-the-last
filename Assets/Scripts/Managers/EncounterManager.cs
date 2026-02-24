@@ -11,20 +11,6 @@ public class EncounterManager : IInitializable
     private bool _isInit;
 
 
-
-    public void Init() {
-        if (IsInit) return;
-
-        RegisterBundle(new BattleEncounterBundle());
-        RegisterBundle(new LootEncounterBundle());
-        RegisterBundle(new SpecialEncounterBundle());
-
-        _isInit = true;
-    }
-    public void Release() {
-
-    }
-
     public void ExecuteEncounter(EncounterSD encounterSD) {
         var sdType = encounterSD.GetType();
         Debug.Log($"context type: {sdType}");
@@ -57,20 +43,34 @@ public class EncounterManager : IInitializable
     }
 
 
+    #region Management
+
+    public void Init() {
+        if (IsInit) return;
+
+        RegisterBundle(new BattleEncounterBundle());
+        RegisterBundle(new LootEncounterBundle());
+        RegisterBundle(new SpecialEncounterBundle());
+
+        _isInit = true;
+    }
+    public void Release() {
+
+    }
+
+
     private void RegisterBundle<TContext, TSD>(EncounterBundle<TContext, TSD> bundle)
     where TContext : EncounterContext<TSD>
     where TSD : EncounterSD {
         RegisterExecutor(bundle.Executor);
         RegisterContextFactory(bundle.Factory);
     }
-
     private void RegisterExecutor<TContext, TSD>(EncounterExecutorBase<TContext, TSD> executor)
         where TContext : EncounterContext<TSD>
         where TSD : EncounterSD {
         executorDict[typeof(TContext)] = executor;
     }
-
-    private void RegisterContextFactory(IEncounterContextFactory factory) { 
+    private void RegisterContextFactory(IEncounterContextFactory factory) {
         factoryDict[factory.TargetSDType] = factory;
     }
 
@@ -90,4 +90,6 @@ public class EncounterManager : IInitializable
 
         return false;
     }
+
+    #endregion
 }

@@ -42,6 +42,16 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
         return null;
     }
 
+    public void InitButtons(ActionData[] actions) {
+        if (actions.Length > maxButtonCount) { Debug.LogError($"not enough button count"); return; }
+
+        Clear();
+        for (int i = 0; i < actions.Length; i++) {
+            var button = GetObj(i);
+            button.InitButton(actions[i]);
+        }
+    }
+
     internal void Clear() {
         for (int i = 0; i < contentList.Count; i++) {
             contentList[i].CloseUI();

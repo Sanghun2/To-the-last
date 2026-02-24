@@ -47,9 +47,11 @@ public class DialogUI : UIBase
         selectionButtonContainer.ReleaseContainer();
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
-            var selection = selections[i];
+            var selectionData = selections[i];
             var button = container.GetObj(i);
-            button.InitButton(selection.Text, selection.Action);
+            button.InitButton(selectionData.Text, selectionData.Action, new SelectionButtonContext()
+                .SetLock(false)
+                .SetRequirement(selectionData.Requirement));
         }
     }
 }

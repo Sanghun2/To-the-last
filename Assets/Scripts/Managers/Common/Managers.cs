@@ -152,7 +152,19 @@ public sealed class Managers : MonoBehaviour
             return _dialogManager;
         }
     }
+    public static ExplorationSystem Exploration
+    {
+        get
+        {
+            if (_explorationSystem == null) {
+                _explorationSystem = new ExplorationSystem();
+            }
 
+            return _explorationSystem;
+        }
+    }
+
+    private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;
     private static SelectionSystem _selectionSystem;
     private static EncounterManager _encounterManager;

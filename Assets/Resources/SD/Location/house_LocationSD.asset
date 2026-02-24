@@ -28,4 +28,7 @@ MonoBehaviour:
     \uCD94\uC5B5\uB9CC\uC774 \uB0A8\uC544 \uACFC\uAC70\uC758 \uC774\uC57C\uAE30\uB97C
     \uB4E4\uB824\uC8FC\uB294 \uB4EF\uD569\uB2C8\uB2E4."
   anchoredPosition: {x: 75, y: -622}
-  locationEventList: []
+  locationEventList:
+  - level: 1
+    weight: 1
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

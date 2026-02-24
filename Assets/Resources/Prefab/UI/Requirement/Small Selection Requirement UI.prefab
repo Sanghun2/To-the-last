@@ -17,6 +17,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 398510344693970873, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 398510344693970873, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 398510344693970873, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -100,6 +108,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087913122738681480, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087913122738681480, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 8348167107270202587, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -114,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8721072030133943510, guid: 6662007da5a42344ab4cf0189f6725fd, type: 3}
       propertyPath: m_Name
-      value: Small Requirement Ingredient UI
+      value: Small Selection Requirement UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

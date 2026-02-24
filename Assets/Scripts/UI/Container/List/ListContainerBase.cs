@@ -8,7 +8,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
     protected List<TContent> contentList = new List<TContent>();
 
     public override TContent CreateObj(GameObject prefab, Transform parent) {
-        if (!IsInit) InitUI();
+        InitUI();
         var newObj = base.CreateObj(prefab, parent);
         contentList.Add(newObj);
         newObj.Activate();
@@ -41,6 +41,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
         return obj;
     }
     public virtual void ReleaseContainer() {
+        InitUI();
         for (int i = 0; i < contentList.Count; i++) {
             contentList[i].Release();
         }

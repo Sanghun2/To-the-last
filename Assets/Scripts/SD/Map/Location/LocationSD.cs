@@ -9,7 +9,7 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "LocationSD", menuName = "Scriptable Objects/LocationSD")]
 public class LocationSD : IconSDBase, IEquatable<LocationSD>
 {
-    public IReadOnlyList<EcounterEvent> LocationEventList => locationEventList;
+    public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
     public Sprite MainImage => mainImage;
     public Vector2 AnchoredPosition => anchoredPosition;
@@ -18,7 +18,7 @@ public class LocationSD : IconSDBase, IEquatable<LocationSD>
     [SerializeField] Sprite mainImage;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
-    [SerializeField] List<EcounterEvent> locationEventList = new List<EcounterEvent>();
+    [SerializeField] List<EncounterEvent> locationEventList = new List<EncounterEvent>();
     private float distance;
 
     private void OnValidate() {
@@ -76,7 +76,7 @@ public class LocationSD : IconSDBase, IEquatable<LocationSD>
 }
 
 [Serializable]
-public class EcounterEvent
+public class EncounterEvent
 {
     public int Level => level;
     public int Weight => weight;

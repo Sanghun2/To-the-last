@@ -29,4 +29,7 @@ MonoBehaviour:
     \uCC98\uC808\uD588\uB358 \uC2F8\uC6C0\uC744 \uBB35\uBB35\uD788 \uAE30\uC5B5\uD558\uACE0
     \uC788\uC2B5\uB2C8\uB2E4."
   anchoredPosition: {x: -258, y: -525}
-  locationEventList: []
+  locationEventList:
+  - level: 1
+    weight: 0
+    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}

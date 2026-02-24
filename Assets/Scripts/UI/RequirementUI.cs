@@ -1,4 +1,5 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,9 @@ public class RequirementUI : UIBase, IPool
         CloseUI();
     }
 
+    public void SetReqirementItem(Ingredient requirement) {
+        SetReqirementItem(requirement.ItemSD, requirement.Amount);
+    }
     public void SetReqirementItem(ItemSD itemSD, int amount) {
         itemID = itemSD.ID;
         itemAmount = amount;
@@ -47,4 +51,5 @@ public class RequirementUI : UIBase, IPool
         }
         amountText.text = $"x{amount}";
     }
+
 }

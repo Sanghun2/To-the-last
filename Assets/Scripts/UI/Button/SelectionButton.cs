@@ -3,6 +3,25 @@ using BilliotGames;
 using TMPro;
 using UnityEngine;
 
+
+public class SelectionButtonContext
+{
+    public bool IsLocked => isLocked;
+    public Ingredient Requirement => requrement;
+
+    [SerializeField] bool isLocked;
+    [SerializeField] Ingredient requrement;
+
+    public SelectionButtonContext SetLock(bool @lock) {
+        isLocked = @lock;
+        return this;
+    }
+    public SelectionButtonContext SetRequirement(Ingredient requirement) {
+        this.requrement = requirement;
+        return this;
+    }
+}
+
 public class SelectionButton : ButtonBase, IPool
 {
     public bool IsActive => IsOpened;
@@ -25,16 +44,19 @@ public class SelectionButton : ButtonBase, IPool
         CloseUI();
     }
 
-    public void InitButton(string text, Action buttonAction, bool isLocked = false, Ingredient ingredient=null) {
+    public void InitButton(string text, Action buttonAction, SelectionButtonContext context) {
         Init();
         buttonText.text = text;
         SetButtonAction(buttonAction);
 
         // requirement가 필요하면 open ui & init
-        //requirementUI.Init(requirement);
+        if (context.Requirement != null) {
+            requirementUI.SetReqirementItem(context.Requirement);
+        }
+        requirementUI.gameObject.SetActive(context.Requirement != null);
 
         // 선택 불가능한 선택지인 경우 lock on
-        lockObj.SetActive(isLocked);
+        lockObj.SetActive(context.IsLocked);
     }
 
     protected override void ButtonAction() {
