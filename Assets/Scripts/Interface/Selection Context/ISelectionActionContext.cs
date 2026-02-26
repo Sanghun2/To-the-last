@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using BilliotGames;
+using UnityEngine;
 
 public interface ISelectionActionContext
 {
-    SelectionActionContext Create(SelectionSD selectionSD);
+    SelectActionContext Create(SelectionSD selectionSD);
 }

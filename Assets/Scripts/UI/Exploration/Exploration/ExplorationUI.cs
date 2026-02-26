@@ -40,22 +40,38 @@ public class ExplorationUI : UIBase
     [SerializeField] SelectionButtonContainer selectionButtonContainer;
     private EnteranceUI _enteranceUI;
 
+    public override void InitUI() {
+        if (IsInit) return;
+
+        CloseUI();
+
+        _isInit = true;
+    }
+
     public void InitLocationUI(Location location) {
+        InitUI();
         mainBackgroundImage.sprite = location.LocationSD.MainImage;
         HideSituation();
     }
     public void ShowEnterance() {
+        InitUI();
         EnteranceUI.InitButtons();
         EnteranceUI.OpenUI();
         siuationObj.SetActive(false);
     }
     public void ShowSituation(EncounterSD encounterSD) {
+        InitUI();
         EnteranceUI.CloseUI();
         ShowSituationImage(encounterSD.EventImage);
         descriptionText.SetText(encounterSD.Description);
-        ShowSelections(encounterSD.SelectionList.Select(s => {
-            Action action = Managers.ActionCreator.CreateActionData(new SelectionActionContext(s, s.RequireMinutes)).Action;
-            return new SelectionData(s, action);
+        ShowSelections(encounterSD.SelectionList.Select(selectionSD => {
+            if (Managers.SelectActionPipeline.TryBuildSelectAction(selectionSD, out var action)) {
+                return new SelectionData(selectionSD, action.Action);
+            }
+            else {
+                Debug.LogError($"failed to build select action");
+                return null;
+            }
         }).ToList());
         siuationObj.SetActive(true);
     }

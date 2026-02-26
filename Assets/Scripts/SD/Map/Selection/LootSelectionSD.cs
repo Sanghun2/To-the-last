@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/Selection/LootSelectionSD")]
@@ -25,4 +26,22 @@ public class LootData
     [SerializeField] int weight = 1;
     [SerializeField] int minAppearence;
     [SerializeField] int maxAppearence;
+}
+
+public class LootSelectionContext : SelectionContext
+{
+    public float LootCountMutiflier => lootCountMultiflier;
+    public InventoryBase TargetInventory => targetInventory;
+
+    [SerializeField] float lootCountMultiflier = 1;
+    [SerializeField] InventoryBase targetInventory;
+
+    public LootSelectionContext(InventoryBase targetInventory) {
+        this.targetInventory = targetInventory;
+    }
+
+    public LootSelectionContext SetLootCountMultiflier(float value) {
+        lootCountMultiflier = value;
+        return this;
+    }
 }

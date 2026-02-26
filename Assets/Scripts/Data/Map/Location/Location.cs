@@ -27,10 +27,23 @@ public class Location : IValue<int>
     }
     public LocationSD LocationSD => locationSD;
 
+    public SimpleInventory Inventory
+    {
+        get
+        {
+            if (_inventory == null) {
+                _inventory = new SimpleInventory($"{locationID} inventory", 20);
+            }
+
+            return _inventory;
+        }
+    }
+
     [SerializeField][HideInInspector] string locationID;
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
     [SerializeField] State _currentState;
+    [SerializeField] SimpleInventory _inventory;
 
     [NonSerialized] private LocationSD locationSD;
 

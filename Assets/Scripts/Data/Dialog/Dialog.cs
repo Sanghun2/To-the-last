@@ -22,6 +22,9 @@ public class Dialog
         }
     }
 
+    public DialogSD DialogSD => dialogSD;
+    public string DialogID => dialogID;
+
     [SerializeField] State currentState;
     [SerializeField] string dialogID;
     private DialogSD dialogSD;

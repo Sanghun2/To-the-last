@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 
 public class DialogManager : IInitializable
@@ -10,7 +12,50 @@ public class DialogManager : IInitializable
     private bool _isInit;
 
 
-    public Dialog ReigisterDialog(DialogSD dialogSD, Dialog.State state) {
+    public void RegisterDialog(DialogSD newDialogSD) {
+        RegisterDialog(newDialogSD, Dialog.State.Idle);
+    }
+    public void CompleteDialog(Dialog targetDialog) {
+        availableDialogDict.Remove(targetDialog.DialogID);
+        RegisterDialog(targetDialog.DialogSD, Dialog.State.Done);
+    }
+
+    public bool TryGetDialog(string dialogID, out Dialog dialog) {
+        if (TryGetDialog(dialogID, Dialog.State.Done, out dialog)) {
+            return true;
+        }
+        else if (TryGetDialog(dialogID, Dialog.State.Idle, out dialog)) {
+            return true;
+        }
+
+        return false;
+    }
+    public bool TryGetDialog(string dialogID, Dialog.State state, out Dialog dialog) {
+
+        Dictionary<string, Dialog> targetDict = null;
+
+        switch (state) {
+            case Dialog.State.Idle:
+            case Dialog.State.Running:
+                targetDict = availableDialogDict;
+                break;
+            case Dialog.State.Done:
+                targetDict = completedDialogDict;
+                break;
+            default:
+                break;
+        }
+
+        if (targetDict.TryGetValue(dialogID, out dialog)) {
+            return true;
+        }
+
+        Debug.Log($"({dialogID}) is not available dialog");
+        return false;
+    }
+
+
+    private Dialog RegisterDialog(DialogSD dialogSD, Dialog.State state) {
         var dialog = new Dialog(dialogSD, state);
         Dictionary<string, Dialog> targetDict = null;
         switch (state) {
@@ -36,36 +81,8 @@ public class DialogManager : IInitializable
 
         return dialog;
     }
-    public bool TryGetDialog(string id, Dialog.State state, out Dialog dialog) {
-
-        Dictionary<string, Dialog> targetDict = null;
-
-        switch (state) {
-            case Dialog.State.Idle:
-            case Dialog.State.Running:
-                targetDict = availableDialogDict;
-                break;
-            case Dialog.State.Done:
-                targetDict = completedDialogDict;
-                break;
-            default:
-                break;
-        }
-
-        if (targetDict.TryGetValue(id, out dialog)) {
-            return true;
-        }
-
-        Debug.Log($"({id}) is not available dialog");
-        return false;
-    }
-
-
-
     public void Init() {
         if (IsInit) return;
-
-
 
         _isInit = true;
     }

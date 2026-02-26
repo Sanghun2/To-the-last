@@ -129,15 +129,15 @@ public sealed class Managers : MonoBehaviour
             return _encounterManager;
         }
     }
-    public static SelectionSystem SelectionSystem
+    public static SelectActionPipeline SelectActionPipeline
     {
         get
         {
-            if (_selectionSystem == null) {
-                _selectionSystem = new SelectionSystem();
+            if (_selectActionPipeline == null) {
+                _selectActionPipeline = new SelectActionPipeline();
             }
 
-            return _selectionSystem;
+            return _selectActionPipeline;
         }
     }
     public static DialogManager Dialog
@@ -163,22 +163,22 @@ public sealed class Managers : MonoBehaviour
             return _explorationSystem;
         }
     }
-    public static ActionCreator ActionCreator
+    public static RegistryManager Registry
     {
         get
         {
-            if (_actionCreator == null) {
-                _actionCreator = new ActionCreator();
+            if (_registryManager == null) {
+                _registryManager = new RegistryManager();
             }
 
-            return _actionCreator;
+            return _registryManager;
         }
     }
 
-    private static ActionCreator _actionCreator;
+    private static RegistryManager _registryManager;
     private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;
-    private static SelectionSystem _selectionSystem;
+    private static SelectActionPipeline _selectActionPipeline;
     private static EncounterManager _encounterManager;
     private static LocationManager _locationManager;
     private static ItemManager _itemManager;

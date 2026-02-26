@@ -30,6 +30,13 @@ public static class LocationUtility
 
        return null;
     }
+    public static Location ToLocation(this string locationID) {
+        if (Managers.Location.TryGetLocation(locationID, out var location)) {
+            return location;
+        }
+
+        return null;
+    }
 
     [MenuItem("Tools/Location/Recalculate Location Distances")]
     public static void Recalculate() {
