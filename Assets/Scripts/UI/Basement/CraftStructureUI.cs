@@ -17,6 +17,7 @@ public class CraftStructureUI : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
+        CloseUI();
         itemButtonContainer.InitUI();
         Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
         Managers.Craft.OnTargetSet += UpdateSelectedRecipe;
@@ -25,6 +26,7 @@ public class CraftStructureUI : UIBase
     }
 
     public void ShowList(IReadOnlyList<RecipeSD> recipes) {
+        InitUI();
         itemButtonContainer.ShowList(recipes);
         UpdateSelectedRecipe(recipes.First());
     }
