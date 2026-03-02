@@ -8,10 +8,6 @@ public class BattleEntity : Entity
         Selected,
     }
 
-    public BattleEntity(string entityID) : base(entityID) {
-
-    }
-
     public BehaviourState CurrentState
     {
         get => _currentState;
@@ -25,18 +21,36 @@ public class BattleEntity : Entity
             }
         }
     }
+    public int Position => _position;
+
+    private BehaviourState _currentState;
+    private int _position;
+
+
+    public BattleEntity(string entityID) : base(entityID) {
+
+    }
 
     public event Action<BehaviourState, BehaviourState> OnStateChanged;
 
-    private BehaviourState _currentState;
-
     public void InitEntity() {
         CurrentState = BehaviourState.Idle;
+        _position = 0;
+    }
+    public void SetPosition(int position) {
+        this._position = position;
+    }
+    public bool CanSelectBehaviour() {
+        return CurrentState == BehaviourState.Idle;
     }
     public void SelectBehaviour() {
         CurrentState = BehaviourState.Selected;
     }
     public void ResolveBehaviour() {
         CurrentState = BehaviourState.Idle;
+    }
+
+    public int CalculateDistance(BattleEntity targetEntity) {
+        return Mathf.Abs(Position - targetEntity.Position);
     }
 }

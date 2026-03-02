@@ -16,6 +16,14 @@ public class Define
         Check,
     }
 
+    public enum BattleState
+    {
+        None,
+        Ready,
+        InProgress,
+        Finish,
+    }
+
     //public enum SelectionType {
     //    Free,
     //    Loot,

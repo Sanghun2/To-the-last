@@ -8,7 +8,7 @@ public class ListStrategyBehaviourContainer : StrategyBehaviourContainerBase
 
     public override void RegisterBehaviour(StrategyBehaviour strategyBehaviour) {
         for (int i = strategyBehaviourList.Count - 1; i >= 0; ++i) {
-            if (strategyBehaviourList[i].Priority >= strategyBehaviour.Priority) {
+            if (strategyBehaviourList[i].BehaviourSpeed >= strategyBehaviour.BehaviourSpeed) {
                 strategyBehaviourList.Insert(i + 1, strategyBehaviour);
                 return;
             }

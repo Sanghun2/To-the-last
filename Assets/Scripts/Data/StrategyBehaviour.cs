@@ -3,9 +3,9 @@ using UnityEngine;
 
 public abstract class StrategyBehaviour
 {
-    public int Priority => priority;
+    public int BehaviourSpeed => behaviourSpeed;
 
-    private int priority;
+    private int behaviourSpeed;
     private BattleEntity owner;
     private BattleEntity target;
 
