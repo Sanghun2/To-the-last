@@ -174,7 +174,31 @@ public sealed class Managers : MonoBehaviour
             return _registryManager;
         }
     }
+    public static TurnManager Turn
+    {
+        get
+        {
+            if (_turnManager == null) {
+                _turnManager = new TurnManager();
+            }
 
+            return _turnManager;
+        }
+    }
+    public static BattleSystem Battle
+    {
+        get
+        {
+            if (_battleManager == null) {
+                _battleManager = new BattleSystem();
+            }
+
+            return _battleManager;
+        }
+    }
+
+    private static BattleSystem _battleManager;
+    private static TurnManager _turnManager;
     private static RegistryManager _registryManager;
     private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;

@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "7aadba6eeb0d41a7ad94c2428ac006b8aff92e60"
     },
+    "com.billiotgames.fsm": {
+      "version": "http://github.com/Sanghun2/FSM.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4f5ed0619ced0e26415ca814967eed0c686111c2"
+    },
     "com.billiotgames.inventory": {
       "version": "http://github.com/Sanghun2/inventory.git",
       "depth": 0,
@@ -37,7 +44,7 @@
       "dependencies": {
         "com.billiotgames.valuecontainer": "https://github.com/Sanghun2/Value-Container.git#1.0.7"
       },
-      "hash": "c042f52733107737c804b00848a10085032a33d5"
+      "hash": "39af7d1e4c2e9ad3c429ac8b49ea4b76a3935664"
     },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",

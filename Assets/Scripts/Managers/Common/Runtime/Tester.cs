@@ -46,9 +46,14 @@ public class Tester : MonoBehaviour
 
     [Space]
     [SerializeField] LootSelectionSD lootSelectionSD;
-    [SerializeField] float lootMultiflier = 1;
 
-    public void ExecuteSelection() {
+    public void RegisterTurn() {
+        Managers.Battle.PrepareBattle(
+            new BattleEntity("player"), 
+            new BattleEntity("Zombie"),
+            () => {
+                Managers.Battle.StartBattle();
+            });
     }
 
     public void MovePointer() {

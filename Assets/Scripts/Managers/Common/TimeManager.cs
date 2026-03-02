@@ -8,6 +8,18 @@ public class TimeManager : MonoBehaviour, IInitializable
     public const int HOUR_VALUE = 3600;
     public const int MINUTE_VALUE = 60;
 
+    public Timer TurnTimer
+    {
+        get
+        {
+            if (_turnTimer == null) {
+                _turnTimer = new Timer();
+            }
+
+            return _turnTimer;
+        }
+    }
+
     private Timer MainTimer
     {
         get
@@ -18,7 +30,7 @@ public class TimeManager : MonoBehaviour, IInitializable
 
             return _mainTimer;
         }
-    }
+    }   
 
     public bool IsInit => isInit;
 
@@ -27,6 +39,7 @@ public class TimeManager : MonoBehaviour, IInitializable
     public event TimeHandler OnDayChanged;
 
     [SerializeField] Timer _mainTimer;
+    [SerializeField] Timer _turnTimer;
 
     [SerializeField] int day;
     [SerializeField] int hour;
@@ -74,6 +87,10 @@ public class TimeManager : MonoBehaviour, IInitializable
 
     private void Reset() {
         _mainTimer = GetComponentInChildren<Timer>();
+    }
+
+    private void Start() {
+        TurnTimer.Pause(true);
     }
 
     public void Init() {
