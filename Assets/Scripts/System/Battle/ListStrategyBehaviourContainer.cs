@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ListStrategyBehaviourContainer : StrategyBehaviourContainerBase
 {
+    public override int CurrentBehaviourCount => strategyBehaviourList.Count;
+
     private List<StrategyBehaviour> strategyBehaviourList = new List<StrategyBehaviour>();
 
     public override void RegisterBehaviour(StrategyBehaviour strategyBehaviour) {
