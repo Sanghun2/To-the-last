@@ -23,8 +23,9 @@ public sealed class BattleStateController
     private Define.BattleState _currentState;
     private static readonly Dictionary<Define.BattleState, HashSet<Define.BattleState>> validTransitions = new Dictionary<Define.BattleState, HashSet<Define.BattleState>>() {
         { Define.BattleState.Ready,      new HashSet<Define.BattleState>{ Define.BattleState.None, Define.BattleState.Finish} },
-        { Define.BattleState.InProgress, new HashSet<Define.BattleState>{ Define.BattleState.Ready} },
-        { Define.BattleState.Finish,     new HashSet<Define.BattleState>{ Define.BattleState.InProgress} }
+        { Define.BattleState.Wait, new HashSet<Define.BattleState>{ Define.BattleState.Ready, Define.BattleState.Resolve} },
+        { Define.BattleState.Resolve, new HashSet<Define.BattleState>{ Define.BattleState.Wait} },
+        { Define.BattleState.Finish,     new HashSet<Define.BattleState>{ Define.BattleState.Wait} }
     };
 
     public bool TryTransitionTo(Define.BattleState state) {
@@ -41,5 +42,4 @@ public sealed class BattleStateController
     private bool CanTransitionTo(Define.BattleState state) {
         return validTransitions.TryGetValue(state, out var validStates) && validStates.Contains(CurrentState);
     }
-
 }

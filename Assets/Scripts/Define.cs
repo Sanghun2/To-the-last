@@ -20,7 +20,8 @@ public class Define
     {
         None,
         Ready,
-        InProgress,
+        Wait,
+        Resolve,
         Finish,
     }
 

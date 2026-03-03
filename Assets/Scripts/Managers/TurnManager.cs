@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 public sealed class TurnManager 
@@ -18,6 +19,7 @@ public sealed class TurnManager
 
     private int _currentTurn;
     private float turnInterval = 3f;
+    private float currentTime = 0;
 
     public event Action<int, int> OnTurnChanged; // current, delta
 
@@ -30,7 +32,12 @@ public sealed class TurnManager
         CurrentTurn += turnDelta;
     }
 
-    internal void UpdateTurn(float currentTime, float deltaTime) {
-        CurrentTurn = (int)(currentTime / turnInterval) + 1;
+    internal void UpdateTurn(float _, float deltaTime) {
+        currentTime += deltaTime;
+        if (currentTime >= turnInterval) {
+            currentTime -= turnInterval;
+            RaiseTurn();
+        }
+        //CurrentTurn = (int)(currentTime / turnInterval) + 1;
     }
 }

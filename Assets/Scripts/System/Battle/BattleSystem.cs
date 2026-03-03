@@ -14,12 +14,18 @@ public class BattleSystem
     #region Behaviour Control
 
     public void RegisterBehaviour(StrategyBehaviour strategyBehaviour) {
+        if (!CanRegister()) return;
         behaviourContainer.RegisterBehaviour(strategyBehaviour);
 
         if (behaviourContainer.CurrentBehaviourCount == 2) {
-            ResolveTurnBehaviours();
+            Managers.Turn.RaiseTurn();
         }
     }
+
+    private bool CanRegister() {
+        return stateController.CurrentState == Define.BattleState.Wait;
+    }
+
     public void RemoveBehaviour(StrategyBehaviour strategyBehaviour) {
         behaviourContainer.RemoveBehaviour(strategyBehaviour);
     }
@@ -28,10 +34,13 @@ public class BattleSystem
     }
 
     private void ResolveTurnBehaviours() {
-        PauseTurn();
+        if (!stateController.TryTransitionTo(Define.BattleState.Resolve)) { Debug.LogError($"<color=red>resolve 진입을 시도했으나 실패.</color>"); return; }
+
         behaviourResolver.ResolveTurnBehaviours(behaviourContainer,
             onResolveCompleted: () => {
-                ResumeTurn();
+                if (!stateController.TryTransitionTo(Define.BattleState.Wait)) {
+                    Debug.LogError($"<color=red>resolve 후 wait 진입 실패</color>");
+                }
             });
     }
     private void OnTurnChanged(int _, int __) => ResolveTurnBehaviours();
@@ -68,7 +77,7 @@ public class BattleSystem
     }
 
     public void StartBattle() {
-        if (!stateController.TryTransitionTo(Define.BattleState.InProgress)) { return; }
+        if (!stateController.TryTransitionTo(Define.BattleState.Wait)) { return; }
     }
     public void FinishBattle() {
         if (!stateController.TryTransitionTo(Define.BattleState.Finish)) { return; }
@@ -79,11 +88,17 @@ public class BattleSystem
 
     #region Turn Control
 
-    private void PauseTurn() {
+    private void PauseTurnTimer() {
         Managers.Time.TurnTimer.Pause(true);
     }
-    private void ResumeTurn() {
+    private void ResumeTurnTimer() {
         Managers.Time.TurnTimer.Pause(false);
+    }
+    private void PauseMainTimer() {
+        Managers.Time.PauseTime(true);
+    }
+    private void ResumeMainTimer() {
+        Managers.Time.PauseTime(false);
     }
 
     #endregion
@@ -98,21 +113,24 @@ public class BattleSystem
     private void EnterState(Define.BattleState state) {
         switch (state) {
             case Define.BattleState.Ready:
-                Managers.Time.PauseTime(true);
+                PauseMainTimer();
                 Managers.Time.TurnTimer.InitTime(0);
-                PauseTurn();
+                PauseTurnTimer();
                 break;
-            case Define.BattleState.InProgress:
-                ResumeTurn();
+            case Define.BattleState.Wait:
+                ResumeTurnTimer();
+                break;
+            case Define.BattleState.Resolve:
+                PauseTurnTimer();
                 break;
             case Define.BattleState.Finish:
-                Managers.Time.PauseTime(false);
+                ResumeMainTimer();
                 break;
         }
     }
     private void ExitState(Define.BattleState state) {
         switch (state) {
-            case Define.BattleState.InProgress:
+            case Define.BattleState.Wait:
                 behaviourResolver.Cancel(); // 진행 중 강제 종료 대비
                 UnsubscribeAll();
                 break;

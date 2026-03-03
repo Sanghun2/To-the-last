@@ -8,6 +8,10 @@ public static partial class Extension
         return new ItemData(itemSD.ID, itemSD.MaxStackCount);
     }
 
+    public static SkillData ToSkillData(this SkillSD skillSD) {
+        return new SkillData(skillSD.ID);
+    }
+
     public static string ToID(this Define.Stat statType) {
         return statType.ToString();
     }
