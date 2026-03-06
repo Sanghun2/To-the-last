@@ -7,6 +7,14 @@ public class SkillData
     public string SkillID => skillID;
     public SkillSD SkillSD => skillSD;
 
+    public static SkillData Empty
+    {
+        get
+        {
+            return new SkillData(string.Empty);
+        }
+    }
+
     [SerializeField] string skillID;
     protected SkillSD skillSD;
 

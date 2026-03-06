@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BilliotGames;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillButton : ButtonBase
 {
@@ -13,6 +14,7 @@ public class SkillButton : ButtonBase
     [Space]
     [Header("[  Assign  ]")]
     [SerializeField] TextMeshProUGUI skillNameText;
+    [SerializeField] Image skillIconImage;
     [SerializeField] GameObject selectedObj;
 
     public void InitSkill(BattleEntity caster, SkillData skillData) {
@@ -21,11 +23,19 @@ public class SkillButton : ButtonBase
 
         if (skillData == null) { Debug.LogError($"<color=red>[{GetType()}] skill data null</color>"); return; }
         this.skillData = skillData;
-        if (Managers.SD.TryGetSD(skillData.SkillID, out SkillSD targetSD)) {
-            skillNameText.text = targetSD.DisplayName;
+        if (Managers.SD.TryGetSD(skillData.SkillID, out SkillSD skillSD)) {
+            skillNameText.text = skillSD.DisplayName;
         }
 
-        var skillSD = skillData.SkillSD;
+        if (skillIconImage != null) {
+            if (Managers.SD.TryGetSD(skillData.SkillSD.BehaviourType.ToID(), out ImageSD imageSD)) {
+                skillIconImage.sprite = imageSD.IconImage;
+            }
+        }
+        else {
+            Debug.LogError($"<color=Orange>skill icon image null</color>");
+        }
+
         for (int i = 0; i < skillSD.Effects.Count; i++) {
             var effect = skillSD.Effects[i];    
             strategyBehaviours.Add(new SkillBehaviour(

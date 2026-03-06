@@ -15,4 +15,15 @@ public static partial class Extension
     public static string ToID(this Define.Stat statType) {
         return statType.ToString();
     }
+    public static string ToID(this StrategyBehaviour.BehaviourType behaviourType) {
+        switch (behaviourType) {
+            case StrategyBehaviour.BehaviourType.Initiative:
+                return "initiativeSkillIcon";
+            case StrategyBehaviour.BehaviourType.Counter:
+                return "counterSkillIcon";
+            case StrategyBehaviour.BehaviourType.Normal:
+            default:
+                return "normalSkillIcon";
+        }
+    }
 }

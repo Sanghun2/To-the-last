@@ -341,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillButton
   targetButton: {fileID: 3478826514103487423}
   skillNameText: {fileID: 7751903096135638578}
+  skillIconImage: {fileID: 8593973658706003740}
   selectedObj: {fileID: 892103636422786267}
 --- !u!1 &6215802851292745618
 GameObject:

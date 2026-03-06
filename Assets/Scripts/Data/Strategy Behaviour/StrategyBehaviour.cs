@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
 {
     public enum BehaviourType {
-        Initiaive,  // 선공기
+        Initiative,  // 선공기
         Counter,    // 반격기
         Normal,     // 일반기
     }

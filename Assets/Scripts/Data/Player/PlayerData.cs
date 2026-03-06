@@ -29,6 +29,7 @@ public sealed class PlayerData : IInitializable
     private StatContainer statContainer = new StatContainer();
     private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
     [SerializeField] private string currentLocationID;
+    [SerializeField] SkillContainer skillContainer = new SkillContainer();
 
     public void Init() {
         if (IsInit) return;
@@ -43,10 +44,12 @@ public sealed class PlayerData : IInitializable
             currentLocationID = LocationUtility.basementSDID;
         }
 
+        skillContainer.Init();
+
         _isInit = true;
     }
     public void Release() {
-
+        skillContainer.Release();
     }
 
     public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
@@ -67,6 +70,13 @@ public sealed class PlayerData : IInitializable
     }
     public void SetCurrentLocation(LocationSD locationSD) {
         SetCurrentLocation(locationSD.ID);
+    }
+
+    public void RegisterSkill(int index, SkillData skillData) {
+        skillContainer.RegisterSkill(index, skillData);
+    }
+    public void ClearSkill(int index) {
+        skillContainer.ClearSkill(index);
     }
 
     private void RegisterStat(Define.Stat statType, Stat stat) {
