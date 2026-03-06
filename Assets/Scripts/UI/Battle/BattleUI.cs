@@ -22,7 +22,7 @@ public class BattleUI : UIBase
     [SerializeField] EntityUI playerUI;
     [SerializeField] EntityUI enemyUI;
     [SerializeField] TurnUI _turnUI;
-    [SerializeField] SkillButtonContainer skillButtonContainer;
+    [SerializeField] List<SkillButton> skillButtonList;
 
     public override void InitUI() {
         if (IsInit) return;
@@ -39,13 +39,20 @@ public class BattleUI : UIBase
 
     internal void InitSkillUI(IReadOnlyList<SkillData> skillList) {
         if (skillList == null) { Debug.LogError($"<color=red>skill list null</color>"); return; }
-        if (skillButtonContainer == null) { Debug.LogError($"<color=red>skill button null</color>"); return; }
+        if (skillButtonList == null) { Debug.LogError($"<color=red>skill button null</color>"); return; }
 
-        skillButtonContainer.Clear();
+        ClearSkillButtons();
         for (int i = 0; i < skillList.Count; i++) {
             SkillData skillData = skillList[i];
-            var skillButton = skillButtonContainer.GetObj(i);
+            var skillButton = skillButtonList[i];
             skillButton.InitSkill(skillData);
+            skillButton.OpenUI();
+        }
+    }
+
+    private void ClearSkillButtons() {
+        for (int i = 0; i < skillButtonList.Count; i++) {
+            skillButtonList[i].CloseUI();
         }
     }
 }

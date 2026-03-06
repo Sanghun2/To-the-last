@@ -5932,7 +5932,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5872440705151906374, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Name
-      value: Skill Button (6)
+      value: Skill Button 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Pivot.x
@@ -6028,6 +6028,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
   m_PrefabInstance: {fileID: 990210475}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &990210477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6324455246986627738, guid: 74f157ea487c68e409cd7de727913355, type: 3}
+  m_PrefabInstance: {fileID: 990210475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71eb05c7a1a97d428d41023ad6b54e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillButton
 --- !u!1 &1024043568
 GameObject:
   m_ObjectHideFlags: 0
@@ -8685,8 +8696,12 @@ MonoBehaviour:
   backgroundImage: {fileID: 397276077}
   playerUI: {fileID: 604014792}
   enemyUI: {fileID: 1025108989}
-  _turnUI: {fileID: 0}
-  skillButtonContainer: {fileID: 0}
+  _turnUI: {fileID: 14472554}
+  skillButtonList:
+  - {fileID: 990210477}
+  - {fileID: 2028458544}
+  - {fileID: 1821025899}
+  - {fileID: 8418324302922694433}
 --- !u!1 &1559035744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9576,7 +9591,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5872440705151906374, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Name
-      value: Skill Button (4)
+      value: Skill Button 2
       objectReference: {fileID: 0}
     - target: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Pivot.x
@@ -9676,6 +9691,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
   m_PrefabInstance: {fileID: 1821025897}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821025899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6324455246986627738, guid: 74f157ea487c68e409cd7de727913355, type: 3}
+  m_PrefabInstance: {fileID: 1821025897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71eb05c7a1a97d428d41023ad6b54e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillButton
 --- !u!1 &1874735360
 GameObject:
   m_ObjectHideFlags: 0
@@ -10009,7 +10035,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5872440705151906374, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Name
-      value: Skill Button (5)
+      value: Skill Button 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Pivot.x
@@ -10105,6 +10131,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
   m_PrefabInstance: {fileID: 2028458542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2028458544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6324455246986627738, guid: 74f157ea487c68e409cd7de727913355, type: 3}
+  m_PrefabInstance: {fileID: 2028458542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71eb05c7a1a97d428d41023ad6b54e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillButton
 --- !u!1 &2075536078
 GameObject:
   m_ObjectHideFlags: 0
@@ -11072,7 +11109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5872440705151906374, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Name
-      value: Skill Button
+      value: Skill Button 3
       objectReference: {fileID: 0}
     - target: {fileID: 6344833354303570895, guid: 74f157ea487c68e409cd7de727913355, type: 3}
       propertyPath: m_Pivot.x
@@ -11163,6 +11200,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74f157ea487c68e409cd7de727913355, type: 3}
+--- !u!114 &8418324302922694433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6324455246986627738, guid: 74f157ea487c68e409cd7de727913355, type: 3}
+  m_PrefabInstance: {fileID: 8418324302922694432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71eb05c7a1a97d428d41023ad6b54e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillButton
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
