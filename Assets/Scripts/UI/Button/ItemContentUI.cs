@@ -13,7 +13,7 @@ public class ItemContentUI : ButtonBase, IPool
     public void Init() {
         base.InitUI();
     }
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
     public void Activate() {

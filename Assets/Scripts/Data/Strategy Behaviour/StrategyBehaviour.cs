@@ -34,4 +34,7 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
 
         return result;
     }
+    public void SetTarget(BattleEntity target) {
+        this.target = target;
+    }
 }

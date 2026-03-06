@@ -21,7 +21,7 @@ public class RequirementUI : UIBase, IPool
         InitUI();
     }
 
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
 

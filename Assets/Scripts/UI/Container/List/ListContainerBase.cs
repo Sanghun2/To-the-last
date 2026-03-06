@@ -43,7 +43,13 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
     public virtual void ReleaseContainer() {
         InitUI();
         for (int i = 0; i < contentList.Count; i++) {
-            contentList[i].Release();
+            contentList[i].Return();
+        }
+    }
+
+    public override void Clear() {
+        for (int i = 0; i < contentList.Count; i++) {
+            contentList[i].Return();
         }
     }
 }

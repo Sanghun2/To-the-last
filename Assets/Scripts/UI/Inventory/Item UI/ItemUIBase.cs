@@ -19,7 +19,7 @@ public abstract class ItemUIBase : UIBase, IPool
         if (amountText == null) Debug.LogError($"amounts text null");
         _isInit = true;
     }
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
 

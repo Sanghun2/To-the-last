@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class SkillContainer : IInitializable
 {
+    public IReadOnlyList<SkillData> SkillList => skillList;
+
     [SerializeField] List<SkillData> skillList;
     [SerializeField] private int skillCountLimit = 4;
 

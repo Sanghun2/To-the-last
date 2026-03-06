@@ -71,7 +71,9 @@ public class BattleSystem
 
         battleEntityManager.RegisterPlayer(player);
         battleEntityManager.RegisterEnemy(enemy);
-        Managers.UI.OpenUI<BattleUI>().InitUI(player, enemy);
+        var battleUI = Managers.UI.OpenUI<BattleUI>();
+        battleUI.InitUI(player, enemy);
+        battleUI.InitSkillUI(Managers.Player.PlayerData.SkillList);
 
         Managers.Turn.InitTurn();
 
@@ -169,6 +171,14 @@ public class BattleSystem
         stateController.OnStateChanged -= UpdateState;
         Managers.Time.TurnTimer.OnTimeChanged -= Managers.Turn.UpdateTurn;
         Managers.Turn.OnTurnChanged -= OnTurnChanged;
+    }
+
+    internal BattleEntity GetFirstEnemy() {
+        return battleEntityManager.GetFirstEnemy();
+    }
+
+    internal BattleEntity GetPlayerEntity() {
+        return battleEntityManager.GetPlayerEntity();
     }
 
     #endregion

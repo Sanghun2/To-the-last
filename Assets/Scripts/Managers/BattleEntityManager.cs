@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public sealed class BattleEntityManager
@@ -28,5 +29,13 @@ public sealed class BattleEntityManager
                 return;
             }
         }
+    }
+
+    internal BattleEntity GetFirstEnemy() {
+        return enemyList.FirstOrDefault();
+    }
+
+    internal BattleEntity GetPlayerEntity() {
+        return player;
     }
 }

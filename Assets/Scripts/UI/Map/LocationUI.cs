@@ -50,7 +50,7 @@ public class LocationUI : UIBase, IPool
     public void Activate() {
         OpenUI();
     }
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
 

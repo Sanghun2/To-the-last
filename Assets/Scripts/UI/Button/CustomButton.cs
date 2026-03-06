@@ -16,7 +16,7 @@ public class CustomButton : ButtonBase, IPool
     public void Activate() {
         OpenUI();
     }
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
 

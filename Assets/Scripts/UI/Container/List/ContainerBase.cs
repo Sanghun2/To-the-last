@@ -8,7 +8,7 @@ public interface IPool
 
     public void Init();
     public void Activate();
-    public void Release();
+    public void Return();
 }
 
 public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TContent> where TContent : Component, IPool
@@ -36,7 +36,7 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
             var obj = CreateObj();
             if (obj != null) {
                 obj.Init();
-                obj.Release();
+                obj.Return();
             }
         }
     }
@@ -70,4 +70,5 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
     }
 
     public abstract TContent GetObj();
+    public abstract void Clear();
 }

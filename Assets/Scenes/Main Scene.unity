@@ -8686,6 +8686,7 @@ MonoBehaviour:
   playerUI: {fileID: 604014792}
   enemyUI: {fileID: 1025108989}
   _turnUI: {fileID: 0}
+  skillButtonContainer: {fileID: 0}
 --- !u!1 &1559035744
 GameObject:
   m_ObjectHideFlags: 0

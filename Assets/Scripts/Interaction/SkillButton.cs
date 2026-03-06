@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillButton : ButtonBase
+public class SkillButton : ButtonBase, IPool
 {
     private SkillData skillData;
     private List<StrategyBehaviour> strategyBehaviours;
@@ -17,7 +17,10 @@ public class SkillButton : ButtonBase
     [SerializeField] Image skillIconImage;
     [SerializeField] GameObject selectedObj;
 
-    public void InitSkill(BattleEntity caster, SkillData skillData) {
+    public bool IsActive => skillData != null && IsOpened;
+
+    public void InitSkill(SkillData skillData) {
+        BattleEntity caster = Managers.BattleSystem.GetPlayerEntity();
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] skill 실행 주체가 없음. caster null</color>"); return; }
         this.caster = caster;
 
@@ -37,11 +40,12 @@ public class SkillButton : ButtonBase
         }
 
         for (int i = 0; i < skillSD.Effects.Count; i++) {
-            var effect = skillSD.Effects[i];    
+            var effect = skillSD.Effects[i];
             strategyBehaviours.Add(new SkillBehaviour(
                caster,
                skillData.SkillSD.BehaviourType,
-               (int)BattleUtility.CalculateBehaviourSpeed(caster)
+               (int)BattleUtility.CalculateBehaviourSpeed(caster),
+               Managers.BattleSystem.GetFirstEnemy()
                ));
         }
 
@@ -58,7 +62,6 @@ public class SkillButton : ButtonBase
         Managers.BattleSystem.RegisterBehaviour(strategyBehaviours);
     }
 
-
     private void UpdateState(BattleEntity.BehaviourState currentState, BattleEntity.BehaviourState prevState) {
         switch (currentState) {
             case BattleEntity.BehaviourState.Idle:
@@ -74,4 +77,20 @@ public class SkillButton : ButtonBase
     private bool CanAction() {
         return caster.CurrentState == BattleEntity.BehaviourState.Idle;
     }
+
+    #region Pool
+
+    public void Init() {
+        if (IsInit) return;
+
+        _isInit = true;
+    }
+    public void Activate() {
+        OpenUI();
+    }
+    public void Return() {
+        CloseUI();
+    }
+
+    #endregion
 }

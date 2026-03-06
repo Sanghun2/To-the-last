@@ -14,7 +14,7 @@ public class PoolableTextUI : TextUI, IPool
     public void Activate() {
         OpenUI();
     }
-    public void Release() {
+    public void Return() {
         CloseUI();
     }
 }

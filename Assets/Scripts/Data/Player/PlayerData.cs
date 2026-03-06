@@ -25,6 +25,8 @@ public sealed class PlayerData : IInitializable
         }
     }
 
+    public IReadOnlyList<SkillData> SkillList => skillContainer.SkillList; 
+
     private bool _isInit;
     private StatContainer statContainer = new StatContainer();
     private InventoryBase _inventory = new SimpleInventory("player inventory", 100);

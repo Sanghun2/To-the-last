@@ -25,7 +25,7 @@ public class SimpleItemUI : ItemUIBase
             amountText.text = GetAmountText(itemStack.Amount);
         }
         else {
-            Release();
+            Return();
         }
     }
 

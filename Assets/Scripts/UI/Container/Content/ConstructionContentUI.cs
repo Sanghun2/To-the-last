@@ -37,7 +37,7 @@ public class ConstructionContentUI : UIBase, IPool
         OpenUI();
     }
 
-    public void Release() {
+    public void Return() {
         CloseUI();
         //requirementUIContainer.ReleaseContainer();
     }
