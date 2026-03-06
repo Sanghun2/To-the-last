@@ -13,9 +13,9 @@ public class TesterEditor : Editor
 
         GUILayout.BeginHorizontal();
         {
-            GUILayout.Label("[  Register Turn  ]");
-            if (GUILayout.Button("Register Turn")) {
-                _script.RegisterTurn();
+            GUILayout.Label("[  PrepareBattles  ]");
+            if (GUILayout.Button("PrepareBattles")) {
+                _script.PrepareBattles();
             }
         }
 

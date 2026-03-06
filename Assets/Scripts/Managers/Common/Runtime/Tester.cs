@@ -47,7 +47,7 @@ public class Tester : MonoBehaviour
     [Space]
     [SerializeField] LootSelectionSD lootSelectionSD;
 
-    public void RegisterTurn() {
+    public void PrepareBattles() {
         Managers.BattleSystem.PrepareBattle(
             new BattleEntity("player"), 
             new BattleEntity("Zombie"),

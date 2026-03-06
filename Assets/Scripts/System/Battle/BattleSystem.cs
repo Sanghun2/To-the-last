@@ -72,17 +72,17 @@ public class BattleSystem
         battleEntityManager.RegisterPlayer(player);
         battleEntityManager.RegisterEnemy(enemy);
         var battleUI = Managers.UI.OpenUI<BattleUI>();
+
         battleUI.InitUI(player, enemy);
         battleUI.InitSkillUI(Managers.Player.PlayerData.SkillList);
-
         Managers.Turn.InitTurn();
 
         battleEntityManager.OnEnemyRemoved -= CheckBattleMaintanance;
         battleEntityManager.OnEnemyRemoved += CheckBattleMaintanance;
 
         // battle 시작 연출
+        //
         // ---
-
 
 
         onBattleReadied?.Invoke();
@@ -93,6 +93,8 @@ public class BattleSystem
         if (!stateController.TryTransitionTo(Define.BattleState.Wait)) { return; }
 
         // 전투 시작 애니메이션 및 처리
+        //
+        // ---
     }
     public void FinishBattle() {
         if (!stateController.TryTransitionTo(Define.BattleState.Finish)) { return; }
@@ -100,6 +102,8 @@ public class BattleSystem
         Debug.Log("전투 종료");
 
         // 전투 종료 애니메이션 및 처리
+        //
+        // ---
     }
 
     private void CheckBattleMaintanance(int remainEnemyCount) {

@@ -238,6 +238,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
         SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));
         SD.TryRegisterSD(new ImageSDContainer("SD/Icon"));
+        SD.TryRegisterSD(new SkillSDContainer("SD/Skill"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {
