@@ -185,7 +185,7 @@ public sealed class Managers : MonoBehaviour
             return _turnManager;
         }
     }
-    public static BattleSystem Battle
+    public static BattleSystem BattleSystem
     {
         get
         {

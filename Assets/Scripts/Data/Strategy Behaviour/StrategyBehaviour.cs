@@ -16,8 +16,9 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
     protected BattleEntity caster;
     protected BattleEntity target;
 
-    public StrategyBehaviour(BattleEntity caster, BehaviourType behaviourType, int behaviourSpeed) {
+    public StrategyBehaviour(BattleEntity caster, BehaviourType behaviourType, int behaviourSpeed, BattleEntity target=null) {
         this.caster = caster; 
+        this.target = target;
         this.behaviourType = behaviourType;
         this.behaviourSpeed = behaviourSpeed;
     }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class SkillSD : IconSDBase
 {
     public IReadOnlyList<EffectSD> Effects => effects;
+    public StrategyBehaviour.BehaviourType BehaviourType => behaviourType;
 
     [Space] 
     [SerializeField] StrategyBehaviour.BehaviourType behaviourType = StrategyBehaviour.BehaviourType.Normal;

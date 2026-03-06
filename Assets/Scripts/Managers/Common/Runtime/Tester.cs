@@ -48,11 +48,11 @@ public class Tester : MonoBehaviour
     [SerializeField] LootSelectionSD lootSelectionSD;
 
     public void RegisterTurn() {
-        Managers.Battle.PrepareBattle(
+        Managers.BattleSystem.PrepareBattle(
             new BattleEntity("player"), 
             new BattleEntity("Zombie"),
             () => {
-                Managers.Battle.StartBattle();
+                Managers.BattleSystem.StartBattle();
             });
     }
 

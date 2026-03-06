@@ -10,6 +10,7 @@ public class BattleSystem
     // 추후 우선순위 조정을 위해 우선순위 큐로 container 구현
     private StrategyBehaviourContainerBase behaviourContainer = new ListStrategyBehaviourContainer();
     private BehaviourResolver behaviourResolver = new BehaviourResolver();
+    private BattleEntityManager battleEntityManager = new BattleEntityManager();
 
     #region Behaviour Control
 
@@ -21,17 +22,18 @@ public class BattleSystem
             Managers.Turn.RaiseTurn();
         }
     }
-
-    private bool CanRegister() {
-        return stateController.CurrentState == Define.BattleState.Wait;
+    public void RegisterBehaviour(List<StrategyBehaviour> strategyBehaviours) {
+        for (int i = 0; i < strategyBehaviours.Count; i++) {
+            RegisterBehaviour(strategyBehaviours[i]);
+        }
     }
-
     public void RemoveBehaviour(StrategyBehaviour strategyBehaviour) {
         behaviourContainer.RemoveBehaviour(strategyBehaviour);
     }
     public bool TryPullBehaviour(out StrategyBehaviour strategyBehaviour) {
         return behaviourContainer.TryPullBehaviour(out strategyBehaviour);
     }
+
 
     private void ResolveTurnBehaviours() {
         if (!stateController.TryTransitionTo(Define.BattleState.Resolve)) { Debug.LogError($"<color=red>resolve 진입을 시도했으나 실패.</color>"); return; }
@@ -44,6 +46,9 @@ public class BattleSystem
             });
     }
     private void OnTurnChanged(int _, int __) => ResolveTurnBehaviours();
+    private bool CanRegister() {
+        return stateController.CurrentState == Define.BattleState.Wait;
+    }
 
     #endregion
 
@@ -64,9 +69,14 @@ public class BattleSystem
 
         if (!stateController.TryTransitionTo(Define.BattleState.Ready)) { Debug.LogError($"<color=red>failed to transtion to ({Define.BattleState.Ready})</color>"); }
 
+        battleEntityManager.RegisterPlayer(player);
+        battleEntityManager.RegisterEnemy(enemy);
         Managers.UI.OpenUI<BattleUI>().InitUI(player, enemy);
 
         Managers.Turn.InitTurn();
+
+        battleEntityManager.OnEnemyRemoved -= CheckBattleMaintanance;
+        battleEntityManager.OnEnemyRemoved += CheckBattleMaintanance;
 
         // battle 시작 연출
         // ---
@@ -76,11 +86,24 @@ public class BattleSystem
         onBattleReadied?.Invoke();
     }
 
+
     public void StartBattle() {
         if (!stateController.TryTransitionTo(Define.BattleState.Wait)) { return; }
+
+        // 전투 시작 애니메이션 및 처리
     }
     public void FinishBattle() {
         if (!stateController.TryTransitionTo(Define.BattleState.Finish)) { return; }
+
+        Debug.Log("전투 종료");
+
+        // 전투 종료 애니메이션 및 처리
+    }
+
+    private void CheckBattleMaintanance(int remainEnemyCount) {
+        if (remainEnemyCount == 0) {
+            FinishBattle();
+        }
     }
 
     #endregion

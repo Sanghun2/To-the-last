@@ -9,11 +9,15 @@ public class BattleEntity : Entity
         Idle,
         Selected,
     }
+    public enum Type {
+        Player,
+        Enemy,
+    }
 
     public BehaviourState CurrentState
     {
         get => _currentState;
-        protected set
+        set
         {
             var prevState = _currentState;
             _currentState = value;
@@ -47,6 +51,12 @@ public class BattleEntity : Entity
             statContainer.RegisterStat(id, new Stat(statData.Value));
         }
     }
+    public void InitEntity(StatContainer statContainer) {
+        CurrentState = BehaviourState.Idle;
+        _position = 0;
+        this.statContainer = statContainer;
+    }
+
     public BattleEntity SetPosition(int position) {
         this._position = position;
         return this;
@@ -54,14 +64,20 @@ public class BattleEntity : Entity
     public bool CanSelectBehaviour() {
         return CurrentState == BehaviourState.Idle;
     }
-    public void SelectBehaviour() {
-        CurrentState = BehaviourState.Selected;
-    }
-    public void ResolveBehaviour() {
-        CurrentState = BehaviourState.Idle;
-    }
 
     public int CalculateDistance(BattleEntity targetEntity) {
         return Mathf.Abs(Position - targetEntity.Position);
+    }
+
+    internal bool TryGetStat(Define.Stat statType, out float stat) {
+        stat = 0;
+        if (statContainer == null) return false;
+
+        Value<float>? statValue = statContainer.GetStatValue(statType.ToID());
+        if (statValue == null) { Debug.LogError($"<color=red>{statType}에 해당하는 stat이 없음</color>"); return false; }
+
+        Value<float> value = (Value<float>)statValue;
+        stat = value.CurrentValue;
+        return true;
     }
 }

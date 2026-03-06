@@ -4,6 +4,7 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Icon("Assets/Layer Lab/GUI Pro-SurvivalClean/ResourcesData/Sprites/Components/Icon_PictoIcons(x2)/64/Icon_Skull.Png")]
 [CreateAssetMenu(fileName = "EnemySD", menuName = "Scriptable Objects/EnemySD")]
 public class EnemySD : SDBase
 {

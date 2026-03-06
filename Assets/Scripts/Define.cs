@@ -33,7 +33,7 @@ public class Define
     //public enum SelectionType {
     //    Free,
     //    Loot,
-    //    Battle,
+    //    BattleSystem,
     //    Talk,
     //}
 }
