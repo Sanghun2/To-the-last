@@ -4,20 +4,20 @@ using UnityEngine;
 public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
 {
     public enum BehaviourType {
-        Initiaive,
-        Counter,
-        Normal,
+        Initiaive,  // 선공기
+        Counter,    // 반격기
+        Normal,     // 일반기
     }
 
     public int BehaviourSpeed => behaviourSpeed;
 
     private int behaviourSpeed;
     private BehaviourType behaviourType;
-    protected BattleEntity owner;
+    protected BattleEntity caster;
     protected BattleEntity target;
 
-    public StrategyBehaviour(BattleEntity owner, BehaviourType behaviourType, int behaviourSpeed) {
-        this.owner = owner; 
+    public StrategyBehaviour(BattleEntity caster, BehaviourType behaviourType, int behaviourSpeed) {
+        this.caster = caster; 
         this.behaviourType = behaviourType;
         this.behaviourSpeed = behaviourSpeed;
     }

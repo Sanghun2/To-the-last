@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2f32544acdd1b4b996bc5d3f5345c7, type: 3}
+  m_Name: strike_SkillSD
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSD
+  id: strike
+  displayName: "\uAC15\uD0C0"
+  descripiton: "\uAC15\uD558\uAC8C \uB0B4\uB9AC\uCCD0 \uACF5\uACA9\uD55C\uB2E4."
+  iconImage: {fileID: 0}
+  behaviourType: 2
+  effects:
+  - {fileID: 11400000, guid: fe6b0404bb956e847b2a8a7703b2b080, type: 2}

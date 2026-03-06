@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 public class BattleEntity : Entity
@@ -24,6 +26,7 @@ public class BattleEntity : Entity
     public int Position => _position;
 
     private BehaviourState _currentState;
+    protected StatContainer statContainer;
     private int _position;
 
 
@@ -33,12 +36,20 @@ public class BattleEntity : Entity
 
     public event Action<BehaviourState, BehaviourState> OnStateChanged;
 
-    public void InitEntity() {
+    public void InitEntity(IReadOnlyList<StatData> statDataList) {
         CurrentState = BehaviourState.Idle;
         _position = 0;
+
+        statContainer.Clear();
+        for (int i = 0; i < statDataList.Count; i++) {
+            var statData = statDataList[i];
+            string id = statData.Stat.ToID();
+            statContainer.RegisterStat(id, new Stat(statData.Value));
+        }
     }
-    public void SetPosition(int position) {
+    public BattleEntity SetPosition(int position) {
         this._position = position;
+        return this;
     }
     public bool CanSelectBehaviour() {
         return CurrentState == BehaviourState.Idle;

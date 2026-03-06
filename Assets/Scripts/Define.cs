@@ -8,6 +8,11 @@ public class Define
         Thirst = 2,
         Mental = 3,
         Temperture = 4,
+
+        Strength,
+        Agility,
+        Focus,
+        Toughness,
     }
 
     public enum RequirementType {
