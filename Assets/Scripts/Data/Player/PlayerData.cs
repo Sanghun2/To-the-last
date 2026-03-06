@@ -25,7 +25,8 @@ public sealed class PlayerData : IInitializable
         }
     }
 
-    public IReadOnlyList<SkillData> SkillList => skillContainer.SkillList; 
+    public IReadOnlyList<SkillData> SkillList => skillContainer.SkillList;
+    public StatContainer StatContainer => statContainer;
 
     private bool _isInit;
     private StatContainer statContainer = new StatContainer();
@@ -41,6 +42,11 @@ public sealed class PlayerData : IInitializable
         RegisterStat(Define.Stat.Thirst, new BoundedStat(100));
         RegisterStat(Define.Stat.Mental, new BoundedStat(100));
         RegisterStat(Define.Stat.Temperture, new Stat(36.5f));
+
+        RegisterStat(Define.Stat.Strength, new Stat(20));
+        RegisterStat(Define.Stat.Agility, new Stat(10));
+        RegisterStat(Define.Stat.Toughness, new Stat(10));
+        RegisterStat(Define.Stat.Focus, new Stat(20));
 
         if (string.IsNullOrEmpty(currentLocationID)) {
             currentLocationID = LocationUtility.basementSDID;

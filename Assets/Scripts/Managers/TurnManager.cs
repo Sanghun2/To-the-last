@@ -30,6 +30,7 @@ public sealed class TurnManager
 
     public void RaiseTurn(int turnDelta=1) {
         CurrentTurn += turnDelta;
+        currentTime = 0;
     }
 
     internal void UpdateTurn(float _, float deltaTime) {

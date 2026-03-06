@@ -39,6 +39,7 @@ public class SkillButton : ButtonBase, IPool
             Debug.LogError($"<color=Orange>skill icon image null</color>");
         }
 
+        strategyBehaviours = new List<StrategyBehaviour>(skillSD.Effects.Count);
         for (int i = 0; i < skillSD.Effects.Count; i++) {
             var effect = skillSD.Effects[i];
             strategyBehaviours.Add(new SkillBehaviour(
@@ -51,6 +52,8 @@ public class SkillButton : ButtonBase, IPool
 
         caster.OnStateChanged -= UpdateState;
         caster.OnStateChanged += UpdateState;
+
+        UpdateState(BattleEntity.BehaviourState.Idle, BattleEntity.BehaviourState.Idle);
     }
 
 

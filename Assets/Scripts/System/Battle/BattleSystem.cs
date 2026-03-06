@@ -45,7 +45,11 @@ public class BattleSystem
                 }
             });
     }
-    private void OnTurnChanged(int _, int __) => ResolveTurnBehaviours();
+    private void OnTurnChanged(int currentTurn, int __) {
+        if (currentTurn > 1) {
+            ResolveTurnBehaviours();
+        }
+    }
     private bool CanRegister() {
         return stateController.CurrentState == Define.BattleState.Wait;
     }
@@ -154,14 +158,14 @@ public class BattleSystem
                 break;
             case Define.BattleState.Finish:
                 ResumeMainTimer();
+                behaviourResolver.Cancel();
+                UnsubscribeAll();
                 break;
         }
     }
     private void ExitState(Define.BattleState state) {
         switch (state) {
             case Define.BattleState.Wait:
-                behaviourResolver.Cancel(); // 진행 중 강제 종료 대비
-                UnsubscribeAll();
                 break;
         }
     }

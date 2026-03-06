@@ -51,10 +51,11 @@ public class BattleEntity : Entity
             statContainer.RegisterStat(id, new Stat(statData.Value));
         }
     }
-    public void InitEntity(StatContainer statContainer) {
+    public BattleEntity InitEntity(StatContainer statContainer) {
         CurrentState = BehaviourState.Idle;
         _position = 0;
         this.statContainer = statContainer;
+        return this;
     }
 
     public BattleEntity SetPosition(int position) {

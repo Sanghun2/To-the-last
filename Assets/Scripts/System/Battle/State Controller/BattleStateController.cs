@@ -30,7 +30,7 @@ public sealed class BattleStateController
 
     public bool TryTransitionTo(Define.BattleState state) {
         if (!CanTransitionTo(state)) {
-            Debug.Log($"<color=yellow>{state}로 battle state 변경 불가</color>");
+            Debug.Log($"<color=yellow>{CurrentState} -> ({state})로 battle state 변경 불가</color>");
             return false;
         }
 

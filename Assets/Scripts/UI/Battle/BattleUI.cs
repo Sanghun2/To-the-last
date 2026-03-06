@@ -44,6 +44,7 @@ public class BattleUI : UIBase
         ClearSkillButtons();
         for (int i = 0; i < skillList.Count; i++) {
             SkillData skillData = skillList[i];
+            if (string.IsNullOrEmpty(skillData.SkillID)) continue;
             var skillButton = skillButtonList[i];
             skillButton.InitSkill(skillData);
             skillButton.OpenUI();

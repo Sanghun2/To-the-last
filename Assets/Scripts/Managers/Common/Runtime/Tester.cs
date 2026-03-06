@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BilliotGames;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -46,10 +47,19 @@ public class Tester : MonoBehaviour
 
     [Space]
     [SerializeField] LootSelectionSD lootSelectionSD;
+    [SerializeField] SkillSD[] testSkills;
 
     public void PrepareBattles() {
+
+        var skills = testSkills.Select(s => new SkillData(s)).ToArray();
+        for (int i = 0; i < skills.Length; i++) {
+            if (i >= 4) break;
+            SkillData skill = skills[i];
+            Managers.Player.PlayerData.RegisterSkill(i, skill);
+        }
+
         Managers.BattleSystem.PrepareBattle(
-            new BattleEntity("player"), 
+            new BattleEntity("player").InitEntity(Managers.Player.PlayerData.StatContainer), 
             new BattleEntity("Zombie"),
             () => {
                 Managers.BattleSystem.StartBattle();
