@@ -48,6 +48,8 @@ public class Tester : MonoBehaviour
     [Space]
     [SerializeField] LootSelectionSD lootSelectionSD;
     [SerializeField] SkillSD[] testSkills;
+    [SerializeField] EnemySD enemySD;
+    [SerializeField] BattleEntity enemy;
 
     public void PrepareBattles() {
 
@@ -58,9 +60,10 @@ public class Tester : MonoBehaviour
             Managers.Player.PlayerData.RegisterSkill(i, skill);
         }
 
+        enemy = new BattleEntity("Zombie").InitEntity(enemySD.StatDataList);
         Managers.BattleSystem.PrepareBattle(
             new BattleEntity("player").InitEntity(Managers.Player.PlayerData.StatContainer), 
-            new BattleEntity("Zombie"),
+            enemy,
             () => {
                 Managers.BattleSystem.StartBattle();
             });

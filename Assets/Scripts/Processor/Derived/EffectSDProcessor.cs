@@ -6,7 +6,9 @@ public class EffectSDProcessor : EffectProcessor<EffectSD>
         if (effect == null) { Debug.LogError($"<color=red>process failed. effect is null</color>"); return; }
         if (caster == null) { Debug.LogError($"<color=red>effect caster shouldn't be null</color>"); return; }
 
-        effect.ApplyEffect(caster, Managers.BattleSystem.ResolveTarget(caster, effect.TargetType));
+        target = Managers.BattleSystem.ResolveTarget(caster, effect.TargetType);
+        Debug.Log($"<color=orange>caster id? ({caster.EntityID}), target id? ({target?.EntityID})</color>");
+        effect.ApplyEffect(caster, target);
     }
 
     public override void ProcessEffect(IEffect effect, Entity caster, Entity target = null) {

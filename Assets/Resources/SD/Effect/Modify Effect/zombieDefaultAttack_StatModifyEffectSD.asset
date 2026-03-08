@@ -16,6 +16,7 @@ MonoBehaviour:
   displayName: "\uD560\uD034\uAE30"
   descripiton: "\uD314\uC744 \uD718\uB458\uB7EC \uD65C\uD0A4\uB294 \uACF5\uACA9\uC744
     \uD55C\uB2E4."
+  targetType: 2
   valueType: 0
   _value: -4
   operatorType: 0

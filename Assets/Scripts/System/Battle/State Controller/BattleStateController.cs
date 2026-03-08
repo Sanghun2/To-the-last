@@ -37,9 +37,13 @@ public sealed class BattleStateController
         CurrentState = state;
         return true;
     }
+    public void ResetEvent() {
+        OnStateChanged = null;
+    }
 
 
     private bool CanTransitionTo(Define.BattleState state) {
         return validTransitions.TryGetValue(state, out var validStates) && validStates.Contains(CurrentState);
     }
+
 }

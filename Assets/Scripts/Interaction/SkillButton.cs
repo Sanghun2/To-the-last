@@ -21,6 +21,7 @@ public class SkillButton : ButtonBase, IPool
 
     public void InitSkill(SkillData skillData) {
         if (IsInit) return;
+        Init();
         this.caster = Managers.BattleSystem.GetPlayerEntity();
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] skill 실행 주체가 없음. caster null</color>"); return; }
     
@@ -52,8 +53,9 @@ public class SkillButton : ButtonBase, IPool
 
 
     protected override void ButtonAction() {
+        Debug.Log("try to act");
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] caster null</color>"); return; }
-        if (!CanAction()) return;
+        if (!CanAction()) { Debug.Log($"지금은 행동 선택 불가"); return; }
 
         caster.CurrentState = BattleEntity.BehaviourState.Selected;
         Managers.BattleSystem.RegisterBehaviour(skillBehaviour);
@@ -79,6 +81,8 @@ public class SkillButton : ButtonBase, IPool
 
     public void Init() {
         if (IsInit) return;
+
+        InitUI();
 
         base._isInit = true;
     }

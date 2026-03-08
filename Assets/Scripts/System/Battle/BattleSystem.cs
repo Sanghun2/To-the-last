@@ -23,23 +23,29 @@ public class BattleSystem
     }
 
     public Entity ResolveTarget(Entity caster, Effect.TargetType targetType) {
-        return ResolveTarget(caster as BattleEntity, targetType);
+
+        var target = ResolveTarget(caster as BattleEntity, targetType);
+
+        //
+        //
+
+        return target;
     }
     public Entity ResolveTarget(BattleEntity caster, Effect.TargetType targetType) {
-        var playerEntity = battleEntityManager.GetPlayerEntity();
-        if (caster.Equals(playerEntity)) {
+        BattleEntity playerEntity = battleEntityManager.GetPlayerEntity();
 
+        if (caster.Equals(playerEntity)) {
             return targetType switch {
                 Effect.TargetType.None => null,
                 Effect.TargetType.Self => battleEntityManager.GetPlayerEntity(),
-                Effect.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
+                Effect.TargetType.ClosestEnemy => battleEntityManager.GetFirstEnemy(),
                 _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
             };
         }
         else {
             return targetType switch {
                 Effect.TargetType.None => null,
-                Effect.TargetType.Self => battleEntityManager.GetPlayerEntity(),
+                Effect.TargetType.Self => battleEntityManager.GetFirstEnemy(),
                 Effect.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
                 _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
             };
@@ -51,7 +57,8 @@ public class BattleSystem
             return effectProcessor;
         }
 
-        return null;
+        Debug.Log($"({type.GetType()})에 맞는 processor가 등록되어 있지 않아 default processor로 처리 진행");
+        return effectProcessorRegistry.DefaultProcessor;
     }
 
     #endregion
@@ -106,6 +113,7 @@ public class BattleSystem
     public void PrepareBattle(BattleEntity player, BattleEntity enemy, Action onBattleReadied = null) {
         if (player == null || enemy == null) { Debug.LogError($"entity empty. player null? {player == null}, enemy null? {enemy == null}"); return; }
 
+        stateController.ResetEvent();
         stateController.OnStateChanged -= UpdateState;
         stateController.OnStateChanged += UpdateState;
 
@@ -120,6 +128,9 @@ public class BattleSystem
         battleEntityManager.RegisterPlayer(player);
         battleEntityManager.RegisterEnemy(enemy);
         var battleUI = Managers.UI.OpenUI<BattleUI>();
+
+        stateController.OnStateChanged += player.ResetState;
+        stateController.OnStateChanged += enemy.ResetState;
 
         battleUI.InitUI(player, enemy);
         battleUI.InitSkillUI(Managers.Player.PlayerData.SkillList);

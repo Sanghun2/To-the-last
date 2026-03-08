@@ -4913,6 +4913,7 @@ MonoBehaviour:
   testSkills:
   - {fileID: 11400000, guid: 33e3b219ca53ae84b9819fff46e8f911, type: 2}
   - {fileID: 11400000, guid: 6300fe8a3b415eb40ba00b9474030326, type: 2}
+  enemySD: {fileID: 11400000, guid: 536ab8e470ba93f49848d16b6e79481f, type: 2}
 --- !u!1 &838903882
 GameObject:
   m_ObjectHideFlags: 0
