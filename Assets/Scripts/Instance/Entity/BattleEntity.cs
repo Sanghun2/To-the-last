@@ -70,7 +70,7 @@ public class BattleEntity : Entity
         return Mathf.Abs(Position - targetEntity.Position);
     }
 
-    internal bool TryGetStat(Define.Stat statType, out float stat) {
+    internal bool TryGetStatValue(Define.Stat statType, out float stat) {
         stat = 0;
         if (statContainer == null) return false;
 
@@ -80,5 +80,12 @@ public class BattleEntity : Entity
         Value<float> value = (Value<float>)statValue;
         stat = value.CurrentValue;
         return true;
+    }    
+    public bool TryChangeStat(string statID, float deltaValue) {
+        return statContainer.TryChangeStat(statID, deltaValue);
+    }
+
+    public bool TryGetStat(string statID, out Stat stat) {
+        return statContainer.TryGetStat(statID, out stat);
     }
 }

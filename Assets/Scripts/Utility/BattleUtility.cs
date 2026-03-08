@@ -6,11 +6,11 @@ public static class BattleUtility
     private const float AGILITY_VALUE = 2f;
 
     public static float CalculateBehaviourSpeed(BattleEntity entity) {
-        if (!entity.TryGetStat(Define.Stat.Strength, out var strength)) {
+        if (!entity.TryGetStatValue(Define.Stat.Strength, out var strength)) {
             Debug.LogError($"<color=red>{Define.Stat.Strength} stat 없음</color>");
         }
 
-        if (!entity.TryGetStat(Define.Stat.Agility, out var agility)) {
+        if (!entity.TryGetStatValue(Define.Stat.Agility, out var agility)) {
             Debug.LogError($"<color=red>{Define.Stat.Agility} stat 없음</color>");
         }
 

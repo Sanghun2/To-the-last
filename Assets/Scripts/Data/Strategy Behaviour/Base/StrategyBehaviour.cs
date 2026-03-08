@@ -9,6 +9,12 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
         Normal,     // 일반기
     }
 
+    public enum TargetType {
+        None,
+        Self,
+        ClosestEnemy,
+    }
+
     public int BehaviourSpeed => behaviourSpeed;
 
     private int behaviourSpeed;
@@ -23,7 +29,7 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
         this.behaviourSpeed = behaviourSpeed;
     }
 
-    internal abstract void Resolve(Action onResolveCompleted=null);
+    public abstract void Resolve(Action onResolveCompleted=null);
 
     public int CompareTo(StrategyBehaviour other) {
         if (other == null) return 1;

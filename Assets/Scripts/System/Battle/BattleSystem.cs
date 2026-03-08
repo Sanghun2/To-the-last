@@ -12,6 +12,18 @@ public class BattleSystem
     private BehaviourResolver behaviourResolver = new BehaviourResolver();
     private BattleEntityManager battleEntityManager = new BattleEntityManager();
 
+    #region Context Resolve
+
+    public BattleEntity ResolveTarget(StrategyBehaviour.TargetType targetType) {
+        return targetType switch {
+            StrategyBehaviour.TargetType.Self => battleEntityManager.GetPlayerEntity(),
+            StrategyBehaviour.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
+            _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
+        };
+    }
+
+    #endregion
+
     #region Behaviour Control
 
     public void RegisterBehaviour(StrategyBehaviour strategyBehaviour) {

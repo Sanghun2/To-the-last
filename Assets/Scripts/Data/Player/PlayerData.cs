@@ -71,7 +71,7 @@ public sealed class PlayerData : IInitializable
         return statContainer.GetStatValue(targetStat.ToID());
     }
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {
-        statContainer.ChangeStat(targetStat.ToID(), deltaValue);
+        statContainer.TryChangeStat(targetStat.ToID(), deltaValue);
     }
     public void SetCurrentLocation(string locationID) {
         currentLocationID = locationID;

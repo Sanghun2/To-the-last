@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SkillButton : ButtonBase, IPool
 {
     private SkillData skillData;
-    private List<StrategyBehaviour> strategyBehaviours;
+    private SkillBehaviour skillBehaviour;
     private BattleEntity caster;
 
     [Space]
@@ -20,9 +20,10 @@ public class SkillButton : ButtonBase, IPool
     public bool IsActive => skillData != null && IsOpened;
 
     public void InitSkill(SkillData skillData) {
-        BattleEntity caster = Managers.BattleSystem.GetPlayerEntity();
+        if (IsInit) return;
+        this.caster = Managers.BattleSystem.GetPlayerEntity();
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] skill 실행 주체가 없음. caster null</color>"); return; }
-        this.caster = caster;
+    
 
         if (skillData == null) { Debug.LogError($"<color=red>[{GetType()}] skill data null</color>"); return; }
         this.skillData = skillData;
@@ -39,21 +40,17 @@ public class SkillButton : ButtonBase, IPool
             Debug.LogError($"<color=Orange>skill icon image null</color>");
         }
 
-        strategyBehaviours = new List<StrategyBehaviour>(skillSD.Effects.Count);
-        for (int i = 0; i < skillSD.Effects.Count; i++) {
-            var effect = skillSD.Effects[i];
-            strategyBehaviours.Add(new SkillBehaviour(
+        skillBehaviour = new SkillBehaviour(
                caster,
-               skillData.SkillSD.BehaviourType,
-               (int)BattleUtility.CalculateBehaviourSpeed(caster),
-               Managers.BattleSystem.GetFirstEnemy()
-               ));
-        }
+               skillSD
+               );
 
         caster.OnStateChanged -= UpdateState;
         caster.OnStateChanged += UpdateState;
 
         UpdateState(BattleEntity.BehaviourState.Idle, BattleEntity.BehaviourState.Idle);
+
+        _isInit = true;
     }
 
 
@@ -62,7 +59,7 @@ public class SkillButton : ButtonBase, IPool
         if (!CanAction()) return;
 
         caster.CurrentState = BattleEntity.BehaviourState.Selected;
-        Managers.BattleSystem.RegisterBehaviour(strategyBehaviours);
+        Managers.BattleSystem.RegisterBehaviour(skillBehaviour);
     }
 
     private void UpdateState(BattleEntity.BehaviourState currentState, BattleEntity.BehaviourState prevState) {
@@ -86,7 +83,7 @@ public class SkillButton : ButtonBase, IPool
     public void Init() {
         if (IsInit) return;
 
-        _isInit = true;
+        base._isInit = true;
     }
     public void Activate() {
         OpenUI();
