@@ -11,15 +11,47 @@ public class BattleSystem
     private StrategyBehaviourContainerBase behaviourContainer = new ListStrategyBehaviourContainer();
     private BehaviourResolver behaviourResolver = new BehaviourResolver();
     private BattleEntityManager battleEntityManager = new BattleEntityManager();
+    private EffectProcessorRegistry effectProcessorRegistry = new EffectProcessorRegistry();   
 
     #region Context Resolve
 
-    public BattleEntity ResolveTarget(StrategyBehaviour.TargetType targetType) {
-        return targetType switch {
-            StrategyBehaviour.TargetType.Self => battleEntityManager.GetPlayerEntity(),
-            StrategyBehaviour.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
-            _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
-        };
+    public BattleEntity GetFirstEnemy() {
+        return battleEntityManager.GetFirstEnemy();
+    }
+    public BattleEntity GetPlayerEntity() {
+        return battleEntityManager.GetPlayerEntity();
+    }
+
+    public Entity ResolveTarget(Entity caster, Effect.TargetType targetType) {
+        return ResolveTarget(caster as BattleEntity, targetType);
+    }
+    public Entity ResolveTarget(BattleEntity caster, Effect.TargetType targetType) {
+        var playerEntity = battleEntityManager.GetPlayerEntity();
+        if (caster.Equals(playerEntity)) {
+
+            return targetType switch {
+                Effect.TargetType.None => null,
+                Effect.TargetType.Self => battleEntityManager.GetPlayerEntity(),
+                Effect.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
+                _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
+            };
+        }
+        else {
+            return targetType switch {
+                Effect.TargetType.None => null,
+                Effect.TargetType.Self => battleEntityManager.GetPlayerEntity(),
+                Effect.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
+                _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
+            };
+        }
+    }
+
+    public EffectProcessor GetEffectProcessor(IEffect type) {
+        if (effectProcessorRegistry.TryGet(type, out var effectProcessor)) {
+            return effectProcessor;
+        }
+
+        return null;
     }
 
     #endregion
@@ -193,13 +225,6 @@ public class BattleSystem
         Managers.Turn.OnTurnChanged -= OnTurnChanged;
     }
 
-    internal BattleEntity GetFirstEnemy() {
-        return battleEntityManager.GetFirstEnemy();
-    }
-
-    internal BattleEntity GetPlayerEntity() {
-        return battleEntityManager.GetPlayerEntity();
-    }
 
     #endregion
 

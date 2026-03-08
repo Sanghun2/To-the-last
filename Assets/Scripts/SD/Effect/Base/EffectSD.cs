@@ -1,6 +1,8 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using UnityEngine;
 
+[Serializable]
 public class Effect
 {
     public enum OperatorType
@@ -13,47 +15,27 @@ public class Effect
         Scala,
         Percent,
     }
+    public enum TargetType {
+        None,
+        Self,
+        ClosestEnemy,
+    }
+}
+
+public interface IEffect
+{
+    public void ApplyEffect(Entity caster, Entity target);
 }
 
 
-public abstract class EffectSD : SDBase
-{  
-    
-    //public enum TargetType {
-    //    None,
+public abstract class EffectSD : SDBase, IEffect
+{
+    public Effect.TargetType TargetType => targetType;
 
-    //    // 기본 stat
-    //    Hp,
-    //    Hunger,
-    //    Thirst,
-    //    Mental,
-    //    Temperture,
-
-    //    // 확장 stat
-    //    Strength,
-    //    Agility,
-    //    Focus,
-
-    //    // 전투
-    //    Attack, // 무기의 공격력
-    //    Defense,
-
-    //    Damage,  // 데미지 적용을 위해 적용되는 데미지
-    //    Dodge, 
-    //    Charge,
-    //}
-    //public enum ApplyType {
-    //    Instant,
-    //    Delay,
-    //}
-
-    //public TargetType TargetType_ => targetType;
-    //public ApplyType ApplyType_ => applyType;
-
-    //[SerializeField] TargetType targetType;
-    //[SerializeField] protected ApplyType applyType;
+    [SerializeField] Effect.TargetType targetType;
 
     public abstract void ApplyEffect(Entity caster, Entity target);
+
     protected bool IsValid(Entity caster, Entity target) {
         if (caster == null || target == null) { Debug.Log($"entity null. caster null? {caster == null}, target null? {target == null}"); return false; }
 

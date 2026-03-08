@@ -1,9 +1,17 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StatModifierEffectSD", menuName = "Scriptable Objects/Effect/Stat/StatModifierEffectSD")]
+public enum ApplyType
+{
+    None,
+    Add,
+    Remove,
+}
+
+[CreateAssetMenu(fileName = "ApplyStatModifierEffectSD", menuName = "Scriptable Objects/Effect/Stat/Apply Stat Modifier Effect SD")]
 public class ApplyStatModifierEffectSD : ModifyEffectSD
 {
+    [SerializeField] ApplyType applyType;
     [SerializeField] Define.Stat targetStat;
 
     public override void ApplyEffect(Entity caster, Entity target) {
@@ -12,12 +20,26 @@ public class ApplyStatModifierEffectSD : ModifyEffectSD
         if (target is BattleEntity battleEntity) {
             if (!battleEntity.TryGetStat(targetStat.ToID(), out Stat stat)) { return; }
 
-            var newModifier = new StatModifier(Value, ConvertType(operatorType));
-            stat.AddModifier(newModifier);
+            var newModifier = new StatModifier(ID, Value, ConvertType(operatorType));
+            switch (applyType) {
+                case ApplyType.Add:
+                    stat.AddModifier(newModifier);
+                    break;
+                case ApplyType.Remove:
+                    stat.RemoveModifier(newModifier);
+                    break;
+                case ApplyType.None:
+                default:
+                    break;
+            }
         }
         else {
             Debug.LogError($"<color=red>stat modifier를 추가 할 수 없음</color>");
         }
+    }
+
+    protected override void OnValidate() {
+        RenameAsset(ID, suffix: "_ApplyStatModifierEffectSD");
     }
 
     private StatModifier.ModifierType ConvertType(Effect.OperatorType operatorType) {

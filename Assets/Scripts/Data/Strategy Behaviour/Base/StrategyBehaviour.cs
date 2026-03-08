@@ -20,11 +20,9 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
     private int behaviourSpeed;
     private BehaviourType behaviourType;
     protected BattleEntity caster;
-    protected BattleEntity target;
 
     public StrategyBehaviour(BattleEntity caster, BehaviourType behaviourType, int behaviourSpeed, BattleEntity target=null) {
         this.caster = caster; 
-        this.target = target;
         this.behaviourType = behaviourType;
         this.behaviourSpeed = behaviourSpeed;
     }
@@ -39,8 +37,5 @@ public abstract class StrategyBehaviour : IComparable<StrategyBehaviour>
         }
 
         return result;
-    }
-    public void SetTarget(BattleEntity target) {
-        this.target = target;
     }
 }

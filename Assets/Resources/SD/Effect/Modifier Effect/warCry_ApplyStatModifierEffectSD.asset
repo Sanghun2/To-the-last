@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d6df76e6be232409b9ef26ba7bb163, type: 3}
-  m_Name: dodge_EffectSD
-  m_EditorClassIdentifier: Assembly-CSharp::EffectSD
-  id: dodge
+  m_Script: {fileID: 11500000, guid: f149232a40cda8045912f04331541551, type: 3}
+  m_Name: warCry_ApplyStatModifierEffectSD
+  m_EditorClassIdentifier: Assembly-CSharp::ApplyStatModifierEffectSD
+  id: warCry
   displayName: 
-  descripiton: "\uC801\uC758 \uACF5\uACA9\uC744 \uD68C\uD53C."
-  targetTyep: 1
-  value: -50
-  operatorType: 0
+  descripiton: 
   valueType: 0
+  _value: 0
+  operatorType: 0
+  applyType: 0
+  targetStat: 0

@@ -51,7 +51,7 @@
       "dependencies": {
         "com.billiotgames.valuecontainer": "1.0.7"
       },
-      "hash": "8b454e985192c1658363948f9f2b7961d1b62b2f"
+      "hash": "a5accdba8b8389fef66bfda7e5be6e11be4c65c3"
     },
     "com.billiotgames.timer": {
       "version": "http://github.com/Sanghun2/timer.git",

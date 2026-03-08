@@ -40,10 +40,7 @@ public class SkillButton : ButtonBase, IPool
             Debug.LogError($"<color=Orange>skill icon image null</color>");
         }
 
-        skillBehaviour = new SkillBehaviour(
-               caster,
-               skillSD
-               );
+        skillBehaviour = new SkillBehaviour(caster, skillSD);
 
         caster.OnStateChanged -= UpdateState;
         caster.OnStateChanged += UpdateState;
