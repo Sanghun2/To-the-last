@@ -22,11 +22,11 @@
       "hash": "4f5ed0619ced0e26415ca814967eed0c686111c2"
     },
     "com.billiotgames.inventory": {
-      "version": "http://github.com/Sanghun2/inventory.git",
+      "version": "https://github.com/Sanghun2/Inventory.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "59aca9c5137f82fd5459275686741ce326e8cc00"
+      "hash": "6a884ad3aeccb4d3b22f32c9b54d6ff000bc4e2a"
     },
     "com.billiotgames.screenoverlay": {
       "version": "http://github.com/Sanghun2/Screen-Overlay.git",
@@ -42,7 +42,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "adf68c8c62dc5c812a96206a5b9dcf0f0bc3d89e"
+      "hash": "02bbf64ef77fb9721951cde968dc2748f4eb704b"
     },
     "com.billiotgames.stats": {
       "version": "https://github.com/Sanghun2/Stats.git",

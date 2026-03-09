@@ -1,9 +1,7 @@
 ﻿using System;
 using BilliotGames;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.FilePathAttribute;
 
 
 public class LocationInfoPopUpData : PopUpData

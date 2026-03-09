@@ -1,6 +1,7 @@
-﻿#if UNITY_EDITOR
-using System;
+﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public static class LocationUtility
@@ -38,6 +39,8 @@ public static class LocationUtility
         return null;
     }
 
+#if UNITY_EDITOR
+
     [MenuItem("Tools/Location/Recalculate Location Distances")]
     public static void Recalculate() {
         // 기준 집 SD 찾기
@@ -67,7 +70,6 @@ public static class LocationUtility
         AssetDatabase.SaveAssets();
         Debug.Log("Location distances recalculated");
     }
-
     private static LocationSD FindHomeSD() {
         var guids = AssetDatabase.FindAssets("t:LocationSD");
 
@@ -80,6 +82,8 @@ public static class LocationUtility
         }
         return null;
     }
+#endif
+
     private static int GetHour(float distance) {
         distance /= 2;
         return (int)(distance / 60);
@@ -89,4 +93,3 @@ public static class LocationUtility
         return (int)(distance % 60);
     }
 }
-#endif
