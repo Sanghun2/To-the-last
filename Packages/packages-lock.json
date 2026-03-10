@@ -33,7 +33,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "45ff3cbd709b40dd080a3d6b89bb285f10b482b8"
+      "hash": "e5d4ba5b0b4b899bcf1ccd827e28edaa02a7074c"
     },
     "com.billiotgames.screenoverlay": {
       "version": "http://github.com/Sanghun2/Screen-Overlay.git",

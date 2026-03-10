@@ -1,9 +1,9 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class ShopButton : ButtonBase
+public class RankingButton : ButtonBase
 {
     protected override void ButtonAction() {
-        throw new System.NotImplementedException();
+        Managers.UI.OpenUI<RankingUI>();
     }
 }
