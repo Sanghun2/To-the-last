@@ -14,23 +14,42 @@ public class BattleEntity : Entity
         Player,
         Enemy,
     }
+    public enum VitalState {
+        None,
+        Alive,
+        Dead,
+    }
 
-    public BehaviourState CurrentState
+    public BehaviourState CurrentBehaviourState
     {
-        get => _currentState;
+        get => _currentBehaviourState;
         set
         {
-            var prevState = _currentState;
-            _currentState = value;
+            var prevState = _currentBehaviourState;
+            _currentBehaviourState = value;
 
-            if (_currentState != prevState) {
-                OnStateChanged?.Invoke(_currentState, prevState);
+            if (_currentBehaviourState != prevState) {
+                OnBehaviourStateChanged?.Invoke(_currentBehaviourState, prevState);
             }
         }
     }
+    public VitalState CurrentVitalState
+    {
+        get => _currentVitalState;
+        protected set
+        {
+            var prevState = _currentVitalState;
+            _currentVitalState = value;
+            if (_currentVitalState != prevState) {
+                OnVitalStateChanged?.Invoke(_currentVitalState, prevState);
+            }
+        }
+    }
+
     public int Position => _position;
 
-    private BehaviourState _currentState;
+    private BehaviourState _currentBehaviourState;
+    private VitalState _currentVitalState;
     protected StatContainer statContainer = new StatContainer();
     private int _position;
 
@@ -39,12 +58,13 @@ public class BattleEntity : Entity
 
     }
 
-    public event Action<BehaviourState, BehaviourState> OnStateChanged;
+    public event Action<BehaviourState, BehaviourState> OnBehaviourStateChanged;
+    public event Action<VitalState, VitalState> OnVitalStateChanged;
 
     #region Init
 
     public BattleEntity InitEntity(IReadOnlyList<StatData> statDataList) {
-        CurrentState = BehaviourState.Idle;
+        CurrentBehaviourState = BehaviourState.Idle;
         _position = 0;
 
         statContainer.ClearStats();
@@ -54,10 +74,15 @@ public class BattleEntity : Entity
             statContainer.RegisterStat(id, new Stat(statData.Value));
         }
 
+        string hpID = Define.Stat.Hp.ToID();
+        statContainer.UnregisterEvent(hpID, UpdateVital);
+        statContainer.RegisterEvent(hpID, UpdateVital);
+
         return this;
     }
+
     public BattleEntity InitEntity(StatContainer statContainer) {
-        CurrentState = BehaviourState.Idle;
+        CurrentBehaviourState = BehaviourState.Idle;
         _position = 0;
         this.statContainer = statContainer;
         return this;
@@ -68,13 +93,22 @@ public class BattleEntity : Entity
         return this;
     }
 
+
+
+    private void UpdateVital(Value<float> value) {
+        if (CurrentVitalState == VitalState.Alive && value.CurrentValue <= 0) {
+            CurrentVitalState = VitalState.Dead;
+            Debug.Log($"[Test] entity ({EntityID}) is dead");
+        }
+    }
+
     #endregion
 
 
     #region Behaviour
 
     public bool CanSelectBehaviour() {
-        return CurrentState == BehaviourState.Idle;
+        return CurrentBehaviourState == BehaviourState.Idle;
     }
 
     #endregion
@@ -110,7 +144,7 @@ public class BattleEntity : Entity
             case Define.BattleState.Ready:
                 break;
             case Define.BattleState.Wait:
-                CurrentState = BehaviourState.Idle;
+                CurrentBehaviourState = BehaviourState.Idle;
                 break;
             case Define.BattleState.Resolve:
                 break;

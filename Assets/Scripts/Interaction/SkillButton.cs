@@ -43,8 +43,8 @@ public class SkillButton : ButtonBase, IPool
 
         skillBehaviour = new SkillBehaviour(caster, skillSD);
 
-        caster.OnStateChanged -= UpdateState;
-        caster.OnStateChanged += UpdateState;
+        caster.OnBehaviourStateChanged -= UpdateState;
+        caster.OnBehaviourStateChanged += UpdateState;
 
         UpdateState(BattleEntity.BehaviourState.Idle, BattleEntity.BehaviourState.Idle);
 
@@ -57,7 +57,7 @@ public class SkillButton : ButtonBase, IPool
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] caster null</color>"); return; }
         if (!CanAction()) { Debug.Log($"지금은 행동 선택 불가"); return; }
 
-        caster.CurrentState = BattleEntity.BehaviourState.Selected;
+        caster.CurrentBehaviourState = BattleEntity.BehaviourState.Selected;
         Managers.BattleSystem.RegisterBehaviour(skillBehaviour);
     }
 
@@ -74,7 +74,7 @@ public class SkillButton : ButtonBase, IPool
         }
     }
     private bool CanAction() {
-        return caster.CurrentState == BattleEntity.BehaviourState.Idle;
+        return caster.CurrentBehaviourState == BattleEntity.BehaviourState.Idle;
     }
 
     #region Pool

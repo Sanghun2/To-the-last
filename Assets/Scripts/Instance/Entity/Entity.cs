@@ -5,12 +5,12 @@ using UnityEngine;
 [Serializable]
 public abstract class Entity : IReadOnlyEntity
 {
-    public string EntityID => entityID;
+    public string EntityID => _entityID;
 
-    protected string entityID;
+    protected string _entityID;
 
     public Entity(string entityID) {
-        this.entityID = entityID;
+        this._entityID = entityID;
     }
 }
 
