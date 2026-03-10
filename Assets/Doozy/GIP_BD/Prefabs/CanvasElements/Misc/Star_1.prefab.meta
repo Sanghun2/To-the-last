@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 67d5a7a6f5348534abb50271f8c61161
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+timeCreated: 1427156372
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Star_1.prefab
+  uploadId: 56214

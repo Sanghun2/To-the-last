@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a09c1821ec0d43a48875ba12cc466bf1
+labels:
+- clock
+- button
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156258
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Clock_1.prefab
+  uploadId: 56214

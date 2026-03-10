@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 2293f0b8f86bfd54b87449639e730098
+labels:
+- x
+- close
+- menu
+- button
+- sign
+- symbol
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156231
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Close_Symbol_6.prefab
+  uploadId: 56214

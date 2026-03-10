@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 22657d6b92813c94582377b2432c457d
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- bow
+- arrow
+timeCreated: 1427156296
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Bow_And_Arrow.prefab
+  uploadId: 56214

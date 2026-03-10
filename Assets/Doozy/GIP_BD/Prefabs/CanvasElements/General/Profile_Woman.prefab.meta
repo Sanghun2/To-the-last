@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: dac8db1d530966b4d82bd34d981790ea
+labels:
+- profile
+- symbol
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156234
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Profile_Woman.prefab
+  uploadId: 56214

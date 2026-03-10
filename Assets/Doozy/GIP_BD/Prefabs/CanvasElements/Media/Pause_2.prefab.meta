@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f7ad9391a93503f4abab2ae4b205a5d9
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+- pause
+timeCreated: 1427156293
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Media/Pause_2.prefab
+  uploadId: 56214

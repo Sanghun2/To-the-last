@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 4511802edf1238e40b0cd87a7d55cdc9
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- gun
+timeCreated: 1427156348
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Gun_1.prefab
+  uploadId: 56214

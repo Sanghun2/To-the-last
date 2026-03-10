@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 804fb92e5953b1740b312eafb5543e0a
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+timeCreated: 1427156475
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/Bag_Heart.prefab
+  uploadId: 56214

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fcfb7f62ffc89af4da89f35a70c6b895
+labels:
+- play
+- symbol
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156241
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Play_2.prefab
+  uploadId: 56214

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8f02319b47e990641b0c4f55971ae81f
+labels:
+- menu
+- button
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156164
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Show_More_Button.prefab
+  uploadId: 56214

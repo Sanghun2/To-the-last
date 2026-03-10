@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e2235ec56abedb04e9374739733b7225
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+timeCreated: 1427156475
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/Money_Bag_Dollar.prefab
+  uploadId: 56214

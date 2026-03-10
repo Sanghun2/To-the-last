@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 12d6c2e405bc7aa43b4940482ae7ae55
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- arrow
+- navigation
+timeCreated: 1427156419
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Navigation/Down_9.prefab
+  uploadId: 56214

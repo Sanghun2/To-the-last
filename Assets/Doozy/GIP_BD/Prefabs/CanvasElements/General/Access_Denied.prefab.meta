@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e486fae322b40624d8bae9279167a585
+labels:
+- menu
+- button
+- sign
+- GUI
+- interface
+- UI
+- icon
+timeCreated: 1427156254
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Access_Denied.prefab
+  uploadId: 56214

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9e388b3fbe1c4b845bbc2c5075055edf
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+- refresh
+timeCreated: 1427156298
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Media/Refresh_2.prefab
+  uploadId: 56214

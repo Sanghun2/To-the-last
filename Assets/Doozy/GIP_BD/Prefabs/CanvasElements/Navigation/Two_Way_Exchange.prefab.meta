@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 280dafc51f65dfe4eb6ceb25fddea628
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- navigation
+- arrow
+timeCreated: 1427156427
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Navigation/Two_Way_Exchange.prefab
+  uploadId: 56214

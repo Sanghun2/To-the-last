@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c925ed9c4599ec24ca1ec1458b1512fa
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+timeCreated: 1427156348
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/DNA.prefab
+  uploadId: 56214

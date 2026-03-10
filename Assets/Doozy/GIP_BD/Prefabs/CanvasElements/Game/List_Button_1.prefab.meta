@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 1d62e96cddc74b84e89d04b5048cd131
+labels:
+- button
+- list
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156162
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/List_Button_1.prefab
+  uploadId: 56214

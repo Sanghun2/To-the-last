@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1b68ec3e1925b364897c46d29f964d0f
+labels:
+- cup
+- icon
+- GUI
+- interface
+- UI
+timeCreated: 1427156161
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Cup_1.prefab
+  uploadId: 56214

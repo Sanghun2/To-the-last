@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 96566f5916556c74f84ceddd1ecb5791
+labels:
+- exit
+- icon
+- interface
+- GUI
+- UI
+timeCreated: 1427156159
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Exit_1.prefab
+  uploadId: 56214

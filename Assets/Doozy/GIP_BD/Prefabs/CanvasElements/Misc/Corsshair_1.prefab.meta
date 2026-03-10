@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: acc0cf264cf05674489f03b6e9294316
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- crosshair
+timeCreated: 1427156358
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Corsshair_1.prefab
+  uploadId: 56214

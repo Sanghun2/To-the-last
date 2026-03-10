@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fb092e78ee1dce146bcf62b9654ff7ad
+labels:
+- menu
+- button
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156161
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Menu_Button_3.prefab
+  uploadId: 56214

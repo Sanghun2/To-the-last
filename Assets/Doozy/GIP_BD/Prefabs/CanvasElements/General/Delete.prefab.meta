@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ec88668e017bf2b489890b9764910c0a
+labels:
+- delete
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156257
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Delete.prefab
+  uploadId: 56214

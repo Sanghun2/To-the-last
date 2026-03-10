@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 1000574e9d4904d4fbae289df8034b31
+labels:
+- symbol
+- check
+- menu
+- button
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156219
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Checkbox_Fill.prefab
+  uploadId: 56214

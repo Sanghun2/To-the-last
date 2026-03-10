@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 43b3b77763743bb4f918d738553963d4
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- cart
+- shop
+- shopping
+timeCreated: 1427156478
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/Cart_5.prefab
+  uploadId: 56214

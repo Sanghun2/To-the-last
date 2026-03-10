@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 13af9bd48fefe524f87e27f12ecb5063
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- dynamite
+- bomb
+timeCreated: 1427156369
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Dynamite.prefab
+  uploadId: 56214

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 05e13ec22242b594788171916c4cb7d7
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+timeCreated: 1427156256
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Footnote_Symbol.prefab
+  uploadId: 56214

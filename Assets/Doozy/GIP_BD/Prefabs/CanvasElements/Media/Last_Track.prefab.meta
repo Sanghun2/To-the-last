@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9684b80027dc72e479b5053168e0b1db
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+timeCreated: 1427156292
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Media/Last_Track.prefab
+  uploadId: 56214

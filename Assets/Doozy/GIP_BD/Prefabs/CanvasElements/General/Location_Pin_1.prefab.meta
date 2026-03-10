@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ee11d5c9f6ada8749addc0c6e1fa96bc
+labels:
+- UI
+- GUI
+- interface
+- icon
+- symbol
+- sign
+timeCreated: 1427156233
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Location_Pin_1.prefab
+  uploadId: 56214

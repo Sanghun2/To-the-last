@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 2853cbce128b86144a48c1b079767a21
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- compass
+timeCreated: 1427156349
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Compass_2.prefab
+  uploadId: 56214

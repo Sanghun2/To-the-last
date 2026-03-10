@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d04c2fb8add118e42830f2dd5481b19c
+labels:
+- arrow
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156256
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Thumb_Up_1.prefab
+  uploadId: 56214

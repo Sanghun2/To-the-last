@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: bb2f6eb6da7d12a4f8541d1a6af9a558
+labels:
+- key
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156156
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Key_2.prefab
+  uploadId: 56214

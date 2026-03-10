@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c843183901cdde842bbf97f3d576d8d9
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+timeCreated: 1427156227
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Happy_Face.prefab
+  uploadId: 56214

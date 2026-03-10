@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 885b514e1cad662409ba93b33d87bd3b
+labels:
+- profile
+- symbol
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156219
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Profile_2.prefab
+  uploadId: 56214

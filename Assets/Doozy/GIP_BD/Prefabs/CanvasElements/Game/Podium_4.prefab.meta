@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 95c6465ebd9455e4188bbfc448c43211
+labels:
+- leaderboard
+- podium
+- list
+- button
+- GUI
+- UI
+- interface
+- sign
+- icon
+- award
+timeCreated: 1427156159
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Podium_4.prefab
+  uploadId: 56214

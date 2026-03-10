@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9e3642aba5caa104ba7b73338975b4eb
+labels:
+- star
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156157
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Star_Half.prefab
+  uploadId: 56214

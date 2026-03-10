@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: a819574cd35ad3d4db471ce1ba26c14f
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- basket
+timeCreated: 1427156466
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/Basket_2.prefab
+  uploadId: 56214

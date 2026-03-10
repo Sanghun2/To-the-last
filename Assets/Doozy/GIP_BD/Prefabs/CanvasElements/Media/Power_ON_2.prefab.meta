@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 48fb4a79b38043946b665ec75ff28f98
+labels:
+- icon
+- UI
+- GUI
+- interface
+- sign
+- symbol
+timeCreated: 1427156294
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Media/Power_ON_2.prefab
+  uploadId: 56214

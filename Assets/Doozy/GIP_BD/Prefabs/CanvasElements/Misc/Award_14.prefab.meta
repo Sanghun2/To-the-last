@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ce5d74527c51f894f913464ac2dd642f
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- award
+timeCreated: 1427156355
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Award_14.prefab
+  uploadId: 56214

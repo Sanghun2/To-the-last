@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 286f89530147fd441a9dadf0aaf95586
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- shield
+timeCreated: 1427156348
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Shield_5.prefab
+  uploadId: 56214

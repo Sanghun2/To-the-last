@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 5954af347d30b9248a4e46859ac6581a
+labels:
+- dialogue
+- speech
+- bubble
+- button
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156248
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Dialogue_9.prefab
+  uploadId: 56214

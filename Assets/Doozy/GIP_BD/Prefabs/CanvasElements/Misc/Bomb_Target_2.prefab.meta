@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 75cae013df5000944a48b08d38a29e9c
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- target
+- bomb
+timeCreated: 1427156367
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Misc/Bomb_Target_2.prefab
+  uploadId: 56214

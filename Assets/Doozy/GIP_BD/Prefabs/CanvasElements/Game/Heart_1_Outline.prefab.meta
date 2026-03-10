@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5512fe2d370b08a4d9570ad834e21386
+labels:
+- heart
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156160
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Heart_1_Outline.prefab
+  uploadId: 56214

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 521041d27a06e6048bf7bc13a82629d8
+labels:
+- search
+- symbol
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156228
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Search_1.prefab
+  uploadId: 56214

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 43a22a1333c528c4fa9abeaa75fd84a1
+labels:
+- cog
+- icon
+- GUI
+- UI
+- interface
+timeCreated: 1427156158
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Game/Cog_4.prefab
+  uploadId: 56214

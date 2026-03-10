@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 62196fc3e86d6d749a458b10937fc9d1
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- code
+- qr
+- shop
+- shopping
+- label
+timeCreated: 1427156467
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/QR_Code_1.prefab
+  uploadId: 56214

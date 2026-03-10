@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ba4beced7af360e438c012b80d65dadb
+labels:
+- arrow
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156253
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Arrow_Spread.prefab
+  uploadId: 56214

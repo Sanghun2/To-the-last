@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 1d620f1dd36ba9340877223be3c5785c
+labels:
+- interface
+- GUI
+- UI
+- icon
+- symbol
+- sign
+- button
+- tag
+- label
+- shopping
+- shop
+timeCreated: 1427156467
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/Shopping/Label_Tag_2.prefab
+  uploadId: 56214

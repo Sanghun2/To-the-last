@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: da4f305130c0b7145b66f6fa675835e7
+labels:
+- icon
+- UI
+- GUI
+- interface
+- symbol
+- sign
+- zoom
+timeCreated: 1427156240
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Zoom_In.prefab
+  uploadId: 56214

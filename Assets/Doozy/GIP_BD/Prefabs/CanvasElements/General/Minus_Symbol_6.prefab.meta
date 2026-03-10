@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 38fcc30b411b12849b8127c8984f5edf
+labels:
+- minus
+- symbol
+- sign
+- interface
+- GUI
+- UI
+- icon
+timeCreated: 1427156217
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 33100
+  packageName: Game Icons Pack - Basic Design
+  packageVersion: v 1.1
+  assetPath: Assets/Doozy/GIP_BD/Prefabs/CanvasElements/General/Minus_Symbol_6.prefab
+  uploadId: 56214
