@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 536540021910883675, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
       propertyPath: m_Name
-      value: Shop Button
+      value: Shop Icon Button
       objectReference: {fileID: 0}
     - target: {fileID: 800016248590943905, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
       propertyPath: m_Sprite
@@ -99,5 +99,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 536540021910883675, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8251685969610562717}
   m_SourcePrefab: {fileID: 100100000, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+--- !u!114 &3148176031670222667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4658714439973616278, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+  m_PrefabInstance: {fileID: 7716783212848350685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &7810835207250069638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 536540021910883675, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+  m_PrefabInstance: {fileID: 7716783212848350685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8251685969610562717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810835207250069638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a6c392464f14548a771b9be5ea38ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopButton
+  targetButton: {fileID: 3148176031670222667}
