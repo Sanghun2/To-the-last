@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "64c0612fb305c8e8f3d3fa3a7598f122ff92c5a8"
+      "hash": "c1087fa698a857a5aa4edc98e704fcf37d0f3750"
     },
     "com.billiotgames.fsm": {
       "version": "http://github.com/Sanghun2/FSM.git",
@@ -94,6 +94,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "3fd48683f4487cdc402300294714c034c035d191"
+    },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a9e27c03d411d2fca01cc7410c24c97cd77cb539"
     },
     "com.unity.2d.animation": {
       "version": "13.0.4",
