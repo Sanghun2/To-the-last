@@ -1,7 +1,7 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class RankingUI : UIBase
+public class SettingUI : UIBase
 {
     public override void InitUI() {
         if (IsInit) return;

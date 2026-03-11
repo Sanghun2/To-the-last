@@ -15,7 +15,6 @@ public sealed class Managers : MonoBehaviour
             return _sdManager;
         }
     }
-
     public static UIManager UI
     {
         get
@@ -27,7 +26,6 @@ public sealed class Managers : MonoBehaviour
             return _uiManager;
         }
     }
-
     public static TimeManager Time
     {
         get
@@ -208,11 +206,29 @@ public sealed class Managers : MonoBehaviour
             return _sceneController;
         }
     }
+    public static ProcessManager Process
+    {
+        get
+        {
+            if (_processManager == null) {
+                _processManager = new ProcessManager();
 
-    private static SceneController _sceneController;
+                var loginChain = new ProcessChain("log in");
+                var prepareChain = new ProcessChain("prepare");
+                    //.AddProcess(new Process());
+
+                _processManager.RegisterChain(loginChain);
+                _processManager.RegisterChain(prepareChain);
+            }
+
+            return _processManager;
+        }
+    }
+
+
+    // InGame
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;
-    private static RegistryManager _registryManager;
     private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;
     private static SelectActionPipeline _selectActionPipeline;
@@ -222,9 +238,14 @@ public sealed class Managers : MonoBehaviour
     private static CraftManager _craftManager;
     private static PlayerManager _playerManager;
     private static ConstructionManager constructionManager;
-    private static JobHandler jobHandler;
-    private static CoroutineManager coroutineManager;
     private static TimeManager _timeManager;
+    private static JobHandler jobHandler;
+
+    // Common 
+    private static ProcessManager _processManager;
+    private static SceneController _sceneController;
+    private static RegistryManager _registryManager;
+    private static CoroutineManager coroutineManager;
     private static UIManager _uiManager;
     private static SDManager _sdManager;
 
