@@ -36,4 +36,7 @@ public class Define
     //    BattleSystem,
     //    Talk,
     //}
+
+    public const string MAINMENU_SCENE_ID = "main";
+    public const string INGAME_SCENE_ID = "ingame";
 }

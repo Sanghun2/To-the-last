@@ -1443,6 +1443,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241071022}
   m_CullTransparentMesh: 1
+--- !u!1 &244902415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244902416}
+  - component: {fileID: 244902418}
+  - component: {fileID: 244902417}
+  m_Layer: 0
+  m_Name: Scene Manager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244902416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244902415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706582958}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244902417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244902415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3486982ac83dfb24589186b64b5a521f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SceneController.Runtime::BilliotGames.PanelTransitor
+  panels:
+  - panelID: main
+    relatedPanels: []
+  - panelID: ingame
+    relatedPanels:
+    - {fileID: 735629670774619114}
+    - {fileID: 493797300}
+--- !u!114 &244902418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244902415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a9ad5fa7241f249bd18dcc42d05cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SceneController.Runtime::BilliotGames.SceneController
 --- !u!1001 &265148280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2869,6 +2933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 727760501}
     m_Modifications:
+    - target: {fileID: 420474807869013700, guid: 22ee81b5d4cdb10448916ce10b647935, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: Assembly-CSharp::StartButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2146154373500380567, guid: 22ee81b5d4cdb10448916ce10b647935, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4612,6 +4680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 552929477}
+  - component: {fileID: 552929479}
   - component: {fileID: 552929478}
   m_Layer: 0
   m_Name: Scene Manager
@@ -4654,6 +4723,18 @@ MonoBehaviour:
     relatedPanels:
     - {fileID: 735629670774619114}
     - {fileID: 493797300}
+--- !u!114 &552929479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552929476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a9ad5fa7241f249bd18dcc42d05cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SceneController.Runtime::BilliotGames.SceneController
 --- !u!1 &564499372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +5747,7 @@ Transform:
   - {fileID: 43374695}
   - {fileID: 814948960}
   - {fileID: 552929477}
+  - {fileID: 244902416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &706582959
@@ -6861,7 +6943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -36.3}
+  m_AnchoredPosition: {x: -30, y: -36.30005}
   m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &958325295

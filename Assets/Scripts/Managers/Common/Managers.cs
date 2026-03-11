@@ -196,7 +196,20 @@ public sealed class Managers : MonoBehaviour
             return _battleManager;
         }
     }
+    public static SceneController Scene
+    {
+        get
+        {
+            if (_sceneController == null) {
+                _sceneController = SceneController.Instance;
+                _sceneController.SetSceneTransitor(FindAnyObjectByType<PanelTransitor>());
+            }
 
+            return _sceneController;
+        }
+    }
+
+    private static SceneController _sceneController;
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;
     private static RegistryManager _registryManager;
