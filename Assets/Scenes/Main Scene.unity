@@ -12703,9 +12703,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battle Entity UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5506120025635678689, guid: e1b5f2e9a6f2c534cbd731283bf84d63, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2
+    - target: {fileID: 7076345694200719561, guid: e1b5f2e9a6f2c534cbd731283bf84d63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8331622307910567467, guid: e1b5f2e9a6f2c534cbd731283bf84d63, type: 3}
       propertyPath: m_Pivot.x
