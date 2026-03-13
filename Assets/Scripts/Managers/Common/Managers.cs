@@ -225,7 +225,6 @@ public sealed class Managers : MonoBehaviour
         }
     }
 
-
     // InGame
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;

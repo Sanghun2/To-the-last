@@ -17,26 +17,39 @@ public class BattleUI : UIBase
             return _turnUI;
         }
     }
+    public FloatingTextContainer FloatingText
+    {
+        get
+        {
+            if (floatingTextContainer == null) {
+                floatingTextContainer = GetComponentInChildren<FloatingTextContainer>();
+                if (floatingTextContainer == null) { Debug.LogError($"<color=red>floating text container could not find</color>"); }
+                floatingTextContainer?.InitUI();
+            }
+
+            return floatingTextContainer;
+        }
+    }
 
     [SerializeField] Image backgroundImage;
     [SerializeField] EntityUI playerUI;
     [SerializeField] EntityUI enemyUI;
     [SerializeField] TurnUI _turnUI;
+    [SerializeField] FloatingTextContainer floatingTextContainer;
     [SerializeField] List<SkillButton> skillButtonList;
 
     public override void InitUI() {
         if (IsInit) return;
 
         TurnUI.InitUI();
+        CloseUI();
 
         _isInit = true;
     }
-
     internal void InitUI(Entity player, Entity enemy) {
         playerUI.InitEntity(player);
         enemyUI.InitEntity(enemy);
     }
-
     internal void InitSkillUI(IReadOnlyList<SkillData> skillList) {
         if (skillList == null) { Debug.LogError($"<color=red>skill list null</color>"); return; }
         if (skillButtonList == null) { Debug.LogError($"<color=red>skill button null</color>"); return; }
@@ -50,6 +63,17 @@ public class BattleUI : UIBase
             skillButton.OpenUI();
         }
     }
+
+
+    internal EntityUI GetEntityUI(BattleEntity targetEntity) {
+        if (playerUI.Entity.EntityID.Equals(targetEntity.EntityID)) {
+            return playerUI;
+        }
+        else {
+            return enemyUI;
+        }
+    }
+
 
     private void ClearSkillButtons() {
         for (int i = 0; i < skillButtonList.Count; i++) {

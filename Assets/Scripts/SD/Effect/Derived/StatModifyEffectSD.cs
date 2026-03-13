@@ -13,10 +13,22 @@ public class StatModifyEffectSD : ModifyEffectSD
 
             var result = CalculateValue(currentValue);
             targetEntity.TryChangeStat(targetStat.ToID(), result.deltaValue);
+            var battleUI = Managers.UI.GetUI<BattleUI>();
+            EntityUI targetEntityUI = battleUI.GetEntityUI(targetEntity);
 
+
+            var context = new FloatingTextContext(
+                result.deltaValue.ToString(),
+                targetEntityUI.transform.position,
+                FloatingText.TextType.Damage
+                );
+
+            battleUI.FloatingText.ShowText(context);
+
+            // test
             targetEntity.TryGetStatValue(targetStat, out float viewValue);
-            //float viewValue = targetEntity.TryGetStatValue(targetStat, out currentValue) ? currentValue : -1;
             Debug.Log($"<color=yellow>({target.EntityID})의 ({targetStat.ToID()}) ({result.deltaValue}) 감소. 남은 체력:({viewValue})</color>");
+            // ---
         }
         else {
             Debug.LogError($"<color=red>entity가 battle entity가 아니어서 stat을 변경할 수 없음</color>");

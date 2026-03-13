@@ -20,8 +20,8 @@ public class SkillButton : ButtonBase, IPool
     public bool IsActive => skillData != null && IsOpened;
 
     public void InitSkill(SkillData skillData) {
-        if (IsInit) return;
-        Init();
+        if (!IsInit) Init();
+
         this.caster = Managers.BattleSystem.GetPlayerEntity();
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] skill 실행 주체가 없음. caster null</color>"); return; }
     

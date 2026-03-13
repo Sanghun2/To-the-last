@@ -16,7 +16,7 @@ namespace Michsky.UI.Dark
             if (Application.isPlaying == true)
                 return;
 
-            // Rebuilding the rect in case of incorrect layout calculation
+            // Rebuilding the _targetRect in case of incorrect layout calculation
             for (int i = 0; i < objectToRepaint.Count; ++i)
             {
                 if (objectToRepaint[i] != null)

@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6263688892707639089, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263688892707639089, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -60
+      objectReference: {fileID: 0}
     - target: {fileID: 8565610621505249354, guid: 5c3e2709ee117d94eb57e99aef61fd35, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
