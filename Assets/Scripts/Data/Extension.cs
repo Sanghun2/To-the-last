@@ -1,4 +1,5 @@
-﻿using BilliotGames;
+﻿using System.Collections.Generic;
+using BilliotGames;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,6 +25,35 @@ public static partial class Extension
             case StrategyBehaviour.BehaviourType.Normal:
             default:
                 return "normalSkillIcon";
+        }
+    }
+
+    public static void CreateDefaultStats(this StatContainer statContainer) {
+        statContainer.ClearStats();
+        statContainer.RegisterStat(Define.Stat.Hp.ToID(), new BoundedStat(100));
+        statContainer.RegisterStat(Define.Stat.Hungriness.ToID(), new BoundedStat(100));
+        statContainer.RegisterStat(Define.Stat.Thirst.ToID(), new BoundedStat(100));
+        statContainer.RegisterStat(Define.Stat.Mental.ToID(), new BoundedStat(100));
+        statContainer.RegisterStat(Define.Stat.Temperture.ToID(), new Stat(36.5f));
+
+        statContainer.RegisterStat(Define.Stat.Strength.ToID(), new Stat(20));
+        statContainer.RegisterStat(Define.Stat.Agility.ToID(), new Stat(10));
+        statContainer.RegisterStat(Define.Stat.Toughness.ToID(), new Stat(10));
+        statContainer.RegisterStat(Define.Stat.Focus.ToID(), new Stat(20));
+    }
+
+    public static void InitStats(this StatContainer statContainer, IReadOnlyList<StatData> statDataList) {
+        statContainer.CreateDefaultStats();
+        for (int i = 0; i < statDataList.Count; i++) {
+            var statData = statDataList[i];
+            var statID = statData.Stat.ToID();
+            if (!statContainer.TryGetStat(statID, out Stat stat)) { Debug.LogError($"no ({statID}) stat exist"); continue; }
+
+            var originalValue = stat.RawValue;
+            var newValue = new Value<float>(statData.Value, 0, originalValue.MinValue, statData.Value);
+            if (!statContainer.TryOverrideStatValue(statID, newValue)) {
+                Debug.LogError($"<color=red>failed to override stat ({statID})</color>");
+            }
         }
     }
 }

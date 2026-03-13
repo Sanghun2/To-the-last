@@ -90,5 +90,4 @@ public sealed class PlayerData : IInitializable
     private void RegisterStat(Define.Stat statType, Stat stat) {
         statContainer.RegisterStat(statType.ToID(), stat);
     }
-
 }

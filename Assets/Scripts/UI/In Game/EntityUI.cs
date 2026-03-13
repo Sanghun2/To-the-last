@@ -9,7 +9,7 @@ public class EntityUI : UIBase
     [SerializeField] Image entityImage;
     private IReadOnlyEntity _entity;
 
-    public void InitEntity(Entity entity) {
+    public virtual void InitEntity(Entity entity) {
         gameObject.name = $"{entity.EntityID}";
         _entity = entity;
     }

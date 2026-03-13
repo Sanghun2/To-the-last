@@ -60,6 +60,7 @@ public class BattleEntity : Entity
 
     public event Action<BehaviourState, BehaviourState> OnBehaviourStateChanged;
     public event Action<VitalState, VitalState> OnVitalStateChanged;
+    public event Action<int> OnDistanceChanged;
 
     #region Init
 
@@ -67,12 +68,8 @@ public class BattleEntity : Entity
         CurrentBehaviourState = BehaviourState.Idle;
         _position = 0;
 
-        statContainer.ClearStats();
-        for (int i = 0; i < statDataList.Count; i++) {
-            var statData = statDataList[i];
-            string id = statData.Stat.ToID();
-            statContainer.RegisterStat(id, new Stat(statData.Value));
-        }
+        statContainer.CreateDefaultStats();
+        statContainer.InitStats(statDataList);
 
         string hpID = Define.Stat.Hp.ToID();
         statContainer.UnregisterEvent(hpID, UpdateVital);

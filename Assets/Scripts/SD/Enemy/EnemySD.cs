@@ -15,24 +15,24 @@ public class EnemySD : SDBase
     [SerializeField]
     [ContextMenuItem("[  Reset Stats  ]", nameof(ResetStats))]
     List<StatData> statDataList = new List<StatData>() {
-        new StatData(Define.Stat.Hp, 100),
-        new StatData(Define.Stat.Strength, 20),
-        new StatData(Define.Stat.Agility, 10),
-        new StatData(Define.Stat.Focus, 10),
-        new StatData(Define.Stat.Toughness, 20),
+        new StatData(Define.Stat.Hp, StatData.StatType.BoundedStat, 100),
+        new StatData(Define.Stat.Strength, StatData.StatType.Stat, 20),
+        new StatData(Define.Stat.Agility, StatData.StatType.Stat, 10),
+        new StatData(Define.Stat.Focus, StatData.StatType.Stat,10),
+        new StatData(Define.Stat.Toughness, StatData.StatType.Stat,20),
     };
 
     private void OnValidate() {
-        RenameAsset(ID, suffix:"_EnemySD");
+        RenameAsset(ID, suffix: "_EnemySD");
     }
 
     private void ResetStats() {
         statDataList = new List<StatData>() {
-        new StatData(Define.Stat.Hp, 100),
-        new StatData(Define.Stat.Strength, 20),
-        new StatData(Define.Stat.Agility, 10),
-        new StatData(Define.Stat.Focus, 10),
-        new StatData(Define.Stat.Toughness, 20),
+        new StatData(Define.Stat.Hp, StatData.StatType.BoundedStat, 100),
+        new StatData(Define.Stat.Strength, StatData.StatType.Stat, 20),
+        new StatData(Define.Stat.Agility, StatData.StatType.Stat, 10),
+        new StatData(Define.Stat.Focus, StatData.StatType.Stat, 10),
+        new StatData(Define.Stat.Toughness, StatData.StatType.Stat, 20),
     };
     }
 }
@@ -40,14 +40,23 @@ public class EnemySD : SDBase
 [Serializable]
 public class StatData
 {
+    public enum StatType
+    {
+        Stat,
+        BoundedStat,
+    }
+
+    public StatType Type => type;
     public Define.Stat Stat => stat;
     public float Value => value;
 
+    [SerializeField] StatType type;
     [SerializeField] Define.Stat stat;
     [SerializeField] float value;
 
-    public StatData(Define.Stat stat, float value) {
+    public StatData(Define.Stat stat, StatType type, float value) {
         this.stat = stat;
+        this.type = type;
         this.value = value;
     }
 }

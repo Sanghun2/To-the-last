@@ -33,7 +33,7 @@ public class BattleUI : UIBase
 
     [SerializeField] Image backgroundImage;
     [SerializeField] EntityUI playerUI;
-    [SerializeField] EntityUI enemyUI;
+    [SerializeField] BattleEntityUI enemyUI;
     [SerializeField] TurnUI _turnUI;
     [SerializeField] FloatingTextContainer floatingTextContainer;
     [SerializeField] List<SkillButton> skillButtonList;
@@ -46,9 +46,9 @@ public class BattleUI : UIBase
 
         _isInit = true;
     }
-    internal void InitUI(Entity player, Entity enemy) {
+    internal void InitUI(BattleEntity player, BattleEntity enemy) {
         playerUI.InitEntity(player);
-        enemyUI.InitEntity(enemy);
+        enemyUI.InitEntity(enemy, player);
     }
     internal void InitSkillUI(IReadOnlyList<SkillData> skillList) {
         if (skillList == null) { Debug.LogError($"<color=red>skill list null</color>"); return; }
