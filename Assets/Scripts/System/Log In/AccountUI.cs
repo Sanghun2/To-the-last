@@ -29,7 +29,7 @@ public class AccountUI : UIBase
         for (int i = 0; i < list.Count; i++) {
             var method = list[i];
             var button = buttonContainer.GetObj();
-            button.Init(method);
+            button.InitButton(method);
         }
 
         _isInit = true;

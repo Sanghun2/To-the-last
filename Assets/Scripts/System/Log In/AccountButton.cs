@@ -25,15 +25,15 @@ public class AccountButton : ButtonBase, IPool
     public bool IsActive => IsOpened;
 
     [SerializeField] Image iconImage;
-    private AccountData accountData;
+    private IAccountMethod accountMethod;
 
     public event Action<AccountResult> OnActionCompleted;
 
 
-    public void InitButton(AccountData data) {
+    public void InitButton(IAccountMethod data) {
         Init();
         iconImage.sprite = data.Icon;
-        this.accountData = data; 
+        accountMethod = data;
     }
 
     public void Init() {
@@ -50,13 +50,13 @@ public class AccountButton : ButtonBase, IPool
 
     protected override async void ButtonAction() {
         AccountResult accountResult = null;
-        if (accountData.IsSignedUp) {
+        if (accountMethod.IsSignedUp) {
             Debug.Log($"try sign in");
-            accountResult = await accountData.AccountMethod.SignInAsync();
+            accountResult = await accountMethod.SignInAsync();
         }
         else {
             Debug.Log($"try sign up");
-            accountResult = await accountData.AccountMethod.SignUpAsync();
+            accountResult = await accountMethod.SignUpAsync();
         }
 
         OnActionCompleted?.Invoke(accountResult);

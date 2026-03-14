@@ -109,6 +109,10 @@ public class GoogleAccountMethod : IAccountMethod
 
 public class AppleAccountMethod : IAccountMethod
 {
+    public Sprite Icon => throw new NotImplementedException();
+
+    public bool IsSignedUp => throw new NotImplementedException();
+
     public Task<AccountResult> SignInAsync() {
         throw new System.NotImplementedException();
     }
@@ -120,6 +124,10 @@ public class AppleAccountMethod : IAccountMethod
 
 public class CustomAccountMetohd : IAccountMethod
 {
+    public Sprite Icon => throw new NotImplementedException();
+
+    public bool IsSignedUp => throw new NotImplementedException();
+
     public Task<AccountResult> SignInAsync() {
         throw new System.NotImplementedException();
     }
