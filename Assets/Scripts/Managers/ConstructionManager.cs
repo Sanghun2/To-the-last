@@ -17,8 +17,16 @@ public class ConstructionManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        if (structureUIContainer == null) structureUIContainer = GameObject.FindAnyObjectByType<StructureUIContainer>(FindObjectsInactive.Include);
-        structureUIContainer.InitUI();
+        if (structureUIContainer == null) {
+            structureUIContainer = GameObject.FindAnyObjectByType<StructureUIContainer>(FindObjectsInactive.Include);
+            if (structureUIContainer == null) {
+                Debug.LogError($"<color=red>structure container not found</color>");
+                return;
+            }
+        }
+
+
+        structureUIContainer?.InitUI();
 
         structureList.Clear();
         for (int i = 0; i < structureUIContainer.Count; i++) {
