@@ -286,7 +286,7 @@ public sealed class Managers : MonoBehaviour
         };
 
         for (int i = 0; i < initList.Count; i++) {
-            initList[i].Init();
+            initList[i]?.Init();
         }
     }
 }
