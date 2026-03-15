@@ -41,6 +41,8 @@ public class TimeManager : MonoBehaviour, IInitializable
     [SerializeField] Timer _mainTimer;
     [SerializeField] Timer _turnTimer;
 
+    [Space]
+    [Header("[  Current Time  ]")]
     [SerializeField] int day;
     [SerializeField] int hour;
     [SerializeField] int minute;
