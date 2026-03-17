@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 [Icon("Assets/Layer Lab/GUI Pro-SurvivalClean/ResourcesData/Sprites/Components/Icon_PictoIcons(x2)/64/Icon_Skull.Png")]
 [CreateAssetMenu(fileName = "EnemySD", menuName = "Scriptable Objects/EnemySD")]
-public class EnemySD : SDBase
+public class EnemySD : EntitySDBase
 {
-    public Sprite EnemyImage => enemyImage;
     public IReadOnlyList<StatData> StatDataList => statDataList;
 
-    [SerializeField] Sprite enemyImage;
     [SerializeField]
     [ContextMenuItem("[  Reset Stats  ]", nameof(ResetStats))]
     List<StatData> statDataList = new List<StatData>() {

@@ -1,17 +1,36 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using UnityEngine;
 
-public class AttackState : StateBase
+public interface IAnimatableState
 {
+    public Define.ActionAnimationType AnimationType { get; }
+    public Action OnApplyTime { get; }
+}
+
+public class AttackState : StateBase, IAnimatableState
+{
+    public Define.ActionAnimationType AnimationType => animationType;
+    public Action OnApplyTime => onApplyTime;
+
+    private Define.ActionAnimationType animationType;
+    private Action onApplyTime;
+
+    public AttackState(Define.ActionAnimationType animationType, Action onApplyTime=null) {
+        this.animationType = animationType;
+        this.onApplyTime = onApplyTime;
+    }
+
+
     public override void EnterState() {
-        throw new System.NotImplementedException();
+
     }
 
     public override void ExitState() {
-        throw new System.NotImplementedException();
+
     }
 
     public override void UpdateState() {
-        throw new System.NotImplementedException();
+
     }
 }

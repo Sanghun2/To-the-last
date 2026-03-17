@@ -45,12 +45,28 @@ public class BattleEntity : Entity
             }
         }
     }
+    public StateBase CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            var prevState = _currentState;
+            _currentState = value;
+            if (_currentState != prevState) {
+                prevState?.ExitState();
+                _currentState?.EnterState();
+                OnStateChanged?.Invoke(_currentState, prevState);
+            }
+        }
+    }
+
 
     public int Position => _position;
 
+    protected StatContainer statContainer = new StatContainer();
+    private StateBase _currentState;
     private BehaviourState _currentBehaviourState;
     private VitalState _currentVitalState;
-    protected StatContainer statContainer = new StatContainer();
     private int _position;
 
 
@@ -61,6 +77,7 @@ public class BattleEntity : Entity
     public event Action<BehaviourState, BehaviourState> OnBehaviourStateChanged;
     public event Action<VitalState, VitalState> OnVitalStateChanged;
     public event Action<int> OnDistanceChanged;
+    public event Action<StateBase, StateBase> OnStateChanged;
 
     #region Init
 

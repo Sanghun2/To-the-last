@@ -30,11 +30,19 @@ public class BattleEntityUI : EntityUI
 
         self.OnDistanceChanged -= RefreshDistanceUI;
         self.OnDistanceChanged += RefreshDistanceUI;
+        self.OnStateChanged -= UpdateState;
+        self.OnStateChanged += UpdateState;
 
         target.OnDistanceChanged -= RefreshDistanceUI;
         target.OnDistanceChanged += RefreshDistanceUI;
 
         RefreshDistanceUI();
+    }
+
+    private void UpdateState(StateBase currentState, StateBase prevState) {
+        if (currentState is IAnimatableState state) {
+            animtor.Animate(state.AnimationType, state.OnApplyTime);
+        }
     }
 
     private void RefreshDistanceUI(int position) {

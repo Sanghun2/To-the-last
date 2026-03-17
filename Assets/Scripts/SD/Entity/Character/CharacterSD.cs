@@ -2,13 +2,11 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterSD", menuName = "Scriptable Objects/CharacterSD")]
-public class CharacterSD : SDBase
+public class CharacterSD : EntitySDBase
 {
-    public Sprite MainCharacterImage => mainCharacterImage;
-    public Animator Animator => animator;
+    public RuntimeAnimatorController Animator => animator;
 
-    [SerializeField] Sprite mainCharacterImage;
-    [SerializeField] Animator animator;
+    [SerializeField] RuntimeAnimatorController animator;
 
     private void OnValidate() {
         RenameAsset(ID, suffix: $"_CharacterSD");

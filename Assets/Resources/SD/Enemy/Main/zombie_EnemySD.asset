@@ -15,4 +15,20 @@ MonoBehaviour:
   id: zombie
   displayName: "\uC880\uBE44"
   descripiton: 
-  enemyImage: {fileID: 21300000, guid: bf90ca35e25ffd74b89bc72f91b5a51d, type: 3}
+  iconImage: {fileID: 21300000, guid: bf90ca35e25ffd74b89bc72f91b5a51d, type: 3}
+  statDataList:
+  - type: 1
+    stat: 0
+    value: 100
+  - type: 0
+    stat: 5
+    value: 20
+  - type: 0
+    stat: 6
+    value: 10
+  - type: 0
+    stat: 7
+    value: 10
+  - type: 0
+    stat: 8
+    value: 20

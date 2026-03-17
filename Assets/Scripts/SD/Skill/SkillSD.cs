@@ -8,10 +8,13 @@ public class SkillSD : IconSDBase
 {
     public IReadOnlyList<EffectSD> Effects => effects;
     public StrategyBehaviour.BehaviourType BehaviourType => behaviourType;
+    public Define.ActionAnimationType AnimationType => animationType;
     public int Level => level;
 
     [Space]
     [SerializeField] StrategyBehaviour.BehaviourType behaviourType = StrategyBehaviour.BehaviourType.Normal;
+    [SerializeField] Define.ActionAnimationType animationType;
+
     [SerializeField] int level;
     [Tooltip("필요한 생존 포인트")]
     [SerializeField] int requireSurvivalPoint;
@@ -19,6 +22,8 @@ public class SkillSD : IconSDBase
     [SerializeField] int requirePointToLevelUp;
 
     [Space]
+    [SerializeField] TriggerSD[] triggers;
+    [SerializeField] ConditionSD[] conditions;
     [SerializeField] EffectSD[] effects;
 
     [Space]
