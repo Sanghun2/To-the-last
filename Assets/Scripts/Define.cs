@@ -35,7 +35,8 @@ public class Define
         Default,
         SwingAttack,
         StabAttack,
-
+        Dodge,
+        Charge,
     }
 
     public const string MAINMENU_SCENE_ID = "main";

@@ -31,7 +31,7 @@ public class CharacterAnimator : AnimatorBase
 
         ShowSprite(type);
 
-        var parameter = ConvertType(type);
+        var parameter = ConvertTypeToParameter(type);
         anim.SetTrigger(parameter);
 
         Managers.Coroutine.WaitFrame(1, () => {
@@ -58,20 +58,6 @@ public class CharacterAnimator : AnimatorBase
         }
         else {
             Debug.LogError($"<color=red>({targetEntityID}) animation sprite SD not exist</color>");
-        }
-    }
-    private string ConvertType(Define.ActionAnimationType type) {
-
-        switch (type) {
-            case Define.ActionAnimationType.Default:
-                return "Idle";
-            case Define.ActionAnimationType.SwingAttack:
-                return "Swing";
-            case Define.ActionAnimationType.StabAttack:
-                return "Stab";
-            default:
-                Debug.Log($"<color=orange>not defined type ({type})</color>");
-                return "Idle";
         }
     }
 
