@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class SkillButton : ButtonBase, IPool
 {
+    public SkillContentUI SkillContentUI => skillContentUI;
+
     private SkillData skillData;
     private SkillBehaviour skillBehaviour;
     private BattleEntity caster;
@@ -16,6 +18,7 @@ public class SkillButton : ButtonBase, IPool
     [SerializeField] TextMeshProUGUI skillNameText;
     [SerializeField] Image skillIconImage;
     [SerializeField] GameObject selectedObj;
+    [SerializeField] SkillContentUI skillContentUI;
 
     public bool IsActive => skillData != null && IsOpened;
 
@@ -53,7 +56,6 @@ public class SkillButton : ButtonBase, IPool
 
 
     protected override void ButtonAction() {
-        Debug.Log("try to act");
         if (caster == null) { Debug.LogError($"<color=red>[{GetType()}] caster null</color>"); return; }
         if (!CanAction()) { Debug.Log($"지금은 행동 선택 불가"); return; }
 

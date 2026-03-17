@@ -140,11 +140,9 @@ public class BattleSystem
         battleEntityManager.OnEnemyRemoved += CheckBattleMaintanance;
 
         // battle 시작 연출
-        //
-        // ---
-
-
-        onBattleReadied?.Invoke();
+        battleUI.ShowAnimation(() => {
+            onBattleReadied?.Invoke();
+        });
     }
 
 

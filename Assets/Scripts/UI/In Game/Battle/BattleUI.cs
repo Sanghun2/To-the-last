@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,15 +38,21 @@ public class BattleUI : UIBase
     [SerializeField] TurnUI _turnUI;
     [SerializeField] FloatingTextContainer floatingTextContainer;
     [SerializeField] List<SkillButton> skillButtonList;
+    [SerializeField] UIAnimationController uiAnimationController;
+    private Action onAnimationCompleted;
 
     public override void InitUI() {
         if (IsInit) return;
 
+        uiAnimationController?.InitUI();
         TurnUI.InitUI();
         CloseUI();
+        uiAnimationController.OnAnimationCompleted -= OnAnimationComplete;
+        uiAnimationController.OnAnimationCompleted += OnAnimationComplete;
 
         _isInit = true;
     }
+
     internal void InitUI(BattleEntity player, BattleEntity enemy) {
         playerUI.InitEntity(player, null);
         enemyUI.InitEntity(enemy, player);
@@ -53,17 +60,21 @@ public class BattleUI : UIBase
     internal void InitSkillUI(IReadOnlyList<SkillData> skillList) {
         if (skillList == null) { Debug.LogError($"<color=red>skill list null</color>"); return; }
         if (skillButtonList == null) { Debug.LogError($"<color=red>skill button null</color>"); return; }
+        var validSkills = skillList.Where(sk => !string.IsNullOrEmpty(sk.SkillID)).ToList();
+
 
         ClearSkillButtons();
-        for (int i = 0; i < skillList.Count; i++) {
-            SkillData skillData = skillList[i];
-            if (string.IsNullOrEmpty(skillData.SkillID)) continue;
+        for (int i = 0; i < validSkills.Count; i++) {
+            SkillData skillData = validSkills[validSkills.Count-i-1];
+            //if (string.IsNullOrEmpty(skillData.SkillID)) continue;
             var skillButton = skillButtonList[i];
             skillButton.InitSkill(skillData);
+            float delay = (validSkills.Count-i-1) * 0.15f;
+            float duration = 0.75f;
+            skillButton.SkillContentUI.SetOptions(delay, duration);
             skillButton.OpenUI();
         }
     }
-
 
     internal EntityUI GetEntityUI(BattleEntity targetEntity) {
         if (playerUI.Entity.EntityID.Equals(targetEntity.EntityID)) {
@@ -73,11 +84,20 @@ public class BattleUI : UIBase
             return enemyUI;
         }
     }
+    internal void ShowAnimation(Action onComplete=null) {
+        onAnimationCompleted = onComplete;
+        uiAnimationController.AnimateUIs();
+    }
 
 
     private void ClearSkillButtons() {
         for (int i = 0; i < skillButtonList.Count; i++) {
             skillButtonList[i].CloseUI();
         }
+    }
+
+    private void OnAnimationComplete() {
+        onAnimationCompleted?.Invoke();
+        Debug.Log($"battle ui animation complete");
     }
 }
