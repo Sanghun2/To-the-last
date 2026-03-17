@@ -106,7 +106,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8882013909452718130, guid: 6eb0c52a7ae735944a7b094cbec981b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4574750492677339583}
+      addedObject: {fileID: 2951923420442980003}
     - targetCorrespondingSourceObject: {fileID: 4805665782299896656, guid: 6eb0c52a7ae735944a7b094cbec981b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1763134810860644556}
@@ -119,7 +119,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8882013909452718130, guid: 6eb0c52a7ae735944a7b094cbec981b6, type: 3}
   m_PrefabInstance: {fileID: 8226991799446483283}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4574750492677339583
+--- !u!114 &2951923420442980003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +128,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 679874096452677985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8210dec57b9a914ead4b18a01453f12, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b5d14865ca4e574c873654c3baba644, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityUI
+  m_EditorClassIdentifier: Assembly-CSharp::BattleEntityUI
   entityImage: {fileID: 969927603937680331}
   animtor: {fileID: 1763134810860644556}
+  hpUI: {fileID: 0}
+  distanceText: {fileID: 0}
 --- !u!114 &969927603937680331 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9176582801955367576, guid: 6eb0c52a7ae735944a7b094cbec981b6, type: 3}

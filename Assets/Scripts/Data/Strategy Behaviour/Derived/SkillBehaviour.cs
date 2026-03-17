@@ -22,18 +22,22 @@ public sealed class SkillBehaviour : StrategyBehaviour
             return; 
         }
 
-        Debug.Log($"<color=cyan>Skill({skillSD.DisplayName}) 사용!</color>");
+        Debug.Log($"<color=cyan>({caster.EntityID}) Skill({skillSD.DisplayName}) 사용!</color>");
 
         var animationType = skillSD.AnimationType;
-        caster.CurrentState = new AttackState(animationType, () => {
-            var effects = skillSD.Effects;
-            for (int i = 0; i < effects.Count; i++) {
-                var effect = effects[i];
-                EffectProcessor processor = Managers.BattleSystem.GetEffectProcessor(effect);
-                processor.ProcessEffect(effect, caster); // gettype으로 들고 오면 stat modifier 같은 애들을 processor가 없어서 processor null error 발생
-            }
-        });        
+        caster.CurrentState = new AttackState(animationType, ProcessEffects, () => {
+            caster.CurrentState = new IdleState();
+            onResolveCompleted?.Invoke();
+        });
+    }
 
-        onResolveCompleted?.Invoke();
+    private void ProcessEffects() {
+        Debug.Log("effect applied");
+        var effects = skillSD.Effects;
+        for (int i = 0; i < effects.Count; i++) {
+            var effect = effects[i];
+            EffectProcessor processor = Managers.BattleSystem.GetEffectProcessor(effect);
+            processor.ProcessEffect(effect, caster); // gettype으로 들고 오면 stat modifier 같은 애들을 processor가 없어서 processor null error 발생
+        }
     }
 }

@@ -25,7 +25,7 @@ public class CharacterAnimator : AnimatorBase
         isInit = true;
     }
 
-    public override void Animate(Define.ActionAnimationType type, Action onApplyTime = null) {
+    public override void Animate(Define.ActionAnimationType type, Action onApplyTime = null, Action onComplete=null) {
         Init();
         this.onApplyTime = onApplyTime;
 
@@ -33,6 +33,14 @@ public class CharacterAnimator : AnimatorBase
 
         var parameter = ConvertType(type);
         anim.SetTrigger(parameter);
+
+        Managers.Coroutine.WaitFrame(1, () => {
+            var clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+            if (clipInfos.Length == 0) { onComplete?.Invoke(); return; }
+
+            var duration = clipInfos[0].clip.length;
+            Managers.Coroutine.Wait(duration, onComplete);
+        });
     }
 
 
@@ -49,7 +57,7 @@ public class CharacterAnimator : AnimatorBase
             entityUI.SetImage(sprite);
         }
         else {
-            Debug.LogError($"<color=red>({targetEntityID}) animatio sprite SD not exist</color>");
+            Debug.LogError($"<color=red>({targetEntityID}) animation sprite SD not exist</color>");
         }
     }
     private string ConvertType(Define.ActionAnimationType type) {

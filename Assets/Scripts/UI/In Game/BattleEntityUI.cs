@@ -33,15 +33,16 @@ public class BattleEntityUI : EntityUI
         self.OnStateChanged -= UpdateState;
         self.OnStateChanged += UpdateState;
 
-        target.OnDistanceChanged -= RefreshDistanceUI;
-        target.OnDistanceChanged += RefreshDistanceUI;
-
-        RefreshDistanceUI();
+        if (target != null) {
+            target.OnDistanceChanged -= RefreshDistanceUI;
+            target.OnDistanceChanged += RefreshDistanceUI;
+            RefreshDistanceUI();
+        }
     }
 
     private void UpdateState(StateBase currentState, StateBase prevState) {
         if (currentState is IAnimatableState state) {
-            animtor.Animate(state.AnimationType, state.OnApplyTime);
+            animtor.Animate(state.AnimationType, state.OnApplyTime, state.OnComplete);
         }
     }
 
@@ -52,7 +53,9 @@ public class BattleEntityUI : EntityUI
     private void RefreshDistanceUI() {
         if (self == null || target == null) { Debug.LogError($"<color=red>계산 대상이 없음</color>"); return; }
 
-        distanceText.text = self.CalculateDistance(target).ToString();
+        if (distanceText != null) {
+            distanceText.text = self.CalculateDistance(target).ToString();
+        }
     }
 
     private void InitHpStatUI(BattleEntity battleEntity) {
