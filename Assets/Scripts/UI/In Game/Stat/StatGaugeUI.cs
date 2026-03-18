@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class StatGaugeUI : StatUIBase
 {
+    [Header("[  Options  ]")]
+    [SerializeField]
+    [Range(0, 6)] int floatPoints;
+
+    [Space]
+    [Header("[  Assigns  ]")]
     [SerializeField] protected Image statBackgroundImage;
     [SerializeField] protected Image statFillImage;
     [SerializeField] protected Button infoButton;
@@ -25,8 +31,8 @@ public class StatGaugeUI : StatUIBase
         base.InitUI();
 
         // ui init
-        statBackgroundImage.sprite = statSD.IconImage;
-        statFillImage.sprite = statSD.IconImage;
+        statBackgroundImage.sprite = statSD.Image;
+        statFillImage.sprite = statSD.Image;
 
         // info pop up init
         var popUpData = new InfomationPopUpData(
@@ -38,7 +44,7 @@ public class StatGaugeUI : StatUIBase
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                 })
             },
-            image:statSD.IconImage
+            image:statSD.Image
             );
 
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();
@@ -57,17 +63,18 @@ public class StatGaugeUI : StatUIBase
         _isInit = true;
     }
 
-    public void UpdateSubText(Value<float> value) { 
+    public void UpdateSubText(Value<float> value) {
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();
+        string format = floatPoints == 0 ? "N0" : $"N{floatPoints}";
         switch (StatType) {
             case Define.Stat.Hp:
-            case Define.Stat.Hungriness:
+            case Define.Stat.Hunger:
             case Define.Stat.Thirst:
             case Define.Stat.Mental:
-                infoPopUp.SetSubText($"{value.CurrentValue}/{value.MaxValue}");
+                infoPopUp.SetSubText($"{value.CurrentValue.ToString(format)}/{value.MaxValue.ToString(format)}");
                 break;
-            case Define.Stat.Temperture:
-                infoPopUp.SetSubText($"{value.CurrentValue}℃");
+            case Define.Stat.Temperature:
+                infoPopUp.SetSubText($"{value.CurrentValue.ToString(format)}℃");
                 break;
             default:
                 break;

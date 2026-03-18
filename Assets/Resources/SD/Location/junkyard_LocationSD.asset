@@ -15,8 +15,8 @@ MonoBehaviour:
   id: junkyard
   displayName: "\uD3D0\uCC28\uC7A5"
   descripiton: "\uD3D0\uCC28\uC7A5"
+  image: {fileID: 21300000, guid: 22ead23c7c9af7d4c82171e734e14bed, type: 3}
   iconImage: {fileID: 21300000, guid: 05dcfa3ca01a4d0469b9700f47f83d33, type: 3}
-  mainImage: {fileID: 21300000, guid: 22ead23c7c9af7d4c82171e734e14bed, type: 3}
   storyDescription: "\uC774 \uD3D0\uCC28\uC7A5\uC740 \uB300\uC7AC\uC559 \uC774\uD6C4,
     \uC0B4\uC544\uB0A8\uC740 \uC790\uB4E4\uC774 \uB9C8\uC9C0\uB9C9 \uD53C\uB09C\uCC98\uB97C
     \uCC3E\uC544 \uD5E4\uB9E4\uB358 \uACF3\uC774\uC5C8\uC2B5\uB2C8\uB2E4. \uC790\uB3D9\uCC28

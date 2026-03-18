@@ -11,7 +11,7 @@ public abstract class EncounterExecutorBase<TEncounterContext, TSD>
     public Type GetContextType() => typeof(TEncounterContext);
     public bool CanHandle(object context) => context is TEncounterContext;
     public void ExecuteEncounter(object context) {
-        Debug.Log($"execute encounter");
+        //Debug.Log($"execute encounter");
         ExecuteEncounter((TEncounterContext)context);
     }
 }

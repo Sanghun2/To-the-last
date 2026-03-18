@@ -21,7 +21,7 @@ public class ConstructionContentUI : UIBase, IPool
     }
 
     public void ShowUI(StructureSD structureSD) {
-        structureContentUI.SetContentImage(structureSD.IconImage);
+        structureContentUI.SetContentImage(structureSD.Image);
         requirementUIContainer.ShowList(structureSD.RequirementItems);
         constructionButton.InitButton(new ActionData(
             $"건설\n({structureSD.ConstructionTime}분)",

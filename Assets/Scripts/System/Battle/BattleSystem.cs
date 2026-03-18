@@ -11,7 +11,12 @@ public class BattleSystem
     private StrategyBehaviourContainerBase behaviourContainer = new ListStrategyBehaviourContainer();
     private BehaviourResolver behaviourResolver = new BehaviourResolver();
     private BattleEntityManager battleEntityManager = new BattleEntityManager();
-    private EffectProcessorRegistry effectProcessorRegistry = new EffectProcessorRegistry();   
+    private EffectProcessorRegistry effectProcessorRegistry = new EffectProcessorRegistry();
+
+    public event Action OnBattleEntered;
+    public event Action OnBattleStarted;
+    public event Action OnBattleFinished;
+    public event Action OnBattleExit;
 
     #region Context Resolve
 
@@ -113,6 +118,8 @@ public class BattleSystem
     public void PrepareBattle(BattleEntity player, BattleEntity enemy, Action onBattleReadied = null) {
         if (player == null || enemy == null) { Debug.LogError($"entity empty. player null? {player == null}, enemy null? {enemy == null}"); return; }
 
+        OnBattleEntered?.Invoke();
+
         stateController.ResetEvent();
         stateController.OnStateChanged -= UpdateState;
         stateController.OnStateChanged += UpdateState;
@@ -144,10 +151,10 @@ public class BattleSystem
             onBattleReadied?.Invoke();
         });
     }
-
-
     public void StartBattle() {
         if (!stateController.TryTransitionTo(Define.BattleState.Wait)) { return; }
+
+        OnBattleStarted?.Invoke();
 
         // 전투 시작 애니메이션 및 처리
         //
@@ -157,10 +164,18 @@ public class BattleSystem
         if (!stateController.TryTransitionTo(Define.BattleState.Finish)) { return; }
 
         Debug.Log("전투 종료");
+        OnBattleFinished?.Invoke();
 
         // 전투 종료 애니메이션 및 처리
         //
         // ---
+    }
+    public void ExitBattle() {
+        if (!stateController.TryTransitionTo(Define.BattleState.Exit)) { return; }
+
+        OnBattleExit?.Invoke();
+
+        Managers.UI.CloseUI<BattleUI>();
     }
 
     private void CheckBattleMaintanance(int remainEnemyCount) {

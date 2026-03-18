@@ -2,12 +2,19 @@
 
 public class Define
 {
+    public class Path {
+        public const string ASSET_LOAD_FOLDER = "Assets/@Resources";
+        public const string IMAGE_ASSET_LOAD_PATH = ASSET_LOAD_FOLDER + "/Image";
+        public const string ICON_ASSET_LOAD_PATH = IMAGE_ASSET_LOAD_PATH + "/Icon";
+
+    }
+
     public enum Stat {
         Hp = 0,
-        Hungriness = 1,
+        Hunger = 1,
         Thirst = 2,
         Mental = 3,
-        Temperture = 4,
+        Temperature = 4,
 
         Strength,
         Agility,
@@ -20,10 +27,16 @@ public class Define
         Consume,
         Check,
     }
+    public enum VitalState
+    {
+        None,
+        Alive,
+        Dead,
+    }
 
     public enum BattleState
     {
-        None,
+        Exit,
         Ready,
         Wait,
         Resolve,

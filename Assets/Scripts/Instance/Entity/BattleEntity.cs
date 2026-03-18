@@ -14,11 +14,6 @@ public class BattleEntity : Entity
         Player,
         Enemy,
     }
-    public enum VitalState {
-        None,
-        Alive,
-        Dead,
-    }
 
     public BehaviourState CurrentBehaviourState
     {
@@ -33,7 +28,7 @@ public class BattleEntity : Entity
             }
         }
     }
-    public VitalState CurrentVitalState
+    public Define.VitalState CurrentVitalState
     {
         get => _currentVitalState;
         protected set
@@ -66,7 +61,7 @@ public class BattleEntity : Entity
     protected StatContainer statContainer = new StatContainer();
     private StateBase _currentState;
     private BehaviourState _currentBehaviourState;
-    private VitalState _currentVitalState;
+    private Define.VitalState _currentVitalState;
     private int _position;
 
 
@@ -75,7 +70,7 @@ public class BattleEntity : Entity
     }
 
     public event Action<BehaviourState, BehaviourState> OnBehaviourStateChanged;
-    public event Action<VitalState, VitalState> OnVitalStateChanged;
+    public event Action<Define.VitalState, Define.VitalState> OnVitalStateChanged;
     public event Action<int> OnDistanceChanged;
     public event Action<StateBase, StateBase> OnStateChanged;
 
@@ -110,8 +105,8 @@ public class BattleEntity : Entity
 
 
     private void UpdateVital(Value<float> value) {
-        if (CurrentVitalState == VitalState.Alive && value.CurrentValue <= 0) {
-            CurrentVitalState = VitalState.Dead;
+        if (CurrentVitalState == Define.VitalState.Alive && value.CurrentValue <= 0) {
+            CurrentVitalState = Define.VitalState.Dead;
             Debug.Log($"[Test] entity ({EntityID}) is dead");
         }
     }
@@ -153,7 +148,7 @@ public class BattleEntity : Entity
 
     public void ResetState(Define.BattleState currentState, Define.BattleState _) {
         switch (currentState) {
-            case Define.BattleState.None:
+            case Define.BattleState.Exit:
                 break;
             case Define.BattleState.Ready:
                 break;

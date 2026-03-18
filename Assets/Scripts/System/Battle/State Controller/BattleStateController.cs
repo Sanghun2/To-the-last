@@ -22,7 +22,8 @@ public sealed class BattleStateController
 
     private Define.BattleState _currentState;
     private static readonly Dictionary<Define.BattleState, HashSet<Define.BattleState>> validTransitions = new Dictionary<Define.BattleState, HashSet<Define.BattleState>>() {
-        { Define.BattleState.Ready,      new HashSet<Define.BattleState>{ Define.BattleState.None, Define.BattleState.Finish} },
+        { Define.BattleState.Exit,      new HashSet<Define.BattleState>{ Define.BattleState.Finish } },
+        { Define.BattleState.Ready,      new HashSet<Define.BattleState>{ Define.BattleState.Exit, Define.BattleState.Finish} },
         { Define.BattleState.Wait, new HashSet<Define.BattleState>{ Define.BattleState.Ready, Define.BattleState.Resolve} },
         { Define.BattleState.Resolve, new HashSet<Define.BattleState>{ Define.BattleState.Wait} },
         { Define.BattleState.Finish,     new HashSet<Define.BattleState>{ Define.BattleState.Wait} }

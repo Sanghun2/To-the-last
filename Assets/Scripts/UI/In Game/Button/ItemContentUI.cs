@@ -27,7 +27,7 @@ public class ItemContentUI : ButtonBase, IPool
     }
     public void SetRecipe(RecipeSD recipeSD, Action buttonAction) {
         this.recipeSD = recipeSD;
-        itemImage.sprite = recipeSD.Outputs[0].ItemSD.IconImage;
+        itemImage.sprite = recipeSD.Outputs[0].ItemSD.Image;
         SetButtonAction(buttonAction);
     }
 

@@ -10,7 +10,7 @@ public class DescriptionUI : UIBase
 
     public void InitContent(RecipeSD recipeSD) {
         itemNameText.SetText(recipeSD.DisplayName);
-        itemContentUI.SetContentImage(recipeSD.IconImage);
+        itemContentUI.SetContentImage(recipeSD.Image);
         requirementUIContainer.ShowList(recipeSD.Inputs);
         descriptionText.SetText(recipeSD.Description);
     }

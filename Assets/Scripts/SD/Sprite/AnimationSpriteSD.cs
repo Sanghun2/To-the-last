@@ -32,7 +32,7 @@ public class AnimationSpriteSD : SDBase, ISerializationCallbackReceiver
             var data = spriteDataArr[i];
             if (data.Sprite == null) {
                 if (data.Type == Define.ActionAnimationType.Default) {
-                    data.SetSprite(targetEntitySD.IconImage);
+                    data.SetSprite(targetEntitySD.Image);
                 }
                 else {
                     Debug.LogError($"<color=orange>({EntityID})</color> sprite SD <color=orange>({data.Type})</color> sprite is required");

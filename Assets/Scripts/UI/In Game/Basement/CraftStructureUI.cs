@@ -58,6 +58,6 @@ public class CraftStructureUI : UIBase
         if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
         ShowDescription(recipeSD);
         craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
-        selectedItemUI.SetContentImage(recipeSD.IconImage);
+        selectedItemUI.SetContentImage(recipeSD.Image);
     }
 }

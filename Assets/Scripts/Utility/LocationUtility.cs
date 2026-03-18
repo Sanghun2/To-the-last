@@ -9,7 +9,7 @@ public static class LocationUtility
     public static string basementSDID = "basement";
 
     public static float CalculateDistance(Vector2 startPos, Vector2 endPos) {
-        Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
+        //Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
         return Vector2.Distance(startPos, endPos);
     }
     public static float CalculateDistance(LocationSD currentLocation, LocationSD destination) {

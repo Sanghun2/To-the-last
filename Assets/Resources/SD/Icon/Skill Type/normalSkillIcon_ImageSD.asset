@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e3860e24086134d9c74fc6793a654c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fcdfb866b50f60478ab773c02fcace4, type: 3}
   m_Name: normalSkillIcon_ImageSD
   m_EditorClassIdentifier: Assembly-CSharp::ImageSD
   id: normalSkillIcon
-  displayName: "\uC77C\uBC18 \uC2A4\uD0AC \uC544\uC774\uCF58"
-  descripiton: "\uC77C\uBC18 \uC2A4\uD0AC \uC544\uC774\uCF58"
-  iconImage: {fileID: 21300000, guid: 0782925ec55a245b490d37efbac3e03f, type: 3}
+  displayName: 
+  descripiton: 
+  image: {fileID: 21300000, guid: 0782925ec55a245b490d37efbac3e03f, type: 3}

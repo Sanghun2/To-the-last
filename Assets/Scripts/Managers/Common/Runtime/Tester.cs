@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BilliotGames;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -60,9 +61,9 @@ public class Tester : MonoBehaviour
             Managers.Player.PlayerData.RegisterSkill(i, skill);
         }
 
-        enemy = new BattleEntity("Zombie").InitEntity(enemySD.StatDataList);
+        enemy = new BattleEntity("zombie").InitEntity(enemySD.StatDataList);
         Managers.BattleSystem.PrepareBattle(
-            new BattleEntity("player").InitEntity(Managers.Player.PlayerData.StatContainer), 
+            new BattleEntity("jadon").InitEntity(Managers.Player.PlayerData.StatContainer), 
             enemy,
             () => {
                 Managers.BattleSystem.StartBattle();
@@ -88,7 +89,7 @@ public class Tester : MonoBehaviour
             int idx = i;
             list.Add(new SelectionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
         }
-        var dd = new DialogData(characterSD.IconImage, characterSD.DisplayName, situation, list);
+        var dd = new DialogData(characterSD.Image, characterSD.DisplayName, situation, list);
         Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {

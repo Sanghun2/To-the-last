@@ -68,7 +68,7 @@ public class StructureUI : ButtonBase
         objectActivator.ShowObject((int)currentState);
 
         if (currentState == Structure.StructureState.Built) {
-            structureImage.sprite = structure.StructureSD.IconImage;
+            structureImage.sprite = structure.StructureSD.Image;
         }
     }
 }

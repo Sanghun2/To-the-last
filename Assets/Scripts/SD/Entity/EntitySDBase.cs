@@ -1,7 +1,7 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public abstract class EntitySDBase : IconSDBase
+public abstract class EntitySDBase : ImageSDBase
 {
 
 }

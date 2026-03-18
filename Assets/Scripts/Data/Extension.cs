@@ -31,10 +31,10 @@ public static partial class Extension
     public static void CreateDefaultStats(this StatContainer statContainer) {
         statContainer.ClearStats();
         statContainer.RegisterStat(Define.Stat.Hp.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Hungriness.ToID(), new BoundedStat(100));
+        statContainer.RegisterStat(Define.Stat.Hunger.ToID(), new BoundedStat(100));
         statContainer.RegisterStat(Define.Stat.Thirst.ToID(), new BoundedStat(100));
         statContainer.RegisterStat(Define.Stat.Mental.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Temperture.ToID(), new Stat(36.5f));
+        statContainer.RegisterStat(Define.Stat.Temperature.ToID(), new Stat(36.5f));
 
         statContainer.RegisterStat(Define.Stat.Strength.ToID(), new Stat(20));
         statContainer.RegisterStat(Define.Stat.Agility.ToID(), new Stat(10));

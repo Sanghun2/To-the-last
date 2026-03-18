@@ -36,12 +36,12 @@ public class SkillButton : ButtonBase, IPool
         }
 
         if (skillIconImage != null) {
-            if (Managers.SD.TryGetSD(skillData.SkillSD.BehaviourType.ToID(), out ImageSD imageSD)) {
-                skillIconImage.sprite = imageSD.IconImage;
+            if (Managers.SD.TryGetSD(skillData.SkillSD.BehaviourType.ToID(), out IconSD iconSD)) {
+                skillIconImage.sprite = iconSD.Image;
             }
         }
         else {
-            Debug.LogError($"<color=Orange>skill icon image null</color>");
+            Debug.LogError($"<color=Orange>({skillData.SkillSD.BehaviourType.ToID()}) skill icon image null</color>");
         }
 
         skillBehaviour = new SkillBehaviour(caster, skillSD);

@@ -29,7 +29,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
     public override void InitPopUp(LocationInfoPopUpData popUpData) {
         base.InitPopUp(popUpData);
         var sd = popUpData.Location.LocationSD;
-        locationImage.sprite = sd.MainImage;
+        locationImage.sprite = sd.Image;
 
         int currentProgress = popUpData.Location.CurrentValue;
         int maxProgress = sd.LocationEventList.Count;
@@ -64,7 +64,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
         var time = LocationUtility.CalculateDistance(currentLocation, destination).ConvertToTime();
         moveTimeExpectationText.SetText($"{time.hour}시간 {time.minutes}분");
-        Debug.Log($"{currentLocation.ID} -> {destination.ID}");
+        //Debug.Log($"{currentLocation.ID} -> {destination.ID}");
     }
 
 

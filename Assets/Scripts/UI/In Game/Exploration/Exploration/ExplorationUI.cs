@@ -49,7 +49,7 @@ public class ExplorationUI : UIBase
 
     public void InitLocationUI(Location location) {
         InitUI();
-        mainBackgroundImage.sprite = location.LocationSD.MainImage;
+        mainBackgroundImage.sprite = location.LocationSD.Image;
         HideSituation();
     }
     public void ShowEnterance() {
