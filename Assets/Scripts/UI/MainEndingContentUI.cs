@@ -24,7 +24,7 @@ public class MainEndingContentUI : UIBase
     [SerializeField] bool test;
     [SerializeField] Color testColor;
 
-    private Dictionary<Define.EndingType, Color> themeColor;
+    private Dictionary<Define.EndingType, Color> themeColor = new();
 
     public void ShowUI(string endingID) {
         if (Managers.SD.TryGetSD(endingID, out EndingSD endingSD)) {
