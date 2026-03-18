@@ -38,6 +38,8 @@ public class MainEndingContentUI : UIBase
 
         mainIconImage.color = themeColor[endingType];
         mainText.color = themeColor[endingType];
+
+        OpenUI();
     }
 
     private void Awake() {
