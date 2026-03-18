@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using NUnit.Framework.Internal;
 using TMPro;
@@ -9,7 +10,7 @@ public class MainEndingContentUI : UIBase
 {
     [Header("[  Options  ]")]
     [SerializeField] Color escapedColor;
-    [SerializeField] Color deadColor;
+    [SerializeField] Color failedColor;
 
     [Space]
     [Header("[  Assigns  ]")]
@@ -23,19 +24,26 @@ public class MainEndingContentUI : UIBase
     [SerializeField] bool test;
     [SerializeField] Color testColor;
 
-
+    private Dictionary<Define.EndingType, Color> themeColor;
 
     public void ShowUI(string endingID) {
         if (Managers.SD.TryGetSD(endingID, out EndingSD endingSD)) {
-            InitUI(endingSD.IconImage, endingSD.Text);
+            InitUI(endingSD.EndingType, endingSD.IconImage, endingSD.Text);
         }
     }
 
-    private void InitUI(Sprite iconImage, string text) {
+    private void InitUI(Define.EndingType endingType, Sprite iconImage, string text) {
         mainIconImage.sprite = iconImage;
         mainText.text = text;
+
+        mainIconImage.color = themeColor[endingType];
+        mainText.color = themeColor[endingType];
     }
 
+    private void Awake() {
+        themeColor.Add(Define.EndingType.Esacped, escapedColor);
+        themeColor.Add(Define.EndingType.Failed, failedColor);
+    }
     private void OnValidate() {
         if (test) {
             mainIconImage.color = testColor;

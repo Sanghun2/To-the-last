@@ -6,4 +6,8 @@ public class EndingSD : ImageSDBase
 {
     public Sprite IconImage => Image;
     public string Text => displayName;
+
+    public Define.EndingType EndingType => endingType;
+
+    [SerializeField] Define.EndingType endingType;
 }

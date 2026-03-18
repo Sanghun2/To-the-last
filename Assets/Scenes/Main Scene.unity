@@ -706,10 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c37e82a8e94a241bbd3e458aae2fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndingUI
-  mainIconImage: {fileID: 676967712}
-  mainText: {fileID: 1088264642}
-  escapedColor: {r: 0.09803922, g: 0.8862745, b: 0, a: 1}
-  deadColor: {r: 0.8862745, g: 0.1882353, b: 0, a: 1}
+  mainContentUI: {fileID: 1748897137}
 --- !u!1001 &328146163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1708,7 +1705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09803922, g: 0.8862745, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2533,8 +2530,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278202594
-  m_fontColor: {r: 0.8862745, g: 0.1882353, b: 0, a: 1}
+    rgba: 4283124735
+  m_fontColor: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2914,6 +2911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748897133}
+  - component: {fileID: 1748897137}
   - component: {fileID: 1748897134}
   - component: {fileID: 1748897135}
   - component: {fileID: 1748897136}
@@ -2997,6 +2995,25 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1748897137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748897132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01537241e6638a34e8862f131828e5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainEndingContentUI
+  escapedColor: {r: 0.09803922, g: 0.8862745, b: 0, a: 1}
+  failedColor: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
+  mainIconImage: {fileID: 676967712}
+  mainText: {fileID: 1088264642}
+  mainGroup: {fileID: 1748897136}
+  test: 0
+  testColor: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
 --- !u!1 &1796952888
 GameObject:
   m_ObjectHideFlags: 0

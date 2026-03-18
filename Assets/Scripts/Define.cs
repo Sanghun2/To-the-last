@@ -9,6 +9,11 @@ public class Define
 
     }
 
+    public enum EndingType {
+        Failed,
+        Esacped,
+    }
+
     public enum Stat {
         Hp = 0,
         Hunger = 1,
