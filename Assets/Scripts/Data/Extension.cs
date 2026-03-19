@@ -5,13 +5,21 @@ using UnityEngine;
 
 public static partial class Extension
 {
-    public static ItemData ToItemData(this ItemSD itemSD) {
+    #region Data
+
+    public static ItemData ToData(this ItemSD itemSD) {
         return new ItemData(itemSD.ID, itemSD.MaxStackCount);
     }
-
-    public static SkillData ToSkillData(this SkillSD skillSD) {
+    public static SkillData ToData(this SkillSD skillSD) {
         return new SkillData(skillSD.ID);
     }
+    public static StoryData ToData(this StorySD storySD) {
+        var newData = new StoryData(storySD.ID);
+        return newData;
+    }
+
+    #endregion
+
 
     public static string ToID(this Define.Stat statType) {
         return statType.ToString();
@@ -28,6 +36,8 @@ public static partial class Extension
         }
     }
 
+    #region Stat
+
     public static void CreateDefaultStats(this StatContainer statContainer) {
         statContainer.ClearStats();
         statContainer.RegisterStat(Define.Stat.Hp.ToID(), new BoundedStat(100));
@@ -41,7 +51,6 @@ public static partial class Extension
         statContainer.RegisterStat(Define.Stat.Toughness.ToID(), new Stat(10));
         statContainer.RegisterStat(Define.Stat.Focus.ToID(), new Stat(20));
     }
-
     public static void InitStats(this StatContainer statContainer, IReadOnlyList<StatData> statDataList) {
         statContainer.CreateDefaultStats();
         for (int i = 0; i < statDataList.Count; i++) {
@@ -56,4 +65,7 @@ public static partial class Extension
             }
         }
     }
+
+    #endregion
+
 }

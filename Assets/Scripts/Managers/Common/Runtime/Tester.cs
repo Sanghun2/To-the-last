@@ -118,7 +118,7 @@ public class Tester : MonoBehaviour
     }
 
     public void PushItem() {
-        Managers.Player.Inventory.TryPushItem(new ItemStack(itemSD.ToItemData(), amount), out var overflowedStack);
+        Managers.Player.Inventory.TryPushItem(new ItemStack(itemSD.ToData(), amount), out var overflowedStack);
     }
     public void PopItem() {
         Managers.Player.Inventory.TryRemoveItem(itemSD.ID, amount);
