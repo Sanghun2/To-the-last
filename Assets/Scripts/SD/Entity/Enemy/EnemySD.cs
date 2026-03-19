@@ -20,7 +20,7 @@ public class EnemySD : EntitySDBase
         new StatData(Define.Stat.Toughness, StatData.StatType.Stat,20),
     };
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_EnemySD");
     }
 

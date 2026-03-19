@@ -31,7 +31,7 @@ public class CraftStructureUI : UIBase
         UpdateSelectedRecipe(recipes.First());
     }
     public void SetTitleText(StructureSD structureSD) {
-        popUpTitleText.SetText(structureSD.DisplayName);
+        popUpTitleText.SetText(structureSD.DisplayText);
     }
 
     public void InitProgressUI(float currentValue, float totalValue) {

@@ -28,6 +28,7 @@ public abstract class ModifyEffectSD : EffectSD
     }
 
     protected override void OnValidate() {
+        base.OnValidate();
         RenameAsset(ID, suffix:"_ModifyEffectSD");
     }
 }

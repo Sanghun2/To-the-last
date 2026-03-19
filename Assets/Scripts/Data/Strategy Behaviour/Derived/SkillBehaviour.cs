@@ -22,7 +22,7 @@ public sealed class SkillBehaviour : StrategyBehaviour
             return; 
         }
 
-        Debug.Log($"<color=cyan>({caster.EntityID}) Skill({skillSD.DisplayName}) 사용!</color>");
+        Debug.Log($"<color=cyan>({caster.EntityID}) Skill({skillSD.DisplayText}) 사용!</color>");
 
         var animationType = skillSD.AnimationType;
         caster.CurrentState = new AttackState(animationType, ProcessEffects, () => {

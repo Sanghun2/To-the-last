@@ -10,7 +10,7 @@ public class ItemSD : ImageSDBase
 
     [SerializeField] int maxStackCount;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_ItemSD");
     }
 }

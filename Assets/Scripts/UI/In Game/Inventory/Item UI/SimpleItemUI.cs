@@ -11,7 +11,7 @@ public class SimpleItemUI : ItemUIBase
     public void InitItem(ItemData itemData, int amount) {
         if (Managers.SD.TryGetSD(itemData.ItemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.Image;
-            itemNameText.text = targetSD.DisplayName;
+            itemNameText.text = targetSD.DisplayText;
             amountText.text = GetAmountText(amount);
             Activate();
         }

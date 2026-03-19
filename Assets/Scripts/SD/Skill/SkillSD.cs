@@ -30,7 +30,7 @@ public class SkillSD : ImageSDBase
     [SerializeField] List<PrequisiteSkill> prequisiteSkillList;
     [SerializeField] List<UnlockSkill> unlockSkillList;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix:"_SkillSD");
     }
 }

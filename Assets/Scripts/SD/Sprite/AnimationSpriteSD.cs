@@ -21,7 +21,7 @@ public class AnimationSpriteSD : SDBase, ISerializationCallbackReceiver
         return false;
     }
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         CheckAssetName();
         CheckSpriteDataValidation();
     }

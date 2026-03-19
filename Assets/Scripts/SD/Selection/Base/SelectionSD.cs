@@ -13,7 +13,7 @@ public abstract class SelectionSD : SDBase
     [SerializeField] protected Ingredient requirement;
     [SerializeField] protected int requireMinutes;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix:$"_{GetType()}");
     }
 }

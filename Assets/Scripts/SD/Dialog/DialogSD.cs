@@ -2,8 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogSD", menuName = "Scriptable Objects/DialogSD")]
-public class DialogSD : SDBase
+public class DialogSD : ImageSDBase
 {
-    [SerializeField] DialogSD entryDialog;
-    [SerializeField] DialogSD unlockDialog;
+
 }

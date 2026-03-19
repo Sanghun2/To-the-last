@@ -10,7 +10,7 @@ public abstract class EncounterSD : SDBase
     [SerializeField] Sprite eventImage;
     [SerializeField] List<SelectionSD> selectionList = new List<SelectionSD>();
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix:"_EncounterSD");
     }
 }

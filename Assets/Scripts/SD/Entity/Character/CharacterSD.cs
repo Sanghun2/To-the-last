@@ -8,7 +8,7 @@ public class CharacterSD : EntitySDBase
 
     [SerializeField] RuntimeAnimatorController animator;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix: $"_CharacterSD");
     }
 }

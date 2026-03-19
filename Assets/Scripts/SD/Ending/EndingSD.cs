@@ -5,7 +5,7 @@ using UnityEngine;
 public class EndingSD : ImageSDBase
 {
     public Sprite IconImage => Image;
-    public string Text => displayName;
+    public string Text => displayText;
 
     public Define.EndingType EndingType => endingType;
 

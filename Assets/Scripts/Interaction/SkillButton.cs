@@ -32,7 +32,7 @@ public class SkillButton : ButtonBase, IPool
         if (skillData == null) { Debug.LogError($"<color=red>[{GetType()}] skill data null</color>"); return; }
         this.skillData = skillData;
         if (Managers.SD.TryGetSD(skillData.SkillID, out SkillSD skillSD)) {
-            skillNameText.text = skillSD.DisplayName;
+            skillNameText.text = skillSD.DisplayText;
         }
 
         if (skillIconImage != null) {

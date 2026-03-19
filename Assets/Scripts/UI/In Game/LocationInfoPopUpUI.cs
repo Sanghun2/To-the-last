@@ -15,7 +15,7 @@ public class LocationInfoPopUpData : PopUpData
 
 
     public LocationInfoPopUpData(Location location, ActionData[] buttonActions) 
-        : base (location.LocationSD.DisplayName, location.LocationSD.StoryDescription, buttonActions){
+        : base (location.LocationSD.DisplayText, location.LocationSD.StoryDescription, buttonActions){
         this.location = location;
     }
 }

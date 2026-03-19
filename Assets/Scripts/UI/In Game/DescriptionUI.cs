@@ -9,7 +9,7 @@ public class DescriptionUI : UIBase
     [SerializeField] TextUI descriptionText;
 
     public void InitContent(RecipeSD recipeSD) {
-        itemNameText.SetText(recipeSD.DisplayName);
+        itemNameText.SetText(recipeSD.DisplayText);
         itemContentUI.SetContentImage(recipeSD.Image);
         requirementUIContainer.ShowList(recipeSD.Inputs);
         descriptionText.SetText(recipeSD.Description);

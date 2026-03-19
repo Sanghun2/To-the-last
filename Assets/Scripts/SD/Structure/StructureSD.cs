@@ -19,7 +19,7 @@ public abstract class StructureSD : ImageSDBase
         locked = @lock;
     }
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_StructureSD");
     }
 

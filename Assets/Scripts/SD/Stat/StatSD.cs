@@ -8,7 +8,7 @@ public class StatSD : ImageSDBase
 
     [SerializeField] Define.Stat statType;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         if (id.Equals(statType)) return;
 
         id = statType.ToString();

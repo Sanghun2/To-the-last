@@ -15,7 +15,7 @@ public class SelectionData : ActionData
     }
     public SelectionData(string text, Action action) : base(text, action) {
     }
-    public SelectionData(SelectionSD selectionSD, Action action) : base(selectionSD.DisplayName, action) {
+    public SelectionData(SelectionSD selectionSD, Action action) : base(selectionSD.DisplayText, action) {
         this.selectionSD = selectionSD;
     }
 }

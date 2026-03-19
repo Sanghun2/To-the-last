@@ -12,7 +12,7 @@ public class RecipeSD : TimeBasedSD
     [SerializeField] Ingredient[] inputs;
     [SerializeField] Ingredient[] outputs;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_RecipeSD");
     }
 }

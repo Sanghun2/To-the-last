@@ -49,7 +49,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7d84602be436115d4e881814939e8c1230d2ee6f"
+      "hash": "6eab96edbd11d26425250afd29cec30368bab096"
     },
     "com.billiotgames.singleton": {
       "version": "https://github.com/Sanghun2/Singleton.git",

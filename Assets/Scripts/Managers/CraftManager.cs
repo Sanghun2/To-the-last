@@ -69,7 +69,7 @@ public sealed class CraftManager
         if (craftContext.CanSelect) {
             craftContext.SetTarget(recipeSD);
             OnTargetSet?.Invoke(recipeSD);
-            Debug.Log($"target set. {recipeSD.DisplayName}");
+            Debug.Log($"target set. {recipeSD.DisplayText}");
         }
     }
 
@@ -109,7 +109,7 @@ public sealed class CraftManager
             int amount = output.Amount;
             ItemStack inputStack = new ItemStack(new ItemData(itemSD.ID, itemSD.MaxStackCount), amount);
             if (Managers.Item.TryPushItem(Managers.Player.Inventory, inputStack, out var overflowedStack)) {
-                Debug.Log($"{CraftTarget.DisplayName} 획득");
+                Debug.Log($"{CraftTarget.DisplayText} 획득");
             }
 
             craftContext.ClearTarget();

@@ -22,7 +22,7 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     [SerializeField] List<EncounterEvent> locationEventList = new List<EncounterEvent>();
     private float distance;
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
         RenameAsset(ID, suffix:"_LocationSD");
 
         for (int i = 0; i < locationEventList.Count; i++) {
