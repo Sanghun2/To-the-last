@@ -26,7 +26,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "6a884ad3aeccb4d3b22f32c9b54d6ff000bc4e2a"
+      "hash": "d36bb16d899ff4217d238fdd78fa9ddfb8f46c42"
     },
     "com.billiotgames.scenecontroller": {
       "version": "https://github.com/Sanghun2/Scene-Controller.git",
