@@ -10,6 +10,8 @@ public class SimpleInventory : InventoryBase
     [SerializeField] List<ItemStack> itemList;
     protected Dictionary<string, int> itemCountDict = new Dictionary<string, int>();
 
+    public override event Action<ItemStack> OnItemAdded;
+
     public SimpleInventory(string id, int capacitiy) : base(id, capacitiy) {
         InitInventory();
     }
@@ -34,6 +36,7 @@ public class SimpleInventory : InventoryBase
     }
     public override bool TryPushItem(ItemStack inputStack, out ItemStack overflowedStack) {
         string itemID = inputStack.ItemData.ItemID;
+        int inputCount = inputStack.Amount;
         int itemCount = GetItemCount(itemID);
         if (itemCount > 0) {
             overflowedStack = null;
@@ -41,18 +44,21 @@ public class SimpleInventory : InventoryBase
             if (targetStack != null) {
                 switch (targetStack.MergeStack(inputStack)) {
                     case ItemStack.MergeResult.Success:
+                        OnItemAdded?.Invoke(inputStack);
                         break;
                     case ItemStack.MergeResult.Success_Overflowed:
+                        int mergedCount = inputCount - inputStack.Amount;
+                        ItemStack deltaStack = new ItemStack(inputStack.ItemData, mergedCount);
+                        OnItemAdded?.Invoke(inputStack);
                         overflowedStack = inputStack;
                         break;
                     case ItemStack.MergeResult.Failed_DifferentItemType:
-                        break;
                     case ItemStack.MergeResult.Failed_InvalidIStack:
-                        break;
                     default:
-                        break;
+                        return false;
                 }
             }
+
             return true;
         }
         else {
@@ -66,6 +72,8 @@ public class SimpleInventory : InventoryBase
             if (invenUI.IsOpened) {
                 invenUI.ShowInventory(this);
             }
+
+            OnItemAdded?.Invoke(inputStack);
             return true;
         }
     }
