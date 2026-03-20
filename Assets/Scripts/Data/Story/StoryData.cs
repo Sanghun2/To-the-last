@@ -1,12 +1,7 @@
 ﻿using UnityEngine;
 
-public class StoryData
+public class StoryData : DataBase
 {
-    public string ID;
-
-    [SerializeField] string id;
-
-    public StoryData(string id) {
-        this.id = id;
+    public StoryData(string id) : base(id) {
     }
 }

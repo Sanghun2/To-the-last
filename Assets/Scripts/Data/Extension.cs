@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BilliotGames;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,6 +17,13 @@ public static partial class Extension
     public static StoryData ToData(this StorySD storySD) {
         var newData = new StoryData(storySD.ID);
         return newData;
+    }
+    public static TaskData ToData(this TaskSD taskSD) {
+        return new TaskData(taskSD.ID, taskSD.CountType, taskSD.RequireCount);
+    }
+    public static QuestData ToData(this QuestSD questSD) {
+        TaskData[] tasks = questSD.TaskSDs.Select(tSD => tSD.ToData()).ToArray();
+        return new QuestData(questSD.ID, questSD.Type, tasks);
     }
 
     #endregion

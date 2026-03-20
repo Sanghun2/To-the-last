@@ -2,9 +2,8 @@
 using UnityEngine;
 
 [Serializable]
-public class StatusData
+public class StatusData : DataBase
 {
-    public string ID => id;
     public Sprite Icon => icon;
     public int MaxStack => maxStack;
 
@@ -13,9 +12,12 @@ public class StatusData
     [SerializeField] Sprite icon;
     [SerializeField] int maxStack;
 
-    public StatusData(StatusSD statusSD) {
-        id = statusSD.ID;
+    public StatusData(StatusSD statusSD) : base(statusSD.ID) {
         icon = statusSD.Image;
         maxStack = statusSD.MaxStack;
+    }
+
+    public StatusData(string id) : base(id) {
+
     }
 }

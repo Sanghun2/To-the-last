@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class SkillData
+public class SkillData : DataBase
 {
     public string SkillID => skillID;
     public SkillSD SkillSD => skillSD;
@@ -18,12 +18,10 @@ public class SkillData
     [SerializeField] string skillID;
     protected SkillSD skillSD;
 
-    public SkillData(string iD) {
-        skillID = iD;
+    public SkillData(SkillSD skillSD) : base(skillSD.ID) {
+        this.skillSD = skillSD;
     }
 
-    public SkillData(SkillSD skillSD) {
-        this.skillID = skillSD.ID;
-        this.skillSD = skillSD;
+    public SkillData(string id) : base(id) {
     }
 }
