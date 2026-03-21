@@ -64,7 +64,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
         var time = LocationUtility.CalculateDistance(currentLocation, destination).ConvertToTime();
         moveTimeExpectationText.SetText($"{time.hour}시간 {time.minutes}분");
-        //Debug.Log($"{currentLocation.ID} -> {destination.ID}");
+        //Debug.Log($"{currentLocation.TraitID} -> {destination.TraitID}");
     }
 
 

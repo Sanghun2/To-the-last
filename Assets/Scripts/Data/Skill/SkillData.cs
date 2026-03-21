@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class SkillData : DataBase
+public class SkillData : BaseData
 {
     public string SkillID => skillID;
     public SkillSD SkillSD => skillSD;

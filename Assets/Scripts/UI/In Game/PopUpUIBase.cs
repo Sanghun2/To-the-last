@@ -51,7 +51,7 @@ public abstract class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpD
         buttonContainer.Clear();
         int buttonCount = Mathf.Min(2, popUpData.ButtonActions.Count);
         for (int i = 0; i < buttonCount; i++) {
-            CustomButton button = buttonContainer.GetObj(i);
+            CustomButton button = buttonContainer.GetOrCreateObj(i);
             button.InitButton(popUpData.ButtonActions[i]);
             button.Activate();
         }

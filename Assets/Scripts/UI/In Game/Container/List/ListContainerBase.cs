@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class ListContainerBase<TContent> : ContainerBase<TContent> where TContent : Component, IPool
@@ -27,7 +28,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
         return CreateObj();
     }
 
-    public virtual TContent GetObj(int index) {
+    public virtual TContent GetObjOf(int index) {
         InitUI();
         TContent obj = null;
         if (0 <= index && index < contentList.Count) {
@@ -36,8 +37,17 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
             return obj;
         }
 
-        obj = CreateObj();
-        obj.Activate();
+        return obj;
+    }
+    public virtual TContent GetOrCreateObj(int index) {
+        InitUI();
+        TContent obj = GetObjOf(index);
+
+        if (obj == null) {
+            obj = CreateObj();
+            obj.Activate();
+        }
+
         return obj;
     }
     public virtual void ReleaseContainer() {

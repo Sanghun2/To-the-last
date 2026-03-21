@@ -48,7 +48,7 @@ public class DialogUI : UIBase
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
             var selectionData = selections[i];
-            var button = container.GetObj(i);
+            var button = container.GetOrCreateObj(i);
             button.InitButton(selectionData.Text, selectionData.Action, new SelectionButtonContext()
                 .SetLock(false)
                 .SetRequirement(selectionData.Requirement));

@@ -11,7 +11,7 @@ public class BattleSystem
     private StrategyBehaviourContainerBase behaviourContainer = new ListStrategyBehaviourContainer();
     private BehaviourResolver behaviourResolver = new BehaviourResolver();
     private BattleEntityManager battleEntityManager = new BattleEntityManager();
-    private EffectProcessorRegistry effectProcessorRegistry = new EffectProcessorRegistry();
+    //private EffectProcessorRegistry effectProcessorRegistry = new EffectProcessorRegistry();
 
     public event Action OnBattleEntered;
     public event Action OnBattleStarted;
@@ -36,7 +36,7 @@ public class BattleSystem
 
         return target;
     }
-    public Entity ResolveTarget(BattleEntity caster, Effect.TargetType targetType) {
+    public BattleEntity ResolveTarget(BattleEntity caster, Effect.TargetType targetType) {
         BattleEntity playerEntity = battleEntityManager.GetPlayerEntity();
 
         if (caster.Equals(playerEntity)) {
@@ -57,14 +57,14 @@ public class BattleSystem
         }
     }
 
-    public EffectProcessor GetEffectProcessor(IEffect type) {
-        if (effectProcessorRegistry.TryGet(type, out var effectProcessor)) {
-            return effectProcessor;
-        }
+    //public IEffectHandler GetEffectProcessor(IEffect type) {
+    //    if (effectProcessorRegistry.TryGet(type, out var effectProcessor)) {
+    //        return effectProcessor;
+    //    }
 
-        Debug.Log($"({type.GetType()})에 맞는 processor가 등록되어 있지 않아 default processor로 처리 진행");
-        return effectProcessorRegistry.DefaultProcessor;
-    }
+    //    Debug.Log($"({type.GetType()})에 맞는 processor가 등록되어 있지 않아 default processor로 처리 진행");
+    //    return effectProcessorRegistry.DefaultProcessor;
+    //}
 
     #endregion
 

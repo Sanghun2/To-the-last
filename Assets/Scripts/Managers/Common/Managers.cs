@@ -224,8 +224,30 @@ public sealed class Managers : MonoBehaviour
             return _processManager;
         }
     }
+    public static EffectSystem EffectSystem
+    {
+        get { 
+            if (_effectSystem == null) {
+                _effectSystem = new EffectSystem();
+            }
+
+            return _effectSystem;
+        }
+    }
+    public static TraitManager Trait
+    {
+        get
+        {
+            if (_traitManager == null) {
+                _traitManager = new TraitManager();
+            }
+
+            return _traitManager;
+        }
+    }
 
     // InGame
+    private static EffectSystem _effectSystem;
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;
     private static ExplorationSystem _explorationSystem;
@@ -241,6 +263,7 @@ public sealed class Managers : MonoBehaviour
     private static JobHandler jobHandler;
 
     // Common 
+    private static TraitManager _traitManager;
     private static ProcessManager _processManager;
     private static SceneController _sceneController;
     private static RegistryManager _registryManager;
@@ -274,7 +297,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new SkillSDContainer("SD/Skill"));
         SD.TryRegisterSD(new EffectSDContainer("SD/Effect"));
         SD.TryRegisterSD(new AnimationSpriteSDContainer("SD/Animation Sprite"));
-        //SD.TryRegisterSD(new AnimationSpriteSDContainer("SD/Animation Sprite"));
+        SD.TryRegisterSD(new TraitSDContainer("SD/Trait"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {

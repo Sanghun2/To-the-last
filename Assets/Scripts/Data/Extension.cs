@@ -26,6 +26,15 @@ public static partial class Extension
         return new QuestData(questSD.ID, questSD.Type, tasks);
     }
 
+    public static TraitData ToData(this TraitSD traitSD) {
+        return new TraitData(
+            traitSD.ID, 
+            traitSD.DisplayText, 
+            traitSD.Description, 
+            traitSD.Image,
+            traitSD.Cost);
+    }
+
     #endregion
 
 

@@ -1,6 +1,8 @@
+﻿using System;
+using BillotGames;
 using UnityEngine;
 
-public class EffectSystem : MonoBehaviour
+public sealed class EffectSystem : TypeRegistry<IEffect, IEffectHandler>
 {
     
 }

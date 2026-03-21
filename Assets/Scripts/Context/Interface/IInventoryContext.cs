@@ -2,7 +2,7 @@
 using BilliotGames;
 using UnityEngine;
 
-public interface IInventoryContext
+public interface IInventoryContext : IContext
 {
     IReadOnlyList<InventoryBase> Inventories { get; }
 }

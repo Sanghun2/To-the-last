@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TaskData : DataBase
+public class TaskData : BaseData
 {
 
     public int RequireCount => requireCount;

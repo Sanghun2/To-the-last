@@ -49,6 +49,8 @@ public sealed class PlayerData : IInitializable
     private MetabolicSystem metabolicSystem = new MetabolicSystem();
     private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
     private Define.VitalState vitalState;
+    private HashSet<string> traitSet = new HashSet<string>();
+    private int traitPoint;
 
     public void Init() {
         if (IsInit) return;
@@ -98,7 +100,19 @@ public sealed class PlayerData : IInitializable
         skillContainer.ClearSkill(index);
     }
 
+    public void SetTraits(IReadOnlyList<Trait> selectedTraits) {
+        traitSet.Clear();
+        for (int i = 0; i < selectedTraits.Count; i++) {
+            Trait trait = selectedTraits[i];
+            traitSet.Add(trait.Data.ID);
+        }
 
+        Debug.Log($"trait set. total count? {traitSet.Count}");
+    }
+
+    public int GetAvailableTraitPoint() {
+        return traitPoint == 0 ? 5 : traitPoint;
+    }
 
     private void RegisterStat(Define.Stat statType, Stat stat) {
         statContainer.RegisterStat(statType.ToID(), stat);

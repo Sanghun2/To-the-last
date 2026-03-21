@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestData : DataBase
+public class QuestData : BaseData
 {
     public IReadOnlyList<TaskData> TaskDataList => tasks;
     public Quest.Type Type => type;

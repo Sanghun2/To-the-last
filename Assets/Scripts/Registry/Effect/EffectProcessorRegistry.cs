@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using BillotGames;
 using UnityEngine;
 
-public class EffectProcessorRegistry : TypeRegistry<IEffect, EffectProcessor>
+public class EffectProcessorRegistry : TypeRegistry<IEffect, IEffectHandler>
 {
-    public readonly EffectProcessor DefaultProcessor = new EffectSDProcessor();
+    public readonly BattleEffectHandler DefaultProcessor = new BattleEffectHandler();
 
     public EffectProcessorRegistry() {
-        Register<EffectSD>(new EffectSDProcessor());
+        Register<EffectSD>(new BattleEffectHandler());
     }
 }

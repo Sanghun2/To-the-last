@@ -14,7 +14,7 @@ public class ConstructionContentUIContainer
                 StructureSD structureSD = stuctureSDList[i];
                 if (structureSD.Locked) continue;
 
-                var constructionContentUI = GetObj(i);
+                var constructionContentUI = GetOrCreateObj(i);
                 constructionContentUI.ShowUI(structureSD);
             }
             else {

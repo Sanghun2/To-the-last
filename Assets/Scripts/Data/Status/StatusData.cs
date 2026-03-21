@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class StatusData : DataBase
+public class StatusData : BaseData
 {
     public Sprite Icon => icon;
     public int MaxStack => maxStack;

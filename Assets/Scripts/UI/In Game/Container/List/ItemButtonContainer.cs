@@ -9,7 +9,7 @@ public class ItemButtonContainer : ListContainerBase<ItemContentUI>
         for (int i = 0; i < count; i++) {
             if (i < recipes.Count) {
                 var recipe = recipes[i];
-                var contentUI = GetObj(i);
+                var contentUI = GetOrCreateObj(i);
                 contentUI.SetRecipe(recipe, () => Managers.Craft.SetCraftTarget(recipe));
             }
             else {

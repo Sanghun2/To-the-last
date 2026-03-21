@@ -99,6 +99,8 @@ public class LocationManager : IInitializable
     public bool TryActivateLocation(Location location, Action<Location> onActivated =null) {
         if (location == null) { Debug.LogError($"<color=red>location null</color>"); return false; }
 
+        if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
+
         var locationUI = LocationUIContainer.GetObj();
         locationUI.InitLocation(location);
         location.ClearLocationEvent();
