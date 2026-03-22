@@ -16,4 +16,5 @@ public sealed class ChracterTesterEditor : Editor
             _script.ShowCharacterList();
         }
     }
+
 }

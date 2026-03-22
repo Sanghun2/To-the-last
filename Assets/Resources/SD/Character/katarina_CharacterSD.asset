@@ -22,3 +22,4 @@ MonoBehaviour:
   animator: {fileID: 9100000, guid: 335ede0dc19e8d1458681c141be4ce3e, type: 2}
   features:
   - "\uBBFC\uCCA9\uD55C \uD589\uB3D9"
+  isDefaultCharacter: 0

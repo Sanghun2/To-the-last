@@ -14,6 +14,19 @@ public sealed class CharacterSelectionUI : UIBase
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] CharacterUIContainer characterUIContainer;
 
+    public override void InitUI() {
+        if (IsInit) return;
+
+        Managers.Character.OnCharacterSelected -= ShowCharacter;
+        Managers.Character.OnCharacterSelected += ShowCharacter;
+
+        var characterList = Managers.Character.GetCharacterList();
+        Managers.Character.CurrentSelectedCharacterID = characterList[0].Data.CharacterID;
+        InitCharacterButtons(characterList);
+
+        _isInit = true;
+    }
+
     public void ShowCharacter(string characterID) {
         if (Managers.SD.TryGetSD(characterID, out CharacterSD characterSD)) {
             characterNameText.text = characterSD.DisplayText;
@@ -22,12 +35,12 @@ public sealed class CharacterSelectionUI : UIBase
         }
     }
 
-    public void InitCharacterList(IReadOnlyList<CharacterData> characterDataList) {
+    public void InitCharacterButtons(IReadOnlyList<Character> characterList) {
         characterUIContainer.Clear();
-        for (int i = 0; i < characterDataList.Count; i++) {
-            var data = characterDataList[i];
+        for (int i = 0; i < characterList.Count; i++) {
+            var character = characterList[i];
             var ui = characterUIContainer.GetOrCreateObj(i);
-            ui.InitUI(data);
+            ui.InitUI(character);
         }
     }
 

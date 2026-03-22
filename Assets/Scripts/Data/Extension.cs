@@ -41,7 +41,8 @@ public static partial class Extension
             characterSD.DisplayText,
             characterSD.Description,
             characterSD.Image,
-            characterSD.Features
+            characterSD.Features,
+            characterSD.IsDefaultCharacter
             );
     }
 

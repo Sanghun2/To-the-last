@@ -245,6 +245,17 @@ public sealed class Managers : MonoBehaviour
             return _traitManager;
         }
     }
+    public static CharacterManager Character
+    {
+        get
+        {
+            if (_characterManager == null) {
+                _characterManager = new CharacterManager();
+            }
+
+            return _characterManager;
+        }
+    }
 
     // InGame
     private static EffectSystem _effectSystem;
@@ -261,6 +272,9 @@ public sealed class Managers : MonoBehaviour
     private static ConstructionManager constructionManager;
     private static TimeManager _timeManager;
     private static JobHandler jobHandler;
+
+    // Main Menu
+    private static CharacterManager _characterManager;
 
     // Common 
     private static TraitManager _traitManager;
@@ -308,6 +322,7 @@ public sealed class Managers : MonoBehaviour
             Player,
             Encounter,
             Location,
+            Character,
         };
 
         for (int i = 0; i < initList.Count; i++) {

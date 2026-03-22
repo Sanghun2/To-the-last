@@ -13,6 +13,6 @@ public sealed class CharacterTester : MonoBehaviour
 
     public void ShowCharacterList() {
         var ui = Managers.UI.OpenUI<CharacterSelectionUI>();
-        ui.InitCharacterList(sampleCharacters.Select(c => c.ToData()).ToList());
+        ui.InitCharacterButtons(sampleCharacters.Select(c => new Character(c.ToData())).ToList());
     }
 }

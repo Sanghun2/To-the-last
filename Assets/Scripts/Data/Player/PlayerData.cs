@@ -51,6 +51,7 @@ public sealed class PlayerData : IInitializable
     private Define.VitalState vitalState;
     private HashSet<string> traitSet = new HashSet<string>();
     private int traitPoint;
+    private string currentCharacterID;
 
     public void Init() {
         if (IsInit) return;
@@ -73,6 +74,9 @@ public sealed class PlayerData : IInitializable
         skillContainer.Release();
     }
 
+
+    #region Stat
+
     public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
         statContainer.RegisterEvent(targetStat.ToID(), @event);
     }
@@ -86,6 +90,11 @@ public sealed class PlayerData : IInitializable
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {
         statContainer.TryChangeRawStat(targetStat.ToID(), deltaValue);
     }
+
+    #endregion
+
+    #region Location
+
     public void SetCurrentLocation(string locationID) {
         currentLocationID = locationID;
     }
@@ -93,12 +102,20 @@ public sealed class PlayerData : IInitializable
         SetCurrentLocation(locationSD.ID);
     }
 
+    #endregion
+
+    #region Skill
+
     public void RegisterSkill(int index, SkillData skillData) {
         skillContainer.RegisterSkill(index, skillData);
     }
     public void ClearSkill(int index) {
         skillContainer.ClearSkill(index);
     }
+
+    #endregion
+
+    #region Trait
 
     public void SetTraits(IReadOnlyList<Trait> selectedTraits) {
         traitSet.Clear();
@@ -109,11 +126,22 @@ public sealed class PlayerData : IInitializable
 
         Debug.Log($"trait set. total count? {traitSet.Count}");
     }
-
     public int GetAvailableTraitPoint() {
         return traitPoint == 0 ? 5 : traitPoint;
     }
 
+    #endregion
+
+    #region Chracter
+
+    public void SetCharacter(string currentCharacterID) {
+        this.currentCharacterID = currentCharacterID;
+    }
+
+    #endregion
+
+
+    // private
     private void RegisterStat(Define.Stat statType, Stat stat) {
         statContainer.RegisterStat(statType.ToID(), stat);
     }

@@ -9,9 +9,12 @@ public class CharacterUI : UIBase, IPool
     [SerializeField] Image characterImage;
     [SerializeField] CharacterSelectionButton selectionButton;
 
-    public void InitUI(CharacterData data) {
+    public void InitUI(Character character) {
+        var data = character.Data;
         characterImage.sprite = data.CharacterImage;
-        selectionButton.InitCharacter(data.CharacterID);
+        selectionButton.InitCharacter(data.CharacterID, character.IsUnlocked);
+
+        characterImage.color = character.IsUnlocked ? Color.white : Color.black;
     }
 
 

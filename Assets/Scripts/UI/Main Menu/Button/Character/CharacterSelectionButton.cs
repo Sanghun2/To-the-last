@@ -4,13 +4,15 @@ using UnityEngine;
 public class CharacterSelectionButton : ButtonBase
 {
     private string characterID;
+    private bool isUnlocked;
 
-    public void InitCharacter(string characterID) {
+    public void InitCharacter(string characterID, bool isUnlocked) {
         this.characterID = characterID;
+        this.isUnlocked = isUnlocked;
     }
 
     protected override void ButtonAction() {
-        var ui = Managers.UI.GetUI<CharacterSelectionUI>();
-        ui.ShowCharacter(characterID);
+        if (!isUnlocked) { Debug.LogAssertion($"<color=yellow>({characterID}) is locked</color>"); return; }
+        Managers.Character.CurrentSelectedCharacterID = characterID;
     }
 }
