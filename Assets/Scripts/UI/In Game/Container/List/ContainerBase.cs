@@ -71,4 +71,10 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
 
     public abstract TContent GetObj();
     public abstract void Clear();
+
+    protected virtual void Reset() {
+        if (containerTr == null) {
+            containerTr = transform;
+        }
+    }
 }

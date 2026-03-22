@@ -44,7 +44,7 @@ public class DialogUI : UIBase
         }
     }
     private void ShowSelections(IReadOnlyList<SelectionData> selections) {
-        selectionButtonContainer.ReleaseContainer();
+        selectionButtonContainer.Clear();
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
             var selectionData = selections[i];

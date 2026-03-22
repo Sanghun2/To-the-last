@@ -50,14 +50,8 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
 
         return obj;
     }
-    public virtual void ReleaseContainer() {
-        InitUI();
-        for (int i = 0; i < contentList.Count; i++) {
-            contentList[i].Return();
-        }
-    }
-
     public override void Clear() {
+        InitUI();
         for (int i = 0; i < contentList.Count; i++) {
             contentList[i].Return();
         }

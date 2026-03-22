@@ -35,6 +35,16 @@ public static partial class Extension
             traitSD.Cost);
     }
 
+    public static CharacterData ToData(this CharacterSD characterSD) {
+        return new CharacterData(
+            characterSD.ID,
+            characterSD.DisplayText,
+            characterSD.Description,
+            characterSD.Image,
+            characterSD.Features
+            );
+    }
+
     #endregion
 
 
