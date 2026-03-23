@@ -15,8 +15,7 @@ public class TraitDecisionButton : ButtonBase
     }
 
     protected override void ButtonAction() {
-        var ui = Managers.UI.GetUI<TraitSelectionUI>();
-        var selectedTrits = ui.GetSelectedTraits();
+        var selectedTrits = Managers.Trait.GetSelectedTraits();
         Managers.Player.PlayerData.SetTraits(selectedTrits);
     }
 

@@ -38,22 +38,6 @@ public class TraitSelectionUI : UIBase
         }
     }
 
-    public IReadOnlyList<Trait> GetSelectedTraits() {
-        var container = selectListContainer.transform;
-        var childCount = container.childCount;
-        List<Trait> resultTraitList = new List<Trait>(childCount);
-        for (int i = 0; i < childCount; i++) {
-            TraitUI traitUI = container.GetChild(i).GetComponent<TraitUI>();
-            if (traitUI.IsActive == false) break;
-
-            if (traitUI.CurrentState == TraitUI.State.Selected) {
-                resultTraitList.Add(traitUI.Trait);
-            }
-        }
-
-        return resultTraitList;
-    }
-
 
     public void UpdateTraitPointText(int point) {
         traitPointView.SetPointText(point);
@@ -64,12 +48,14 @@ public class TraitSelectionUI : UIBase
         switch (traitUI.CurrentState) {
             case TraitUI.State.None:
                 traitUI.CurrentState = TraitUI.State.Selected;
-                traitUI.SetContainer(selectListContainer.ContainerTr);
+                traitUI.SetContainer(selectListContainer.ContainerTr, 0);
+                Managers.Trait.SelectTrait(traitUI.Trait);
                 Managers.Trait.ChangeTraitPoint(-traitUI.Trait.Data.Cost);
                 break;
             case TraitUI.State.Selected:
                 traitUI.CurrentState = TraitUI.State.None;
                 traitUI.SetContainer(traitListContainer.ContainerTr, CalulateOrder(traitUI));
+                Managers.Trait.UnselectTrait(traitUI.Trait);
                 Managers.Trait.ChangeTraitPoint(traitUI.Trait.Data.Cost);
                 break;
             default:

@@ -9,6 +9,11 @@ public class Define
 
     }
 
+    public enum FlowType {
+        LogIn,
+        PrepareGame,
+    }
+
     public enum EndingType {
         Failed,
         Esacped,

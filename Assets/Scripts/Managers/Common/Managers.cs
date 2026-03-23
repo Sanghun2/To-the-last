@@ -217,8 +217,8 @@ public sealed class Managers : MonoBehaviour
                 var prepareChain = new ProcessChain("prepare");
                     //.AddProcess(new Process());
 
-                _processManager.RegisterChain(loginChain);
-                _processManager.RegisterChain(prepareChain);
+                //_processManager.RegisterChain(loginChain);
+                //_processManager.RegisterChain(prepareChain);
             }
 
             return _processManager;
@@ -276,7 +276,7 @@ public sealed class Managers : MonoBehaviour
     // Main Menu
     private static CharacterManager _characterManager;
 
-    // Common 
+    // Comm
     private static TraitManager _traitManager;
     private static ProcessManager _processManager;
     private static SceneController _sceneController;
@@ -315,6 +315,7 @@ public sealed class Managers : MonoBehaviour
 
 
         List<IInitializable> initList = new List<IInitializable>() {
+            Process,
             UI.GetUI<TimerUI>(),
             Time,
             Job,

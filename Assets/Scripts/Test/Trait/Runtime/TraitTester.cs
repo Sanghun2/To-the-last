@@ -16,8 +16,7 @@ public sealed class TraitTester : MonoBehaviour
     }
 
     public void ShowSelectTraits() {
-        var ui = Managers.UI.OpenUI<TraitSelectionUI>();
-        var results = ui.GetSelectedTraits();
+        var results = Managers.Trait.GetSelectedTraits();
 
         StringBuilder sb = new StringBuilder();
         sb.AppendLine($"선택된 특성");
@@ -27,8 +26,8 @@ public sealed class TraitTester : MonoBehaviour
         Debug.Log(sb.ToString());
     }
 
-    public void InitTraitPoint() {
-        Managers.Trait.InitTraitPoint();
+    public void InitTraitData() {
+        Managers.Trait.InitTraitData();
     }
     public void SetTraitPoint() {
         var ui = Managers.UI.OpenUI<TraitSelectionUI>();

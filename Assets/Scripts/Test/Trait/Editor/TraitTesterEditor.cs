@@ -18,8 +18,8 @@ public class TraitTesterEditor : Editor
 
         GUILayout.BeginHorizontal();
         {
-            if (GUILayout.Button("Init Point")) {
-                _script.InitTraitPoint();
+            if (GUILayout.Button("Init Trait Data")) {
+                _script.InitTraitData();
             }
             if (GUILayout.Button("Set Point")) {
                 _script.SetTraitPoint();

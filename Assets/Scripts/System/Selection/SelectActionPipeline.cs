@@ -11,17 +11,17 @@ public abstract class SelectionContext
 
 //public abstract class SelectionHandler
 //{
-//    public abstract void ExecuteAsync(SelectionSD selectionSD, SelectionContext context);
+//    public abstract void ExecuteProcessAsync(SelectionSD selectionSD, SelectionContext context);
 //}
 //public abstract class SelectionHandler<TSelection, TSelectionContext> : SelectionHandler
 //    where TSelection : SelectionSD
 //    where TSelectionContext : SelectionContext
 //{
-//    public override void ExecuteAsync(SelectionSD selectionSD, SelectionContext context) {
+//    public override void ExecuteProcessAsync(SelectionSD selectionSD, SelectionContext context) {
 //        var convertedContext = context as TSelectionContext;
-//        ExecuteAsync((TSelection)selectionSD, convertedContext);
+//        ExecuteProcessAsync((TSelection)selectionSD, convertedContext);
 //    }
-//    public abstract void ExecuteAsync(TSelection selectionSD, TSelectionContext context = null);
+//    public abstract void ExecuteProcessAsync(TSelection selectionSD, TSelectionContext context = null);
 //}
 
 public class SelectActionPipeline
