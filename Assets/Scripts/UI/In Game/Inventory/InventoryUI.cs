@@ -5,7 +5,12 @@ public class InventoryUI : InventoryUIBase
 {
     [SerializeField] ItemUIContainer itemUIContainer;
 
+    public override void InitUI() {
+        CloseUI();
+    }
+
     public override void ShowInventory(InventoryBase inventoryBase) {
+        InitUI();
         if (inventoryBase is SimpleInventory inventory) {
             var itemList = inventory.ItemList;
             for (int i = 0; i < itemList.Count; ++i) {
@@ -20,6 +25,8 @@ public class InventoryUI : InventoryUIBase
         else {
             Debug.LogError($"inventory type not matched. require type? {typeof(SimpleInventory)}, current type? {inventoryBase.GetType()}");
         }
+
+        OpenUI();
     }
 
     private void Reset() {

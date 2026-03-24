@@ -11,7 +11,7 @@ public class Define
 
     public enum FlowType {
         LogIn,
-        PrepareGame,
+        BootStrapGame,
     }
 
     public enum EndingType {

@@ -32,6 +32,7 @@ public abstract class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpD
     public override void InitUI() {
         if (IsInit) return;
 
+        CloseUI();
         buttonContainer.InitUI();
 
         _isInit = true;

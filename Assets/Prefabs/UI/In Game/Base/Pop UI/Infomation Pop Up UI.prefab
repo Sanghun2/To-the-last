@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1029907108870933462, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2611711815821782309, guid: 99138c17cccf4c944ac93aa8d324c95e, type: 3}
       propertyPath: m_Color.a
@@ -480,7 +480,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -571,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8654669603652216119, guid: 550c84789edf08f4899d2b98227c0037, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8654669603652216119, guid: 550c84789edf08f4899d2b98227c0037, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

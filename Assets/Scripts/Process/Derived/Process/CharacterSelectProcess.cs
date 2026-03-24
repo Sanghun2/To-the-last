@@ -18,6 +18,7 @@ public class CharacterSelectProcess : Process<CharacterSelectProcessContext>
     }
 
     protected override void OnExecuteAsync(CharacterSelectProcessContext context) {
+        Managers.UI.OpenUI<GameBootStrapUI>();
         Managers.UI.OpenUI<CharacterSelectionUI>();
     }
 }

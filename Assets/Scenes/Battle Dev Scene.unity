@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGame UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3445998731588278453, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5083432778725771988, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_Value
       value: 0
@@ -532,15 +536,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1932102436 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4574750492677339583, guid: ef4e022ba0838f847aa1ae03b321a8f2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2951923420442980003, guid: ef4e022ba0838f847aa1ae03b321a8f2, type: 3}
   m_PrefabInstance: {fileID: 1932102434}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8210dec57b9a914ead4b18a01453f12, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b5d14865ca4e574c873654c3baba644, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityUI
+  m_EditorClassIdentifier: Assembly-CSharp::BattleEntityUI
 --- !u!1001 &1955786635
 PrefabInstance:
   m_ObjectHideFlags: 0

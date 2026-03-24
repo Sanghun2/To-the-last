@@ -13,6 +13,7 @@ public class ConstructionUI : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
+        CloseUI();
         progressBarUI.InitUI(0, 1);
 
         _isInit = true;

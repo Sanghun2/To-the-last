@@ -213,8 +213,8 @@ public sealed class Managers : MonoBehaviour
             if (_processManager == null) {
                 _processManager = new ProcessManager();
 
-                var loginChain = new ProcessChain("log in");
-                var prepareChain = new ProcessChain("prepare");
+                //var loginChain = new ProcessChain("log in");
+                //var prepareChain = new ProcessChain("prepare");
                     //.AddProcess(new Process());
 
                 //_processManager.RegisterChain(loginChain);
@@ -256,6 +256,17 @@ public sealed class Managers : MonoBehaviour
             return _characterManager;
         }
     }
+    public static GameBootStrapper BootStrap
+    {
+        get
+        {
+            if (_bootStrapper == null) {
+                _bootStrapper = new GameBootStrapper();
+            }
+
+            return _bootStrapper;
+        }
+    }
 
     // InGame
     private static EffectSystem _effectSystem;
@@ -274,6 +285,7 @@ public sealed class Managers : MonoBehaviour
     private static JobHandler jobHandler;
 
     // Main Menu
+    private static GameBootStrapper _bootStrapper;
     private static CharacterManager _characterManager;
 
     // Comm

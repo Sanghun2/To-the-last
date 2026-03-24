@@ -44,8 +44,15 @@ public sealed class ProcessManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        var loginChain = new ProcessChain(Define.FlowType.LogIn.ToString());
-        var gamePrepareChain = new ProcessChain(Define.FlowType.PrepareGame.ToString());
+        var loginChain = new ProcessChain(
+            Define.FlowType.LogIn.ToString(),
+            null,
+            null);
+
+        var gamePrepareChain = new ProcessChain(
+            Define.FlowType.BootStrapGame.ToString(),
+            Managers.BootStrap.CompleteBootStrap,
+            Managers.BootStrap.CancelBootStrap);
 
         gamePrepareChain
             .AddProcess(new TraitSelectProcess(new TraitSelectProcessCotnextBuilder()))
@@ -53,7 +60,7 @@ public sealed class ProcessManager : IInitializable
 
         chainDict.Clear();
         chainDict.Add(Define.FlowType.LogIn.ToString(), loginChain);
-        chainDict.Add(Define.FlowType.PrepareGame.ToString(), gamePrepareChain);
+        chainDict.Add(Define.FlowType.BootStrapGame.ToString(), gamePrepareChain);
 
         _isInit = true;
     }

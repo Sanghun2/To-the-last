@@ -23,12 +23,6 @@ public class InfomationPopUpUI : PopUpUIBase<InfomationPopUpData>
     [SerializeField] protected Image iconImage;
     [SerializeField] TextUI subText;
 
-    public override void InitUI() {
-        if (IsInit) return;
-        buttonContainer.InitUI();
-        _isInit = true;
-    }
-
     public override void InitPopUp(InfomationPopUpData popUpData) {
         base.InitPopUp(popUpData);
 
@@ -52,9 +46,5 @@ public class InfomationPopUpUI : PopUpUIBase<InfomationPopUpData>
 
     public void SetSubText(string text) {
         subText.SetText(text);
-    }
-
-    protected override void OnClose() {
-
     }
 }

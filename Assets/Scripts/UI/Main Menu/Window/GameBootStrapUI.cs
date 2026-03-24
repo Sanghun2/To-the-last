@@ -2,7 +2,7 @@
 using BilliotGames;
 using UnityEngine;
 
-public class GamePrepareUI : UIBase
+public class GameBootStrapUI : UIBase
 {
     private List<ProcessChain> processChains = new List<ProcessChain>();
 
@@ -12,12 +12,5 @@ public class GamePrepareUI : UIBase
 
 
         _isInit = true;
-    }
-
-    public void PrepareGame() {
-        // 연출
-
-        // 체인 시작
-
     }
 }

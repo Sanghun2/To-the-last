@@ -23,9 +23,16 @@ public sealed class ProcessChain
     private List<Process> processList = new List<Process>();
     private Process currentProcess;
     private int currentProcessIndex;
+    private Action onChainCanceled;
+    private Action onChainCompleted;
 
-    public ProcessChain(string groupID) {
+    public ProcessChain(string groupID, Action onChainCompleted, Action onChainCanceled) {
         this.chainID = groupID;
+        this.onChainCompleted = onChainCompleted;
+        this.onChainCanceled = onChainCanceled;
+
+        OnChainCompleted += onChainCompleted;
+        OnChainCanceled += onChainCanceled;
     }
 
     public event Action OnChainCompleted;
@@ -35,6 +42,11 @@ public sealed class ProcessChain
         currentProcessIndex = 0;
         currentProcess?.Clear();
         currentProcess = null;
+        OnChainCompleted = null;
+        OnChainCanceled = null;
+
+        OnChainCanceled += onChainCanceled;
+        OnChainCompleted += onChainCompleted;
     }
 
     public ProcessChain AddProcess(Process process) {
@@ -74,6 +86,7 @@ public sealed class ProcessChain
             }
         }
 
+        OnChainCompleted?.Invoke();
         return false;
     }
     public bool TryExecutePrevProcess() {
@@ -86,6 +99,7 @@ public sealed class ProcessChain
             }
         }
 
+        OnChainCanceled?.Invoke();
         return false;
     }
     public void ClearCurrentProcess() {

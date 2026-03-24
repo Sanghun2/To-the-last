@@ -33,7 +33,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "434c300cd4cf62c77608ffc0d4f11552ecc392d9"
+      "hash": "fe25bdd8c4ac76bba24a1364f858b2c78f9351ee"
     },
     "com.billiotgames.screenoverlay": {
       "version": "http://github.com/Sanghun2/Screen-Overlay.git",
@@ -86,7 +86,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0c877637453a6b72d18105d20ff4208c58074a3b"
+      "hash": "f6ba8869732eb67cdaf58b0a24b3973dbce36bc2"
     },
     "com.billiotgames.valuecontainer": {
       "version": "http://github.com/Sanghun2/value-container.git",

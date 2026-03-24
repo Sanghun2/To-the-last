@@ -3838,7 +3838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleUI
   backgroundImage: {fileID: 6223716294946665878}
-  playerUI: {fileID: 4402652363423632765}
+  playerUI: {fileID: 0}
   enemyUI: {fileID: 3721663309058728126}
   _turnUI: {fileID: 8109428325778592375}
   floatingTextContainer: {fileID: 2095813610047397829}
@@ -3847,6 +3847,7 @@ MonoBehaviour:
   - {fileID: 1159457387945290119}
   - {fileID: 1425656147383681076}
   - {fileID: 6930292026753141308}
+  uiAnimationController: {fileID: 0}
 --- !u!1 &5729870267930256905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5595,8 +5596,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6616313468486320451}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3880200519357748700}
   m_SourcePrefab: {fileID: 100100000, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+--- !u!1 &3445998731588278453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+  m_PrefabInstance: {fileID: 857338794993111250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3880200519357748700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445998731588278453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534066edc5ad76a4cbe85847e3c6acbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InGameCanvas
+  basementUI: {fileID: 4366330196903392024}
 --- !u!224 &7590515240978785893 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
@@ -6236,6 +6258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityUI
   entityImage: {fileID: 6890847625136595204}
+  animtor: {fileID: 0}
 --- !u!114 &6890847625136595204 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9176582801955367576, guid: 6eb0c52a7ae735944a7b094cbec981b6, type: 3}
@@ -7347,10 +7370,6 @@ PrefabInstance:
     - target: {fileID: 865854084930964854, guid: c87652287814d2c4589390afe9885605, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 390
-      objectReference: {fileID: 0}
-    - target: {fileID: 865854084930964854, guid: c87652287814d2c4589390afe9885605, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 2872530977301148196, guid: c87652287814d2c4589390afe9885605, type: 3}
       propertyPath: m_Pivot.x

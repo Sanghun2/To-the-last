@@ -21,6 +21,7 @@ public class MapUI : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
+        CloseUI();
         LocationPointer.SetPosiion(Managers.Player.PlayerData.CurrentLocationID);
 
         _isInit = true;

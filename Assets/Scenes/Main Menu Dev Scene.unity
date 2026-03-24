@@ -433,6 +433,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179025313418663693, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
+      propertyPath: m_Name
+      value: Game Boot Strap UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179025313418663693, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -886,7 +890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927110265474813251, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00017274891
+      value: -0.091166034
       objectReference: {fileID: 0}
     - target: {fileID: 5233576784317693001, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1174,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7961602364846614546, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00024762578
+      value: -0.09118597
       objectReference: {fileID: 0}
     - target: {fileID: 8193714420203355460, guid: 0fc061b22b9832d41b0e89e3453c7dfa, type: 3}
       propertyPath: m_AnchorMax.y

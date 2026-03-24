@@ -30,7 +30,16 @@ public class DialogUI : UIBase
     [SerializeField] TextUI dialogText;
     [SerializeField] SelectionButtonContainer selectionButtonContainer;
 
+    public override void InitUI() {
+        if (IsInit) return;
+
+        CloseUI();
+
+        _isInit = true;
+    }
+
     public void ShowDialog(DialogData dialogData) {
+        CloseUI();
         characterImage.sprite = dialogData.CharacterImage;
         characterNameText.SetText(dialogData.CharacterName);
         dialogText.SetText(dialogData.Description);

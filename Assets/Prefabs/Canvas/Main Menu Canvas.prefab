@@ -2802,13 +2802,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2711509225429549645}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6785547275199822866}
   m_SourcePrefab: {fileID: 100100000, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
 --- !u!224 &3432391467815463197 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
   m_PrefabInstance: {fileID: 5553292009465946026}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7576749097643038669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+  m_PrefabInstance: {fileID: 5553292009465946026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6785547275199822866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576749097643038669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694b60b17bdf75440ac6a36f14f18e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuCanvas
 --- !u!1001 &7089100482102392150
 PrefabInstance:
   m_ObjectHideFlags: 0

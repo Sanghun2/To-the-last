@@ -51,8 +51,8 @@ public class StatGaugeUI : StatUIBase
         var player = Managers.Player.PlayerData;
         infoButton.onClick.RemoveAllListeners();
         infoButton.onClick.AddListener(() => {
-            infoPopUp.OpenUI();
             infoPopUp.InitPopUp(popUpData);
+            infoPopUp.OpenUI();
             player.RegisterEvent(StatType, UpdateSubText);
             var statValue = player.GetStatValue(StatType);
             if (statValue != null) {
