@@ -48,8 +48,13 @@ public class TraitSelectionUI : UIBase
             traitUI.ClearEvents();
             traitUI.InitUI(trait);
             traitUI.SetUISize(CalculateTextWidth(cachedLeftContainerRectWidth));
+            traitUI.OnDescriptionTouched -= traitDescriptionView.ShowDescription;
+            traitUI.OnSelectTouched -= ToggleSelect;
+            traitUI.OnSelectTouched -= traitDescriptionView.ShowDescription;
+
             traitUI.OnDescriptionTouched += traitDescriptionView.ShowDescription;
-            traitUI.OnSelectTouched += ToggleContainer;
+            traitUI.OnSelectTouched += ToggleSelect;
+            traitUI.OnSelectTouched += traitDescriptionView.ShowDescription;
         }
     }
 
@@ -65,6 +70,9 @@ public class TraitSelectionUI : UIBase
         float padding = 8;
         ResizeRect(cachedRegionRectWidth - padding);
         cachedLeftContainerRectWidth = leftContainerSizeGetter.Width;
+
+        Managers.Process.CurrentChain.OnChainCanceled -= ClearContainers;
+        Managers.Process.CurrentChain.OnChainCanceled += ClearContainers;
     }
     protected virtual void OnEnable() {
         Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
@@ -76,7 +84,7 @@ public class TraitSelectionUI : UIBase
         rightRegion.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth / 2);
     }
 
-    private void ToggleContainer(TraitUI traitUI) {
+    private void ToggleSelect(TraitUI traitUI) {
         switch (traitUI.CurrentState) {
             case TraitUI.State.None:
                 traitUI.CurrentState = TraitUI.State.Selected;
@@ -93,7 +101,6 @@ public class TraitSelectionUI : UIBase
             default:
                 break;
         }
-
     }
     private void ReassignParent(TraitUIContainer container) {
         for (int i = 0; i < traitListContainer.ContentCount; i++) {

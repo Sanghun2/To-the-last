@@ -27,8 +27,7 @@ public class TraitDecisionButton : ButtonBase
     }
 
     private bool CanDecision() {
-        //return Managers.Trait.RemainTraitPoint >= 0;
-        return true;
+        return Managers.Trait.RemainTraitPoint >= 0;
     }
 
     private void UpdateButtonState(int point) {

@@ -100,6 +100,7 @@ public sealed class ProcessChain
         }
 
         OnChainCanceled?.Invoke();
+        Debug.LogAssertion($"chain canceled");
         return false;
     }
     public void ClearCurrentProcess() {
