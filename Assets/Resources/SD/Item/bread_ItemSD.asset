@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bread_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: bread
-  displayText: 
+  displayText: "\uBE75"
   descripiton: "\uB9DB\uC788\uB294 \uBE75\uC774\uB2E4."
   categoryList: []
   image: {fileID: 21300000, guid: e33cee28b8f4149f980943a6399d57df, type: 3}
