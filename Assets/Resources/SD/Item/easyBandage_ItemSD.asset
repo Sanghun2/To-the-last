@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e59362c602507b499a9b4b003e222c8, type: 3}
-  m_Name: herb_ItemSD
+  m_Name: easyBandage_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
-  id: herb
-  displayText: "\uC57D\uCD08"
-  descripiton: "\uC5EC\uB7EC \uC57D\uC73C\uB85C \uC4F0\uC77C \uC218 \uC788\uB294
-    \uC57D\uCD08\uB2E4. \uC0AC\uC6A9\uD558\uAE30 \uC704\uD574\uC11C\uB294 \uC9C0\uC2DD\uC774
-    \uD544\uC694\uD574 \uBCF4\uC778\uB2E4."
+  id: easyBandage
+  displayText: "\uAC04\uC774 \uBD95\uB300"
+  descripiton: "\uC870\uC7A1\uD558\uAC8C \uB9CC\uB4E0 \uBD95\uB300. \uD6A8\uACFC\uB294
+    \uC88B\uC9C0 \uC54A\uC9C0\uB9CC \uAE09\uD558\uBA74 \uC368\uC57C \uD55C\uB2E4."
   categoryList: []
-  image: {fileID: 21300000, guid: 465a5ef4dc8ea594f940e4ba7d52c416, type: 3}
+  image: {fileID: 21300000, guid: 4a46bacb887d0954dbf8da96c9044371, type: 3}
   maxStackCount: 999
