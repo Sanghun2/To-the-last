@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TraitSelectionUI
   traitListContainer: {fileID: 5911794584410675452}
   selectListContainer: {fileID: 1027969233292157452}
-  descriptionUI: {fileID: 7938559330134488835}
+  traitDescriptionView: {fileID: 519866237680991037}
   traitPointView: {fileID: 6463494684763114715}
   regionRectGetter: {fileID: 2971693552824221868}
   leftRegion: {fileID: 3428885122322949448}
@@ -2081,9 +2081,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2851632167720735059}
-  - component: {fileID: 7938559330134488835}
+  - component: {fileID: 519866237680991037}
   m_Layer: 5
-  m_Name: Description UI
+  m_Name: Trait Description View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2110,7 +2110,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: -100, y: 250}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &7938559330134488835
+--- !u!114 &519866237680991037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2119,9 +2119,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4708392933786009632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b42016497e644facac31be0a1904c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0059ea5fc35c36c4380632b3fa7f3a0b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TraitDescriptionUI
+  m_EditorClassIdentifier: Assembly-CSharp::TraitDescriptionView
   traitImage: {fileID: 1316497200946533458}
   costText: {fileID: 5791916837713700913}
   traitNameText: {fileID: 1646031066499107586}

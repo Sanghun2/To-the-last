@@ -8,7 +8,7 @@ public class TraitSelectionUI : UIBase
 {
     [SerializeField] TraitUIContainer traitListContainer;
     [SerializeField] TraitUIContainer selectListContainer;
-    [SerializeField] TraitDescriptionUI descriptionUI;
+    [SerializeField] TraitDescriptionView traitDescriptionView;
     [SerializeField] TraitPointView traitPointView;
 
     [Space]
@@ -37,6 +37,7 @@ public class TraitSelectionUI : UIBase
         InitUI();
         ReassignParent(traitListContainer);
         ReassignParent(selectListContainer);
+        traitDescriptionView.ClearDescription();
     }
 
     public void InitTraitList(IReadOnlyList<Trait> traits) {
@@ -47,7 +48,7 @@ public class TraitSelectionUI : UIBase
             traitUI.ClearEvents();
             traitUI.InitUI(trait);
             traitUI.SetUISize(CalculateTextWidth(cachedLeftContainerRectWidth));
-            traitUI.OnDescriptionTouched += descriptionUI.ShowDescription;
+            traitUI.OnDescriptionTouched += traitDescriptionView.ShowDescription;
             traitUI.OnSelectTouched += ToggleContainer;
         }
     }
