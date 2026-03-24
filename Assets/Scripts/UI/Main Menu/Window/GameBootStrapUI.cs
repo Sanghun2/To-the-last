@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class GameBootStrapUI : UIBase
 {
-    private List<ProcessChain> processChains = new List<ProcessChain>();
-
     public override void InitUI() {
         if (IsInit) return;
 
-
+        CloseUI();
 
         _isInit = true;
     }

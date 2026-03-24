@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: eliteDynamicVisualAcuity_TraitSD
   m_EditorClassIdentifier: Assembly-CSharp::TraitSD
   id: eliteDynamicVisualAcuity
-  displayText: "\uCD5C\uC0C1\uC704 \uB3D9\uCCB4\uC2DC\uB825"
+  displayText: "\uCD5C\uC0C1\uAE09 \uB3D9\uCCB4\uC2DC\uB825"
   descripiton: "\uBA85\uC911\uB960\uC744 \uB192\uC785\uB2C8\uB2E4."
   categoryList: []
   image: {fileID: 21300000, guid: 37de44bcb59b8174497def1957cc490b, type: 3}

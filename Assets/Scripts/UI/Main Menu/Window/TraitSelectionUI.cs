@@ -11,6 +11,18 @@ public class TraitSelectionUI : UIBase
     [SerializeField] TraitDescriptionUI descriptionUI;
     [SerializeField] TraitPointView traitPointView;
 
+    [Space]
+    [SerializeField] RectSizeGetter regionRectGetter;
+    [SerializeField] RectTransform leftRegion;
+    [SerializeField] RectTransform rightRegion;
+
+    [Space]
+    [SerializeField] RectSizeGetter leftContainerSizeGetter;
+    [SerializeField] RectSizeGetter rightContainerSizeGetter;
+
+    private float cachedRegionRectWidth;
+    private float cachedLeftContainerRectWidth;
+
     public override void InitUI() {
         if (IsInit) return;
 
@@ -37,6 +49,7 @@ public class TraitSelectionUI : UIBase
             var traitUI = traitListContainer.GetOrCreateObj(i);
             traitUI.ClearEvents();
             traitUI.InitUI(trait);
+            traitUI.SetUISize(CalculateTextWidth(cachedLeftContainerRectWidth));
             traitUI.OnDescriptionTouched += descriptionUI.ShowDescription;
             traitUI.OnSelectTouched += ToggleContainer;
         }
@@ -48,6 +61,18 @@ public class TraitSelectionUI : UIBase
         traitPointView.SetPointText(point);
     }
 
+
+    protected override void OnOpen() {
+        cachedRegionRectWidth = regionRectGetter.Width;
+        float padding = 8;
+        ResizeRect(cachedRegionRectWidth - padding);
+        cachedLeftContainerRectWidth = leftContainerSizeGetter.Width;
+    }
+
+    private void ResizeRect(float targetWidth) {
+        leftRegion.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth / 2);
+        rightRegion.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth / 2);
+    }
 
     private void ToggleContainer(TraitUI traitUI) {
         switch (traitUI.CurrentState) {
@@ -93,5 +118,9 @@ public class TraitSelectionUI : UIBase
         }
 
         return targetIndex;
+    }
+    private float CalculateTextWidth(float parentWidth) {
+        float widthWithOutScrollbar = parentWidth - 15;
+        return widthWithOutScrollbar - 27f;
     }
 }

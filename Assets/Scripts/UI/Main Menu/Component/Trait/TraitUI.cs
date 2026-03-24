@@ -25,7 +25,17 @@ public class TraitUI : UIBase, IPool
     }
     public string TraitID => trait.Data.ID;
     public Trait Trait => trait;
+    private RectTransform Rect
+    {
+        get
+        {
+            if (_rect == null) {
+                _rect = GetComponent<RectTransform>();
+            }
 
+            return _rect;
+        }
+    }
 
     [SerializeField] Image iconImage;
     [SerializeField] TextMeshProUGUI nameText;
@@ -34,6 +44,7 @@ public class TraitUI : UIBase, IPool
     [SerializeField] Button descripitonButton;
     private State currentState;
     private Trait trait;
+    private RectTransform _rect;
 
     public event Action<Trait> OnDescriptionTouched;
     public event Action<TraitUI> OnSelectTouched;
@@ -64,7 +75,9 @@ public class TraitUI : UIBase, IPool
             transform.SetSiblingIndex(order);
         }
     }
-
+    public void SetUISize(float textWidth) {
+        Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, textWidth);
+    }
 
     private void TouchSelect() {
         OnSelectTouched?.Invoke(this);
@@ -92,7 +105,6 @@ public class TraitUI : UIBase, IPool
     public void Return() {
         CloseUI();
     }
-
 
     #endregion
 }
