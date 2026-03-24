@@ -9,8 +9,16 @@ public class CharacterSelectProcess : Process<CharacterSelectProcessContext>
 
     }
 
-    public override UniTask ExecuteProcessAsync(CharacterSelectProcessContext context, CancellationToken cancellationToken) {
-        throw new System.NotImplementedException();
+    protected override void OnCleared() {
+        Managers.UI.CloseUI<CharacterSelectionUI>();
+    }
+
+    protected override void OnComplete() {
+        Managers.UI.CloseUI<CharacterSelectionUI>();
+    }
+
+    protected override void OnExecuteAsync(CharacterSelectProcessContext context) {
+        Managers.UI.OpenUI<CharacterSelectionUI>();
     }
 }
 

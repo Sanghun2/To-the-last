@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -9,8 +10,16 @@ public class TraitSelectProcess : Process<TraitSelectProcessContext>
     public TraitSelectProcess(ProcessContextBuilder<TraitSelectProcessContext> contextBuilder) : base(contextBuilder) {
     }
 
-    public override UniTask ExecuteProcessAsync(TraitSelectProcessContext context, CancellationToken cancellationToken) {
-        throw new System.NotImplementedException();
+    protected override void OnCleared() {
+        Managers.UI.CloseUI<TraitSelectionUI>();
+    }
+
+    protected override void OnComplete() {
+        Managers.UI.CloseUI<TraitSelectionUI>();
+    }
+
+    protected override void OnExecuteAsync(TraitSelectProcessContext context) {
+        Managers.UI.OpenUI<TraitSelectionUI>();
     }
 }
 

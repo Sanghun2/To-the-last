@@ -17,9 +17,11 @@ public sealed class ProcessChain
     public string ChainID => chainID;
 
     public int LastProcessIndex => processList.Count - 1;
+    public Process CurrentProcess => currentProcess;
 
     private string chainID;
     private List<Process> processList = new List<Process>();
+    private Process currentProcess;
     private int currentProcessIndex;
 
     public ProcessChain(string groupID) {
@@ -29,8 +31,10 @@ public sealed class ProcessChain
     public event Action OnChainCompleted;
     public event Action OnChainCanceled;
 
-    public void ResetIndex() {
+    public void ResetChain() {
         currentProcessIndex = 0;
+        currentProcess?.Clear();
+        currentProcess = null;
     }
 
     public ProcessChain AddProcess(Process process) {
@@ -38,49 +42,79 @@ public sealed class ProcessChain
         return this;
     }
 
-    public async UniTask<bool> TryExecuteNextProcess(CancellationToken cancellationToken) {
-        var result = TryGetNextProcess(out Process nextProcess);
-
-        cancellationToken.ThrowIfCancellationRequested();
-        if (nextProcess != null) {
-            //var context = ProcessContext();
-            ProcessContext context = nextProcess.BuildContext();
-            await nextProcess.ExecuteProcessAsync(context, cancellationToken);
+    public bool TryExecuteProcess(Process process) {
+        ClearCurrentProcess();
+        if (process != null) {
+            currentProcess = process;
+            ProcessContext context = process.BuildContext();
+            process.ExecuteProcess(context);
+            return true;
         }
 
-        InvokeEvent(result);
-        return result == Result.InProgress;
+        return false;
     }
-    public async UniTask<bool> TryExecutePrevProcess(ProcessContext context, CancellationToken cancellationToken) {
-        var result = TryGetPrevProcess(out Process prevProcess);
+    public bool TryExecuteCurrentProcess() {
+        var result = TryGetProcess(out Process targetProcess);
 
-        cancellationToken.ThrowIfCancellationRequested();
-        if (prevProcess != null) {
-            await prevProcess.ExecuteProcessAsync(context, cancellationToken);
+        if (targetProcess != null) {
+            TryExecuteProcess(targetProcess);
+            return true;
         }
 
-        InvokeEvent(result);
-        return result == Result.InProgress;
+        return false;
     }
 
+    public bool TryExecuteNextProcess() {
+        ClearCurrentProcess();
 
-    private Result TryGetNextProcess(out Process process) {
-        var targetIndex = currentProcessIndex + 1;
-        if (TryGetProcess(targetIndex, out process)) {
-            ++currentProcessIndex;
+        if (TryGetNextProcess(out Process nextProcess)) {
+            if (TryExecuteProcess(nextProcess)) {
+                ++currentProcessIndex;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public bool TryExecutePrevProcess() {
+        ClearCurrentProcess();
+
+        if (TryGetPrevProcess(out Process prevProcess)) {
+            if (TryExecuteProcess(prevProcess)) {
+                --currentProcessIndex;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public void ClearCurrentProcess() {
+        currentProcess?.Clear();
+        currentProcess = null;
+    }
+
+    private Result TryGetProcess(out Process process) {
+        if (TryGetProcess(currentProcessIndex, out process)) {
             return Result.InProgress;
         }
 
         return Result.Completed;
     }
-    private Result TryGetPrevProcess(out Process process) {
-        var targetIndex = currentProcessIndex - 1;
+    private bool TryGetNextProcess(out Process process) {
+        var targetIndex = currentProcessIndex + 1;
         if (TryGetProcess(targetIndex, out process)) {
-            --currentProcessIndex;
-            return Result.InProgress;
+            return true;
         }
 
-        return Result.Canceled;
+        return false;
+    }
+    private bool TryGetPrevProcess(out Process process) {
+        var targetIndex = currentProcessIndex - 1;
+        if (TryGetProcess(targetIndex, out process)) {
+            return true;
+        }
+
+        return false;
     }
     private bool TryGetProcess(int index, out Process process) {
         process = null;
@@ -90,7 +124,7 @@ public sealed class ProcessChain
             return true;
         }
 
-        Debug.Log("<color=yellow>out of process index</color>");
+        Debug.Log($"<color=yellow>({index}) out of process index. max? {processList.Count}</color>");
         return false;
     }
 

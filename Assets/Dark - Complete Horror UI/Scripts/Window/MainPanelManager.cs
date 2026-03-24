@@ -32,7 +32,7 @@ namespace Michsky.UI.Dark
         private Animator currentButtonAnimator;
         private Animator nextButtonAnimator;
 
-        // Animator currentState vars
+        // Animator _currentState vars
         string panelFadeIn = "Panel In";
         string panelFadeOut = "Panel Out";
         string panelInstantIn = "Instant In";

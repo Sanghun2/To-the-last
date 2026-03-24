@@ -12,11 +12,13 @@ public sealed class CharacterSelectionUI : UIBase
     [SerializeField] TextMeshProUGUI characterNameText;
     [SerializeField] Image characterImage;
     [SerializeField] TextMeshProUGUI descriptionText;
-    [SerializeField] CharacterUIContainer characterUIContainer;
+    [SerializeField] CharacterUIContainer characterUIContainer; 
+    private readonly StringBuilder sb = new StringBuilder();
 
     public override void InitUI() {
         if (IsInit) return;
 
+        _isInit = true;
         Managers.Character.OnCharacterSelected -= ShowCharacter;
         Managers.Character.OnCharacterSelected += ShowCharacter;
 
@@ -24,7 +26,7 @@ public sealed class CharacterSelectionUI : UIBase
         Managers.Character.CurrentSelectedCharacterID = characterList[0].Data.CharacterID;
         InitCharacterButtons(characterList);
 
-        _isInit = true;
+        CloseUI();
     }
 
     public void ShowCharacter(string characterID) {
@@ -47,7 +49,6 @@ public sealed class CharacterSelectionUI : UIBase
     private string BuildCharacterDescription(CharacterSD characterSD) {
         string[] features = characterSD.Features;
 
-        StringBuilder sb = new StringBuilder();
         sb.AppendLine($"{characterSD.Description}").AppendLine();
 
         if (features != null) {

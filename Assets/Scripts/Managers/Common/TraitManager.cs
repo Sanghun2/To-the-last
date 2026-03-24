@@ -4,18 +4,18 @@ using UnityEngine;
 
 public sealed class TraitManager
 {
-    public int AvailableTraitPoint
+    public int RemainTraitPoint
     {
-        get => _availableTraitPoint;
+        get => _remainTraitPoint;
         set
         {
-            _availableTraitPoint = value;
-            OnTraitPointChanged?.Invoke(_availableTraitPoint);
-            Debug.Log($"point changed: {_availableTraitPoint}");
+            _remainTraitPoint = value;
+            OnTraitPointChanged?.Invoke(_remainTraitPoint);
+            Debug.Log($"point changed: {_remainTraitPoint}");
         }
     }
 
-    private int _availableTraitPoint;
+    private int _remainTraitPoint;
     private Dictionary<string, Trait> selectedTraitDict = new();
 
     public event Action<int> OnTraitPointChanged;
@@ -30,13 +30,14 @@ public sealed class TraitManager
 
 
     public void ChangeTraitPoint(int point) {
-        AvailableTraitPoint += point;
+        RemainTraitPoint += point;
     }
 
 
     public void SelectTrait(Trait trait) {
         if (selectedTraitDict.TryAdd(trait.Data.ID, trait)) {
             OnTraitSelected?.Invoke(trait);
+            return;
         }
 
         Debug.LogError($"<color=red>trait repeated. id? {trait.Data.ID}</color>");
@@ -62,6 +63,6 @@ public sealed class TraitManager
         selectedTraitDict.Clear();
     }
     private void InitTraitPoint() {
-        AvailableTraitPoint = Managers.Player.PlayerData.GetAvailableTraitPoint();
+        RemainTraitPoint = Managers.Player.PlayerData.GetAvailableTraitPoint();
     }
 }

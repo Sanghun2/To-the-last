@@ -20,14 +20,18 @@ public class TraitSelectionUI : UIBase
         Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
         Managers.Trait.OnTraitPointChanged += UpdateTraitPointText;
 
+        CloseUI();
+
         _isInit = true;
     }
     public void ClearContainers() {
+        InitUI();
         ReassignParent(traitListContainer);
         ReassignParent(selectListContainer);
     }
 
     public void InitTraitList(IReadOnlyList<Trait> traits) {
+        InitUI();
         for (int i = 0; i < traits.Count; i++) {
             var trait = traits[i];
             var traitUI = traitListContainer.GetOrCreateObj(i);
@@ -40,6 +44,7 @@ public class TraitSelectionUI : UIBase
 
 
     public void UpdateTraitPointText(int point) {
+        InitUI();
         traitPointView.SetPointText(point);
     }
 

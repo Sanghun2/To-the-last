@@ -10,20 +10,32 @@ public sealed class ProcessManager : IInitializable
     public bool IsInit => _isInit;
 
     private Dictionary<string, ProcessChain> chainDict = new();
-    private CancellationTokenSource cancelToken;
+    private string currentChainID;
     private bool _isInit;
 
 
-    public async UniTask StartProcess(string chainID) {
+
+    public void StartProcess(string chainID) {
         if (!TryGetChain(chainID, out ProcessChain chain)) return;
 
-        CancelProcess();
-        chain.ResetIndex();
-        cancelToken = new CancellationTokenSource();
-        while (await chain.TryExecuteNextProcess(cancelToken.Token)) { }
+        ClearCurrentProcess();
+        currentChainID = chainID;
+        Debug.Log($"<color=cyan>[Test] ({chainID}) process started</color>");
+        chain.TryExecuteCurrentProcess();
+    }
+    public void ExecuteNextProcess() {
+        if (!TryGetChain(currentChainID, out var chain)) return;
+
+        chain.TryExecuteNextProcess();
+    }
+    public void ExecutePrevProcess() {
+        if (!TryGetChain(currentChainID, out var chain)) return;
+
+        chain.TryExecutePrevProcess();
     }
 
     private bool TryGetChain(string chainID, out ProcessChain chain) {
+        if (string.IsNullOrEmpty(chainID)) { Debug.LogError($"chain id is empty"); chain = null; return false; }
         return chainDict.TryGetValue(chainID, out chain);
     }
 
@@ -45,15 +57,28 @@ public sealed class ProcessManager : IInitializable
 
         _isInit = true;
     }
-    public void CancelProcess() {
-        cancelToken?.Cancel();
-        cancelToken?.Dispose();
-        cancelToken = null;
+
+    public void CompleteCurrentProcess() {
+        if (TryGetChain(currentChainID, out ProcessChain chain)) {
+            if (chain.CurrentProcess.CurrentState == Process.State.InProgress) {
+                chain.CurrentProcess.CompleteProcess();
+            }
+        }
+    }
+    private void ClearCurrentProcess() {
+        if (string.IsNullOrEmpty(currentChainID)) return;
+
+        if (TryGetChain(currentChainID, out var chain)) {
+            chain.ClearCurrentProcess();
+        }
+
+        currentChainID = null;
     }
     public void Release() {
-        CancelProcess();
+        ClearCurrentProcess();
         chainDict.Clear();
     }
+
 
     #endregion
 }
