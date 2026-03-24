@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: potato_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: potato
-  displayName: "\uAC10\uC790"
+  displayText: 
   descripiton: "\uB9DB\uC788\uB294 \uAC10\uC790. \uC694\uC998 \uAC19\uC740 \uC138\uC0C1\uC5D0\uC11C
     \uC2F1\uC2F1\uD55C \uAC10\uC790\uB97C \uBCF4\uB294 \uAC83\uC740 \uAE30\uC801\uC77C\uC9C0\uB3C4
     \uBAA8\uB978\uB2E4."
-  iconImage: {fileID: 21300000, guid: e2fcccf027a9d5e4bb8b830e7bb94406, type: 3}
+  categoryList: []
+  image: {fileID: 21300000, guid: e2fcccf027a9d5e4bb8b830e7bb94406, type: 3}
   maxStackCount: 999

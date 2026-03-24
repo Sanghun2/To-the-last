@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: bolt_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: bolt
-  displayName: "\uB098\uC0AC"
+  displayText: 
   descripiton: "\uB098\uC0AC\uB2E4."
-  iconImage: {fileID: 21300000, guid: fe7e6d841747649b2825814c371a2491, type: 3}
+  categoryList: []
+  image: {fileID: 21300000, guid: 0290b33d209d54f1f9d11f3a060db798, type: 3}
   maxStackCount: 999

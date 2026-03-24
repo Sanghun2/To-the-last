@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: bread_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: bread
-  displayName: "\uBE75"
+  displayText: 
   descripiton: "\uB9DB\uC788\uB294 \uBE75\uC774\uB2E4."
-  iconImage: {fileID: 21300000, guid: f0d5d25e47b1a4327a7015a43789c1e8, type: 3}
+  categoryList: []
+  image: {fileID: 21300000, guid: e33cee28b8f4149f980943a6399d57df, type: 3}
   maxStackCount: 999
