@@ -8,7 +8,7 @@ public sealed class CharacterTester : MonoBehaviour
 
     public void ShowCharacter() {
         var ui = Managers.UI.OpenUI<CharacterSelectionUI>();
-        ui.ShowCharacter(testCharacter.ID);
+        ui.ShowCharacter(testCharacter.ID, null);
     }
 
     public void ShowCharacterList() {

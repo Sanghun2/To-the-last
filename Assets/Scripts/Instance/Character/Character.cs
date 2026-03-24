@@ -4,13 +4,13 @@ using UnityEngine;
 public class Character
 {
     public CharacterData Data => data;
-    public bool IsUnlocked => isUnlocked;
+    public bool Locked => locked;
 
     [SerializeField] CharacterData data;
-    [SerializeField] bool isUnlocked;
+    [SerializeField] bool locked;
     
     public Character(CharacterData data) {
         this.data = data;
-        if (data.IsDefaultCharacter) isUnlocked = true; 
+        locked = !data.IsDefaultCharacter;
     }
 }
