@@ -27,7 +27,7 @@ public sealed class TraitTester : MonoBehaviour
     }
 
     public void InitTraitData() {
-        Managers.Trait.InitTraitData();
+        Managers.Trait.InitTraitDataFromPlayerData();
     }
     public void SetTraitPoint() {
         var ui = Managers.UI.OpenUI<TraitSelectionUI>();

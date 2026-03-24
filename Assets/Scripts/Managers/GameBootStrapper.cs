@@ -7,11 +7,13 @@ public class GameBootStrapper
 
         // 체인 시작
         Managers.UI.OpenUI<GameBootStrapUI>();
-        Managers.Process.StartProcess(Define.FlowType.BootStrapGame.ToString());
+        Managers.Process.StartProcess(Define.FlowType.BootStrapGame);
     }
 
     public void CancelBootStrap() {
         Managers.UI.CloseUI<GameBootStrapUI>();
+        Managers.Trait.ResetTraits();
+        Managers.Character.ResetCharacters();
     }
 
     public void CompleteBootStrap() {

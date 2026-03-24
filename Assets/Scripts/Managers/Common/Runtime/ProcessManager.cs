@@ -9,12 +9,17 @@ public sealed class ProcessManager : IInitializable
 {
     public bool IsInit => _isInit;
 
+    public ProcessChain CurrentChain => TryGetChain(currentChainID, out var chain) ? chain : null;
+
     private Dictionary<string, ProcessChain> chainDict = new();
     private string currentChainID;
     private bool _isInit;
 
 
 
+    public void StartProcess(Define.FlowType type) {
+        StartProcess(type.ToString());
+    }
     public void StartProcess(string chainID) {
         if (!TryGetChain(chainID, out ProcessChain chain)) return;
 
@@ -69,6 +74,8 @@ public sealed class ProcessManager : IInitializable
         if (TryGetChain(currentChainID, out ProcessChain chain)) {
             if (chain.CurrentProcess.CurrentState == Process.State.InProgress) {
                 chain.CurrentProcess.CompleteProcess();
+
+                ExecuteNextProcess();
             }
         }
     }

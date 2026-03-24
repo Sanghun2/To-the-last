@@ -20,7 +20,12 @@ public class TraitSelectProcess : Process<TraitSelectProcessContext>
 
     protected override void OnExecuteAsync(TraitSelectProcessContext context) {
         Managers.UI.OpenUI<GameBootStrapUI>();
-        Managers.UI.OpenUI<TraitSelectionUI>();
+        var ui = Managers.UI.OpenUI<TraitSelectionUI>();
+
+        Managers.Trait.OnTraitListInit -= ui.InitTraitList;
+        Managers.Trait.OnTraitListInit += ui.InitTraitList;
+
+        Managers.Trait.InitTraitDataFromPlayerData();
     }
 }
 

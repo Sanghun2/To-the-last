@@ -8,9 +8,6 @@ public class TraitDecisionButton : ButtonBase
         if (IsInit) return;
 
         base.InitUI();
-        Managers.Trait.OnTraitPointChanged -= UpdateButtonState;
-        Managers.Trait.OnTraitPointChanged += UpdateButtonState;
-        UpdateButtonState(Managers.Player.PlayerData.GetAvailableTraitPoint());
 
         _isInit = true;
     }
@@ -23,9 +20,15 @@ public class TraitDecisionButton : ButtonBase
         Managers.Process.CompleteCurrentProcess();
         Managers.UI.CloseUI<TraitSelectionUI>();
     }
+    protected virtual void OnEnable() {
+        Managers.Trait.OnTraitPointChanged -= UpdateButtonState;
+        Managers.Trait.OnTraitPointChanged += UpdateButtonState;
+        UpdateButtonState(Managers.Player.PlayerData.GetAvailableTraitPoint());
+    }
 
     private bool CanDecision() {
-        return Managers.Trait.RemainTraitPoint >= 0;
+        //return Managers.Trait.RemainTraitPoint >= 0;
+        return true;
     }
 
     private void UpdateButtonState(int point) {

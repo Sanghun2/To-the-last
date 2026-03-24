@@ -29,9 +29,6 @@ public class TraitSelectionUI : UIBase
         traitListContainer.InitUI();
         selectListContainer.InitUI();
 
-        Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
-        Managers.Trait.OnTraitPointChanged += UpdateTraitPointText;
-
         CloseUI();
 
         _isInit = true;
@@ -67,6 +64,10 @@ public class TraitSelectionUI : UIBase
         float padding = 8;
         ResizeRect(cachedRegionRectWidth - padding);
         cachedLeftContainerRectWidth = leftContainerSizeGetter.Width;
+    }
+    protected virtual void OnEnable() {
+        Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
+        Managers.Trait.OnTraitPointChanged += UpdateTraitPointText;
     }
 
     private void ResizeRect(float targetWidth) {

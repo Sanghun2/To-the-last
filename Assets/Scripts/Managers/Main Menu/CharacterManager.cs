@@ -18,7 +18,10 @@ public sealed class CharacterManager : IInitializable
     }
     public bool IsInit => _isInit;
 
+    // state
     private string _currentSelectedCharacterID;
+
+    // init
     private List<Character> characterList = new List<Character>();
     private bool _isInit;
 
@@ -49,8 +52,13 @@ public sealed class CharacterManager : IInitializable
         }
     }
 
-
     public void Release() {
 
+    }
+
+
+    public void ResetCharacters() {
+        OnCharacterSelected = null;
+        _currentSelectedCharacterID = null;
     }
 }

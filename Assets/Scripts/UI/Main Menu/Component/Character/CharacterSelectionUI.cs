@@ -49,6 +49,7 @@ public sealed class CharacterSelectionUI : UIBase
     private string BuildCharacterDescription(CharacterSD characterSD) {
         string[] features = characterSD.Features;
 
+        sb.Clear();
         sb.AppendLine($"{characterSD.Description}").AppendLine();
 
         if (features != null) {
