@@ -19,12 +19,6 @@ public sealed class CharacterSelectionUI : UIBase
         if (IsInit) return;
 
         _isInit = true;
-        Managers.Character.OnCharacterSelected -= ShowCharacter;
-        Managers.Character.OnCharacterSelected += ShowCharacter;
-
-        var characterList = Managers.Character.GetCharacterList();
-        Managers.Character.CurrentSelectedCharacterID = characterList[0].Data.CharacterID;
-        InitCharacterButtons(characterList);
 
         CloseUI();
     }
@@ -60,5 +54,17 @@ public sealed class CharacterSelectionUI : UIBase
         }
 
         return sb.ToString();
+    }
+
+    protected override void OnOpen() {
+        Managers.Character.OnCharacterSelected -= ShowCharacter;
+        Managers.Character.OnCharacterSelected += ShowCharacter;
+
+        InitCharacterButtons(Managers.Character.CharacterList);
+        Managers.Character.SelectDefaultCharacter();
+    }
+
+    protected override void OnClose() {
+        Managers.Character.OnCharacterSelected -= ShowCharacter;
     }
 }

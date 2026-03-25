@@ -16,6 +16,7 @@ public sealed class CharacterManager : IInitializable
             OnCharacterSelected?.Invoke(_currentSelectedCharacterID, prevID);
         }
     }
+    public IReadOnlyList<Character> CharacterList => characterList;
     public bool IsInit => _isInit;
 
     // state
@@ -47,11 +48,15 @@ public sealed class CharacterManager : IInitializable
                 .Select(sd => new Character(sd.ToData()))
                 .ToList();
 
-            CurrentSelectedCharacterID = characterList[0].Data.CharacterID;
+            SelectDefaultCharacter();
         }
         else {
             Debug.LogError($"<color=red>no charcterSD container exist</color>");
         }
+    }
+
+    public void SelectDefaultCharacter() {
+        CurrentSelectedCharacterID = characterList[0].Data.CharacterID;
     }
 
     public void Release() {
@@ -61,6 +66,5 @@ public sealed class CharacterManager : IInitializable
 
     public void ResetCharacters() {
         OnCharacterSelected = null;
-        _currentSelectedCharacterID = null;
     }
 }

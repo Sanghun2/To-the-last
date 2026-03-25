@@ -60,8 +60,8 @@ public sealed class ProcessManager : IInitializable
             Managers.BootStrap.CancelBootStrap);
 
         gamePrepareChain
-            .AddProcess(new TraitSelectProcess(new TraitSelectProcessCotnextBuilder()))
-            .AddProcess(new CharacterSelectProcess(new CharacterSelectProcessContextBuilder()));
+            .AddProcess(new CharacterSelectProcess(new CharacterSelectProcessContextBuilder()))
+            .AddProcess(new TraitSelectProcess(new TraitSelectProcessCotnextBuilder()));
 
         chainDict.Clear();
         chainDict.Add(Define.FlowType.LogIn.ToString(), loginChain);

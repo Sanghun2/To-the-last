@@ -52,7 +52,8 @@ public class CharacterUI : UIBase, IPool
     }
     public void Return() {
         CloseUI();
-        characterID = null; 
+        characterID = null;
+        selectedUIObj.SetActive(false);
     }
 
     #endregion
