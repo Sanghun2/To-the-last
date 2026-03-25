@@ -22,9 +22,6 @@ public class TraitSelectProcess : Process<TraitSelectProcessContext>
         Managers.UI.OpenUI<GameBootStrapUI>();
         var ui = Managers.UI.OpenUI<TraitSelectionUI>();
 
-        Managers.Trait.OnTraitListInit -= ui.InitTraitList;
-        Managers.Trait.OnTraitListInit += ui.InitTraitList;
-
         Managers.Trait.InitTraitDataFromPlayerData();
     }
 }

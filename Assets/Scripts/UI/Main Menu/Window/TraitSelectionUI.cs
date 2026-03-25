@@ -66,19 +66,31 @@ public class TraitSelectionUI : UIBase
 
 
     protected override void OnOpen() {
+        ResizeTraitViewRect();
+
+        Managers.Trait.OnTraitListInit -= InitTraitList;
+        Managers.Trait.OnTraitListInit += InitTraitList;
+
+        Managers.Process.CurrentChain.OnChainCanceled -= ClearContainers;
+        Managers.Process.CurrentChain.OnChainCanceled += ClearContainers;
+
+        Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
+        Managers.Trait.OnTraitPointChanged += UpdateTraitPointText;
+    }
+    protected override void OnClose() {
+        Managers.Trait.OnTraitListInit -= InitTraitList;
+        Managers.Process.CurrentChain.OnChainCanceled -= ClearContainers;
+        Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
+    }
+
+
+
+    private void ResizeTraitViewRect() {
         cachedRegionRectWidth = regionRectGetter.Width;
         float padding = 8;
         ResizeRect(cachedRegionRectWidth - padding);
         cachedLeftContainerRectWidth = leftContainerSizeGetter.Width;
-
-        Managers.Process.CurrentChain.OnChainCanceled -= ClearContainers;
-        Managers.Process.CurrentChain.OnChainCanceled += ClearContainers;
     }
-    protected virtual void OnEnable() {
-        Managers.Trait.OnTraitPointChanged -= UpdateTraitPointText;
-        Managers.Trait.OnTraitPointChanged += UpdateTraitPointText;
-    }
-
     private void ResizeRect(float targetWidth) {
         leftRegion.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth / 2);
         rightRegion.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth / 2);
@@ -109,6 +121,7 @@ public class TraitSelectionUI : UIBase
             ui.Return();
         }
     }
+
     private int CalulateOrder(TraitUI traitUI) {
         var container = traitListContainer.transform;
         var uiCount = container.childCount;
