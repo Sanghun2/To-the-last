@@ -68,7 +68,7 @@ public sealed class PlayerData : IInitializable
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
 
-        RegisterEvent(OnPlayerDead, Define.Stat.Hp);
+        RegisterEvent(OnPlayerDead, Define.Stat.Hp, Define.StatDetail.current);
 
         _isInit = true;
     }
@@ -80,10 +80,10 @@ public sealed class PlayerData : IInitializable
 
     #region Stat
 
-    public void RegisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.current) {
+    public void RegisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.none) {
         statContainer.RegisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
-    public void UnregisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.current) {
+    public void UnregisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.none) {
         statContainer.UnregisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
 

@@ -38,6 +38,7 @@ public class Define
         Group,
     }
     public enum StatDetail {
+        none,
         current,
         max,
     }

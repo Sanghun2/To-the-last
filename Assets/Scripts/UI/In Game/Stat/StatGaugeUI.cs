@@ -41,7 +41,7 @@ public class StatGaugeUI : StatUIBase
             statSD.Description,
             new ActionData[] {
                 new ActionData("확인", () => {
-                    Managers.Player.PlayerData.UnregisterEvent(UpdateSubText, StatType);
+                    Managers.Player.PlayerData.UnregisterEvent(UpdateSubText, StatType, Define.StatDetail.current);
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                 })
             },
@@ -49,14 +49,14 @@ public class StatGaugeUI : StatUIBase
             );
 
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();
-        var player = Managers.Player.PlayerData;
+        var playerData = Managers.Player.PlayerData;
         infoButton.onClick.RemoveAllListeners();
         infoButton.onClick.AddListener(() => {
             if (infoPopUp.IsOpened) return;
             infoPopUp.InitPopUp(popUpData);
             infoPopUp.OpenUI();
-            player.RegisterEvent(UpdateSubText, StatType);
-            var statValue = player.GetStatValue(StatType);
+            playerData.RegisterEvent(UpdateSubText, StatType, Define.StatDetail.current);
+            var statValue = playerData.GetStatValue(StatType);
             if (statValue != null) {
                 UpdateSubText((Value<float>)statValue);
             }

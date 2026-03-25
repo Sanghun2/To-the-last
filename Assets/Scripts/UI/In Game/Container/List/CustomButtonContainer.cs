@@ -51,10 +51,4 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
             button.InitButton(actions[i]);
         }
     }
-
-    internal void Clear() {
-        for (int i = 0; i < contentList.Count; i++) {
-            contentList[i].CloseUI();
-        }
-    }
 }

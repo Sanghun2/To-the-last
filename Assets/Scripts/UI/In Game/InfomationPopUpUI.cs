@@ -34,17 +34,17 @@ public class InfomationPopUpUI : PopUpUIBase<InfomationPopUpData>
             iconImage.gameObject.SetActive(false);
         }
 
-
         if (!string.IsNullOrEmpty(popUpData.SubText)) {
             subText.SetText(popUpData.SubText);
-            subText.gameObject.SetActive(false);
+            subText.gameObject.SetActive(true);
         }
         else {
-            subText.gameObject.SetActive(true);
+            subText.gameObject.SetActive(false);
         }
     }
 
     public void SetSubText(string text) {
         subText.SetText(text);
+        if (!subText.isActiveAndEnabled) subText.gameObject.SetActive(true);
     }
 }

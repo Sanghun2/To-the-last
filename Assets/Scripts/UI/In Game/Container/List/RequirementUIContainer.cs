@@ -22,7 +22,8 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
         }
     }
 
-    private void Reset() {
+    protected override void Reset() {
+        base.Reset();
         if (actioButton == null) {
             actioButton = GetComponentInChildren<CustomButton>();
         }
