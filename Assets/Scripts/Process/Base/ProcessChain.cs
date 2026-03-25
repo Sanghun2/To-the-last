@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Mono.Cecil;
 using UnityEngine;
 
 public sealed class ProcessChain
@@ -18,11 +19,26 @@ public sealed class ProcessChain
 
     public int LastProcessIndex => processList.Count - 1;
     public Process CurrentProcess => currentProcess;
+    public bool IsLastProcess => _currentProcessIndex == LastProcessIndex;
+    public bool IsFirstProcess => _currentProcessIndex == 0;
+    public int CurrentProcessIndex
+    {
+        get => _currentProcessIndex;
+        private set
+        {
+            var prevIndex = _currentProcessIndex;
+            _currentProcessIndex = value;
+
+            if (_currentProcessIndex != prevIndex) {
+                OnProcessChanged?.Invoke(_currentProcessIndex, prevIndex);
+            }
+        }
+    }
 
     private string chainID;
     private List<Process> processList = new List<Process>();
     private Process currentProcess;
-    private int currentProcessIndex;
+    private int _currentProcessIndex;
     private Action onChainCanceled;
     private Action onChainCompleted;
 
@@ -37,9 +53,10 @@ public sealed class ProcessChain
 
     public event Action OnChainCompleted;
     public event Action OnChainCanceled;
+    public event Action<int, int> OnProcessChanged;
 
     public void ResetChain() {
-        currentProcessIndex = 0;
+        _currentProcessIndex = 0;
         currentProcess?.Clear();
         currentProcess = null;
         OnChainCompleted = null;
@@ -81,7 +98,7 @@ public sealed class ProcessChain
 
         if (TryGetNextProcess(out Process nextProcess)) {
             if (TryExecuteProcess(nextProcess)) {
-                ++currentProcessIndex;
+                ++CurrentProcessIndex;
                 return true;
             }
         }
@@ -94,7 +111,7 @@ public sealed class ProcessChain
 
         if (TryGetPrevProcess(out Process prevProcess)) {
             if (TryExecuteProcess(prevProcess)) {
-                --currentProcessIndex;
+                --CurrentProcessIndex;
                 return true;
             }
         }
@@ -109,14 +126,14 @@ public sealed class ProcessChain
     }
 
     private Result TryGetProcess(out Process process) {
-        if (TryGetProcess(currentProcessIndex, out process)) {
+        if (TryGetProcess(_currentProcessIndex, out process)) {
             return Result.InProgress;
         }
 
         return Result.Completed;
     }
     private bool TryGetNextProcess(out Process process) {
-        var targetIndex = currentProcessIndex + 1;
+        var targetIndex = _currentProcessIndex + 1;
         if (TryGetProcess(targetIndex, out process)) {
             return true;
         }
@@ -124,7 +141,7 @@ public sealed class ProcessChain
         return false;
     }
     private bool TryGetPrevProcess(out Process process) {
-        var targetIndex = currentProcessIndex - 1;
+        var targetIndex = _currentProcessIndex - 1;
         if (TryGetProcess(targetIndex, out process)) {
             return true;
         }
