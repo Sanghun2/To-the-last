@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: repairCenter_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: repairCenter
-  displayName: "\uC815\uBE44\uC18C"
+  displayText: "\uC815\uBE44\uC18C"
   descripiton: "\uC815\uBE44\uC18C"
+  categoryList: []
   image: {fileID: 21300000, guid: 4f1d620beb50daa45867a8d2a0154e73, type: 3}
   iconImage: {fileID: 21300000, guid: 113243f99a7e1ce46b828c2d5f3be9ff, type: 3}
   storyDescription: "\uC774 \uC815\uBE44\uC18C\uB294 \uC7AC\uB09C \uC774\uD6C4\uC5D0\uB3C4

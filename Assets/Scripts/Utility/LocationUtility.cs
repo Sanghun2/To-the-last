@@ -1,4 +1,6 @@
 ﻿using System;
+using Unity.VisualScripting;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -24,20 +26,15 @@ public static class LocationUtility
     public static (int hour, int minutes) ConvertToTime(this float distance) {
         return (GetHour(distance), GetMinute(distance));
     }
-    public static LocationSD ToLocationSD(this string locationID) {
-       if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
-            return targetSD;
-       }
-
-       return null;
-    }
-    public static Location ToLocation(this string locationID) {
-        if (Managers.Location.TryGetLocation(locationID, out var location)) {
+ 
+    public static Location FindLocation(string locationID) {
+        if (Managers.Location.TryGetLocation(locationID, out Location location)) {
             return location;
         }
 
         return null;
     }
+
 
 #if UNITY_EDITOR
 
@@ -92,4 +89,5 @@ public static class LocationUtility
         distance /= 2;
         return (int)(distance % 60);
     }
+
 }

@@ -15,7 +15,7 @@ public class LocationInfoPopUpData : PopUpData
 
 
     public LocationInfoPopUpData(Location location, ActionData[] buttonActions) 
-        : base (location.LocationSD.DisplayText, location.LocationSD.StoryDescription, buttonActions){
+        : base (location.Data.DisplayText, location.Data.StoryDescription, buttonActions){
         this.location = location;
     }
 }
@@ -28,15 +28,15 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
     public override void InitPopUp(LocationInfoPopUpData popUpData) {
         base.InitPopUp(popUpData);
-        var sd = popUpData.Location.LocationSD;
-        locationImage.sprite = sd.Image;
+        var sd = popUpData.Location.Data;
+        locationImage.sprite = sd.MainImage;
 
         int currentProgress = popUpData.Location.CurrentValue;
         int maxProgress = sd.LocationEventList.Count;
         InitProgressUI(currentProgress, maxProgress);
 
-        LocationSD destination = popUpData.Location.LocationSD;
-        LocationSD currentLocation = Managers.Player.PlayerData.CurrentLocationID.ToLocationSD();
+        Location destination = popUpData.Location;
+        Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
         InitMoveTimeUI(currentLocation, destination);
     }
     public void InitPopUp(Location location) {
@@ -57,12 +57,12 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         }
         progressText.gameObject.SetActive(showProgress);
     }
-    private void InitMoveTimeUI(LocationSD currentLocation, LocationSD destination) {
+    private void InitMoveTimeUI(Location currentLocation, Location destination) {
         bool isSamePosition = currentLocation.Equals(destination);
         moveTimeExpectationText.gameObject.SetActive(!isSamePosition);
         if (isSamePosition) return;
 
-        var time = LocationUtility.CalculateDistance(currentLocation, destination).ConvertToTime();
+        var time = LocationUtility.CalculateDistance(currentLocation.Data.AnchoredPosition, destination.Data.AnchoredPosition).ConvertToTime();
         moveTimeExpectationText.SetText($"{time.hour}시간 {time.minutes}분");
         //Debug.Log($"{currentLocation.TraitID} -> {destination.TraitID}");
     }
@@ -70,8 +70,8 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
     #region UI Info
     private string GetButtonText(Location destination) {
-        LocationSD currentSD = Managers.Player.PlayerData.CurrentLocationID.ToLocationSD();
-        LocationSD destinationSD = destination.LocationSD;
+        Location currentSD = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        Location destinationSD = destination;
         if (currentSD.Equals(destinationSD)) {
             return "들어간다";
         }
@@ -79,13 +79,13 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         return "이동한다";
     }
     private Action ExecuteLocationEvent(Location destination) {
-        LocationSD currentLocationSD = Managers.Player.PlayerData.CurrentLocationID.ToLocationSD();
-        LocationSD endLocationSD = destination.LocationSD;
-        if (currentLocationSD.Equals(endLocationSD)) {
+        LocationData currentLocationData = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID)?.Data;
+        LocationData endLocationData = destination.Data;
+        if (currentLocationData.Equals(endLocationData)) {
             return () => EnterLocation(destination);
         }
         else {
-            return () => MoveLocation(currentLocationSD, endLocationSD);
+            return () => MoveLocation(currentLocationData, endLocationData);
         }
     }
     private void EnterLocation(Location destination) {
@@ -94,14 +94,14 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         ui.InitLocationUI(destination);
         ui.ShowEnterance();
     }
-    private void MoveLocation(LocationSD currentLocationSD, LocationSD endLocationSD) {
+    private void MoveLocation(LocationData currentLocationData, LocationData endLocationData) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();
         Managers.UI.GetUI<MapUI>().LocationPointer.MovePosition(
-            currentLocationSD,
-            endLocationSD,
+            currentLocationData,
+            endLocationData,
             callback: () => {
-                Managers.Player.PlayerData.SetCurrentLocation(endLocationSD);
-                if (Managers.Location.TryGetLocation(endLocationSD, out var destination)) {
+                Managers.Player.PlayerData.SetCurrentLocation(endLocationData);
+                if (Managers.Location.TryGetLocation(endLocationData.LocationID, out var destination)) {
                     InitPopUp(destination);
                     Managers.UI.OpenUI(this);
                 }

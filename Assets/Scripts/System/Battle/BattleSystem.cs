@@ -196,10 +196,10 @@ public class BattleSystem
         Managers.Time.TurnTimer.Pause(false);
     }
     private void PauseMainTimer() {
-        Managers.Time.PauseTime(true);
+        Managers.Time.PauseMainTime(true);
     }
     private void ResumeMainTimer() {
-        Managers.Time.PauseTime(false);
+        Managers.Time.PauseMainTime(false);
     }
 
     #endregion

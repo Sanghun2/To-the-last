@@ -8,7 +8,7 @@ public sealed class MetabolicSystem
     private List<(Define.Stat stat, float value)> consumeList = new List<(Define.Stat, float)>();
     //private bool isInit;
 
-    public void InitMetabolism(IReadOnlyList<(Define.Stat, float)> newConsumeList) {
+    public void InitMetabolism(IReadOnlyList<(Define.Stat stat, float consumeAmount)> newConsumeList) {
         consumeList.Clear();
         for (int i = 0; i < newConsumeList.Count; i++) {
             consumeList.Add(newConsumeList[i]);

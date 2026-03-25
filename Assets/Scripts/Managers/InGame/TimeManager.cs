@@ -49,17 +49,22 @@ public class TimeManager : MonoBehaviour, IInitializable
     private long prevSeconds;
     private bool isInit;
     
-    public void ChangeTime(float deltaTime) {
+    public void SetAsDefaultTime() {
+        InitMainTime(1, 6, 0);
+        PauseMainTime(true);
+    }
+    public void ChangeMainTime(float deltaTime) {
         MainTimer.ChangeTime(deltaTime);
     }
-    public void PauseTime(bool pause) {
+    public void PauseMainTime(bool pause) {
         MainTimer.Pause(pause);
     }
-    private void ChangeTime(int day, int hour, int minute) {
+
+    private void InitMainTime(int day, int hour, int minute) {
         long second = day * DAY_VALUE + hour * HOUR_VALUE + minute * MINUTE_VALUE;
         MainTimer.InitTime(second);
     }
-    private void ConvertTime(float currentSeconds, float _) {
+    private void ConvertSecondsToTime(float currentSeconds, float _) {
         long seconds = (long)currentSeconds; // 정확한 time을 위해 long 타입의 elapsed time system으로 구현하고, 지금 연구과정에 대해 노션 정리
         if (seconds != prevSeconds) {
             int day = (int)(seconds / DAY_VALUE);
@@ -87,24 +92,23 @@ public class TimeManager : MonoBehaviour, IInitializable
         }
     }
 
+
     private void Reset() {
         _mainTimer = GetComponentInChildren<Timer>();
     }
-
     private void Start() {
         TurnTimer.Pause(true);
     }
 
     public void Init() {
-        MainTimer.OnTimeChanged += ConvertTime;
+        MainTimer.OnTimeChanged += ConvertSecondsToTime;
 
         // init
-        ChangeTime(1, 6, 0);
+        SetAsDefaultTime();
         OnTimeChanged?.Invoke(day, hour, minute, 0);
         OnDayChanged?.Invoke(day, hour, minute, 0);
         isInit = true;
     }
-
     public void Release() {
 
     }

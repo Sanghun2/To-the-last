@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: convinientStore_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: convinientStore
-  displayName: "\uD3B8\uC758\uC810"
+  displayText: "\uD3B8\uC758\uC810"
   descripiton: "\uD3B8\uC758\uC810"
+  categoryList: []
   image: {fileID: 21300000, guid: fd75442ec80b3ed40bd0c931002e2774, type: 3}
   iconImage: {fileID: 21300000, guid: e2fa803a7b741469bbb4ea988832657a, type: 3}
   storyDescription: "\uC774 \uD3B8\uC758\uC810\uC740 \uC7AC\uB09C \uC9C1\uD6C4 \uC0AC\uB78C\uB4E4\uC774

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: broadcastStation_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: broadcastStation
-  displayName: "\uBC29\uC1A1\uAD6D"
+  displayText: "\uBC29\uC1A1\uAD6D"
   descripiton: "\uBC29\uC1A1\uAD6D"
+  categoryList: []
   image: {fileID: 21300000, guid: 9766325cb779a2a4d86fc8c2029eccbe, type: 3}
   iconImage: {fileID: 21300000, guid: 525dde52e16634beda5c54b4adbcaed5, type: 3}
   storyDescription: "\uC138\uC0C1\uC774 \uBB34\uB108\uC9C0\uB358 \uC21C\uAC04, \uC774

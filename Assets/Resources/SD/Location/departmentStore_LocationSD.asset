@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: departmentStore_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: departmentStore
-  displayName: "\uBC31\uD654\uC810"
+  displayText: "\uBC31\uD654\uC810"
   descripiton: "\uBC31\uD654\uC810"
+  categoryList: []
   image: {fileID: 21300000, guid: de4fb27cfb9dad84bab9647ffb74af8e, type: 3}
   iconImage: {fileID: 21300000, guid: 15136bd01f40f87479b7e38df6579bbe, type: 3}
   storyDescription: "\uD55C\uB54C \uD654\uB824\uD588\uB358 \uC774 \uBC31\uD654\uC810\uC740

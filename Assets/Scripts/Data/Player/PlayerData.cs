@@ -13,6 +13,7 @@ public sealed class PlayerData : IInitializable
             return _inventory;
         }
     }
+    public MetabolicSystem MetabolicSystem => metabolicSystem;
 
     public string CurrentLocationID
     {
@@ -39,6 +40,8 @@ public sealed class PlayerData : IInitializable
 
     public IReadOnlyList<SkillData> SkillList => skillContainer.SkillList;
     public StatContainer StatContainer => statContainer;
+    public string CharacterID => _characterID;
+
 
     public event Action<Define.VitalState, Define.VitalState> OnVitalStateChanged;
 
@@ -51,15 +54,16 @@ public sealed class PlayerData : IInitializable
     private Define.VitalState vitalState;
     private HashSet<string> traitSet = new HashSet<string>();
     private int traitPoint;
-    private string currentCharacterID;
+    private string _characterID;
 
     public void Init() {
         if (IsInit) return;
 
-        SetAsDefaultStats();
-        SetAsDefaultMetablism();
-        SetAsDefaultLocation();
+        SetAsDefaultTestStats();
+        SetAsDefaultTestMetablism();
+
         ResetSkills();
+        SetAsDefaultLocation();
 
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
@@ -98,8 +102,16 @@ public sealed class PlayerData : IInitializable
     public void SetCurrentLocation(string locationID) {
         currentLocationID = locationID;
     }
-    public void SetCurrentLocation(LocationSD locationSD) {
-        SetCurrentLocation(locationSD.ID);
+    public void SetCurrentLocation(Location currentLocation, Location prevLocation) {
+        SetCurrentLocation(currentLocation.Data);
+    }
+    public void SetCurrentLocation(LocationData locationData) {
+        SetCurrentLocation(locationData.LocationID);
+    }
+    public void SetAsDefaultLocation() {
+        if (string.IsNullOrEmpty(currentLocationID)) {
+            currentLocationID = LocationUtility.basementSDID;
+        }
     }
 
     #endregion
@@ -134,8 +146,8 @@ public sealed class PlayerData : IInitializable
 
     #region Chracter
 
-    public void SetCharacter(string currentCharacterID) {
-        this.currentCharacterID = currentCharacterID;
+    public void SetCharacter(string characterID) {
+        this._characterID = characterID;
     }
 
     #endregion
@@ -145,19 +157,11 @@ public sealed class PlayerData : IInitializable
     private void RegisterStat(Define.Stat statType, Stat stat) {
         statContainer.RegisterStat(statType.ToID(), stat);
     }
-
     private void ResetSkills() {
         skillContainer.Init();
     }
-    private void SetAsDefaultLocation() {
-        if (string.IsNullOrEmpty(currentLocationID)) {
-            currentLocationID = LocationUtility.basementSDID;
-        }
-    }
-    private void ConsumeStatAdaptor(int day, int hour, int minute, int deltaMinutes) {
-        metabolicSystem.ConsumeStats(statContainer, deltaMinutes);
-    }
-    private void SetAsDefaultMetablism() {
+
+    private void SetAsDefaultTestMetablism() {
         List<(Define.Stat stat, float value)> consumValues = new() {
             (Define.Stat.Hunger, 0.1f),
             (Define.Stat.Thirst, 0.1f),
@@ -165,7 +169,7 @@ public sealed class PlayerData : IInitializable
 
         metabolicSystem.InitMetabolism(consumValues);
     }
-    private void SetAsDefaultStats() {
+    private void SetAsDefaultTestStats() {
         RegisterStat(Define.Stat.Hp, new BoundedStat(100));
         RegisterStat(Define.Stat.Hunger, new BoundedStat(100));
         RegisterStat(Define.Stat.Thirst, new BoundedStat(100));
@@ -176,6 +180,10 @@ public sealed class PlayerData : IInitializable
         RegisterStat(Define.Stat.Agility, new Stat(10));
         RegisterStat(Define.Stat.Toughness, new Stat(10));
         RegisterStat(Define.Stat.Focus, new Stat(20));
+    }
+
+    private void ConsumeStatAdaptor(int day, int hour, int minute, int deltaMinutes) {
+        metabolicSystem.ConsumeStats(statContainer, deltaMinutes);
     }
     private void OnPlayerDead(Value<float> value) {
         if (value.CurrentValue <= 0) {

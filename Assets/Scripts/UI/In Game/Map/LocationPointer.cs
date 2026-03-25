@@ -39,11 +39,11 @@ public class LocationPointer : UIBase
         StopMove(currentRoutineID);
         currentRoutineID = Managers.Coroutine.StartCoroutine(MoveRoutine(startPos, endPos, duration, callback));
     }
-    public void MovePosition(LocationSD startLocationSD, LocationSD endLocationSD, float duration = MOVE_DURATION, Action callback = null) {
-        MovePosition(startLocationSD.AnchoredPosition, endLocationSD.AnchoredPosition, duration, callback);
+    public void MovePosition(LocationData startLocationData, LocationData endLocationData, float duration = MOVE_DURATION, Action callback = null) {
+        MovePosition(startLocationData.AnchoredPosition, endLocationData.AnchoredPosition, duration, callback);
     }
     public void MovePosition(Location startLocation, Location endLocation, float duration = MOVE_DURATION, Action callback = null) {
-        MovePosition(startLocation.LocationSD, endLocation.LocationSD, duration, callback);
+        MovePosition(startLocation.Data, endLocation.Data, duration, callback);
     }
     internal void PauseMove(bool pause) {
         this.pause = pause;

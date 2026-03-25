@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: school_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: school
-  displayName: "\uD559\uAD50"
+  displayText: "\uD559\uAD50"
   descripiton: "\uD559\uAD50"
+  categoryList: []
   image: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
   iconImage: {fileID: 21300000, guid: 60f43d6251e46400eaff573952e8a570, type: 3}
   storyDescription: "\uC774 \uD559\uAD50\uB294 \uC7AC\uB09C \uC9C1\uD6C4 \uC544\uC774\uB4E4\uACFC

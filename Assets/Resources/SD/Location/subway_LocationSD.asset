@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: subway_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: subway
-  displayName: "\uC9C0\uD558\uCCA0"
+  displayText: "\uC9C0\uD558\uCCA0"
   descripiton: "\uC9C0\uD558\uCCA0"
+  categoryList: []
   image: {fileID: 21300000, guid: c33e5fb01c2f16e4a9adb252fafecd59, type: 3}
   iconImage: {fileID: 21300000, guid: f033e1ec37b38a54c92ee5d4ed2d2b7f, type: 3}
   storyDescription: "\uC774 \uC9C0\uD558\uCCA0\uC5ED\uC740 \uC7AC\uB09C \uC9C1\uD6C4

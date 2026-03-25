@@ -3,7 +3,7 @@ using BilliotGames;
 using UnityEngine;
 
 [Serializable]
-public class Location : IValue<int>
+public class Location : IValue<int>, IEquatable<Location>
 {
     public enum State {
         Undiscovered,
@@ -25,7 +25,7 @@ public class Location : IValue<int>
             }
         }
     }
-    public LocationSD LocationSD => locationSD;
+    public LocationData Data => data;
 
     public SimpleInventory Inventory
     {
@@ -45,10 +45,11 @@ public class Location : IValue<int>
     [SerializeField] State _currentState;
     [SerializeField] SimpleInventory _inventory;
 
-    [NonSerialized] private LocationSD locationSD;
+    [NonSerialized] private LocationData data;
 
-    public Location(LocationSD locationSD) {
-        this.locationSD = locationSD;
+    public Location(LocationData locationData) {
+        this.data = locationData;
+        locationID = locationData.LocationID;
         _currentState = State.Undiscovered;
     }
 
@@ -82,5 +83,11 @@ public class Location : IValue<int>
     public void ClearLocationEvent() {
         OnStateChanged = null;
         OnProgressChanged = null;
+    }
+
+    public bool Equals(Location other) {
+        if (this == null || other == null) return false;
+
+        return locationID.Equals(other.locationID);
     }
 }

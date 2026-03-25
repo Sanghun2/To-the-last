@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class ExplorationData
 {
     //public Location Location => location;
-    //public LocationSD LocationSD => location == null ? null : location.LocationSD;
-    public EncounterEvent CurrentEvent => location.LocationSD.LocationEventList[location.CurrentValue];
+    //public Data Data => location == null ? null : location.Data;
+    public EncounterEvent CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
 
     [SerializeField] Location location;
 
@@ -49,7 +49,7 @@ public class ExplorationUI : UIBase
 
     public void InitLocationUI(Location location) {
         InitUI();
-        mainBackgroundImage.sprite = location.LocationSD.Image;
+        mainBackgroundImage.sprite = location.Data.MainImage;
         HideSituation();
     }
     public void ShowEnterance() {

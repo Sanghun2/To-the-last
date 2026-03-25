@@ -12,11 +12,11 @@ public class LocationUI : UIBase, IPool
 
 
     public void InitLocation(Location location) {
-        if (location == null || location.LocationSD == null) return;
+        if (location == null || location.Data == null) return;
 
         this.location = location;
-        SetUIView(location.LocationSD);
-        SetPosition(location.LocationSD.AnchoredPosition);
+        SetUIView(location.Data);
+        SetPosition(location.Data.AnchoredPosition);
         contentUI.SetButtonAction(() => OpenPopUp(location));
     }
 
@@ -39,7 +39,9 @@ public class LocationUI : UIBase, IPool
         var rt = GetComponent<RectTransform>();
         var targetPos = rt.anchoredPosition;
 
-        location.LocationSD.SetAnchoredPosition(targetPos);
+        if (Managers.SD.TryGetSD<LocationSD>(location.Data.LocationID, out var locationSD)) {
+            locationSD.SetAnchoredPosition(targetPos);
+        }
     }
 
 
@@ -68,10 +70,10 @@ public class LocationUI : UIBase, IPool
         }
     }
 
-    private void SetUIView(LocationSD locationSD) {
-        if (locationSD == null) { Debug.Log($"location sd null. location 정보 set 불가"); return; }
-        gameObject.name = $"Location UI_{locationSD.ID}";
-        contentUI.SetContentImage(locationSD.IconImage);
+    private void SetUIView(LocationData locationData) {
+        if (locationData == null) { Debug.Log($"location sd null. location 정보 set 불가"); return; }
+        gameObject.name = $"Location UI_{locationData.LocationID}";
+        contentUI.SetContentImage(locationData.IconImage);
     }
     private void SetPosition(Vector2 anchoredPosition) {
         GetComponent<RectTransform>().anchoredPosition = anchoredPosition;

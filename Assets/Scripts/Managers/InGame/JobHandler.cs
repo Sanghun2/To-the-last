@@ -44,7 +44,7 @@ public class JobHandler : IInitializable
     }
 
     private IEnumerator FocusJobRoutine(FocusJob focusJob, Action callback=null) {
-        Managers.Time.PauseTime(true);
+        Managers.Time.PauseMainTime(true);
         float progress = 0;
         float currentTime = 0;
 
@@ -73,7 +73,7 @@ public class JobHandler : IInitializable
             }
         }
 
-        Managers.Time.PauseTime(false);
+        Managers.Time.PauseMainTime(false);
         currentFocusJob = null;
         currentFocusJobID = null;
         Managers.Time.OnTimeChanged -= focusJob.ChangeMinutes;
@@ -81,7 +81,7 @@ public class JobHandler : IInitializable
         callback?.Invoke();
     }
     private void ChangeIngameTime(float deltaSeconds) {
-        Managers.Time.ChangeTime(deltaSeconds);
+        Managers.Time.ChangeMainTime(deltaSeconds);
     }
 
     public void Init() {

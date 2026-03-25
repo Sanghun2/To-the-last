@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: basement_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: basement
-  displayName: "\uC9C0\uD558\uC2E4"
+  displayText: "\uC790\uD558\uC2E4"
   descripiton: "\uC9C0\uD558\uC2E4"
+  categoryList: []
   image: {fileID: 21300000, guid: 5a1b2e94282456842b02dfd1928c09ff, type: 3}
   iconImage: {fileID: 21300000, guid: e5770443442a943c99b55f782b3f0bed, type: 3}
   storyDescription: "\uB9DD\uD55C \uC138\uC0C1\uC5D0\uC11C \uD604\uC7AC\uB85C\uC368\uB294

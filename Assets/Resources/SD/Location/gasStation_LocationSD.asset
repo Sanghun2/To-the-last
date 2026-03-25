@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: gasStation_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
   id: gasStation
-  displayName: "\uC8FC\uC720\uC18C"
+  displayText: "\uC8FC\uC720\uC18C"
   descripiton: "\uC8FC\uC720\uC18C"
+  categoryList: []
   image: {fileID: 21300000, guid: 5fa9e6b56c3a5124abfc465610a3745c, type: 3}
   iconImage: {fileID: 21300000, guid: 5c4ab2f9d1011419eb0ee12d7b146111, type: 3}
   storyDescription: "\uB300\uC7AC\uC559 \uC774\uD6C4, \uC774 \uC8FC\uC720\uC18C\uB294

@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class LocationManager : IInitializable
 {
+    public Location CurrentLocation
+    {
+        get => currentLocation;
+        set
+        {
+            var prevLocation = currentLocation;
+            currentLocation = value;
+
+            if (currentLocation != prevLocation) {
+                OnLocationChanged?.Invoke(currentLocation, prevLocation);
+            }
+        }
+    }
     private LocationUIContainer LocationUIContainer
     {
         get
@@ -22,23 +35,26 @@ public class LocationManager : IInitializable
     private Dictionary<string, Location> locationDict = new Dictionary<string, Location>();
     private LocationUIContainer _container;
     private bool _isInit;
+    private Location currentLocation;
+
+    public event Action<Location, Location> OnLocationChanged;
 
     public Location RegisterLocation(string locationID, int currentProgress) {
         if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
-            return RegisterLocation(targetSD, currentProgress);
+            return RegisterLocation(targetSD.ToData(), currentProgress);
         }
 
         Debug.LogError($"<color=red>location ({locationID}) is null</color>");
         return null;
     }
-    public Location RegisterLocation(LocationSD locationSD, int currentProgress) {
-        var location = new Location(locationSD);
-        if (locationDict.TryAdd(locationSD.ID, location) == false) {
-            Debug.Log($"<color=yellow>{locationSD.ID}는 이미 존재함</color>");
-            return locationDict[locationSD.ID];
+    public Location RegisterLocation(LocationData locationData, int currentProgress) {
+        var location = new Location(locationData);
+        if (locationDict.TryAdd(locationData.LocationID, location) == false) {
+            Debug.Log($"<color=yellow>{locationData.LocationID}는 이미 존재함</color>");
+            return locationDict[locationData.LocationID];
         }
 
-        location.InitProgress(currentProgress, locationSD.LocationEventList.Count).Deactivate();
+        location.InitProgress(currentProgress, locationData.LocationEventList.Count).Deactivate();
         return location;
     }
 

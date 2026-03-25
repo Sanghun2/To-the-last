@@ -3,6 +3,7 @@ using System.Linq;
 using BilliotGames;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public static partial class Extension
 {
@@ -45,6 +46,18 @@ public static partial class Extension
             characterSD.IsDefaultCharacter
             );
     }
+
+    public static LocationData ToData(this LocationSD locationSD) {
+        return new LocationData(
+            locationSD.ID,
+            locationSD.LocationEventList,
+            locationSD.DisplayText,
+            locationSD.StoryDescription,
+            locationSD.AnchoredPosition,
+            locationSD.MainImage,
+            locationSD.IconImage
+            );
+    }    
 
     #endregion
 

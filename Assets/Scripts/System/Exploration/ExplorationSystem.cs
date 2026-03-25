@@ -43,7 +43,7 @@ public class ExplorationSystem
         return null;
     }
     private EncounterEvent GetNextEncouter(Location location) {
-        var eventList = location.LocationSD.LocationEventList;
+        var eventList = location.Data.LocationEventList;
         int currentProgress = location.CurrentValue;
         EncounterEvent targetEncounter = eventList[currentProgress-1];
         return targetEncounter;
