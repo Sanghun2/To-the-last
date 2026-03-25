@@ -24,6 +24,7 @@ public sealed class MetabolicSystem
 
             if (statContainer.TryGetStat(targetStat.ToID(), out Stat stat)) {
                 stat.ChangeRawValue(-applyValue);
+                //Debug.Log($"[Test] ({targetStat}) ({-applyValue})");
             }
         }
     }

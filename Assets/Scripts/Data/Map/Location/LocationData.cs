@@ -22,7 +22,7 @@ public class LocationData : IEquatable<LocationData>
     private string displayText;
 
     public LocationData(
-        string iD, 
+        string id, 
         IReadOnlyList<EncounterEvent> locationEventList, 
         string displayText,
         string storyDescription, 
@@ -30,6 +30,7 @@ public class LocationData : IEquatable<LocationData>
         Sprite mainImage,
         Sprite iconImage) {
 
+        this.locationID = id;
         this.locationEventList = locationEventList;
         this.storyDescription = storyDescription;
         this.anchoredPosition = anchoredPosition;
