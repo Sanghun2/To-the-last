@@ -68,11 +68,10 @@ public sealed class PlayerData : IInitializable
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
 
-        RegisterEvent(Define.Stat.Hp, OnPlayerDead);
+        RegisterEvent(OnPlayerDead, Define.Stat.Hp);
 
         _isInit = true;
     }
-
 
     public void Release() {
         skillContainer.Release();
@@ -81,18 +80,21 @@ public sealed class PlayerData : IInitializable
 
     #region Stat
 
-    public void RegisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
-        statContainer.RegisterEvent(targetStat.ToID(), @event);
+    public void RegisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.current) {
+        statContainer.RegisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
-    public void UnregisterEvent(Define.Stat targetStat, Action<Value<float>> @event) {
-        statContainer.UnregisterEvent(targetStat.ToID(), @event);
+    public void UnregisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.current) {
+        statContainer.UnregisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
 
     public Value<float>? GetStatValue(Define.Stat targetStat) {
-        return statContainer.GetStatRawValue(targetStat.ToID());
+        return statContainer.GetRawValue(targetStat.ToID());
     }
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {
-        statContainer.TryChangeRawStat(targetStat.ToID(), deltaValue);
+        statContainer.TryChangeRawValue(targetStat.ToID(), deltaValue);
+    }
+    public void ChangeMaxStat(Define.Stat targetStat, float deltaValue) {
+        statContainer.TryChangeRawMaxVale(targetStat.ToID(), deltaValue);
     }
 
     #endregion
@@ -154,8 +156,8 @@ public sealed class PlayerData : IInitializable
 
 
     // private
-    private void RegisterStat(Define.Stat statType, Stat stat) {
-        statContainer.RegisterStat(statType.ToID(), stat);
+    private void RegisterStat(IStatEntry stat) {
+        statContainer.RegisterStat(stat);
     }
     private void ResetSkills() {
         skillContainer.Init();
@@ -170,16 +172,16 @@ public sealed class PlayerData : IInitializable
         metabolicSystem.InitMetabolism(consumValues);
     }
     private void SetAsDefaultTestStats() {
-        RegisterStat(Define.Stat.Hp, new BoundedStat(100));
-        RegisterStat(Define.Stat.Hunger, new BoundedStat(100));
-        RegisterStat(Define.Stat.Thirst, new BoundedStat(100));
-        RegisterStat(Define.Stat.Mental, new BoundedStat(100));
-        RegisterStat(Define.Stat.Temperature, new Stat(36.5f));
+        RegisterStat(StatUtility.CreateStatGroup(Define.Stat.Hp, 100));
+        RegisterStat(StatUtility.CreateStatGroup(Define.Stat.Hunger, 100));
+        RegisterStat(StatUtility.CreateStatGroup(Define.Stat.Thirst, 100));
+        RegisterStat(StatUtility.CreateStatGroup(Define.Stat.Mental, 100));
+        RegisterStat(StatUtility.CreateStat(Define.Stat.Temperature, 36.5f));
 
-        RegisterStat(Define.Stat.Strength, new Stat(20));
-        RegisterStat(Define.Stat.Agility, new Stat(10));
-        RegisterStat(Define.Stat.Toughness, new Stat(10));
-        RegisterStat(Define.Stat.Focus, new Stat(20));
+        RegisterStat(StatUtility.CreateStat(Define.Stat.Strength, 20));
+        RegisterStat(StatUtility.CreateStat(Define.Stat.Agility, 10));
+        RegisterStat(StatUtility.CreateStat(Define.Stat.Toughness, 10));
+        RegisterStat(StatUtility.CreateStat(Define.Stat.Focus, 20));
     }
 
     private void ConsumeStatAdaptor(int day, int hour, int minute, int deltaMinutes) {

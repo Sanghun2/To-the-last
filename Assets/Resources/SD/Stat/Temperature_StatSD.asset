@@ -17,4 +17,5 @@ MonoBehaviour:
   descripiton: "\uCCB4\uC628"
   categoryList: []
   image: {fileID: 21300000, guid: ec09fd97b6c77e64cb483822157bd08a, type: 3}
-  statType: 4
+  targetStat: 4
+  statType: 0

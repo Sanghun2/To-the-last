@@ -22,7 +22,7 @@ public sealed class MetabolicSystem
             var value = data.value;
             var applyValue = value * multiplier;
 
-            if (statContainer.TryGetStat(targetStat.ToID(), out Stat stat)) {
+            if (statContainer.TryGetStat(targetStat.ToID(), out IStatEntry stat)) {
                 stat.ChangeRawValue(-applyValue);
                 //Debug.Log($"[Test] ({targetStat}) ({-applyValue})");
             }

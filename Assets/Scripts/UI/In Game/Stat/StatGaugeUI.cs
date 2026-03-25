@@ -15,8 +15,9 @@ public class StatGaugeUI : StatUIBase
     [SerializeField] protected Image statFillImage;
     [SerializeField] protected Button infoButton;
 
+
     public override void UpdateUI(Value<float> value) {
-        if (value.MaxValue == 0) { Debug.LogAssertion($"max value 0. func returned"); return; }
+        if (value.MaxValue == 0) { Debug.LogAssertion($"({statSD.ID}) max value 0. func returned"); return; }
         statFillImage.fillAmount = value.CurrentValue / value.MaxValue;
     }
 
@@ -40,7 +41,7 @@ public class StatGaugeUI : StatUIBase
             statSD.Description,
             new ActionData[] {
                 new ActionData("확인", () => {
-                    Managers.Player.PlayerData.UnregisterEvent(StatType, UpdateSubText);
+                    Managers.Player.PlayerData.UnregisterEvent(UpdateSubText, StatType);
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                 })
             },
@@ -51,9 +52,10 @@ public class StatGaugeUI : StatUIBase
         var player = Managers.Player.PlayerData;
         infoButton.onClick.RemoveAllListeners();
         infoButton.onClick.AddListener(() => {
+            if (infoPopUp.IsOpened) return;
             infoPopUp.InitPopUp(popUpData);
             infoPopUp.OpenUI();
-            player.RegisterEvent(StatType, UpdateSubText);
+            player.RegisterEvent(UpdateSubText, StatType);
             var statValue = player.GetStatValue(StatType);
             if (statValue != null) {
                 UpdateSubText((Value<float>)statValue);

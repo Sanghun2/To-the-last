@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: hand_ingredientLoot_LootSelectionSD
   m_EditorClassIdentifier: Assembly-CSharp::LootSelectionSD
   id: hand_ingredientLoot
-  displayName: "\uC0C1\uC790\uB97C \uC5F0\uB2E4."
+  displayText: "\uC0C1\uC790\uB97C \uC5F0\uB2E4"
   descripiton: "\uC0C1\uC790\uB97C \uC5F0\uB2E4."
+  categoryList: []
   requirementType: 0
   requirement:
     itemSD: {fileID: 0}

@@ -60,7 +60,7 @@ public class BattleEntityUI : EntityUI
 
     private void InitHpStatUI(BattleEntity battleEntity) {
         if (hpUI != null) {
-            if (!battleEntity.TryGetStat(Define.Stat.Hp.ToID(), out Stat hpStat)) { Debug.LogError($"<color=red>hp stat is not exist</color>"); return; }
+            if (!battleEntity.TryGetStat(Define.Stat.Hp.ToID(), out IStatEntry hpStat)) { Debug.LogError($"<color=red>hp stat is not exist</color>"); return; }
 
             if (hpStat is BoundedStat boundedHpStat) {
                 boundedHpStat.OnValueChanged -= hpUI.UpdateUI;

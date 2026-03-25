@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public abstract class StatUIBase : UIBase
 {
-    public Define.Stat StatType => statSD.StatType;  
+    public Define.Stat StatType => statSD.TargetStat;  
     [SerializeField] protected StatSD statSD;
 
     public override void InitUI() {
         if (IsInit) return;
 
-        Managers.Player.PlayerData.RegisterEvent(StatType, UpdateUI);
+        Managers.Player.PlayerData.RegisterEvent(UpdateUI, StatType);
 
         _isInit = true;
     }

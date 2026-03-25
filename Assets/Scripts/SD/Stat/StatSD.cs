@@ -4,14 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StatSD", menuName = "Scriptable Objects/StatSD")]
 public class StatSD : ImageSDBase
 {
-    public Define.Stat StatType => statType;
+    public Define.Stat TargetStat => targetStat;
+    public Define.StatType StatType => statType;
 
-    [SerializeField] Define.Stat statType;
+    [SerializeField] Define.Stat targetStat;
+    [SerializeField] Define.StatType statType;
 
     protected virtual void OnValidate() {
-        if (id.Equals(statType)) return;
+        if (id.Equals(targetStat)) return;
 
-        id = statType.ToString();
-        RenameAsset(statType.ToString(), suffix:"_StatSD");
+        id = targetStat.ToString();
+        RenameAsset(targetStat.ToString(), suffix:"_StatSD");
     }
 }

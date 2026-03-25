@@ -32,6 +32,16 @@ public class Define
         Toughness,
     }
 
+    public enum StatType {
+        Flat,
+        Bounded,
+        Group,
+    }
+    public enum StatDetail {
+        current,
+        max,
+    }
+
     public enum RequirementType {
         Free,
         Consume,

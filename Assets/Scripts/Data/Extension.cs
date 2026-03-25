@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BilliotGames;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public static partial class Extension
 {
@@ -29,9 +27,9 @@ public static partial class Extension
 
     public static TraitData ToData(this TraitSD traitSD) {
         return new TraitData(
-            traitSD.ID, 
-            traitSD.DisplayText, 
-            traitSD.Description, 
+            traitSD.ID,
+            traitSD.DisplayText,
+            traitSD.Description,
             traitSD.Image,
             traitSD.Cost);
     }
@@ -57,7 +55,7 @@ public static partial class Extension
             locationSD.MainImage,
             locationSD.IconImage
             );
-    }    
+    }
 
     #endregion
 
@@ -81,23 +79,23 @@ public static partial class Extension
 
     public static void CreateDefaultStats(this StatContainer statContainer) {
         statContainer.ClearStats();
-        statContainer.RegisterStat(Define.Stat.Hp.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Hunger.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Thirst.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Mental.ToID(), new BoundedStat(100));
-        statContainer.RegisterStat(Define.Stat.Temperature.ToID(), new Stat(36.5f));
+        statContainer.RegisterStat(new BoundedStat(Define.Stat.Hp.ToID(), 100));
+        statContainer.RegisterStat(new BoundedStat(Define.Stat.Hunger.ToID(), 100));
+        statContainer.RegisterStat(new BoundedStat(Define.Stat.Thirst.ToID(), 100));
+        statContainer.RegisterStat(new BoundedStat(Define.Stat.Mental.ToID(), 100));
+        statContainer.RegisterStat(new Stat(Define.Stat.Temperature.ToID(), 36.5f));
 
-        statContainer.RegisterStat(Define.Stat.Strength.ToID(), new Stat(20));
-        statContainer.RegisterStat(Define.Stat.Agility.ToID(), new Stat(10));
-        statContainer.RegisterStat(Define.Stat.Toughness.ToID(), new Stat(10));
-        statContainer.RegisterStat(Define.Stat.Focus.ToID(), new Stat(20));
+        statContainer.RegisterStat(new Stat(Define.Stat.Strength.ToID(), 20));
+        statContainer.RegisterStat(new Stat(Define.Stat.Agility.ToID(), 10));
+        statContainer.RegisterStat(new Stat(Define.Stat.Toughness.ToID(), 10));
+        statContainer.RegisterStat(new Stat(Define.Stat.Focus.ToID(), 20));
     }
     public static void InitStats(this StatContainer statContainer, IReadOnlyList<StatData> statDataList) {
         statContainer.CreateDefaultStats();
         for (int i = 0; i < statDataList.Count; i++) {
             var statData = statDataList[i];
             var statID = statData.Stat.ToID();
-            if (!statContainer.TryGetStat(statID, out Stat stat)) { Debug.LogError($"no ({statID}) stat exist"); continue; }
+            if (!statContainer.TryGetStat(statID, out IStatEntry stat)) { Debug.LogError($"no ({statID}) stat exist"); continue; }
 
             var originalValue = stat.RawValue;
             var newValue = new Value<float>(statData.Value, 0, originalValue.MinValue, statData.Value);

@@ -9,9 +9,9 @@ public abstract class SelectionSD : SDBase
     public int RequireMinutes => requireMinutes;
 
     [Space]
+    [SerializeField] protected int requireMinutes;
     [SerializeField] protected Define.RequirementType requirementType;
     [SerializeField] protected Ingredient requirement;
-    [SerializeField] protected int requireMinutes;
 
     protected virtual void OnValidate() {
         RenameAsset(ID, suffix:$"_{GetType()}");

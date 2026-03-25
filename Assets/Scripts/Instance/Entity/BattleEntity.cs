@@ -84,8 +84,8 @@ public class BattleEntity : Entity
         statContainer.InitStats(statDataList);
 
         string hpID = Define.Stat.Hp.ToID();
-        statContainer.UnregisterEvent(hpID, UpdateVital);
-        statContainer.RegisterEvent(hpID, UpdateVital);
+        statContainer.UnregisterEvent(UpdateVital, hpID);
+        statContainer.RegisterEvent(UpdateVital, hpID);
 
         return this;
     }
@@ -132,7 +132,7 @@ public class BattleEntity : Entity
         stat = 0;
         if (statContainer == null) return false;
 
-        Value<float>? statValue = statContainer.GetStatRawValue(statType.ToID());
+        Value<float>? statValue = statContainer.GetRawValue(statType.ToID());
         if (statValue == null) { Debug.LogError($"<color=red>{statType}에 해당하는 stat이 없음</color>"); return false; }
 
         Value<float> value = (Value<float>)statValue;
@@ -140,9 +140,9 @@ public class BattleEntity : Entity
         return true;
     }    
     public bool TryChangeStat(string statID, float deltaValue) {
-        return statContainer.TryChangeRawStat(statID, deltaValue);
+        return statContainer.TryChangeRawValue(statID, deltaValue);
     }
-    public bool TryGetStat(string statID, out Stat stat) {
+    public bool TryGetStat(string statID, out IStatEntry stat) {
         return statContainer.TryGetStat(statID, out stat);
     }
 
