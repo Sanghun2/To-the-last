@@ -35,8 +35,10 @@ public class GameBootStrapper
 
         // stats
         var playerData = Managers.Player.PlayerData;
-        playerData.MetabolicSystem.InitMetabolism(BuildMetabolism());
+        if (!Managers.SD.TryGetSD<CharacterSD>(playerData.CharacterID, out var characterSD)) return;
 
+        playerData.MetabolicSystem.InitMetabolism(BuildMetabolism());
+        playerData.StatContainer.InitStats(characterSD.StatList);
 
         // location
         Managers.Player.PlayerData.SetAsDefaultLocation();
