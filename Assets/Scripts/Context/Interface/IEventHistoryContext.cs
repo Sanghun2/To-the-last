@@ -2,5 +2,5 @@
 
 public interface IEventHistoryContext : IContext
 {
-
+    EventHistory EventHistory { get; }
 }

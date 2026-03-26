@@ -267,6 +267,17 @@ public sealed class Managers : MonoBehaviour
             return _bootStrapper;
         }
     }
+    public static EventHistory History
+    {
+        get
+        {
+            if (_eventHistory == null) {
+                _eventHistory = new EventHistory();
+            }
+
+            return _eventHistory;
+        }
+    }
 
     // InGame
     private static EffectSystem _effectSystem;
@@ -283,12 +294,13 @@ public sealed class Managers : MonoBehaviour
     private static ConstructionManager constructionManager;
     private static TimeManager _timeManager;
     private static JobHandler jobHandler;
+    private static EventHistory _eventHistory;
 
     // Main Menu
     private static GameBootStrapper _bootStrapper;
     private static CharacterManager _characterManager;
 
-    // Comm
+    // Common
     private static TraitManager _traitManager;
     private static ProcessManager _processManager;
     private static SceneController _sceneController;
