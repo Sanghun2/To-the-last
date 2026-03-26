@@ -28,7 +28,7 @@ public class LootData
     [SerializeField] int maxAppearence;
 }
 
-public class LootSelectionContext : SelectionContext
+public class LootSelectionContext : SelectionContextBase
 {
     public float LootCountMutiflier => lootCountMultiflier;
     public InventoryBase TargetInventory => targetInventory;

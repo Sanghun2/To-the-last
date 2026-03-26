@@ -2,11 +2,11 @@
 
 public abstract class EncounterContextBuilderBase<TData, TContext> : IEncounterContextBuilder
     where TData : EncounterDataBase
-    where TContext : EncounterContextBase
+    where TContext : BaseEncounterContext
 {
     public abstract TContext BuildContext(TData data);
 
-    public EncounterContextBase BuildContext(EncounterDataBase data) {
+    public BaseEncounterContext BuildContext(EncounterDataBase data) {
         if (data is TData convertedData) {
             return BuildContext(convertedData);
         }

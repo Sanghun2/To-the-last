@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-public class LootSelectActionContextGenerator : SelectActionContextGenerator
+public class LootSelectActionContextGenerator : SelectActionContextBuilderBase
 {
-    public override bool TryGenerateContext(SelectionSD selectionSD, out SelectActionContext context) {
+    public override bool TryBuildContext(SelectionDataBase selectionData, out SelectActionContext context) {
         context = null;
-        if (selectionSD == null) { Debug.LogError($"selection SD null"); return false; }
+        if (selectionData == null) { Debug.LogError($"<color=red>selection data is null</color>"); return false; }
 
         var targetInven = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID)?.Inventory;
         if (targetInven == null) { Debug.LogError($"target inven null"); return false; }
 
-        context = new LootSelectActionContext(selectionSD, targetInven);
+        //context = new LootSelectActionContext(selectionData, targetInven);
         return true;
     }
 }

@@ -127,12 +127,12 @@ public sealed class Managers : MonoBehaviour
             return _encounterManager;
         }
     }
-    public static SelectActionPipeline SelectActionPipeline
+    public static SelectionManager SelectActionPipeline
     {
         get
         {
             if (_selectActionPipeline == null) {
-                _selectActionPipeline = new SelectActionPipeline();
+                _selectActionPipeline = new SelectionManager();
             }
 
             return _selectActionPipeline;
@@ -159,17 +159,6 @@ public sealed class Managers : MonoBehaviour
             }
 
             return _explorationSystem;
-        }
-    }
-    public static RegistryManager Registry
-    {
-        get
-        {
-            if (_registryManager == null) {
-                _registryManager = new RegistryManager();
-            }
-
-            return _registryManager;
         }
     }
     public static TurnManager Turn
@@ -285,7 +274,7 @@ public sealed class Managers : MonoBehaviour
     private static TurnManager _turnManager;
     private static ExplorationSystem _explorationSystem;
     private static DialogManager _dialogManager;
-    private static SelectActionPipeline _selectActionPipeline;
+    private static SelectionManager _selectActionPipeline;
     private static EncounterManager _encounterManager;
     private static LocationManager _locationManager;
     private static ItemManager _itemManager;
@@ -304,7 +293,6 @@ public sealed class Managers : MonoBehaviour
     private static TraitManager _traitManager;
     private static ProcessManager _processManager;
     private static SceneController _sceneController;
-    private static RegistryManager _registryManager;
     private static CoroutineManager coroutineManager;
     private static UIManager _uiManager;
     private static SDManager _sdManager;

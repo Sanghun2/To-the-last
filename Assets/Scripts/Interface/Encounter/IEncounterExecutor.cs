@@ -4,11 +4,11 @@ using UnityEngine;
 
 public interface IEncounterExecutor
 {
-    void ExecuteEncounter(EncounterContextBase context);
+    void ExecuteEncounter(BaseEncounterContext context);
 }
 
 public interface IEncounterExecutor<TEncounterContext>
-    where TEncounterContext : EncounterContextBase
+    where TEncounterContext : BaseEncounterContext
 {
     public void ExecuteEncounter(TEncounterContext encounterContext);
 }

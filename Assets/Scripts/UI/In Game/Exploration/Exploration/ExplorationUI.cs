@@ -65,7 +65,7 @@ public class ExplorationUI : UIBase
         descriptionText.SetText(encounterData.Description);
         ShowSelections(encounterData.SelectionList.Select(selectionSD => {
             if (Managers.SelectActionPipeline.TryBuildSelectAction(selectionSD, out var action)) {
-                return new SelectionData(selectionSD, action.Action);
+                return new SelectActionData(selectionSD, action.Action);
             }
             else {
                 Debug.LogError($"failed to build select action");
@@ -85,15 +85,13 @@ public class ExplorationUI : UIBase
         eventImage.sprite = image;
         eventImage.gameObject.SetActive(image != null);
     }
-    private void ShowSelections(IReadOnlyList<SelectionData> selections) {
+    private void ShowSelections(IReadOnlyList<SelectActionData> selections) {
         selectionButtonContainer.Clear();
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
             var selectionData = selections[i];
             var button = container.GetOrCreateObj(i);
-            button.InitButton(selectionData.Text, selectionData.Action, new SelectionButtonContext()
-                .SetLock(false)
-                .SetRequirement(selectionData.Requirement));
+            button.InitButton(selectionData);
         }
     }
 

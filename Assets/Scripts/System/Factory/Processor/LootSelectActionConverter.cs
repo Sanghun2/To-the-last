@@ -13,53 +13,22 @@ public class LootSelectActionContext : SelectActionContext
 
     private InventoryBase inventory;
 
-    public LootSelectActionContext(SelectionSD selectionSD, InventoryBase inventory) : base(selectionSD, selectionSD.RequireMinutes) {
+    public LootSelectActionContext(SelectionDataBase selectionData, InventoryBase inventory) : base(selectionData, selectionData.RequireMinutes) {
         this.inventory = inventory;
     }
 }
 
-public class LootSelectActionProcessor : SelectActionProcessor
+public class LootSelectActionConverter : SelectActionConverter
 {
-    public override bool TryGenerateAction(SelectionSD selectionSD, SelectActionContext context, out ActionData actionData) {
-        if (context is LootSelectActionContext lootContext) {
-            actionData = new ActionData(() => Loot(lootContext));
-            return true;
-        }
-
-        Debug.LogError($"({context.GetType()})은 loot select action context로 변환 불가");
-        actionData = null;
-        return false;
-    }
-
-    private void Loot(LootSelectActionContext lootContext) {
-        var targetInven = lootContext.Inventory;
-        var lootSD = (LootSelectionSD)lootContext.SelectionSD;
-
-        Guid? targetButtonID = Managers.SelectActionPipeline.CurrentSelectedButton.ButtonGuid;
-        FocusJob job = new FocusJob(lootContext.JobDuration, 
-            onProgressChanged: Managers.SelectActionPipeline.CurrentSelectedButton.UpdateProcessUI,
-            onComplete: () => {
-            var selectionContext = new LootSelectionContext(targetInven).SetLootCountMultiflier(1);
-            if (!TryProcess(lootSD, selectionContext)) {
-                Debug.LogError($"<color=red>{GetType()} select process failed</color>");
-            }
-        });
-
-        Managers.Job.DoFocusJob(job, () => {
-            Managers.SelectActionPipeline.ClearButton(targetButtonID);
-        });
-    }
-
-
-    public override bool TryProcess(SelectionSD selectionSD, SelectionContext context) {
-        var lootSD = (LootSelectionSD)selectionSD;
+    // 다른 위치로 이전
+    public bool TryProcess(LootSelectionData lootData, SelectionContextBase context) {
         var lootContext = (LootSelectionContext)context;
 
         // 기본 아이템
-        var itemDict = GetDefaultItems(lootSD);
+        var itemDict = GetDefaultItems(lootData);
 
         // 랜덤 획득
-        itemDict = GetAdditionalItems(itemDict, lootSD, lootContext);
+        itemDict = GetAdditionalItems(itemDict, lootData, lootContext);
 
 
         // 추가 보상 조정
@@ -83,10 +52,8 @@ public class LootSelectActionProcessor : SelectActionProcessor
 
         return true;
     }
-
-
-    private Dictionary<string, int> GetDefaultItems(LootSelectionSD lootSelectionSD) {
-        var lootItemDataList = lootSelectionSD.LootItemDataList;
+    private Dictionary<string, int> GetDefaultItems(LootSelectionData lootSelectionData) {
+        var lootItemDataList = lootSelectionData.AvailableItemList;
         Dictionary<string, int> itemDict = new(lootItemDataList.Count);
         for (int i = 0; i < lootItemDataList.Count; i++) {
             LootData lootItemData = lootItemDataList[i];
@@ -96,15 +63,14 @@ public class LootSelectActionProcessor : SelectActionProcessor
 
         return itemDict;
     }
-
     private Dictionary<string, int> GetAdditionalItems(
         Dictionary<string, int> itemDict,
-        LootSelectionSD lootSelectionSD,
+        LootSelectionData lootSelectionData,
         LootSelectionContext context) {
 
-        var lootItemDataList = lootSelectionSD.LootItemDataList;
+        var lootItemDataList = lootSelectionData.AvailableItemList;
         var weightSum = lootItemDataList.Sum(data => data.Weight);
-        int lootCount = (int)(lootSelectionSD.DefaultLootCount * context.LootCountMutiflier);
+        int lootCount = (int)(lootSelectionData.DefaultLootCount * context.LootCountMutiflier);
         Debug.Log($"loot count: {lootCount}, weight: {weightSum}");
 
         for (int l = 0; l < lootCount; l++) {
@@ -125,4 +91,40 @@ public class LootSelectActionProcessor : SelectActionProcessor
         return itemDict;
     }
 
+    private void Loot(LootSelectActionContext lootContext) {
+        var targetInven = lootContext.Inventory;
+        LootSelectionData lootSD = (LootSelectionData)lootContext.SelectionData;
+
+        Guid? targetButtonID = Managers.SelectActionPipeline.CurrentSelectedButton.ButtonGuid;
+        FocusJob job = new FocusJob(lootContext.JobDuration,
+            onProgressChanged: Managers.SelectActionPipeline.CurrentSelectedButton.UpdateProcessUI,
+            onComplete: () => {
+                var selectionContext = new LootSelectionContext(targetInven).SetLootCountMultiflier(1);
+                if (!TryProcess(lootSD, selectionContext)) {
+                    Debug.LogError($"<color=red>{GetType()} select process failed</color>");
+                }
+            });
+
+        Managers.Job.DoFocusJob(job, () => {
+            Managers.SelectActionPipeline.ClearButton(targetButtonID);
+        });
+    }
+
+
+    public override bool TryConvertAction(SelectActionContext context, out ActionData actionData) {
+        if (context is LootSelectActionContext lootContext) {
+            actionData = new ActionData(() => Loot(lootContext));
+            return true;
+        }
+
+        Debug.LogError($"({context.GetType()})은 loot select action context로 변환 불가");
+        actionData = null;
+        return false;
+    }
+    public override bool TryProcess(SelectionContextBase selectionContext) {
+        throw new NotImplementedException();
+    }
+
+
+    
 }

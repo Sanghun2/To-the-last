@@ -3,6 +3,6 @@ using UnityEngine;
 
 public interface IEncounterContextBuilder
 {
-    public EncounterContextBase BuildContext(EncounterDataBase data);
+    public BaseEncounterContext BuildContext(EncounterDataBase data);
 }
 

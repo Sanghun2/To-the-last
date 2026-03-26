@@ -1,7 +1,7 @@
 ﻿using BillotGames;
 using UnityEngine;
 
-public class EncounterExecutorContainer : TypeRegistry<EncounterContextBase, EncounterExecutor>
+public class EncounterExecutorContainer : TypeRegistry<BaseEncounterContext, EncounterExecutor>
 {
 
 }

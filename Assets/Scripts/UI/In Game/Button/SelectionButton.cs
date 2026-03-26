@@ -33,6 +33,51 @@ public class SelectionButton : ButtonBase, IPool
     [SerializeField] Image processImage;
     [SerializeField] GameObject lockObj;
     protected Guid? buttonGuid;
+    private Action buttonAction;
+
+
+    public void InitButton(SelectActionData actionData) {
+        Init();
+        buttonText.text = actionData.Text;
+        buttonAction = actionData.Action;
+
+        SetButtonAction(() => {
+            Managers.SelectActionPipeline.SetButton(this);
+            buttonAction?.Invoke();
+        });
+
+        // requirement가 필요하면 open ui & init
+        if (actionData.Requirement != null) {
+            requirementUI.SetReqirementItem(actionData.Requirement);
+        }
+        requirementUI.gameObject.SetActive(actionData.Requirement != null);
+
+        // 선택 불가능한 선택지인 경우 lock on
+        lockObj.SetActive(actionData.IsLocked);
+    }
+
+
+    protected override void Reset() {
+        base.Reset();
+
+        if (buttonText == null) {
+            buttonText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        if (requirementUI == null) {
+            requirementUI = GetComponentInChildren<RequirementUI>();
+        }
+    }
+    protected override void ButtonAction() {
+        buttonAction?.Invoke();
+    }
+
+    public void UpdateProcessUI(float currentValue, float maxValue) {
+        processImage.fillAmount = currentValue / maxValue;
+    }
+
+
+    #region Pool
 
     public void Init() {
         if (IsInit) return;
@@ -48,43 +93,9 @@ public class SelectionButton : ButtonBase, IPool
     }
     public void Return() {
         CloseUI();
+        buttonAction = null;
+        buttonGuid = null;
     }
 
-    public void InitButton(string text, Action buttonAction, SelectionButtonContext context) {
-        Init();
-        buttonText.text = text;
-        SetButtonAction(() => {
-            Managers.SelectActionPipeline.SetButton(this);
-            buttonAction?.Invoke();
-        });
-
-        // requirement가 필요하면 open ui & init
-        if (context.Requirement != null) {
-            requirementUI.SetReqirementItem(context.Requirement);
-        }
-        requirementUI.gameObject.SetActive(context.Requirement != null);
-
-        // 선택 불가능한 선택지인 경우 lock on
-        lockObj.SetActive(context.IsLocked);
-    }
-    public void UpdateProcessUI(float currentValue, float maxValue) {
-        processImage.fillAmount = currentValue / maxValue;
-    }
-
-    protected override void ButtonAction() {
-
-    }
-
-    protected override void Reset() {
-        base.Reset();
-
-        if (buttonText == null) {
-            buttonText = GetComponentInChildren<TextMeshProUGUI>();
-        }
-
-        if (requirementUI == null) {
-            requirementUI = GetComponentInChildren<RequirementUI>();
-        }
-    }
-
+    #endregion
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LootEncounterContext : EncounterContextBase<LootEncounterData>
+public class LootEncounterContext : BaseEncounterContext<LootEncounterData>
 {
     public LootEncounterContext(LootEncounterData encounterData) : base(encounterData) {
     }

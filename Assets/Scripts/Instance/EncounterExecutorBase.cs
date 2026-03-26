@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class EncounterExecutor : IEncounterExecutor
 {
-    public abstract void ExecuteEncounter(EncounterContextBase context);
+    public abstract void ExecuteEncounter(BaseEncounterContext context);
 }
 
 public abstract class EncounterExecutorBase<TEncounterData, TEncounterContext> : EncounterExecutor,
     IEncounterExecutor<TEncounterContext>
     where TEncounterData : EncounterDataBase
-    where TEncounterContext : EncounterContextBase<TEncounterData>
+    where TEncounterContext : BaseEncounterContext<TEncounterData>
 {
-    public override void ExecuteEncounter(EncounterContextBase context) {
+    public override void ExecuteEncounter(BaseEncounterContext context) {
         var converetedContext = context as TEncounterContext;
         if (converetedContext != null) {
             ExecuteEncounter(converetedContext);

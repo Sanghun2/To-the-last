@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BattleEncounterContext : EncounterContextBase<BattleEncounterData>
+public class BattleEncounterContext : BaseEncounterContext<BattleEncounterData>
 {
     public BattleEncounterContext(BattleEncounterData encounterSD) : base(encounterSD) {
     }
