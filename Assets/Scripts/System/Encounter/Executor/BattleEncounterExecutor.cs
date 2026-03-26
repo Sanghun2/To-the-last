@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class BattleEncounterContext : EncounterContext<BattleEncounterSD>
+public class BattleEncounterContext : EncounterContextBase<BattleEncounterData>
 {
-    public BattleEncounterContext(BattleEncounterSD encounterSD) : base(encounterSD) {
+    public BattleEncounterContext(BattleEncounterData encounterSD) : base(encounterSD) {
     }
 }
 
-public class BattleEncounterExecutor : EncounterExecutorBase<BattleEncounterContext, BattleEncounterSD>
+public class BattleEncounterExecutor : EncounterExecutorBase<BattleEncounterData, BattleEncounterContext>
 {
     public override void ExecuteEncounter(BattleEncounterContext encounterSD) {
         Debug.Log($"combat executed");

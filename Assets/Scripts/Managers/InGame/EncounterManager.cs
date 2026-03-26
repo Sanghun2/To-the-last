@@ -6,40 +6,41 @@ public class EncounterManager : IInitializable
 {
     public bool IsInit => _isInit;
 
-    private Dictionary<Type, IEncounterExecutor> executorDict = new();
-    private Dictionary<Type, IEncounterContextFactory> factoryDict = new();
+    private EncounterParserContainer encounterParserContainer = new EncounterParserContainer();
+    private EncounterContextBuilderContainer contextBuilderContainer = new EncounterContextBuilderContainer();
+    private EncounterExecutorContainer encounterExecutorContainer = new EncounterExecutorContainer(); 
     private bool _isInit;
 
 
     public void ExecuteEncounter(EncounterSD encounterSD) {
-        var sdType = encounterSD.GetType();
-        Debug.Log($"context type: {sdType}");
-        if (!TryGetContextFactory(sdType, out var factory)) {
-            Debug.LogError($"<color=red>{sdType}에 해당하는 context factory 없음</color>");
+        if (encounterParserContainer.TryGet(encounterSD, out var parser)) {
+            if (!parser.TryParse(encounterSD, out EncounterDataBase data)) { Debug.LogError($"<color=red>({encounterSD.GetType()}) parser not exist</color>"); return; }
+
+            ExecuteEncounter(data);
+        }
+    }
+    public void ExecuteEncounter(EncounterDataBase encounterData) {
+
+        Debug.Log($"<color=cyan>[Test] context type: {encounterData.GetType()}</color>");
+
+        if (!contextBuilderContainer.TryGet(encounterData, out var contextBuilder)) {
+            Debug.LogError($"<color=red>{encounterData.GetType()}에 해당하는 context factory 없음</color>");
             return;
         }
 
-        var context = factory.CreateContext(encounterSD);
+        var context = contextBuilder.BuildContext(encounterData);
         if (context == null) {
             Debug.LogError($"<color=red>생성된 context null</color>");
             return;
         }
 
-        var contextType = context.GetType();
-        Debug.Log($"context type: {contextType}");
-        if (!TryGetExecutor(contextType, out var executor)) {
-            Debug.LogError($"<color=red>{contextType}에 해당하는 executor 없음</color>");
+        //var contextType = context.GetType();
+        Debug.Log($"context type: {context.GetType()}");
+        if (!encounterExecutorContainer.TryGet(context, out var executor)) {
+            Debug.LogError($"<color=red>{context.GetType()}에 해당하는 executor 없음</color>");
         }
 
         executor.ExecuteEncounter(context);
-    }
-
-    public void ExecuteEncounter<TSD>(EncounterContext<TSD> context)
-        where TSD: EncounterSD 
-    {
-        if (TryGetExecutor(context.GetType(), out IEncounterExecutor executor)) {
-            executor.ExecuteEncounter(context);
-        }
     }
 
 
@@ -48,47 +49,19 @@ public class EncounterManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        RegisterBundle(new BattleEncounterBundle());
-        RegisterBundle(new LootEncounterBundle());
-        RegisterBundle(new SpecialEncounterBundle());
+        // parser
+        encounterParserContainer.Register<LootEncounterSD>(new LootEncounterParser());
+
+        // context builder
+        contextBuilderContainer.Register<LootEncounterData>(new LootEncounterContextBuilder());
+
+        // executor
+        encounterExecutorContainer.Register<LootEncounterContext>(new LootEncounterExecutor());
 
         _isInit = true;
     }
     public void Release() {
 
-    }
-
-
-    private void RegisterBundle<TContext, TSD>(EncounterBundle<TContext, TSD> bundle)
-    where TContext : EncounterContext<TSD>
-    where TSD : EncounterSD {
-        RegisterExecutor(bundle.Executor);
-        RegisterContextFactory(bundle.Factory);
-    }
-    private void RegisterExecutor<TContext, TSD>(EncounterExecutorBase<TContext, TSD> executor)
-        where TContext : EncounterContext<TSD>
-        where TSD : EncounterSD {
-        executorDict[typeof(TContext)] = executor;
-    }
-    private void RegisterContextFactory(IEncounterContextFactory factory) {
-        factoryDict[factory.TargetSDType] = factory;
-    }
-
-    private bool TryGetExecutor(Type type, out IEncounterExecutor executor) {
-        if (executorDict.TryGetValue(type, out executor)) {
-            return true;
-        }
-
-        executor = null;
-        return false;
-    }
-
-    private bool TryGetContextFactory(Type type, out IEncounterContextFactory factory) {
-        if (factoryDict.TryGetValue(type, out factory)) {
-            return true;
-        }
-
-        return false;
     }
 
     #endregion

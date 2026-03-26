@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-public class SpecialEncounterContext : EncounterContext<SpecialEncounterSD>
+public class SpecialEncounterContext : EncounterContextBase<SpecialEncounterData>
 {
-    public SpecialEncounterContext(SpecialEncounterSD encounterSD) : base(encounterSD) {
+    public SpecialEncounterContext(SpecialEncounterData encounterData) : base(encounterData) {
     }
 }
 
-public class SpecialEncounterExecutor : EncounterExecutorBase<SpecialEncounterContext,  SpecialEncounterSD>
+public class SpecialEncounterExecutor : EncounterExecutorBase<SpecialEncounterData, SpecialEncounterContext>
 {
-    public override void ExecuteEncounter(SpecialEncounterContext encounterSD) {
+    public override void ExecuteEncounter(SpecialEncounterContext encounterData) {
         throw new System.NotImplementedException();
     }
 }

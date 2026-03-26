@@ -1,17 +1,24 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class EncounterExecutorBase<TEncounterContext, TSD> 
-    : IEncounterExecutor, IEncounterExecutor<TEncounterContext, TSD>
-    where TEncounterContext : EncounterContext<TSD>
-    where TSD : EncounterSD
+public abstract class EncounterExecutor : IEncounterExecutor
 {
-    public abstract void ExecuteEncounter(TEncounterContext encounterSD);
+    public abstract void ExecuteEncounter(EncounterContextBase context);
+}
 
-    public Type GetContextType() => typeof(TEncounterContext);
-    public bool CanHandle(object context) => context is TEncounterContext;
-    public void ExecuteEncounter(object context) {
-        //Debug.Log($"execute encounter");
-        ExecuteEncounter((TEncounterContext)context);
+public abstract class EncounterExecutorBase<TEncounterData, TEncounterContext> : EncounterExecutor,
+    IEncounterExecutor<TEncounterContext>
+    where TEncounterData : EncounterDataBase
+    where TEncounterContext : EncounterContextBase<TEncounterData>
+{
+    public override void ExecuteEncounter(EncounterContextBase context) {
+        var converetedContext = context as TEncounterContext;
+        if (converetedContext != null) {
+            ExecuteEncounter(converetedContext);
+        }
+        else {
+            Debug.LogError($"<color=red>({context.GetType()}) is not ({typeof(TEncounterContext)})</color>");
+        }
     }
+    public abstract void ExecuteEncounter(TEncounterContext encounterContext);
 }

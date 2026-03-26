@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-public class LootEncounterContext : EncounterContext<LootEncounterSD>
+public class LootEncounterContext : EncounterContextBase<LootEncounterData>
 {
-    public LootEncounterContext(LootEncounterSD encounterSD) : base(encounterSD) {
+    public LootEncounterContext(LootEncounterData encounterData) : base(encounterData) {
     }
 }
 
-public class LootEncounterExecutor : EncounterExecutorBase<LootEncounterContext, LootEncounterSD>
+public class LootEncounterExecutor : EncounterExecutorBase<LootEncounterData, LootEncounterContext>
 {
     public override void ExecuteEncounter(LootEncounterContext encounterContext) {
         var explorationUI = Managers.UI.GetUI<ExplorationUI>();
         if (explorationUI.IsOpened == false) Managers.UI.OpenUI(explorationUI);
 
-        explorationUI.ShowSituation(encounterContext.EncounterSD);
+        explorationUI.ShowSituation(encounterContext.EncounterData);
     }
 }

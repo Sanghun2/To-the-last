@@ -93,7 +93,7 @@ public class Tester : MonoBehaviour
         Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {
-        Managers.Encounter.ExecuteEncounter(encounterSD);
+
     }
 
     public void ActivateLocation() {

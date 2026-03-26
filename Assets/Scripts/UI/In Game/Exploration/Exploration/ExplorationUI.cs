@@ -58,12 +58,12 @@ public class ExplorationUI : UIBase
         EnteranceUI.OpenUI();
         siuationObj.SetActive(false);
     }
-    public void ShowSituation(EncounterSD encounterSD) {
+    public void ShowSituation(EncounterDataBase encounterData) {
         InitUI();
         EnteranceUI.CloseUI();
-        ShowSituationImage(encounterSD.EventImage);
-        descriptionText.SetText(encounterSD.Description);
-        ShowSelections(encounterSD.SelectionList.Select(selectionSD => {
+        ShowSituationImage(encounterData.EventImage);
+        descriptionText.SetText(encounterData.Description);
+        ShowSelections(encounterData.SelectionList.Select(selectionSD => {
             if (Managers.SelectActionPipeline.TryBuildSelectAction(selectionSD, out var action)) {
                 return new SelectionData(selectionSD, action.Action);
             }

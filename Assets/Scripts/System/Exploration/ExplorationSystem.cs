@@ -20,8 +20,9 @@ public class ExplorationSystem
     public void ExploreLocation(Location location) {
         if (location == null) { Debug.LogError($"<color=red>location null. failed to explore.</color>"); return; }
 
-        var nextEncounterData = GetNextEncouter(location);
+        EncounterEvent nextEncounterData = GetNextEncouter(location);
         if (nextEncounterData != null) {
+            Debug.Log("encounter 실행 구현");
             Managers.Encounter.ExecuteEncounter(nextEncounterData.EncounterSD);
         }
 
