@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a173a96f7e5e5c04cb751d46a26b8fe9, type: 3}
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
-      value: Thirst Stat UI
+      value: Hp Stat UI
       objectReference: {fileID: 0}
     - target: {fileID: 5430467290501432069, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Pivot.x
@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7e07441976c51f14297f2725755ddb46, type: 3}
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
-      value: Temperature Stat UI
+      value: Hp Stat UI
       objectReference: {fileID: 0}
     - target: {fileID: 5430467290501432069, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Pivot.x
@@ -717,7 +717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
-      value: Hunger Stat UI
+      value: Hp Stat UI
       objectReference: {fileID: 0}
     - target: {fileID: 5430467290501432069, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Pivot.x
@@ -3548,7 +3548,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 23f59f3afcad60b48a7c4a94a85168fa, type: 3}
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
-      value: Mental Stat UI
+      value: Hp Stat UI
       objectReference: {fileID: 0}
     - target: {fileID: 5430467290501432069, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Pivot.x

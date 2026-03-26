@@ -9,7 +9,6 @@ public class GameBootStrapper
         // 연출
 
         // 체인 시작
-        Managers.UI.OpenUI<GameBootStrapUI>();
         Managers.Process.StartProcess(Define.FlowType.BootStrapGame);
     }
 
