@@ -25,4 +25,4 @@ MonoBehaviour:
   - "\uC88B\uC9C0 \uC54A\uC740 \uAC74\uAC15"
   - "\uB0AE\uC740 \uC2E0\uC9C4 \uB300\uC0AC"
   isDefaultCharacter: 1
-  metabolismSD: {fileID: 11400000, guid: a0227ba05361a734d810be4fa01a536e, type: 2}
+  metabolismSD: {fileID: 11400000, guid: 108ca629a99c9e04e909cb42e9ceeae5, type: 2}
