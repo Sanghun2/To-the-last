@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e59362c602507b499a9b4b003e222c8, type: 3}
-  m_Name: tomatoSoup_ItemSD
+  m_Name: waterDrop_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
-  id: tomatoSoup
-  displayText: "\uD1A0\uB9C8\uD1A0 \uC2A4\uD504"
-  descripiton: "\uD1A0\uB9C8\uD1A0 \uD1B5\uC870\uB9BC\uC774\uB2E4. \uC624\uC5FC\uC73C\uB85C\uBD80\uD130
-    \uACA9\uB9AC\uB41C \uBA87 \uC548\uB418\uB294 \uC2E0\uC120\uD55C \uC2DD\uD488\uC774\uB2E4."
+  id: waterDrop
+  displayText: "\uBB3C\uBC29\uC6B8"
+  descripiton: "\uAE68\uB057\uD55C \uBB3C\uBC29\uC744\uC774\uB2E4."
   categoryList: []
-  image: {fileID: 21300000, guid: 712934148ef244fedb704e3874a94d6f, type: 3}
+  image: {fileID: 21300000, guid: 9cd38799126d3a14b90787b70a76577d, type: 3}
   maxStackCount: 999

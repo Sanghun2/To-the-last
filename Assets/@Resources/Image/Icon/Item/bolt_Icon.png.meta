@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 3618f23bf47524641b474d27108107c5
+guid: 73d818c055d1fd442b8264d93f19f10f
 AssetOrigin:
   serializedVersion: 1
   productId: 163280
   packageName: 5000 Fantasy Icons
   packageVersion: 2.0.0
-  assetPath: Assets/5000FantasyIcons/ProfessionIcons/ProfessionAndCraftIcons/Engineering/Engineering_18_bolts.png
+  assetPath: Assets/5000FantasyIcons/ProfessionIcons/QuestIcons/Quest_14_bolt.png
   uploadId: 657502
 TextureImporter:
   internalIDToNameTable: []

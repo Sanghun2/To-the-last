@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: dirtyWaterBottle_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: dirtyWaterBottle
-  displayName: "\uBE48 \uBCD1"
+  displayText: "\uC624\uC5FC\uB41C \uBB3C"
   descripiton: "\uC624\uC5FC\uB41C \uBB3C\uC774 \uB2F4\uAE34 \uBCD1\uC774\uB2E4.\n\uB9C8\uC2DC\uBA74
     \uAC08\uC99D\uC740 \uD574\uC18C\uB418\uACA0\uC9C0\uB9CC \uB9CE\uC774 \uC544\uD50C
     \uAC83 \uAC19\uB2E4."
-  iconImage: {fileID: 21300000, guid: 3143496afabba234eb1697d46f9f4a74, type: 3}
+  categoryList: []
+  image: {fileID: 0}
   maxStackCount: 999

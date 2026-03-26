@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: axe_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: axe
-  displayText: 
+  displayText: "\uB3C4\uB07C"
   descripiton: "\uB3C4\uB07C"
   categoryList: []
   image: {fileID: 21300000, guid: f817fe09c00af492795b91c0500f0672, type: 3}

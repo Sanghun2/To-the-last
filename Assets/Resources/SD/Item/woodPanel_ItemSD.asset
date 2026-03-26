@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: woodPanel_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: woodPanel
-  displayText: 
+  displayText: "\uB098\uBB34 \uD310\uC790"
   descripiton: "\uB2E8\uB2E8\uD55C \uB098\uBB34\uB2E4. \uB2E4\uC591\uD55C \uC6A9\uB3C4\uB85C
     \uC0AC\uC6A9\uD560 \uC218 \uC788\uC744 \uAC83 \uAC19\uB2E4."
   categoryList: []

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: bolt_ItemSD
   m_EditorClassIdentifier: Assembly-CSharp::ItemSD
   id: bolt
-  displayText: 
-  descripiton: "\uB098\uC0AC\uB2E4."
+  displayText: "\uBCFC\uD2B8"
+  descripiton: "\uBB3C\uAC74\uC744 \uACE0\uC815\uC2DC\uD0AC \uC218 \uC788\uB294 \uC7AC\uB8CC\uB2E4."
   categoryList: []
-  image: {fileID: 21300000, guid: 3618f23bf47524641b474d27108107c5, type: 3}
+  image: {fileID: 21300000, guid: 73d818c055d1fd442b8264d93f19f10f, type: 3}
   maxStackCount: 999

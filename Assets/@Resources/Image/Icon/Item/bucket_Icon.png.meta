@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 3cbe7f1a07095794d871e9c1053e807d
+guid: e6f1b75cafb543441bcc8255cc8430ed
 AssetOrigin:
   serializedVersion: 1
   productId: 163280
   packageName: 5000 Fantasy Icons
   packageVersion: 2.0.0
-  assetPath: Assets/5000FantasyIcons/ProfessionIcons/ResourceIcons/Res_56_leaves.png
+  assetPath: Assets/5000FantasyIcons/ProfessionIcons/LootIcons/Loot_159_bucket.png
   uploadId: 657502
 TextureImporter:
   internalIDToNameTable: []

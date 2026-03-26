@@ -52,7 +52,7 @@ public abstract class Process
 
     public void ExecuteProcess(ProcessContext context) {
         CurrentState = State.InProgress;
-        Debug.Log($"<color=cyan>[Test] process ({GetType()}) in progress</color>");
+        //Debug.Log($"<color=cyan>[Test] process ({GetType()}) in progress</color>");
         ExecuteProcessInternalAsync(context);
     }
     protected abstract void ExecuteProcessInternalAsync(ProcessContext context);
@@ -60,13 +60,13 @@ public abstract class Process
     public void CompleteProcess() {
         CurrentState = State.Completed;
         OnComplete();
-        Debug.Log($"<color=cyan>[Test] process ({GetType()}) completed</color>");
+        //Debug.Log($"<color=cyan>[Test] process ({GetType()}) completed</color>");
     }
 
     public void Clear() {
         CurrentState = State.Wait;
         OnCleared();
-        Debug.Log($"[Test] ({GetType()}) Process Canceled");
+        //Debug.Log($"[Test] ({GetType()}) Process Canceled");
     }
 
     protected abstract void OnComplete();

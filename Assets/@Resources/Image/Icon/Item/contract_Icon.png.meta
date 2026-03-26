@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 3cbe7f1a07095794d871e9c1053e807d
+guid: d46b65f5a3905224babd7553c8b9413b
 AssetOrigin:
   serializedVersion: 1
   productId: 163280
   packageName: 5000 Fantasy Icons
   packageVersion: 2.0.0
-  assetPath: Assets/5000FantasyIcons/ProfessionIcons/ResourceIcons/Res_56_leaves.png
+  assetPath: Assets/5000FantasyIcons/ProfessionIcons/QuestIcons/Quest_40_scroll.png
   uploadId: 657502
 TextureImporter:
   internalIDToNameTable: []
