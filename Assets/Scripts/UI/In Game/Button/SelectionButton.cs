@@ -26,13 +26,11 @@ public class SelectionButtonContext
 public class SelectionButton : ButtonBase, IPool
 {
     public bool IsActive => IsOpened;
-    public Guid? ButtonGuid => buttonGuid;
 
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] RequirementUI requirementUI;
     [SerializeField] Image processImage;
     [SerializeField] GameObject lockObj;
-    protected Guid? buttonGuid;
     private Action buttonAction;
 
 
@@ -40,11 +38,6 @@ public class SelectionButton : ButtonBase, IPool
         Init();
         buttonText.text = actionData.Text;
         buttonAction = actionData.Action;
-
-        SetButtonAction(() => {
-            Managers.SelectActionPipeline.SetButton(this);
-            buttonAction?.Invoke();
-        });
 
         // requirement가 필요하면 open ui & init
         if (actionData.Requirement != null) {
@@ -54,6 +47,7 @@ public class SelectionButton : ButtonBase, IPool
 
         // 선택 불가능한 선택지인 경우 lock on
         lockObj.SetActive(actionData.IsLocked);
+        Debug.Log("button init");
     }
 
 
@@ -69,6 +63,9 @@ public class SelectionButton : ButtonBase, IPool
         }
     }
     protected override void ButtonAction() {
+        if (Managers.Job.IsFocusJobRunning) { Debug.Log($"already job is runnning"); return; }
+
+        Managers.Select.SetButton(this);
         buttonAction?.Invoke();
     }
 
@@ -82,9 +79,9 @@ public class SelectionButton : ButtonBase, IPool
     public void Init() {
         if (IsInit) return;
 
+        base.InitUI();
         requirementUI.CloseUI();
         processImage.fillAmount = 0;
-        buttonGuid = Guid.NewGuid();
 
         _isInit = true;
     }
@@ -94,7 +91,6 @@ public class SelectionButton : ButtonBase, IPool
     public void Return() {
         CloseUI();
         buttonAction = null;
-        buttonGuid = null;
     }
 
     #endregion

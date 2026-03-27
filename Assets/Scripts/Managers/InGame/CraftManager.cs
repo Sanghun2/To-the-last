@@ -37,7 +37,7 @@ public class CraftContext
     //public float MaxValue => maxValue;
 
     public event Action<State, State> OnStateChanged;
-    //public event Action<float, float> OnValueChanged;
+    //public event ActionData<float, float> OnValueChanged;
 
     [SerializeField] RecipeSD craftTarget;
     [SerializeField] State _currentState;

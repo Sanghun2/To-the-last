@@ -61,11 +61,12 @@ public class ExplorationUI : UIBase
     public void ShowSituation(EncounterDataBase encounterData) {
         InitUI();
         EnteranceUI.CloseUI();
+
         ShowSituationImage(encounterData.EventImage);
         descriptionText.SetText(encounterData.Description);
         ShowSelections(encounterData.SelectionList.Select(selectionSD => {
-            if (Managers.SelectActionPipeline.TryBuildSelectAction(selectionSD, out var action)) {
-                return new SelectActionData(selectionSD, action.Action);
+            if (Managers.Select.TryBuildSelectionContext(selectionSD, out var selectionContext)) {
+                return new SelectActionData(selectionContext);
             }
             else {
                 Debug.LogError($"failed to build select action");
@@ -89,7 +90,7 @@ public class ExplorationUI : UIBase
         selectionButtonContainer.Clear();
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
-            var selectionData = selections[i];
+            SelectActionData selectionData = selections[i];
             var button = container.GetOrCreateObj(i);
             button.InitButton(selectionData);
         }

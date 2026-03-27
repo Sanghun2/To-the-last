@@ -6,58 +6,49 @@ using UnityEngine;
 public class SelectionManager
 {
     public SelectionButton CurrentSelectedButton => currentSelectedButton;
-    public Guid? CurrentButtonGuid => currentSelectedButton?.ButtonGuid;
+
+    private SelectionDataParserContainer dataParserContainer = new SelectionDataParserContainer();
+    private SelectActionContextBuilderContainer contextBuilderContainer = new SelectActionContextBuilderContainer();
+    private SelectActionConverterContainer actionConverterContainer = new SelectActionConverterContainer();
+    private SelectionContextBuilderContainer selectionContextBuilderContainer = new SelectionContextBuilderContainer();
 
     private SelectionButton currentSelectedButton;
 
-    private SelectionDataParserContainer dataParserContainer;
-    private SelectActionContextBuilderContainer contextBuilderContainer;
-    private SelectActionConverterContainer actionConverterContainer;
+    #region 확정
+    public bool TryBuildSelectionContext(SelectionSD selectionSD, out SelectionContextBase selectionContext) {
+        selectionContext = null;
 
-    public bool TryBuildSelectAction(SelectionSD selectionSD, out ActionData actionData) {
-        actionData = null;
-
+        // SD -> Data
         if (!dataParserContainer.TryGet(selectionSD, out var parser)) { LogError($"no parser exist. sd type? {selectionSD.GetType()}"); return false; }
         SelectionDataBase selectionData = parser.Parse(selectionSD);
 
         if (selectionData == null) { LogError($"selection data null"); return false; }
 
-        if (!contextBuilderContainer.TryGet(selectionData, out SelectActionContextBuilderBase contextBuilder)) { LogError($"get context builder failed"); return false; }
-        if (!contextBuilder.TryBuildContext(selectionData, out SelectActionContext actionContext)) { LogError($"context build failed"); return false; }
+        // Data -> ActionData Contexts
+        if (!contextBuilderContainer.TryGet(selectionData, out SelectActionContextBuilderBase actionContextBuilder)) { LogError($"get context builder failed"); return false; }
+        if (!actionContextBuilder.TryBuildActionContext(selectionData, out SelectActionContextBase actionContext)) { LogError($"context build failed"); return false; }
 
+        // ActionData Context -> ActionData Data
+        if (!actionConverterContainer.TryGet(actionContext, out SelectActionConverterBase actionConverter)) { LogError($"converter get failed"); return false; }
+        if (!actionConverter.TryConvertAction(actionContext, out ActionData actionData)) { LogError($"converting action data failed"); return false; }
 
-        if (!actionConverterContainer.TryGet(actionContext, out SelectActionConverter actionConverter)) { LogError($"converter get failed"); return false; }
-        if (!actionConverter.TryConvertAction(actionContext, out actionData)) { LogError($"converting action data failed"); return false; }
+        // Selection Data + ActionData Data -> Selection Context
+        if (!selectionContextBuilderContainer.TryGet(selectionData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
+        if (!selectionContextBuilder.TryBuildSelectionContext(selectionData, actionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
 
         return true;
     }
 
     public void SetButton(SelectionButton selectionButton) {
-        if (CanSelect()) {
-            currentSelectedButton = selectionButton;
-        }
-        else {
-            Debug.Log($"현재 선택 불가능 상태");
-        }
+        currentSelectedButton = selectionButton;
+        Debug.Log($"button set");
     }
 
-    private bool CanSelect() {
-        return currentSelectedButton == null && !Managers.Job.IsFocusJobRunning;
-    }
-
-    public void ForceClearButton() {
+    public void ResetSelectedButton() {
         currentSelectedButton = null;
     }
-    public void ClearButton(Guid? buttonID) {
-        if (buttonID == null) return;
 
-        if (buttonID.Equals(CurrentButtonGuid)) {
-            ForceClearButton();
-        }
-        else {
-            Debug.LogError($"({buttonID})는 현재 버튼({CurrentButtonGuid})이 아님");
-        }
-    }
+    #endregion
 
     private void LogError(string message) {
         Debug.LogError($"<color=red>{message}</color>");

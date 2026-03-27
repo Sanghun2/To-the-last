@@ -127,7 +127,7 @@ public sealed class Managers : MonoBehaviour
             return _encounterManager;
         }
     }
-    public static SelectionManager SelectActionPipeline
+    public static SelectionManager Select
     {
         get
         {

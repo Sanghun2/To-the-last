@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class SelectActionData : ActionData
 {
-    public Define.RequirementType RequirementType => selectionSD.RequirementType;
-    public Ingredient Requirement => selectionSD.Requirement;
-    public SelectionSD SelectionSD => selectionSD;
+    public Define.RequirementType RequirementType => SelectionData.RequirementType;
+    public Ingredient Requirement => SelectionData.Requirement;
+
     public bool IsLocked => locked;
+    private SelectionDataBase SelectionData
+    {
+        get => _selectionContext.SelectionData;
+    }
 
 
-    protected SelectionSD selectionSD;
+    private SelectionContextBase _selectionContext;
     private bool locked;
 
-    public SelectActionData(Action action) : base(action) {
-    }
-    public SelectActionData(string text, Action action) : base(text, action) {
-    }
-    public SelectActionData(SelectionSD selectionSD, Action action) : base(selectionSD.DisplayText, action) {
-        this.selectionSD = selectionSD;
+    public SelectActionData(SelectionContextBase selectionContext) : base(selectionContext.SelectionData.DisplayText, selectionContext.ActionData.Action) {
+        this._selectionContext = selectionContext;
     }
 }

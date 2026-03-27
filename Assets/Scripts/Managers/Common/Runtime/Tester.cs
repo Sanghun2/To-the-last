@@ -84,13 +84,14 @@ public class Tester : MonoBehaviour
     }
 
     public void ShowSelections() {
-        List<SelectActionData> list = new List<SelectActionData>();
-        for (int i = 0; i < descriptions.Length; i++) {
-            int idx = i;
-            list.Add(new SelectActionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
-        }
-        var dd = new DialogData(characterSD.Image, characterSD.DisplayText, situation, list);
-        Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
+        Debug.Log($"this is obsolete function");
+        //List<SelectActionData> list = new List<SelectActionData>();
+        //for (int i = 0; i < descriptions.Length; i++) {
+        //    int idx = i;
+        //    list.Add(new SelectActionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
+        //}
+        //var dd = new DialogData(characterSD.Image, characterSD.DisplayText, situation, list);
+        //Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {
 

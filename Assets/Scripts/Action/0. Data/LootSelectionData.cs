@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class LootSelectionData : SelectionDataBase
 {
-    public IReadOnlyList<LootData> AvailableItemList => lootItemDataList;
+    public IReadOnlyList<LootInfo> AvailableItemList => lootItemDataList;
 
-    public int DefaultLootCount { get; internal set; }
+    public int DefaultLootCount => 1;
 
-    private IReadOnlyList<LootData> lootItemDataList;
+    private IReadOnlyList<LootInfo> lootItemDataList;
 
-    public LootSelectionData(IReadOnlyList<LootData> lootItemDataList) {
-        this.lootItemDataList = lootItemDataList;
+    public LootSelectionData(
+        int requireMinutes, 
+        string displayText, 
+        Define.RequirementType requirementType, 
+        Ingredient requirement,
+        IReadOnlyList<LootInfo> lootInfos) 
+        : base(requireMinutes, displayText, requirementType, requirement) {
+
+        this.lootItemDataList = lootInfos;
     }
 }

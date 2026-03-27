@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInventoryContext : IContext
 {
-    IReadOnlyList<InventoryBase> Inventories { get; }
+    IReadOnlyList<InventoryBase> TargetInventories { get; }
 }
