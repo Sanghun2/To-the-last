@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
-public interface IEntity
+﻿public interface IEntity
 {
 
 }

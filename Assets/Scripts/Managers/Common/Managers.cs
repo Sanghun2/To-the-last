@@ -213,11 +213,11 @@ public sealed class Managers : MonoBehaviour
             return _processManager;
         }
     }
-    public static EffectSystem EffectSystem
+    public static EffectManager Effect
     {
         get { 
             if (_effectSystem == null) {
-                _effectSystem = new EffectSystem();
+                _effectSystem = new EffectManager();
             }
 
             return _effectSystem;
@@ -269,7 +269,7 @@ public sealed class Managers : MonoBehaviour
     }
 
     // InGame
-    private static EffectSystem _effectSystem;
+    private static EffectManager _effectSystem;
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;
     private static ExplorationSystem _explorationSystem;
