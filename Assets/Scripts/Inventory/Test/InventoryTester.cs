@@ -24,7 +24,7 @@ public class InventoryTester : MonoBehaviour
     }
     public void CollectAllItems() {
 
-        if (Managers.Inventory.TryGetInventory("player", out var playerInven) == false) { return; }
+        if (Managers.Inventory.TryGetInventoryByID("player", out var playerInven) == false) { return; }
 
         playerInvenUI.InitInventory(playerInven);
         var counter = new WeightCounter(50);

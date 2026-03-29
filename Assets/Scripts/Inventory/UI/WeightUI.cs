@@ -10,7 +10,7 @@ public class WeightUI : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
-        if (Managers.Inventory.TryGetInventory("player", out var inventory)) {
+        if (Managers.Inventory.TryGetInventoryByID("player", out var inventory)) {
             counter = ((SimpleInventory)inventory).WeightCounter;
         }
 
