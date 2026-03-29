@@ -17,4 +17,5 @@ MonoBehaviour:
   descripiton: "\uB2ED\uACE0\uAE30"
   categoryList: []
   image: {fileID: 21300000, guid: 14ec7365e2e615140a03933bf8f3488b, type: 3}
+  weight: 2
   maxStackCount: 999

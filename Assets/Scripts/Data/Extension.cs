@@ -7,8 +7,8 @@ public static partial class Extension
 {
     #region Data
 
-    public static ItemData ToData(this ItemSD itemSD) {
-        return new ItemData(itemSD.ID, itemSD.MaxStackCount);
+    public static ExtendedItemData ToData(this ItemSD itemSD) {
+        return new ExtendedItemData(itemSD.ID, itemSD.MaxStackCount, itemSD.Weight);
     }
     public static SkillData ToData(this SkillSD skillSD) {
         return new SkillData(skillSD.ID);

@@ -1,4 +1,4 @@
-﻿using BillotGames;
+﻿using BilliotGames;
 using UnityEngine;
 
 public class SelectionDataParserContainer : TypeRegistry<SelectionSD, SelectionDataParserBase>

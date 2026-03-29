@@ -1,7 +1,7 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class ItemUIContainer : ListContainerBase<SimpleItemUI>
+public sealed class ItemUIContainer : ListContainerBase<SimpleItemUI>
 {
 
 }

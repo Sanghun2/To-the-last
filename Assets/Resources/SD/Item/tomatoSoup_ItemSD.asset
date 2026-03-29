@@ -18,4 +18,5 @@ MonoBehaviour:
     \uACA9\uB9AC\uB41C \uBA87 \uC548\uB418\uB294 \uC2E0\uC120\uD55C \uC2DD\uD488\uC774\uB2E4."
   categoryList: []
   image: {fileID: 21300000, guid: 712934148ef244fedb704e3874a94d6f, type: 3}
+  weight: 2
   maxStackCount: 999

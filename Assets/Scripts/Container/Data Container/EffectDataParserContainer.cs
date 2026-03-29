@@ -1,5 +1,5 @@
 ﻿using System;
-using BillotGames;
+using BilliotGames;
 using UnityEngine;
 
 public class EffectDataParserContainer : TypeRegistry<EffectSD, EffectDataParserBase>

@@ -23,11 +23,11 @@ public class GameBootStrapper
         Managers.UI.CloseUI<GameBootStrapUI>();
 
         Managers.Scene.TransitionScene(Define.INGAME_SCENE_ID, callback: () => {
-            InitGameData();
+            InitAllGameData();
         });
     }
 
-    private static void InitGameData() {
+    private static void InitAllGameData() {
 
         // time
         Managers.Time.SetAsDefaultTime();
@@ -44,6 +44,11 @@ public class GameBootStrapper
         Managers.Player.PlayerData.SetAsDefaultLocation();
         Managers.Location.OnLocationChanged -= playerData.SetCurrentLocation;
         Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
+
+        // inventory
+        var playerInventory = new SimpleInventory("player");
+        Managers.Inventory.AddInventory(playerInventory);
+        var counter = new WeightCounter(50);
     }
 
     private static IReadOnlyList<(Define.Stat, float)> BuildMetabolism() {

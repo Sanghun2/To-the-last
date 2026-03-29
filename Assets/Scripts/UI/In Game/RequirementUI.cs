@@ -47,7 +47,7 @@ public class RequirementUI : UIBase, IPool
 
     protected virtual void UpdateUI(string itemID, int amount) {
         if (Managers.SD.TryGetSD(itemID, out ItemSD targetSD)) {
-            itemImage.sprite = targetSD.ItemImage;
+            itemImage.sprite = targetSD.Image;
         }
         amountText.text = $"x{amount}";
     }

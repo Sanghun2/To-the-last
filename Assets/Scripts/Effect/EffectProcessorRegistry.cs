@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BillotGames;
+using BilliotGames;
 using UnityEngine;
 
 public class EffectProcessorRegistry : TypeRegistry<IEffect, IEffectHandler>

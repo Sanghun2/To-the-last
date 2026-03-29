@@ -26,7 +26,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d36bb16d899ff4217d238fdd78fa9ddfb8f46c42"
+      "hash": "5f39c44d2f5cb75e1a87e89f52b71ceaf7b3323b"
     },
     "com.billiotgames.scenecontroller": {
       "version": "https://github.com/Sanghun2/Scene-Controller.git",
@@ -79,7 +79,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8afccefc6a5d6c015f02c4abf49fc056dd940bf1"
+      "hash": "da94101859ffcf52252fe06065a5840de451e6ac"
     },
     "com.billiotgames.uimanager": {
       "version": "https://github.com/Sanghun2/UI-Manager.git",

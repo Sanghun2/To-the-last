@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Linq;
 using BilliotGames;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.InputSystem.Utilities;
 
 public class CraftContext
 {
-    public enum State {
+    public enum State
+    {
         None,
         Selected,
         Crafting,
         Completed,
     }
 
-    public bool CanSelect => 
+    public bool CanSelect =>
         CurrentState != State.Crafting &&
         CurrentState != State.Completed;
     public bool CanCraft => CurrentState == State.Selected;
@@ -73,7 +72,7 @@ public sealed class CraftManager
         }
     }
 
-    public bool TryCraft(RecipeSD targetRecipeSD, Action<float, float> onProgress=null, Action onComplete=null) {
+    public bool TryCraft(RecipeSD targetRecipeSD, Action<float, float> onProgress = null, Action onComplete = null) {
         SetCraftTarget(targetRecipeSD);
         if (craftContext.CanCraft) {
             craftContext.CurrentState = CraftContext.State.Crafting;
@@ -91,7 +90,7 @@ public sealed class CraftManager
         return false;
     }
 
-    public void RegisterDelayedJob(RecipeSD recipeSD, Action<float, float> onProgress=null) {
+    public void RegisterDelayedJob(RecipeSD recipeSD, Action<float, float> onProgress = null) {
         if (recipeSD is DelayedRecipeSD delayedRecipeSD) {
             var newJob = new Job(
                 delayedRecipeSD.CompletionDelayMinutes,

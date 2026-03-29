@@ -1,18 +1,21 @@
 ﻿using System;
 using BilliotGames;
+using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 
 public class SimpleItemUI : ItemUIBase
 {
     [Space]
-    [SerializeField] TextMeshProUGUI itemNameText;
+    [SerializeField] protected TextMeshProUGUI amountText;
+    [SerializeField] protected TextMeshProUGUI itemNameText;
 
-    public void InitItem(ItemData itemData, int amount) {
+    public override void SetUI(ItemStack item) {
+        var itemData = item.ItemData;
         if (Managers.SD.TryGetSD(itemData.ItemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.Image;
             itemNameText.text = targetSD.DisplayText;
-            amountText.text = GetAmountText(amount);
+            amountText.text = GetAmountText(item.Amount);
             Activate();
         }
         else {

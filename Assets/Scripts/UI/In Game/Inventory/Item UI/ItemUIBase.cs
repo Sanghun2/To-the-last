@@ -1,14 +1,31 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class ItemUIBase : UIBase, IPool
 {
+    public RectTransform Rect
+    {
+        get
+        {
+            if (_rect == null) {
+                _rect = GetComponent<RectTransform>();
+            }
+
+            return _rect;
+        }
+    }
+
     [SerializeField] protected Image itemImage;
-    [SerializeField] protected TextMeshProUGUI amountText;
+    private RectTransform _rect;
 
     public bool IsActive => IsOpened;
+
+    public abstract void SetUI(ItemStack item);
+
+    #region Pool
 
     public void Activate() {
         OpenUI();
@@ -16,20 +33,17 @@ public abstract class ItemUIBase : UIBase, IPool
     public void Init() {
         if (IsInit) return;
         if (itemImage == null) Debug.LogError($"item image null");
-        if (amountText == null) Debug.LogError($"amounts text null");
         _isInit = true;
     }
     public void Return() {
         CloseUI();
     }
 
-    private void Reset() {
+    #endregion
+
+    protected virtual void Reset() {
         if (itemImage == null) {
             itemImage = GetComponentInChildren<Image>();
-        }
-
-        if (amountText == null) {
-            amountText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 }

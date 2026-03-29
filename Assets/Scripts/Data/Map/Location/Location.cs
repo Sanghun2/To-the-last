@@ -27,12 +27,12 @@ public class Location : IValue<int>, IEquatable<Location>
     }
     public LocationData Data => data;
 
-    public SimpleInventory Inventory
+    public InventoryBase Inventory
     {
         get
         {
             if (_inventory == null) {
-                _inventory = new SimpleInventory($"{locationID} inventory", 20);
+                _inventory = new SimpleInventory($"{locationID}", 20);
             }
 
             return _inventory;

@@ -19,4 +19,5 @@ MonoBehaviour:
     \uAC83 \uAC19\uB2E4."
   categoryList: []
   image: {fileID: 0}
+  weight: 2
   maxStackCount: 999
