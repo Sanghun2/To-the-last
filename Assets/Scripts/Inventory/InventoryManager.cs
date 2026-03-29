@@ -33,7 +33,14 @@ public sealed class InventoryManager
         }
     }
 
-    public bool TryGetInventory(string inventoryID, out InventoryBase inventory) {
+    public bool TryGetInventoryByID(string inventoryID, out InventoryBase inventory) {
         return inventoryDict.TryGetValue(inventoryID, out inventory);
+    }
+    public bool TryGetInventoryByTag(string tag, out List<InventoryBase> inventoryList) {
+        if (inventoryCategories.TryGetValue(tag, out inventoryList)) {
+            return true;
+        }
+
+        return false;
     }
 }
