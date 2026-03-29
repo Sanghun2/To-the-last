@@ -72,17 +72,6 @@ public sealed class Managers : MonoBehaviour
             return constructionManager;
         }
     }
-    public static StructureManager Structure
-    {
-        get
-        {
-            if (_structureManager == null) {
-                _structureManager = new StructureManager();
-            }
-
-            return _structureManager;
-        }
-    }
     public static PlayerManager Player
     {
         get
@@ -291,7 +280,6 @@ public sealed class Managers : MonoBehaviour
     }
 
     // InGame
-    private static StructureManager _structureManager;
     private static InventoryManager _inventoryManager;
     private static EffectManager _effectSystem;
     private static BattleSystem _battleManager;
