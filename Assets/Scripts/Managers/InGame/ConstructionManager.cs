@@ -47,10 +47,19 @@ public class ConstructionManager : IInitializable
     }
 
     public void ConstructTarget() {
-        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureSD.ID}");
-        PlaceStructure(targetLocationIndex, targetStructureSD);
+        if (!CanConstruct()) return;
+        StartConstruction(targetLocationIndex, targetStructureSD);
     }
-    public void PlaceStructure(int locationIndex, StructureSD structureSD) {
+
+    private bool CanConstruct() {
+        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureSD.ID}");
+        if (targetStructureSD == null) { return false; }
+        if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, "player", "storage")) { return false; }
+
+        return InventoryManager.HasIngredients(inventories, targetStructureSD.RequirementItems);
+    }
+
+    public void StartConstruction(int locationIndex, StructureSD structureSD) {
         if (!IsValidLocation(locationIndex)) return;
         if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureSD)) return;
@@ -119,6 +128,11 @@ public class ConstructionManager : IInitializable
         targetStructureSD = null;
     }
 
+    /// <summary>
+    /// 올바른 struct data인지 체크
+    /// </summary>
+    /// <param name="targetStructureSD"></param>
+    /// <returns></returns>
     private bool IsValidStructure(StructureSD targetStructureSD) {
         if (targetStructureSD != null) {
             return true;

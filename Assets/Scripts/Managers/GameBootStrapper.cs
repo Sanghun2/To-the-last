@@ -46,7 +46,7 @@ public class GameBootStrapper
         Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
 
         // inventory
-        var playerInventory = new SimpleInventory("player");
+        var playerInventory = new SimpleInventory("player").SetTag("player");
         Managers.Inventory.AddInventory(playerInventory);
         var counter = new WeightCounter(50);
     }
