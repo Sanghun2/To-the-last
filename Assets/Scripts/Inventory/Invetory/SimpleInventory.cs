@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using BilliotGames;
 using UnityEngine;
 
@@ -34,16 +33,15 @@ public class SimpleInventory : InventoryBase
 
         itemList = new List<ItemStack>(Capacity);
         itemCountDict = new Dictionary<string, int>();
-        weightCounter = new WeightCounter(50);
         itemList.RemoveAll(item => item == null || item.ItemData == null);
-        
+
 
         isInit = true;
     }
 
-    public void SetWeightCounter(WeightCounter weightCounter) {
-        this.weightCounter = weightCounter; 
-        
+    public SimpleInventory SetWeightCounter(WeightCounter weightCounter) {
+        this.weightCounter = weightCounter;
+
         OnItemAdded -= UpdateWeight;
         OnItemAdded += UpdateWeight;
 
@@ -52,6 +50,8 @@ public class SimpleInventory : InventoryBase
 
         OnItemRemoved -= UpdateWeight;
         OnItemRemoved += UpdateWeight;
+
+        return this;
     }
 
     public override void ClearInventory() {

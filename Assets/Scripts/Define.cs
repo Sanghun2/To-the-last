@@ -9,6 +9,11 @@ public class Define
 
     }
 
+    public class Tag {
+        public const string PLAYER = "player";
+        public const string STORAGE = "storage";
+    }
+
     public enum FlowType {
         LogIn,
         BootStrapGame,

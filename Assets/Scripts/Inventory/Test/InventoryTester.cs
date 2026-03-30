@@ -6,8 +6,9 @@ public class InventoryTester : MonoBehaviour
     [SerializeField] ItemSD[] itemLists;
     [SerializeField] int createAmount;
 
+    [SerializeField] InventoryBase playerInven;
     [SerializeField] InventoryBase targetInven;
-    private ItemCollectProcessorBase collector = new SimpleItemCollectProcessor();
+    private ItemMoveProcessorBase collector = new SimpleItemMoveProcessor();
     [SerializeField] InventoryUIBase targetInvenUI;
     [SerializeField] InventoryUIBase playerInvenUI;
 
@@ -21,6 +22,7 @@ public class InventoryTester : MonoBehaviour
         }
 
         targetInvenUI.InitInventory(targetInven).ShowInventory();
+        playerInvenUI.InitInventory(playerInven).ShowInventory();
     }
     public void CollectAllItems() {
 
@@ -30,7 +32,7 @@ public class InventoryTester : MonoBehaviour
         var counter = new WeightCounter(50);
         (playerInven as SimpleInventory)?.SetWeightCounter(counter);
 
-        collector.CollectAllItems(targetInven, playerInven);
+        collector.MoveAllItems(targetInven, playerInven);
 
         targetInvenUI.ShowInventory(targetInven);
         playerInvenUI.ShowInventory(playerInven);
@@ -38,7 +40,9 @@ public class InventoryTester : MonoBehaviour
 
     private void Init() {
         targetInven = new SimpleInventory("location");
+        playerInven = new SimpleInventory(Define.Tag.PLAYER).SetWeightCounter(new WeightCounter(50));
 
         targetInvenUI.InitInventory(targetInven);
+        playerInvenUI.InitInventory(playerInven);
     }
 }

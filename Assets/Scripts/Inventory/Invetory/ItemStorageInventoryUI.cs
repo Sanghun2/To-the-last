@@ -1,15 +1,25 @@
-﻿using System;
-using BilliotGames;
+﻿using BilliotGames;
 using UnityEngine;
 
-public class LocationInventoryUI : InventoryUIBase<SimpleInventory>
+public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
 {
     [SerializeField] ItemSlotContainer itemSlotContainer;
+    [SerializeField] WeightUI weightUI;
 
     private void OnEnable() {
+        Debug.Log("ui enable");
         if (inventory != null) {
             inventory.OnItemAdded -= OnAddItem;
             inventory.OnItemAdded += OnAddItem;
+
+            bool hasWeightCounter = inventory.InventoryID.Equals(Define.Tag.PLAYER) || inventory.InventoryID.Equals(Define.Tag.STORAGE);
+
+            Debug.Log($"inventory exist. has counter? {hasWeightCounter}");
+            weightUI.gameObject.SetActive(hasWeightCounter);
+            if (hasWeightCounter) {
+                var simpleInventory = (SimpleInventory)inventory;
+                weightUI.SetWeightCounter(simpleInventory.WeightCounter);
+            }
         }
     }
 

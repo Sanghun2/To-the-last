@@ -36,7 +36,7 @@ public class ConstructionManager : IInitializable
         _isInit = true;
     }
     public void Release() {
-
+        _isInit = false;
     }
 
     public void SetLocationIndex(int locationIndex) {
@@ -56,10 +56,10 @@ public class ConstructionManager : IInitializable
         if (targetStructureSD == null) { return false; }
         if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, "player", "storage")) { return false; }
 
-        return InventoryManager.HasIngredients(inventories, targetStructureSD.RequirementItems);
+        return InventoryUtility.HasIngredients(inventories, targetStructureSD.RequirementItems);
     }
 
-    public void StartConstruction(int locationIndex, StructureSD structureSD) {
+    private void StartConstruction(int locationIndex, StructureSD structureSD) {
         if (!IsValidLocation(locationIndex)) return;
         if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureSD)) return;
@@ -138,7 +138,7 @@ public class ConstructionManager : IInitializable
             return true;
         }
         else {
-            Debug.LogAssertion($"not valid structure. id: {targetStructureSD.ID}");
+            Debug.LogAssertion($"not valid structure. id: {targetStructureSD?.ID ?? "null"}");
             return false;
         }
     }
@@ -157,10 +157,5 @@ public class ConstructionManager : IInitializable
         }
 
         return false;
-    }
-
-    internal bool HasEnoughItems(IReadOnlyList<Ingredient> requirementItems) {
-        Debug.Log("구현 필요");
-        return true;
     }
 }

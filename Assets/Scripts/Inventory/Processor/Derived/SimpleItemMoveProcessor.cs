@@ -4,11 +4,11 @@ using System.Text;
 using BilliotGames;
 using UnityEngine;
 
-public class SimpleItemCollectProcessor : ItemCollectProcessorBase
+public class SimpleItemMoveProcessor : ItemMoveProcessorBase
 {
-    public override void CollectAllItems(InventoryBase inventoryFrom, InventoryBase inventoryTo) {
-        if (!(inventoryFrom is SimpleInventory invenFrom && inventoryTo is SimpleInventory invenTo)){
-            Debug.LogError($"<color=red>different inven type. target? {inventoryFrom.GetType()}, player? {inventoryTo.GetType()}</color>"); 
+    public override void MoveAllItems(InventoryBase fromInventory, InventoryBase toInventory) {
+        if (!(fromInventory is SimpleInventory invenFrom && toInventory is SimpleInventory invenTo)){
+            Debug.LogError($"<color=red>different inven type. target? {fromInventory.GetType()}, player? {toInventory.GetType()}</color>"); 
             return;
         }
 

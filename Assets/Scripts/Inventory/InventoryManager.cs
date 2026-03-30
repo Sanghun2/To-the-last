@@ -8,26 +8,6 @@ public sealed class InventoryManager
     private Dictionary<string, InventoryBase> inventoryDict = new();
     private Dictionary<string, List<InventoryBase>> inventoryCategories = new();
 
-    public static bool HasIngredients(List<InventoryBase> inventories, IReadOnlyList<Ingredient> requirementItems) {
-        bool result = true;
-        for (int i = 0; i < requirementItems.Count; i++) {
-            Ingredient item = requirementItems[i];
-            int totalCount = 0;
-            for (int j = 0; j < inventories.Count; j++) {
-                var inventory = inventories[j];
-                totalCount += inventory.GetItemCount(item.ItemSD.ID);
-
-                if (totalCount >= item.Amount) break;
-            }
-
-            if (totalCount < item.Amount) {
-                return false;
-            }
-        }
-
-        return result;
-    }
-
     public void AddInventory(InventoryBase inventory) {
         if (!inventoryDict.TryAdd(inventory.InventoryID, inventory)) { Debug.LogError($"<color=red>이미 있는 인벤토리 id? {inventory.InventoryID}</color>"); return; }
 

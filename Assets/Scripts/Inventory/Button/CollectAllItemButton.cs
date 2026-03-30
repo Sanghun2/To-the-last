@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CollectAllItemButton : ButtonBase
 {
-    [SerializeField] InventoryUIBase targetInventory;
-    [SerializeField] InventoryUIBase playerInventory;
-    private ItemCollectProcessorBase collectProcessor = new SimpleItemCollectProcessor();
+    [SerializeField] InventoryUIBase fromInventoryUI;
+    [SerializeField] InventoryUIBase toInventoryUI;
 
     protected override void ButtonAction() {
-        if (targetInventory == null || playerInventory == null) { Debug.LogError($"<color=red>inventory is null</color>"); return; }
+        if (fromInventoryUI == null || toInventoryUI == null) { Debug.LogError($"<color=red>inventory is null</color>"); return; }
 
-        collectProcessor.CollectAllItems(targetInventory.Inventory, playerInventory.Inventory);
+        CollectItems(fromInventoryUI.Inventory, toInventoryUI.Inventory);
+    }
+
+    private void CollectItems(InventoryBase fromInventory, InventoryBase toInventory) {
+        InventoryUtility.MoveItems(fromInventory, toInventory);
     }
 }
