@@ -148,10 +148,10 @@ public class Tester : MonoBehaviour
         Managers.Construction.UnlockLocation(locationIndex);
     }
     public void SetStructure() {
-        //Managers.Construction.StartConstruction(locationIndex, targetStructureData);
+        //Managers.Construction.StartConstruction(locationIndex, currentStructureData);
     }
     public void Destroy() {
-        Managers.Construction.DestroyStructure(locationIndex);
+        Managers.Construction.DestroyStructureAt(locationIndex);
     }
 
     public void ShowBuildList() {

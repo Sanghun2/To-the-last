@@ -10,8 +10,8 @@ public class ConstructionManager : IInitializable
 
     [SerializeField] List<Structure> structureList = new List<Structure>();
     
-    private int targetLocationIndex;
-    private StructureDataBase targetStructureData;
+    private int currentLocationIndex;
+    private StructureDataBase currentStructureData;
 
     private StructureUIContainer structureUIContainer;
     private StructureDataParserContainer dataParserContainer = new StructureDataParserContainer();
@@ -44,7 +44,7 @@ public class ConstructionManager : IInitializable
     }
 
     public void SetLocationIndex(int locationIndex) {
-        targetLocationIndex = locationIndex;
+        currentLocationIndex = locationIndex;
     }
     public void SetTargetStructure(StructureSD structureSD) {
         if (!dataParserContainer.TryGet(structureSD, out var parser)) { Debug.LogError($"<color=red>data parser type of ({structureSD.GetType()}) is not exist. </color>"); return; }
@@ -54,7 +54,7 @@ public class ConstructionManager : IInitializable
 
     public void ConstructSetTarget() {
         if (!CanConstruct()) return;
-        StartConstruction(targetLocationIndex, targetStructureData);
+        StartConstruction(currentLocationIndex, currentStructureData);
     }
 
     public void UnlockLocation(int locationIndex) {
@@ -67,35 +67,41 @@ public class ConstructionManager : IInitializable
             Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentState}");
         }
     }
-    public void DestroyStructure(int locationIndex) {
+    public void DestroyStructureAt(int locationIndex, Action onDestroyComplete=null) {
         if (!IsValidLocation(locationIndex)) { return; }
         if (IsEmpty(locationIndex)) { return; }
 
-        var targetStructure = GetStructure(locationIndex);
-        var structureSD = targetStructure.StructureContext;
+        Structure targetStructure = GetStructure(locationIndex);
+        StructureContextBase structureContext = targetStructure.StructureContext;
         var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
-            structureSD.ConstructionTime,
+            structureContext.ConstructionTime,
             onProgressChanged: (cv, mv) => {
                 buildingUI.UpdateProgressBar(cv, mv);
             },
             onComplete: () => {
                 targetStructure.DestroyStrucure();
-                Managers.UI.CloseUI(buildingUI);
+                Managers.UI.CloseAllUIs();
+                onDestroyComplete?.Invoke();
             });
         Managers.Job.DoFocusJob(destroyJob);
+    }
+    public void DestroyCurrentStructure() {
+        if (currentLocationIndex >= 0) {
+            DestroyStructureAt(currentLocationIndex);
+        }
     }
 
 
     private void SetTargetStructure(StructureDataBase structureData) {
-        targetStructureData = structureData;
+        currentStructureData = structureData;
     }
     private bool CanConstruct() {
-        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureData?.ID ?? "null"}");
-        if (targetStructureData == null) { return false; }
+        Debug.Log($"index? {currentLocationIndex}, structure? {currentStructureData?.ID ?? "null"}");
+        if (currentStructureData == null) { return false; }
         if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, "player", "storage")) { return false; }
 
-        var a = InventoryUtility.HasIngredients(inventories, targetStructureData.RequirementItems);
+        var a = InventoryUtility.HasIngredients(inventories, currentStructureData.RequirementItems);
         return true;
     }
     private void StartConstruction(int locationIndex, StructureDataBase structureData) {
@@ -139,7 +145,7 @@ public class ConstructionManager : IInitializable
         return true;
     }
     private void ClearTargetStructure() {
-        targetStructureData = null;
+        currentStructureData = null;
     }
 
     /// <summary>
