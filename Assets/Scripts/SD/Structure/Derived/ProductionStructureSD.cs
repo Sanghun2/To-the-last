@@ -5,11 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ProductionStructureSD", menuName = "Scriptable Objects/Structure/ProductionStructureSD")]
 public class ProductionStructureSD : StructureSD
 {
-    public IReadOnlyList<RecipeSD> Prouctions => productions;
+    public IReadOnlyList<RecipeSD> ContentList => productions;
 
     [SerializeField] protected RecipeSD[] productions;
-
-    public override Type GetUIType() {
-        return typeof(CraftStructureUI);
-    }
 }

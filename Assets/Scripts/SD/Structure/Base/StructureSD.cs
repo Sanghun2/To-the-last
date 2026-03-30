@@ -22,6 +22,4 @@ public abstract class StructureSD : ImageSDBase
     protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_StructureSD");
     }
-
-    public abstract Type GetUIType();
 }

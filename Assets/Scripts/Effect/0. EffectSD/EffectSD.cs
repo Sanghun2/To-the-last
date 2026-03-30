@@ -15,11 +15,17 @@ public class Effect
         Scala,
         Percent,
     }
-    public enum TargetType {
+    public enum ApplyTarget {
         None,
         Self,
         ClosestEnemy,
     }
+
+    public EffectSD EffectSD => effectSD;
+    public float Value => value;
+
+    [SerializeField] EffectSD effectSD;
+    [SerializeField] float value;
 }
 
 public interface IEffect
@@ -28,19 +34,11 @@ public interface IEffect
 }
 
 
-public abstract class EffectSD : SDBase, IEffect
+public abstract class EffectSD : SDBase
 {
-    public Effect.TargetType TargetType => targetType;
+    public Effect.ApplyTarget TargetType => targetType;
 
-    [SerializeField] Effect.TargetType targetType;
-
-    public abstract void ApplyEffect(Entity caster, Entity target);
-
-    protected bool IsValid(Entity caster, Entity target) {
-        if (caster == null || target == null) { Debug.Log($"entity null. caster null? {caster == null}, target null? {target == null}"); return false; }
-
-        return true;
-    }
+    [SerializeField] Effect.ApplyTarget targetType;
 
     protected virtual void OnValidate() {
         RenameAsset(ID, suffix:"_EffectSD");

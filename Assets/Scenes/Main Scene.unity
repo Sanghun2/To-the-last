@@ -1137,9 +1137,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 647448717}
     m_Modifications:
+    - target: {fileID: 3027732348447469697, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21d385b6b7b307a4481bfe5ec7c29b11, type: 3}
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
       value: Hunger Stat UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928961118375206274, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5430467290501432069, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Pivot.x
@@ -1221,10 +1229,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5603666656447441603, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6174804328863542791, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 21d385b6b7b307a4481bfe5ec7c29b11, type: 3}
+    - target: {fileID: 6174804328863542791, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7266591914425754016, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: targetStat
       value: 1
@@ -7800,6 +7816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 647448717}
     m_Modifications:
+    - target: {fileID: 3027732348447469697, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45344142480e6ec4bab759eef2e1b67b, type: 3}
     - target: {fileID: 3047559095550127717, guid: 981f82e37cfede849bf9509f9322d450, type: 3}
       propertyPath: m_Name
       value: Hp Stat UI

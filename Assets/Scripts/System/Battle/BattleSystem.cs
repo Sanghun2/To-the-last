@@ -27,7 +27,7 @@ public class BattleSystem
         return battleEntityManager.GetPlayerEntity();
     }
 
-    public Entity ResolveTarget(Entity caster, Effect.TargetType targetType) {
+    public Entity ResolveTarget(Entity caster, Effect.ApplyTarget targetType) {
 
         var target = ResolveTarget(caster as BattleEntity, targetType);
 
@@ -36,22 +36,22 @@ public class BattleSystem
 
         return target;
     }
-    public BattleEntity ResolveTarget(BattleEntity caster, Effect.TargetType targetType) {
+    public BattleEntity ResolveTarget(BattleEntity caster, Effect.ApplyTarget targetType) {
         BattleEntity playerEntity = battleEntityManager.GetPlayerEntity();
 
         if (caster.Equals(playerEntity)) {
             return targetType switch {
-                Effect.TargetType.None => null,
-                Effect.TargetType.Self => battleEntityManager.GetPlayerEntity(),
-                Effect.TargetType.ClosestEnemy => battleEntityManager.GetFirstEnemy(),
+                Effect.ApplyTarget.None => null,
+                Effect.ApplyTarget.Self => battleEntityManager.GetPlayerEntity(),
+                Effect.ApplyTarget.ClosestEnemy => battleEntityManager.GetFirstEnemy(),
                 _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
             };
         }
         else {
             return targetType switch {
-                Effect.TargetType.None => null,
-                Effect.TargetType.Self => battleEntityManager.GetFirstEnemy(),
-                Effect.TargetType.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
+                Effect.ApplyTarget.None => null,
+                Effect.ApplyTarget.Self => battleEntityManager.GetFirstEnemy(),
+                Effect.ApplyTarget.ClosestEnemy => battleEntityManager.GetPlayerEntity(),
                 _ => throw new Exception($"<color=red>resolve target type ({targetType}) is not defined</color>")
             };
         }

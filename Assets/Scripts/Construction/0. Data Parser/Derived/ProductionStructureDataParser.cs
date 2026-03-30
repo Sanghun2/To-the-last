@@ -9,7 +9,7 @@ public class ProductionStructureDataParser : StructureDataParserBase<ProductionS
             structureSD.Image,
             structureSD.ConstructionTime,
             structureSD.RequirementItems,
-            structureSD.Prouctions
+            structureSD.ContentList
             );
     }
 }

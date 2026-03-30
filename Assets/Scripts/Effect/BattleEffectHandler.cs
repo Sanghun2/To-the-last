@@ -13,7 +13,8 @@ public class BattleEffectHandler : IEffectHandler<BattleContext>
         var target = targets[0];
         target = Managers.BattleSystem.ResolveTarget(caster, effect.TargetType);
         Debug.Log($"<color=orange>caster id? ({caster.EntityID}), target id? ({target?.EntityID})</color>");
-        effect.ApplyEffect(caster, target);
+        //effect.ApplyEffect(caster, target);
+        Debug.LogAssertion($"<color=lime>apply effect 기능 구현 필요</color>");
     }
 
     public void Execute(IContext context) {
