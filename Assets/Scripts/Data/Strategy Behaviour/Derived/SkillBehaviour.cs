@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public sealed class SkillBehaviour : StrategyBehaviour
@@ -33,10 +36,10 @@ public sealed class SkillBehaviour : StrategyBehaviour
 
     private void ExecuteEffects() {
         Debug.Log("effect applied");
-        var effectSDs = skillSD.Effects;
-        for (int i = 0; i < effectSDs.Count; i++) {
-            var effectSD = effectSDs[i];
-            Managers.Effect.ApplyEffect(effectSD);
+        IReadOnlyList<Effect> effects = skillSD.Effects;
+        for (int i = 0; i < effects.Count; i++) {
+            var effect = effects[i];
+            Managers.Effect.ApplyEffect(effect);
         }
     }
 }

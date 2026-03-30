@@ -19,7 +19,7 @@ namespace Michsky.UI.Dark
         public TextMeshProUGUI descriptionObject;
         [SerializeField] private BlurManager blurManager;
 
-        // Effects
+        // Effect
         public bool enableDissolve = true;
         [SerializeField] private UIDissolveEffect dissolveEffect;
 

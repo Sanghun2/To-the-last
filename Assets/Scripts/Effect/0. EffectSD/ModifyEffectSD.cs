@@ -13,7 +13,7 @@ public abstract class ModifyEffectSD : EffectSD
         float prevValue = targetValue;
         switch (operatorType) {
             case Effect.OperatorType.Add:
-                //targetValue += Value;
+                //targetValue += Value;w
                 break;
             case Effect.OperatorType.Multiply:
                 //targetValue *= Value;

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillSD", menuName = "Scriptable Objects/SkillSD")]
 public class SkillSD : ImageSDBase
 {
-    public IReadOnlyList<EffectSD> Effects => effects;
+    public IReadOnlyList<Effect> Effects => effects;
     public StrategyBehaviour.BehaviourType BehaviourType => behaviourType;
     public Define.ActionAnimationType AnimationType => animationType;
     public int Level => level;
@@ -24,7 +24,7 @@ public class SkillSD : ImageSDBase
     [Space]
     [SerializeField] TriggerSD[] triggers;
     [SerializeField] ConditionSD[] conditions;
-    [SerializeField] EffectSD[] effects;
+    [SerializeField] Effect[] effects;
 
     [Space]
     [SerializeField] List<PrequisiteSkill> prequisiteSkillList;
