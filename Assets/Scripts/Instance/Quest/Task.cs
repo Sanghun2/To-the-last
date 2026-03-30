@@ -21,7 +21,7 @@ public class Task
     public Task(TaskData data) {
         this.data = data;
         currentCount = 0;
-        requiredCount = data.RequireCount; // count를 require하는 것만 있지 않다면 task data 구조 분할 필요
+        requiredCount = data.RequireCount; // count를 require하는 것만 있지 않다면 task _data 구조 분할 필요
     }
 
     public void AddCount(int count) {

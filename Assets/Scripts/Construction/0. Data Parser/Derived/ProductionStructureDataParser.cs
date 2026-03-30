@@ -2,7 +2,14 @@
 
 public class ProductionStructureDataParser : StructureDataParserBase<ProductionStructureSD, ProductionStructureData>
 {
-    public override bool TryParseData(ProductionStructureSD sd, out ProductionStructureData data) {
-        throw new System.NotImplementedException();
+    public override ProductionStructureData ParseData(ProductionStructureSD structureSD) {
+        return new ProductionStructureData(
+            structureSD.ID,
+            structureSD.DisplayText,
+            structureSD.Image,
+            structureSD.ConstructionTime,
+            structureSD.RequirementItems,
+            structureSD.Prouctions
+            );
     }
 }

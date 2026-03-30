@@ -37,4 +37,8 @@ public class InventoryUtility
     public static void MoveItems(InventoryBase fromInventory, InventoryBase toInventory) {
         collectProcessor.MoveAllItems(fromInventory, toInventory);
     }
+
+    internal static bool HasIngredients(List<InventoryBase> inventories, object requirementItems) {
+        throw new NotImplementedException();
+    }
 }

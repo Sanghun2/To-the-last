@@ -5,7 +5,7 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftStructureUI : UIBase
+public class CraftStructureUI : StructureUIBase
 {
     [SerializeField] TextUI popUpTitleText;
     [SerializeField] DescriptionUI descriptionUI;

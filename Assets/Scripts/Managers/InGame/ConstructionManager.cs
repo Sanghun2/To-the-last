@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 
 public class ConstructionManager : IInitializable
@@ -9,9 +10,12 @@ public class ConstructionManager : IInitializable
 
     [SerializeField] List<Structure> structureList = new List<Structure>();
     
-    private StructureUIContainer structureUIContainer;
     private int targetLocationIndex;
-    private StructureSD targetStructureSD;
+    private StructureDataBase targetStructureData;
+
+    private StructureUIContainer structureUIContainer;
+    private StructureDataParserContainer dataParserContainer = new StructureDataParserContainer();
+    private StructureContextBuilderContainer contextBuilderContainer = new StructureContextBuilderContainer();
     private bool _isInit;
 
     public void Init() {
@@ -43,44 +47,17 @@ public class ConstructionManager : IInitializable
         targetLocationIndex = locationIndex;
     }
     public void SetTargetStructure(StructureSD structureSD) {
-        targetStructureSD = structureSD;
+        if (!dataParserContainer.TryGet(structureSD, out var parser)) { Debug.LogError($"<color=red>data parser type of ({structureSD.GetType()}) is not exist. </color>"); return; }
+        var structureData = parser.ParseData(structureSD);
+        SetTargetStructure(structureData);
     }
 
-    public void ConstructTarget() {
+    public void ConstructSetTarget() {
         if (!CanConstruct()) return;
-        StartConstruction(targetLocationIndex, targetStructureSD);
+        StartConstruction(targetLocationIndex, targetStructureData);
     }
 
-    private bool CanConstruct() {
-        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureSD.ID}");
-        if (targetStructureSD == null) { return false; }
-        if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, "player", "storage")) { return false; }
-
-        return InventoryUtility.HasIngredients(inventories, targetStructureSD.RequirementItems);
-    }
-
-    private void StartConstruction(int locationIndex, StructureSD structureSD) {
-        if (!IsValidLocation(locationIndex)) return;
-        if (!IsEmpty(locationIndex)) return;
-        if (!IsValidStructure(structureSD)) return;
-
-        FocusJob constructionJob = new FocusJob(
-            structureSD.ConstructionTime,
-            onProgressChanged: (cv, mv) => {
-                Managers.UI.GetUI<ConstructionUI>().UpdateProgressBar(cv, mv);
-            },
-            onComplete: () => {
-                ConstructStructure(locationIndex, structureSD);
-            });
-
-
-        Managers.Job.DoFocusJob(constructionJob, () => {
-            ClearTargetStructure();
-            //Managers.UI.CloseUI<ConstructionUI>();
-        });
-    }
-
-    public void Unlock(int locationIndex) {
+    public void UnlockLocation(int locationIndex) {
         var structure = GetStructure(locationIndex);
         if (structure != null && structure.IsLocked) {
             structure.Unlock();
@@ -90,12 +67,12 @@ public class ConstructionManager : IInitializable
             Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentState}");
         }
     }
-    public void Destroy(int locationIndex) {
+    public void DestroyStructure(int locationIndex) {
         if (!IsValidLocation(locationIndex)) { return; }
         if (IsEmpty(locationIndex)) { return; }
 
         var targetStructure = GetStructure(locationIndex);
-        var structureSD = targetStructure.StructureSD;
+        var structureSD = targetStructure.StructureContext;
         var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
             structureSD.ConstructionTime,
@@ -110,35 +87,72 @@ public class ConstructionManager : IInitializable
     }
 
 
+    private void SetTargetStructure(StructureDataBase structureData) {
+        targetStructureData = structureData;
+    }
+    private bool CanConstruct() {
+        Debug.Log($"index? {targetLocationIndex}, structure? {targetStructureData?.ID ?? "null"}");
+        if (targetStructureData == null) { return false; }
+        if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, "player", "storage")) { return false; }
+
+        var a = InventoryUtility.HasIngredients(inventories, targetStructureData.RequirementItems);
+        return true;
+    }
+    private void StartConstruction(int locationIndex, StructureDataBase structureData) {
+        if (!IsValidLocation(locationIndex)) return;
+        if (!IsEmpty(locationIndex)) return;
+        if (!IsValidStructure(structureData)) return;
+
+        CreateConstructionJob(locationIndex, structureData);
+    }
+    private void CreateConstructionJob(int locationIndex, StructureDataBase structureData) {
+        FocusJob constructionJob = new FocusJob(
+             structureData.ConstructionTime,
+             onProgressChanged: (ctime, mtime) => {
+                 Managers.UI.GetUI<ConstructionUI>().UpdateProgressBar(ctime, mtime);
+             },
+             onComplete: () => TryConstructStructure(locationIndex, structureData));
+
+
+        Managers.Job.DoFocusJob(constructionJob, () => {
+            ClearTargetStructure();
+            //Managers.UI.CloseUI<ConstructionUI>();
+        });
+    }
     private Structure GetStructure(int locationIndex) {
         if (!IsValidLocation(locationIndex)) { return null; }
         return structureList[locationIndex];
     }
 
-    private void ConstructStructure(int targetLocationIndex, StructureSD targetStructureSD) {
-        var requireIngredients = targetStructureSD.RequirementItems;
+    private bool TryConstructStructure(int targetLocationIndex, StructureDataBase targetStructureData) {
+        var requireIngredients = targetStructureData.RequirementItems;
 
         // 재료 소모
 
         // 건설
-        var targetStructure = GetStructure(targetLocationIndex);
-        targetStructure.ConstructStructure(targetStructureSD);
+        if (!contextBuilderContainer.TryGet(targetStructureData, out var contextBuilder)) { Debug.LogError($"<color=red>context builder type of ({targetStructureData.GetType()}) is not exist</color>"); return false; }
+        if (!contextBuilder.TryBuildContext(targetStructureData, out var structureContext)) { Debug.LogError($"<color=red>({targetStructureData.GetType()}) context build failed</color>"); return false; }
+
+        Structure targetStructure = GetStructure(targetLocationIndex);
+        targetStructure.ConstructStructure(structureContext);
+
+        return true;
     }
     private void ClearTargetStructure() {
-        targetStructureSD = null;
+        targetStructureData = null;
     }
 
     /// <summary>
     /// 올바른 struct data인지 체크
     /// </summary>
-    /// <param name="targetStructureSD"></param>
+    /// <param name="structureData"></param>
     /// <returns></returns>
-    private bool IsValidStructure(StructureSD targetStructureSD) {
-        if (targetStructureSD != null) {
+    private bool IsValidStructure(StructureDataBase structureData) {
+        if (structureData != null) {
             return true;
         }
         else {
-            Debug.LogAssertion($"not valid structure. id: {targetStructureSD?.ID ?? "null"}");
+            Debug.LogAssertion($"not valid structure. id: {structureData?.ID ?? "null"}");
             return false;
         }
     }

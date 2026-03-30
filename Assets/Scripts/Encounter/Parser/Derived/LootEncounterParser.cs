@@ -10,7 +10,7 @@ public class LootEncounterParser : EncounterParserBase
                 lootEncounterSD.Description,
                 lootEncounterSD.SelectionList);
 
-            // sd -> data 처리
+            // sd -> _data 처리
 
             return true;
         }

@@ -15,7 +15,7 @@ public class Structure : IValue<float>
     public bool CanContruct => CurrentState == StructureState.Empty;
     public bool CanDestroy => CurrentState == StructureState.Built;
     public bool IsLocked => CurrentState == StructureState.Locked;
-    public StructureSD StructureSD => structureSD;
+    public StructureContextBase StructureContext => structureContext;
 
     public float CurrentValue => currentProgress;
     public float MaxValue => maxProgress;
@@ -33,7 +33,7 @@ public class Structure : IValue<float>
     }
 
 
-    [SerializeField] StructureSD structureSD;
+    [SerializeField] StructureContextBase structureContext;
     [SerializeField][HideInInspector] string structureID;
     [SerializeField][HideInInspector] StructureState _currentState;
     public event Action<StructureState, StructureState> OnStateChanged;
@@ -46,9 +46,9 @@ public class Structure : IValue<float>
         SetAsDefaultState();
     }
 
-    public void ConstructStructure(StructureSD structureSD) {
-        this.structureSD = structureSD;
-        structureID = structureSD.ID;
+    public void ConstructStructure(StructureContextBase structureContext) {
+        this.structureContext = structureContext;
+        structureID = structureContext.ID;
         CurrentState = StructureState.Built;
     }
 
@@ -59,14 +59,14 @@ public class Structure : IValue<float>
     public void DestroyStrucure() {
         if (CanDestroy == false) { return; }
         CurrentState = StructureState.Empty;
-        structureSD = null;
+        structureContext = null;
         structureID = null;
     }
 
     private void SetAsDefaultState() {
         structureID = null;
         currentProgress = 0;
-        maxProgress = structureSD == null ? 1 : structureSD.ConstructionTime;
+        maxProgress = structureContext == null ? 1 : structureContext.ConstructionTime;
         CurrentState = StructureState.Locked;
     }
 }

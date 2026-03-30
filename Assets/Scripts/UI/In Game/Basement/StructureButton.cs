@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-public class StructureUI : ButtonBase
+public class StructureButton : ButtonBase
 {
     public int Index => index;
 
@@ -45,7 +45,7 @@ public class StructureUI : ButtonBase
             var constructionContext = new ConstructionContext(index, structureList);
             RegisterAction(Structure.StructureState.Empty, new ShowConstructionUIAction(constructionContext));
         }
-        RegisterAction(Structure.StructureState.Built, new ShowUIAction(structure));
+        RegisterAction(Structure.StructureState.Built, new ShowStructureUIAction(structure));
 
         _isInit = true;
     }
@@ -68,7 +68,7 @@ public class StructureUI : ButtonBase
         objectActivator.ShowObject((int)currentState);
 
         if (currentState == Structure.StructureState.Built) {
-            structureImage.sprite = structure.StructureSD.Image;
+            structureImage.sprite = structure.StructureContext.StructureImage;
         }
     }
 }

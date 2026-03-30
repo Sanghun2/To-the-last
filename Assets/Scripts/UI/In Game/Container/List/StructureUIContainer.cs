@@ -7,14 +7,14 @@ public class StructureUIContainer : UIBase
 {
     public int Count => structureUIList.Count;
 
-    [SerializeField] List<StructureUI> structureUIList = new List<StructureUI>();
+    [SerializeField] List<StructureButton> structureUIList = new List<StructureButton>();
 
 
     public override void InitUI() {
         if (IsInit) return;
 
         structureUIList.Clear();
-        structureUIList = GetComponentsInChildren<StructureUI>().ToList();
+        structureUIList = GetComponentsInChildren<StructureButton>().ToList();
         for (int i = 0; i < structureUIList.Count; i++) {
             structureUIList[i].AssignIndex(i);
             structureUIList[i].InitUI();
@@ -23,7 +23,7 @@ public class StructureUIContainer : UIBase
         _isInit = true;
     }
 
-    public StructureUI GetStructureUI(int index) {
+    public StructureButton GetStructureUI(int index) {
         if (0 <= index && index < structureUIList.Count) {
             return structureUIList[index];
         }

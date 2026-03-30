@@ -26,9 +26,10 @@ public class ConstructionContentUI : UIBase, IPool
         constructionButton.InitButton(new ActionData(
             $"건설\n({structureSD.ConstructionTime}분)",
             () => {
-                if (InventoryUtility.HasIngredients(structureSD.RequirementItems)) {
+                var a = InventoryUtility.HasIngredients(structureSD.RequirementItems);
+                if (true) {
                     Managers.Construction.SetTargetStructure(structureSD);
-                    Managers.Construction.ConstructTarget();
+                    Managers.Construction.ConstructSetTarget();
                 }
                 else {
                     Debug.LogAssertion($"재료 불충분");

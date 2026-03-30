@@ -2,24 +2,21 @@
 
 public abstract class StructureDataParserBase
 {
-    public abstract bool TryParseData(StructureSD structureSD, out StructureDataBase structureData);
+    public abstract StructureDataBase ParseData(StructureSD structureSD);
 }
 
 public abstract class StructureDataParserBase<TSD, TData> : StructureDataParserBase
     where TSD : StructureSD
     where TData : StructureDataBase
 {
-    public override bool TryParseData(StructureSD structureSD, out StructureDataBase structureData) {
+    public override StructureDataBase ParseData(StructureSD structureSD) {
         if (structureSD is TSD tsd) {
-            var result = TryParseData(tsd, out TData parsedData);
-            structureData = parsedData;
-            return result;
+            return ParseData(tsd);
         }
 
         Debug.LogError($"<color=red>{structureSD.GetType()} is not type of ({typeof(TSD)})</color>");
-        structureData = null;
-        return false;
+        return null;
     }
 
-    public abstract bool TryParseData(TSD structureSD, out TData structureData);
+    public abstract TData ParseData(TSD structureSD);
 }

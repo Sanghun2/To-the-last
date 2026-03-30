@@ -8712,18 +8712,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1451288333558581590, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451288333558581590, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451288333558581590, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2899253641956323782, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
       propertyPath: m_Name
       value: Craft UI
@@ -8739,22 +8727,6 @@ PrefabInstance:
     - target: {fileID: 3283555499381883525, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
       propertyPath: m_SizeDelta.y
       value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675184434659887345, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675184434659887345, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675184434659887345, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 482.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675184434659887345, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4721790349155890008, guid: e50adc5657f436c4d86243f0d3ee5430, type: 3}
       propertyPath: m_AnchorMax.x

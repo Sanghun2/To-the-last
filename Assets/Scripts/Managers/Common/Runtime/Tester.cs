@@ -90,8 +90,8 @@ public class Tester : MonoBehaviour
         //    int idx = i;
         //    list.Add(new SelectActionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
         //}
-        //var dd = new DialogData(characterSD.Image, characterSD.DisplayText, situation, list);
-        //Managers.UI.OpenUI<DialogUI>().ShowDialog(dd);
+        //var dd = new DialogData(characterSD.StructureImage, characterSD.DisplayText, situation, list);
+        //Managers.UI.OpenStructureUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {
 
@@ -145,13 +145,13 @@ public class Tester : MonoBehaviour
     }
 
     public void UnlockStructureUI() {
-        Managers.Construction.Unlock(locationIndex);
+        Managers.Construction.UnlockLocation(locationIndex);
     }
     public void SetStructure() {
-        //Managers.Construction.StartConstruction(locationIndex, targetStructureSD);
+        //Managers.Construction.StartConstruction(locationIndex, targetStructureData);
     }
     public void Destroy() {
-        Managers.Construction.Destroy(locationIndex);
+        Managers.Construction.DestroyStructure(locationIndex);
     }
 
     public void ShowBuildList() {

@@ -2,7 +2,13 @@
 
 public class UtilityStructureDataParser : StructureDataParserBase<UtilityStructureSD, UtilityStructureData>
 {
-    public override bool TryParseData(UtilityStructureSD structureSD, out UtilityStructureData structureData) {
-        throw new System.NotImplementedException();
+    public override UtilityStructureData ParseData(UtilityStructureSD structureSD) {
+        return new UtilityStructureData(
+            structureSD.ID,
+            structureSD.DisplayText,
+            structureSD.Image,
+            structureSD.ConstructionTime,
+            structureSD.RequirementItems
+            );
     }
 }

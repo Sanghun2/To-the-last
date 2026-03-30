@@ -7,7 +7,7 @@ public class DelayedRecipeSD : RecipeSD
 
     [SerializeField] int completionDelayMinutes;
 
-    private void OnValidate() {
+    protected override void OnValidate() {
         RenameAsset(ID, suffix:"_DelayedRecipeSD");
     }
 }
