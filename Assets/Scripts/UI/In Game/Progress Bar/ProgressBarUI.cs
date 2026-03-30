@@ -39,6 +39,7 @@ public class ProgressBarUI : UIBase
     }
 
     public void Clear() {
+        progressTweener?.Kill();
         progressor.SetCurrentValue(0);
         progressBar.fillAmount = 0;
     }

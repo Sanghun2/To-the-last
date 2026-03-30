@@ -26,5 +26,10 @@ public class Ingredient
 
     [SerializeField] ItemSD itemSD;
     [SerializeField] int amount;
+
+    public Ingredient(ItemSD itemSD, int amount) {
+        this.itemSD = itemSD;
+        this.amount = amount;
+    }
 }
 

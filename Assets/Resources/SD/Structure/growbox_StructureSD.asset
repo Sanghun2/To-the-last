@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: growbox_StructureSD
   m_EditorClassIdentifier: Assembly-CSharp::ProductionStructureSD
   id: growbox
-  displayText: 
+  displayText: "\uC7AC\uBC30 \uC0C1\uC790"
   descripiton: "\uC791\uC740 \uC2DD\uBB3C\uC744 \uD0A4\uC6B8 \uC218 \uC788\uB294
     \uC0C1\uC790"
   categoryList: []

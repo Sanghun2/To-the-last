@@ -15,12 +15,12 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>
         _isInit = true;
     }
 
-    public override void ShowUI(UtilityStructureContext structureContext) {
+    public override void SetUpUI(UtilityStructureContext structureContext) {
         InitUI();
+
+        SetTitleText(structureContext.DisplayText);
         var contents = structureContext.ContentList;
         ShowContents(contents);
-
-        OpenUI();
     }
 
     private void ShowContents(IReadOnlyList<UtilityContentSD> contents) {

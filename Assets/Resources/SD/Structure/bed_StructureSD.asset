@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bed_StructureSD
   m_EditorClassIdentifier: Assembly-CSharp::UtilityStructureSD
   id: bed
-  displayText: 
+  displayText: "\uCE68\uB300"
   descripiton: "\uC7A0\uC744 \uC798 \uC218 \uC788\uB294 \uCE68\uB300."
   categoryList: []
   image: {fileID: 21300000, guid: 81919bc1c8584d84cb6e91efb2724a29, type: 3}

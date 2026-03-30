@@ -7,13 +7,13 @@ public abstract class StructureUIBase : UIBase
 {
     [SerializeField] TextMeshProUGUI titleText;
 
-    public void SetTitleText(StructureContextBase structureContext) {
-        titleText.text = structureContext.Data.DisplayText;
+    public void SetTitleText(string text) {
+        titleText.text = text;
     }
 }
 
 public abstract class StructureUIBase<TContext> : StructureUIBase
     where TContext : StructureContextBase
 {
-    public abstract void ShowUI(TContext structureContext);
+    public abstract void SetUpUI(TContext structureContext);
 }

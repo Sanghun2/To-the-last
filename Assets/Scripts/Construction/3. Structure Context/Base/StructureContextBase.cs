@@ -8,7 +8,7 @@ public abstract class StructureContextBase
     public string ID => _data.ID;
     public int ConstructionTime => _data.ConstructionTime;
     public Sprite StructureImage => _data.StructureImage;
-
+    public string DisplayText => _data.DisplayText;
 
     protected StructureDataBase _data;
 

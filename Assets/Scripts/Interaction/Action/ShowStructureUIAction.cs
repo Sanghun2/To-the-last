@@ -16,7 +16,7 @@ public class ShowStructureUIAction : ActionBase<Structure>
         var structure = parameter;
         var structureContext = parameter.StructureContext;
         StructureUIBase structureUI = structureContext.OpenStructureUI();
-        structureUI.SetTitleText(structureContext);
+        structureUI.SetTitleText(structureContext.DisplayText);
     }
 
     private bool IsMatched(Type uiType, string typeName) {

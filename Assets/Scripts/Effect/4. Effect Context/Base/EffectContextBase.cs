@@ -2,7 +2,7 @@
 
 public class EffectContextBase
 {
-    public EffectDataBase EffectData => effectData;
+    public EffectDataBase Data => data;
 
-    private EffectDataBase effectData;
+    private EffectDataBase data;
 }

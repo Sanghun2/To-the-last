@@ -26,7 +26,7 @@ public class UtilityContentUI : UIBase, IPool
         if (contentSD == null) { Debug.Log("content is null"); return; }
 
         var job = Managers.Job.CreateFocusJob(
-            contentSD.RequireMinutes, 
+            contentSD.RequireMinutes,
             progressBarUI.UpdateUI,
             () => {
                 var effects = contentSD.Effects;
@@ -36,7 +36,12 @@ public class UtilityContentUI : UIBase, IPool
                 }
             });
 
-        Managers.Job.DoFocusJob(job);
+        Managers.Job.DoFocusJob(job, OnComplete);
+    }
+
+    private void OnComplete() {
+        progressBarUI.Clear();
+        Debug.Log($"utility activity completed");
     }
 
     #region Pool
