@@ -7,6 +7,7 @@ using UnityEngine.Video;
 public class ConstructionManager : IInitializable
 {
     public bool IsInit => _isInit;
+    public int CurrentLocationIndex => currentLocationIndex;
 
     [SerializeField] List<Structure> structureList = new List<Structure>();
     
@@ -52,6 +53,11 @@ public class ConstructionManager : IInitializable
         SetTargetStructure(structureData);
     }
 
+    public Structure GetStructure(int locationIndex) {
+        if (!IsValidLocation(locationIndex)) { return null; }
+        return structureList[locationIndex];
+    }
+
     public void ConstructSetTarget() {
         if (!CanConstruct()) return;
         StartConstruction(currentLocationIndex, currentStructureData);
@@ -73,11 +79,11 @@ public class ConstructionManager : IInitializable
 
         Structure targetStructure = GetStructure(locationIndex);
         StructureContextBase structureContext = targetStructure.StructureContext;
-        var buildingUI = Managers.UI.GetUI<ConstructionUI>();
+        //var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
             structureContext.ConstructionTime,
             onProgressChanged: (cv, mv) => {
-                buildingUI.UpdateProgressBar(cv, mv);
+                //buildingUI.UpdateProgressBar(cv, mv);
             },
             onComplete: () => {
                 targetStructure.DestroyStrucure();
@@ -124,10 +130,6 @@ public class ConstructionManager : IInitializable
             ClearTargetStructure();
             //Managers.UI.CloseUI<ConstructionUI>();
         });
-    }
-    private Structure GetStructure(int locationIndex) {
-        if (!IsValidLocation(locationIndex)) { return null; }
-        return structureList[locationIndex];
     }
 
     private bool TryConstructStructure(int targetLocationIndex, StructureDataBase targetStructureData) {
@@ -178,4 +180,5 @@ public class ConstructionManager : IInitializable
 
         return false;
     }
+
 }
