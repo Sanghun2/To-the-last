@@ -10,7 +10,7 @@ namespace Michsky.UI.Dark
     [DisallowMultipleComponent]
     public class SplashScreenManager : MonoBehaviour
     {
-        // Content
+        // ContentList
         public List<SplashScreenTitle> splashScreenTitles = new List<SplashScreenTitle>();
 
         // Resources

@@ -9,7 +9,7 @@ namespace Michsky.UI.Dark
     [RequireComponent(typeof(CanvasGroup))]
     public class ModalWindowManager : MonoBehaviour
     {
-        // Content
+        // ContentList
         public string title = "Title";
         [TextArea(0, 4)] public string description = "Description";
 

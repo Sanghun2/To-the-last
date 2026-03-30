@@ -11,3 +11,9 @@ public abstract class StructureUIBase : UIBase
         titleText.text = structureContext.Data.DisplayText;
     }
 }
+
+public abstract class StructureUIBase<TContext> : StructureUIBase
+    where TContext : StructureContextBase
+{
+    public abstract void ShowUI(TContext structureContext);
+}

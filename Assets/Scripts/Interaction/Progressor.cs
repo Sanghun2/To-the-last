@@ -16,4 +16,8 @@ public class Progressor : IValue<float>
         this.currentValue = currentValue;
         this.maxValue = maxValue;
     }
+
+    public void SetCurrentValue(float value) {
+        currentValue = value;
+    }
 }

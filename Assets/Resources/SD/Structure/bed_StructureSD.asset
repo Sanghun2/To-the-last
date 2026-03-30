@@ -26,3 +26,7 @@ MonoBehaviour:
     amount: 3
   - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
     amount: 3
+  utilityContents:
+  - {fileID: 11400000, guid: e63d562286b357840954a8ccd892b880, type: 2}
+  - {fileID: 11400000, guid: 630888c51c84fda4bb677af1c27b19a2, type: 2}
+  - {fileID: 11400000, guid: 61a1d40fecb411441b8682a369758ade, type: 2}

@@ -37,4 +37,9 @@ public class ProgressBarUI : UIBase
                 .SetEase(progressEase);
         }
     }
+
+    public void Clear() {
+        progressor.SetCurrentValue(0);
+        progressBar.fillAmount = 0;
+    }
 }

@@ -32,6 +32,11 @@ public class JobHandler : IInitializable
             Debug.Log($"현재 실행중인 focus job이 있어 실행 skip됨");
         }
     }
+
+    public FocusJob CreateFocusJob(int requireMinutes, Action<float, float> onProgress=null, Action onComplete=null) {
+        var focusJob = new FocusJob(requireMinutes, onProgress, onComplete);
+        return focusJob;
+    }
     public void PauseJob(bool pause) {
         this.pause = pause;
     }

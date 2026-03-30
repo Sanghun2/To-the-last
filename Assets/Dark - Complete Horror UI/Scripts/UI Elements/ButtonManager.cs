@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -11,7 +11,7 @@ namespace Michsky.UI.Dark
     [RequireComponent(typeof(Button))]
     public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
-        // Content
+        // ContentList
         public string buttonText = "Button";
         public UnityEvent clickEvent;
         public UnityEvent hoverEvent;
