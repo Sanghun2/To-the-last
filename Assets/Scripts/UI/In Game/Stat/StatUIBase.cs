@@ -9,13 +9,6 @@ public abstract class StatUIBase : UIBase
     public Define.Stat StatType => statSD.TargetStat;  
     [SerializeField] protected StatSD statSD;
 
-    public override void InitUI() {
-        if (IsInit) return;
-
-        Managers.Player.PlayerData.RegisterEvent(UpdateUI, StatType, Define.StatDetail.current);
-
-        _isInit = true;
-    }
 
     public abstract void UpdateUI(Value<float> value);
 

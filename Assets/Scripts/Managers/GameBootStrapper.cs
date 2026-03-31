@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameBootStrapper
 {
+    public event Action OnGameStarted;
+
     public void StartBootStrap() {
         // 연출
 
@@ -24,6 +26,7 @@ public class GameBootStrapper
 
         Managers.Scene.TransitionScene(Define.INGAME_SCENE_ID, callback: () => {
             InitAllGameData();
+            OnGameStarted?.Invoke();
         });
     }
 
@@ -39,6 +42,8 @@ public class GameBootStrapper
 
         playerData.MetabolicSystem.InitMetabolism(BuildMetabolism());
         playerData.StatContainer.InitStats(characterSD.StatList);
+
+        
 
         // location
         Managers.Player.PlayerData.SetAsDefaultLocation();

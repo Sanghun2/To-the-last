@@ -16,20 +16,8 @@ public class StatGaugeUI : StatUIBase
     [SerializeField] protected Button infoButton;
 
 
-    public override void UpdateUI(Value<float> value) {
-        if (value.MaxValue == 0) { Debug.LogAssertion($"({statSD.ID}) max value 0. func returned"); return; }
-        statFillImage.fillAmount = value.CurrentValue / value.MaxValue;
-    }
-
-    private void Reset() {
-        if (infoButton == null) {
-            infoButton = GetComponentInChildren<Button>();
-        }
-    }
-
     public override void InitUI() {
         if (IsInit) return;
-        base.InitUI();
 
         // ui init
         statBackgroundImage.sprite = statSD.Image;
@@ -65,6 +53,14 @@ public class StatGaugeUI : StatUIBase
         _isInit = true;
     }
 
+    public void RegisterEvents() {
+        Managers.Player.PlayerData.RegisterEvent(UpdateUI, StatType, Define.StatDetail.current);
+    }
+
+    public override void UpdateUI(Value<float> value) { 
+        if (value.MaxValue == 0) { Debug.LogAssertion($"({statSD.ID}) max value 0. func returned"); return; }
+        statFillImage.fillAmount = value.CurrentValue / value.MaxValue;
+    }
     public void UpdateSubText(Value<float> value) {
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();
         string format = floatPoints == 0 ? "N0" : $"N{floatPoints}";
@@ -81,5 +77,20 @@ public class StatGaugeUI : StatUIBase
             default:
                 break;
         }
+    }
+
+
+    private void Reset() {
+        if (infoButton == null) {
+            infoButton = GetComponentInChildren<Button>();
+        }
+    }
+
+    private void OnEnable() {
+        Managers.BootStrap.OnGameStarted -= RegisterEvents;
+        Managers.BootStrap.OnGameStarted += RegisterEvents;
+    }
+    private void OnDisable() {
+        Managers.BootStrap.OnGameStarted -= RegisterEvents;
     }
 }
