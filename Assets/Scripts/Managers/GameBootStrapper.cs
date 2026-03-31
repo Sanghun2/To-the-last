@@ -21,7 +21,6 @@ public class GameBootStrapper
     }
 
     public void CompleteBootStrap() {
-        Debug.Log("complete called");
         Managers.UI.CloseUI<GameBootStrapUI>();
 
         Managers.Scene.TransitionScene(Define.INGAME_SCENE_ID, callback: () => {

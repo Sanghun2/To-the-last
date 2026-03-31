@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class StatModifyEffectContextBuilder : EffectContextBuilderBase<StatModifyEffectData, StatModifyEffectContext>
 {
-    public override bool TryBuildContext(StatModifyEffectData effectData, out StatModifyEffectContext effectContext) {
+    public override bool TryBuildContext(StatModifyEffectData effectData, Entity caster, IReadOnlyList<Entity> targets, out StatModifyEffectContext effectContext) {
         effectContext = new StatModifyEffectContext(effectData);
-        //context.SetApplyContext();
+        effectContext.SetApplyContext(caster, targets);
         return true;
     }
 }

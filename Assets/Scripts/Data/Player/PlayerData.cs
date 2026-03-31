@@ -39,16 +39,17 @@ public sealed class PlayerData : IInitializable
 
 
     public IReadOnlyList<SkillData> SkillList => skillContainer.SkillList;
-    public StatContainer StatContainer => statContainer;
+    public StatContainer StatContainer => playerEntity.Stats;
     public string CharacterID => _characterID;
 
+    public Entity Entity => playerEntity;
 
     public event Action<Define.VitalState, Define.VitalState> OnVitalStateChanged;
 
     [SerializeField] SkillContainer skillContainer = new SkillContainer();
     [SerializeField] private string currentLocationID;
     private bool _isInit;
-    private StatContainer statContainer = new StatContainer();
+    private Entity playerEntity = new Entity("player", new StatContainer());
     private MetabolicSystem metabolicSystem = new MetabolicSystem();
     private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
     private Define.VitalState vitalState;
@@ -81,20 +82,20 @@ public sealed class PlayerData : IInitializable
     #region Stat
 
     public void RegisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.none) {
-        statContainer.RegisterEvent(@event, targetStat.ToID(), detail.ToString());
+        StatContainer.RegisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
     public void UnregisterEvent(Action<Value<float>> @event, Define.Stat targetStat, Define.StatDetail detail=Define.StatDetail.none) {
-        statContainer.UnregisterEvent(@event, targetStat.ToID(), detail.ToString());
+        StatContainer.UnregisterEvent(@event, targetStat.ToID(), detail.ToString());
     }
 
     public Value<float>? GetStatValue(Define.Stat targetStat) {
-        return statContainer.GetRawValue(targetStat.ToID());
+        return StatContainer.GetRawValue(targetStat.ToID());
     }
     public void ChangeStat(Define.Stat targetStat, float deltaValue) {
-        statContainer.TryChangeRawValue(targetStat.ToID(), deltaValue);
+        StatContainer.TryChangeRawValue(targetStat.ToID(), deltaValue);
     }
     public void ChangeMaxStat(Define.Stat targetStat, float deltaValue) {
-        statContainer.TryChangeRawMaxVale(targetStat.ToID(), deltaValue);
+        StatContainer.TryChangeRawMaxVale(targetStat.ToID(), deltaValue);
     }
 
     #endregion
@@ -157,7 +158,7 @@ public sealed class PlayerData : IInitializable
 
     // private
     private void RegisterStat(IStatEntry stat) {
-        statContainer.RegisterStat(stat);
+        StatContainer.RegisterStat(stat);
     }
     private void ResetSkills() {
         skillContainer.Init();
@@ -185,7 +186,7 @@ public sealed class PlayerData : IInitializable
     }
 
     private void ConsumeStatAdaptor(int day, int hour, int minute, int deltaMinutes) {
-        metabolicSystem.ConsumeStats(statContainer, deltaMinutes);
+        metabolicSystem.ConsumeStats(StatContainer, deltaMinutes);
     }
     private void OnPlayerDead(Value<float> value) {
         if (value.CurrentValue <= 0) {

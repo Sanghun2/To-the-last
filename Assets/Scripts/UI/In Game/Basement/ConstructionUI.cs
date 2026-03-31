@@ -8,13 +8,11 @@ using UnityEngine;
 public class ConstructionUI : UIBase
 {
     [SerializeField] ConstructionContentUIContainer ConstructionContentUIContainer;
-    [SerializeField] ProgressBarUI progressBarUI;
 
     public override void InitUI() {
         if (IsInit) return;
 
         CloseUI();
-        progressBarUI.InitUI(0, 1);
 
         _isInit = true;
     }
@@ -31,12 +29,5 @@ public class ConstructionUI : UIBase
             return;
         }
         ConstructionContentUIContainer.ShowList(structureList);
-    }
-
-    public void SetProgressBar(float currentValue, float maxValue) {
-        progressBarUI.InitUI(currentValue, maxValue);
-    }
-    public void UpdateProgressBar(float currentValue, float maxValue) {
-        progressBarUI.UpdateUI(currentValue, maxValue);
     }
 }

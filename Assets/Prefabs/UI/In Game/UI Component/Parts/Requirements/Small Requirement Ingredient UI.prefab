@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 273679562359693845, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 273679562359693845, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 273679562359693845, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_SizeDelta.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 273679562359693845, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 273679562359693845, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -150,11 +150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8471588453061378423, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471588453061378423, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471588453061378423, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_SizeDelta.x
@@ -162,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8471588453061378423, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471588453061378423, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9172985673233000826, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_Name
-      value: Requirement Small Ingredient UI
+      value: Small Requirement Ingredient UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

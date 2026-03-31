@@ -22,6 +22,4 @@ MonoBehaviour:
   - effectSD: {fileID: 11400000, guid: e55e25d78ff03424d8187234b53e2115, type: 2}
     value: 45
   - effectSD: {fileID: 11400000, guid: a0b3adec9d16bac46a139338b2f6172f, type: 2}
-    value: 20
-  - effectSD: {fileID: 11400000, guid: 360518e2c42391248bf12b74a2cf6dd4, type: 2}
-    value: 20
+    value: 100

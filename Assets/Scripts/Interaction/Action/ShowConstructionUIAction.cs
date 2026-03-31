@@ -25,7 +25,6 @@ public class ShowConstructionUIAction : ActionBase<ConstructionContext>
     public override void Execute() {
         Managers.Construction.SetLocationIndex(parameter.Index);
         var ui = Managers.UI.OpenUI<ConstructionUI>();
-        ui.SetProgressBar(0,1);
         ui.ShowConstructionCatalogs(parameter.StructureCatalogs);
     }
 }

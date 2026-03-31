@@ -278,8 +278,20 @@ public sealed class Managers : MonoBehaviour
             return _inventoryManager;
         }
     }
+    public static ScreenBlocker ScreenBlocker
+    {
+        get
+        {
+            if (_screenBlocker == null) {
+                _screenBlocker = FindAnyObjectByType<ScreenBlocker>(FindObjectsInactive.Include);
+            }
+
+            return _screenBlocker;
+        }
+    }
 
     // InGame
+    private static ScreenBlocker _screenBlocker;
     private static InventoryManager _inventoryManager;
     private static EffectManager _effectSystem;
     private static BattleSystem _battleManager;

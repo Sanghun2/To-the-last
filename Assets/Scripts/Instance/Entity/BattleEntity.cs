@@ -58,7 +58,6 @@ public class BattleEntity : Entity
 
     public int Position => _position;
 
-    protected StatContainer statContainer = new StatContainer();
     private StateBase _currentState;
     private BehaviourState _currentBehaviourState;
     private Define.VitalState _currentVitalState;
@@ -66,7 +65,7 @@ public class BattleEntity : Entity
 
 
     public BattleEntity(string entityID) : base(entityID) {
-
+        _statContainer = new StatContainer();
     }
 
     public event Action<BehaviourState, BehaviourState> OnBehaviourStateChanged;
@@ -80,12 +79,12 @@ public class BattleEntity : Entity
         CurrentBehaviourState = BehaviourState.Idle;
         _position = 0;
 
-        statContainer.CreateDefaultStats();
-        statContainer.InitStats(statDataList);
+        Stats.CreateDefaultStats();
+        Stats.InitStats(statDataList);
 
         string hpID = Define.Stat.Hp.ToID();
-        statContainer.UnregisterEvent(UpdateVital, hpID);
-        statContainer.RegisterEvent(UpdateVital, hpID);
+        Stats.UnregisterEvent(UpdateVital, hpID);
+        Stats.RegisterEvent(UpdateVital, hpID);
 
         return this;
     }
@@ -93,7 +92,7 @@ public class BattleEntity : Entity
     public BattleEntity InitEntity(StatContainer statContainer) {
         CurrentBehaviourState = BehaviourState.Idle;
         _position = 0;
-        this.statContainer = statContainer;
+        _statContainer = statContainer;
         return this;
     }
 
@@ -130,9 +129,9 @@ public class BattleEntity : Entity
 
     public bool TryGetStatValue(Define.Stat statType, out float stat) {
         stat = 0;
-        if (statContainer == null) return false;
+        if (Stats == null) return false;
 
-        Value<float>? statValue = statContainer.GetRawValue(statType.ToID());
+        Value<float>? statValue = Stats.GetRawValue(statType.ToID());
         if (statValue == null) { Debug.LogError($"<color=red>{statType}에 해당하는 stat이 없음</color>"); return false; }
 
         Value<float> value = (Value<float>)statValue;
@@ -140,10 +139,10 @@ public class BattleEntity : Entity
         return true;
     }    
     public bool TryChangeStat(string statID, float deltaValue) {
-        return statContainer.TryChangeRawValue(statID, deltaValue);
+        return Stats.TryChangeRawValue(statID, deltaValue);
     }
     public bool TryGetStat(string statID, out IStatEntry stat) {
-        return statContainer.TryGetStat(statID, out stat);
+        return Stats.TryGetStat(statID, out stat);
     }
 
     public void ResetState(Define.BattleState currentState, Define.BattleState _) {

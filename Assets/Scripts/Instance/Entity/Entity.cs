@@ -3,14 +3,17 @@ using BilliotGames;
 using UnityEngine;
 
 [Serializable]
-public abstract class Entity : IReadOnlyEntity
+public class Entity : IReadOnlyEntity
 {
     public string EntityID => _entityID;
+    public StatContainer Stats => _statContainer;
 
     protected string _entityID;
+    protected StatContainer _statContainer;
 
-    public Entity(string entityID) {
+    public Entity(string entityID, StatContainer statContainer=null) {
         this._entityID = entityID;
+        _statContainer = statContainer;
     }
 }
 

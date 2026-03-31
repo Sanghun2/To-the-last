@@ -28,7 +28,7 @@ public abstract class SelectActionConverterBase<TSelectActionContext> : SelectAc
         return () => {
             FocusJob selectionProcess = new FocusJob(
             context.JobDuration,
-            onProgressChanged: Managers.Select.CurrentSelectedButton.UpdateProcessUI,
+            onProgress: Managers.Select.CurrentSelectedButton.UpdateProcessUI,
             onComplete: ExecuteAction(context));
 
             Managers.Job.DoFocusJob(selectionProcess, () => Managers.Select.ResetSelectedButton());

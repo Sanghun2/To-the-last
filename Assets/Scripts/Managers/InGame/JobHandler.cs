@@ -33,8 +33,8 @@ public class JobHandler : IInitializable
         }
     }
 
-    public FocusJob CreateFocusJob(int requireMinutes, Action<float, float> onProgress=null, Action onComplete=null) {
-        var focusJob = new FocusJob(requireMinutes, onProgress, onComplete);
+    public FocusJob CreateFocusJob(int requireMinutes, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) {
+        var focusJob = new FocusJob(requireMinutes, onStart, onProgress, onComplete);
         return focusJob;
     }
     public void PauseJob(bool pause) {
@@ -57,6 +57,8 @@ public class JobHandler : IInitializable
         float currentIngameSeconds = 0;
 
         Managers.Time.OnTimeChanged += focusJob.ChangeMinutes;
+
+        focusJob.OnStart?.Invoke();
 
         if (focusJob.TotalSeconds > 0) {
             while (progress < 1) {

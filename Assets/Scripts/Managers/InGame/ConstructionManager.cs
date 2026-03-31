@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -58,9 +59,9 @@ public class ConstructionManager : IInitializable
         return structureList[locationIndex];
     }
 
-    public void ConstructSetTarget() {
+    public void ConstructSetTarget(Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
         if (!CanConstruct()) return;
-        StartConstruction(currentLocationIndex, currentStructureData);
+        StartConstruction(currentLocationIndex, currentStructureData, onStart, onProgress, onComplete);
     }
 
     public void UnlockLocation(int locationIndex) {
@@ -82,7 +83,7 @@ public class ConstructionManager : IInitializable
         //var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
             structureContext.ConstructionTime,
-            onProgressChanged: (cv, mv) => {
+            onProgress: (cv, mv) => {
                 //buildingUI.UpdateProgressBar(cv, mv);
             },
             onComplete: () => {
@@ -110,20 +111,22 @@ public class ConstructionManager : IInitializable
         var a = InventoryUtility.HasIngredients(inventories, currentStructureData.RequirementItems);
         return true;
     }
-    private void StartConstruction(int locationIndex, StructureDataBase structureData) {
+    private void StartConstruction(int locationIndex, StructureDataBase structureData, Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
         if (!IsValidLocation(locationIndex)) return;
         if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureData)) return;
 
-        CreateConstructionJob(locationIndex, structureData);
+        CreateConstructionJob(locationIndex, structureData, onStart, onProgress, onComplete);
     }
-    private void CreateConstructionJob(int locationIndex, StructureDataBase structureData) {
+    private void CreateConstructionJob(int locationIndex, StructureDataBase structureData, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) {
         FocusJob constructionJob = new FocusJob(
              structureData.ConstructionTime,
-             onProgressChanged: (ctime, mtime) => {
-                 Managers.UI.GetUI<ConstructionUI>().UpdateProgressBar(ctime, mtime);
-             },
-             onComplete: () => TryConstructStructure(locationIndex, structureData));
+             onStart: onStart,
+             onProgress: onProgress,
+             onComplete: () => {
+                 TryConstructStructure(locationIndex, structureData);
+                 onComplete?.Invoke();
+             });
 
 
         Managers.Job.DoFocusJob(constructionJob, () => {

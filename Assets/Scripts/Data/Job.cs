@@ -26,19 +26,22 @@ public class Job
             _currentState = value;
         }
     }
+    public Action OnStart => onStartCallback;
 
 
     [SerializeField] protected int currentMinutes;
     [SerializeField] protected int totalMinutes;
     private State _currentState;
 
+    [NonSerialized] private Action onStartCallback;
     [NonSerialized] private Action completeCallback;
     [NonSerialized] private Action<float, float> progressCallback;
 
-    public Job(int totalMinutes, Action<float, float> progressCallback = null, Action callback = null) {
+    public Job(int totalMinutes, Action onStart=null, Action<float, float> onProgress = null, Action onComplete = null) {
         this.totalMinutes = totalMinutes;
-        this.completeCallback = callback;
-        this.progressCallback = progressCallback;
+        this.onStartCallback = onStart;
+        this.progressCallback = onProgress;
+        this.completeCallback = onComplete;
     }
 
     public void ChangeMinutes(int deltaMinutes) {
@@ -62,6 +65,7 @@ public class Job
             currentMinutes = totalMinutes;
             _currentState = State.Completed;
             completeCallback?.Invoke();
+            onStartCallback = null;
             completeCallback = null;
             progressCallback = null;
         }
@@ -75,10 +79,10 @@ public class FocusJob : Job
 
     [SerializeField] protected float duration = 2.5f;
 
-    public FocusJob(int totalMinutes, Action<float, float> onProgressChanged=null, Action onComplete=null) : base(totalMinutes, onProgressChanged, onComplete) {
+    public FocusJob(int totalMinutes, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) : base(totalMinutes, onStart, onProgress, onComplete) {
 
     }
-    public FocusJob(int totalMinutes, float duration, Action<float, float> progressCallback=null, Action callback = null) : base(totalMinutes, progressCallback, callback) {
+    public FocusJob(int totalMinutes, float duration, Action onStart=null, Action<float, float> onProgress=null, Action callback = null) : base(totalMinutes, onStart, onProgress, callback) {
         this.duration = duration;
     }
 }

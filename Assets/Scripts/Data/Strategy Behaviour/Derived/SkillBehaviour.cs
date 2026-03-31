@@ -38,8 +38,9 @@ public sealed class SkillBehaviour : StrategyBehaviour
         Debug.Log("effect applied");
         IReadOnlyList<Effect> effects = skillSD.Effects;
         for (int i = 0; i < effects.Count; i++) {
-            var effect = effects[i];
-            Managers.Effect.ApplyEffect(effect);
+            Effect effect = effects[i];
+            var targets = EffectUtility.GetTargets(caster, effect.EffectSD.TargetType);
+            Managers.Effect.ApplyEffect(new EffectApplyRequest(effect, caster, targets));
         }
     }
 }

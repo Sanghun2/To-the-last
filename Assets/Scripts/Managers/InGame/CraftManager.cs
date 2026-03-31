@@ -78,10 +78,8 @@ public sealed class CraftManager
             craftContext.CurrentState = CraftContext.State.Crafting;
             FocusJob focusJob = new FocusJob(
                 targetRecipeSD.RequireMinutes,
-                onProgress,
-                () => {
-                    onComplete?.Invoke();
-                });
+                onProgress: onProgress,
+                onComplete: onComplete);
 
             Managers.Job.DoFocusJob(focusJob);
             return true;
@@ -94,8 +92,8 @@ public sealed class CraftManager
         if (recipeSD is DelayedRecipeSD delayedRecipeSD) {
             var newJob = new Job(
                 delayedRecipeSD.CompletionDelayMinutes,
-                onProgress,
-                () => craftContext.CurrentState = CraftContext.State.Completed);
+                onProgress: onProgress,
+                onComplete: () => craftContext.CurrentState = CraftContext.State.Completed);
             Managers.Job.RegisterDelayedJob(newJob);
         }
     }

@@ -27,13 +27,16 @@ public class UtilityContentUI : UIBase, IPool
 
         var job = Managers.Job.CreateFocusJob(
             contentSD.RequireMinutes,
-            progressBarUI.UpdateUI,
-            () => {
+            onStart: () => Managers.ScreenBlocker.SetActive(true),
+            onProgress: progressBarUI.UpdateUI,
+            onComplete: () => {
                 var effects = contentSD.Effects;
                 for (int i = 0; i < effects.Count; i++) {
-                    var effect = effects[i];
-                    Managers.Effect.ApplyEffect(effect);
+                    Effect effect = effects[i];
+                    Entity caster = Managers.Player.PlayerData.Entity;
+                    Managers.Effect.ApplyEffect(new EffectApplyRequest(effect, caster));
                 }
+                Managers.ScreenBlocker.SetActive(false);
             });
 
         Managers.Job.DoFocusJob(job, OnComplete);
@@ -41,7 +44,6 @@ public class UtilityContentUI : UIBase, IPool
 
     private void OnComplete() {
         progressBarUI.Clear();
-        Debug.Log($"utility activity completed");
     }
 
     #region Pool

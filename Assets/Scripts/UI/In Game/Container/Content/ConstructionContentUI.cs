@@ -9,6 +9,7 @@ public class ConstructionContentUI : UIBase, IPool
     [SerializeField] ContentUI structureContentUI;
     [SerializeField] RequirementUIContainer requirementUIContainer;
     [SerializeField] CustomButton constructionButton;
+    [SerializeField] ProgressBarUI progressBarUI;
 
     public bool IsActive => IsOpened;
 
@@ -18,6 +19,7 @@ public class ConstructionContentUI : UIBase, IPool
 
     public void Init() {
         InitUI();
+        progressBarUI.Clear();
     }
 
     public void ShowUI(StructureSD structureSD) {
@@ -29,7 +31,10 @@ public class ConstructionContentUI : UIBase, IPool
                 var a = InventoryUtility.HasIngredients(structureSD.RequirementItems);
                 if (true) {
                     Managers.Construction.SetTargetStructure(structureSD);
-                    Managers.Construction.ConstructSetTarget();
+                    Managers.Construction.ConstructSetTarget(
+                        onStart: () => Managers.ScreenBlocker.SetActive(true),
+                        onProgress: progressBarUI.UpdateUI,
+                        onComplete: () => Managers.ScreenBlocker.SetActive(false));
                 }
                 else {
                     Debug.LogAssertion($"재료 불충분");
