@@ -83,14 +83,11 @@ public class ConstructionManager : IInitializable
         //var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
             structureContext.ConstructionTime,
-            onProgress: (cv, mv) => {
-                //buildingUI.UpdateProgressBar(cv, mv);
-            },
             onComplete: () => {
                 targetStructure.DestroyStrucure();
                 Managers.UI.CloseAllUIs();
                 onDestroyComplete?.Invoke();
-            });
+            }).WithBlockScreen();
         Managers.Job.DoFocusJob(destroyJob);
     }
     public void DestroyCurrentStructure() {
@@ -126,7 +123,7 @@ public class ConstructionManager : IInitializable
              onComplete: () => {
                  TryConstructStructure(locationIndex, structureData);
                  onComplete?.Invoke();
-             });
+             }).WithBlockScreen();
 
 
         Managers.Job.DoFocusJob(constructionJob, () => {

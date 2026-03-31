@@ -27,7 +27,6 @@ public class UtilityContentUI : UIBase, IPool
 
         var job = Managers.Job.CreateFocusJob(
             contentSD.RequireMinutes,
-            onStart: () => Managers.ScreenBlocker.SetActive(true),
             onProgress: progressBarUI.UpdateUI,
             onComplete: () => {
                 var effects = contentSD.Effects;
@@ -36,8 +35,7 @@ public class UtilityContentUI : UIBase, IPool
                     Entity caster = Managers.Player.PlayerData.Entity;
                     Managers.Effect.ApplyEffect(new EffectApplyRequest(effect, caster));
                 }
-                Managers.ScreenBlocker.SetActive(false);
-            });
+            }).WithBlockScreen();
 
         Managers.Job.DoFocusJob(job, OnComplete);
     }

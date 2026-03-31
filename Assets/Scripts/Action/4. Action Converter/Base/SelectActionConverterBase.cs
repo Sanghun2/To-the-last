@@ -29,7 +29,7 @@ public abstract class SelectActionConverterBase<TSelectActionContext> : SelectAc
             FocusJob selectionProcess = new FocusJob(
             context.JobDuration,
             onProgress: Managers.Select.CurrentSelectedButton.UpdateProcessUI,
-            onComplete: ExecuteAction(context));
+            onComplete: ExecuteAction(context)).WithBlockScreen();
 
             Managers.Job.DoFocusJob(selectionProcess, () => Managers.Select.ResetSelectedButton());
         };

@@ -79,7 +79,7 @@ public sealed class CraftManager
             FocusJob focusJob = new FocusJob(
                 targetRecipeSD.RequireMinutes,
                 onProgress: onProgress,
-                onComplete: onComplete);
+                onComplete: onComplete).WithBlockScreen();
 
             Managers.Job.DoFocusJob(focusJob);
             return true;

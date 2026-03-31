@@ -107,4 +107,17 @@ public static partial class Extension
 
     #endregion
 
+    #region Utility
+
+    public static FocusJob WithBlockScreen(this FocusJob focusJob) {
+        var newJob = new FocusJob(
+            focusJob.TotalMinutes, 
+            focusJob.Duration, 
+            onStart:() => { Managers.ScreenBlocker.SetActive(true); focusJob.OnStart?.Invoke(); },  
+            onProgress:focusJob.OnProgress, 
+            onComplete:() => { Managers.ScreenBlocker.SetActive(false); focusJob.OnComplete?.Invoke(); });
+        return newJob;
+    }
+
+    #endregion
 }

@@ -26,33 +26,35 @@ public class Job
             _currentState = value;
         }
     }
-    public Action OnStart => onStartCallback;
+    public Action OnStart => onStart;
+    public Action<float, float> OnProgress => onProgress;
+    public Action OnComplete => onComplete;
 
 
     [SerializeField] protected int currentMinutes;
     [SerializeField] protected int totalMinutes;
     private State _currentState;
 
-    [NonSerialized] private Action onStartCallback;
-    [NonSerialized] private Action completeCallback;
-    [NonSerialized] private Action<float, float> progressCallback;
+    [NonSerialized] private Action onStart;
+    [NonSerialized] private Action onComplete;
+    [NonSerialized] private Action<float, float> onProgress;
 
     public Job(int totalMinutes, Action onStart=null, Action<float, float> onProgress = null, Action onComplete = null) {
         this.totalMinutes = totalMinutes;
-        this.onStartCallback = onStart;
-        this.progressCallback = onProgress;
-        this.completeCallback = onComplete;
+        this.onStart = onStart;
+        this.onProgress = onProgress;
+        this.onComplete = onComplete;
     }
 
     public void ChangeMinutes(int deltaMinutes) {
         if (CurrentState == State.Wait) return;
 
         currentMinutes += deltaMinutes;
-        progressCallback?.Invoke(currentMinutes, totalMinutes);
+        onProgress?.Invoke(currentMinutes, totalMinutes);
         if (Mathf.Approximately(ProgressRate, 1)) {
             currentMinutes = totalMinutes;
             _currentState = State.Completed;
-            completeCallback?.Invoke();
+            onComplete?.Invoke();
         }
     }
 
@@ -60,14 +62,14 @@ public class Job
         if (CurrentState == State.Wait) return;
 
         currentMinutes += deltaMinutes;
-        progressCallback?.Invoke(currentMinutes, totalMinutes);
+        onProgress?.Invoke(currentMinutes, totalMinutes);
         if (Mathf.Approximately(ProgressRate, 1)) {
             currentMinutes = totalMinutes;
             _currentState = State.Completed;
-            completeCallback?.Invoke();
-            onStartCallback = null;
-            completeCallback = null;
-            progressCallback = null;
+            onComplete?.Invoke();
+            onStart = null;
+            onComplete = null;
+            onProgress = null;
         }
     }
 }
@@ -82,7 +84,7 @@ public class FocusJob : Job
     public FocusJob(int totalMinutes, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) : base(totalMinutes, onStart, onProgress, onComplete) {
 
     }
-    public FocusJob(int totalMinutes, float duration, Action onStart=null, Action<float, float> onProgress=null, Action callback = null) : base(totalMinutes, onStart, onProgress, callback) {
+    public FocusJob(int totalMinutes, float duration, Action onStart=null, Action<float, float> onProgress=null, Action onComplete = null) : base(totalMinutes, onStart, onProgress, onComplete) {
         this.duration = duration;
     }
 }
