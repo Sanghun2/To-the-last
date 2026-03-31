@@ -11,12 +11,11 @@ public class ProgressBarUI : UIBase
 
     [Space]
     [SerializeField] Image progressBar;
-    [SerializeField] Ease progressEase;
-    [SerializeField] float tweenDuration = 0.25f;
-    private Tweener progressTweener;
+    private FillAmountProcessorBase fillAmountProcessor = new DotweenFillAmountProcessor();
 
     public override void InitUI() {
-        UpdateUI(0, 1);
+        if (IsInit) return;
+        Clear();
         _isInit = true;
     }
 
@@ -26,21 +25,12 @@ public class ProgressBarUI : UIBase
     }
 
     public void UpdateUI(float currentValue, float maxValue) {
-        progressor.Update(currentValue, maxValue);
-        if (progressTweener != null && progressTweener.IsActive()) {
-            progressTweener.ChangeEndValue(progressor.Rate, tweenDuration, true);
-        }
-        else {
-            //progressBar.fillAmount = currentProgress / maxProgress;
-            progressTweener = progressBar
-                .DOFillAmount(progressor.Rate, tweenDuration)
-                .SetEase(progressEase);
-        }
+        //progressor.Update(currentValue, maxValue);
+        fillAmountProcessor.UpdateFillAmount(progressBar, currentValue, maxValue);
     }
 
     public void Clear() {
-        progressTweener?.Kill();
-        progressor.SetCurrentValue(0);
-        progressBar.fillAmount = 0;
+        fillAmountProcessor.Clear(progressBar);
+        //progressor.SetCurrentValue(0);
     }
 }

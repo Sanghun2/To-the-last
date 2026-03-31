@@ -7,14 +7,12 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
     [SerializeField] WeightUI weightUI;
 
     private void OnEnable() {
-        Debug.Log("ui enable");
         if (inventory != null) {
             inventory.OnItemAdded -= OnAddItem;
             inventory.OnItemAdded += OnAddItem;
 
             bool hasWeightCounter = inventory.InventoryID.Equals(Define.Tag.PLAYER) || inventory.InventoryID.Equals(Define.Tag.STORAGE);
 
-            Debug.Log($"inventory exist. has counter? {hasWeightCounter}");
             weightUI.gameObject.SetActive(hasWeightCounter);
             if (hasWeightCounter) {
                 var simpleInventory = (SimpleInventory)inventory;
@@ -28,8 +26,6 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
 
         itemSlotContainer.InitUI();
         base.InitInventory(inventory);
-        inventory.OnItemAdded -= OnAddItem;
-        inventory.OnItemAdded += OnAddItem;
 
         _isInit = true;
         return this;

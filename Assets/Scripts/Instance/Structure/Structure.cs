@@ -31,10 +31,12 @@ public class Structure : IValue<float>
             }
         }
     }
+    public int Level => level;
 
 
     [SerializeField] StructureContextBase structureContext;
     [SerializeField][HideInInspector] string structureID;
+    [SerializeField] int level;
     [SerializeField][HideInInspector] StructureState _currentState;
     public event Action<StructureState, StructureState> OnStateChanged;
 

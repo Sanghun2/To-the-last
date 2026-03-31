@@ -1,4 +1,5 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using UnityEngine;
 
 public abstract class InventoryUIBase : UIBase
@@ -8,9 +9,13 @@ public abstract class InventoryUIBase : UIBase
     protected InventoryBase inventory;
 
     public virtual InventoryUIBase InitInventory(InventoryBase inventory) {
-        this.inventory = inventory;
+        SetInventory(inventory);
         return this;
     }
+    public void SetInventory(InventoryBase targetInventory) {
+        this.inventory = targetInventory;
+    }
+
     public abstract void ShowInventory(InventoryBase inventoryBase);
     public void ShowInventory() {
         ShowInventory(inventory);

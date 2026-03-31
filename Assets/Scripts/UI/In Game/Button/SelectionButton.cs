@@ -32,6 +32,7 @@ public class SelectionButton : ButtonBase, IPool
     [SerializeField] Image processImage;
     [SerializeField] GameObject lockObj;
     private Action buttonAction;
+    private FillAmountProcessorBase fillAmountProcessor = new DotweenFillAmountProcessor();
 
 
     public void InitButton(SelectActionData actionData) {
@@ -70,7 +71,7 @@ public class SelectionButton : ButtonBase, IPool
     }
 
     public void UpdateProcessUI(float currentValue, float maxValue) {
-        processImage.fillAmount = currentValue / maxValue;
+        fillAmountProcessor.UpdateFillAmount(processImage, currentValue, maxValue);
     }
 
 
