@@ -13,13 +13,11 @@ public class ShowStructureUIAction : ActionBase<Structure>
     }
 
     private void OpenStructureUI() {
-        var structure = parameter;
-        var structureContext = parameter.StructureContext;
+        Structure structure = parameter;
+        Managers.Structure.SetStructure(structure);
+        StructureContextBase structureContext = parameter.StructureContext;
         StructureUIBase structureUI = structureContext.OpenStructureUI();
         structureUI.SetTitleText(structureContext.DisplayText);
-    }
 
-    private bool IsMatched(Type uiType, string typeName) {
-        return uiType.Name.Equals(typeName);
     }
 }

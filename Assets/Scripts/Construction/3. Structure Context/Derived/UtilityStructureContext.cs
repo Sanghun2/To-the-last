@@ -11,11 +11,13 @@ public class UtilityStructureContext : StructureContextBase<UtilityStructureData
     }
 
     public override StructureUIBase OpenStructureUI() {
-        var ui = Managers.UI.GetUI<UtilityStructureUI>();
+        var structureUI = Managers.UI.GetUI<UtilityStructureUI>();
+        if (structureUI.IsOpened) return structureUI;
+
         if (TryGetStructure(out Structure structure)) {
-            ui.SetUpUI(structure);
+            structureUI.SetUpUI(structure);
         }
-        Managers.UI.OpenUI(ui);
-        return ui;
+        Managers.UI.OpenUI(structureUI);
+        return structureUI;
     }
 }

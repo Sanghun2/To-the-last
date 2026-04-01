@@ -65,6 +65,9 @@ public sealed class CraftManager
     public event Action<RecipeSD> OnTargetSet;
 
     public void SetCraftTarget(RecipeSD recipeSD) {
+        var currentTarget = craftContext.Target;
+        if (currentTarget != null && currentTarget.Equals(recipeSD)) return;
+
         if (craftContext.CanSelect) {
             craftContext.SetTarget(recipeSD);
             OnTargetSet?.Invoke(recipeSD);

@@ -3,6 +3,7 @@ using BilliotGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ConstructionContentUI : UIBase, IPool
 {
@@ -18,23 +19,30 @@ public class ConstructionContentUI : UIBase, IPool
     }
 
     public void Init() {
+        if (IsInit) return; 
+
         InitUI();
         progressBarUI.Clear();
+
+        _isInit = true;
     }
 
     public void ShowUI(StructureSD structureSD) {
         structureContentUI.SetContentImage(structureSD.Image);
         requirementUIContainer.ShowList(structureSD.RequirementItems);
+        progressBarUI.Clear();
         constructionButton.InitButton(new ActionData(
             $"건설\n({structureSD.ConstructionTime}분)",
             () => {
                 var a = InventoryUtility.HasIngredients(structureSD.RequirementItems);
                 if (true) {
                     Managers.Construction.SetTargetStructure(structureSD);
-                    Managers.Construction.ConstructSetTarget(
-                        onStart: () => Managers.ScreenBlocker.SetActive(true),
+                    Managers.Construction.ConstructCurrentTarget(
                         onProgress: progressBarUI.UpdateUI,
-                        onComplete: () => Managers.ScreenBlocker.SetActive(false));
+                        onComplete: () => {
+                            progressBarUI.Clear();
+                            Managers.UI.CloseUI<ConstructionUI>();
+                        });
                 }
                 else {
                     Debug.LogAssertion($"재료 불충분");

@@ -7,5 +7,6 @@ public class UtilityStructureSD : StructureSD, IContentContext<UtilityContentSD>
 {
     public IReadOnlyList<UtilityContentSD> ContentList => utilityContents;
 
+
     [SerializeField] UtilityContentSD[] utilityContents;
 }

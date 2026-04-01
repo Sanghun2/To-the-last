@@ -9,35 +9,19 @@ public class ConstructionManager : IInitializable
 {
     public bool IsInit => _isInit;
     public int CurrentLocationIndex => currentLocationIndex;
+    public StructureDataParserContainer StructureDataParserContainer => dataParserContainer;
+    public StructureContextBuilderContainer StructureContextBuilderContainer => contextBuilderContainer;
 
-    [SerializeField] List<Structure> structureList = new List<Structure>();
     
     private int currentLocationIndex;
     private StructureDataBase currentStructureData;
 
-    private StructureUIContainer structureUIContainer;
     private StructureDataParserContainer dataParserContainer = new StructureDataParserContainer();
     private StructureContextBuilderContainer contextBuilderContainer = new StructureContextBuilderContainer();
     private bool _isInit;
 
     public void Init() {
         if (IsInit) return;
-
-        if (structureUIContainer == null) {
-            structureUIContainer = GameObject.FindAnyObjectByType<StructureUIContainer>(FindObjectsInactive.Include);
-            if (structureUIContainer == null) {
-                Debug.LogError($"<color=red>structure container not found</color>");
-                return;
-            }
-        }
-
-
-        structureUIContainer?.InitUI();
-
-        structureList.Clear();
-        for (int i = 0; i < structureUIContainer.Count; i++) {
-            structureList.Add(structureUIContainer.GetStructureUI(i).Structure);
-        }
 
         _isInit = true;
     }
@@ -54,22 +38,15 @@ public class ConstructionManager : IInitializable
         SetTargetStructure(structureData);
     }
 
-    public Structure GetStructure(int locationIndex) {
-        if (!IsValidLocation(locationIndex)) { return null; }
-        return structureList[locationIndex];
-    }
-    public bool TryGetStructure(string id, out Structure structure) {
-        structure = structureList.Find(x => x.StructureContext.ID.Equals(id));
-        return structure != null;
-    }
-
-    public void ConstructSetTarget(Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
+    
+  
+    public void ConstructCurrentTarget(Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
         if (!CanConstruct()) return;
         StartConstruction(currentLocationIndex, currentStructureData, onStart, onProgress, onComplete);
     }
 
     public void UnlockLocation(int locationIndex) {
-        var structure = GetStructure(locationIndex);
+        var structure = Managers.Structure.GetStructure(locationIndex);
         if (structure != null && structure.IsLocked) {
             structure.Unlock();
         }
@@ -79,10 +56,10 @@ public class ConstructionManager : IInitializable
         }
     }
     public void DestroyStructureAt(int locationIndex, Action onDestroyComplete=null) {
-        if (!IsValidLocation(locationIndex)) { return; }
+        if (!Managers.Structure.IsValidLocation(locationIndex)) { return; }
         if (IsEmpty(locationIndex)) { return; }
 
-        Structure targetStructure = GetStructure(locationIndex);
+        Structure targetStructure = Managers.Structure.GetStructure(locationIndex);
         StructureContextBase structureContext = targetStructure.StructureContext;
         //var buildingUI = Managers.UI.GetUI<ConstructionUI>();
         FocusJob destroyJob = new FocusJob(
@@ -113,7 +90,7 @@ public class ConstructionManager : IInitializable
         return true;
     }
     private void StartConstruction(int locationIndex, StructureDataBase structureData, Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
-        if (!IsValidLocation(locationIndex)) return;
+        if (!Managers.Structure.IsValidLocation(locationIndex)) return;
         if (!IsEmpty(locationIndex)) return;
         if (!IsValidStructure(structureData)) return;
 
@@ -145,8 +122,8 @@ public class ConstructionManager : IInitializable
         if (!contextBuilderContainer.TryGet(targetStructureData, out var contextBuilder)) { Debug.LogError($"<color=red>context builder type of ({targetStructureData.GetType()}) is not exist</color>"); return false; }
         if (!contextBuilder.TryBuildContext(targetStructureData, out var structureContext)) { Debug.LogError($"<color=red>({targetStructureData.GetType()}) context build failed</color>"); return false; }
 
-        Structure targetStructure = GetStructure(targetLocationIndex);
-        targetStructure.ConstructStructure(structureContext);
+        Structure targetStructure = Managers.Structure.GetStructure(targetLocationIndex);
+        targetStructure.SetStructure(structureContext);
 
         return true;
     }
@@ -168,16 +145,8 @@ public class ConstructionManager : IInitializable
             return false;
         }
     }
-    private bool IsValidLocation(int targetLocationIndex) {
-        if (0 <= targetLocationIndex && targetLocationIndex < structureList.Count) {
-            return true;
-        }
-
-        Debug.LogAssertion($"not valid location - index: {targetLocationIndex}");
-        return false;
-    }
     private bool IsEmpty(int locationIndex) {
-        var structure = GetStructure(locationIndex);
+        var structure = Managers.Structure.GetStructure(locationIndex);
         if (structure.CurrentState == Structure.StructureState.Empty) {
             return true;
         }

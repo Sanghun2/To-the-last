@@ -9,12 +9,13 @@ public class ProductionStructureData : StructureDataBase
 
     public ProductionStructureData(
         string id, 
+        string categoryID,
         string displayText,
         Sprite sturctureImage, 
         int constructionTime, 
         IReadOnlyList<Ingredient> requirementItems,
         IReadOnlyList<RecipeSD> prodictionList) 
-        : base(id, displayText, sturctureImage, constructionTime, requirementItems) {
+        : base(id, categoryID, displayText, sturctureImage, constructionTime, requirementItems) {
 
         this.prodictionList = prodictionList;
     }

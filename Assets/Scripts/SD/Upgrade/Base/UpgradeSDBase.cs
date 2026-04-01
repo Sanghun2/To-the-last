@@ -5,10 +5,16 @@ using UnityEngine;
 
 public abstract class UpgradeSDBase : SDBase
 {
+    public abstract IUpgradeable GetFirstUpgradeable();
+
     public abstract Upgrade.InfoResult TryGetUpgradeInfo(int level, out IUpgradeable upgrade);
 
     protected virtual void OnValidate() {
         RenameAsset(ID, suffix:"_UpgradeSD");
+
+        if (Categories != null && Categories.Count > 0) {
+            id = Categories[0].ID;
+        }
     }
 }
 
@@ -19,12 +25,26 @@ public abstract class UpgradeSDBase<TUpgradeable> : UpgradeSDBase
 
     [SerializeField] List<TUpgradeable> upgradeList = new List<TUpgradeable>();
 
+    public override IUpgradeable GetFirstUpgradeable() {
+        if (upgradeList != null && upgradeList.Count > 0) {
+            return upgradeList[0];
+        }
+
+        return default;
+    }
+    public virtual TUpgradeable GetFirstUpgrade() {
+        if (upgradeList != null && upgradeList.Count > 0) {
+            return upgradeList[0];
+        }
+
+        return default;
+    }
+
     public override Upgrade.InfoResult TryGetUpgradeInfo(int level, out IUpgradeable upgrade) {
         var result = TryGetUpgradeInfo(level, out TUpgradeable tUpgrade);
         upgrade = tUpgrade;
         return result;
     }
-
     public virtual Upgrade.InfoResult TryGetUpgradeInfo(int level, out TUpgradeable upgrade) {
         upgrade = default;
         if (level < 0) { return Upgrade.InfoResult.InValid; }

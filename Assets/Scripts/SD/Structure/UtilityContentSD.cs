@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UtilityContentSD", menuName = "Scriptable Objects/Content/UtilityContentSD")]
-public class UtilityContentSD : TimeBasedSD
+public class UtilityContentSD : ContentSDBase
 {
     public IReadOnlyList<Effect> Effects => effects;
 

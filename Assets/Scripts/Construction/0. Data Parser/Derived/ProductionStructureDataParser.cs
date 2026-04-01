@@ -5,6 +5,7 @@ public class ProductionStructureDataParser : StructureDataParserBase<ProductionS
     public override ProductionStructureData ParseData(ProductionStructureSD structureSD) {
         return new ProductionStructureData(
             structureSD.ID,
+            structureSD.FirstCategory,
             structureSD.DisplayText,
             structureSD.Image,
             structureSD.ConstructionTime,

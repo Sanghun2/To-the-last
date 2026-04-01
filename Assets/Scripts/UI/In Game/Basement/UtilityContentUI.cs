@@ -12,6 +12,7 @@ public class UtilityContentUI : UIBase, IPool
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] ProgressBarUI progressBarUI;
     [SerializeField] ExecutionButton executionButton;
+    [SerializeField] GameObject lockObj;
     private UtilityContentSD contentSD;
 
     public void InitContent(UtilityContentSD content) {
@@ -20,6 +21,10 @@ public class UtilityContentUI : UIBase, IPool
         contentImage.sprite = content.Image;
         nameText.text = content.DisplayText;
         executionButton.SetAction(Execute);
+
+        int structureLevel = Managers.Structure.CurrentSelctedStructure.Level;
+        bool @lock = content.RequiredLevel > structureLevel;
+        lockObj.SetActive(@lock);
     }
 
     private void Execute() {

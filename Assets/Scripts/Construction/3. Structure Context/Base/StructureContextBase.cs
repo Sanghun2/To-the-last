@@ -10,7 +10,7 @@ public abstract class StructureContextBase
     public Sprite StructureImage => _data.StructureImage;
     public string DisplayText => _data.DisplayText;
 
-    public string CategoryID { get; internal set; }
+    public string CategoryID => _data.CategoryID;
 
     protected StructureDataBase _data;
 
@@ -32,6 +32,6 @@ public abstract class StructureContextBase<TData> : StructureContextBase
     }
 
     protected virtual bool TryGetStructure(out Structure structure) {
-        return Managers.Construction.TryGetStructure(Data.ID, out structure);
+        return Managers.Structure.TryGetStructure(Data.ID, out structure);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public abstract class TimeBasedSD : ImageSDBase
+public abstract class TimeSDBase : ImageSDBase
 {
     public int RequireMinutes => requireMinutes;
 

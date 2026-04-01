@@ -298,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCE68\uB300 \uC5C5\uADF8\uB808\uC774\uB4DC"
+  m_text: "\uBBF8\uC9C0\uC815"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e48c14643df8a554ea89eeca305e0a94, type: 2}
   m_sharedMaterial: {fileID: -2596578455962546580, guid: e48c14643df8a554ea89eeca305e0a94, type: 2}
@@ -753,6 +753,7 @@ MonoBehaviour:
   progressBarUI: {fileID: 8998855959210723102}
   requirementInfoButton: {fileID: 5321163283114891803}
   requirementUIContainer: {fileID: 1841801662344562782}
+  upgradeButton: {fileID: 7110245269990783873}
 --- !u!1 &7083625292729719638
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8327925155360760481}
+  - component: {fileID: 7110245269990783873}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -789,6 +791,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 125, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7110245269990783873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083625292729719638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e597bef9aa93184f8f9239b7fb9ebb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeButton
+  targetButton: {fileID: 3524889982942052795}
 --- !u!1 &7431683466491085680
 GameObject:
   m_ObjectHideFlags: 0

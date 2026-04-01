@@ -10,9 +10,9 @@ public readonly struct ConstructionContext
     private readonly int index;
     private readonly IReadOnlyList<StructureSD> structureCatalogs;
 
-    public ConstructionContext(int index, IReadOnlyList<StructureSD> structureCatalogs) {
+    public ConstructionContext(int index, IReadOnlyList<UpgradeSDBase<StructureSD>> upgradeables) {
         this.index = index;
-        this.structureCatalogs = structureCatalogs;
+        this.structureCatalogs = upgradeables.Select(u => u.GetFirstUpgrade()).ToList();
     }
 }
 

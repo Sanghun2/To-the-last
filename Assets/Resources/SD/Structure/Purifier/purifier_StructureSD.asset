@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e33b1a176f896448708b50845c9dd0, type: 3}
+  m_Name: purifier_StructureSD
+  m_EditorClassIdentifier: Assembly-CSharp::ProductionStructureSD
+  id: purifier
+  displayText: "\uC815\uC218\uAE30"
+  descripiton: "\uAC00\uC5F4\uD558\uC5EC \uBB3C\uC744 \uC99D\uB958\uD558\uB294 \uC7A5\uCE58"
+  categoryList:
+  - {fileID: 11400000, guid: cecee67e2b2edb1489a57f4e5e35ee55, type: 2}
+  image: {fileID: 21300000, guid: 9e876a8e953f80a4e859e273e574b63e, type: 3}
+  locked: 0
+  constructionTime: 100
+  requirementItems:
+  - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
+    amount: 5
+  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+    amount: 3
+  productions:
+  - {fileID: 11400000, guid: 1eea6a78de7a59b40a4427bbbb4300fc, type: 2}

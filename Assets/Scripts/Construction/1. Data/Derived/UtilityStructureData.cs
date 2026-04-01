@@ -5,12 +5,13 @@ public class UtilityStructureData : StructureDataBase
 {
     public UtilityStructureData(
         string id, 
+        string categoryID,
         string displayText,
         Sprite structureImage,
         int constructionTime, 
         IReadOnlyList<Ingredient> requirementItems,
         IReadOnlyList<UtilityContentSD> contentList) 
-        : base(id, displayText, structureImage, constructionTime, requirementItems) {
+        : base(id, categoryID, displayText, structureImage, constructionTime, requirementItems) {
 
         this.contentList = contentList;
     }

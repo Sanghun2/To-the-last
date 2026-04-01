@@ -40,9 +40,13 @@ public class StructureButton : ButtonBase
                 })
             })));
 
-        if (Managers.SD.TryGetContainer<StructureSD>(out var container)) {
-            var structureList = container.SDDict.Select(x => x.Value).ToList();
-            var constructionContext = new ConstructionContext(index, structureList);
+        if (Managers.SD.TryGetContainer<UpgradeSDBase>(out var container)) {
+            List<UpgradeSDBase<StructureSD>> upgradeSDBases = container.SDDict.Where(x => {
+                var structureSD = x.Value as UpgradeSDBase<StructureSD>;
+                return structureSD != null;
+            }).Select(x => (x.Value as UpgradeSDBase<StructureSD>)).ToList();
+
+            var constructionContext = new ConstructionContext(index, upgradeSDBases);
             RegisterAction(Structure.StructureState.Empty, new ShowConstructionUIAction(constructionContext));
         }
         RegisterAction(Structure.StructureState.Built, new ShowStructureUIAction(structure));

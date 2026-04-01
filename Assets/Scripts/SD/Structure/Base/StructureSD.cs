@@ -9,6 +9,7 @@ public abstract class StructureSD : ImageSDBase, IUpgradeable
     public IReadOnlyList<Ingredient> RequirementItems => requirementItems;
     public int ConstructionTime => constructionTime;
     public bool Locked => locked;
+    public string FirstCategory => categoryList != null && categoryList.Count > 0 ? categoryList[0].ID : string.Empty;
 
     [SerializeField] protected bool locked=true;
     [SerializeField] protected int constructionTime = 100;

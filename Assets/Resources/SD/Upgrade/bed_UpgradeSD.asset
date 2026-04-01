@@ -15,6 +15,9 @@ MonoBehaviour:
   id: bed
   displayText: "\uCE68\uB300 \uC5C5\uADF8\uB808\uC774\uB4DC \uBAA9\uB85D"
   descripiton: "\uCE68\uB300 \uC5C5\uADF8\uB808\uC774\uB4DC \uBAA9\uB85D"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: fcc7dd003b064494f8989994fe024953, type: 2}
   upgradeList:
+  - {fileID: 11400000, guid: dbbb04ada6e69f741a02494d4c234eef, type: 2}
+  - {fileID: 11400000, guid: f7a1fb831a3907346b5ec82912b425ee, type: 2}
   - {fileID: 11400000, guid: 4a7e5aeb5c34233488c86b3e3697249e, type: 2}

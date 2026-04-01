@@ -5,6 +5,7 @@ public class UtilityStructureDataParser : StructureDataParserBase<UtilityStructu
     public override UtilityStructureData ParseData(UtilityStructureSD structureSD) {
         return new UtilityStructureData(
             structureSD.ID,
+            structureSD.FirstCategory,
             structureSD.DisplayText,
             structureSD.Image,
             structureSD.ConstructionTime,

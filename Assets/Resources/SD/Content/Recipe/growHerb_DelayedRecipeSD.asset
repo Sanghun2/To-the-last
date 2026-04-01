@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: growHerb_DelayedRecipeSD
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSD
   id: growHerb
-  displayName: "\uC57D\uCD08 \uC7AC\uBC30"
+  displayText: "\uC57D\uCD08 \uC7AC\uBC30"
   descripiton: "\uC57D\uCD08 \uC528\uC557\uC744 \uC2EC\uC5B4 \uC57D\uCD08\uB97C \uC7AC\uBC30\uD55C\uB2E4."
-  iconImage: {fileID: 21300000, guid: 54e45d5f21010431084a9de39db2da52, type: 3}
+  categoryList: []
+  image: {fileID: 0}
   requireMinutes: 10
+  requiredLevel: 1
   inputs:
   - itemSD: {fileID: 11400000, guid: 6a496772c99f2d74f87f40d020a0ff2c, type: 2}
     amount: 1

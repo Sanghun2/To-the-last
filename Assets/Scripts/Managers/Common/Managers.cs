@@ -300,8 +300,20 @@ public sealed class Managers : MonoBehaviour
             return _upgradeManager;
         }
     }
+    public static StructureManager Structure
+    {
+        get
+        {
+            if (_structureManager == null) {
+                _structureManager = new StructureManager();
+            }
+
+            return _structureManager;
+        }
+    }
 
     // InGame
+    private static StructureManager _structureManager;
     private static UpgradeManager _upgradeManager;
     private static ScreenBlocker _screenBlocker;
     private static InventoryManager _inventoryManager;
@@ -352,7 +364,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new ItemSDContainer("SD/Item"));
         SD.TryRegisterSD(new LocationSDContainer("SD/Location"));
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
-        SD.TryRegisterSD(new RecipeSDContainer("SD/Recipe"));
+        SD.TryRegisterSD(new RecipeSDContainer("SD/Content/Recipe"));
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
         SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));
         SD.TryRegisterSD(new IconSDContainer("SD/Icon"));
@@ -368,6 +380,7 @@ public sealed class Managers : MonoBehaviour
             UI.GetUI<TimerUI>(),
             Time,
             Job,
+            Structure,
             Construction,
             Player,
             Encounter,

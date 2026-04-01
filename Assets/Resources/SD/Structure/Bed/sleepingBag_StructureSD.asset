@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f19f719ca154c844ac966ef4d226fb8, type: 3}
-  m_Name: bed_StructureSD
+  m_Name: sleepingBag_StructureSD
   m_EditorClassIdentifier: Assembly-CSharp::UtilityStructureSD
-  id: bed
-  displayText: "\uCE68\uB300"
-  descripiton: "\uC7A0\uC744 \uC798 \uC218 \uC788\uB294 \uCE68\uB300."
-  categoryList: []
-  image: {fileID: 21300000, guid: 81919bc1c8584d84cb6e91efb2724a29, type: 3}
+  id: sleepingBag
+  displayText: "\uCE68\uB0AD"
+  descripiton: "\uC870\uAE08\uC740 \uB354 \uD479\uC2E0\uD574\uC9C4 \uB9E4\uD2B8\uB9AC\uC2A4"
+  categoryList:
+  - {fileID: 11400000, guid: fcc7dd003b064494f8989994fe024953, type: 2}
+  image: {fileID: 21300000, guid: 4a46bacb887d0954dbf8da96c9044371, type: 3}
   locked: 0
   constructionTime: 100
   requirementItems:

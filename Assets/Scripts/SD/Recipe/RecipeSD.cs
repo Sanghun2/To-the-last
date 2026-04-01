@@ -4,14 +4,12 @@ using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeSD", menuName = "Scriptable Objects/Recipe/RecipeSD")]
-public class RecipeSD : TimeBasedSD
+public class RecipeSD : ContentSDBase
 {
     public override Sprite Image => outputs.Length > 0 ? outputs[0].ItemSD.Image : null;
-    public IReadOnlyList<Ingredient> Inputs => inputs;
     public IReadOnlyList<Ingredient> Outputs => outputs;
 
-    [SerializeField] Ingredient[] inputs;
-    [SerializeField] Ingredient[] outputs;
+    [SerializeField] protected Ingredient[] outputs;
 
     protected virtual void OnValidate() {
         RenameAsset(ID, suffix: "_RecipeSD");

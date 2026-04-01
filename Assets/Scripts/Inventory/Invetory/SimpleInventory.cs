@@ -205,7 +205,29 @@ public class SimpleInventory : InventoryBase
         Debug.LogAssertion($"not enough amount: require -> {targetAmount}, current: {itemCount}");
         return false;
     }
+    public override int RemoveItemPartial(string itemID, int requestAmount) {
+        InitInventory();
+        int available = GetItemCount(itemID);
+        int toRemove = Mathf.Min(available, requestAmount);
+        if (toRemove <= 0) return 0;
 
+        int remaining = toRemove;
+        for (int i = itemList.Count - 1; i >= 0 && remaining > 0; i--) {
+            var stack = itemList[i];
+            if (!stack.ItemData.ItemID.Equals(itemID)) continue;
+
+            int removeFromStack = Mathf.Min(stack.Amount, remaining);
+            stack.TryRemoveStack(removeFromStack);
+            remaining -= removeFromStack;
+
+            if (stack.IsNull) {
+                itemList.RemoveAt(i);
+            }
+        }
+
+        OnItemRemoved?.Invoke(null, toRemove); // 필요에 따라 조정
+        return toRemove;
+    }
 
 
     private void UpdateItemCount(ItemStack itemStack, int deltaAmount) {

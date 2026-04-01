@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class ItemContentUI : ButtonBase, IPool
 {
     [SerializeField] Image itemImage;
-    [SerializeField] RecipeSD recipeSD;
+    [SerializeField] GameObject lockObj;
+    private RecipeSD recipeSD;
 
     public bool IsActive => IsOpened;
 
     public void Init() {
         base.InitUI();
+        lockObj.SetActive(false);
     }
     public void Return() {
         CloseUI();
@@ -29,6 +31,10 @@ public class ItemContentUI : ButtonBase, IPool
         this.recipeSD = recipeSD;
         itemImage.sprite = recipeSD.Outputs[0].ItemSD.Image;
         SetButtonAction(buttonAction);
+
+        int structureLevel = Managers.Structure.CurrentSelctedStructure.Level;
+        bool @lock = recipeSD.RequiredLevel > structureLevel;
+        lockObj.SetActive(@lock);
     }
 
     protected override void ButtonAction() {

@@ -31,4 +31,9 @@ public class StructureUIContainer : UIBase
             return null;
         }
     }
+
+    public void Release() {
+        structureUIList.Clear();
+        _isInit = false;
+    }
 }
