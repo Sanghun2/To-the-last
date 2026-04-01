@@ -311,6 +311,18 @@ public sealed class Managers : MonoBehaviour
             return _structureManager;
         }
     }
+    public static SoundManager Sound
+    {
+        get
+        {
+            if (_soundManager == null) {
+                _soundManager = new SoundManager();
+            }
+
+            return _soundManager;
+        }
+    }
+
 
     // InGame
     private static StructureManager _structureManager;
@@ -338,6 +350,7 @@ public sealed class Managers : MonoBehaviour
     private static CharacterManager _characterManager;
 
     // Common
+    private static SoundManager _soundManager;
     private static TraitManager _traitManager;
     private static ProcessManager _processManager;
     private static SceneController _sceneController;
