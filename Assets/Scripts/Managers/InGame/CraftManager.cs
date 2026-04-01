@@ -71,7 +71,7 @@ public sealed class CraftManager
         if (craftContext.CanSelect) {
             craftContext.SetTarget(recipeSD);
             OnTargetSet?.Invoke(recipeSD);
-            Debug.Log($"target set. {recipeSD.DisplayText}");
+            //Debug.Log($"target set. {recipeSD.DisplayText}");
         }
     }
 
