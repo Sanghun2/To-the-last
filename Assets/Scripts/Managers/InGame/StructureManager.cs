@@ -52,6 +52,16 @@ public class StructureManager : IInitializable
         Debug.LogAssertion($"not valid location - index: {targetLocationIndex}");
         return false;
     }
+    public void UnlockLocation(int locationIndex) {
+        var structure = GetStructure(locationIndex);
+        if (structure != null && structure.IsLocked) {
+            structure.Unlock();
+        }
+
+        else {
+            Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentState}");
+        }
+    }
 
     public void Release() {
         structureUIContainer?.Release();

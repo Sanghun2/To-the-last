@@ -42,12 +42,17 @@ public class GameBootStrapper
         playerData.MetabolicSystem.InitMetabolism(BuildMetabolism());
         playerData.StatContainer.InitStats(characterSD.StatList);
 
-        
 
         // location
         Managers.Player.PlayerData.SetAsDefaultLocation();
         Managers.Location.OnLocationChanged -= playerData.SetCurrentLocation;
         Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
+
+        // structure
+        Managers.Structure.UnlockLocation(4);
+        Managers.Structure.UnlockLocation(5);
+        Managers.Structure.UnlockLocation(10);
+        Managers.Structure.UnlockLocation(11);
 
         // inventory
         var playerInventory = new SimpleInventory("player").SetTag("player");

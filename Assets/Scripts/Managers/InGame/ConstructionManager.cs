@@ -39,22 +39,12 @@ public class ConstructionManager : IInitializable
     }
 
     
-  
     public void ConstructCurrentTarget(Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
         if (!CanConstruct()) return;
         StartConstruction(currentLocationIndex, currentStructureData, onStart, onProgress, onComplete);
     }
 
-    public void UnlockLocation(int locationIndex) {
-        var structure = Managers.Structure.GetStructure(locationIndex);
-        if (structure != null && structure.IsLocked) {
-            structure.Unlock();
-        }
 
-        else {
-            Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentState}");
-        }
-    }
     public void DestroyStructureAt(int locationIndex, Action onDestroyComplete=null) {
         if (!Managers.Structure.IsValidLocation(locationIndex)) { return; }
         if (IsEmpty(locationIndex)) { return; }

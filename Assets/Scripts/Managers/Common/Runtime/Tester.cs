@@ -145,7 +145,7 @@ public class Tester : MonoBehaviour
     }
 
     public void UnlockStructureUI() {
-        Managers.Construction.UnlockLocation(locationIndex);
+        Managers.Structure.UnlockLocation(locationIndex);
     }
     public void SetStructure() {
         //Managers.Construction.StartConstruction(locationIndex, currentStructureData);
