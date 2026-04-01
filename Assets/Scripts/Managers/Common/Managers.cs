@@ -317,6 +317,9 @@ public sealed class Managers : MonoBehaviour
         {
             if (_soundManager == null) {
                 _soundManager = new SoundManager();
+                _soundManager.SetSFXSourceContainer(new AudioSourceContainer(), new PooledSourceStrategy(), 10);
+                _soundManager.SetBGMSourceContainer(new AudioSourceContainer(), new DedicatedSourceStrategy(), 1);
+                _soundManager.SetClipLoader(new ResourceClipLoader("Sound"));
             }
 
             return _soundManager;

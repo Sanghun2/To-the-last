@@ -63,7 +63,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e5a51acdf1a41de02dc9712760852ccef8534d20"
+      "hash": "cc49a89b34690ef014871f0dd67ee752068f3798"
     },
     "com.billiotgames.stats": {
       "version": "https://github.com/Sanghun2/Stats.git",
