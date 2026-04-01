@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
@@ -407,6 +408,16 @@ public sealed class Managers : MonoBehaviour
         for (int i = 0; i < initList.Count; i++) {
             initList[i]?.Init();
         }
+
+        UI.OnUIOpened -= UISound;
+        UI.OnUIOpened += UISound;
+
+        UI.OnUIClosed -= UISound;
+        UI.OnUIClosed += UISound;
+    }
+
+    private void UISound(UIBase @base) {
+        Sound.PlaySound("UI Interaction");
     }
 }
 
