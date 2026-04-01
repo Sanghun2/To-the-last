@@ -6,9 +6,14 @@ public class ProductionStructureContext : StructureContextBase<ProductionStructu
     }
 
     public override StructureUIBase OpenStructureUI() {
-        var structureUI = Managers.UI.OpenUI<CraftStructureUI>();
-        structureUI.InitProgressUI(0, 1); // 추후 현재 작업중인 내용의 progress로 변경
-        structureUI.ShowList(Data.Prouctions);
+        CraftStructureUI structureUI = Managers.UI.GetUI<CraftStructureUI>();
+        if (structureUI.IsOpened) return structureUI;
+
+        var id = Data.ID;
+        if (TryGetStructure(out Structure structure)) {
+            structureUI.SetUpUI(structure);
+        }
+        Managers.UI.OpenUI(structureUI);
         return structureUI;
     }
 }

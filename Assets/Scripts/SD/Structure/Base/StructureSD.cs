@@ -4,7 +4,7 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class StructureSD : ImageSDBase
+public abstract class StructureSD : ImageSDBase, IUpgradeable
 {
     public IReadOnlyList<Ingredient> RequirementItems => requirementItems;
     public int ConstructionTime => constructionTime;

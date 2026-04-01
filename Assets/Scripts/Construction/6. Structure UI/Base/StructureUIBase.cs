@@ -15,5 +15,5 @@ public abstract class StructureUIBase : UIBase
 public abstract class StructureUIBase<TContext> : StructureUIBase
     where TContext : StructureContextBase
 {
-    public abstract void SetUpUI(TContext structureContext);
+    public abstract void SetUpUI(Structure structure);
 }

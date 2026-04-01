@@ -289,8 +289,20 @@ public sealed class Managers : MonoBehaviour
             return _screenBlocker;
         }
     }
+    public static UpgradeManager Upgrade
+    {
+        get
+        {
+            if (_upgradeManager == null) {
+                _upgradeManager = new UpgradeManager();
+            }
+
+            return _upgradeManager;
+        }
+    }
 
     // InGame
+    private static UpgradeManager _upgradeManager;
     private static ScreenBlocker _screenBlocker;
     private static InventoryManager _inventoryManager;
     private static EffectManager _effectSystem;
@@ -348,6 +360,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new EffectSDContainer("SD/Effect"));
         SD.TryRegisterSD(new AnimationSpriteSDContainer("SD/Animation Sprite"));
         SD.TryRegisterSD(new TraitSDContainer("SD/Trait"));
+        SD.TryRegisterSD(new UpgradeSDContainer("SD/Upgrade"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {

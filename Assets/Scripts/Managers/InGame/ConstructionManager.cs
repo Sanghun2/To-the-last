@@ -58,6 +58,10 @@ public class ConstructionManager : IInitializable
         if (!IsValidLocation(locationIndex)) { return null; }
         return structureList[locationIndex];
     }
+    public bool TryGetStructure(string id, out Structure structure) {
+        structure = structureList.Find(x => x.StructureContext.ID.Equals(id));
+        return structure != null;
+    }
 
     public void ConstructSetTarget(Action onStart = null, Action<float, float> onProgress = null, Action onComplete = null) {
         if (!CanConstruct()) return;
@@ -180,5 +184,4 @@ public class ConstructionManager : IInitializable
 
         return false;
     }
-
 }

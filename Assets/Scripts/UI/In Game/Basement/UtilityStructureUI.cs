@@ -14,13 +14,18 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>
 
         _isInit = true;
     }
-
-    public override void SetUpUI(UtilityStructureContext structureContext) {
+    public override void SetUpUI(Structure structure) {
         InitUI();
 
-        SetTitleText(structureContext.DisplayText);
-        var contents = structureContext.ContentList;
-        ShowContents(contents);
+        var structureContext = structure.StructureContext as UtilityStructureContext;
+        if (structureContext != null) {
+            SetTitleText(structureContext.DisplayText);
+            var contents = structureContext.ContentList;
+            ShowContents(contents);
+        }
+        else {
+            Debug.LogError($"({structure.StructureContext}) is not type of ({typeof(UtilityStructureContext)})");
+        }
     }
 
     private void ShowContents(IReadOnlyList<UtilityContentSD> contents) {
