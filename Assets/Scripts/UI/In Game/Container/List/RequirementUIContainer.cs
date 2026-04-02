@@ -7,6 +7,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
     [SerializeField] CustomButton actioButton;
 
     public void ShowList(IReadOnlyList<Ingredient> requirementItems) {
+        if (requirementItems == null) return;
         var maxCount = Mathf.Max(requirementItems.Count, ContentCount);
         int itemCount = requirementItems.Count;
 
