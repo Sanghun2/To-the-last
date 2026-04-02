@@ -148,7 +148,7 @@ public class Tester : MonoBehaviour
         Managers.Structure.UnlockLocation(locationIndex);
     }
     public void SetStructure() {
-        //Managers.Construction.StartConstruction(locationIndex, currentStructureData);
+        //Managers.Construction.StartConstruction(expensionLevel, currentStructureData);
     }
     public void Destroy() {
         Managers.Construction.DestroyStructureAt(locationIndex);

@@ -10,10 +10,11 @@ using UnityEngine.UI;
 public class StructureButton : ButtonBase
 {
     public int Index => index;
-
-
     public Structure Structure => structure;
+    public int ExpensionLevel => expensionLevel;    
 
+
+    [SerializeField] int expensionLevel;
     [SerializeField] Structure structure = new Structure();
     [SerializeField] ObjectActivator objectActivator;
     [SerializeField] Image structureImage;

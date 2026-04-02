@@ -20,8 +20,11 @@ public class StructureUIContainer : UIBase
             structureUIList[i].InitUI();
         }
 
+        CheckExpensionLevelValidation();
+
         _isInit = true;
     }
+
 
     public StructureButton GetStructureUI(int index) {
         if (0 <= index && index < structureUIList.Count) {
@@ -35,5 +38,33 @@ public class StructureUIContainer : UIBase
     public void Release() {
         structureUIList.Clear();
         _isInit = false;
+    }
+    private void CheckExpensionLevelValidation() {
+        Dictionary<int, int> validationCheck = new Dictionary<int, int>() {
+            {1, 1},
+            {2, 1},
+            {3, 1},
+            {4, 1},
+            {5, 1},
+            {6, 1},
+            {7, 1},
+            {8, 1},
+        };
+        for (int i = 0; i < structureUIList.Count; i++) {
+            var su = structureUIList[i];
+
+            int level = su.ExpensionLevel;
+            if (validationCheck.TryGetValue(level, out int count)) {
+                validationCheck[level] = count - 1;
+                if (count - 1 < 0) {
+                    Debug.LogError($"<color=red>level ({level})이 정해진 개수보다 많음>/color>");
+                    break;
+                }
+            }
+            else {
+                Debug.LogError($"<color=red>({level})에 해당하는 structure가 없음</color>");
+                break;
+            }
+        }
     }
 }

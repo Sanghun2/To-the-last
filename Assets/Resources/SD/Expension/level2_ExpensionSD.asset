@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656c46f346bfa494a832bce35e7d1052, type: 3}
+  m_Name: level2_ExpensionSD
+  m_EditorClassIdentifier: Assembly-CSharp::ExpensionSD
+  id: level2
+  displayText: 
+  descripiton: 
+  categoryList: []
+  expensionLevel: 2
+  requirements:
+  - itemSD: {fileID: 11400000, guid: bc3dc49a89f85b64cbc0f4f7b3728f4c, type: 2}
+    amount: 1
+  - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
+    amount: 5
+  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
+    amount: 3
