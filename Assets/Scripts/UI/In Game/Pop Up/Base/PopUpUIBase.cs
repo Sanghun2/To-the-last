@@ -23,7 +23,8 @@ public class PopUpData
     }
 }
 
-public abstract class PopUpUIBase<TPopUpData> : UIBase where TPopUpData : PopUpData
+public abstract class PopUpUIBase<TPopUpData> : UIBase 
+    where TPopUpData : PopUpData
 {
     [SerializeField] protected TextUI titleText;
     [SerializeField] protected TextUI descriptionText;
