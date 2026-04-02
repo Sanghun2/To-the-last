@@ -2,20 +2,18 @@
 using BilliotGames;
 using UnityEngine;
 
-public class PopUpData
+public class PopUpData : PopUpDataBase
 {
     public string Title => title;
     public string Description => description;
-    public IReadOnlyList<ActionData> ButtonActions => buttonActions;
 
     [SerializeField] protected string title;
     [SerializeField] protected string description;
-    protected ActionData[] buttonActions;
+    public PopUpData(string title, string description, ActionData[] buttonActions) 
+        :base(buttonActions) {
 
-    public PopUpData(string title, string description, ActionData[] buttonActions) {
         this.title = title;
         this.description = description;
-        this.buttonActions = buttonActions;
     }
 
     public void SetButtonActions(ActionData[] buttonActions) {
