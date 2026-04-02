@@ -4,32 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class LocationInfoPopUpData : PopUpData
-{
-    public Location Location => location;
-
-    [SerializeField] Location location;
-
-    public LocationInfoPopUpData(string title, string description, ActionData[] buttonActions) : base(title, description, buttonActions) {
-    }
-
-
-    public LocationInfoPopUpData(Location location, ActionData[] buttonActions) 
-        : base (location.Data.DisplayText, location.Data.StoryDescription, buttonActions){
-        this.location = location;
-    }
-}
-
 public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 {
-    [SerializeField] protected Image locationImage;
     [SerializeField] protected TextUI progressText;
     [SerializeField] protected TextUI moveTimeExpectationText;
 
     public override void InitPopUp(LocationInfoPopUpData popUpData) {
         base.InitPopUp(popUpData);
         var sd = popUpData.Location.Data;
-        locationImage.sprite = sd.MainImage;
 
         int currentProgress = popUpData.Location.CurrentValue;
         int maxProgress = sd.LocationEventList.Count;

@@ -527,7 +527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6229907688774890600, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
       propertyPath: m_Name
-      value: Text UI
+      value: Expectation Time Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 7686912676134511374, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
       propertyPath: m_Pivot.x
@@ -800,7 +800,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationInfoPopUpUI
   titleText: {fileID: 8507854084945561933}
+  subText: {fileID: 0}
+  iconImage: {fileID: 3096375968037341826}
   descriptionText: {fileID: 7514343989395318360}
+  requirementUIContainer: {fileID: 0}
   buttonContainer: {fileID: 8593236348504528245}
   locationImage: {fileID: 3096375968037341826}
   progressText: {fileID: 1858158170399042013}

@@ -1,31 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
+using TMPro;
 using UnityEngine;
-
-public class PopUpData : PopUpDataBase
-{
-    public string Title => title;
-    public string Description => description;
-
-    [SerializeField] protected string title;
-    [SerializeField] protected string description;
-    public PopUpData(string title, string description, ActionData[] buttonActions) 
-        :base(buttonActions) {
-
-        this.title = title;
-        this.description = description;
-    }
-
-    public void SetButtonActions(ActionData[] buttonActions) {
-        this.buttonActions = buttonActions;
-    }
-}
+using UnityEngine.UI;
 
 public abstract class PopUpUIBase<TPopUpData> : UIBase 
-    where TPopUpData : PopUpData
+    where TPopUpData : PopUpDataBase
 {
     [SerializeField] protected TextUI titleText;
+    [SerializeField] protected TextMeshProUGUI subText;
+    [SerializeField] protected Image iconImage;
     [SerializeField] protected TextUI descriptionText;
+    [SerializeField] protected RequirementUIContainer requirementUIContainer;
     [SerializeField] protected CustomButtonContainer buttonContainer;
 
     public override void InitUI() {
@@ -45,17 +32,14 @@ public abstract class PopUpUIBase<TPopUpData> : UIBase
             return;
         }
 
-        titleText.SetText(popUpData.Title);
-        descriptionText.SetText(popUpData.Description);
-
-        buttonContainer.Clear();
-        int buttonCount = Mathf.Min(2, popUpData.ButtonActions.Count);
-        for (int i = 0; i < buttonCount; i++) {
-            CustomButton button = buttonContainer.GetOrCreateObj(i);
-            button.InitButton(popUpData.ButtonActions[i]);
-            button.Activate();
-        }
+        SetTitle(popUpData as ITitleContent);
+        SetSubText(popUpData as ISubTextContent);
+        SetIconImage(popUpData as IImageContent);
+        SetDescription(popUpData as IDescriptionContent);
+        SetRequirements(popUpData as IRequirementContent);
+        SetButtonActions(popUpData.ButtonActions);
     }
+
 
     protected virtual void Reset() {
         if (titleText == null) {
@@ -66,4 +50,40 @@ public abstract class PopUpUIBase<TPopUpData> : UIBase
             descriptionText = GetComponentInChildren<TextUI>();
         }
     }
+
+    #region Content
+
+    protected virtual void SetTitle(ITitleContent titleContent) {
+        titleText.gameObject.SetActive(titleContent != null);
+        titleText.SetText(titleContent?.Title);
+    }
+    protected virtual void SetDescription(IDescriptionContent descriptionContent) {
+        descriptionText.gameObject.SetActive(descriptionContent != null);
+        descriptionText.SetText(descriptionContent?.Description);
+    }
+    protected virtual void SetIconImage(IImageContent imageContent) {
+        iconImage.gameObject.SetActive(imageContent != null);
+        iconImage.sprite = imageContent?.Image;
+    }
+    protected virtual void SetSubText(ISubTextContent subTextContent) {
+        if (subText == null) return;
+        subText.gameObject.SetActive(subTextContent != null);
+        subText.text = subTextContent?.SubText;
+    }
+    protected virtual void SetRequirements(IRequirementContent requirementContent) {
+        if (requirementUIContainer == null) return;
+        requirementUIContainer.gameObject.SetActive(requirementContent != null);
+        requirementUIContainer.ShowList(requirementContent?.Requirements);
+    }
+    protected virtual void SetButtonActions(IReadOnlyList<ActionData> buttonActions) {
+        buttonContainer.Clear();
+        int buttonCount = Mathf.Min(2, buttonActions.Count);
+        for (int i = 0; i < buttonCount; i++) {
+            CustomButton button = buttonContainer.GetOrCreateObj(i);
+            button.InitButton(buttonActions[i]);
+            button.Activate();
+        }
+    }
+
+    #endregion
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class IRequirementContent
+public interface IRequirementContent
 {
-    public IReadOnlyList<Ingredient> Requirements { get; set; }
+    public IReadOnlyList<Ingredient> Requirements { get; }
 }
