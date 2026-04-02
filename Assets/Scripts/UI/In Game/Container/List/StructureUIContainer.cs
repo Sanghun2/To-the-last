@@ -20,8 +20,9 @@ public class StructureUIContainer : UIBase
             structureUIList[i].InitUI();
         }
 
+#if TEST    
         CheckExpensionLevelValidation();
-
+#endif
         _isInit = true;
     }
 
@@ -41,6 +42,7 @@ public class StructureUIContainer : UIBase
     }
     private void CheckExpensionLevelValidation() {
         Dictionary<int, int> validationCheck = new Dictionary<int, int>() {
+            {0, 4},
             {1, 1},
             {2, 1},
             {3, 1},
@@ -57,7 +59,7 @@ public class StructureUIContainer : UIBase
             if (validationCheck.TryGetValue(level, out int count)) {
                 validationCheck[level] = count - 1;
                 if (count - 1 < 0) {
-                    Debug.LogError($"<color=red>level ({level})이 정해진 개수보다 많음>/color>");
+                    Debug.LogError($"<color=red>level ({level})이 정해진 개수보다 많음</color>");
                     break;
                 }
             }

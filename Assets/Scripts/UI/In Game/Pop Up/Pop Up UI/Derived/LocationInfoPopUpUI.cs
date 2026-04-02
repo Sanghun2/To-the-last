@@ -4,22 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
+public class LocationInfoPopUpUI : PopUpUIBase
 {
     [SerializeField] protected TextUI progressText;
     [SerializeField] protected TextUI moveTimeExpectationText;
 
-    public override void InitPopUp(LocationInfoPopUpData popUpData) {
+    public override void InitPopUp(PopUpDataBase popUpData) {
         base.InitPopUp(popUpData);
-        var sd = popUpData.Location.Data;
 
-        int currentProgress = popUpData.Location.CurrentValue;
-        int maxProgress = sd.LocationEventList.Count;
-        InitProgressUI(currentProgress, maxProgress);
+        var data = popUpData as LocationInfoPopUpData;
+        if (data != null) {
+            var sd = data.Location.Data;
 
-        Location destination = popUpData.Location;
-        Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
-        InitMoveTimeUI(currentLocation, destination);
+            int currentProgress = data.Location.CurrentValue;
+            int maxProgress = sd.LocationEventList.Count;
+            InitProgressUI(currentProgress, maxProgress);
+
+            Location destination = data.Location;
+            Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+            InitMoveTimeUI(currentLocation, destination);
+        }
+        else {
+            Debug.LogError($"<color=red>({popUpData.GetType()}) is not type of ({typeof(LocationInfoPopUpData)})</color>");
+        }
     }
     public void InitPopUp(Location location) {
         var popUpData = new LocationInfoPopUpData(

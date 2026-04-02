@@ -756,6 +756,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2262366539221921967}
     m_Modifications:
+    - target: {fileID: 2490813543958855953, guid: f921115c98172464a9fba9212ea19362, type: 3}
+      propertyPath: prefabResourcePath
+      value: Assets/Resources/Prefab/UI/Requirement/Requriement Ingredient UI.prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742828964943071825, guid: f921115c98172464a9fba9212ea19362, type: 3}
+      propertyPath: m_Spacing.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742828964943071825, guid: f921115c98172464a9fba9212ea19362, type: 3}
+      propertyPath: m_Spacing.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6643297003954709990, guid: f921115c98172464a9fba9212ea19362, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -42,13 +42,15 @@ public class SelectionButton : ButtonBase, IPool
 
         // requirement가 필요하면 open ui & init
         if (actionData.Requirement != null) {
-            requirementUI.SetReqirementItem(actionData.Requirement);
+            var requirement = actionData.Requirement;
+            var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
+            Debug.Log($"count? {count}, require? {requirement.Amount}");
+            requirementUI.SetReqirementItem(requirement, count >= requirement.Amount);
         }
         requirementUI.gameObject.SetActive(actionData.Requirement != null);
 
         // 선택 불가능한 선택지인 경우 lock on
         lockObj.SetActive(actionData.IsLocked);
-        Debug.Log("button init");
     }
 
 

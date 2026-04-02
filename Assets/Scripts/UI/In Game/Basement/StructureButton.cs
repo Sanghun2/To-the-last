@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using BilliotGames;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class StructureButton : ButtonBase
 {
     public int Index => index;
     public Structure Structure => structure;
-    public int ExpensionLevel => expensionLevel;    
+    public int ExpensionLevel => expensionLevel;
 
 
     [SerializeField] int expensionLevel;
@@ -26,20 +24,23 @@ public class StructureButton : ButtonBase
 
         base.InitUI();
 
-        structure.OnStateChanged -= UpdateObject;
-        structure.OnStateChanged += UpdateObject;
         UpdateObject(structure.CurrentState, structure.CurrentState);
 
-        RegisterAction(Structure.StructureState.Locked, new ShowInfomationAction(new InfomationPopUpData(
+        var requirements = GetRequirementsToExpension();
+        RegisterAction(Structure.StructureState.Locked, new ShowInfomationAction(new ExpensionPopUpData(
             "구역 확장",
             "장애물을 제거하고 구역을 확장하시겠습니까?",
+            requirements,
             new ActionData[] {
                 new ActionData("취소", () => Managers.UI.CloseUI<InfomationPopUpUI>()),
                 new ActionData("확장", () => {
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                     structure.Unlock();
-                })
-            })));
+                },
+                () => InventoryUtility.HasIngredients(requirements)
+                )
+            }
+            )));
 
         if (Managers.SD.TryGetContainer<UpgradeSDBase>(out var container)) {
             List<UpgradeSDBase<StructureSD>> upgradeSDBases = container.SDDict.Where(x => {
@@ -53,6 +54,15 @@ public class StructureButton : ButtonBase
         RegisterAction(Structure.StructureState.Built, new ShowStructureUIAction(structure));
 
         _isInit = true;
+    }
+
+
+    private void OnEnable() {
+        structure.OnStateChanged -= UpdateObject;
+        structure.OnStateChanged += UpdateObject;
+    }
+    private void OnDisable() {
+        structure.OnStateChanged -= UpdateObject;
     }
 
     public void RegisterAction(Structure.StructureState state, ActionBase buttonAction) {
@@ -75,5 +85,12 @@ public class StructureButton : ButtonBase
         if (currentState == Structure.StructureState.Built) {
             structureImage.sprite = structure.StructureContext.StructureImage;
         }
+    }
+    private IReadOnlyList<Ingredient> GetRequirementsToExpension() {
+        if (Managers.SD.TryGetSD($"level{expensionLevel}", out ExpensionSD targetSD)) {
+            return targetSD.Requirements;
+        }
+
+        return null;
     }
 }

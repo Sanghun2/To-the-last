@@ -8,6 +8,7 @@ public class RequirementUI : UIBase, IPool
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI amountText;
+    [SerializeField] Button infoButton;
     private string itemID;
     private int itemAmount;
 
@@ -25,13 +26,16 @@ public class RequirementUI : UIBase, IPool
         CloseUI();
     }
 
-    public void SetReqirementItem(Ingredient requirement) {
-        SetReqirementItem(requirement.ItemSD, requirement.Amount);
-    }
-    public void SetReqirementItem(ItemSD itemSD, int amount) {
+    public void SetReqirementItem(ItemSD itemSD, int amount, bool enough=true) {
         itemID = itemSD.ID;
         itemAmount = amount;
-        UpdateUI(itemID, itemAmount);
+        UpdateUI(itemID, itemAmount, enough);
+
+        infoButton.onClick.RemoveAllListeners();
+        infoButton.onClick.AddListener(ShowItemInfo);
+    }
+    public void SetReqirementItem(Ingredient requirement, bool enough=true) {
+        SetReqirementItem(requirement.ItemSD, requirement.Amount, enough);
     }
 
     protected virtual void Reset() {
@@ -45,11 +49,15 @@ public class RequirementUI : UIBase, IPool
         }
     }
 
-    protected virtual void UpdateUI(string itemID, int amount) {
+    protected virtual void UpdateUI(string itemID, int amount, bool enough=true) {
         if (Managers.SD.TryGetSD(itemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.Image;
         }
-        amountText.text = $"x{amount}";
+        amountText.SetText("x{0}", amount);
+        amountText.color = enough ? Color.white : Color.red;
     }
 
+    private void ShowItemInfo() {
+        Debug.Log($"item info : ({itemID})");
+    }
 }

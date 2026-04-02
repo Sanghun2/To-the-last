@@ -6,6 +6,13 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
 {
     [SerializeField] CustomButton actioButton;
 
+    /// <summary>
+    /// 현재 보여지는 목록에 대해서 가진 아이템 수 변화 등 상태변경 시 재평가 로직 
+    /// </summary>
+    public void UpdateList() {
+
+    }
+
     public void ShowList(IReadOnlyList<Ingredient> requirementItems) {
         if (requirementItems == null) return;
         var maxCount = Mathf.Max(requirementItems.Count, ContentCount);
@@ -13,9 +20,10 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
 
         for (int i = 0; i < maxCount; i++) {
             if (i < itemCount) {
-                var ingredient = requirementItems[i];
+                var requirement = requirementItems[i];
+                var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
                 RequirementUI requirementUI = GetOrCreateObj(i);
-                requirementUI.SetReqirementItem(ingredient.ItemSD, ingredient.Amount);
+                requirementUI.SetReqirementItem(requirement.ItemSD, requirement.Amount, count >= requirement.Amount);
             }
             else {
                 contentList[i].CloseUI();

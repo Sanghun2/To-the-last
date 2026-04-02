@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ShowInfomationAction : ActionBase<InfomationPopUpData>
+public class ShowInfomationAction : ActionBase<PopUpDataBase>
 {
-    public ShowInfomationAction(InfomationPopUpData infomationData) {
+    public ShowInfomationAction(PopUpDataBase infomationData) {
         SetParameter(infomationData);
     }
 

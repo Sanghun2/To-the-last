@@ -9,6 +9,7 @@ public class CustomButton : ButtonBase, IPool
     public bool IsActive => IsOpened;
 
     [SerializeField] TextMeshProUGUI buttonText;
+    private ActionData actionData;
 
     public void Init() {
         InitUI();
@@ -22,8 +23,11 @@ public class CustomButton : ButtonBase, IPool
 
     public void InitButton(ActionData actionData) {
         Init();
+        this.actionData = actionData;
         SetButtonText(actionData.Text);
         SetButtonAction(actionData.Action);
+
+        targetButton.interactable = actionData.CanExecute.Invoke();
     }
 
     protected override void ButtonAction() {

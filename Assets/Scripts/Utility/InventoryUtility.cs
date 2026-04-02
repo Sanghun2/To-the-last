@@ -34,6 +34,21 @@ public class InventoryUtility
         return result;
     }
 
+    public static int GetItemCount(string id) {
+        return GetItemCount(Define.Tag.PLAYER, Define.Tag.STORAGE);
+    }
+    public static int GetItemCount(string id, params string[] inventoryTags) {
+        if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, inventoryTags)) {
+            return 0;
+        }
+
+        int total = 0;
+        for (int i = 0; i < inventories.Count; i++) {
+            total += inventories[i].GetItemCount(id);
+        }
+        return total;
+    }
+
     public static void MoveItems(InventoryBase fromInventory, InventoryBase toInventory) {
         collectProcessor.MoveAllItems(fromInventory, toInventory);
     }

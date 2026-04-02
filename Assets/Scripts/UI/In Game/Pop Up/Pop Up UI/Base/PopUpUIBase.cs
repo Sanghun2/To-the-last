@@ -5,8 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class PopUpUIBase<TPopUpData> : UIBase 
-    where TPopUpData : PopUpDataBase
+public abstract class PopUpUIBase : UIBase 
 {
     [SerializeField] protected TextUI titleText;
     [SerializeField] protected TextMeshProUGUI subText;
@@ -24,7 +23,7 @@ public abstract class PopUpUIBase<TPopUpData> : UIBase
         _isInit = true;
     }
 
-    public virtual void InitPopUp(TPopUpData popUpData) {
+    public virtual void InitPopUp(PopUpDataBase popUpData) {
         InitUI();
 
         if (popUpData == null) {
