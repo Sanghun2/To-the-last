@@ -11,13 +11,19 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
     public StructureUpgradeUI UpgradeUI => upgradeUI;
     private ProductionStructureContext Context => structure.StructureContext as ProductionStructureContext;
 
-    [SerializeField] TextUI popUpTitleText;
-    [SerializeField] DescriptionUI descriptionUI;
-    [SerializeField] ItemButtonContainer itemButtonContainer;
-    [SerializeField] CraftButton craftButton;
-    [SerializeField] ContentUI selectedItemUI;
-    [SerializeField] ProgressBarUI progressBarUI;
+    // confirmed
     [SerializeField] StructureUpgradeUI upgradeUI;
+    [SerializeField] ProductionContentUIContainer productionContentUIContainer;
+
+    //// obsolete
+    //[SerializeField] DescriptionUI descriptionUI;
+    //[SerializeField] ItemButtonContainer itemButtonContainer;
+    //[SerializeField] CraftButton craftButton;
+    //[SerializeField] ContentUI selectedItemUI;
+    //[SerializeField] ProgressBarUI progressBarUI;
+
+    //// not confirmed
+
     private StructureDataParserContainer dataParserContainer = new StructureDataParserContainer();
     private Structure structure;
 
@@ -25,19 +31,21 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
         if (IsInit) return;
 
         CloseUI();
-        itemButtonContainer.InitUI();
+        productionContentUIContainer.Clear();
         upgradeUI.InitUI();
 
         _isInit = true;
     }
     public override void SetUpUI(Structure structure) {
+        InitUI();
         this.structure = structure;
         var structureContext = Context;
 
         if (structureContext != null) {
-            popUpTitleText.SetText(structureContext.DisplayText);
-            ClearProgressUI();
-            ShowList(structureContext.Data.Prouctions);
+            //ClearProgressUI();
+            titleText.SetText(structureContext.DisplayText);
+            productionContentUIContainer.ShowContents(structureContext.Data.Prouctions);
+            //ShowList(structureContext.Data.Prouctions);
         }
 
         structure.OnUpgraded -= UpdateUpgradeInfo;
@@ -46,35 +54,26 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
 
         structure.OnUpgraded -= UpdateContentView;
         structure.OnUpgraded += UpdateContentView;
+        UpdateContentView();
     }
 
 
-    public void InitProgressUI(float currentValue, float totalValue) {
-        progressBarUI.InitUI(currentValue, totalValue);
-    }
-    public void UpdateProgressUI(float currentValue, float totalValue) {
-        progressBarUI.UpdateUI(currentValue, totalValue);
-    }
-    public void ClearProgressUI() {
-        progressBarUI.Clear();
-    }
+    //public void InitProgressUI(float currentValue, float totalValue) {
+    //    progressBarUI.InitUI(currentValue, totalValue);
+    //}
+    //public void UpdateProgressUI(float currentValue, float totalValue) {
+    //    progressBarUI.UpdateUI(currentValue, totalValue);
+    //}
+    //public void ClearProgressUI() {
+    //    progressBarUI.Clear();
+    //}
 
-
-    private void Reset() {
-        if (popUpTitleText == null) {
-            popUpTitleText = GetComponentInChildren<TextUI>();
-        }
-
-        if (progressBarUI == null) {
-            progressBarUI = GetComponentInChildren<ProgressBarUI>();
-        }
-    }
     private void OnEnable() {
-        Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
-        Managers.Craft.OnTargetSet += UpdateSelectedRecipe;
+        //Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
+        //Managers.Craft.OnTargetSet += UpdateSelectedRecipe;
     }
     private void OnDisable() {
-        Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
+        //Managers.Craft.OnTargetSet -= UpdateSelectedRecipe;
 
         if (structure != null) {
             structure.OnUpgraded -= UpdateUpgradeInfo;
@@ -83,22 +82,26 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
         }
     }
 
-    private void ShowDescription(RecipeSD recipeSD) {
-        descriptionUI.InitContent(recipeSD);
-    }
-    private void UpdateSelectedRecipe(RecipeSD recipeSD) {
-        if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
-        ShowDescription(recipeSD);
-        craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
-        selectedItemUI.SetContentImage(recipeSD.Image);
-    }
+    //private void ShowDescription(ProductionContentSD recipeSD) {
+    //    descriptionUI.InitContent(recipeSD);
+    //}
+    //private void UpdateSelectedRecipe(ProductionContentSD recipeSD) {
+    //    if (recipeSD == null) { Debug.LogError($"<color=red>recipe null은 의도하지 않은 동작</color>"); return; }
+    //    ShowDescription(recipeSD);
+    //    craftButton.SetButtonText($"제작 ({recipeSD.RequireMinutes}분)");
+    //    selectedItemUI.SetContentImage(recipeSD.Image);
+    //}
+
+    //[Obsolete("content list를 보여주는 예전 방식")]
+    //private void ShowList(IReadOnlyList<ProductionContentSD> recipes) {
+    //    InitUI();
+    //    itemButtonContainer.ShowList(recipes);
+    //    UpdateSelectedRecipe(recipes.First());
+    //}
+
+    private void UpdateContentView() => UpdateContentView(null);
     private void UpdateContentView(Structure _) {
-        ShowList(Context.Data.Prouctions);
-    }
-    private void ShowList(IReadOnlyList<RecipeSD> recipes) {
-        InitUI();
-        itemButtonContainer.ShowList(recipes);
-        UpdateSelectedRecipe(recipes.First());
+        productionContentUIContainer.ShowContents(Context.Data.Prouctions);
     }
 
     private void UpdateUpgradeInfo(Structure structure) {

@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 666216037860532368, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
+      propertyPath: m_Spacing
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1104841965952070167, guid: 6411cabc3081f9c4e91d77b25b2abc36, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

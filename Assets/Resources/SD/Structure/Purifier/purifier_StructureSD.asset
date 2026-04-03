@@ -26,4 +26,4 @@ MonoBehaviour:
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
     amount: 3
   productions:
-  - {fileID: 11400000, guid: 1eea6a78de7a59b40a4427bbbb4300fc, type: 2}
+  - {fileID: 11400000, guid: 2b4fedeb0736d914b9a680df218f26c9, type: 2}

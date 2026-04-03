@@ -14,6 +14,11 @@ public class Define
         public const string STORAGE = "storage";
     }
 
+    public class Icon {
+        public const string UPGRADE_READY = "upgradeReadyIcon";
+        public const string PRODUCTION_COMPLETE = "collectReadyIcon";
+    }
+
     public enum FlowType {
         LogIn,
         BootStrapGame,

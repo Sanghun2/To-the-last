@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public abstract class StructureContextBase
     public string DisplayText => _data.DisplayText;
 
     public string CategoryID => _data.CategoryID;
+
+    public IReadOnlyList<Ingredient> Requirements => _data.RequirementItems;
 
     protected StructureDataBase _data;
 

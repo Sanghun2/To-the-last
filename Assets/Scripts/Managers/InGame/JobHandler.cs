@@ -33,8 +33,8 @@ public class JobHandler : IInitializable
         }
     }
 
-    public FocusJob CreateFocusJob(int requireMinutes, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) {
-        var focusJob = new FocusJob(requireMinutes, onStart, onProgress, onComplete);
+    public FocusJob CreateFocusJob(int requireMinutes, Action onProgressStart=null, Action<float, float> onProgress=null, Action onComplete=null) {
+        var focusJob = new FocusJob(requireMinutes, onProgressStart, onProgress, onComplete);
         return focusJob;
     }
     public void PauseJob(bool pause) {

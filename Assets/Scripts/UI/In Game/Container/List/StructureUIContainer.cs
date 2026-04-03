@@ -55,16 +55,16 @@ public class StructureUIContainer : UIBase
         for (int i = 0; i < structureUIList.Count; i++) {
             var su = structureUIList[i];
 
-            int level = su.ExpensionLevel;
-            if (validationCheck.TryGetValue(level, out int count)) {
-                validationCheck[level] = count - 1;
+            int expensionLevel = su.Structure.ExpensionLevel;
+            if (validationCheck.TryGetValue(expensionLevel, out int count)) {
+                validationCheck[expensionLevel] = count - 1;
                 if (count - 1 < 0) {
-                    Debug.LogError($"<color=red>level ({level})이 정해진 개수보다 많음</color>");
+                    Debug.LogError($"<color=red>level ({expensionLevel})이 정해진 개수보다 많음</color>");
                     break;
                 }
             }
             else {
-                Debug.LogError($"<color=red>({level})에 해당하는 structure가 없음</color>");
+                Debug.LogError($"<color=red>({expensionLevel})에 해당하는 structure가 없음</color>");
                 break;
             }
         }

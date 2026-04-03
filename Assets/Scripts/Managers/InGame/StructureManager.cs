@@ -66,4 +66,14 @@ public class StructureManager : IInitializable
     public void Release() {
         structureUIContainer?.Release();
     }
+
+    public void UnlockLocations(int targetExpensionLevel) {
+        structureUIContainer.InitUI();
+        for (int i = 0; i < structureUIContainer.Count; i++) {
+            var structureUI = structureUIContainer.GetStructureUI(i);
+            if (structureUI.Structure.ExpensionLevel == 0) {
+                structureUI.Structure.Unlock();
+            }
+        }
+    }
 }

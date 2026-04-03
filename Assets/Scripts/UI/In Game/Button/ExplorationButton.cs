@@ -4,7 +4,9 @@ using UnityEngine;
 public class ExplorationButton : ButtonBase
 {
     protected override void ButtonAction() {
-        Managers.UI.OpenUI<MapUI>();
+        var mapUI = Managers.UI.GetUI<MapUI>();
+        mapUI.InitUI();
+        mapUI.OpenUI();
         Managers.UI.CloseUI<BasementUI>();
     }
 }

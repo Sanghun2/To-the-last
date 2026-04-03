@@ -18,7 +18,7 @@ public class CraftContext
         CurrentState != State.Completed;
     public bool CanCraft => CurrentState == State.Selected;
 
-    public RecipeSD Target => craftTarget;
+    public ProductionContentSD Target => craftTarget;
     public State CurrentState
     {
         get => _currentState;
@@ -38,12 +38,12 @@ public class CraftContext
     public event Action<State, State> OnStateChanged;
     //public event ActionData<float, float> OnValueChanged;
 
-    [SerializeField] RecipeSD craftTarget;
+    [SerializeField] ProductionContentSD craftTarget;
     [SerializeField] State _currentState;
     //private float currentValue;
     //private float maxValue;
 
-    public void SetTarget(RecipeSD recipeSD) {
+    public void SetTarget(ProductionContentSD recipeSD) {
         if (!CanSelect) { Debug.Log($"<color=green>현재 새로운 제작법을 선택할 수 없음</color>"); return; }
 
         craftTarget = recipeSD;
@@ -57,14 +57,14 @@ public class CraftContext
 
 public sealed class CraftManager
 {
-    public RecipeSD CraftTarget => craftContext == null ? null : craftContext.Target;
+    public ProductionContentSD CraftTarget => craftContext == null ? null : craftContext.Target;
     public CraftContext CraftContext => craftContext;
 
     [SerializeField] CraftContext craftContext = new CraftContext();
 
-    public event Action<RecipeSD> OnTargetSet;
+    public event Action<ProductionContentSD> OnTargetSet;
 
-    public void SetCraftTarget(RecipeSD recipeSD) {
+    public void SetCraftTarget(ProductionContentSD recipeSD) {
         var currentTarget = craftContext.Target;
         if (currentTarget != null && currentTarget.Equals(recipeSD)) return;
 
@@ -75,7 +75,11 @@ public sealed class CraftManager
         }
     }
 
-    public bool TryCraft(RecipeSD targetRecipeSD, Action<float, float> onProgress = null, Action onComplete = null) {
+    public bool TryCraft(ProductionContentSD targetRecipeSD,
+        Action onStartProgress=null,
+        Action<float, float> onProgress = null, 
+        Action onComplete = null) {
+
         SetCraftTarget(targetRecipeSD);
         if (craftContext.CanCraft) {
             craftContext.CurrentState = CraftContext.State.Crafting;
@@ -91,10 +95,10 @@ public sealed class CraftManager
         return false;
     }
 
-    public void RegisterDelayedJob(RecipeSD recipeSD, Action<float, float> onProgress = null) {
-        if (recipeSD is DelayedRecipeSD delayedRecipeSD) {
+    public void RegisterDelayedJob(ProductionContentSD recipeSD, Action<float, float> onProgress = null) {
+        if (recipeSD is DelayedProductionContentSD delayedRecipeSD) {
             var newJob = new Job(
-                delayedRecipeSD.CompletionDelayMinutes,
+                delayedRecipeSD.RequireMinutesToComplete,
                 onProgress: onProgress,
                 onComplete: () => craftContext.CurrentState = CraftContext.State.Completed);
             Managers.Job.RegisterDelayedJob(newJob);

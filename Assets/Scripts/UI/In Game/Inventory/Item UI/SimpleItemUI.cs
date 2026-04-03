@@ -10,18 +10,18 @@ public class SimpleItemUI : ItemUIBase
     [SerializeField] protected TextMeshProUGUI amountText;
     [SerializeField] protected TextMeshProUGUI itemNameText;
 
-    public override void SetUI(ItemStack item) {
-        var itemData = item.ItemData;
-        if (Managers.SD.TryGetSD(itemData.ItemID, out ItemSD targetSD)) {
+    public override void SetUI(ItemEventArgs itemArgs) {
+        if (Managers.SD.TryGetSD(itemArgs.itemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.Image;
             itemNameText.text = targetSD.DisplayText;
-            amountText.text = GetAmountText(item.Amount);
+            amountText.text = GetAmountText(itemArgs.delta);
             Activate();
         }
         else {
-            Debug.LogError($"<color=red>{itemData.ItemID}에 해당하는 SD가 없음</color>");
+            Debug.LogError($"<color=red>{itemArgs.itemID}에 해당하는 SD가 없음</color>");
         }
     }
+
 
     internal void UpdateUI(ItemStack itemStack, int deltaAmount) {
         if (itemStack.Amount > 0) {

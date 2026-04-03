@@ -79,7 +79,11 @@ public class LocationInfoPopUpUI : PopUpUIBase
     }
     private void EnterLocation(Location destination) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();
-        var ui = Managers.UI.OpenUI<ExplorationUI>();
+
+        var ui = Managers.UI.GetUI<ExplorationUI>();
+        ui.InitUI();
+        ui.OpenUI();
+
         ui.InitLocationUI(destination);
         ui.ShowEnterance();
     }

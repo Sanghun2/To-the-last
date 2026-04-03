@@ -35,7 +35,6 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
         for (int i = 0; i < initialPrefabCount; i++) {
             var obj = CreateObj();
             if (obj != null) {
-                obj.Init();
                 obj.Return();
             }
         }
@@ -66,7 +65,9 @@ public abstract class ContainerBase<TContent> : UIBase, IPrefabContainer<TConten
         InitUI();
         if (prefab == null) { Debug.LogError($"생성하려는 prefab이 없음"); return null; }
         GameObject obj = Instantiate(prefab, parent);
-        return obj.GetComponentInChildren<TContent>();
+        var content = obj.GetComponentInChildren<TContent>();
+        content.Init();
+        return content;
     }
 
     public abstract TContent GetObj();

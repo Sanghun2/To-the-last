@@ -8,9 +8,9 @@ public class ItemSDContainer : SDContainerBase<ItemSD>
     }
 }
 
-public class RecipeSDContainer : SDContainerBase<RecipeSD>
+public class ProductionSDContainer : SDContainerBase<ProductionContentSD>
 {
-    public RecipeSDContainer(string sdResourcePath) : base(sdResourcePath) {
+    public ProductionSDContainer(string sdResourcePath) : base(sdResourcePath) {
     }
 }
 

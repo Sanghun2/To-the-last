@@ -10,7 +10,11 @@ public class LootEncounterExecutor : EncounterExecutorBase<LootEncounterData, Lo
 {
     public override void ExecuteEncounter(LootEncounterContext encounterContext) {
         var explorationUI = Managers.UI.GetUI<ExplorationUI>();
-        if (explorationUI.IsOpened == false) Managers.UI.OpenUI(explorationUI);
+
+        if (explorationUI.IsOpened == false) {
+            explorationUI.InitUI();
+            explorationUI.OpenUI();
+        }
 
         explorationUI.ShowSituation(encounterContext.EncounterData);
     }

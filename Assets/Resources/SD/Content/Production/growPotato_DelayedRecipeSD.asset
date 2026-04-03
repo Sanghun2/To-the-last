@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8bb81d011266b4f8d70a8cad4a3e7d, type: 3}
+  m_Name: growPotato_DelayedRecipeSD
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeSD
+  id: growPotato
+  displayText: "\uAC10\uC790 \uC7AC\uBC30"
+  descripiton: "\uAC10\uC790 \uBAA8\uC885\uC73C\uB85C \uC2F9\uC744 \uD2D4\uC6CC \uAC10\uC790\uB97C
+    \uD0A4\uC6B4\uB2E4."
+  categoryList: []
+  image: {fileID: 0}
+  requireMinutes: 15
+  requiredLevel: 0
+  requirements:
+  - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
+    amount: 1
+  - itemSD: {fileID: 11400000, guid: 6a496772c99f2d74f87f40d020a0ff2c, type: 2}
+    amount: 1
+  outputs:
+  - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
+    amount: 4
+  requireMinutesToComplete: 2880

@@ -315,6 +315,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3466716218852813840}
+    - targetCorrespondingSourceObject: {fileID: 2609629833205762151, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5009672910551138405}
   m_SourcePrefab: {fileID: 100100000, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
 --- !u!224 &3400786190078361119 stripped
 RectTransform:
@@ -338,3 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b53229cb8b2c40a15e197a46b20db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenBlocker
+--- !u!114 &5009672910551138405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617361539184591055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d37c3b36e8d4942b0a1e1a3c8a9800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenBlockCanvas

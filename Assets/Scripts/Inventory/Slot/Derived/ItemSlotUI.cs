@@ -17,9 +17,7 @@ public class ItemSlotUI : ItemSlotUIBase, IDropHandler
         Debug.Log("item dropped");
     }
 
-    public override void SetSlotUI(ItemStack item) {
-        if (item == null) return;
-
+    public override void SetSlotUI(ItemEventArgs itemArgs) {
         if (itemUI == null) {
             var container = Managers.UI.GetUI<LocationItemUIContainer>();
             itemUI = container.GetObj();
@@ -27,12 +25,10 @@ public class ItemSlotUI : ItemSlotUIBase, IDropHandler
             itemUI.Rect.anchoredPosition = Vector2.zero;
         }
 
-        itemUI.SetUI(item);
-        item.OnItemRemoved -= ClearItem;
-        item.OnItemRemoved += ClearItem;
-        amountText.SetText("{0}", item.Amount);
-        //OnItemSet?.Invoke(item);
+        itemUI.SetUI(itemArgs);
+        amountText.SetText("{0}", itemArgs.delta);
     }
+
 
     public override void ClearItem() {
         itemUI.transform.SetParent(Managers.UI.GetUI<LocationItemUIContainer>().ContainerTr);

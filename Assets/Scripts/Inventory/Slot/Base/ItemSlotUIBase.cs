@@ -10,7 +10,7 @@ public abstract class ItemSlotUIBase : UIBase, IPool
     //public abstract event Action<ItemStack> OnItemSet;
     //public abstract event Action OnItemRemoved;
 
-    public abstract void SetSlotUI(ItemStack item);
+    public abstract void SetSlotUI(ItemEventArgs itemArgs);
     public abstract void ClearItem();
 
     #region Pool

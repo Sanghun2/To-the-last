@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ProductionStructureData : StructureDataBase
 {
-    public IReadOnlyList<RecipeSD> Prouctions => prodictionList;
+    public IReadOnlyList<ProductionContentSD> Prouctions => prodictionList;
 
-    private IReadOnlyList<RecipeSD> prodictionList;
+    private IReadOnlyList<ProductionContentSD> prodictionList;
 
     public ProductionStructureData(
         string id, 
@@ -14,7 +14,7 @@ public class ProductionStructureData : StructureDataBase
         Sprite sturctureImage, 
         int constructionTime, 
         IReadOnlyList<Ingredient> requirementItems,
-        IReadOnlyList<RecipeSD> prodictionList) 
+        IReadOnlyList<ProductionContentSD> prodictionList) 
         : base(id, categoryID, displayText, sturctureImage, constructionTime, requirementItems) {
 
         this.prodictionList = prodictionList;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public sealed class InventoryManager
 {
     private Dictionary<string, InventoryBase> inventoryDict = new();
     private Dictionary<string, List<InventoryBase>> inventoryCategories = new();
+
+    public event Action<string, int> OnItemCountChanged;
 
     public void AddInventory(InventoryBase inventory) {
         if (!inventoryDict.TryAdd(inventory.InventoryID, inventory)) { Debug.LogError($"<color=red>이미 있는 인벤토리 id? {inventory.InventoryID}</color>"); return; }

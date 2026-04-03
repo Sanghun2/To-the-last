@@ -30,14 +30,14 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
 
     public virtual TContent GetObjOf(int index) {
         InitUI();
-        TContent obj = null;
+        TContent content = null;
         if (0 <= index && index < contentList.Count) {
-            obj = contentList[index];
-            obj.Activate();
-            return obj;
+            content = contentList[index];
+            content.Activate();
+            return content;
         }
 
-        return obj;
+        return content;
     }
     public virtual TContent GetOrCreateObj(int index) {
         InitUI();

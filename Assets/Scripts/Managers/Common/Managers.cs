@@ -279,12 +279,12 @@ public sealed class Managers : MonoBehaviour
             return _inventoryManager;
         }
     }
-    public static ScreenBlocker ScreenBlocker
+    public static ScreenBlockCanvas ScreenBlocker
     {
         get
         {
             if (_screenBlocker == null) {
-                _screenBlocker = FindAnyObjectByType<ScreenBlocker>(FindObjectsInactive.Include);
+                _screenBlocker = FindAnyObjectByType<ScreenBlockCanvas>(FindObjectsInactive.Include);
             }
 
             return _screenBlocker;
@@ -331,7 +331,6 @@ public sealed class Managers : MonoBehaviour
     // InGame
     private static StructureManager _structureManager;
     private static UpgradeManager _upgradeManager;
-    private static ScreenBlocker _screenBlocker;
     private static InventoryManager _inventoryManager;
     private static EffectManager _effectSystem;
     private static BattleSystem _battleManager;
@@ -354,6 +353,7 @@ public sealed class Managers : MonoBehaviour
     private static CharacterManager _characterManager;
 
     // Common
+    private static ScreenBlockCanvas _screenBlocker;
     private static SoundManager _soundManager;
     private static TraitManager _traitManager;
     private static ProcessManager _processManager;
@@ -381,7 +381,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new ItemSDContainer("SD/Item"));
         SD.TryRegisterSD(new LocationSDContainer("SD/Location"));
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
-        SD.TryRegisterSD(new RecipeSDContainer("SD/Content/Recipe"));
+        SD.TryRegisterSD(new ProductionSDContainer("SD/Content/Production"));
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
         SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));
         SD.TryRegisterSD(new IconSDContainer("SD/Icon"));

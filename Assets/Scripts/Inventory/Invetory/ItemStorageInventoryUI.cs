@@ -1,4 +1,5 @@
-﻿using BilliotGames;
+﻿using System;
+using BilliotGames;
 using UnityEngine;
 
 public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
@@ -38,7 +39,7 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
         for (int i = 0; i < list.Count; i++) {
             ItemStack itemStack = list[i];
             ItemSlotUIBase itemSlot = itemSlotContainer.GetOrCreateObj(i);
-            itemSlot.SetSlotUI(itemStack);
+            itemSlot.SetSlotUI(new ItemEventArgs(itemStack.ItemData.ItemID, itemStack.Amount));
         }
     }
 
@@ -48,8 +49,9 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
             inventory.OnItemAdded -= OnAddItem;
         }
     }
-    private void OnAddItem(ItemStack stack, int delta) {
+
+    private void OnAddItem(ItemEventArgs args) {
         var itemSlot = itemSlotContainer.GetObj();
-        itemSlot.SetSlotUI(stack);
+        itemSlot.SetSlotUI(args);
     }
 }

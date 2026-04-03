@@ -14,7 +14,10 @@ public class InventoryTester : MonoBehaviour
 
     public void CreateRandomItems() {
         Init();
-        Managers.UI.OpenUI<ExplorationUI>();
+        var explorationUI = Managers.UI.GetUI<ExplorationUI>();
+        explorationUI.InitUI();
+        explorationUI.OpenUI();
+
         for (int i = 0; i < createAmount; i++) {
             var item = itemLists[Random.Range(0, itemLists.Length)];
             var amount = Random.Range(1, 10);

@@ -57,6 +57,10 @@ public static partial class Extension
             );
     }
 
+    public static ItemEventArgs ToArgs(this ItemStack itemStack) {
+        return new ItemEventArgs(itemStack.ItemData.ItemID, itemStack.Amount);
+    }
+
     #endregion
 
 

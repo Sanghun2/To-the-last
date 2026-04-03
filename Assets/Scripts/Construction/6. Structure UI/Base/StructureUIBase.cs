@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class StructureUIBase : UIBase
 {
-    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] protected TextMeshProUGUI titleText;
 
     public void SetTitleText(string text) {
         titleText.text = text;

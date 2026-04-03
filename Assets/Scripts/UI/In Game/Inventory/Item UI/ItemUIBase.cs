@@ -23,7 +23,7 @@ public abstract class ItemUIBase : UIBase, IPool
 
     public bool IsActive => IsOpened;
 
-    public abstract void SetUI(ItemStack item);
+    public abstract void SetUI(ItemEventArgs itemArgs);
 
     #region Pool
 

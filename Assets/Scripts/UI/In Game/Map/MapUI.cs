@@ -22,8 +22,11 @@ public class MapUI : UIBase
         if (IsInit) return;
 
         CloseUI();
-        LocationPointer.SetPosiion(Managers.Player.PlayerData.CurrentLocationID);
 
         _isInit = true;
+    }
+
+    private void OnEnable() {
+        LocationPointer.SetPosiion(Managers.Player.PlayerData.CurrentLocationID);
     }
 }

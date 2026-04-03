@@ -7,7 +7,7 @@ public class ItemContentUI : ButtonBase, IPool
 {
     [SerializeField] Image itemImage;
     [SerializeField] GameObject lockObj;
-    private RecipeSD recipeSD;
+    private ProductionContentSD recipeSD;
 
     public bool IsActive => IsOpened;
 
@@ -27,12 +27,12 @@ public class ItemContentUI : ButtonBase, IPool
         recipeSD = null;
         itemImage.sprite = null;
     }
-    public void SetRecipe(RecipeSD recipeSD, Action buttonAction) {
+    public void SetRecipe(ProductionContentSD recipeSD, Action buttonAction) {
         this.recipeSD = recipeSD;
         itemImage.sprite = recipeSD.Outputs[0].ItemSD.Image;
         SetButtonAction(buttonAction);
 
-        int structureLevel = Managers.Structure.CurrentSelctedStructure.Level;
+        int structureLevel = Managers.Structure.CurrentSelctedStructure.StructureLevel;
         bool @lock = recipeSD.RequiredLevel > structureLevel;
         lockObj.SetActive(@lock);
     }

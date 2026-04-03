@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
@@ -19,9 +20,10 @@ public class SimpleInventory : InventoryBase
     protected Dictionary<string, int> itemCountDict = new Dictionary<string, int>();
     private WeightCounter weightCounter = null;
 
-    public override event Action<ItemStack, int> OnItemAdded;
-    public override event Action<ItemStack, int> OnItemMerged;
-    public override event Action<ItemStack, int> OnItemRemoved;
+    public override event Action<ItemEventArgs> OnItemAdded;
+    public override event Action<ItemEventArgs> OnItemMerged;
+    public override event Action<ItemEventArgs> OnItemRemoved;
+    public override event Action<ItemEventArgs> OnItemChanged;
 
     public SimpleInventory(string id, int capacitiy = 15) : base(id, capacitiy) {
         InitInventory();
@@ -124,14 +126,16 @@ public class SimpleInventory : InventoryBase
                 case ItemStack.MergeResult.Success:
                     // inputStack.Amount가 0이 됐으므로 실제 병합된 양 = prev - current
                     currentInputAmount = inputStack.Amount;
-                    OnItemMerged?.Invoke(targetStack, prevInputAmount - currentInputAmount);
+                    OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
+                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
                     return true;
 
                 case ItemStack.MergeResult.Success_Overflowed:
                     // targetStack이 꽉 찼고 inputStack에 잔량이 남은 경우
                     // 잔량을 다음 슬롯에 재귀적으로 밀어 넣음
                     currentInputAmount = inputStack.Amount;
-                    OnItemMerged?.Invoke(targetStack, prevInputAmount - currentInputAmount);
+                    OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
+                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
                     return TryPushItem(inputStack, out overflowedStack);
 
                 case ItemStack.MergeResult.Failed_DifferentItemType:
@@ -176,12 +180,9 @@ public class SimpleInventory : InventoryBase
             inputStack.OnAmountChanged -= UpdateItemCount;
             inputStack.OnAmountChanged += UpdateItemCount;
 
-            var invenUI = Managers.UI.GetUI<InventoryUI>();
-            if (invenUI.IsOpened) {
-                invenUI.ShowInventory(this);
-            }
-
-            OnItemAdded?.Invoke(inputStack, inputStack.Amount);
+            int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
+            OnItemAdded?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount, -1, unitWeight));
+            OnItemChanged?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount));
             return true;
         }
     }
@@ -225,7 +226,8 @@ public class SimpleInventory : InventoryBase
             }
         }
 
-        OnItemRemoved?.Invoke(null, toRemove); // 필요에 따라 조정
+        OnItemRemoved?.Invoke(new ItemEventArgs(itemID, -toRemove));
+        OnItemChanged?.Invoke(new ItemEventArgs(itemID, -toRemove));
         return toRemove;
     }
 
@@ -236,9 +238,8 @@ public class SimpleInventory : InventoryBase
             itemCountDict[itemID] += deltaAmount;
         }
     }
-    private void UpdateWeight(ItemStack stack, int deltaAmount) {
-        if (stack.ItemData is ExtendedItemData data) {
-            weightCounter.AddWeight(deltaAmount * data.Weight);
-        }
+
+    private void UpdateWeight(ItemEventArgs args) {
+        weightCounter.AddWeight(args.delta * args.weight);
     }
 }

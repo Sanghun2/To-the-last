@@ -131,9 +131,9 @@ public class Tester : MonoBehaviour
     public void DoTask() {
         if (testFocusJob != null) {
             var craftUI = Managers.UI.GetUI<CraftStructureUI>();
-            craftUI.InitProgressUI(0, 1);
+            //craftUI.clear
             var fJob = new FocusJob(testFocusJob.TotalMinutes, testFocusJob.Duration, onProgress:(current, total) => {
-                craftUI.UpdateProgressUI(current, total);
+                //craftUI.UpdateProgressUI(current, total);
             }).WithBlockScreen();
             Managers.Job.DoFocusJob(fJob);
         }

@@ -7,8 +7,11 @@ public class UpgradeManager
     public event Action<Structure> OnStructureUpgradeProcessCompleted;
 
     public Upgrade.InfoResult TryGetNextUpgradeInfo<TUpgradeable>(Structure structure, out TUpgradeable nextUpgrade) where TUpgradeable : IUpgradeable {
-        var currentLevel = structure.Level;
+        var categoryID = structure.StructureContext?.CategoryID ?? null;
         nextUpgrade = default;
+        if (string.IsNullOrEmpty(categoryID)) { return Upgrade.InfoResult.InValid; }
+
+        var currentLevel = structure.StructureLevel;
         if (!Managers.SD.TryGetSD(structure.StructureContext.CategoryID, out UpgradeSDBase upgradeSD)) { return Upgrade.InfoResult.InValid; }
 
         var result = upgradeSD.TryGetUpgradeInfo(currentLevel + 1, out IUpgradeable upgrade);
@@ -35,7 +38,7 @@ public class UpgradeManager
 
             var job = Managers.Job.CreateFocusJob(
                 nextUpgrade.ConstructionTime,
-                onStart: onStart,
+                onProgressStart: onStart,
                 onProgress: onProgress,
                 onComplete:() => {
                     targetStructure.ApplyUpgrade(nextUpgrade.ID, newContext);

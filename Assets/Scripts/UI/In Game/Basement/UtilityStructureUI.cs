@@ -8,8 +8,8 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
     public StructureUpgradeUI UpgradeUI => upgradeUI;
     private UtilityStructureContext Context => structure.StructureContext as UtilityStructureContext;
 
-    [SerializeField] UtilityContentUIContainer utilityContentUIContainer;
     [SerializeField] StructureUpgradeUI upgradeUI;
+    [SerializeField] UtilityContentUIContainer utilityContentUIContainer;
     private Structure structure;
 
     public override void InitUI() {

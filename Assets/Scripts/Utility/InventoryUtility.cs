@@ -103,4 +103,17 @@ public class InventoryUtility
         return true;
 #endif
     }
+    
+    public static void SubscribeToItemChanged(string itemID, Action<int, int> onItemChanged) { // (currentCount, delta) 전달
+        if (!Managers.Inventory.TryGetInventoryByTag(
+            out var inventoryList, Define.Tag.PLAYER, Define.Tag.STORAGE)) return;
+
+        foreach (var inventory in inventoryList) {
+            inventory.OnItemChanged += (args) => {
+                if (!itemID.Equals(args.itemID)) return;
+                int current = GetItemCount(itemID);
+                onItemChanged?.Invoke(current, args.delta);
+            };
+        }
+    }
 }

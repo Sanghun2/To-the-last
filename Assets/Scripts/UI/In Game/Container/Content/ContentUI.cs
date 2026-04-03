@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// Image + Button Action 기능
+/// </summary>
 public class ContentUI : UIBase
 {
     [SerializeField] protected Image contentImage;

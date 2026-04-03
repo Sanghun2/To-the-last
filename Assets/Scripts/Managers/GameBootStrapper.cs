@@ -49,10 +49,7 @@ public class GameBootStrapper
         Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
 
         // structure
-        Managers.Structure.UnlockLocation(4);
-        Managers.Structure.UnlockLocation(5);
-        Managers.Structure.UnlockLocation(10);
-        Managers.Structure.UnlockLocation(11);
+        Managers.Structure.UnlockLocations(targetExpensionLevel:0);
 
         // inventory
         var playerInventory = new SimpleInventory("player").SetTag("player");

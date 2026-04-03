@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ProductionStructureSD", menuName = "Scriptable Objects/Structure/ProductionStructureSD")]
-public class ProductionStructureSD : StructureSD, IContentContext<RecipeSD>
+public class ProductionStructureSD : StructureSD, IContentContext<ProductionContentSD>
 {
-    public IReadOnlyList<RecipeSD> ContentList => productions;
+    public IReadOnlyList<ProductionContentSD> ContentList => productions;
 
-    [SerializeField] protected RecipeSD[] productions;
+    [SerializeField] protected ProductionContentSD[] productions;
 }

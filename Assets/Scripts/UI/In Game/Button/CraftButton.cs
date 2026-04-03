@@ -49,22 +49,17 @@ public class CraftButton : ButtonBase
     private void Craft() {
         if (Managers.Job.IsFocusJobRunning) return;
 
-        var targetRecipeSD = Managers.Craft.CraftTarget;
+        var targetProdiction = Managers.Craft.CraftTarget;
 
-        if (Managers.Craft.TryCraft(targetRecipeSD,
-            CachedCraftUI.UpdateProgressUI,
-            () => {
-                CachedCraftUI.InitProgressUI(0, 1);
-                Managers.Craft.RegisterDelayedJob(
-                targetRecipeSD,
-                CachedCraftUI.UpdateProgressUI);
-            })) {
-            CachedCraftUI.InitProgressUI(0, 1);
+        if (!Managers.Craft.TryCraft(targetProdiction, () => {
+                Managers.Craft.RegisterDelayedJob(targetProdiction);
+            }
+            )) {
+            Debug.LogError($"<color=red>failed to try craft item</color>");
         }
     }
     private void ClaimResult() {
         Managers.Craft.ClaimCraftResult();
-        CachedCraftUI.InitProgressUI(0, 1);
     }
 
     protected override void Reset() {

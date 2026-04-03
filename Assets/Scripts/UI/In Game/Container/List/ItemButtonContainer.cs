@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemButtonContainer : ListContainerBase<ItemContentUI>
 {
-    public void ShowList(IReadOnlyList<RecipeSD> recipes) {
+    public void ShowList(IReadOnlyList<ProductionContentSD> recipes) {
         var count = Mathf.Max(recipes.Count, ContentCount);
         for (int i = 0; i < count; i++) {
             if (i < recipes.Count) {
