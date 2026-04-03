@@ -8,7 +8,7 @@ public class RequirementUI : UIBase, IPool
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI amountText;
-    [SerializeField] Button infoButton;
+    [SerializeField] ItemInfoButton itemInfoButton;
     private string itemID;
     private int itemAmount;
 
@@ -31,8 +31,7 @@ public class RequirementUI : UIBase, IPool
         itemAmount = amount;
         UpdateUI(itemID, itemAmount, enough);
 
-        infoButton.onClick.RemoveAllListeners();
-        infoButton.onClick.AddListener(ShowItemInfo);
+        itemInfoButton.SetData(itemID);
     }
     public void SetReqirementItem(Ingredient requirement, bool enough=true) {
         SetReqirementItem(requirement.ItemSD, requirement.Amount, enough);
@@ -55,9 +54,5 @@ public class RequirementUI : UIBase, IPool
         }
         amountText.SetText("x{0}", amount);
         amountText.color = enough ? Color.white : Color.red;
-    }
-
-    private void ShowItemInfo() {
-        Debug.Log($"item info : ({itemID})");
     }
 }

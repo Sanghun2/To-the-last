@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UtilityStructureContext : StructureContextBase<UtilityStructureData>
 {
-    public IReadOnlyList<UtilityContentSD> ContentList => Data.ContentList;
+    public IReadOnlyList<ActivityContentSD> ContentList => Data.ContentList;
 
     public UtilityStructureContext(UtilityStructureData data) : base(data) {
 

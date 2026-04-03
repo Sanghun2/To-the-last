@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IUpgradeable
 {
-    IReadOnlyList<Ingredient> RequirementItems { get; }
+    IReadOnlyList<Ingredient> Requirements { get; }
 }

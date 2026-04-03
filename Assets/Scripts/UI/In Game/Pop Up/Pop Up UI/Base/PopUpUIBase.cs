@@ -72,7 +72,7 @@ public abstract class PopUpUIBase : UIBase
     protected virtual void SetRequirements(IRequirementContent requirementContent) {
         if (requirementUIContainer == null) return;
         requirementUIContainer.gameObject.SetActive(requirementContent != null);
-        requirementUIContainer.ShowList(requirementContent?.Requirements);
+        requirementUIContainer.ShowRequirements(requirementContent?.Requirements);
     }
     protected virtual void SetButtonActions(IReadOnlyList<ActionData> buttonActions) {
         buttonContainer.Clear();

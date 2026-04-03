@@ -10,13 +10,15 @@ public class UtilityStructureData : StructureDataBase
         Sprite structureImage,
         int constructionTime, 
         IReadOnlyList<Ingredient> requirementItems,
-        IReadOnlyList<UtilityContentSD> contentList) 
-        : base(id, categoryID, displayText, structureImage, constructionTime, requirementItems) {
+        IReadOnlyList<ActivityContentSD> contentList,
+        string defaultExecutionButtonText
+        ) 
+        : base(id, categoryID, displayText, structureImage, constructionTime, requirementItems, defaultExecutionButtonText) {
 
         this.contentList = contentList;
     }
 
-    public IReadOnlyList<UtilityContentSD> ContentList => contentList;
+    public IReadOnlyList<ActivityContentSD> ContentList => contentList;
 
-    private IReadOnlyList<UtilityContentSD> contentList;
+    private IReadOnlyList<ActivityContentSD> contentList;
 }

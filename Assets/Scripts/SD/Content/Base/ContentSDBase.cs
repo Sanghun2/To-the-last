@@ -5,7 +5,13 @@ public abstract class ContentSDBase : TimeSDBase
 {
     public IReadOnlyList<Ingredient> Requirements => requirements;
     public int RequiredLevel => requiredLevel;
+    public string ExecutionButtonText => executionButtonText;
 
-    [SerializeField] int requiredLevel;
+    [SerializeField] protected int requiredLevel;
     [SerializeField] protected Ingredient[] requirements;
+    [SerializeField] protected string executionButtonText;
+
+    public void SetDefaultExecutionButtonText(string buttonText) {
+        executionButtonText = buttonText;
+    }
 }

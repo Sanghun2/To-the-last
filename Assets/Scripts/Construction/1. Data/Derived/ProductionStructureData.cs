@@ -8,14 +8,16 @@ public class ProductionStructureData : StructureDataBase
     private IReadOnlyList<ProductionContentSD> prodictionList;
 
     public ProductionStructureData(
-        string id, 
+        string id,
         string categoryID,
         string displayText,
-        Sprite sturctureImage, 
-        int constructionTime, 
+        Sprite sturctureImage,
+        int constructionTime,
         IReadOnlyList<Ingredient> requirementItems,
-        IReadOnlyList<ProductionContentSD> prodictionList) 
-        : base(id, categoryID, displayText, sturctureImage, constructionTime, requirementItems) {
+        IReadOnlyList<ProductionContentSD> prodictionList,
+        string defaultExecutionButtonText
+        ) 
+        : base(id, categoryID, displayText, sturctureImage, constructionTime, requirementItems, defaultExecutionButtonText) {
 
         this.prodictionList = prodictionList;
     }

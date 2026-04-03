@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RequirementUIContainer : ListContainerBase<RequirementUI>
 {
@@ -13,7 +12,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
 
     }
 
-    public void ShowList(IReadOnlyList<Ingredient> requirementItems) {
+    public void ShowRequirements(IReadOnlyList<Ingredient> requirementItems) {
         if (requirementItems == null) return;
         var maxCount = Mathf.Max(requirementItems.Count, ContentCount);
         int itemCount = requirementItems.Count;

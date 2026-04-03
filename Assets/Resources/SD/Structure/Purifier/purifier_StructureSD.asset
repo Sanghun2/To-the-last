@@ -18,12 +18,14 @@ MonoBehaviour:
   categoryList:
   - {fileID: 11400000, guid: cecee67e2b2edb1489a57f4e5e35ee55, type: 2}
   image: {fileID: 21300000, guid: 9e876a8e953f80a4e859e273e574b63e, type: 3}
-  locked: 0
-  constructionTime: 100
-  requirementItems:
+  requireMinutes: 120
+  requiredLevel: 0
+  requirements:
+  - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
+    amount: 8
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 5
-  - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
-    amount: 3
+    amount: 4
+  executionButtonText: "\uC81C\uC791"
+  locked: 0
   productions:
   - {fileID: 11400000, guid: 2b4fedeb0736d914b9a680df218f26c9, type: 2}

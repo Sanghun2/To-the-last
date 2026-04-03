@@ -52,6 +52,7 @@ public abstract class ContentUIBase : UIBase, IPool
     }
     public virtual void Return() {
         CloseUI();
+        progressBarUI.Clear();
     }
 
     #endregion
@@ -76,15 +77,16 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
         progressBarUI.Clear();
 
         SetImage(contentSD.Image);
-        executionButton.SetAction(() => ExecuteButtonAction(contentSD.RequireMinutes));
+        executionButton.SetExecuteAction( new ActionData(
+            contentSD.ExecutionButtonText, 
+            () => ExecuteButtonAction(contentSD.RequireMinutes)));
 
-        int structureLevel = Managers.Structure.CurrentSelctedStructure.StructureLevel;
+        int structureLevel = Managers.Structure.CurrentSelctedStructure?.StructureLevel ?? 0;
         bool @lock = contentSD.RequiredLevel > structureLevel;
-        Debug.Log($"level? {structureLevel}, required? {contentSD.RequiredLevel}");
         uiLocker.SetLock(@lock);
     }
 
-    protected void SetImage(Sprite image) {
+    private void SetImage(Sprite image) {
         contentImage.sprite = image;
         contentImage.gameObject.SetActive(image != null);
     }

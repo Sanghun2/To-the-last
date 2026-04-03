@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class UtilityContentUIContainer : ListContainerBase<UtilityContentUI>, IContentViewer
+public class UtilityContentUIContainer : ListContainerBase<ActivityContentUI>, IContentViewer
 {
     public void ShowContents(IReadOnlyList<ContentSDBase> contents) {
         Clear();

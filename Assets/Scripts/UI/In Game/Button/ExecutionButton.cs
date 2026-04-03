@@ -1,20 +1,23 @@
 ﻿using System;
 using BilliotGames;
+using TMPro;
 using UnityEngine;
 
 public class ExecutionButton : ButtonBase
 {
-    private Action action;
+    [SerializeField] TextMeshProUGUI buttonText;
+    private ActionData actionData;
 
-    public void SetAction(Action action) {
-        this.action = action;
+    public void SetExecuteAction(ActionData actionData) {
+        this.actionData = actionData;
     }
 
     protected override void ButtonAction() {
-        action?.Invoke();
+        actionData?.Action?.Invoke();
     }
 
+
     private void OnDisable() {
-        action = null;
+        actionData = null;
     }
 }

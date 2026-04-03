@@ -11,6 +11,7 @@ public abstract class StructureDataBase
     public Sprite StructureImage => structureImage;
     public string DisplayText => displayText;
     public string CategoryID => categoryID;
+    public string DefaultExecutionButtonText => defaultExecutionButtonText;
 
 
     private string id;
@@ -19,6 +20,7 @@ public abstract class StructureDataBase
     private IReadOnlyList<Ingredient> requirementItems;
     private Sprite structureImage;
     private string categoryID;
+    private string defaultExecutionButtonText;
 
     public StructureDataBase(
         string id,
@@ -26,7 +28,8 @@ public abstract class StructureDataBase
         string displayText,
         Sprite structureImage,
         int constructionTime, 
-        IReadOnlyList<Ingredient> requirementItems
+        IReadOnlyList<Ingredient> requirementItems,
+        string defaultExecutionButtonText
        ) {
 
         this.id = id;
@@ -35,5 +38,6 @@ public abstract class StructureDataBase
         this.constructionTime = constructionTime;
         this.requirementItems = requirementItems;
         this.structureImage = structureImage;
+        this.defaultExecutionButtonText = defaultExecutionButtonText;
     }
 }

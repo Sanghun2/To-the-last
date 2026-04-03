@@ -25,8 +25,9 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
         this.structure = structure;
         var structureContext = Context;
         if (structureContext != null) {
-            SetTitleText(structureContext.DisplayText);
             var contents = structureContext.ContentList;
+            InitExecutionButtonTexts(structure.DefaultExecutionButtonText, contents);
+            SetTitleText(structureContext.DisplayText);
             ShowContents(contents);
         }
         else {
@@ -70,7 +71,7 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
     private void UpdateContentView(Structure _) {
         ShowContents(Context.ContentList);
     }
-    private void ShowContents(IReadOnlyList<UtilityContentSD> contents) {
+    private void ShowContents(IReadOnlyList<ActivityContentSD> contents) {
         utilityContentUIContainer.Clear();
         for (int i = 0; i < contents.Count; i++) {
             var content = contents[i];

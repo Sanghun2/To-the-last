@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5197774148348130110, guid: 6dd0dc33381aa04469757c7151405c92, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 650
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 5197774148348130110, guid: 6dd0dc33381aa04469757c7151405c92, type: 3}
       propertyPath: m_SizeDelta.y
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7485005782559801976, guid: 6dd0dc33381aa04469757c7151405c92, type: 3}
       propertyPath: m_Name
-      value: Utility Content UI
+      value: Utility Content UI Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

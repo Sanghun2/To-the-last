@@ -19,13 +19,15 @@ MonoBehaviour:
   categoryList:
   - {fileID: 11400000, guid: 5fc1b3627aca8ce4988aaeb8a735d983, type: 2}
   image: {fileID: 21300000, guid: 815b2222b685bcd4ab12d4778c986ddb, type: 3}
-  locked: 0
-  constructionTime: 100
-  requirementItems:
+  requireMinutes: 240
+  requiredLevel: 0
+  requirements:
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 10
+    amount: 12
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
-    amount: 4
+    amount: 6
+  executionButtonText: "\uC81C\uC791"
+  locked: 0
   productions:
   - {fileID: 11400000, guid: c1f697ab0aca9374990cc9b8c3af530f, type: 2}
   - {fileID: 11400000, guid: ff4c4bf46b441fa4b83d2965cace4b26, type: 2}

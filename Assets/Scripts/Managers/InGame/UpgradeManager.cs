@@ -33,7 +33,7 @@ public class UpgradeManager
             if (!Managers.Construction.StructureContextBuilderContainer.TryGet(data, out var contextBuilder)) { return false; }
             if (!contextBuilder.TryBuildContext(data, out StructureContextBase newContext)) { return false; }
 
-            var requirmentsToUpgrade = nextUpgrade.RequirementItems;
+            var requirmentsToUpgrade = nextUpgrade.Requirements;
             if (!InventoryUtility.TryConsumeIngredients(InventoryUtility.GetInventoriesInBasement(), requirmentsToUpgrade)) { Debug.Log($"failed to consume ingredients in inventories"); return false; }
 
             var job = Managers.Job.CreateFocusJob(

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1257046565826143603}
   - component: {fileID: 5104981078957634505}
   - component: {fileID: 4609452586624436863}
+  - component: {fileID: 4604285012080890632}
   m_Layer: 5
   m_Name: Info Button
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2651495292064399257
 CanvasRenderer:
@@ -141,6 +142,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4604285012080890632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361911747551691176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
+  targetButton: {fileID: 5104981078957634505}
 --- !u!1 &5680209072711991049
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +405,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 130, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3237856105383986939
 MonoBehaviour:
@@ -407,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RequirementUI
   itemImage: {fileID: 5583488426727989716}
   amountText: {fileID: 1923675843800965924}
-  infoButton: {fileID: 5104981078957634505}
+  itemInfoButton: {fileID: 4604285012080890632}
 --- !u!114 &666216037860532368
 MonoBehaviour:
   m_ObjectHideFlags: 0

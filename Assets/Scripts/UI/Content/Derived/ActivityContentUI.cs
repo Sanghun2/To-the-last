@@ -5,17 +5,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UtilityContentUI : ContentUIBase<UtilityContentSD>
+public class ActivityContentUI : ContentUIBase<ActivityContentSD>
 {
     [SerializeField] protected TextMeshProUGUI activityNameText;
     [SerializeField] protected RequirementUIContainer requirementUIContainer;
+    [SerializeField] protected ActivityInfoButton activityInfoButton;
 
-    public override void InitContent(UtilityContentSD contentSD) {
+    public override void InitContent(ActivityContentSD contentSD) {
         base.InitContent(contentSD);
 
         var requirements = contentSD.Requirements;
         SetActivityNameText((requirements == null || requirements.Count == 0) ? contentSD.DisplayText : null);
         SetRequirements(requirements);
+        activityInfoButton.SetData(contentSD.ID);
     }
 
     protected override void ExecuteButtonAction(int requireMinutes) {
@@ -24,7 +26,7 @@ public class UtilityContentUI : ContentUIBase<UtilityContentSD>
         base.ExecuteButtonAction(requireMinutes);
     }
     protected void SetRequirements(IReadOnlyList<Ingredient> requirements) {
-        requirementUIContainer.ShowList(requirements);
+        requirementUIContainer.ShowRequirements(requirements);
         requirementUIContainer.gameObject.SetActive(requirements != null);
     }
 

@@ -381,6 +381,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new ItemSDContainer("SD/Item"));
         SD.TryRegisterSD(new LocationSDContainer("SD/Location"));
         SD.TryRegisterSD(new StructureSDContainer("SD/Structure"));
+        SD.TryRegisterSD(new ActivitySDContainer("SD/Content/Activity"));
         SD.TryRegisterSD(new ProductionSDContainer("SD/Content/Production"));
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
         SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));

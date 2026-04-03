@@ -43,9 +43,11 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
 
         if (structureContext != null) {
             //ClearProgressUI();
+            var productions = structureContext.Data.Prouctions;
+            InitExecutionButtonTexts(structure.DefaultExecutionButtonText, productions);
             titleText.SetText(structureContext.DisplayText);
-            productionContentUIContainer.ShowContents(structureContext.Data.Prouctions);
-            //ShowList(structureContext.Data.Prouctions);
+            productionContentUIContainer.ShowContents(productions);
+            //ShowRequirements(structureContext.Data.Prouctions);
         }
 
         structure.OnUpgraded -= UpdateUpgradeInfo;
@@ -93,9 +95,9 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
     //}
 
     //[Obsolete("content list를 보여주는 예전 방식")]
-    //private void ShowList(IReadOnlyList<ProductionContentSD> recipes) {
+    //private void ShowRequirements(IReadOnlyList<ProductionContentSD> recipes) {
     //    InitUI();
-    //    itemButtonContainer.ShowList(recipes);
+    //    itemButtonContainer.ShowRequirements(recipes);
     //    UpdateSelectedRecipe(recipes.First());
     //}
 

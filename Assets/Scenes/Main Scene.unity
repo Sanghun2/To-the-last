@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1681725609}
-  infoButton: {fileID: 1153496333}
+  infoButton: {fileID: 0}
 --- !u!1 &139492210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1150986982}
-  infoButton: {fileID: 1628837597}
+  infoButton: {fileID: 0}
 --- !u!1 &319244509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 488411614}
+  targetButton: {fileID: 0}
 --- !u!114 &488411614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 515769363}
+  targetButton: {fileID: 0}
 --- !u!114 &515769363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,7 +2488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 319244511}
-  infoButton: {fileID: 1353488240}
+  infoButton: {fileID: 0}
 --- !u!1 &552929476
 GameObject:
   m_ObjectHideFlags: 0
@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 581466602}
-  infoButton: {fileID: 1780041886}
+  infoButton: {fileID: 0}
 --- !u!1 &685877524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 685877527}
+  targetButton: {fileID: 0}
 --- !u!114 &685877527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,7 +3312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 151923892}
-  infoButton: {fileID: 1885727022}
+  infoButton: {fileID: 0}
 --- !u!1 &710808514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,7 +3571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1175565982}
-  infoButton: {fileID: 685877526}
+  infoButton: {fileID: 0}
 --- !u!1 &884474573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,13 +3764,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 339195068566417768, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00076532026
+      objectReference: {fileID: 0}
     - target: {fileID: 355061755735750646, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 355061755735750646, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 513480223849415734, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_Size
@@ -3992,9 +3996,13 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1488160181478996616, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1637873222583748407, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1671449374970023894, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5164,6 +5172,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7499991341753537760, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7523809371977353110, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5400,6 +5412,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -110.00101
       objectReference: {fileID: 0}
+    - target: {fileID: 8086156627251312200, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8111045583691609685, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -5616,6 +5632,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9058303867448271976, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.0000141859055
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6610070945255934894, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
@@ -5817,7 +5837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1086337002}
+  targetButton: {fileID: 0}
 --- !u!114 &1086337002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6295,7 +6315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1153496334}
+  targetButton: {fileID: 0}
 --- !u!114 &1153496334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6697,7 +6717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 776530689}
-  infoButton: {fileID: 515769362}
+  infoButton: {fileID: 0}
 --- !u!1 &1353488238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6749,7 +6769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1353488241}
+  targetButton: {fileID: 0}
 --- !u!114 &1353488241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7121,7 +7141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1952700280}
-  infoButton: {fileID: 1086337001}
+  infoButton: {fileID: 0}
 --- !u!1 &1563538078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7173,7 +7193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1290665071}
-  infoButton: {fileID: 488411613}
+  infoButton: {fileID: 0}
 --- !u!1 &1572224167
 GameObject:
   m_ObjectHideFlags: 0
@@ -7225,7 +7245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 631631647}
-  infoButton: {fileID: 2052478452}
+  infoButton: {fileID: 0}
 --- !u!1 &1592431454
 GameObject:
   m_ObjectHideFlags: 0
@@ -7277,7 +7297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1592431457}
+  targetButton: {fileID: 0}
 --- !u!114 &1592431457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7411,7 +7431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1628837598}
+  targetButton: {fileID: 0}
 --- !u!114 &1628837598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8006,7 +8026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1780041887}
+  targetButton: {fileID: 0}
 --- !u!114 &1780041887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8219,7 +8239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 1885727023}
+  targetButton: {fileID: 0}
 --- !u!114 &1885727023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9000,7 +9020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 521412725}
-  infoButton: {fileID: 1592431456}
+  infoButton: {fileID: 0}
 --- !u!1 &2002452073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
@@ -9132,7 +9152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
-  targetButton: {fileID: 2052478453}
+  targetButton: {fileID: 0}
 --- !u!114 &2052478453
 MonoBehaviour:
   m_ObjectHideFlags: 0

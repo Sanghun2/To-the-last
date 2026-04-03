@@ -11,7 +11,7 @@ public class DescriptionUI : UIBase
     public void InitContent(ProductionContentSD recipeSD) {
         itemNameText.SetText(recipeSD.DisplayText);
         itemContentUI.SetContentImage(recipeSD.Image);
-        requirementUIContainer.ShowList(recipeSD.Requirements);
+        requirementUIContainer.ShowRequirements(recipeSD.Requirements);
         descriptionText.SetText(recipeSD.Description);
     }
 }

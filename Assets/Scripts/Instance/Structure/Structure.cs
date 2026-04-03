@@ -36,6 +36,8 @@ public class Structure : IValue<float>
     }
     public int StructureLevel => structureLevel;
     public int ExpensionLevel => expenstionLevel;
+    public string DefaultExecutionButtonText => structureContext.Data.DefaultExecutionButtonText;
+
 
     [SerializeField] StructureContextBase structureContext;
     [SerializeField] int structureLevel;
@@ -108,11 +110,11 @@ public class Structure : IValue<float>
         if (result == Upgrade.InfoResult.Available) {
             SubscribeUpgradeEvents(nextUpgrade);
 
-            OnUpgradeAvailabilityChanged?.Invoke(InventoryUtility.HasIngredients(nextUpgrade.RequirementItems));
+            OnUpgradeAvailabilityChanged?.Invoke(InventoryUtility.HasIngredients(nextUpgrade.Requirements));
         }
     }
     public void SubscribeUpgradeEvents(IUpgradeable nextUpgrade) {
-        foreach (var requirement in nextUpgrade.RequirementItems) {
+        foreach (var requirement in nextUpgrade.Requirements) {
             var itemID = requirement.ItemSD.ID;
             var requiredAmount = requirement.Amount;
 
@@ -124,7 +126,7 @@ public class Structure : IValue<float>
                 bool wasEnough = prev >= requiredAmount;
                 bool isEnough = current >= requiredAmount;
                 if (wasEnough != isEnough) {
-                    bool canUpgrade = InventoryUtility.HasIngredients(nextUpgrade.RequirementItems);
+                    bool canUpgrade = InventoryUtility.HasIngredients(nextUpgrade.Requirements);
                     OnUpgradeAvailabilityChanged?.Invoke(canUpgrade);
                 }
             };

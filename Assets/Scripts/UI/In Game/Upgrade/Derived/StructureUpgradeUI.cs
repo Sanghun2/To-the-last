@@ -57,7 +57,7 @@ public class StructureUpgradeUI : UpgradeUIBase<StructureDataBase>
         nameText.text = $"{upgradeTargetName} 업그레이드";
     }
     private void ShowRequirementList(IReadOnlyList<Ingredient> ingredients) {
-        requirementUIContainer.ShowList(ingredients);
+        requirementUIContainer.ShowRequirements(ingredients);
     }
 
 }

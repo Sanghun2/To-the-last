@@ -15,7 +15,7 @@ public class ConstructionContentUIContainer
                 if (structureSD.Locked) continue;
 
                 var constructionContentUI = GetOrCreateObj(i);
-                constructionContentUI.ShowUI(structureSD);
+                constructionContentUI.InitContent(structureSD);
             }
             else {
                 contentList[i].CloseUI();

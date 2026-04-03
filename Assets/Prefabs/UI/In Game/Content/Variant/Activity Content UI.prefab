@@ -171,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 500703940577883410, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 650
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 500703940577883410, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
       propertyPath: m_SizeDelta.y
@@ -237,13 +237,61 @@ PrefabInstance:
       propertyPath: 'lockObjs.Array.data[1]'
       value: 
       objectReference: {fileID: 4672623346752867637}
+    - target: {fileID: 1902936342998213292, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902936342998213292, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902936342998213292, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902936342998213292, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2073152044945095127, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9989d147fa8cec94abdb03ab223d7ccf, type: 3}
+    - target: {fileID: 2586583708549999202, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586583708549999202, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586583708549999202, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586583708549999202, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2968147592267891796, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
       propertyPath: m_Name
-      value: Utility Content UI
+      value: Activity Content UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701293545810620251, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701293545810620251, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701293545810620251, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701293545810620251, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -255,6 +303,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2968147592267891796, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581797196232415602}
+    - targetCorrespondingSourceObject: {fileID: 3939546441876710034, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3755484151965625414}
   m_SourcePrefab: {fileID: 100100000, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
 --- !u!1 &1667208094188189720 stripped
 GameObject:
@@ -283,6 +334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24192430f74e0c14dba27c7fa6886f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RequirementUIContainer
+--- !u!114 &3232057430408902869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7064595870185488121, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+  m_PrefabInstance: {fileID: 5679302567389546028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682090182721201342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &4129787649512334307 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8619639431186195919, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
@@ -349,3 +411,22 @@ MonoBehaviour:
   uiLocker: {fileID: 5332004194776140314}
   activityNameText: {fileID: 6310150058554693199}
   requirementUIContainer: {fileID: 2963360670779457165}
+  activityInfoButton: {fileID: 3755484151965625414}
+--- !u!1 &8682090182721201342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3939546441876710034, guid: 9c1322cf3e5f6634ca9aac19caa562bc, type: 3}
+  m_PrefabInstance: {fileID: 5679302567389546028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3755484151965625414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682090182721201342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec9e6e130a5e014fb33150df5c1e78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActivityInfoButton
+  targetButton: {fileID: 3232057430408902869}

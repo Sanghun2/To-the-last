@@ -1,41 +1,25 @@
-﻿using System;
-using BilliotGames;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-public class ConstructionContentUI : UIBase, IPool
+public class ConstructionContentUI : ContentUIBase<StructureSD>
 {
-    [SerializeField] ContentUI structureContentUI;
+    [SerializeField] StructureInfoButton infoButton;
     [SerializeField] RequirementUIContainer requirementUIContainer;
-    [SerializeField] CustomButton constructionButton;
-    [SerializeField] ProgressBarUI progressBarUI;
 
-    public bool IsActive => IsOpened;
+    public override void InitContent(StructureSD structureSD) {
+        Debug.Log($"count? {structureSD.Requirements.Count}");
+        base.InitContent(structureSD);
+        infoButton.SetData(structureSD.ID);
+        requirementUIContainer.ShowRequirements(structureSD.Requirements);
 
-    public void Activate() {
-        OpenUI();
-    }
-
-    public void Init() {
-        if (IsInit) return; 
-
-        InitUI();
-        progressBarUI.Clear();
-
-        _isInit = true;
-    }
-
-    public void ShowUI(StructureSD structureSD) {
-        structureContentUI.SetContentImage(structureSD.Image);
-        requirementUIContainer.ShowList(structureSD.RequirementItems);
-        progressBarUI.Clear();
-        constructionButton.InitButton(new ActionData(
+        executionButton.SetExecuteAction(new ActionData(
             $"건설\n({structureSD.ConstructionTime}분)",
             () => {
-                var a = InventoryUtility.HasIngredients(structureSD.RequirementItems);
-                if (true) {
+                var hasEnoughIngredients = InventoryUtility.HasIngredients(structureSD.Requirements);
+#if TEST
+                hasEnoughIngredients = true;
+#endif
+                if (hasEnoughIngredients) {
                     Managers.Construction.SetTargetStructure(structureSD);
                     Managers.Construction.ConstructCurrentTarget(
                         onProgress: progressBarUI.UpdateUI,
@@ -47,12 +31,7 @@ public class ConstructionContentUI : UIBase, IPool
                 else {
                     Debug.LogAssertion($"재료 불충분");
                 }
-            }));
-        OpenUI();
-    }
-
-    public void Return() {
-        CloseUI();
-        //requirementUIContainer.ReleaseContainer();
+            }
+            ));
     }
 }

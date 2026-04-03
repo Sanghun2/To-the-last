@@ -4,16 +4,14 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class StructureSD : ImageSDBase, IUpgradeable
+public abstract class StructureSD : ContentSDBase, IUpgradeable
 {
-    public IReadOnlyList<Ingredient> RequirementItems => requirementItems;
-    public int ConstructionTime => constructionTime;
+    public int ConstructionTime => requireMinutes;
     public bool Locked => locked;
     public string FirstCategory => categoryList != null && categoryList.Count > 0 ? categoryList[0].ID : string.Empty;
+    public string DefaultExecitionButtonText => executionButtonText;
 
     [SerializeField] protected bool locked=true;
-    [SerializeField] protected int constructionTime = 100;
-    [SerializeField] protected Ingredient[] requirementItems;
 
 
     public void LockConstruction(bool @lock) {

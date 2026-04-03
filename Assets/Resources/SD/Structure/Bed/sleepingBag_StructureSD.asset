@@ -18,15 +18,15 @@ MonoBehaviour:
   categoryList:
   - {fileID: 11400000, guid: fcc7dd003b064494f8989994fe024953, type: 2}
   image: {fileID: 21300000, guid: 4a46bacb887d0954dbf8da96c9044371, type: 3}
-  locked: 0
-  constructionTime: 100
-  requirementItems:
-  - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 10
+  requireMinutes: 60
+  requiredLevel: 0
+  requirements:
+  - itemSD: {fileID: 11400000, guid: 0b4c9b8dccdbd064bb33ebf85b91fe61, type: 2}
+    amount: 4
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
-    amount: 3
-  - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
-    amount: 3
+    amount: 1
+  executionButtonText: "\uC81C\uC791"
+  locked: 0
   utilityContents:
   - {fileID: 11400000, guid: e63d562286b357840954a8ccd892b880, type: 2}
   - {fileID: 11400000, guid: 630888c51c84fda4bb677af1c27b19a2, type: 2}

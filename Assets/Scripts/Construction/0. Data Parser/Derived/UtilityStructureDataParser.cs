@@ -9,8 +9,9 @@ public class UtilityStructureDataParser : StructureDataParserBase<UtilityStructu
             structureSD.DisplayText,
             structureSD.Image,
             structureSD.ConstructionTime,
-            structureSD.RequirementItems,
-            structureSD.ContentList
+            structureSD.Requirements,
+            structureSD.ContentList,
+            structureSD.DefaultExecitionButtonText
             );
     }
 }
