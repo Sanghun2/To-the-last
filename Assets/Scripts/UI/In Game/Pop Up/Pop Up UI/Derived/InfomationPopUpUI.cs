@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class InfomationPopUpUI : PopUpUIBase
 {
     [SerializeField] TouchClosePanel closePanel;
+    [SerializeField] RectRebuilder rectRebuilder;
 
     public override void InitPopUp(PopUpDataBase popUpData) {
         base.InitPopUp(popUpData);
 
         closePanel.SetCloseAction(popUpData.OnCloseByPanel);
+
+        rectRebuilder.Rebuild();
     }
 
     public void SetSubText(string text) {

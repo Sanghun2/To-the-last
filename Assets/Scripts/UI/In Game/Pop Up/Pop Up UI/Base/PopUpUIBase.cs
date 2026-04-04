@@ -38,8 +38,6 @@ public abstract class PopUpUIBase : UIBase
         SetDescription(popUpData as IDescriptionContent);
         SetRequirements(popUpData as IRequirementContent);
         SetButtonActions(popUpData.ButtonActions);
-
-        descriptionText.ForceMeshUpdate();
     }
 
 

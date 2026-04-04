@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 4368881802980093201}
   - component: {fileID: 5707276963637618996}
   - component: {fileID: 2433195001913480402}
+  - component: {fileID: 1065844820182243481}
   m_Layer: 5
   m_Name: Description Area
   m_TagString: Untagged
@@ -228,6 +229,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1065844820182243481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014918802807719576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e87ed5e52d21a4448e7f93f4fa25140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RectRebuilder
+  childrenRects:
+  - {fileID: 6921343083585308865}
 --- !u!1 &7899960901578269349
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2262366539221921967}
   - component: {fileID: 2360074656257808611}
+  - component: {fileID: 594483623659730429}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -367,6 +383,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &594483623659730429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531414705103028601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e87ed5e52d21a4448e7f93f4fa25140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RectRebuilder
+  childrenRects:
+  - {fileID: 1065844820182243481}
 --- !u!1001 &166306343098468000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1027,6 +1057,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5556762090000874394, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1468728679474505886}
+    - targetCorrespondingSourceObject: {fileID: 5556762090000874394, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6921343083585308865}
     - targetCorrespondingSourceObject: {fileID: 508905777043097006, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2553256988688467810}
@@ -1076,6 +1109,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6921343083585308865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110012513429342773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e87ed5e52d21a4448e7f93f4fa25140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RectRebuilder
+  childrenRects:
+  - {fileID: 8651201465095816066}
 --- !u!224 &1565472603028839664 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6422959263793409375, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
@@ -1093,7 +1140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5446186180625986561}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -1111,6 +1158,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &8651201465095816066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3788793405320344109, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
+  m_PrefabInstance: {fileID: 5520078758089208239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5446186180625986561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e87ed5e52d21a4448e7f93f4fa25140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RectRebuilder
 --- !u!1001 &6049199811708774310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1258,6 +1316,7 @@ MonoBehaviour:
   requirementUIContainer: {fileID: 335190864805101908}
   buttonContainer: {fileID: 1382372539339108264}
   closePanel: {fileID: 5847056777011633950}
+  rectRebuilder: {fileID: 0}
 --- !u!224 &5333570663345221993 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1871163659705652943, guid: 155d6e4573e15c84f82f4a00a4d6ff21, type: 3}
