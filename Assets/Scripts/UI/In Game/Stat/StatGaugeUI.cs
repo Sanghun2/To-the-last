@@ -1,6 +1,7 @@
 ﻿using System;
 using BilliotGames;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class StatGaugeUI : StatUIBase
@@ -33,7 +34,8 @@ public class StatGaugeUI : StatUIBase
                     Managers.UI.CloseUI<InfomationPopUpUI>();
                 })
             },
-            image:statSD.Image
+            image: statSD.Image,
+            onCloseByPanel: () => Managers.Player.PlayerData.UnregisterEvent(UpdateSubText, StatType, Define.StatDetail.current)
             );
 
         var infoPopUp = Managers.UI.GetUI<InfomationPopUpUI>();

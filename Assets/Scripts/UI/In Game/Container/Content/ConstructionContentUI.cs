@@ -13,7 +13,7 @@ public class ConstructionContentUI : ContentUIBase<StructureSD>
         requirementUIContainer.ShowRequirements(structureSD.Requirements);
 
         executionButton.SetExecuteAction(new ActionData(
-            $"건설\n({structureSD.ConstructionTime}분)",
+            $"제작\n({structureSD.ConstructionTime}분)",
             () => {
                 var hasEnoughIngredients = InventoryUtility.HasIngredients(structureSD.Requirements);
 #if TEST

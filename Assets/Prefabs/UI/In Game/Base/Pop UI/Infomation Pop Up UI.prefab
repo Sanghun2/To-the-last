@@ -713,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8654669603652216119, guid: 550c84789edf08f4899d2b98227c0037, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 8654669603652216119, guid: 550c84789edf08f4899d2b98227c0037, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1093,24 +1093,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5446186180625986561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &6082418874002203084 stripped
+--- !u!114 &6036581060707683928 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1797593618280501347, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2260099063032791031, guid: e30a95edb8b3fa9438a6946b93b019c7, type: 3}
   m_PrefabInstance: {fileID: 5520078758089208239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110012513429342773}
+  m_GameObject: {fileID: 5446186180625986561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &6049199811708774310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,14 +1254,26 @@ MonoBehaviour:
   titleText: {fileID: 3274353762266784942}
   subText: {fileID: 5303816069704850755}
   iconImage: {fileID: 2289037611556661057}
-  descriptionText: {fileID: 6082418874002203084}
+  descriptionText: {fileID: 6036581060707683928}
   requirementUIContainer: {fileID: 335190864805101908}
   buttonContainer: {fileID: 1382372539339108264}
+  closePanel: {fileID: 5847056777011633950}
 --- !u!224 &5333570663345221993 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1871163659705652943, guid: 155d6e4573e15c84f82f4a00a4d6ff21, type: 3}
   m_PrefabInstance: {fileID: 6049199811708774310}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5847056777011633950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 204905008948541624, guid: 155d6e4573e15c84f82f4a00a4d6ff21, type: 3}
+  m_PrefabInstance: {fileID: 6049199811708774310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9232858b4fe0fc9429037de236afb60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TouchClosePanel
 --- !u!1001 &6405960531893874229
 PrefabInstance:
   m_ObjectHideFlags: 0

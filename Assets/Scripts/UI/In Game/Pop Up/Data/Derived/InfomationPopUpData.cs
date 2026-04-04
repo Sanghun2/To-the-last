@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class InfomationPopUpData : PopUpDataBase, 
     ITitleContent, 
@@ -16,8 +17,9 @@ public class InfomationPopUpData : PopUpDataBase,
         string description, 
         ActionData[] buttonActions, 
         string subText = null, 
-        Sprite image = null) 
-        : base(buttonActions) {
+        Sprite image = null,
+        Action onCloseByPanel = null) 
+        : base(buttonActions, onCloseByPanel) {
 
         Title = mainText;
         Image = image;

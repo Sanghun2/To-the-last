@@ -9,6 +9,7 @@ public class ExecutionButton : ButtonBase
     private ActionData actionData;
 
     public void SetExecuteAction(ActionData actionData) {
+        buttonText.text = actionData.Text;
         this.actionData = actionData;
     }
 

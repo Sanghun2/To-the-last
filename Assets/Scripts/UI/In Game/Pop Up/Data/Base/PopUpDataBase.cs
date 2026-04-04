@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class PopUpDataBase
 {
     public IReadOnlyList<ActionData> ButtonActions => buttonActions;
-    protected ActionData[] buttonActions;
+    public Action OnCloseByPanel => onCloseByPanel;
 
-    public PopUpDataBase(ActionData[] buttonActions) {
+
+    protected ActionData[] buttonActions;
+    protected Action onCloseByPanel;
+
+    public PopUpDataBase(ActionData[] buttonActions, Action onCloseByPanel=null) {
         this.buttonActions = buttonActions;
+        this.onCloseByPanel = onCloseByPanel;
     }
 }
