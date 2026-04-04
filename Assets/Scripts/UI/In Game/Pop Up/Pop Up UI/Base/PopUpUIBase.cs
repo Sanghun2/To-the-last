@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 using BilliotGames;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,7 @@ public abstract class PopUpUIBase : UIBase
     [SerializeField] protected TextUI titleText;
     [SerializeField] protected TextMeshProUGUI subText;
     [SerializeField] protected Image iconImage;
-    [SerializeField] protected TextUI descriptionText;
+    [SerializeField] protected TextMeshProUGUI descriptionText;
     [SerializeField] protected RequirementUIContainer requirementUIContainer;
     [SerializeField] protected CustomButtonContainer buttonContainer;
 
@@ -37,16 +38,14 @@ public abstract class PopUpUIBase : UIBase
         SetDescription(popUpData as IDescriptionContent);
         SetRequirements(popUpData as IRequirementContent);
         SetButtonActions(popUpData.ButtonActions);
+
+        descriptionText.ForceMeshUpdate();
     }
 
 
     protected virtual void Reset() {
         if (titleText == null) {
             titleText = GetComponentInChildren<TextUI>();
-        }
-
-        if (descriptionText == null) {
-            descriptionText = GetComponentInChildren<TextUI>();
         }
     }
 

@@ -95,7 +95,7 @@ public class ConstructionManager : IInitializable
                  TryConstructStructure(locationIndex, structureData);
                  onComplete?.Invoke();
              }).WithBlockScreen();
-
+        Debug.Log($"construction job");
 
         Managers.Job.DoFocusJob(constructionJob, () => {
             ClearTargetStructure();
