@@ -112,8 +112,8 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
             context.OnProcessStateChanged += UpdateExecutionButton;
         }
     }
-    public void UpdateExecutionButton(Structure.ProcessState currentState, Structure.ProcessState prevState) {
-        bool interactable = currentState == Structure.ProcessState.Available;
+    public void UpdateExecutionButton(Process.State currentState, Process.State prevState) {
+        bool interactable = currentState == Process.State.Wait;
         executionButton.SetInteractable(interactable);
     }
 
@@ -121,14 +121,14 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
     protected override void OnProgressStart() {
         var context = structure?.StructureContext;
         if (context != null && !IsLocked) {
-            context.ProcessState = Structure.ProcessState.Processing;
+            context.ProcessState = Process.State.InProgress;
         }
     }
 
     protected override void OnProgressComplete() {
         var context = structure?.StructureContext;
         if (context != null && !IsLocked) {
-            context.ProcessState = Structure.ProcessState.Available;
+            context.ProcessState = Process.State.Wait;
         }
     }
 

@@ -12,10 +12,6 @@ public class Structure : IValue<float>
         Empty,
         Built,
     }
-    public enum ProcessState {
-        Available,
-        Processing,
-    }
 
     public bool CanContruct => CurrentState == StructureState.Empty;
     public bool CanDestroy => CurrentState == StructureState.Built;
@@ -41,7 +37,6 @@ public class Structure : IValue<float>
     public int StructureLevel => structureLevel;
     public int ExpensionLevel => expenstionLevel;
     public string DefaultExecutionButtonText => structureContext.Data.DefaultExecutionButtonText;
-
 
     [SerializeField] StructureContextBase structureContext;
     [SerializeField] int structureLevel;
@@ -92,7 +87,7 @@ public class Structure : IValue<float>
         if (IsLocked == false) { Debug.Log("<color=yellow>Lock 상태가 아닌데 unlock 시도</color>"); return; }
 
         if (StructureContext != null) {
-            StructureContext.ProcessState = ProcessState.Available;
+            StructureContext.ProcessState = Process.State.Wait;
         }
 
         CurrentState = StructureState.Empty;
@@ -100,7 +95,7 @@ public class Structure : IValue<float>
     public void DestroyStrucure() {
         if (CanDestroy == false) { return; }
         CurrentState = StructureState.Empty;
-        StructureContext.ProcessState = ProcessState.Available;
+        StructureContext.ProcessState = Process.State.Wait;
         structureContext = null;
         //structureID = null;
     }

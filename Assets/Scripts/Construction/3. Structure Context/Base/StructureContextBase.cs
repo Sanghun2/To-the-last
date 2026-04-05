@@ -4,7 +4,7 @@ using TMPro;
 using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
-public abstract class StructureContextBase
+public abstract class StructureContextBase : IProcessState
 {
     public StructureDataBase Data => _data;
     public string ID => _data.ID;
@@ -15,7 +15,7 @@ public abstract class StructureContextBase
     public string CategoryID => _data.CategoryID;
 
     public IReadOnlyList<Ingredient> Requirements => _data.RequirementItems;
-    public Structure.ProcessState ProcessState
+    public Process.State ProcessState
     {
         get => _processState;
         set
@@ -24,20 +24,19 @@ public abstract class StructureContextBase
             _processState = value;
             if (_processState != prevState) {
                 OnProcessStateChanged?.Invoke(_processState, prevState);
-                Debug.Log($"state? {_processState}");
             }
         }
     }
 
 
     protected StructureDataBase _data;
-    protected Structure.ProcessState _processState;
+    protected Process.State _processState;
 
     public StructureContextBase(StructureDataBase data) {
         this._data = data;
     }
 
-    public event Action<Structure.ProcessState, Structure.ProcessState> OnProcessStateChanged;
+    public event Action<Process.State, Process.State> OnProcessStateChanged;
 
     public abstract StructureUIBase OpenStructureUI();
 }
