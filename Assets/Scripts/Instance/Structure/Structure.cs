@@ -13,16 +13,16 @@ public class Structure : IValue<float>
         Built,
     }
 
-    public bool CanContruct => CurrentState == StructureState.Empty;
-    public bool CanDestroy => CurrentState == StructureState.Built;
-    public bool IsLocked => CurrentState == StructureState.Locked;
+    public bool CanContruct => CurrentStructureState == StructureState.Empty;
+    public bool CanDestroy => CurrentStructureState == StructureState.Built;
+    public bool IsLocked => CurrentStructureState == StructureState.Locked;
     public StructureContextBase StructureContext => structureContext;
     public string ID => StructureContext.ID;
     public string DisplayText => structureContext.DisplayText;
 
     public float CurrentValue => currentProgress;
     public float MaxValue => maxProgress;
-    public StructureState CurrentState
+    public StructureState CurrentStructureState
     {
         get => _currentState;
         protected set
@@ -60,7 +60,7 @@ public class Structure : IValue<float>
 
     public void SetStructure(StructureContextBase structureContext) {
         this.structureContext = structureContext;
-        CurrentState = StructureState.Built;
+        CurrentStructureState = StructureState.Built;
 
         // item 개수 변화에 따라 requirement 수치 update, 만약 업그레이드 가능한 경우 icon도 update
         SubscribeUpgradeEvents();
@@ -90,11 +90,11 @@ public class Structure : IValue<float>
             StructureContext.ProcessState = Process.State.Wait;
         }
 
-        CurrentState = StructureState.Empty;
+        CurrentStructureState = StructureState.Empty;
     }
     public void DestroyStrucure() {
         if (CanDestroy == false) { return; }
-        CurrentState = StructureState.Empty;
+        CurrentStructureState = StructureState.Empty;
         StructureContext.ProcessState = Process.State.Wait;
         structureContext = null;
         //structureID = null;
@@ -104,7 +104,7 @@ public class Structure : IValue<float>
         //structureID = null;
         currentProgress = 0;
         maxProgress = structureContext == null ? 1 : structureContext.ConstructionTime;
-        CurrentState = StructureState.Locked;
+        CurrentStructureState = StructureState.Locked;
     }
 
 

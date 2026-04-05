@@ -59,7 +59,7 @@ public class StructureManager : IInitializable
         }
 
         else {
-            Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentState}");
+            Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentStructureState}");
         }
     }
 
@@ -68,12 +68,11 @@ public class StructureManager : IInitializable
     }
 
     public void UnlockLocations(int targetExpensionLevel) {
-        Debug.Log($"try unlock locations");
-        structureUIContainer.InitUI();
         for (int i = 0; i < structureUIContainer.Count; i++) {
             var structureUI = structureUIContainer.GetStructureUI(i);
             if (structureUI.Structure.ExpensionLevel == 0) {
                 structureUI.Structure.Unlock();
+                structureUI.UpdateUI();
             }
         }
     }

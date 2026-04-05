@@ -24,7 +24,7 @@ public class StructureButton : ButtonBase
         base.InitUI();
 
         structure.SetExpensionLevel(expensionLevel);
-        UpdateObject(structure.CurrentState, structure.CurrentState);
+        UpdateObject(structure.CurrentStructureState, structure.CurrentStructureState);
         iconUIContainer.InitUI();
 
         RegisterAction(Structure.StructureState.Locked, CreateActionOnLocked());
@@ -33,10 +33,21 @@ public class StructureButton : ButtonBase
 
         _isInit = true;
     }
+    public void UpdateUI() {
+
+    }
+    public void RegisterAction(Structure.StructureState state, ActionBase buttonAction) {
+        stateActions[state] = buttonAction;
+    }
+    internal void AssignIndex(int index) {
+        this.index = index;
+    }
+
 
     private void OnEnable() {
         structure.OnStructureStateChanged -= UpdateObject;
         structure.OnStructureStateChanged += UpdateObject;
+        UpdateObject(structure.CurrentStructureState, structure.CurrentStructureState);
 
         structure.OnUpgradeAvailabilityChanged -= UpdateUpgradeIcon;
         structure.OnUpgradeAvailabilityChanged += UpdateUpgradeIcon;
@@ -53,18 +64,11 @@ public class StructureButton : ButtonBase
         structure.UnsubscribeUpgradeEvents();
     }
 
-    public void RegisterAction(Structure.StructureState state, ActionBase buttonAction) {
-        stateActions[state] = buttonAction;
-    }
 
     protected override void ButtonAction() {
-        if (stateActions.TryGetValue(structure.CurrentState, out ActionBase action)) {
+        if (stateActions.TryGetValue(structure.CurrentStructureState, out ActionBase action)) {
             action.Execute();
         }
-    }
-
-    internal void AssignIndex(int index) {
-        this.index = index;
     }
 
     private void UpdateObject(Structure.StructureState currentState, Structure.StructureState prevState) {
@@ -123,4 +127,5 @@ public class StructureButton : ButtonBase
     private void UpdateProductionIcon(ProductionResult productionResult) {
         iconUIContainer.ActiveIcon(Define.Icon.PRODUCTION_COMPLETE, productionResult.IsEmpty);
     }
+
 }

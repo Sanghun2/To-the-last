@@ -137,7 +137,7 @@ public class ConstructionManager : IInitializable
     }
     private bool IsEmpty(int locationIndex) {
         var structure = Managers.Structure.GetStructure(locationIndex);
-        if (structure.CurrentState == Structure.StructureState.Empty) {
+        if (structure.CurrentStructureState == Structure.StructureState.Empty) {
             return true;
         }
 
