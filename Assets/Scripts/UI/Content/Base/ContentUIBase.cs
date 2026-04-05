@@ -72,7 +72,7 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
 
     protected ActionData _defaultAction;
     protected TContentSDBase contentSD;
-    protected Structure structure;
+    protected Structure structure; // 추후 process state를 structure가 아닌 곳에서도 쓰게 된다면 인터페이스로 분리 필요
 
 
     public override void InitContent(ContentSDBase contentSDBase) {
