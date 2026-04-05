@@ -120,7 +120,7 @@ public class LocationManager : IInitializable
         var locationUI = LocationUIContainer.GetObj();
         locationUI.InitLocation(location);
         location.ClearLocationEvent();
-        location.OnStateChanged += locationUI.UpdateUI;
+        location.OnLocationStateChanged += locationUI.UpdateUI;
         location.Activate();
         onActivated?.Invoke(location);
         return true;

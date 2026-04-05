@@ -5,12 +5,15 @@ using UnityEngine;
 public class LootSelectActionContext : SelectActionContextBase, IInventoryContext
 {
     public IReadOnlyList<InventoryBase> TargetInventories => inventories;
-
+    public string LocationID { get; }
     public int LootCountMutiflier => 1;
+
+
 
     private List<InventoryBase> inventories = new List<InventoryBase>();
 
-    public LootSelectActionContext(SelectionDataBase selectionData, InventoryBase inventory) : base(selectionData, selectionData.RequireMinutes) {
+    public LootSelectActionContext(SelectionDataBase selectionData, InventoryBase inventory, string locationID) : base(selectionData, selectionData.RequireMinutes) {
         inventories.Add(inventory);
+        LocationID = locationID;
     }
 }

@@ -23,11 +23,11 @@ public class EnteranceUI : UIBase
     }
 
     private void ExploreLocation() {
-        Managers.Exploration.ExploreCurrentLocation();
+        Managers.Exploration.ContinueToExploreCurrentLocation();
     }
 
     private void QuitLocation() {
-        Managers.Exploration.QuitLocation();
+        Managers.Exploration.ExitLocation();
     }
 
     private void Reset() {

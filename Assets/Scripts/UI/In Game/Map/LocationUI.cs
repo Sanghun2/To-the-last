@@ -21,13 +21,13 @@ public class LocationUI : UIBase, IPool
     }
 
 
-    public void UpdateUI(Location.State currentState, Location.State prevState) {
+    public void UpdateUI(Location.LocationState currentState, Location.LocationState prevState) {
         switch (currentState) {
-            case Location.State.Undiscovered:
-            case Location.State.Completed:
+            case Location.LocationState.Undiscovered:
+            case Location.LocationState.Completed:
                 CloseUI();
                 break;
-            case Location.State.Exploring:
+            case Location.LocationState.Exploring:
                 OpenUI();
                 break;
             default:

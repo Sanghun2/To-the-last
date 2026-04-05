@@ -92,8 +92,8 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
             currentLocationData,
             endLocationData,
             callback: () => {
-                Managers.Player.PlayerData.SetCurrentLocation(endLocationData);
                 if (Managers.Location.TryGetLocation(endLocationData.LocationID, out var destination)) {
+                    Managers.Location.CurrentLocation = destination;
                     InitPopUp(destination);
                     Managers.UI.OpenUI(this);
                 }

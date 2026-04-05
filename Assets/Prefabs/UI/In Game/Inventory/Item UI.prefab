@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4605594936599815150}
   - component: {fileID: 3107966115702561088}
   - component: {fileID: 4719775885376063780}
-  - component: {fileID: 7924394656611132114}
+  - component: {fileID: 3807979413895459795}
   m_Layer: 5
   m_Name: Item Info Button
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7924394656611132114
+--- !u!114 &3807979413895459795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,9 +130,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4031860216341556414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0a9827aeb03d7498f06cbcf5a83f70, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c379d415e3be23408066cb767022fa6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemInfoButton
+  m_EditorClassIdentifier: Assembly-CSharp::StorageItemButton
   targetButton: {fileID: 4719775885376063780}
 --- !u!1 &6164341304211348390
 GameObject:
@@ -260,4 +260,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 3923202911566956967}
-  infoButton: {fileID: 7924394656611132114}
+  infoButton: {fileID: 3807979413895459795}

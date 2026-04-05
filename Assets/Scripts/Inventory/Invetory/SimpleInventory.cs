@@ -66,6 +66,7 @@ public class SimpleInventory : InventoryBase
 
     public override void ClearInventory() {
         itemList.Clear();
+        itemCountDict.Clear();
     }
 
     public override int GetItemCount(string itemID) {
@@ -118,6 +119,7 @@ public class SimpleInventory : InventoryBase
             int allowed = GetAllowedAmount(inputStack);
             if (allowed < inputStack.Amount) {
                 overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount - allowed);
+                if (allowed <= 0) return false;
                 inputStack = new ItemStack(inputStack.ItemData, allowed);
             }
         }
@@ -145,16 +147,20 @@ public class SimpleInventory : InventoryBase
 
             switch (targetStack.MergeStack(inputStack)) {
                 case ItemStack.MergeResult.Success:
-                    // inputStack.Amount가 0이 됐으므로 실제 병합된 양 = prev - current
                     currentInputAmount = inputStack.Amount;
-                    OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
-                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
+                    int mergedAmount = prevInputAmount - currentInputAmount;
+                    itemCountDict[inputItemID] =
+                        (itemCountDict.TryGetValue(inputItemID, out int cur) ? cur : 0) + mergedAmount; // 추가
+                    OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, mergedAmount));
+                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, mergedAmount));
                     return true;
 
+
                 case ItemStack.MergeResult.Success_Overflowed:
-                    // targetStack이 꽉 찼고 inputStack에 잔량이 남은 경우
-                    // 잔량을 다음 슬롯에 재귀적으로 밀어 넣음
                     currentInputAmount = inputStack.Amount;
+                    int mergedAmount2 = prevInputAmount - currentInputAmount;
+                    itemCountDict[inputItemID] =
+                        (itemCountDict.TryGetValue(inputItemID, out int cur2) ? cur2 : 0) + mergedAmount2;
                     OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
                     OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
                     return TryPushItem(inputStack, out overflowedStack);
@@ -194,7 +200,8 @@ public class SimpleInventory : InventoryBase
                 existingOverflowAmount + (inputStack.Amount - resultAmount));
 
             // itemCountDict 갱신: 실제로 들어간 수량(resultAmount)으로 등록
-            itemCountDict[inputItemID] = resultAmount;
+            itemCountDict[inputItemID] =
+    (itemCountDict.TryGetValue(inputItemID, out int existing) ? existing : 0) + resultAmount;
 
             // OnAmountChanged 이벤트 구독
             // 중복 구독 방지를 위해 먼저 제거 후 추가
@@ -207,46 +214,25 @@ public class SimpleInventory : InventoryBase
             return true;
         }
     }
+
     public override bool TryRemoveItem(string itemID, int targetAmount) {
         InitInventory();
         int itemCount = GetItemCount(itemID);
-        if (itemCount >= targetAmount) {
-            int index = itemList.FindIndex(item => item.ItemData.ItemID.Equals(itemID));
-            ItemStack targetItem = itemList[index];
-            if (targetItem.TryRemoveStack(targetAmount)) {
-                if (targetItem.IsNull) {
-                    itemList.RemoveAt(index);
-                }
-                return true;
-            }
-
-            Debug.LogError($"<color=red>has enough amount. but, failed to remove. current count: {itemCount}, request count: {targetAmount}</color>");
+        if (itemCount < targetAmount) {
+            Debug.LogAssertion($"not enough amount: require -> {targetAmount}, current: {itemCount}");
             return false;
         }
-
-        Debug.LogAssertion($"not enough amount: require -> {targetAmount}, current: {itemCount}");
-        return false;
+        RemoveFromStacks(itemID, targetAmount);
+        OnItemRemoved?.Invoke(new ItemEventArgs(itemID, -targetAmount));
+        OnItemChanged?.Invoke(new ItemEventArgs(itemID, -targetAmount));
+        return true;
     }
+
     public override int RemoveItemPartial(string itemID, int requestAmount) {
         InitInventory();
-        int available = GetItemCount(itemID);
-        int toRemove = Mathf.Min(available, requestAmount);
+        int toRemove = Mathf.Min(GetItemCount(itemID), requestAmount);
         if (toRemove <= 0) return 0;
-
-        int remaining = toRemove;
-        for (int i = itemList.Count - 1; i >= 0 && remaining > 0; i--) {
-            var stack = itemList[i];
-            if (!stack.ItemData.ItemID.Equals(itemID)) continue;
-
-            int removeFromStack = Mathf.Min(stack.Amount, remaining);
-            stack.TryRemoveStack(removeFromStack);
-            remaining -= removeFromStack;
-
-            if (stack.IsNull) {
-                itemList.RemoveAt(i);
-            }
-        }
-
+        RemoveFromStacks(itemID, toRemove);
         OnItemRemoved?.Invoke(new ItemEventArgs(itemID, -toRemove));
         OnItemChanged?.Invoke(new ItemEventArgs(itemID, -toRemove));
         return toRemove;
@@ -260,14 +246,25 @@ public class SimpleInventory : InventoryBase
         return allowed;
     }
 
-    //private void UpdateItemCount(ItemStack itemStack, int deltaAmount) {
-    //    string itemID = itemStack.ItemData.ItemID;
-    //    if (itemCountDict.ContainsKey(itemID)) {
-    //        itemCountDict[itemID] += deltaAmount;
-    //    }
-    //}
+    private void RemoveFromStacks(string itemID, int amount) {
+        int remaining = amount;
+        for (int i = itemList.Count - 1; i >= 0 && remaining > 0; i--) {
+            var stack = itemList[i];
+            if (!stack.ItemData.ItemID.Equals(itemID)) continue;
 
-    //private void UpdateWeight(ItemEventArgs args) {
-    //    weightCounter.AddWeight(args.delta * args.weight);
-    //}
+            int removeFromStack = Mathf.Min(stack.Amount, remaining);
+            stack.TryRemoveStack(removeFromStack);
+            remaining -= removeFromStack;
+
+            if (stack.IsNull) {
+                itemList.RemoveAt(i);
+            }
+        }
+
+        if (itemCountDict.TryGetValue(itemID, out int current)) {
+            int newCount = current - amount;
+            if (newCount <= 0) itemCountDict.Remove(itemID);
+            else itemCountDict[itemID] = newCount;
+        }
+    }
 }

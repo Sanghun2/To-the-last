@@ -8,47 +8,57 @@ using Random = UnityEngine.Random;
 
 public class LootSelectActionConverter : SelectActionConverterBase<LootSelectActionContext>
 {
-    protected override Action ExecuteAction(LootSelectActionContext lootContext) {
+    protected override Action SelectAction(LootSelectActionContext lootContext) {
         return () => {
             Debug.Log($"({lootContext.GetType()}) action executed");
-            LootItems(lootContext);
+            var lootedItems = LootItems(lootContext);
+
+
+            foreach (var item in lootedItems) {
+                string itemID = item.Key;
+                int amount = item.Value;
+                if (!Managers.SD.TryGetSD(itemID, out ItemSD itemSD)) { Debug.LogError($"({itemID}) sd data is not exist"); continue; }
+
+                if (!InventoryUtility.TryPushItem(
+                    lootContext.TargetInventories, 
+                    new ItemStack(new ExtendedItemData(itemID, 999, itemSD.Weight), amount))) {
+                    //Debug.Log($"push item inventory({targetInventory.InventoryID}) failed");
+                }
+            }
+
+            Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(lootContext.LocationID);
         };
     }
 
-    private void LootItems(LootSelectActionContext lootContext) {
+    private IReadOnlyDictionary<string, int> LootItems(LootSelectActionContext lootContext) {
         var targetInven = lootContext.TargetInventories[0];
-        LootSelectionData lootSD = (LootSelectionData)lootContext.SelectionData;
-
         if (lootContext.SelectionData is LootSelectionData lootData) {
             // 기본 아이템
-            var itemDict = GetDefaultItems(lootData);
+            var lootedItemDict = GetDefaultLootItems(lootData);
 
             // 랜덤 획득
-            itemDict = GetAdditionalItems(itemDict, lootData, lootContext);
+            lootedItemDict = GetAdditionalLootItems(lootedItemDict, lootData, lootContext);
 
 
 
 #if UNITY_EDITOR
             var sb = new StringBuilder().AppendLine("Looted Item List");
-            foreach (var item in itemDict) {
+            foreach (var item in lootedItemDict) {
                 sb.AppendLine($"{item.Key} - {item.Value}");
             }
             Debug.Log(sb.ToString());
 
 #endif
-            foreach (var item in itemDict) {
-                string itemID = item.Key;
-                int amount = item.Value;
 
-                var targetInventory = lootContext.TargetInventories[0];
-                if (!targetInventory.TryPushItem(new ItemStack(new ItemData(itemID, 999), amount), out var overflowedStack)) {
-                    Debug.Log($"push item inventory({targetInventory.InventoryID}) failed");
-                }
-            }
+            return lootedItemDict;
+        }
+        else {
+            Debug.LogError($"<color=red>item dict is not type of ({typeof(LootSelectionData)})</color>");
+            return null;
         }
     }
 
-    private Dictionary<string, int> GetDefaultItems(LootSelectionData lootSelectionData) {
+    private Dictionary<string, int> GetDefaultLootItems(LootSelectionData lootSelectionData) {
         var lootItemDataList = lootSelectionData.AvailableItemList;
         Dictionary<string, int> itemDict = new(lootItemDataList.Count);
         for (int i = 0; i < lootItemDataList.Count; i++) {
@@ -59,7 +69,7 @@ public class LootSelectActionConverter : SelectActionConverterBase<LootSelectAct
 
         return itemDict;
     }
-    private Dictionary<string, int> GetAdditionalItems(
+    private Dictionary<string, int> GetAdditionalLootItems(
         Dictionary<string, int> itemDict,
         LootSelectionData lootSelectionData,
         LootSelectActionContext context) {

@@ -117,7 +117,7 @@ public class InventoryUtility
         }
     }
 
-    public static bool TryPushItem(ItemStack createdItem, List<InventoryBase> inventories, bool ignoreConditions) {
+    public static bool TryPushItem(IReadOnlyList<InventoryBase> inventories, ItemStack createdItem, bool ignoreConditions=false) {
         return inventories.TryPushItem(createdItem, ignoreConditions);
     }
 }

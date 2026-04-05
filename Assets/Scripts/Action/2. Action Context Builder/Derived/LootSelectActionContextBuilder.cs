@@ -10,7 +10,7 @@ public class LootSelectActionContextBuilder : SelectActionContextBuilderBase<Loo
 
         if (targetInven == null) { Debug.LogError($"target inven null"); return false; }
 
-        context = new LootSelectActionContext(data, targetInven);
+        context = new LootSelectActionContext(data, targetInven, Managers.Player.PlayerData.CurrentLocationID);
         return true;
     }
 }

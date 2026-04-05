@@ -10,10 +10,15 @@ public class CollectAllItemButton : ButtonBase
     protected override void ButtonAction() {
         if (fromInventoryUI == null || toInventoryUI == null) { Debug.LogError($"<color=red>inventory is null</color>"); return; }
 
-        CollectItems(fromInventoryUI.Inventory, toInventoryUI.Inventory);
+        var fromInven = Managers.Location.CurrentLocation.Inventory;
+        var toInven = Managers.Player.PlayerData.Inventory;
+
+        CollectItems(fromInven, toInven);
     }
 
     private void CollectItems(InventoryBase fromInventory, InventoryBase toInventory) {
         InventoryUtility.MoveItems(fromInventory, toInventory);
+        fromInventoryUI.ShowInventory(fromInventory);
+        toInventoryUI.ShowInventory(toInventory);
     }
 }

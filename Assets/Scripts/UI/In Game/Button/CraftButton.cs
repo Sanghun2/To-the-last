@@ -30,8 +30,8 @@ public class CraftButton : ButtonBase
     //    if (IsInit) return;
     //    base.InitUI();
 
-    //    Managers.Craft.CraftContext.OnStateChanged -= UpdateState;
-    //    Managers.Craft.CraftContext.OnStateChanged += UpdateState;
+    //    Managers.Craft.CraftContext.OnLocationStateChanged -= UpdateState;
+    //    Managers.Craft.CraftContext.OnLocationStateChanged += UpdateState;
 
     //    _isInit = true;
     //}
@@ -69,21 +69,21 @@ public class CraftButton : ButtonBase
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
-    //private void UpdateState(CraftContext.State currentState, CraftContext.State state2) {
+    //private void UpdateState(CraftContext.LocationState currentState, CraftContext.LocationState state2) {
     //    UpdateAction(currentState);
     //    UpdateButtonText(currentState);
     //}
 
-    //private void UpdateAction(CraftContext.State currentState) {
+    //private void UpdateAction(CraftContext.LocationState currentState) {
     //    switch (currentState) {
-    //        case CraftContext.State.None:
+    //        case CraftContext.LocationState.None:
     //            break;
-    //        case CraftContext.State.Selected:
+    //        case CraftContext.LocationState.Selected:
     //            SetButtonAction(Craft);
     //            break;
-    //        case CraftContext.State.Crafting:
+    //        case CraftContext.LocationState.Crafting:
     //            break;
-    //        case CraftContext.State.Completed:
+    //        case CraftContext.LocationState.Completed:
     //            SetButtonAction(ClaimResult);
     //            break;
     //        default:

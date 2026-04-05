@@ -26,13 +26,13 @@ public class SelectionButtonContext
 public class SelectionButton : ButtonBase, IPool
 {
     public bool IsActive => IsOpened;
+    public ProgressBarUI ProgressBarUI => progressBarUI;
 
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] RequirementUI requirementUI;
-    [SerializeField] Image processImage;
+    [SerializeField] ProgressBarUI progressBarUI;
     [SerializeField] GameObject lockObj;
     private Action buttonAction;
-    private FillAmountProcessorBase fillAmountProcessor = new DotweenFillAmountProcessor();
 
 
     public void InitButton(SelectActionData actionData) {
@@ -73,7 +73,11 @@ public class SelectionButton : ButtonBase, IPool
     }
 
     public void UpdateProcessUI(float currentValue, float maxValue) {
-        fillAmountProcessor.UpdateFillAmount(processImage, currentValue, maxValue);
+        progressBarUI.UpdateUI(currentValue, maxValue);
+    }
+    public void Clear() {
+        progressBarUI.Clear();
+        buttonAction = null;
     }
 
 
@@ -84,7 +88,7 @@ public class SelectionButton : ButtonBase, IPool
 
         base.InitUI();
         requirementUI.CloseUI();
-        processImage.fillAmount = 0;
+        progressBarUI.Clear();
 
         _isInit = true;
     }

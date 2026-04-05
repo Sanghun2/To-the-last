@@ -36,6 +36,7 @@ public class ExplorationUI : UIBase
     [SerializeField] Image eventImage;
     [SerializeField] TextUI descriptionText;
     [SerializeField] SelectionButtonContainer selectionButtonContainer;
+    [SerializeField] ExplorationInfoUI explorationInfoUI;
     private EnteranceUI _enteranceUI;
 
     public override void InitUI() {
@@ -50,6 +51,7 @@ public class ExplorationUI : UIBase
         InitUI();
         mainBackgroundImage.sprite = location.Data.MainImage;
         HideSituation();
+        explorationInfoUI.InitInfoUI(location);
     }
     public void ShowEnterance() {
         InitUI();

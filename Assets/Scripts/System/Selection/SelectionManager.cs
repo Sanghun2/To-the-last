@@ -35,7 +35,7 @@ public class SelectionManager
 
         // Action Context -> ActionData
         if (!actionConverterContainer.TryGet(actionContext, out SelectActionConverterBase actionConverter)) { LogError($"converter get failed"); return false; }
-        if (!actionConverter.TryConvertAction(actionContext, out ActionData actionData)) { LogError($"converting action data failed"); return false; }
+        var actionData = actionConverter.ConvertAction(actionContext);
 
         // Selection Data + ActionData -> Selection Context
         if (!selectionContextBuilderContainer.TryGet(selectionData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
@@ -50,6 +50,7 @@ public class SelectionManager
     }
 
     public void ResetSelectedButton() {
+        currentSelectedButton.Clear();
         currentSelectedButton = null;
     }
 

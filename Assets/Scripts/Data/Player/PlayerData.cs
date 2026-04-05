@@ -69,10 +69,14 @@ public sealed class PlayerData : IInitializable
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
 
+        Managers.Location.OnLocationChanged -= UpdateLocation;
+        Managers.Location.OnLocationChanged += UpdateLocation;
+
         RegisterEvent(OnPlayerDead, Define.Stat.Hp, Define.StatDetail.current);
 
         _isInit = true;
     }
+
 
     public void Release() {
         skillContainer.Release();
@@ -115,6 +119,11 @@ public sealed class PlayerData : IInitializable
         if (string.IsNullOrEmpty(currentLocationID)) {
             currentLocationID = LocationUtility.basementSDID;
         }
+    }
+
+
+    private void UpdateLocation(Location currentLocation, Location prevLocation) {
+        SetCurrentLocation(currentLocation, prevLocation);
     }
 
     #endregion

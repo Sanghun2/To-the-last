@@ -11,8 +11,8 @@ public sealed class InventoryManager
 
     public event Action<string, int> OnItemCountChanged;
 
-    public void AddInventory(InventoryBase inventory) {
-        if (!inventoryDict.TryAdd(inventory.InventoryID, inventory)) { Debug.LogError($"<color=red>이미 있는 인벤토리 id? {inventory.InventoryID}</color>"); return; }
+    public InventoryBase AddInventory(InventoryBase inventory) {
+        if (!inventoryDict.TryAdd(inventory.InventoryID, inventory)) { Debug.LogError($"<color=red>이미 있는 인벤토리 id? {inventory.InventoryID}</color>"); return inventory; }
 
         if (inventoryCategories.TryGetValue(inventory.Tag, out var inventories)) {
             inventories.Add(inventory);
@@ -20,6 +20,8 @@ public sealed class InventoryManager
         else {
             inventoryCategories[inventory.Tag] = new List<InventoryBase>() { inventory };
         }
+
+        return inventory;
     }
 
     public void RemoveInventory(InventoryBase inventory) {

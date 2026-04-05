@@ -10,29 +10,44 @@ public abstract class SelectActionConverterBase : ActionConverterBase
 public abstract class SelectActionConverterBase<TSelectActionContext> : SelectActionConverterBase
     where TSelectActionContext : SelectActionContextBase
 {
-    public override bool TryConvertAction(ActionContextBase context, out ActionData actionData) {
+    public override ActionData ConvertAction(ActionContextBase context) {
         if (context is TSelectActionContext selectActionContext) {
-            return TryConvertAction(selectActionContext, out actionData);
+            return ConvertAction(selectActionContext);
         }
 
         Debug.LogError($"<color=red>({context.GetType()})은 select action context로 변환할 수 없음</color>");
-        actionData = null;
-        return false;
+        return null;
     }
-    public virtual bool TryConvertAction(TSelectActionContext context, out ActionData actionData) {
-        actionData = new ActionData(ExecuteSelectionProcess(context));
-        return true;
+    public virtual ActionData ConvertAction(TSelectActionContext context) {
+        return new ActionData(CreateSelectAction(context));
     }
 
-    protected virtual Action ExecuteSelectionProcess(TSelectActionContext context) {
+    protected virtual Action CreateSelectAction(TSelectActionContext context) {
         return () => {
+            Debug.Log($"select action executed");
             FocusJob selectionProcess = new FocusJob(
             context.JobDuration,
-            onProgress: Managers.Select.CurrentSelectedButton.UpdateProcessUI,
-            onComplete: ExecuteAction(context)).WithBlockScreen();
+            onStart: OnSelectionStart,
+            onProgress: OnSelectionProgress,
+            onComplete: () => OnSelectionComplete(context)).WithBlockScreen();
 
             Managers.Job.DoFocusJob(selectionProcess, () => Managers.Select.ResetSelectedButton());
         };
     }
-    protected abstract Action ExecuteAction(TSelectActionContext context);
+
+
+    protected virtual void OnSelectionStart() {
+        Managers.ScreenBlocker.SetActive(true);
+    }
+    protected virtual void OnSelectionProgress(float currentValue, float maxValue) {
+        Managers.Select.CurrentSelectedButton.UpdateProcessUI(currentValue, maxValue);
+    }
+    protected virtual void OnSelectionComplete(TSelectActionContext context) {
+        Debug.Log($"action applied");
+        SelectAction(context)?.Invoke();
+        Managers.ScreenBlocker.SetActive(false);
+    }
+
+
+    protected abstract Action SelectAction(TSelectActionContext context);
 }

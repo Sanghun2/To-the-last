@@ -43,7 +43,6 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
         }
     }
 
-
     private void OnDisable() {
         if (inventory != null) {
             inventory.OnItemAdded -= OnAddItem;
@@ -54,4 +53,5 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
         var itemSlot = itemSlotContainer.GetObj();
         itemSlot.SetSlotUI(args);
     }
+
 }

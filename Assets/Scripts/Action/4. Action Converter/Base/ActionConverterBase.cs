@@ -2,5 +2,5 @@
 
 public abstract class ActionConverterBase
 {
-    public abstract bool TryConvertAction(ActionContextBase context, out ActionData actionData);
+    public abstract ActionData ConvertAction(ActionContextBase context);
 }

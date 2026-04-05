@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Location : IValue<int>, IEquatable<Location>
 {
-    public enum State {
+    public enum LocationState {
         Undiscovered,
         Exploring,
         Completed,
@@ -13,7 +13,7 @@ public class Location : IValue<int>, IEquatable<Location>
 
     public int CurrentValue => currentProgress;
     public int MaxValue => maxProgress;
-    public State CurrentState
+    public LocationState CurrentState
     {
         get => _currentState;
         protected set
@@ -21,11 +21,12 @@ public class Location : IValue<int>, IEquatable<Location>
             var prevState = _currentState;
             _currentState = value;
             if (prevState != _currentState) {
-                OnStateChanged?.Invoke(value, prevState);
+                OnLocationStateChanged?.Invoke(value, prevState);
             }
         }
     }
     public string ID => data.LocationID;
+    public string DisplayText => data.DisplayText;
     public LocationData Data => data;
 
     public InventoryBase Inventory
@@ -33,17 +34,24 @@ public class Location : IValue<int>, IEquatable<Location>
         get
         {
             if (_inventory == null) {
-                _inventory = new SimpleInventory($"{locationID}", 20);
+                if (Managers.Inventory.TryGetInventoryByID(locationID, out var inven)) {
+                    _inventory = inven as SimpleInventory;
+                }
+                else {
+                    _inventory = new SimpleInventory($"{locationID}", 50);
+                    Managers.Inventory.AddInventory(_inventory);
+                }
             }
 
             return _inventory;
         }
     }
 
+
     [SerializeField][HideInInspector] string locationID;
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
-    [SerializeField] State _currentState;
+    [SerializeField] LocationState _currentState;
     [SerializeField] SimpleInventory _inventory;
 
     [NonSerialized] private LocationData data;
@@ -51,11 +59,11 @@ public class Location : IValue<int>, IEquatable<Location>
     public Location(LocationData locationData) {
         this.data = locationData;
         locationID = locationData.LocationID;
-        _currentState = State.Undiscovered;
+        _currentState = LocationState.Undiscovered;
     }
 
     public event Action<int, int> OnProgressChanged;
-    public event Action<State, State> OnStateChanged;
+    public event Action<LocationState, LocationState> OnLocationStateChanged;
 
     public Location InitProgress(int current, int max) {
         currentProgress = current;
@@ -68,21 +76,21 @@ public class Location : IValue<int>, IEquatable<Location>
         OnProgressChanged?.Invoke(currentProgress, maxProgress);
 
         if (currentProgress == maxProgress) {
-            CurrentState = State.Completed;
+            CurrentState = LocationState.Completed;
         }
     }
 
     public Location Activate() {
-        CurrentState = State.Exploring;
+        CurrentState = LocationState.Exploring;
         return this;
     }
     public Location Deactivate() {
-        CurrentState = State.Undiscovered;
+        CurrentState = LocationState.Undiscovered;
         return this;
     }
 
     public void ClearLocationEvent() {
-        OnStateChanged = null;
+        OnLocationStateChanged = null;
         OnProgressChanged = null;
     }
 

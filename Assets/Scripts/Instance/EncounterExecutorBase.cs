@@ -1,17 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class EncounterExecutor : IEncounterExecutor
+public abstract class EncounterExecutorBase : IEncounterExecutor
 {
-    public abstract void ExecuteEncounter(BaseEncounterContext context);
+    public abstract void ExecuteEncounter(EncounterContextBase context);
 }
 
-public abstract class EncounterExecutorBase<TEncounterData, TEncounterContext> : EncounterExecutor,
+public abstract class EncounterExecutorBase<TEncounterData, TEncounterContext> : EncounterExecutorBase,
     IEncounterExecutor<TEncounterContext>
     where TEncounterData : EncounterDataBase
-    where TEncounterContext : BaseEncounterContext<TEncounterData>
+    where TEncounterContext : EncounterContextBase<TEncounterData>
 {
-    public override void ExecuteEncounter(BaseEncounterContext context) {
+    public override void ExecuteEncounter(EncounterContextBase context) {
         var converetedContext = context as TEncounterContext;
         if (converetedContext != null) {
             ExecuteEncounter(converetedContext);

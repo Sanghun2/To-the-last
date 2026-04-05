@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class ProgressBarUI : UIBase
 {
-    [Header("[  State  ]")]
-    [SerializeField] Progressor progressor = new Progressor();
-
     [Space]
     [SerializeField] Image progressBar;
     private FillAmountProcessorBase fillAmountProcessor = new DotweenFillAmountProcessor();

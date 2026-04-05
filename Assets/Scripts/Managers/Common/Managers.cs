@@ -151,12 +151,12 @@ public sealed class Managers : MonoBehaviour
             return _dialogManager;
         }
     }
-    public static ExplorationSystem Exploration
+    public static ExplorationManager Exploration
     {
         get
         {
             if (_explorationSystem == null) {
-                _explorationSystem = new ExplorationSystem();
+                _explorationSystem = new ExplorationManager();
             }
 
             return _explorationSystem;
@@ -335,7 +335,7 @@ public sealed class Managers : MonoBehaviour
     private static EffectManager _effectSystem;
     private static BattleSystem _battleManager;
     private static TurnManager _turnManager;
-    private static ExplorationSystem _explorationSystem;
+    private static ExplorationManager _explorationSystem;
     private static DialogManager _dialogManager;
     private static SelectionManager _selectActionPipeline;
     private static EncounterManager _encounterManager;

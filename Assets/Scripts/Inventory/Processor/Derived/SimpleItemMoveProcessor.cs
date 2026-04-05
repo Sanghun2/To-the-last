@@ -7,6 +7,7 @@ using UnityEngine;
 public class SimpleItemMoveProcessor : ItemMoveProcessorBase
 {
     public override void MoveAllItems(InventoryBase fromInventory, InventoryBase toInventory) {
+        if (fromInventory == null || toInventory == null) { Debug.LogError($"inventory null. from null? {fromInventory == null}, to null? {toInventory== null}"); return; }
         if (!(fromInventory is SimpleInventory invenFrom && toInventory is SimpleInventory invenTo)){
             Debug.LogError($"<color=red>different inven type. target? {fromInventory.GetType()}, player? {toInventory.GetType()}</color>"); 
             return;
@@ -36,7 +37,12 @@ public class SimpleItemMoveProcessor : ItemMoveProcessorBase
             var copiedItem = new ItemStack(itemData.ItemData, itemData.Amount); // 복사본 전달
             if (invenTo.TryPushItem(copiedItem, out ItemStack overflowedItem)) {
                 int movedAmount = itemData.Amount - (overflowedItem?.Amount ?? 0);
-                invenFrom.TryRemoveItem(itemData.ItemData.ItemID, movedAmount);
+                Debug.Log($"TryPushItem success. movedAmount={movedAmount}, overflow={overflowedItem?.Amount}");
+                bool removed = invenFrom.TryRemoveItem(itemData.ItemData.ItemID, movedAmount);
+                Debug.Log($"TryRemoveItem result={removed}");
+            }
+            else {
+                Debug.Log($"TryPushItem failed");
             }
         }
     }

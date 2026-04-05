@@ -101,7 +101,7 @@ public sealed class CraftManager
                            if (!Managers.Inventory.TryGetInventoryByTag(Define.Tag.PLAYER, out var inventories)) { return; }
                            var createdItem = CreateItem(contentContext.ID, contentContext.Amount);
 
-                           if (InventoryUtility.TryPushItem(createdItem, inventories, true)) {
+                           if (InventoryUtility.TryPushItem(inventories, createdItem, true)) {
                                targetUI.ExecutionButton.SetExecuteAction(targetUI.DefaultAction);
                            }
                        }));
