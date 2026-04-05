@@ -63,6 +63,21 @@ public static partial class Extension
 
     #endregion
 
+    #region Inventory
+
+    public static bool TryPushItem(this IReadOnlyList<InventoryBase> inventories, ItemStack item, bool ignoreConditions) {
+        for (int i = 0; i < inventories.Count; i++) {
+            var inventory = inventories[i];
+            if (inventory.TryPushItem(item, out ItemStack overStack, ignoreConditions)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    #endregion
 
     public static string ToID(this Define.Stat statType) {
         return statType.ToString();

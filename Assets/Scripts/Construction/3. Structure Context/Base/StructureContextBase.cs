@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
@@ -14,13 +15,28 @@ public abstract class StructureContextBase
     public string CategoryID => _data.CategoryID;
 
     public IReadOnlyList<Ingredient> Requirements => _data.RequirementItems;
+    public Structure.ProcessState ProcessState
+    {
+        get => _processState;
+        set
+        {
+            var prevState = _processState;
+            _processState = value;
+            if (_processState != prevState) {
+                OnProcessStateChanged?.Invoke(_processState, prevState);
+            }
+        }
+    }
+
 
     protected StructureDataBase _data;
+    protected Structure.ProcessState _processState;
 
     public StructureContextBase(StructureDataBase data) {
         this._data = data;
     }
 
+    public event Action<Structure.ProcessState, Structure.ProcessState> OnProcessStateChanged;
 
     public abstract StructureUIBase OpenStructureUI();
 }

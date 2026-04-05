@@ -32,8 +32,7 @@ public class InventoryTester : MonoBehaviour
         if (Managers.Inventory.TryGetInventoryByID("player", out var playerInven) == false) { return; }
 
         playerInvenUI.InitInventory(playerInven);
-        var counter = new WeightCounter(50);
-        (playerInven as SimpleInventory)?.SetWeightCounter(counter);
+        (playerInven as SimpleInventory)?.SetWeightCounter(50);
 
         collector.MoveAllItems(targetInven, playerInven);
 
@@ -43,7 +42,7 @@ public class InventoryTester : MonoBehaviour
 
     private void Init() {
         targetInven = new SimpleInventory("location");
-        playerInven = new SimpleInventory(Define.Tag.PLAYER).SetWeightCounter(new WeightCounter(50));
+        playerInven = new SimpleInventory(Define.Tag.PLAYER).SetWeightCounter(50);
 
         targetInvenUI.InitInventory(targetInven);
         playerInvenUI.InitInventory(playerInven);

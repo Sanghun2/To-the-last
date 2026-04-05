@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public abstract class ContentUIBase : UIBase, IPool
 {
     public virtual bool IsActive => IsOpened;
+    public ExecutionButton ExecutionButton => executionButton;
+    public ProgressBarUI ProgressBarUI => progressBarUI;
 
     [SerializeField] protected Image contentImage;
     [SerializeField] protected ExecutionButton executionButton;
@@ -19,6 +21,8 @@ public abstract class ContentUIBase : UIBase, IPool
     #region Progress
 
     protected virtual void ExecuteButtonAction(int requireMinutes) {
+        if (!CanExecute()) { Debug.Log("실행 조건이 맞지 않아 실행 불가"); return; }
+
         var job = Managers.Job.CreateFocusJob(
             requireMinutes,
             onProgressStart: OnProgressStart,
@@ -28,6 +32,7 @@ public abstract class ContentUIBase : UIBase, IPool
         Managers.Job.DoFocusJob(job, OnProgressRelease);
     }
 
+    protected virtual bool CanExecute() { return true; }
     protected virtual void OnProgressStart() { }
 
     private void OnProgress(float currentValue, float maxValue) {
@@ -61,14 +66,18 @@ public abstract class ContentUIBase : UIBase, IPool
 public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
     where TContentSDBase : ContentSDBase
 {
+    public ActionData DefaultAction => _defaultAction;
+
+    protected ActionData _defaultAction;
     protected TContentSDBase contentSD;
+
 
     public override void InitContent(ContentSDBase contentSDBase) {
         if (contentSDBase is TContentSDBase contentSD) {
-            InitContent(contentSD);
+            InitContent(contentSD);           
             return;
         }
-
+        
         Debug.LogError($"<color=red>({contentSDBase.GetType()}) is not type of ({typeof(TContentSDBase)})</color>");
     }
 
@@ -76,10 +85,12 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
         this.contentSD = contentSD;
         progressBarUI.Clear();
 
+        _defaultAction = new ActionData(
+          contentSD.ExecutionButtonText,
+          () => ExecuteButtonAction(contentSD.RequireMinutes));
+
         SetImage(contentSD.Image);
-        executionButton.SetExecuteAction( new ActionData(
-            contentSD.ExecutionButtonText, 
-            () => ExecuteButtonAction(contentSD.RequireMinutes)));
+        executionButton.SetExecuteAction(DefaultAction);
 
         int structureLevel = Managers.Structure.CurrentSelctedStructure?.StructureLevel ?? 0;
         bool @lock = contentSD.RequiredLevel > structureLevel;

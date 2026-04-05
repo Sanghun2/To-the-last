@@ -392,6 +392,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new TraitSDContainer("SD/Trait"));
         SD.TryRegisterSD(new UpgradeSDContainer("SD/Upgrade"));
         SD.TryRegisterSD(new ExpensionSDContainer("SD/Expension"));
+        //SD.TryRegisterSD(new ExpensionSDContainer("SD/Quest"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {

@@ -26,15 +26,15 @@ public class CraftButton : ButtonBase
     [SerializeField] TextMeshProUGUI buttonText;
     private CraftStructureUI _craftUI;
 
-    public override void InitUI() {
-        if (IsInit) return;
-        base.InitUI();
+    //public override void InitUI() {
+    //    if (IsInit) return;
+    //    base.InitUI();
 
-        Managers.Craft.CraftContext.OnStateChanged -= UpdateState;
-        Managers.Craft.CraftContext.OnStateChanged += UpdateState;
+    //    Managers.Craft.CraftContext.OnStateChanged -= UpdateState;
+    //    Managers.Craft.CraftContext.OnStateChanged += UpdateState;
 
-        _isInit = true;
-    }
+    //    _isInit = true;
+    //}
 
     
 
@@ -46,21 +46,21 @@ public class CraftButton : ButtonBase
 
     }
 
-    private void Craft() {
-        if (Managers.Job.IsFocusJobRunning) return;
+    //private void Craft() {
+    //    if (Managers.Job.IsFocusJobRunning) return;
 
-        var targetProdiction = Managers.Craft.CraftTarget;
+    //    var targetProdiction = Managers.Craft.CraftTarget;
 
-        if (!Managers.Craft.TryCraft(targetProdiction, () => {
-                Managers.Craft.RegisterDelayedJob(targetProdiction);
-            }
-            )) {
-            Debug.LogError($"<color=red>failed to try craft item</color>");
-        }
-    }
-    private void ClaimResult() {
-        Managers.Craft.ClaimCraftResult();
-    }
+    //    if (!Managers.Craft.TryCraft(targetProdiction, () => {
+    //            Managers.Craft.RegisterDelayedJob(targetProdiction);
+    //        }
+    //        )) {
+    //        Debug.LogError($"<color=red>failed to try craft item</color>");
+    //    }
+    //}
+    //private void ClaimResult() {
+    //    Managers.Craft.ClaimCraftResult();
+    //}
 
     protected override void Reset() {
         base.Reset();
@@ -69,27 +69,27 @@ public class CraftButton : ButtonBase
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
-    private void UpdateState(CraftContext.State currentState, CraftContext.State state2) {
-        UpdateAction(currentState);
-        UpdateButtonText(currentState);
-    }
+    //private void UpdateState(CraftContext.State currentState, CraftContext.State state2) {
+    //    UpdateAction(currentState);
+    //    UpdateButtonText(currentState);
+    //}
 
-    private void UpdateAction(CraftContext.State currentState) {
-        switch (currentState) {
-            case CraftContext.State.None:
-                break;
-            case CraftContext.State.Selected:
-                SetButtonAction(Craft);
-                break;
-            case CraftContext.State.Crafting:
-                break;
-            case CraftContext.State.Completed:
-                SetButtonAction(ClaimResult);
-                break;
-            default:
-                break;
-        }
-    }
+    //private void UpdateAction(CraftContext.State currentState) {
+    //    switch (currentState) {
+    //        case CraftContext.State.None:
+    //            break;
+    //        case CraftContext.State.Selected:
+    //            SetButtonAction(Craft);
+    //            break;
+    //        case CraftContext.State.Crafting:
+    //            break;
+    //        case CraftContext.State.Completed:
+    //            SetButtonAction(ClaimResult);
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 
     private void UpdateButtonText(CraftContext.State currentState) {
         switch (currentState) {

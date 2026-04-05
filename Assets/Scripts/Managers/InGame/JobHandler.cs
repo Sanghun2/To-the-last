@@ -19,10 +19,12 @@ public class JobHandler : IInitializable
     public JobHandler RegisterDelayedJob(Job job) {
         //if (IsFocusJobRunning) { Debug.LogError($"Job 충돌. 이미 focusJob 있음. 이런 상태가 발생한다면 queue방식으로 변경"); return this; }
         job.CurrentState = Job.State.Running;
+        job.OnStart?.Invoke();
         jobList.Add(job);
         return this;
     }
     public void DoFocusJob(FocusJob focusJob, Action callback=null) {
+        if (focusJob == null) { return; }
         if (!IsFocusJobRunning) {
             currentFocusJob = focusJob;//jobQueue.Dequeue();
             focusJob.CurrentState = Job.State.Running;

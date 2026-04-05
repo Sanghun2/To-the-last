@@ -25,7 +25,8 @@ MonoBehaviour:
     amount: 1
   - itemSD: {fileID: 11400000, guid: 6a496772c99f2d74f87f40d020a0ff2c, type: 2}
     amount: 1
+  executionButtonText: "\uC81C\uC791"
   outputs:
   - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
     amount: 4
-  requireMinutesToComplete: 2880
+  requireMinutesToComplete: 2

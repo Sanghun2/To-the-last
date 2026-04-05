@@ -116,4 +116,8 @@ public class InventoryUtility
             };
         }
     }
+
+    public static bool TryPushItem(ItemStack createdItem, List<InventoryBase> inventories, bool ignoreConditions) {
+        return inventories.TryPushItem(createdItem, ignoreConditions);
+    }
 }

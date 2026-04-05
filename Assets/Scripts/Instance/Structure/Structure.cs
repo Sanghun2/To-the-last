@@ -12,6 +12,10 @@ public class Structure : IValue<float>
         Empty,
         Built,
     }
+    public enum ProcessState {
+        Available,
+        Processing,
+    }
 
     public bool CanContruct => CurrentState == StructureState.Empty;
     public bool CanDestroy => CurrentState == StructureState.Built;
@@ -86,11 +90,17 @@ public class Structure : IValue<float>
 
     public void Unlock() {
         if (IsLocked == false) { Debug.Log("<color=yellow>Lock 상태가 아닌데 unlock 시도</color>"); return; }
+
+        if (StructureContext != null) {
+            StructureContext.ProcessState = ProcessState.Available;
+        }
+
         CurrentState = StructureState.Empty;
     }
     public void DestroyStrucure() {
         if (CanDestroy == false) { return; }
         CurrentState = StructureState.Empty;
+        StructureContext.ProcessState = ProcessState.Available;
         structureContext = null;
         //structureID = null;
     }

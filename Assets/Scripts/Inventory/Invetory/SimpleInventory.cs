@@ -14,11 +14,11 @@ public class SimpleInventory : InventoryBase
             return itemList;
         }
     }
-    public WeightCounter WeightCounter => weightCounter;
+    public WeightCounter WeightCounter { get; protected set; }
 
     [SerializeField] List<ItemStack> itemList = new List<ItemStack>();
     protected Dictionary<string, int> itemCountDict = new Dictionary<string, int>();
-    private WeightCounter weightCounter = null;
+    //private WeightCounter weightCounter = null;
 
     public override event Action<ItemEventArgs> OnItemAdded;
     public override event Action<ItemEventArgs> OnItemMerged;
@@ -41,19 +41,27 @@ public class SimpleInventory : InventoryBase
         isInit = true;
     }
 
-    public SimpleInventory SetWeightCounter(WeightCounter weightCounter) {
-        this.weightCounter = weightCounter;
-
-        OnItemAdded -= UpdateWeight;
-        OnItemAdded += UpdateWeight;
-
-        OnItemMerged -= UpdateWeight;
-        OnItemMerged += UpdateWeight;
-
-        OnItemRemoved -= UpdateWeight;
-        OnItemRemoved += UpdateWeight;
-
+    public SimpleInventory SetLimitWeight(int newLimitWeight) {
+        if (WeightCounter != null) {
+            WeightCounter.SetLimitWeight(newLimitWeight);
+        }
         return this;
+    }
+    public SimpleInventory SetWeightCounter(int limitWeight) {
+        WeightCounter = new WeightCounter(limitWeight);
+        AddCondition(WeightCounter);
+        return this;
+
+        //this.weightCounter = weightCounter;
+
+        //OnItemAdded -= UpdateWeight;
+        //OnItemAdded += UpdateWeight;
+
+        //OnItemMerged -= UpdateWeight;
+        //OnItemMerged += UpdateWeight;
+
+        //OnItemRemoved -= UpdateWeight;
+        //OnItemRemoved += UpdateWeight;
     }
 
     public override void ClearInventory() {
@@ -68,36 +76,49 @@ public class SimpleInventory : InventoryBase
 
         return 0;
     }
-    public override bool TryPushItem(ItemStack inputStack, out ItemStack overflowedStack) {
+    public override bool TryPushItem(ItemStack inputStack, out ItemStack overflowedStack, bool ignoreConditions = false) {
         overflowedStack = null;
 
         // ── 무게 체크 ──────────────────────────────────────────────────────────
         // weightCounter가 null이면 이 인벤토리는 무게 제한 없음 (ex. location inventory)
-        if (weightCounter != null) {
-            // ExtendedItemData가 아닌 경우 무게 개념이 없으므로 unitWeight = 0으로 처리
-            int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
+        //if (weightCounter != null) {
+        //    // ExtendedItemData가 아닌 경우 무게 개념이 없으므로 unitWeight = 0으로 처리
+        //    int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
 
-            if (unitWeight > 0) {
-                int remainWeight = weightCounter.RemainWeight;
+        //    if (unitWeight > 0) {
+        //        int remainWeight = weightCounter.RemainWeight;
 
-                // 단 1개도 넣을 수 없으면 전량 overflow로 반환하고 실패
-                if (remainWeight < unitWeight) {
-                    Debug.LogAssertion("over weight");
-                    overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount);
-                    return false;
-                }
+        //        // 단 1개도 넣을 수 없으면 전량 overflow로 반환하고 실패
+        //        if (remainWeight < unitWeight) {
+        //            Debug.LogAssertion("over weight");
+        //            overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount);
+        //            return false;
+        //        }
 
-                // 무게 기준으로 넣을 수 있는 최대 수량 계산
-                // ex. 남은무게=10, 단위무게=3 → 최대 3개
-                int maxByWeight = remainWeight / unitWeight;
+        //        // 무게 기준으로 넣을 수 있는 최대 수량 계산
+        //        // ex. 남은무게=10, 단위무게=3 → 최대 3개
+        //        int maxByWeight = remainWeight / unitWeight;
 
-                if (inputStack.Amount > maxByWeight) {
-                    // 초과분은 overflow로 분리, 넣을 수량만 새 스택으로 교체
-                    // inputStack.Amount를 직접 수정하면 Amount setter에서 ReleaseItem이
-                    // 호출될 수 있으므로 새 인스턴스로 교체
-                    overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount - maxByWeight);
-                    inputStack = new ItemStack(inputStack.ItemData, maxByWeight);
-                }
+        //        if (inputStack.Amount > maxByWeight) {
+        //            // 초과분은 overflow로 분리, 넣을 수량만 새 스택으로 교체
+        //            // inputStack.Amount를 직접 수정하면 Amount setter에서 ReleaseItem이
+        //            // 호출될 수 있으므로 새 인스턴스로 교체
+        //            overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount - maxByWeight);
+        //            inputStack = new ItemStack(inputStack.ItemData, maxByWeight);
+        //        }
+        //    }
+        //}
+
+        if (!ignoreConditions) {
+            if (!CheckConditions(inputStack)) {
+                overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount);
+                return false;
+            }
+
+            int allowed = GetAllowedAmount(inputStack);
+            if (allowed < inputStack.Amount) {
+                overflowedStack = new ItemStack(inputStack.ItemData, inputStack.Amount - allowed);
+                inputStack = new ItemStack(inputStack.ItemData, allowed);
             }
         }
 
@@ -177,8 +198,8 @@ public class SimpleInventory : InventoryBase
 
             // OnAmountChanged 이벤트 구독
             // 중복 구독 방지를 위해 먼저 제거 후 추가
-            inputStack.OnAmountChanged -= UpdateItemCount;
-            inputStack.OnAmountChanged += UpdateItemCount;
+            //inputStack.OnAmountChanged -= UpdateItemCount;
+            //inputStack.OnAmountChanged += UpdateItemCount;
 
             int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
             OnItemAdded?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount, -1, unitWeight));
@@ -231,15 +252,22 @@ public class SimpleInventory : InventoryBase
         return toRemove;
     }
 
-
-    private void UpdateItemCount(ItemStack itemStack, int deltaAmount) {
-        string itemID = itemStack.ItemData.ItemID;
-        if (itemCountDict.ContainsKey(itemID)) {
-            itemCountDict[itemID] += deltaAmount;
+    protected int GetAllowedAmount(ItemStack item) {
+        int allowed = item.Amount;
+        foreach (var condition in pushConditions) {
+            allowed = Mathf.Min(allowed, condition.GetAllowedAmount(item));
         }
+        return allowed;
     }
 
-    private void UpdateWeight(ItemEventArgs args) {
-        weightCounter.AddWeight(args.delta * args.weight);
-    }
+    //private void UpdateItemCount(ItemStack itemStack, int deltaAmount) {
+    //    string itemID = itemStack.ItemData.ItemID;
+    //    if (itemCountDict.ContainsKey(itemID)) {
+    //        itemCountDict[itemID] += deltaAmount;
+    //    }
+    //}
+
+    //private void UpdateWeight(ItemEventArgs args) {
+    //    weightCounter.AddWeight(args.delta * args.weight);
+    //}
 }
