@@ -12,6 +12,8 @@ public class Define
     public class Tag {
         public const string PLAYER = "player";
         public const string STORAGE = "storage";
+
+        public const string BASEMENT = "basement"; // id of basement location
     }
 
     public class Icon {

@@ -4,29 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class LocationInfoPopUpUI : PopUpUIBase
+public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 {
     [SerializeField] protected TextUI progressText;
     [SerializeField] protected TextUI moveTimeExpectationText;
 
-    public override void InitPopUp(PopUpDataBase popUpData) {
+    public override void InitPopUp(LocationInfoPopUpData popUpData) {
         base.InitPopUp(popUpData);
+        LocationData locationData = popUpData.Location.Data;
 
-        var data = popUpData as LocationInfoPopUpData;
-        if (data != null) {
-            var sd = data.Location.Data;
+        int currentProgress = popUpData.Location.CurrentValue;
+        int maxProgress = locationData.LocationEventList.Count;
+        InitProgressUI(currentProgress, maxProgress);
 
-            int currentProgress = data.Location.CurrentValue;
-            int maxProgress = sd.LocationEventList.Count;
-            InitProgressUI(currentProgress, maxProgress);
-
-            Location destination = data.Location;
-            Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
-            InitMoveTimeUI(currentLocation, destination);
-        }
-        else {
-            Debug.LogError($"<color=red>({popUpData.GetType()}) is not type of ({typeof(LocationInfoPopUpData)})</color>");
-        }
+        Location destination = popUpData.Location;
+        Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        InitMoveTimeUI(currentLocation, destination);
     }
     public void InitPopUp(Location location) {
         var popUpData = new LocationInfoPopUpData(
@@ -34,7 +27,6 @@ public class LocationInfoPopUpUI : PopUpUIBase
             new ActionData[] {
                 new ActionData("확인", () => Managers.UI.CloseUI<LocationInfoPopUpUI>()),
                 new ActionData(GetButtonText(location), ExecuteLocationEvent(location))
-
             });
         InitPopUp(popUpData);
     }
@@ -80,12 +72,19 @@ public class LocationInfoPopUpUI : PopUpUIBase
     private void EnterLocation(Location destination) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();
 
-        var ui = Managers.UI.GetUI<ExplorationUI>();
-        ui.InitUI();
-        ui.OpenUI();
+        if (destination.ID.Equals(Define.Tag.BASEMENT)) {
+            var basementUI = Managers.UI.GetUI<BasementUI>();
+            Managers.UI.CloseUI<MapUI>();
+            basementUI.OpenUI();
+        }
+        else {
+            var ui = Managers.UI.GetUI<ExplorationUI>();
+            ui.InitUI();
+            ui.OpenUI();
 
-        ui.InitLocationUI(destination);
-        ui.ShowEnterance();
+            ui.InitLocationUI(destination);
+            ui.ShowEnterance();
+        }
     }
     private void MoveLocation(LocationData currentLocationData, LocationData endLocationData) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();

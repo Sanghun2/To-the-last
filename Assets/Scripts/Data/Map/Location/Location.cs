@@ -25,6 +25,7 @@ public class Location : IValue<int>, IEquatable<Location>
             }
         }
     }
+    public string ID => data.LocationID;
     public LocationData Data => data;
 
     public InventoryBase Inventory

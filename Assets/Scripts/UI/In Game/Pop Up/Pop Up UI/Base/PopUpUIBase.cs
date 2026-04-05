@@ -25,13 +25,14 @@ public abstract class PopUpUIBase : UIBase
     }
 
     public virtual void InitPopUp(PopUpDataBase popUpData) {
+        if (popUpData == null) { Debug.LogError($"<color=red>pop up data null</color>"); return; }
+
         InitUI();
 
-        if (popUpData == null) {
-            Debug.LogError($"<color=red>pop up data null</color>");
-            return;
-        }
+        InitPopUpContents(popUpData);
+    }
 
+    protected virtual void InitPopUpContents(PopUpDataBase popUpData) {
         SetTitle(popUpData as ITitleContent);
         SetSubText(popUpData as ISubTextContent);
         SetIconImage(popUpData as IImageContent);
@@ -39,7 +40,6 @@ public abstract class PopUpUIBase : UIBase
         SetRequirements(popUpData as IRequirementContent);
         SetButtonActions(popUpData.ButtonActions);
     }
-
 
     protected virtual void Reset() {
         if (titleText == null) {
@@ -50,14 +50,17 @@ public abstract class PopUpUIBase : UIBase
     #region Content
 
     protected virtual void SetTitle(ITitleContent titleContent) {
+        if (titleText == null) return;
         titleText.gameObject.SetActive(titleContent != null);
         titleText.SetText(titleContent?.Title);
     }
     protected virtual void SetDescription(IDescriptionContent descriptionContent) {
+        if (descriptionText == null) return;
         descriptionText.gameObject.SetActive(descriptionContent != null);
         descriptionText.SetText(descriptionContent?.Description);
     }
     protected virtual void SetIconImage(IImageContent imageContent) {
+        if (iconImage == null) return;
         iconImage.gameObject.SetActive(imageContent != null);
         iconImage.sprite = imageContent?.Image;
     }
@@ -72,6 +75,7 @@ public abstract class PopUpUIBase : UIBase
         requirementUIContainer.ShowRequirements(requirementContent?.Requirements);
     }
     protected virtual void SetButtonActions(IReadOnlyList<ActionData> buttonActions) {
+        if (buttonContainer == null) return;
         buttonContainer.Clear();
         int buttonCount = Mathf.Min(2, buttonActions.Count);
         for (int i = 0; i < buttonCount; i++) {
@@ -82,4 +86,20 @@ public abstract class PopUpUIBase : UIBase
     }
 
     #endregion
+}
+
+public abstract class PopUpUIBase<TPopUpData> : PopUpUIBase
+    where TPopUpData : PopUpDataBase
+{
+    public override void InitPopUp(PopUpDataBase popUpData) {
+        if (popUpData is TPopUpData data) {
+            InitPopUp(data);
+        }
+    }
+
+    public virtual void InitPopUp(TPopUpData popUpData) {
+        if (popUpData == null) { Debug.LogError($"<color=red>pop up data is null</color>"); return; }
+        InitUI();
+        InitPopUpContents(popUpData);
+    }
 }

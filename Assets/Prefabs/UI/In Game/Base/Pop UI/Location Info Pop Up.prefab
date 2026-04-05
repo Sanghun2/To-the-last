@@ -380,17 +380,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
---- !u!114 &7514343989395318360 stripped
+--- !u!114 &6005038280624510519 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8210004114866485119, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5400297220742072080, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
   m_PrefabInstance: {fileID: 1848616827633226023}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &8289716720542855721 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7686912676134511374, guid: 315cc673875cb20468a05d3e8a8d704f, type: 3}
@@ -802,10 +802,9 @@ MonoBehaviour:
   titleText: {fileID: 8507854084945561933}
   subText: {fileID: 0}
   iconImage: {fileID: 3096375968037341826}
-  descriptionText: {fileID: 7514343989395318360}
+  descriptionText: {fileID: 6005038280624510519}
   requirementUIContainer: {fileID: 0}
   buttonContainer: {fileID: 8593236348504528245}
-  locationImage: {fileID: 3096375968037341826}
   progressText: {fileID: 1858158170399042013}
   moveTimeExpectationText: {fileID: 5375502805781848860}
 --- !u!224 &6448365968769264332 stripped
