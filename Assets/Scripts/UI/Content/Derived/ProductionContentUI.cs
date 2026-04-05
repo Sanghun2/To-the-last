@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ProductionContentUI : ContentUIBase<ProductionContentSD>
 {
     public Structure Structure => structure;
+    public override bool IsLocked => structure == null || contentSD.RequiredLevel > structure.StructureLevel;
+
 
     [SerializeField] protected ItemInfoButton itemInfoButton;
     [SerializeField] protected RequirementUIContainer requirementUIContainer;
-    private Structure structure;
 
     public override void InitContent(ProductionContentSD contentSD) {
         base.InitContent(contentSD);
@@ -17,21 +19,6 @@ public class ProductionContentUI : ContentUIBase<ProductionContentSD>
         var requirements = contentSD.Requirements;
         SetRequirements(requirements);
         SetItemInfo(contentSD.Outputs[0].ItemSD.ID);
-    }
-    public void SetStructure(Structure structure) {
-        this.structure = structure;
-
-        var context = structure.StructureContext;
-        if (context != null) {
-            var currentState = context.ProcessState;
-            UpdateExecutionButton(currentState, currentState);
-            context.OnProcessStateChanged -= UpdateExecutionButton;
-            context.OnProcessStateChanged += UpdateExecutionButton;
-        }
-    }
-    public void UpdateExecutionButton(Structure.ProcessState currentState, Structure.ProcessState prevState) {
-        bool interactable = currentState == Structure.ProcessState.Available;
-        executionButton.SetInteractable(interactable);
     }
 
     private void SetItemInfo(string itemID) {
@@ -50,38 +37,14 @@ public class ProductionContentUI : ContentUIBase<ProductionContentSD>
         return true;
     }
 
-    protected override void OnProgressStart() {
-        var context = structure.StructureContext;
-        if (context != null) {
-            context.ProcessState = Structure.ProcessState.Processing;
-        }
-    }
     protected override void OnProgressComplete() {
-        var context = structure.StructureContext;
-        if (context != null) {
-            context.ProcessState = Structure.ProcessState.Available;
-        }
+        base.OnProgressComplete();
 
         if (Managers.Craft.TryCraftProduction(contentSD, this)) {
             
         }
         else {
             Debug.LogError($"<color=red>({contentSD.GetType()}) craft production failed</color>");
-        }
-    }
-
-    private void OnEnable() {
-        var context = structure.StructureContext;
-        if (context != null) {
-            context.OnProcessStateChanged -= UpdateExecutionButton;
-            context.OnProcessStateChanged += UpdateExecutionButton;
-        }
-    }
-
-    private void OnDisable() {
-        var context = structure.StructureContext;
-        if (context != null) {
-            context.OnProcessStateChanged -= UpdateExecutionButton;
         }
     }
 }

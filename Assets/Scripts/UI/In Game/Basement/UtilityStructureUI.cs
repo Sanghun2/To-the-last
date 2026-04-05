@@ -9,7 +9,7 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
     private UtilityStructureContext Context => structure.StructureContext as UtilityStructureContext;
 
     [SerializeField] StructureUpgradeUI upgradeUI;
-    [SerializeField] UtilityContentUIContainer utilityContentUIContainer;
+    [SerializeField] ActivityContentUIContainer activityContentUIContainer;
     private Structure structure;
 
     public override void InitUI() {
@@ -25,10 +25,11 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
         this.structure = structure;
         var structureContext = Context;
         if (structureContext != null) {
+            activityContentUIContainer.SetStructure(structure);
             var contents = structureContext.ContentList;
             InitExecutionButtonTexts(structure.DefaultExecutionButtonText, contents);
             SetTitleText(structureContext.DisplayText);
-            ShowContents(contents);
+            activityContentUIContainer.ShowContents(contents);
         }
         else {
             Debug.LogError($"({structure.StructureContext}) is not type of ({typeof(UtilityStructureContext)})");
@@ -45,7 +46,7 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
 
 
 
-    private void OnDisable() {
+    protected virtual void OnDisable() {
         if (structure != null) {
             structure.OnUpgraded -= UpdateUpgradeUI;
             structure.OnUpgraded -= UpdateContentView;
@@ -69,14 +70,6 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
         }
     }
     private void UpdateContentView(Structure _) {
-        ShowContents(Context.ContentList);
-    }
-    private void ShowContents(IReadOnlyList<ActivityContentSD> contents) {
-        utilityContentUIContainer.Clear();
-        for (int i = 0; i < contents.Count; i++) {
-            var content = contents[i];
-            var contentUI = utilityContentUIContainer.GetOrCreateObj(i);
-            contentUI.InitContent(content);
-        }
+        activityContentUIContainer.ShowContents(Context.ContentList);
     }
 }

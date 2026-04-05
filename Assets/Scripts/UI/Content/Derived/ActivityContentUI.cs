@@ -38,6 +38,8 @@ public class ActivityContentUI : ContentUIBase<ActivityContentSD>
     #region Progress
 
     protected override void OnProgressComplete() {
+        base.OnProgressComplete();
+
         var effects = contentSD.Effects;
         for (int i = 0; i < effects.Count; i++) {
             Effect effect = effects[i];

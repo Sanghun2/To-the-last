@@ -85,12 +85,11 @@ public sealed class CraftManager
         var newJob = new Job(
                contentContext.RequireMinutesToComplete,
                onStart: () => {
+                   targetUI.ExecutionButton.SetExecuteAction("획득");
                    var context = targetUI.Structure.StructureContext;
                    if (context != null) {
                        context.ProcessState = Structure.ProcessState.Processing;
                    }
-                   
-                   targetUI.ExecutionButton.SetExecuteAction("획득");
                },
                onProgress: targetUI.ProgressBarUI.UpdateUI,
                onComplete: () => {
@@ -111,43 +110,6 @@ public sealed class CraftManager
         return true;
     }
 
-
-
-
-
-
-    //public void SetCraftTarget(ProductionContentSD recipeSD) {
-        //var currentTarget = craftContext.Target;
-        //if (currentTarget != null && currentTarget.Equals(recipeSD)) return;
-
-        //if (craftContext.CanSelect) {
-        //    craftContext.SetTarget(recipeSD);
-        //    OnCraftTargetSet?.Invoke(recipeSD);
-        //    //Debug.Log($"target set. {recipeSD.DisplayText}");
-        //}
-    //}
-
-    //public bool TryCraft(ProductionContentSD targetRecipeSD,
-    //    Action onStartProgress=null,
-    //    Action<float, float> onProgress = null, 
-    //    Action onComplete = null) {
-
-    //    SetCraftTarget(targetRecipeSD);
-    //    if (craftContext.CanCraft) {
-    //        craftContext.CurrentState = CraftContext.State.Crafting;
-    //        FocusJob focusJob = new FocusJob(
-    //            targetRecipeSD.RequireMinutes,
-    //            onStart: onStartProgress,
-    //            onProgress: onProgress,
-    //            onComplete: onComplete).WithBlockScreen();
-
-    //        Managers.Job.DoFocusJob(focusJob);
-    //        return true;
-    //    }
-
-    //    return false;
-    //}
-
     public void RegisterDelayedJob(ProductionContentSD recipeSD, Action<float, float> onProgress = null) {
         if (recipeSD is DelayedProductionContentSD delayedRecipeSD) {
             var newJob = new Job(
@@ -156,19 +118,4 @@ public sealed class CraftManager
             Managers.Job.RegisterDelayedJob(newJob);
         }
     }
-
-    //public void ClaimCraftResult() {
-    //    if (craftContext.CurrentState == CraftContext.State.Completed) {
-    //        // 아이템 지급 처리
-    //        Ingredient output = craftContext.Target.Outputs.First();
-    //        ItemSD itemSD = output.ItemSD;
-    //        int amount = output.Amount;
-    //        ItemStack inputStack = new ItemStack(new ItemData(itemSD.ID, itemSD.MaxStackCount), amount);
-    //        if (Managers.Item.TryPushItem(Managers.Player.Inventory, inputStack, out var overflowedStack)) {
-    //            Debug.Log($"{CraftTarget.DisplayText} 획득");
-    //        }
-
-    //        craftContext.ClearTarget();
-    //    }
-    //}
 }

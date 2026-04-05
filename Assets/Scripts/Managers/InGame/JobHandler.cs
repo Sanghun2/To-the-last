@@ -23,12 +23,12 @@ public class JobHandler : IInitializable
         jobList.Add(job);
         return this;
     }
-    public void DoFocusJob(FocusJob focusJob, Action callback=null) {
+    public void DoFocusJob(FocusJob focusJob, Action onRelease=null) {
         if (focusJob == null) { return; }
         if (!IsFocusJobRunning) {
             currentFocusJob = focusJob;//jobQueue.Dequeue();
             focusJob.CurrentState = Job.State.Running;
-            currentFocusJobID = Managers.Coroutine.StartCoroutine(FocusJobRoutine(focusJob, callback));
+            currentFocusJobID = Managers.Coroutine.StartCoroutine(FocusJobRoutine(focusJob, onRelease));
         }
         else {
             Debug.Log($"현재 실행중인 focus job이 있어 실행 skip됨");
@@ -50,7 +50,7 @@ public class JobHandler : IInitializable
         }
     }
 
-    private IEnumerator FocusJobRoutine(FocusJob focusJob, Action callback=null) {
+    private IEnumerator FocusJobRoutine(FocusJob focusJob, Action onRelease=null) {
         Managers.Time.PauseMainTime(true);
         float progress = 0;
         float currentTime = 0;
@@ -82,12 +82,13 @@ public class JobHandler : IInitializable
             }
         }
 
+        focusJob?.OnComplete?.Invoke();
         Managers.Time.PauseMainTime(false);
         currentFocusJob = null;
         currentFocusJobID = null;
         Managers.Time.OnTimeChanged -= focusJob.ChangeMinutes;
 
-        callback?.Invoke();
+        onRelease?.Invoke();
     }
     private void ChangeIngameTime(float deltaSeconds) {
         Managers.Time.ChangeMainTime(deltaSeconds);

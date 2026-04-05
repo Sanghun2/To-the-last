@@ -18,6 +18,9 @@ MonoBehaviour:
   categoryList: []
   image: {fileID: 21300000, guid: 2c2eb1b9050c35049878c0f3346e17b9, type: 3}
   requireMinutes: 480
+  requiredLevel: 0
+  requirements: []
+  executionButtonText: "\uCDE8\uCE68"
   effects:
   - effectSD: {fileID: 11400000, guid: e55e25d78ff03424d8187234b53e2115, type: 2}
     value: 100

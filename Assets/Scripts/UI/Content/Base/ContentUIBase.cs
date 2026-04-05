@@ -66,10 +66,13 @@ public abstract class ContentUIBase : UIBase, IPool
 public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
     where TContentSDBase : ContentSDBase
 {
+    public virtual bool IsLocked => structure == null || contentSD.RequiredLevel > structure.StructureLevel;
+
     public ActionData DefaultAction => _defaultAction;
 
     protected ActionData _defaultAction;
     protected TContentSDBase contentSD;
+    protected Structure structure;
 
 
     public override void InitContent(ContentSDBase contentSDBase) {
@@ -95,6 +98,53 @@ public abstract class ContentUIBase<TContentSDBase> : ContentUIBase
         int structureLevel = Managers.Structure.CurrentSelctedStructure?.StructureLevel ?? 0;
         bool @lock = contentSD.RequiredLevel > structureLevel;
         uiLocker.SetLock(@lock);
+    }
+
+
+    public void SetStructure(Structure structure) {
+        this.structure = structure;
+
+        var context = structure.StructureContext;
+        if (context != null && !IsLocked) {
+            var currentState = context.ProcessState;
+            UpdateExecutionButton(currentState, currentState);
+            context.OnProcessStateChanged -= UpdateExecutionButton;
+            context.OnProcessStateChanged += UpdateExecutionButton;
+        }
+    }
+    public void UpdateExecutionButton(Structure.ProcessState currentState, Structure.ProcessState prevState) {
+        bool interactable = currentState == Structure.ProcessState.Available;
+        executionButton.SetInteractable(interactable);
+    }
+
+
+    protected override void OnProgressStart() {
+        var context = structure?.StructureContext;
+        if (context != null && !IsLocked) {
+            context.ProcessState = Structure.ProcessState.Processing;
+        }
+    }
+
+    protected override void OnProgressComplete() {
+        var context = structure?.StructureContext;
+        if (context != null && !IsLocked) {
+            context.ProcessState = Structure.ProcessState.Available;
+        }
+    }
+
+    protected virtual void OnEnable() {
+        var context = structure?.StructureContext;
+        if (context != null && !IsLocked) {
+            context.OnProcessStateChanged -= UpdateExecutionButton;
+            context.OnProcessStateChanged += UpdateExecutionButton;
+        }
+    }
+
+    protected virtual void OnDisable() {
+        var context = structure?.StructureContext;
+        if (context != null && !IsLocked) {
+            context.OnProcessStateChanged -= UpdateExecutionButton;
+        }
     }
 
     private void SetImage(Sprite image) {

@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UtilityStructureUI
   titleText: {fileID: 7406703195044993283}
   upgradeUI: {fileID: 2911202217157898754}
-  utilityContentUIContainer: {fileID: 7414270799688848347}
+  activityContentUIContainer: {fileID: 7414270799688848347}
 --- !u!224 &5353509240666362688 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1871163659705652943, guid: 155d6e4573e15c84f82f4a00a4d6ff21, type: 3}

@@ -24,6 +24,7 @@ public abstract class StructureContextBase
             _processState = value;
             if (_processState != prevState) {
                 OnProcessStateChanged?.Invoke(_processState, prevState);
+                Debug.Log($"state? {_processState}");
             }
         }
     }
