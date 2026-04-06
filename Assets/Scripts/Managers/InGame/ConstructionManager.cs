@@ -45,26 +45,27 @@ public class ConstructionManager : IInitializable
     }
 
 
+    public void DestroyCurrentStructure() {
+        if (currentLocationIndex >= 0) {
+            DestroyStructureAt(currentLocationIndex);
+        }
+    }
     public void DestroyStructureAt(int locationIndex, Action onDestroyComplete=null) {
         if (!Managers.Structure.IsValidLocation(locationIndex)) { return; }
         if (IsEmpty(locationIndex)) { return; }
 
         Structure targetStructure = Managers.Structure.GetStructure(locationIndex);
         StructureContextBase structureContext = targetStructure.StructureContext;
-        //var buildingUI = Managers.UI.GetUI<ConstructionUI>();
+
         FocusJob destroyJob = new FocusJob(
             structureContext.ConstructionTime,
             onComplete: () => {
                 targetStructure.DestroyStrucure();
+                Managers.Structure.ChangeStuctureCount(structureContext.Data, -1);
                 Managers.UI.CloseAllUIs();
                 onDestroyComplete?.Invoke();
             }).WithBlockScreen();
         Managers.Job.DoFocusJob(destroyJob);
-    }
-    public void DestroyCurrentStructure() {
-        if (currentLocationIndex >= 0) {
-            DestroyStructureAt(currentLocationIndex);
-        }
     }
 
 
@@ -92,7 +93,9 @@ public class ConstructionManager : IInitializable
              onStart: onStart,
              onProgress: onProgress,
              onComplete: () => {
-                 TryConstructStructure(locationIndex, structureData);
+                 if (TryConstructStructure(locationIndex, structureData)) {
+                     Managers.Structure.ChangeStuctureCount(structureData, 1);   
+                 }
                  onComplete?.Invoke();
              }).WithBlockScreen();
         Debug.Log($"construction job");

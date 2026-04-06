@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StructureManager : IInitializable
@@ -9,8 +10,11 @@ public class StructureManager : IInitializable
 
     [SerializeField] Structure currentSelectedStructure;
     [SerializeField] List<Structure> structureList = new List<Structure>();
+    private Dictionary<string, int> constructCountDict = new Dictionary<string, int>();
     private StructureUIContainer structureUIContainer;
     private bool _isInit;
+
+    public event Action<string, int, int> OnStructureCountChanged;
 
     public void Init() {
         if (IsInit) return;
@@ -30,8 +34,13 @@ public class StructureManager : IInitializable
             structureList.Add(structureUIContainer.GetStructureUI(i).Structure);
         }
 
+        // post init
+        InitStructureCount();
+
         _isInit = true;
     }
+
+    #region Data
 
     public void SetStructure(Structure structure) {
         this.currentSelectedStructure = structure;
@@ -44,6 +53,30 @@ public class StructureManager : IInitializable
         structure = structureList.Find(x => x.StructureContext != null && x.StructureContext.ID.Equals(id));
         return structure != null;
     }
+
+    public void ChangeStuctureCount(StructureDataBase structureData, int deltaCount) {
+        ChangeStructureCount(structureData.ID, deltaCount);
+    }
+    public int GetStructureCount(string structureID) {
+        return constructCountDict.TryGetValue(structureID, out var structureCount) ? structureCount : 0;
+    }
+
+    private void ChangeStructureCount(string structureID, int deltaCount) {
+        if (constructCountDict.TryGetValue(structureID, out var structureCount)) {
+            var prevCount = structureCount;
+            var newCount = structureCount + deltaCount;
+            newCount = Mathf.Max(newCount, 0);
+
+            var delatCount = newCount - prevCount;
+            constructCountDict[structureID] = newCount;
+            OnStructureCountChanged?.Invoke(structureID, newCount, delatCount);
+        }
+    }
+
+    #endregion
+
+    #region Location
+
     public bool IsValidLocation(int targetLocationIndex) {
         if (0 <= targetLocationIndex && targetLocationIndex < structureList.Count) {
             return true;
@@ -62,11 +95,6 @@ public class StructureManager : IInitializable
             Debug.LogAssertion($"unlock failed. ui null? {structure == null}, state: Empty != {structure.CurrentStructureState}");
         }
     }
-
-    public void Release() {
-        structureUIContainer?.Release();
-    }
-
     public void UnlockLocations(int targetExpensionLevel) {
         for (int i = 0; i < structureUIContainer.Count; i++) {
             var structureUI = structureUIContainer.GetStructureUI(i);
@@ -76,4 +104,25 @@ public class StructureManager : IInitializable
             }
         }
     }
+
+    #endregion
+
+    public void Release() {
+        structureUIContainer?.Release();
+    }
+
+    private void InitStructureCount() {
+        constructCountDict.Clear();
+        for (int i = 0; i < structureList.Count; i++) {
+            var structure = structureList[i];
+
+            if (constructCountDict.ContainsKey(structure.ID)) {
+                constructCountDict[structure.ID] += 1;
+            }
+            else {
+                constructCountDict[structure.ID] = 1;
+            }
+        }
+    }
+
 }
