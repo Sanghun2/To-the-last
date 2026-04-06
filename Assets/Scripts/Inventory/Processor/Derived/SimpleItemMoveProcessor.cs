@@ -26,8 +26,8 @@ public class SimpleItemMoveProcessor : ItemMoveProcessorBase
 //        StringBuilder sb = new StringBuilder();
 //        sb.AppendLine("sorted list");
 //        for (int i = 0; i < targetItemList.Count; i++) {
-//            var item = targetItemList[i];
-//            sb.AppendLine($"{item.ItemData.ItemID}, {item.Amount}");
+//            var targetItem = targetItemList[i];
+//            sb.AppendLine($"{targetItem.ItemData.ItemID}, {targetItem.Amount}");
 //        }
 //        Debug.Log(sb.ToString());
 //#endif

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class QuestData : BaseData
 {
-    public IReadOnlyList<TaskData> TaskDataList => tasks;
+    public IReadOnlyList<TaskInfo> TaskInfos => taskInfos;
     public Quest.Type Type => type;
 
-    [SerializeField] TaskData[] tasks;
+    [SerializeField] TaskInfo[] taskInfos;
     [SerializeField] Quest.Type type;
 
-    public QuestData(string id, Quest.Type type, TaskData[] tasks) : base(id) {
-        this.tasks = tasks;
+    public QuestData(string id, Quest.Type type, TaskInfo[] tasks) : base(id) {
+        this.taskInfos = tasks;
         this.type = type;
     }
 }

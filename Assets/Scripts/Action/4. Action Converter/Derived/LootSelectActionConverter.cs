@@ -22,7 +22,7 @@ public class LootSelectActionConverter : SelectActionConverterBase<LootSelectAct
                 if (!InventoryUtility.TryPushItem(
                     lootContext.TargetInventories, 
                     new ItemStack(new ExtendedItemData(itemID, 999, itemSD.Weight), amount))) {
-                    //Debug.Log($"push item inventory({targetInventory.InventoryID}) failed");
+                    //Debug.Log($"push targetItem inventory({targetInventory.InventoryID}) failed");
                 }
             }
 

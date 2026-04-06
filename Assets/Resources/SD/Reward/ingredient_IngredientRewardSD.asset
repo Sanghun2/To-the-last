@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cce6c2ab8d80943bac5802875423a5, type: 3}
-  m_Name: TaskSD
-  m_EditorClassIdentifier: Assembly-CSharp::TaskSD
-  id: 
+  m_Script: {fileID: 11500000, guid: 0dfa0fe6de65a8940bf05ee87c056a75, type: 3}
+  m_Name: ingredient_IngredientRewardSD
+  m_EditorClassIdentifier: Assembly-CSharp::RewardSD
+  id: ingredient
   displayText: 
   descripiton: 
   categoryList: []
-  countType: 0

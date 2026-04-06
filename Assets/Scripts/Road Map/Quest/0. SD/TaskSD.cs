@@ -6,9 +6,7 @@ using UnityEngine;
 public class TaskSD : SDBase
 {
     public Task.CountType CountType => countType;
-    public int RequireCount => requireCount;    
 
 
     [SerializeField] Task.CountType countType;
-    [SerializeField] int requireCount;
 }

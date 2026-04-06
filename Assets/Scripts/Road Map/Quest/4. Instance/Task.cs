@@ -18,10 +18,10 @@ public class Task
     public event Action<Task, int, int> OnCountChanged; 
     public event Action<Task> OnTaskCompleted;
 
-    public Task(TaskData data) {
-        this.data = data;
+    public Task(TaskInfo taskInfo) {
+        this.data = taskInfo.TaskSD.ToData();
         currentCount = 0;
-        requiredCount = data.RequireCount; // count를 require하는 것만 있지 않다면 task _data 구조 분할 필요
+        this.requiredCount = taskInfo.RequiredCount;
     }
 
     public void AddCount(int count) {

@@ -55,7 +55,7 @@ public class CraftButton : ButtonBase
     //            Managers.Craft.RegisterDelayedJob(targetProdiction);
     //        }
     //        )) {
-    //        Debug.LogError($"<color=red>failed to try craft item</color>");
+    //        Debug.LogError($"<color=red>failed to try craft targetItem</color>");
     //    }
     //}
     //private void ClaimResult() {

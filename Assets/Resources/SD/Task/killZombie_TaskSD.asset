@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88fb4233c499a84fb0bf58c6b47d7f6, type: 3}
-  m_Name: QuestSD
-  m_EditorClassIdentifier: Assembly-CSharp::QuestSD
-  id: 
-  displayText: 
+  m_Script: {fileID: 11500000, guid: b9cce6c2ab8d80943bac5802875423a5, type: 3}
+  m_Name: killZombie_TaskSD
+  m_EditorClassIdentifier: Assembly-CSharp::TaskSD
+  id: killZombie
+  displayText: "\uC880\uBE44 \uC0AC\uB0E5"
   descripiton: 
   categoryList: []
-  taskSDs: []
+  countType: 0

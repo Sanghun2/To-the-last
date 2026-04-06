@@ -62,7 +62,7 @@ public class Structure : IValue<float>
         this.structureContext = structureContext;
         CurrentStructureState = StructureState.Built;
 
-        // item 개수 변화에 따라 requirement 수치 update, 만약 업그레이드 가능한 경우 icon도 update
+        // targetItem 개수 변화에 따라 requirement 수치 update, 만약 업그레이드 가능한 경우 icon도 update
         SubscribeUpgradeEvents();
 
 

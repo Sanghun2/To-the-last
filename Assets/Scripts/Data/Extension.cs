@@ -18,12 +18,12 @@ public static partial class Extension
         return newData;
     }
     public static TaskData ToData(this TaskSD taskSD) {
-        return new TaskData(taskSD.ID, taskSD.CountType, taskSD.RequireCount);
+        return new TaskData(taskSD.ID, taskSD.CountType);
     }
-    public static QuestData ToData(this QuestSD questSD) {
-        TaskData[] tasks = questSD.TaskSDs.Select(tSD => tSD.ToData()).ToArray();
-        return new QuestData(questSD.ID, questSD.Type, tasks);
-    }
+    //public static QuestData ToData(this QuestSD questSD) {
+    //    TaskData[] taskInfos = questSD.TaskInfos.Select(tSD => tSD.ToData()).ToArray();
+    //    return new QuestData(questSD.ID, questSD.Type, taskInfos);
+    //}
 
     public static TraitData ToData(this TraitSD traitSD) {
         return new TraitData(
