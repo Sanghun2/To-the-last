@@ -20,10 +20,10 @@ public class Tester : MonoBehaviour
 
     [Space]
     [Header("[  Build UI Test  ]")]
-    [SerializeField] List<StructureSD> testStructureSDList;
+    [SerializeField] List<StructureSDBase> testStructureSDList;
     [Space]
     [SerializeField] int locationIndex;
-    [SerializeField] StructureSD targetStructureSD;
+    [SerializeField] StructureSDBase targetStructureSD;
 
     [Space]
     [Header("[  Inventory Test  ]")]

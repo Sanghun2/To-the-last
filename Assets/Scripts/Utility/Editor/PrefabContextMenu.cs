@@ -5,7 +5,7 @@ public static class PrefabContextMenu
 {
     [MenuItem("GameObject/UI (Canvas)/Default Text", false, 0)]
     static void CreateDefaultText(MenuCommand cmd) 
-        => Create("Assets/Prefabs/UI/Common/c.prefab", cmd);
+        => Create("Assets/Prefabs/UI/Common/Default Text.prefab", cmd);
 
     [MenuItem("GameObject/UI (Canvas)/Default Button", false, 1)]
     static void CreateDefaultButton(MenuCommand cmd) 

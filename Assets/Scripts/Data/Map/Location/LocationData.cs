@@ -39,6 +39,16 @@ public class LocationData : IEquatable<LocationData>
         this.displayText = displayText;
     }
 
+    public LocationData(CoordinateData coordinate) {
+        locationID = coordinate.LocationID;
+        displayText = coordinate.DisplayText;
+        storyDescription = coordinate.StoryDescription;
+        anchoredPosition = coordinate.LocationCoordinate;
+        mainImage = coordinate.MainImage;
+        iconImage = coordinate.IconImage;
+        locationEventList = coordinate.LocationEventList;
+    }
+
     public bool Equals(LocationData other) {
         if (this == null || other == null) return false;
 

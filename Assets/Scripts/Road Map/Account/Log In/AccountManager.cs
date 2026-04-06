@@ -149,11 +149,3 @@ public class AccountResult
     public static AccountResult Failure(string error) =>
         new AccountResult { IsSuccess = false, ErrorMessage = error };
 }
-
-public class UserData
-{
-    public string UserId { get; set; }
-    public string DisplayName { get; set; }
-    public string Email { get; set; }
-    public string Token { get; set; }
-}

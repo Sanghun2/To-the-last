@@ -5,12 +5,12 @@ using UnityEngine;
 public readonly struct ConstructionContext
 {
     public readonly int Index => index;
-    public IReadOnlyList<StructureSD> StructureCatalogs => structureCatalogs;
+    public IReadOnlyList<StructureSDBase> StructureCatalogs => structureCatalogs;
 
     private readonly int index;
-    private readonly IReadOnlyList<StructureSD> structureCatalogs;
+    private readonly IReadOnlyList<StructureSDBase> structureCatalogs;
 
-    public ConstructionContext(int index, IReadOnlyList<UpgradeSDBase<StructureSD>> upgradeables) {
+    public ConstructionContext(int index, IReadOnlyList<UpgradeSDBase<StructureSDBase>> upgradeables) {
         this.index = index;
         this.structureCatalogs = upgradeables.Select(u => u.GetFirstUpgrade()).ToList();
     }

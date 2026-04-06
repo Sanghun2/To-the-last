@@ -62,6 +62,12 @@ public class Location : IValue<int>, IEquatable<Location>
         _currentState = LocationState.Undiscovered;
     }
 
+    public Location(CoordinateData coordinate) {
+        data = new LocationData(coordinate);
+        locationID = coordinate.LocationID;
+        _currentState = LocationState.Undiscovered;
+    }
+
     public event Action<int, int> OnProgressChanged;
     public event Action<LocationState, LocationState> OnLocationStateChanged;
 

@@ -10,11 +10,11 @@ public abstract class UpgradeSDBase : SDBase
     public abstract Upgrade.InfoResult TryGetUpgradeInfo(int level, out IUpgradeable upgrade);
 
     protected virtual void OnValidate() {
-        RenameAsset(ID, suffix:"_UpgradeSD");
-
         if (Categories != null && Categories.Count > 0) {
             id = Categories[0].ID;
         }
+
+        RenameAsset(ID, suffix: "_UpgradeSD");
     }
 }
 

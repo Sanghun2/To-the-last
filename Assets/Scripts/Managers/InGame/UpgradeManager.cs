@@ -27,7 +27,7 @@ public class UpgradeManager
 
 
     public bool TryUpgrade(Structure targetStructure, Action onStart=null, Action<float, float> onProgress=null, Action onComplete=null) {
-        if (Managers.Upgrade.TryGetNextUpgradeInfo(targetStructure, out StructureSD nextUpgrade) == Upgrade.InfoResult.Available) {
+        if (Managers.Upgrade.TryGetNextUpgradeInfo(targetStructure, out StructureSDBase nextUpgrade) == Upgrade.InfoResult.Available) {
             if (!Managers.Construction.StructureDataParserContainer.TryGet(nextUpgrade, out var dataParser)) { return false; }
             var data = dataParser.ParseData(nextUpgrade);
             if (!Managers.Construction.StructureContextBuilderContainer.TryGet(data, out var contextBuilder)) { return false; }

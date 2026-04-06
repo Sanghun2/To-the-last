@@ -6,5 +6,6 @@ public sealed class StructureContextBuilderContainer : TypeRegistry<StructureDat
     public StructureContextBuilderContainer() {
         Register<ProductionStructureData>(new ProductionStructureContextBuilder());
         Register<UtilityStructureData>(new UtilityStructureContextBuilder());
+        Register<SpecialStructureData>(new SpecialStructureContextBuilder());
     }
 }

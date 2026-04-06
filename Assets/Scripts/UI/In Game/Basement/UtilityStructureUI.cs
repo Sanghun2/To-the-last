@@ -55,7 +55,7 @@ public class UtilityStructureUI : StructureUIBase<UtilityStructureContext>, IUpg
     }
     private void UpdateUpgradeUI(Structure structure) {
         SetTitleText($"{structure.DisplayText}");
-        var upgradeInfoResult = Managers.Upgrade.TryGetNextUpgradeInfo(structure, out StructureSD nextUpgrade);
+        var upgradeInfoResult = Managers.Upgrade.TryGetNextUpgradeInfo(structure, out StructureSDBase nextUpgrade);
         switch (upgradeInfoResult) {
             case Upgrade.InfoResult.InValid:
             case Upgrade.InfoResult.MaxLevel:

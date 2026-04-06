@@ -32,7 +32,7 @@ public class ConstructionManager : IInitializable
     public void SetLocationIndex(int locationIndex) {
         currentLocationIndex = locationIndex;
     }
-    public void SetTargetStructure(StructureSD structureSD) {
+    public void SetTargetStructure(StructureSDBase structureSD) {
         if (!dataParserContainer.TryGet(structureSD, out var parser)) { Debug.LogError($"<color=red>data parser type of ({structureSD.GetType()}) is not exist. </color>"); return; }
         var structureData = parser.ParseData(structureSD);
         SetTargetStructure(structureData);

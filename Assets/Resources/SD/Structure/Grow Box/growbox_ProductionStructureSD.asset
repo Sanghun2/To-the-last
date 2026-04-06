@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e33b1a176f896448708b50845c9dd0, type: 3}
-  m_Name: advancedGroBox_StructureSD
+  m_Name: growbox_ProductionStructureSD
   m_EditorClassIdentifier: Assembly-CSharp::ProductionStructureSD
-  id: advancedGroBox
-  displayText: "\uAC1C\uC120\uB41C \uC7AC\uBC30\uC0C1\uC790"
-  descripiton: "\uB354 \uB2E4\uC591\uD55C \uC2DD\uBB3C\uC744 \uD0A4\uC6B8 \uC218
-    \uC788\uB3C4\uB85D \uAC1C\uC120\uB41C \uC7AC\uBC30\uC0C1\uC790"
+  id: growbox
+  displayText: "\uC7AC\uBC30 \uC0C1\uC790"
+  descripiton: "\uC791\uC740 \uC2DD\uBB3C\uC744 \uD0A4\uC6B8 \uC218 \uC788\uB294
+    \uC0C1\uC790"
   categoryList:
   - {fileID: 11400000, guid: 5fc1b3627aca8ce4988aaeb8a735d983, type: 2}
-  image: {fileID: 21300000, guid: 815b2222b685bcd4ab12d4778c986ddb, type: 3}
-  requireMinutes: 240
+  image: {fileID: 21300000, guid: e0de2ac10e0d76a4fbbfa8a0d1c0de13, type: 3}
+  requireMinutes: 180
   requiredLevel: 0
   requirements:
   - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 12
+    amount: 8
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
-    amount: 6
+    amount: 4
   executionButtonText: "\uC81C\uC791"
   locked: 0
   productions:

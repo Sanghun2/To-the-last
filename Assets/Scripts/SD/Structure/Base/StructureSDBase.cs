@@ -4,7 +4,7 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class StructureSD : ContentSDBase, IUpgradeable
+public abstract class StructureSDBase : ContentSDBase, IUpgradeable
 {
     public int ConstructionTime => requireMinutes;
     public bool Locked => locked;
@@ -16,9 +16,5 @@ public abstract class StructureSD : ContentSDBase, IUpgradeable
 
     public void LockConstruction(bool @lock) {
         locked = @lock;
-    }
-
-    protected virtual void OnValidate() {
-        RenameAsset(ID, suffix: "_StructureSD");
     }
 }

@@ -9,7 +9,6 @@ public class ProductionStructureContext : StructureContextBase<ProductionStructu
         CraftStructureUI structureUI = Managers.UI.GetUI<CraftStructureUI>();
         if (structureUI.IsOpened) return structureUI;
 
-        var id = Data.ID;
         if (TryGetStructure(out Structure structure)) {
             structureUI.SetUpUI(structure);
         }

@@ -107,10 +107,10 @@ public class StructureButton : ButtonBase
         if (!Managers.SD.TryGetContainer<UpgradeSDBase>(out var container)) { return null; }
 
         // upgrade SD data에서 가장 1렙 구조물 데이터만 추출
-        List<UpgradeSDBase<StructureSD>> upgradeSDBases = container.SDDict.Where(x => {
-            var structureSD = x.Value as UpgradeSDBase<StructureSD>;
+        List<UpgradeSDBase<StructureSDBase>> upgradeSDBases = container.SDDict.Where(x => {
+            var structureSD = x.Value as UpgradeSDBase<StructureSDBase>;
             return structureSD != null;
-        }).Select(x => (x.Value as UpgradeSDBase<StructureSD>)).ToList();
+        }).Select(x => (x.Value as UpgradeSDBase<StructureSDBase>)).ToList();
 
         var constructionContext = new ConstructionContext(index, upgradeSDBases);
 

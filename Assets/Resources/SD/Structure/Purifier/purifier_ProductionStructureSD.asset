@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7e33b1a176f896448708b50845c9dd0, type: 3}
-  m_Name: purifier_StructureSD
+  m_Name: purifier_ProductionStructureSD
   m_EditorClassIdentifier: Assembly-CSharp::ProductionStructureSD
   id: purifier
   displayText: "\uC815\uC218\uAE30"

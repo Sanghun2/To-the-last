@@ -1,12 +1,12 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ConstructionContentUI : ContentUIBase<StructureSD>
+public class ConstructionContentUI : ContentUIBase<StructureSDBase>
 {
     [SerializeField] StructureInfoButton infoButton;
     [SerializeField] RequirementUIContainer requirementUIContainer;
 
-    public override void InitContent(StructureSD structureSD) {
+    public override void InitContent(StructureSDBase structureSD) {
         Debug.Log($"count? {structureSD.Requirements.Count}");
         base.InitContent(structureSD);
         infoButton.SetData(structureSD.ID);

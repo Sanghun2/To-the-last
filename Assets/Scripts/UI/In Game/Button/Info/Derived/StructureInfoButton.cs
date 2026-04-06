@@ -8,7 +8,7 @@ public class StructureInfoButton : InfoButtonBase
 
     protected override void ShowInfomation() {
         if (string.IsNullOrEmpty(dataID)) { Debug.Log("타겟 아이템 없음"); return; }
-        if (!Managers.SD.TryGetSD(dataID, out StructureSD structureSD)) { return; }
+        if (!Managers.SD.TryGetSD(dataID, out StructureSDBase structureSD)) { return; }
 
         var infoUI = Managers.UI.GetUI<InfomationPopUpUI>();
         if (infoUI.IsOpened) return;

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fd19cd44cc7de4dbcbcacadbd225f8, type: 3}
+  m_Name: radio_UpgradeSD
+  m_EditorClassIdentifier: Assembly-CSharp::StructureUpgradeSD
+  id: radio
+  displayText: "\uB77C\uB514\uC624 \uC5C5\uADF8\uB808\uC774\uB4DC \uBAA9\uB85D"
+  descripiton: "\uB77C\uB514\uC624 \uC5C5\uADF8\uB808\uC774\uB4DC \uBAA9\uB85D"
+  categoryList:
+  - {fileID: 11400000, guid: adcc32139a78d804194aaace847d131d, type: 2}
+  upgradeList:
+  - {fileID: 11400000, guid: e59bc50c38713304a9892bdf391f1185, type: 2}

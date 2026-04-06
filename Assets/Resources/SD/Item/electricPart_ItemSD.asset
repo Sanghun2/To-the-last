@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e59362c602507b499a9b4b003e222c8, type: 3}
+  m_Name: electricPart_ItemSD
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSD
+  id: electricPart
+  displayText: "\uC804\uC790\uBD80\uD488"
+  descripiton: "\uC804\uC790 \uAE30\uACC4\uC5D0 \uB4E4\uC5B4\uAC00\uB294 \uBD80\uD488"
+  categoryList: []
+  image: {fileID: 21300000, guid: 6f39fef1afe888c41af293fc578d111f, type: 3}
+  weight: 1
+  maxStackCount: 999

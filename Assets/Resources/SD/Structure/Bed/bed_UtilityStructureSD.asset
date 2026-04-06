@@ -10,23 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f19f719ca154c844ac966ef4d226fb8, type: 3}
-  m_Name: matrix_StructureSD
+  m_Name: bed_UtilityStructureSD
   m_EditorClassIdentifier: Assembly-CSharp::UtilityStructureSD
-  id: matrix
-  displayText: "\uB9E4\uD2B8\uB9AC\uC2A4"
-  descripiton: "\uC870\uAE08\uC740 \uB354 \uD479\uC2E0\uD574\uC9C4 \uB9E4\uD2B8\uB9AC\uC2A4"
+  id: bed
+  displayText: "\uCE68\uB300"
+  descripiton: "\uC7A0\uC744 \uC798 \uC218 \uC788\uB294 \uCE68\uB300."
   categoryList:
   - {fileID: 11400000, guid: fcc7dd003b064494f8989994fe024953, type: 2}
-  image: {fileID: 21300000, guid: 36afdfb418782e546bd5c9b1bb2aae9e, type: 3}
-  requireMinutes: 60
+  image: {fileID: 21300000, guid: 81919bc1c8584d84cb6e91efb2724a29, type: 3}
+  requireMinutes: 240
   requiredLevel: 0
   requirements:
   - itemSD: {fileID: 11400000, guid: 0b4c9b8dccdbd064bb33ebf85b91fe61, type: 2}
-    amount: 8
+    amount: 15
   - itemSD: {fileID: 11400000, guid: 8b169067bd554f34b858b09c57000c3a, type: 2}
     amount: 4
+  - itemSD: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
+    amount: 8
   - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
-    amount: 4
+    amount: 2
   executionButtonText: "\uC81C\uC791"
   locked: 0
   utilityContents:

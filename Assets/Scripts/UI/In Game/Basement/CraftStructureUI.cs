@@ -66,7 +66,7 @@ public class CraftStructureUI : StructureUIBase<ProductionStructureContext>, IUp
 
     private void UpdateUpgradeInfo(Structure structure) {
         SetTitleText($"{structure.DisplayText}");
-        Upgrade.InfoResult result = Managers.Upgrade.TryGetNextUpgradeInfo(structure, out StructureSD nextUpgrade);
+        Upgrade.InfoResult result = Managers.Upgrade.TryGetNextUpgradeInfo(structure, out StructureSDBase nextUpgrade);
 
         switch (result) {
             case Upgrade.InfoResult.InValid:

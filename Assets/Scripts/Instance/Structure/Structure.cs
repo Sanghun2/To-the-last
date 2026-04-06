@@ -6,6 +6,11 @@ using UnityEngine;
 [Serializable]
 public class Structure : IValue<float>
 {
+    public enum SpecialStructureType {
+        None,
+        Radio,
+    }
+
     public enum StructureState
     {
         Locked,

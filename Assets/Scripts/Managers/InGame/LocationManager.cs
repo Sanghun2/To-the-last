@@ -38,6 +38,7 @@ public class LocationManager : IInitializable
     private Location currentLocation;
 
     public event Action<Location, Location> OnLocationChanged;
+    public event Action<Location, LocationUI> OnLocationActived;
 
     public Location RegisterLocation(string locationID, int currentProgress) {
         if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
@@ -84,10 +85,6 @@ public class LocationManager : IInitializable
         return false;
     }
 
-    public bool UnlockLocation(string locationID, int currentProgress=1, Action<Location> onActivated=null) {
-        var location = RegisterLocation(locationID, currentProgress);
-        return TryActivateLocation(location, onActivated);
-    }
 
     public bool TryActivateLocation(string locationID, Action<Location> onActivated = null) {
         if (string.IsNullOrEmpty(locationID)) { Debug.LogError($"<color=red>location id is null</color>"); return false; }
@@ -117,14 +114,11 @@ public class LocationManager : IInitializable
 
         if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
 
-        var locationUI = LocationUIContainer.GetObj();
-        locationUI.InitLocation(location);
-        location.ClearLocationEvent();
-        location.OnLocationStateChanged += locationUI.UpdateUI;
-        location.Activate();
+        CreateLocationUI(location);
         onActivated?.Invoke(location);
         return true;
     }
+
 
     public void DeactivateLocation(string locationID) {
         if (TryGetLocation(locationID, out Location location)) {
@@ -133,6 +127,15 @@ public class LocationManager : IInitializable
     }
     public void DeactivateLocation(LocationSD locationSD) {
         DeactivateLocation(locationSD.ID);
+    }
+
+    public bool UnlockLocation(string locationID, int currentProgress=1, Action<Location> onActivated=null) {
+        var location = RegisterLocation(locationID, currentProgress);
+        return TryActivateLocation(location, onActivated);
+    }
+    public void CreateLocation(CoordinateData coordinate) {
+        var location = new Location(coordinate);
+        CreateLocationUI(location);
     }
 
 
@@ -151,5 +154,13 @@ public class LocationManager : IInitializable
         string houseID = "house";
         UnlockLocation(basementID, 0);
         UnlockLocation(houseID, 1);
+    }
+    private void CreateLocationUI(Location location) {
+        var locationUI = LocationUIContainer.GetObj();
+        locationUI.InitLocation(location);
+        location.ClearLocationEvent();
+        location.OnLocationStateChanged += locationUI.UpdateUI;
+        location.Activate();
+        OnLocationActived?.Invoke(location, locationUI);
     }
 }

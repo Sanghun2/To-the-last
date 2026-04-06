@@ -4,7 +4,7 @@ using UnityEngine;
 public class BuildButton : ButtonBase
 {
     [SerializeField] int locationIndex;
-    [SerializeField] StructureSD targetStructureSD;
+    [SerializeField] StructureSDBase targetStructureSD;
 
     protected override void ButtonAction() {
         if (targetStructureSD != null) {

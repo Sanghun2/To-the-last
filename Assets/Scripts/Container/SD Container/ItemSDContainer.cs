@@ -14,7 +14,7 @@ public class ProductionSDContainer : SDContainerBase<ProductionContentSD>
     }
 }
 
-public class StructureSDContainer : SDContainerBase<StructureSD>
+public class StructureSDContainer : SDContainerBase<StructureSDBase>
 {
     public StructureSDContainer(string sdResourcePath) : base(sdResourcePath) {
     }
