@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
@@ -42,11 +43,13 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
         return null;
     }
 
-    public void InitButtons(ActionData[] actions) {
-        if (actions.Length > maxButtonCount) { Debug.LogError($"not enough button count"); return; }
+
+    public void InitButtons(IReadOnlyList<ActionData> actions) {
+        if (actions == null || actions.Count == 0) { Debug.LogError($"전달된 button action이 없음"); return; }
+        if (actions.Count > maxButtonCount) { Debug.LogError($"not enough button count"); return; }
 
         Clear();
-        for (int i = 0; i < actions.Length; i++) {
+        for (int i = 0; i < actions.Count; i++) {
             var button = GetOrCreateObj(i);
             button.InitButton(actions[i]);
         }

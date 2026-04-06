@@ -13,6 +13,7 @@ public class CollectAllItemButton : ButtonBase
         var fromInven = Managers.Location.CurrentLocation.Inventory;
         var toInven = Managers.Player.PlayerData.Inventory;
 
+        Managers.Sound.PlaySound(Define.Sound.COLLECT);
         CollectItems(fromInven, toInven);
     }
 

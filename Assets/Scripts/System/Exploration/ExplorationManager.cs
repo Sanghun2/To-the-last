@@ -1,6 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
+public class Exploration
+{
+    public enum State
+    {
+        Enterance,
+        Exploring,
+    }
+}
+
 public class ExplorationManager
 {
     public Location CurrentLocation
@@ -19,6 +28,10 @@ public class ExplorationManager
         var location = CurrentLocation;
         ContinueToExploreLocation(location);
     }
+    public void GoToEnterance() {
+        var ui = Managers.UI.OpenUI<ExplorationUI>();
+        ui.ShowEnterance();
+    }
 
     public void ExitLocation() {
         Managers.UI.CloseUI<ExplorationUI>();
@@ -28,7 +41,7 @@ public class ExplorationManager
     public void OpenCurrentStorage() {
         if (CurrentLocation == null) { Debug.Log($"location is null"); return; }
 
-        Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(CurrentLocation.ID);
+        Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(CurrentLocation.ID, Exploration.State.Enterance);
     }
 
 

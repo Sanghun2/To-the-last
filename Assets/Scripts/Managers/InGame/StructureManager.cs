@@ -116,7 +116,10 @@ public class StructureManager : IInitializable
         for (int i = 0; i < structureList.Count; i++) {
             var structure = structureList[i];
 
-            if (constructCountDict.ContainsKey(structure.ID)) {
+            string structureID = structure.ID;
+            if (string.IsNullOrEmpty(structureID)) continue;
+
+            if (constructCountDict.ContainsKey(structureID)) {
                 constructCountDict[structure.ID] += 1;
             }
             else {

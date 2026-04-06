@@ -9,6 +9,10 @@ public class Define
 
     }
 
+    public class Sound {
+        public const string COLLECT = "Collect";
+    }
+
     public class Tag {
         public const string PLAYER = "player";
         public const string STORAGE = "storage";

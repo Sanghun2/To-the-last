@@ -26,7 +26,7 @@ public class LootSelectActionConverter : SelectActionConverterBase<LootSelectAct
                 }
             }
 
-            Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(lootContext.LocationID);
+            Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(lootContext.LocationID, Exploration.State.Exploring);
         };
     }
 

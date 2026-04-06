@@ -17,7 +17,7 @@ public class Structure : IValue<float>
     public bool CanDestroy => CurrentStructureState == StructureState.Built;
     public bool IsLocked => CurrentStructureState == StructureState.Locked;
     public StructureContextBase StructureContext => structureContext;
-    public string ID => StructureContext.ID;
+    public string ID => StructureContext?.ID ?? string.Empty;
     public string DisplayText => structureContext.DisplayText;
 
     public float CurrentValue => currentProgress;
