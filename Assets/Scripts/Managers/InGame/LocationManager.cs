@@ -212,6 +212,7 @@ public class LocationManager : IInitializable
         var buildContext = new LocationBuildContext(
             coordinate.LocationUID, 
             coordinate.LocationCategoryID,
+            coordinate.LocationName,
             coordinate.AnchoredPosition);
 
         if (locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) {

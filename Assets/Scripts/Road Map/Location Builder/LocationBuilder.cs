@@ -12,7 +12,7 @@ public class LocationBuilder
             context.LocationUID,
             context.LocationCategoryID,
             BuildLocationEvents(),
-            infoSD.DisplayText,
+            context.DisplayName,
             infoSD.Description,
             context.AnchoredPosition,
             infoSD.Image,

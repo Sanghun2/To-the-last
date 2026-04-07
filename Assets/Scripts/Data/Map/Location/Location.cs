@@ -26,7 +26,7 @@ public class Location : IValue<int>, IEquatable<Location>
         }
     }
     public string LocationUID => data.LocationUID;
-    public string DisplayText => data.DisplayText;
+    public string DisplayText => displayName;
     public LocationData Data => data;
 
     public InventoryBase Inventory
@@ -48,9 +48,12 @@ public class Location : IValue<int>, IEquatable<Location>
     }
     public string LocationCategoryID => locationCategoryID;
     public string NextLocationID => nextLocationID;
+    public string StoryDescription => data.StoryDescription;
+
 
     [SerializeField][HideInInspector] string locationUID;
     [SerializeField] string locationCategoryID;
+    [SerializeField] string displayName;
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
     [SerializeField] LocationState _currentState;
@@ -65,11 +68,13 @@ public class Location : IValue<int>, IEquatable<Location>
         locationCategoryID = locationData.LocationCategoryID;
         _currentState = LocationState.Undiscovered;
         nextLocationID = locationData.NextLocationID;
+        displayName = locationData.DisplayText;
     }
 
     public Location(CoordinateData coordinate) {
         data = new LocationData(coordinate);
         locationUID = coordinate.LocationUID;
+        displayName = coordinate.LocationName;
         _currentState = LocationState.Undiscovered;
     }
 
