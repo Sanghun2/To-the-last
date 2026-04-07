@@ -17,7 +17,7 @@ public class Define
     public class Sound {
         public const string COLLECT = "Collect";
         public const string CLICKED = "Door Open";
-        public const string NOT_ENOUGH = "Door Open";
+        public const string NOT_ENOUGH = "Not Enough";
     }
 
     public class Tag {
