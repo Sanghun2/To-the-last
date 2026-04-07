@@ -14,7 +14,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         LocationData locationData = popUpData.Location.Data;
 
         int currentProgress = popUpData.Location.CurrentValue;
-        int maxProgress = locationData.LocationEventList.Count;
+        int maxProgress = locationData.LocationEventList?.Count ?? -1;
         InitProgressUI(currentProgress, maxProgress);
 
         Location destination = popUpData.Location;
@@ -72,7 +72,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
     private void EnterLocation(Location destination) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();
 
-        if (destination.ID.Equals(Define.Tag.BASEMENT)) {
+        if (destination.LocationUID.Equals(Define.Tag.BASEMENT)) {
             var basementUI = Managers.UI.GetUI<BasementUI>();
             Managers.UI.CloseUI<MapUI>();
             basementUI.OpenUI();
@@ -92,7 +92,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
             currentLocationData,
             endLocationData,
             callback: () => {
-                if (Managers.Location.TryGetLocation(endLocationData.LocationID, out var destination)) {
+                if (Managers.Location.TryGetLocation(endLocationData.LocationUID, out var destination)) {
                     Managers.Location.CurrentLocation = destination;
                     InitPopUp(destination);
                     Managers.UI.OpenUI(this);

@@ -20,7 +20,7 @@ public sealed class PlayerData : IInitializable
         get
         {
             Init();
-            return currentLocationID;
+            return currentLocationUID;
         }
     }
     public Define.VitalState VitalState
@@ -47,7 +47,7 @@ public sealed class PlayerData : IInitializable
     public event Action<Define.VitalState, Define.VitalState> OnVitalStateChanged;
 
     [SerializeField] SkillContainer skillContainer = new SkillContainer();
-    [SerializeField] private string currentLocationID;
+    [SerializeField] private string currentLocationUID;
     private bool _isInit;
     private Entity playerEntity = new Entity("player", new StatContainer());
     private MetabolicSystem metabolicSystem = new MetabolicSystem();
@@ -68,9 +68,6 @@ public sealed class PlayerData : IInitializable
 
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
-
-        Managers.Location.OnLocationChanged -= UpdateLocation;
-        Managers.Location.OnLocationChanged += UpdateLocation;
 
         RegisterEvent(OnPlayerDead, Define.Stat.Hp, Define.StatDetail.current);
 
@@ -106,24 +103,20 @@ public sealed class PlayerData : IInitializable
 
     #region Location
 
-    public void SetCurrentLocation(string locationID) {
-        currentLocationID = locationID;
+    public void SetCurrentLocation(string locationUID) {
+        currentLocationUID = locationUID;
+        Debug.Log($"location set. id?{locationUID}");
     }
     public void SetCurrentLocation(Location currentLocation, Location prevLocation) {
         SetCurrentLocation(currentLocation.Data);
     }
     public void SetCurrentLocation(LocationData locationData) {
-        SetCurrentLocation(locationData.LocationID);
+        SetCurrentLocation(locationData.LocationUID);
     }
     public void SetAsDefaultLocation() {
-        if (string.IsNullOrEmpty(currentLocationID)) {
-            currentLocationID = LocationUtility.basementSDID;
+        if (string.IsNullOrEmpty(currentLocationUID)) {
+            currentLocationUID = LocationUtility.basementSDID;
         }
-    }
-
-
-    private void UpdateLocation(Location currentLocation, Location prevLocation) {
-        SetCurrentLocation(currentLocation, prevLocation);
     }
 
     #endregion

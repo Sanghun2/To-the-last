@@ -5,11 +5,14 @@ using UnityEngine;
 public class Battery
 {
     public bool IsEmpty => currentValue <= minValue;
+    public float CurrentValue => currentValue;
+    public float MaxValue => maxValue;
+
 
     [SerializeField] float consumeRatePerMinutes = 0.0139f;
-    [SerializeField] float minValue = 0;
-    [SerializeField] float maxValue = 100;
     [SerializeField] float startValue = 100;
+    [SerializeField] float maxValue = 100;
+    private float minValue = 0;
     private float currentValue;
 
     public event Action<float, float> OnValueChanged;

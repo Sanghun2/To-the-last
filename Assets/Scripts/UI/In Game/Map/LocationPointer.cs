@@ -25,7 +25,7 @@ public class LocationPointer : UIBase
     private bool isMoving;
     private const float MOVE_DURATION = 2f;
 
-    internal void SetPosiion(string locationID) {
+    public void SetPosiion(string locationID) {
         if (Managers.SD.TryGetSD(locationID, out LocationSD targetSD)) {
             var pos = targetSD.AnchoredPosition;
             Rect.anchoredPosition = pos;
@@ -35,15 +35,16 @@ public class LocationPointer : UIBase
         }
     }
 
-    public void MovePosition(Vector2 startPos, Vector2 endPos, float duration = MOVE_DURATION, Action callback = null) {
-        StopMove(currentRoutineID);
-        currentRoutineID = Managers.Coroutine.StartCoroutine(MoveRoutine(startPos, endPos, duration, callback));
+    public void MovePosition(Location startLocation, Location endLocation, float duration = MOVE_DURATION, Action callback = null) {
+        MovePosition(startLocation.Data, endLocation.Data, duration, callback);
     }
     public void MovePosition(LocationData startLocationData, LocationData endLocationData, float duration = MOVE_DURATION, Action callback = null) {
         MovePosition(startLocationData.AnchoredPosition, endLocationData.AnchoredPosition, duration, callback);
     }
-    public void MovePosition(Location startLocation, Location endLocation, float duration = MOVE_DURATION, Action callback = null) {
-        MovePosition(startLocation.Data, endLocation.Data, duration, callback);
+    public void MovePosition(Vector2 startPos, Vector2 endPos, float duration = MOVE_DURATION, Action callback = null) {
+        StopMove(currentRoutineID);
+        Debug.Log($"startPos?{startPos}");
+        currentRoutineID = Managers.Coroutine.StartCoroutine(MoveRoutine(startPos, endPos, duration, callback));
     }
     internal void PauseMove(bool pause) {
         this.pause = pause;

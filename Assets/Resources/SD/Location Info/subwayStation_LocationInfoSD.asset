@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
-  m_Name: subway_LocationInfoSD
+  m_Name: subwayStation_LocationInfoSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
-  id: subway
-  displayText: "\uC9C0\uD558\uCCA0"
-  descripiton: "\uC9C0\uD558\uCCA0"
+  id: subwayStation
+  displayText: "\uC5ED"
+  descripiton: "\uC5ED"
   categoryList: []
   image: {fileID: 21300000, guid: c33e5fb01c2f16e4a9adb252fafecd59, type: 3}
   storyDescription: "\uC774 \uC9C0\uD558\uCCA0\uC5ED\uC740 \uC7AC\uB09C \uC9C1\uD6C4

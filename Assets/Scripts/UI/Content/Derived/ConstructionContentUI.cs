@@ -7,7 +7,6 @@ public class ConstructionContentUI : ContentUIBase<StructureSDBase>
     [SerializeField] RequirementUIContainer requirementUIContainer;
 
     public override void InitContent(StructureSDBase structureSD) {
-        Debug.Log($"count? {structureSD.Requirements.Count}");
         base.InitContent(structureSD);
         infoButton.SetData(structureSD.ID);
         requirementUIContainer.ShowRequirements(structureSD.Requirements);

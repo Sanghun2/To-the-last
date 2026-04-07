@@ -7,15 +7,16 @@ public class CoordinateData
     public string LocationUID => locationUID;
     public string LocationCategoryID => locationCategoryID;
     public string LocationName => locationName;
-    public Vector2 LocationCoordinate => locationCoordinate;
+    public Vector2 AnchoredPosition => anchoredPosition;
     public float TargetHz => radioHz;
+
 
     private float radioHz;
 
     private string locationUID;
     private string locationCategoryID;
     private string locationName;
-    private Vector2 locationCoordinate;
+    private Vector2 anchoredPosition;
 
     public CoordinateData(
         string locationID, 
@@ -27,7 +28,7 @@ public class CoordinateData
         this.locationUID = locationID;
         this.locationCategoryID = locationCategoryID;
         this.locationName = locationName;
-        this.locationCoordinate = locationCoordinate;
+        this.anchoredPosition = locationCoordinate;
         this.radioHz = radioHz;
     }
 

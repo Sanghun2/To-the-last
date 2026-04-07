@@ -25,7 +25,7 @@ public class Location : IValue<int>, IEquatable<Location>
             }
         }
     }
-    public string ID => data.LocationID;
+    public string LocationUID => data.LocationUID;
     public string DisplayText => data.DisplayText;
     public LocationData Data => data;
 
@@ -34,11 +34,11 @@ public class Location : IValue<int>, IEquatable<Location>
         get
         {
             if (_inventory == null) {
-                if (Managers.Inventory.TryGetInventoryByID(locationID, out var inven)) {
+                if (Managers.Inventory.TryGetInventoryByID(locationUID, out var inven)) {
                     _inventory = inven as SimpleInventory;
                 }
                 else {
-                    _inventory = new SimpleInventory($"{locationID}", 50);
+                    _inventory = new SimpleInventory($"{locationUID}", 50);
                     Managers.Inventory.AddInventory(_inventory);
                 }
             }
@@ -46,10 +46,11 @@ public class Location : IValue<int>, IEquatable<Location>
             return _inventory;
         }
     }
-
+    public string LocationCategoryID => locationCategoryID;
     public string NextLocationID => nextLocationID;
 
-    [SerializeField][HideInInspector] string locationID;
+    [SerializeField][HideInInspector] string locationUID;
+    [SerializeField] string locationCategoryID;
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
     [SerializeField] LocationState _currentState;
@@ -60,14 +61,15 @@ public class Location : IValue<int>, IEquatable<Location>
 
     public Location(LocationData locationData) {
         this.data = locationData;
-        locationID = locationData.LocationID;
+        locationUID = locationData.LocationUID;
+        locationCategoryID = locationData.LocationCategoryID;
         _currentState = LocationState.Undiscovered;
         nextLocationID = locationData.NextLocationID;
     }
 
     public Location(CoordinateData coordinate) {
         data = new LocationData(coordinate);
-        locationID = coordinate.LocationUID;
+        locationUID = coordinate.LocationUID;
         _currentState = LocationState.Undiscovered;
     }
 
@@ -106,6 +108,6 @@ public class Location : IValue<int>, IEquatable<Location>
     public bool Equals(Location other) {
         if (this == null || other == null) return false;
 
-        return locationID.Equals(other.locationID);
+        return locationUID.Equals(other.locationUID);
     }
 }

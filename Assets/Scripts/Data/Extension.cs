@@ -22,7 +22,7 @@ public static partial class Extension
     }
     //public static QuestData ToData(this QuestSD questSD) {
     //    TaskData[] taskInfos = questSD.TaskInfos.Select(tSD => tSD.ToData()).ToArray();
-    //    return new QuestData(questSD.ID, questSD.Type, taskInfos);
+    //    return new QuestData(questSD.LocationUID, questSD.Type, taskInfos);
     //}
 
     public static TraitData ToData(this TraitSD traitSD) {
@@ -47,6 +47,7 @@ public static partial class Extension
 
     public static LocationData ToData(this LocationSD locationSD) {
         return new LocationData(
+            locationSD.ID,
             locationSD.ID,
             locationSD.LocationEventList,
             locationSD.DisplayText,

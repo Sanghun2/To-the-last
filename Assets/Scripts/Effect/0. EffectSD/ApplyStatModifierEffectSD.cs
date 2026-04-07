@@ -20,7 +20,7 @@ public class ApplyStatModifierEffectSD : ModifyEffectSD
     //    if (target is BattleEntity battleEntity) {
     //        if (!battleEntity.TryGetStat(targetStat.ToID(), out IStatEntry stat)) { return; }
 
-    //        var newModifier = new StatModifier(ID, Value, ConvertType(operatorType));
+    //        var newModifier = new StatModifier(LocationUID, Value, ConvertType(operatorType));
     //        switch (applyType) {
     //            case ApplyType.Add:
     //                //stat.AddModifier(newModifier);

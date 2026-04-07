@@ -6,10 +6,11 @@ public class LocationBuilder
 {
     public bool TryBuildLocation(LocationBuildContext context, out Location newLocation) {
         newLocation = null;
-        if (Managers.SD.TryGetSD(context.LocationID, out LocationInfoSD infoSD)) { return false; }
+        if (!Managers.SD.TryGetSD(context.LocationCategoryID, out LocationInfoSD infoSD)) { Debug.LogError($"<color=red>infoSD of ({context.LocationCategoryID}) is not exist</color>"); return false; }
 
         var builtLocationData = new LocationData(
-            context.LocationID,
+            context.LocationUID,
+            context.LocationCategoryID,
             BuildLocationEvents(),
             infoSD.DisplayText,
             infoSD.Description,
@@ -24,6 +25,6 @@ public class LocationBuilder
     }
 
     private IReadOnlyList<EncounterEvent> BuildLocationEvents() {
-        throw new NotImplementedException();
+        return null;
     }
 }

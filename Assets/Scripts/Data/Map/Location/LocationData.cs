@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class LocationData : IEquatable<LocationData>
 {
-    public string LocationID => locationID;
+    public string LocationUID => locationUID;
     public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
     public Vector2 AnchoredPosition => anchoredPosition;
     public Sprite MainImage => mainImage;
     public Sprite IconImage => iconImage;
     public string DisplayText => displayText;
-
     public string NextLocationID => nextLocationID;
+    public string LocationCategoryID => locationCategoryID;
+
+
 
     private IReadOnlyList<EncounterEvent> locationEventList;
     private string storyDescription;
     private Vector2 anchoredPosition;
-    private string locationID;
+    private string locationUID;
+    private string locationCategoryID;
     private Sprite mainImage;
     private Sprite iconImage;
     private string displayText;
     private string nextLocationID;
 
     public LocationData(
-        string id, 
+        string uid, 
+        string categoryID,
         IReadOnlyList<EncounterEvent> locationEventList, 
         string displayText,
         string storyDescription, 
@@ -33,7 +37,8 @@ public class LocationData : IEquatable<LocationData>
         Sprite iconImage,
         string nextLocationID) {
 
-        this.locationID = id;
+        this.locationUID = uid;
+        this.locationCategoryID = categoryID;
         this.locationEventList = locationEventList;
         this.storyDescription = storyDescription;
         this.anchoredPosition = anchoredPosition;
@@ -44,13 +49,13 @@ public class LocationData : IEquatable<LocationData>
     }
 
     public LocationData(CoordinateData coordinate) {
-        locationID = coordinate.LocationUID;
-        anchoredPosition = coordinate.LocationCoordinate;
+        locationUID = coordinate.LocationUID;
+        anchoredPosition = coordinate.AnchoredPosition;
     }
 
     public bool Equals(LocationData other) {
         if (this == null || other == null) return false;
 
-        return locationID.Equals(other.locationID);
+        return locationUID.Equals(other.locationUID);
     }
 }

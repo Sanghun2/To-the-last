@@ -9,6 +9,11 @@ public class Define
 
     }
 
+    public class Value {
+        public const float MIN_HZ_VALUE = 80;
+        public const float MAX_HZ_VALUE = 120;
+    }
+
     public class Sound {
         public const string COLLECT = "Collect";
         public const string CLICKED = "Door Open";
@@ -19,6 +24,8 @@ public class Define
         public const string STORAGE = "storage";
 
         public const string BASEMENT = "basement"; // id of basement location
+        public const string AMUSEMENTPARK = "amusementPark";
+        public const string BROADCAST_STATION = "broadcastStation";
     }
 
     public class Icon {

@@ -51,6 +51,7 @@ public class RadioPopUpUI : StructureUIBase
         battery.OnValueChanged += batteryUI.UpdateGaugeUI;
 
         hzViewer.UpdateHz(hz.CurrentHz);
+        batteryUI.UpdateGaugeUI(battery.CurrentValue, battery.MaxValue);
     }
     private void OnDisable() {
         rotaryDial.OnValueChanged -= hz.UpdateHz;
@@ -73,11 +74,11 @@ public class RadioPopUpUI : StructureUIBase
         for (int i = 0; i < availableCoordinateList.Count; i++) {
             var coordinate = availableCoordinateList[i];
             if (coordinate.IsHzMatched(hz.CurrentHz)) {
-                Debug.Log($"<color=cyan>hz matched. hz? {coordinate.TargetHz} location? ({coordinate.LocationName})</color>");
+                Debug.Log($"<color=cyan>hz matched. hz? {coordinate.TargetHz} location? ({coordinate.LocationName}) pos? {coordinate.AnchoredPosition}</color>");
 
                 // 오픈된 지역 메세지 발행
 
-                Managers.Location.CreateLocation(coordinate);
+                Managers.Location.UnlockLocation(coordinate);
                 return;
             }
         }
@@ -86,19 +87,10 @@ public class RadioPopUpUI : StructureUIBase
 #if TEST || UNITY_EDITOR
     [ContextMenu("Add Test Location")]
     private void TestLocation() {
-        Managers.SD.TryGetContainer<LocationSD>(out var container);
-        var locationSDs = container.SDDict.Values.Where(l => !l.ID.Equals(Define.Tag.BASEMENT)).ToList();
-        var targetLocation = locationSDs[UnityEngine.Random.Range(0, locationSDs.Count)];
-        var targetHz = Mathf.Round(UnityEngine.Random.Range(80f, 120f) * 10f) / 10f;
-        AddCoordinate(new CoordinateData(
-            $"{targetLocation.ID}-{Guid.NewGuid()}",
-            targetLocation.ID,
-            $"성모 {targetLocation.DisplayText}",
-            Vector2.zero,
-            targetHz
-            ));
+        var newCoordinate = Managers.Location.CreateNewLocationCoordinate();
+        AddCoordinate(newCoordinate);
 
-        Debug.Log($"hz? {targetHz}");
+        Debug.Log($"hz? {newCoordinate.TargetHz}");
     }
 #endif
 }

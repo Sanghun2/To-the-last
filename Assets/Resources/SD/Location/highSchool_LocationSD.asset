@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: school_LocationSD
+  m_Name: highSchool_LocationSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationSD
-  id: school
-  displayText: "\uD559\uAD50"
-  descripiton: "\uD559\uAD50"
+  id: highSchool
+  displayText: "\uACE0\uB4F1\uD559\uAD50"
+  descripiton: "\uACE0\uB4F1\uD559\uAD50"
   categoryList: []
   image: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
   locationInfo: {fileID: 11400000, guid: a330462e4f4c96b46a0e1f9efeef47f3, type: 2}

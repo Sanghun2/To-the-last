@@ -2,11 +2,13 @@
 
 public class LocationBuildContext
 {
-    public string LocationID { get; }
+    public string LocationUID { get; }
+    public string LocationCategoryID { get; }
     public Vector2 AnchoredPosition { get; }
 
-    public LocationBuildContext(string locationID, Vector2 locationCoordinate) {
-        LocationID = locationID;
+    public LocationBuildContext(string locationUID, string locationCategoryID, Vector2 locationCoordinate) {
+        LocationUID = locationUID;
+        LocationCategoryID = locationCategoryID;
         AnchoredPosition = locationCoordinate;
     }
 }

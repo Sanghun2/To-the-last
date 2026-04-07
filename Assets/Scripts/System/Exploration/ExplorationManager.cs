@@ -41,7 +41,7 @@ public class ExplorationManager
     public void OpenCurrentStorage() {
         if (CurrentLocation == null) { Debug.Log($"location is null"); return; }
 
-        Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(CurrentLocation.ID, Exploration.State.Enterance);
+        Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(CurrentLocation.LocationUID, Exploration.State.Enterance);
     }
 
 
@@ -55,7 +55,7 @@ public class ExplorationManager
         }
 
         string nextLocation = location.NextLocationID;
-        Managers.Location.TryUnlockLocation(nextLocation);
+        Managers.Location.TryUnlockLocationBySD(nextLocation);
         OnExplorationCompleted?.Invoke();
     }
     private Location GetLocation(string locationID) {
