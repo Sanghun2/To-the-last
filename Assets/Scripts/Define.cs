@@ -17,7 +17,10 @@ public class Define
     public class Sound {
         public const string COLLECT = "Collect";
         public const string CLICKED = "Door Open";
-        public const string NOT_ENOUGH = "Not Enough";
+
+        public const string WARNING = "Warning";
+        public const string ERROR = "Error";
+        public const string CONFIRM = "Confirm";
     }
 
     public class Tag {

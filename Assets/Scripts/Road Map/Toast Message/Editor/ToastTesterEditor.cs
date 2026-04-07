@@ -4,6 +4,7 @@ using UnityEngine;
 [CustomEditor(typeof(ToastTester))]
 public class ToastTesterEditor : Editor
 {
+#if UNITY_EDITOR
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
@@ -16,4 +17,5 @@ public class ToastTesterEditor : Editor
             _script.ShowToast();
         }
     }
+#endif
 }

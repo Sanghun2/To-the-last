@@ -66,6 +66,27 @@ public class ToastMessageUI : UIBase, IPool
         InitToast(text, toastType, startPos);
         RectRebuilder.Rebuild();
         presenter.PresentToast(this, endPos, viewDuration);
+        PlaySound(toastType);
+    }
+
+    private void PlaySound(Toast.Type toastType) {
+        switch (toastType) {
+            case Toast.Type.None:
+                break;
+            case Toast.Type.Info:
+                break;
+            case Toast.Type.Warning:
+                Managers.Sound.PlaySound(Define.Sound.WARNING);
+                break;
+            case Toast.Type.Error:
+                Managers.Sound.PlaySound(Define.Sound.ERROR);
+                break;
+            case Toast.Type.Confirm:
+                Managers.Sound.PlaySound(Define.Sound.CONFIRM);
+                break;
+            default:
+                break;
+        }
     }
 
     private void InitToast(string text, Toast.Type toastType, Vector2 startPos) {

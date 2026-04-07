@@ -78,7 +78,6 @@ public class RadioPopUpUI : StructureUIBase
     private void CheckAvailableLocation() {
 
         if (battery.IsEmpty) {
-            Managers.Sound.PlaySound(Define.Sound.NOT_ENOUGH); 
             Managers.Toast.ShowToast("배터리가 부족합니다.", Toast.Type.Error, 1f);
             return;
         }
@@ -87,9 +86,10 @@ public class RadioPopUpUI : StructureUIBase
         for (int i = 0; i < availableCoordinateList.Count; i++) {
             CoordinateData coordinateData = availableCoordinateList[i];
             if (coordinateData.IsHzMatched(hz.CurrentHz)) {
-                Debug.Log($"<color=cyan>hz matched. hz? {coordinateData.TargetHz} location? ({coordinateData.LocationName}) pos? {coordinateData.AnchoredPosition}</color>");
+                Debug.LogAssertion($"<color=cyan>hz matched. hz? {coordinateData.TargetHz} location? ({coordinateData.LocationName}) pos? {coordinateData.AnchoredPosition}</color>");
 
                 // 오픈된 지역 메세지 발행
+                Managers.Toast.ShowToast($"새로운 지역 [{coordinateData.LocationName}]을 발견했습니다.", Toast.Type.Confirm);
 
                 Managers.Location.UnlockLocation(coordinateData);
                 RemoveCoordinate(coordinateData);

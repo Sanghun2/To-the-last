@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToastTester : MonoBehaviour
 {
-
+#if UNITY_EDITOR
     [SerializeField] string testText;
     [SerializeField] Toast.Type toastType;
     [SerializeField] Ease slideIn;
@@ -20,4 +20,5 @@ public class ToastTester : MonoBehaviour
     public void ShowToast() {
         Managers.Toast.ShowToast(testText, toastType, viewDuration);
     }
+#endif
 }
