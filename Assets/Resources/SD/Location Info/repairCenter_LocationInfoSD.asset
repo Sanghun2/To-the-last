@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: repairCenter_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: repairCenter_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: repairCenter
   displayText: "\uC815\uBE44\uC18C"
   descripiton: "\uC815\uBE44\uC18C"
   categoryList: []
   image: {fileID: 21300000, guid: 4f1d620beb50daa45867a8d2a0154e73, type: 3}
-  locationInfo: {fileID: 11400000, guid: 6ac7dfba4275c6e44baf46a309b6bf99, type: 2}
   storyDescription: "\uC774 \uC815\uBE44\uC18C\uB294 \uC7AC\uB09C \uC774\uD6C4\uC5D0\uB3C4
     \uC720\uC77C\uD558\uAC8C \uC804\uAE30\uAC00 \uB4E4\uC5B4\uC624\uB358 \uBA87 \uC548
     \uB418\uB294 \uC7A5\uC18C\uC600\uB2E4.\n\uC0DD\uC874\uC790\uB4E4\uC740 \uCC28\uB7C9\uC744
@@ -30,6 +29,4 @@ MonoBehaviour:
     \uC791\uB3D9\uD558\uB294 \uC124\uBE44\uAC00 \uC788\uB2E4\uB294 \uC18C\uBB38\uC774
     \uB3C8\uB2E4.\n\uADF8\uB798\uC11C \uC704\uD5D8\uC744 \uC54C\uBA74\uC11C\uB3C4
     \uC0AC\uB78C\uB4E4\uC740 \uC5EC\uC804\uD788 \uC774 \uC815\uBE44\uC18C\uB97C \uCC3E\uB294\uB2E4."
-  anchoredPosition: {x: -130, y: 234}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 113243f99a7e1ce46b828c2d5f3be9ff, type: 3}

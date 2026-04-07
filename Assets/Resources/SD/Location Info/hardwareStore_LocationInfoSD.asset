@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: hardwareStore_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: hardwareStore_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: hardwareStore
   displayText: "\uCCA0\uBB3C\uC810"
   descripiton: "\uCCA0\uBB3C\uC810"
   categoryList: []
   image: {fileID: 21300000, guid: 736665a8b7a89d145bc4050c1eeee596, type: 3}
-  locationInfo: {fileID: 11400000, guid: 789e90542a0230446a682d353f018945, type: 2}
   storyDescription: "\uB300\uC7AC\uC559\uC774 \uB2E5\uCCE4\uC744 \uB54C, \uC774 \uCCA0\uBB3C\uC810\uC740
     \uC808\uB9DD\uC801\uC778 \uCD5C\uD6C4\uC758 \uBCF4\uB8E8\uC600\uC2B5\uB2C8\uB2E4.
     \uC0DD\uC874\uC790\uB4E4\uC740 \uB9DD\uCE58, \uD1B1, \uD30C\uC774\uD504 \uAC19\uC740
@@ -30,6 +29,4 @@ MonoBehaviour:
     \uD558\uB098\uB458 \uC4F0\uB7EC\uC838 \uAC14\uACE0, \uC774\uC81C\uB294 \uB110\uBE0C\uB7EC\uC9C4
     \uACF5\uAD6C\uB4E4\uACFC \uD54F\uC790\uAD6D\uB9CC\uC774 \uADF8\uB0A0\uC758 \uCC98\uC808\uD588\uB358
     \uC0AC\uD22C\uB97C \uAE30\uC5B5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
-  anchoredPosition: {x: 360, y: 95}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: c3c9b61a640db461da8102dee02cbbcb, type: 3}

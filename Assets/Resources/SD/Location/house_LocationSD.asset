@@ -17,7 +17,7 @@ MonoBehaviour:
   descripiton: "\uC8FC\uD0DD"
   categoryList: []
   image: {fileID: 21300000, guid: c1e93efb9d9ae1947a4da3d7cbdc1df8, type: 3}
-  locationIcon: {fileID: 11400000, guid: 23b364436364cb84ba7b58822e267a5f, type: 2}
+  locationInfo: {fileID: 11400000, guid: 23b364436364cb84ba7b58822e267a5f, type: 2}
   storyDescription: "\uB300\uC7AC\uC559 \uC774\uD6C4, \uC774 \uC9D1\uC740 \uD55C
     \uAC00\uC871\uC5D0\uAC8C \uC7A0\uC2DC\uB098\uB9C8 \uC548\uC2DD\uCC98\uAC00 \uB418\uC5B4\uC8FC\uC5C8\uC2B5\uB2C8\uB2E4.
     \uCC3D\uBC16\uC73C\uB85C \uBCF4\uC774\uB294 \uD669\uB7C9\uD55C \uB3C4\uC2DC \uD48D\uACBD

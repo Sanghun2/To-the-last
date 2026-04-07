@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: clothShop_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: clothShop_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: clothShop
   displayText: "\uC637\uAC00\uAC8C"
   descripiton: "\uC637\uAC00\uAC8C"
   categoryList: []
   image: {fileID: 21300000, guid: 438cf744c79265f4394d898a1db93efd, type: 3}
-  locationInfo: {fileID: 11400000, guid: 8c0b8fc1aac82d244ac556a151669994, type: 2}
   storyDescription: "\uC1FC\uC708\uB3C4\uB294 \uAE68\uC9C0\uACE0, \uBA3C\uC9C0 \uB36E\uC778
     \uB9C8\uB124\uD0B9\uB4E4\uC774 \uAE30\uBB18\uD558\uAC8C \uC11C \uC788\uB294 \uD3D0\uD5C8.\n\uC9C4\uC5F4\uB300\uC5D4
     \uB0A1\uACE0 \uC0C9\uC774 \uBC14\uB79C \uC637\uB4E4\uC774 \uB0A8\uC544 \uC788\uACE0,
@@ -27,6 +26,4 @@ MonoBehaviour:
     \uBC29\uD55C\uC6A9 \uCF54\uD2B8\uB098 \uD2BC\uD2BC\uD55C \uAC00\uC8FD \uC7AC\uD0B7
     \uAC19\uC740 \uC0DD\uC874\uC6A9 \uC758\uB958\uAC00 \uB0A8\uC544 \uC788\uC744
     \uC218 \uC788\uB294 \uC7A5\uC18C."
-  anchoredPosition: {x: 0, y: 0}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 40f389e1a2d98d048a4f2d9847a753da, type: 3}

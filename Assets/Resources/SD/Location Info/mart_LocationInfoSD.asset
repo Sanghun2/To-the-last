@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: mart_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: mart_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: mart
   displayText: "\uB9C8\uD2B8"
   descripiton: "\uC5EC\uB7EC \uBB3C\uAC74\uC744 \uD30C\uB294 \uB9C8\uD2B8\uB2E4.
     \uC9C0\uAE08\uAE4C\uC9C0 \uBB3C\uAC74\uC774 \uB0A8\uC544\uC788\uAE30\uB97C..."
   categoryList: []
   image: {fileID: 21300000, guid: 40b1f23a671f3b8459a626514181f125, type: 3}
-  locationInfo: {fileID: 11400000, guid: 1db94c05be259544ca663952860b673a, type: 2}
   storyDescription: "\uC7AC\uB09C \uCD08\uAE30\uC5D0 \uC8FC\uBBFC\uB4E4\uC774 \uBAA8\uC5EC
     \uB9C8\uC9C0\uB9C9\uC73C\uB85C \uBC84\uD2F0\uB358 \uC0DD\uC874 \uAC70\uC810\uC774\uC5C8\uB2E4.\n\uC2DD\uB7C9\uC744
     \uC9C0\uD0A4\uB824\uB294 \uC0AC\uB78C\uB4E4\uACFC \uC57D\uD0C8\uC790\uB4E4\uC774
@@ -29,6 +28,4 @@ MonoBehaviour:
     \uC190\uB300\uC9C0 \uBABB\uD55C \uBB3C\uC790\uAC00 \uB0A8\uC544 \uC788\uB2E4.\n\uADF8\uB798\uC11C
     \uC774\uACF3\uC740 \uC704\uD5D8\uD558\uC9C0\uB9CC \uACC4\uC18D \uC0AC\uB78C\uB4E4\uC774
     \uCC3E\uB294 \uC7A5\uC18C\uAC00 \uB410\uB2E4."
-  anchoredPosition: {x: 113, y: 61}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: e7e87d94a569bef44a02d8b9421c13ac, type: 3}

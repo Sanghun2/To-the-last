@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: school_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: school_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: school
   displayText: "\uD559\uAD50"
   descripiton: "\uD559\uAD50"
   categoryList: []
   image: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
-  locationInfo: {fileID: 11400000, guid: a330462e4f4c96b46a0e1f9efeef47f3, type: 2}
   storyDescription: "\uC774 \uD559\uAD50\uB294 \uC7AC\uB09C \uC9C1\uD6C4 \uC544\uC774\uB4E4\uACFC
     \uAC00\uC871\uB4E4\uC774 \uBAA8\uC600\uB358 \uC784\uC2DC \uD53C\uB09C\uCC98\uC600\uB2E4.\n\uAD50\uC2E4\uC740
     \uC219\uC18C\uAC00 \uB418\uACE0, \uCCB4\uC721\uAD00\uC740 \uACF5\uB3D9 \uBC30\uAE09\uC18C\uB85C
@@ -30,6 +29,4 @@ MonoBehaviour:
     \uC870\uC6A9\uD55C \uD3D0\uD5C8\uC9C0\uB9CC, \uAD50\uC2E4 \uACF3\uACF3\uC5D4
     \uAE09\uD558\uAC8C \uB5A0\uB09C \uC0B6\uC758 \uD754\uC801\uB4E4\uC774 \uADF8\uB300\uB85C
     \uB0A8\uC544 \uC788\uB2E4."
-  anchoredPosition: {x: 122.999954, y: -118.99997}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 60f43d6251e46400eaff573952e8a570, type: 3}

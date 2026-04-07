@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: library_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: library_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: library
   displayText: "\uB3C4\uC11C\uAD00"
   descripiton: "\uB3C4\uC11C\uAD00"
   categoryList: []
   image: {fileID: 21300000, guid: efe7d56ed2d07434695ac814ed3c7df9, type: 3}
-  locationInfo: {fileID: 11400000, guid: 038b8c4ee3dba0940ba88de9f73e32ce, type: 2}
   storyDescription: "\uC774 \uB3C4\uC11C\uAD00\uC740 \uC7AC\uB09C \uC774\uD6C4 \uC0AC\uB78C\uB4E4\uC774
     \uC815\uBCF4\uB97C \uCC3E\uAE30 \uC704\uD574 \uBAA8\uC600\uB358 \uC7A5\uC18C\uC600\uB2E4.\n\uC0DD\uC874\uC790\uB4E4\uC740
     \uC9C0\uB3C4, \uC758\uD559\uC11C, \uAE30\uB85D\uC744 \uCC3E\uC73C\uBA70 \uC7A0\uC2DC
@@ -29,6 +28,4 @@ MonoBehaviour:
     \uB0A8\uC544 \uC788\uB2E4.\n\uADF8\uB798\uC11C \uC774\uACF3\uC740 \uBB3C\uC790\uBCF4\uB2E4
     \u2018\uC9C0\uC2DD\u2019\uC744 \uCC3E\uB294 \uC774\uB4E4\uC774 \uC704\uD5D8\uC744
     \uAC10\uC218\uD558\uACE0 \uCC3E\uB294 \uC7A5\uC18C\uAC00 \uB410\uB2E4."
-  anchoredPosition: {x: -354, y: -16}
-  locationEventList: []
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: f1b0ef5964dd4433b9ed83705db456e3, type: 3}

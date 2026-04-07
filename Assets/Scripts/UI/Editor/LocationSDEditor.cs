@@ -9,9 +9,9 @@ public class LocationSDEditor : Editor
 
         if (GUILayout.Button("Auto Assign Icon SD")) {
             var locationIconSD = (LocationSD)target;
-            var targetName = $"{locationIconSD.ID}_LocationIconSD";
-            string[] guids = AssetDatabase.FindAssets($"{targetName} t:LocationIconSD", new[] {
-                $"Assets/Resources/SD/Location Icon"
+            var targetName = $"{locationIconSD.ID}_LocationInfoSD";
+            string[] guids = AssetDatabase.FindAssets($"{targetName} t:LocationInfoSD", new[] {
+                $"Assets/Resources/SD/Location Info"
             });
 
             if (guids.Length == 0) {
@@ -22,12 +22,12 @@ public class LocationSDEditor : Editor
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
             var sd = AssetDatabase.LoadAssetAtPath<LocationInfoSD>(path);
 
-            Undo.RecordObject(locationIconSD, "Auto Assign Icon SD");
+            Undo.RecordObject(locationIconSD, "Auto Assign Info SD");
             var so = new SerializedObject(locationIconSD);
-            so.FindProperty("locationIcon").objectReferenceValue = sd;
+            so.FindProperty("locationInfo").objectReferenceValue = sd;
             so.ApplyModifiedProperties();
 
-            Debug.Log($"{locationIconSD.ID}_LocationIconSD 할당 완료: {path}");
+            Debug.Log($"{locationIconSD.ID}_LocationInfoSD 할당 완료: {path}");
         }
     }
 }

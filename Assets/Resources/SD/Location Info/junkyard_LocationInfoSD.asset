@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a53ed390317e91419d3f89db3fccbd8, type: 3}
-  m_Name: junkyard_LocationSD
-  m_EditorClassIdentifier: Assembly-CSharp::LocationSD
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: junkyard_LocationInfoSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: junkyard
   displayText: "\uD3D0\uCC28\uC7A5"
   descripiton: "\uD3D0\uCC28\uC7A5"
   categoryList: []
   image: {fileID: 21300000, guid: 22ead23c7c9af7d4c82171e734e14bed, type: 3}
-  locationInfo: {fileID: 11400000, guid: 0c134af745101184a8971258acab019f, type: 2}
   storyDescription: "\uC774 \uD3D0\uCC28\uC7A5\uC740 \uB300\uC7AC\uC559 \uC774\uD6C4,
     \uC0B4\uC544\uB0A8\uC740 \uC790\uB4E4\uC774 \uB9C8\uC9C0\uB9C9 \uD53C\uB09C\uCC98\uB97C
     \uCC3E\uC544 \uD5E4\uB9E4\uB358 \uACF3\uC774\uC5C8\uC2B5\uB2C8\uB2E4. \uC790\uB3D9\uCC28
@@ -29,9 +28,4 @@ MonoBehaviour:
     \uC8FD\uC740 \uC880\uBE44\uB4E4\uC758 \uC2DC\uCCB4\uB9CC\uC774 \uB0A8\uC544 \uADF8\uB0A0\uC758
     \uCC98\uC808\uD588\uB358 \uC2F8\uC6C0\uC744 \uBB35\uBB35\uD788 \uAE30\uC5B5\uD558\uACE0
     \uC788\uC2B5\uB2C8\uB2E4."
-  anchoredPosition: {x: -258, y: -525}
-  locationEventList:
-  - level: 1
-    weight: 0
-    encounterSD: {fileID: 11400000, guid: 9a524e84481cf7c4ba8f1473ca846978, type: 2}
-  nextLocation: {fileID: 0}
+  iconImage: {fileID: 21300000, guid: 05dcfa3ca01a4d0469b9700f47f83d33, type: 3}
