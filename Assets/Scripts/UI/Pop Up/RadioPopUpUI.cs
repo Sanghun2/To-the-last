@@ -10,6 +10,8 @@ public class RadioPopUpUI : StructureUIBase
     [SerializeField] RotaryDial rotaryDial;
     [SerializeField] CustomButton confirmButton;
     [SerializeField] CoordinateContentUIContainer coordinateContentUIContainer;
+    [SerializeField] BatteryUIBase batteryUI;
+    [SerializeField] Battery battery = new Battery();
     [SerializeField] Hz hz = new Hz();
     private List<CoordinateData> availableCoordinateList = new List<CoordinateData>();
 
@@ -24,7 +26,14 @@ public class RadioPopUpUI : StructureUIBase
         rotaryDial.InitUI();
 
         confirmButton.Init();
-        confirmButton.SetButtonAction(CheckAvailableHz);
+        confirmButton.SetButtonAction(CheckAvailableLocation);
+
+        batteryUI.InitUI();
+        battery.Init();
+
+        // init 시 연결하는게 아니라 별도의 설치됐을 때 active 로직 필요
+        Managers.Time.OnTimeChanged -= battery.ConsumeValue;
+        Managers.Time.OnTimeChanged += battery.ConsumeValue;
 
         hz.InitHz();
 
@@ -38,11 +47,15 @@ public class RadioPopUpUI : StructureUIBase
         hz.OnHzChanged -= hzViewer.UpdateHz;
         hz.OnHzChanged += hzViewer.UpdateHz;
 
+        battery.OnValueChanged -= batteryUI.UpdateGaugeUI;
+        battery.OnValueChanged += batteryUI.UpdateGaugeUI;
+
         hzViewer.UpdateHz(hz.CurrentHz);
     }
     private void OnDisable() {
         rotaryDial.OnValueChanged -= hz.UpdateHz;
         hz.OnHzChanged -= hzViewer.UpdateHz;
+        battery.OnValueChanged -= batteryUI.UpdateGaugeUI;
     }
 
     public void AddCoordinate(CoordinateData coordinateData) {
@@ -52,8 +65,11 @@ public class RadioPopUpUI : StructureUIBase
         availableCoordinateList.Remove(coordinateData);
     }
 
-    private void CheckAvailableHz() {
+    private void CheckAvailableLocation() {
         Managers.Sound.PlaySound(Define.Sound.CLICKED);
+
+        if (battery.IsEmpty) return;
+
         for (int i = 0; i < availableCoordinateList.Count; i++) {
             var coordinate = availableCoordinateList[i];
             if (coordinate.IsHzMatched(hz.CurrentHz)) {
@@ -87,35 +103,3 @@ public class RadioPopUpUI : StructureUIBase
 #endif
 }
 
-[Serializable]
-public class Hz
-{
-    public float CurrentHz
-    {
-        get => _currentHz;
-        private set
-        {
-            _currentHz = Mathf.Round(value * 10f) / 10f;
-            OnHzChanged?.Invoke(_currentHz);
-        }
-    }
-
-    [SerializeField] private float hzModifier = 0.05f;
-    [SerializeField] private float defaultHz = 100f;
-
-    private float _baseHz;
-    private float _currentHz;
-
-    public event Action<float> OnHzChanged;
-
-    public void InitHz() {
-        _baseHz = defaultHz;
-        CurrentHz = defaultHz;
-    }
-
-    public void UpdateHz(float value, float _) {
-        CurrentHz = _baseHz + value * hzModifier;
-    }
-
-    public float GetHzModifier() => hzModifier;
-}

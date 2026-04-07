@@ -54,7 +54,7 @@ public static partial class Extension
             locationSD.AnchoredPosition,
             locationSD.MainImage,
             locationSD.IconImage,
-            locationSD.NextLocation.ID
+            locationSD.NextLocation?.ID
             );
     }
 

@@ -203,10 +203,10 @@ public class SimpleInventory : InventoryBase
             itemCountDict[inputItemID] =
     (itemCountDict.TryGetValue(inputItemID, out int existing) ? existing : 0) + resultAmount;
 
-            // OnAmountChanged 이벤트 구독
+            // OnValueChanged 이벤트 구독
             // 중복 구독 방지를 위해 먼저 제거 후 추가
-            //inputStack.OnAmountChanged -= UpdateItemCount;
-            //inputStack.OnAmountChanged += UpdateItemCount;
+            //inputStack.OnValueChanged -= UpdateItemCount;
+            //inputStack.OnValueChanged += UpdateItemCount;
 
             int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
             OnItemAdded?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount, -1, unitWeight));
