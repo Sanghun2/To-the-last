@@ -39,7 +39,7 @@ public abstract class ListContainerBase<TContent> : ContainerBase<TContent> wher
 
         return content;
     }
-    public virtual TContent GetOrCreateObj(int index) {
+    public virtual TContent GetOrCreateObjOf(int index) {
         InitUI();
         TContent obj = GetObjOf(index);
 

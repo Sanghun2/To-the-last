@@ -326,6 +326,17 @@ public sealed class Managers : MonoBehaviour
             return _soundManager;
         }
     }
+    public static ToastManager Toast
+    {
+        get
+        {
+            if (_toastManager == null) {
+                _toastManager = FindAnyObjectByType<ToastManager>();
+            }
+
+            return _toastManager;
+        }
+    }
 
 
     // InGame
@@ -347,7 +358,6 @@ public sealed class Managers : MonoBehaviour
     private static TimeManager _timeManager;
     private static JobHandler jobHandler;
     private static EventHistory _eventHistory;
-
     // Main Menu
     private static GameBootStrapper _bootStrapper;
     private static CharacterManager _characterManager;
@@ -361,6 +371,7 @@ public sealed class Managers : MonoBehaviour
     private static CoroutineManager coroutineManager;
     private static UIManager _uiManager;
     private static SDManager _sdManager;
+    private static ToastManager _toastManager;
 
     //static Managers Instance
     //{

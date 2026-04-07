@@ -35,7 +35,7 @@ public sealed class CharacterSelectionUI : UIBase
         characterUIContainer.Clear();
         for (int i = 0; i < characterList.Count; i++) {
             var character = characterList[i];
-            var ui = characterUIContainer.GetOrCreateObj(i);
+            var ui = characterUIContainer.GetOrCreateObjOf(i);
             ui.InitUI(character);
         }
     }

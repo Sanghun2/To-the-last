@@ -16,7 +16,7 @@ public class InventoryUI : InventoryUIBase
             for (int i = 0; i < itemList.Count; ++i) {
                 ItemStack item = itemList[i];
 
-                SimpleItemUI itemUI = itemUIContainer.GetOrCreateObj(i);
+                SimpleItemUI itemUI = itemUIContainer.GetOrCreateObjOf(i);
                 itemUI.SetUI(item.ToArgs());
                 item.OnAmountChanged -= itemUI.UpdateUI;
                 item.OnAmountChanged += itemUI.UpdateUI;

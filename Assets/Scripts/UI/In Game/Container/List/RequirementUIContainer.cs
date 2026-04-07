@@ -21,7 +21,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
             if (i < itemCount) {
                 var requirement = requirementItems[i];
                 var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
-                RequirementUI requirementUI = GetOrCreateObj(i);
+                RequirementUI requirementUI = GetOrCreateObjOf(i);
                 requirementUI.SetReqirementItem(requirement.ItemSD, requirement.Amount, count >= requirement.Amount);
             }
             else {

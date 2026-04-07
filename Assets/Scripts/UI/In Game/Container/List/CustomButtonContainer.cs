@@ -7,7 +7,7 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
 {
     [SerializeField] int maxButtonCount = 2;
 
-    public override CustomButton GetOrCreateObj(int index) {
+    public override CustomButton GetOrCreateObjOf(int index) {
         InitUI();
         CustomButton content = null;
         if (0 <= index && index < contentList.Count) {
@@ -50,7 +50,7 @@ public class CustomButtonContainer : ListContainerBase<CustomButton>
 
         Clear();
         for (int i = 0; i < actions.Count; i++) {
-            var button = GetOrCreateObj(i);
+            var button = GetOrCreateObjOf(i);
             button.InitButton(actions[i]);
         }
     }

@@ -38,7 +38,7 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
         itemSlotContainer.Clear();
         for (int i = 0; i < list.Count; i++) {
             ItemStack itemStack = list[i];
-            ItemSlotUIBase itemSlot = itemSlotContainer.GetOrCreateObj(i);
+            ItemSlotUIBase itemSlot = itemSlotContainer.GetOrCreateObjOf(i);
             itemSlot.SetSlotUI(new ItemEventArgs(itemStack.ItemData.ItemID, itemStack.Amount));
         }
     }

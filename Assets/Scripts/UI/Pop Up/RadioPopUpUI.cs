@@ -78,8 +78,8 @@ public class RadioPopUpUI : StructureUIBase
     private void CheckAvailableLocation() {
 
         if (battery.IsEmpty) {
-            Debug.LogAssertion($"not enough battery amount");
-            Managers.Sound.PlaySound(Define.Sound.NOT_ENOUGH);
+            Managers.Sound.PlaySound(Define.Sound.NOT_ENOUGH); 
+            Managers.Toast.ShowToast("배터리가 부족합니다.", Toast.Type.Error, 1f);
             return;
         }
 

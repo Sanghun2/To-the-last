@@ -44,7 +44,7 @@ public class TraitSelectionUI : UIBase
         InitUI();
         for (int i = 0; i < traits.Count; i++) {
             var trait = traits[i];
-            var traitUI = traitListContainer.GetOrCreateObj(i);
+            var traitUI = traitListContainer.GetOrCreateObjOf(i);
             traitUI.ClearEvents();
             traitUI.InitUI(trait);
             traitUI.SetUISize(CalculateTextWidth(cachedLeftContainerRectWidth));
@@ -116,7 +116,7 @@ public class TraitSelectionUI : UIBase
     }
     private void ReassignParent(TraitUIContainer container) {
         for (int i = 0; i < traitListContainer.ContentCount; i++) {
-            var ui = traitListContainer.GetOrCreateObj(i);
+            var ui = traitListContainer.GetOrCreateObjOf(i);
             ui.transform.SetParent(traitListContainer.ContainerTr);
             ui.Return();
         }

@@ -79,7 +79,7 @@ public abstract class PopUpUIBase : UIBase
         buttonContainer.Clear();
         int buttonCount = Mathf.Min(2, buttonActions.Count);
         for (int i = 0; i < buttonCount; i++) {
-            CustomButton button = buttonContainer.GetOrCreateObj(i);
+            CustomButton button = buttonContainer.GetOrCreateObjOf(i);
             button.InitButton(buttonActions[i]);
             button.Activate();
         }

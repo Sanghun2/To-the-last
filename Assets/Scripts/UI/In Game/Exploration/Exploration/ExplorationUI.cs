@@ -92,7 +92,7 @@ public class ExplorationUI : UIBase
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {
             SelectActionData selectionData = selections[i];
-            var button = container.GetOrCreateObj(i);
+            var button = container.GetOrCreateObjOf(i);
             button.InitButton(selectionData);
         }
     }

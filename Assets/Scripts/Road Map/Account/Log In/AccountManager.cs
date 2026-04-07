@@ -77,7 +77,7 @@ public class AccountManager : MonoBehaviour, IInitializable
             var method = methods[i];
 
             // AccountUI
-            // GetOrCreateObj
+            // GetOrCreateObjOf
             // InitMethod();
         }
     }
