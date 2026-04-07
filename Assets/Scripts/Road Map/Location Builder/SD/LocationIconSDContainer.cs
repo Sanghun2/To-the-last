@@ -1,7 +1,7 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class LocationIconSDContainer : SDContainerBase<LocationIconSD>
+public class LocationIconSDContainer : SDContainerBase<LocationInfoSD>
 {
     public LocationIconSDContainer(string sdResourcePath) : base(sdResourcePath) {
     }

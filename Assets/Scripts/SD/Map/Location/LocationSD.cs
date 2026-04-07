@@ -19,7 +19,7 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     public LocationSD NextLocation => nextLocation;
 
 
-    [SerializeField] LocationIconSD locationIcon;
+    [SerializeField] LocationInfoSD locationIcon;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
     [SerializeField] List<EncounterEvent> locationEventList = new List<EncounterEvent>();

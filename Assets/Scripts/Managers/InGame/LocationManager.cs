@@ -36,6 +36,7 @@ public class LocationManager : IInitializable
     private LocationUIContainer _container;
     private bool _isInit;
     private Location currentLocation;
+    private LocationBuilder locationBuilder = new LocationBuilder();
 
     public event Action<Location, Location> OnLocationChanged;
     public event Action<Location, LocationUI> OnLocationActived;
@@ -135,8 +136,13 @@ public class LocationManager : IInitializable
         return TryActivateLocation(location, onActivated);
     }
     public void CreateLocation(CoordinateData coordinate) {
-        var location = new Location(coordinate);
-        CreateLocationUI(location);
+        var buildContext = new LocationBuildContext(
+            coordinate.LocationUID, 
+            coordinate.LocationCoordinate);
+
+        if (locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) {
+            CreateLocationUI(newLocation);
+        }
     }
 
 

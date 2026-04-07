@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
-  m_Name: library_LocationIconSD
+  m_Name: library_LocationInfoSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
   id: library
   displayText: 
   descripiton: 
   categoryList: []
-  image: {fileID: 21300000, guid: f1b0ef5964dd4433b9ed83705db456e3, type: 3}
+  image: {fileID: 21300000, guid: efe7d56ed2d07434695ac814ed3c7df9, type: 3}
+  iconImage: {fileID: 21300000, guid: f1b0ef5964dd4433b9ed83705db456e3, type: 3}

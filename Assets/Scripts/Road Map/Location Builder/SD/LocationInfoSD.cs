@@ -2,7 +2,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LocationIconSD", menuName = "Scriptable Objects/LocationIconSD")]
-public class LocationIconSD : ImageSDBase
+public class LocationInfoSD : ImageSDBase
 {
-    
+    public Sprite IconImage => iconImage;
+
+    [SerializeField] Sprite iconImage;
 }

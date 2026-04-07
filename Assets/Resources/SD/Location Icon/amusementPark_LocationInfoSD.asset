@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
-  m_Name: mart_LocationIconSD
+  m_Name: amusementPark_LocationInfoSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
-  id: mart
+  id: amusementPark
   displayText: 
   descripiton: 
   categoryList: []
-  image: {fileID: 21300000, guid: e7e87d94a569bef44a02d8b9421c13ac, type: 3}
+  image: {fileID: 21300000, guid: 9dad4c154add65544b632911c682563c, type: 3}
+  iconImage: {fileID: 21300000, guid: 079ef4844209eaa4fb500c6377c1acf3, type: 3}

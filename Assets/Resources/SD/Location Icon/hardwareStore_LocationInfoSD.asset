@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
-  m_Name: clothShop_LocationIconSD
+  m_Name: hardwareStore_LocationInfoSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
-  id: clothShop
+  id: hardwareStore
   displayText: 
   descripiton: 
   categoryList: []
-  image: {fileID: 21300000, guid: 40f389e1a2d98d048a4f2d9847a753da, type: 3}
+  image: {fileID: 21300000, guid: 736665a8b7a89d145bc4050c1eeee596, type: 3}
+  iconImage: {fileID: 21300000, guid: c3c9b61a640db461da8102dee02cbbcb, type: 3}

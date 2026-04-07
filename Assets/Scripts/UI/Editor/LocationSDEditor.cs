@@ -20,7 +20,7 @@ public class LocationSDEditor : Editor
             }
 
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            var sd = AssetDatabase.LoadAssetAtPath<LocationIconSD>(path);
+            var sd = AssetDatabase.LoadAssetAtPath<LocationInfoSD>(path);
 
             Undo.RecordObject(locationIconSD, "Auto Assign Icon SD");
             var so = new SerializedObject(locationIconSD);

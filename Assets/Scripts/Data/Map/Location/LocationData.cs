@@ -44,13 +44,8 @@ public class LocationData : IEquatable<LocationData>
     }
 
     public LocationData(CoordinateData coordinate) {
-        locationID = coordinate.LocationID;
-        displayText = coordinate.DisplayText;
-        storyDescription = coordinate.StoryDescription;
+        locationID = coordinate.LocationUID;
         anchoredPosition = coordinate.LocationCoordinate;
-        mainImage = coordinate.MainImage;
-        iconImage = coordinate.IconImage;
-        locationEventList = coordinate.LocationEventList;
     }
 
     public bool Equals(LocationData other) {

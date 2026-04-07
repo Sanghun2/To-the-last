@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
-  m_Name: school_LocationIconSD
+  m_Name: basement_LocationInfoSD
   m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
-  id: school
+  id: basement
   displayText: 
   descripiton: 
   categoryList: []
-  image: {fileID: 21300000, guid: 60f43d6251e46400eaff573952e8a570, type: 3}
+  image: {fileID: 21300000, guid: 5a1b2e94282456842b02dfd1928c09ff, type: 3}
+  iconImage: {fileID: 21300000, guid: e5770443442a943c99b55f782b3f0bed, type: 3}

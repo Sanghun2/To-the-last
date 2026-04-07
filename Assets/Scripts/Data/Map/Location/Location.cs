@@ -67,7 +67,7 @@ public class Location : IValue<int>, IEquatable<Location>
 
     public Location(CoordinateData coordinate) {
         data = new LocationData(coordinate);
-        locationID = coordinate.LocationID;
+        locationID = coordinate.LocationUID;
         _currentState = LocationState.Undiscovered;
     }
 

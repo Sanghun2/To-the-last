@@ -75,14 +75,11 @@ public class RadioPopUpUI : StructureUIBase
         var targetLocation = locationSDs[UnityEngine.Random.Range(0, locationSDs.Count)];
         var targetHz = Mathf.Round(UnityEngine.Random.Range(80f, 120f) * 10f) / 10f;
         AddCoordinate(new CoordinateData(
+            $"{targetLocation.ID}-{Guid.NewGuid()}",
             targetLocation.ID,
-            targetLocation.DisplayText,
+            $"성모 {targetLocation.DisplayText}",
             Vector2.zero,
-            targetHz,
-            null,
-            null,
-            null,
-            null
+            targetHz
             ));
 
         Debug.Log($"hz? {targetHz}");
