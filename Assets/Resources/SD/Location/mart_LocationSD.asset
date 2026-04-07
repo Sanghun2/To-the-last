@@ -16,7 +16,8 @@ MonoBehaviour:
   displayText: "\uB9C8\uD2B8"
   descripiton: "\uC5EC\uB7EC \uBB3C\uAC74\uC744 \uD30C\uB294 \uB9C8\uD2B8\uB2E4.
     \uC9C0\uAE08\uAE4C\uC9C0 \uBB3C\uAC74\uC774 \uB0A8\uC544\uC788\uAE30\uB97C..."
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: a74ed6a41a8b49140bb9d364c57c3c83, type: 2}
   image: {fileID: 21300000, guid: 40b1f23a671f3b8459a626514181f125, type: 3}
   locationInfo: {fileID: 11400000, guid: 1db94c05be259544ca663952860b673a, type: 2}
   storyDescription: "\uC7AC\uB09C \uCD08\uAE30\uC5D0 \uC8FC\uBBFC\uB4E4\uC774 \uBAA8\uC5EC

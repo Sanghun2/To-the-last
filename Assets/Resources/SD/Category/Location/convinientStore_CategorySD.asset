@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32640b5d1a3ea564ea22203247929a8c, type: 3}
-  m_Name: zombie_EncounterSD
-  m_EditorClassIdentifier: Assembly-CSharp::CombatEncounterSD
-  id: zombie
-  displayName: 
+  m_Script: {fileID: 11500000, guid: bb1435796a2487747b37dff5a9b0d9d0, type: 3}
+  m_Name: convinientStore_CategorySD
+  m_EditorClassIdentifier: Runtime::BilliotGames.CategorySD
+  id: convinientStore
+  displayText: 
   descripiton: 
+  categoryList: []
+  image: {fileID: 0}
+  childrenCategories: []

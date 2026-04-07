@@ -4089,11 +4089,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 129995293725388401, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 129995293725388401, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 370751822131597097, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_Name
@@ -4101,31 +4101,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 370751822131597097, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2371134401751830826, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2504665566737247817, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504665566737247817, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504665566737247817, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6825294510236669718, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6825294510236669718, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 7341406973737027290, guid: 52a4545473a8c73429f624bb831a75e9, type: 3}
       propertyPath: m_Pivot.x

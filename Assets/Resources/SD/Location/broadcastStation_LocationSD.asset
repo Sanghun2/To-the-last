@@ -15,7 +15,9 @@ MonoBehaviour:
   id: broadcastStation
   displayText: "\uBC29\uC1A1\uAD6D"
   descripiton: "\uBC29\uC1A1\uAD6D"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: 4d24c2124d7ee5c4b968183e1da49cbe, type: 2}
+  - {fileID: 11400000, guid: 4d24c2124d7ee5c4b968183e1da49cbe, type: 2}
   image: {fileID: 21300000, guid: 9766325cb779a2a4d86fc8c2029eccbe, type: 3}
   locationInfo: {fileID: 11400000, guid: 96dadc36258032d488f9fd2b57f8b049, type: 2}
   storyDescription: "\uC138\uC0C1\uC774 \uBB34\uB108\uC9C0\uB358 \uC21C\uAC04, \uC774

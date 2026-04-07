@@ -15,7 +15,8 @@ MonoBehaviour:
   id: amusementPark
   displayText: "\uB180\uC774\uACF5\uC6D0"
   descripiton: "\uB180\uC774\uACF5\uC6D0"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: db3648a6738a8d741bd207c4c81aecd6, type: 2}
   image: {fileID: 21300000, guid: 9dad4c154add65544b632911c682563c, type: 3}
   locationInfo: {fileID: 11400000, guid: 8d3e278f63756724f8b5e6e2ce93589a, type: 2}
   storyDescription: "\uD55C\uB54C \uC544\uC774\uB4E4\uC758 \uC6C3\uC74C\uC18C\uB9AC\uB85C

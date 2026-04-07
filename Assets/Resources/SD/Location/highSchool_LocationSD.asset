@@ -15,7 +15,8 @@ MonoBehaviour:
   id: highSchool
   displayText: "\uACE0\uB4F1\uD559\uAD50"
   descripiton: "\uACE0\uB4F1\uD559\uAD50"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: 2cfc0dd550e01884f84d6bb0ad3a3f2d, type: 2}
   image: {fileID: 21300000, guid: d8fcaccf11a564f499243458ad9632f7, type: 3}
   locationInfo: {fileID: 11400000, guid: a330462e4f4c96b46a0e1f9efeef47f3, type: 2}
   storyDescription: "\uC774 \uD559\uAD50\uB294 \uC7AC\uB09C \uC9C1\uD6C4 \uC544\uC774\uB4E4\uACFC

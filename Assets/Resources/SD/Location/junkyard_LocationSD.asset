@@ -15,7 +15,8 @@ MonoBehaviour:
   id: junkyard
   displayText: "\uD3D0\uCC28\uC7A5"
   descripiton: "\uD3D0\uCC28\uC7A5"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: a17e0fa03b23f554da1fb43184843485, type: 2}
   image: {fileID: 21300000, guid: 22ead23c7c9af7d4c82171e734e14bed, type: 3}
   locationInfo: {fileID: 11400000, guid: 0c134af745101184a8971258acab019f, type: 2}
   storyDescription: "\uC774 \uD3D0\uCC28\uC7A5\uC740 \uB300\uC7AC\uC559 \uC774\uD6C4,

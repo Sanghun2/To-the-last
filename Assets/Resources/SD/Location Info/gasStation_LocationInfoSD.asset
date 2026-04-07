@@ -15,8 +15,10 @@ MonoBehaviour:
   id: gasStation
   displayText: "\uC8FC\uC720\uC18C"
   descripiton: "\uC8FC\uC720\uC18C"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: 96a73982d2ca6404abbe66f595c7d99f, type: 2}
   image: {fileID: 21300000, guid: 5fa9e6b56c3a5124abfc465610a3745c, type: 3}
+  category: {fileID: 0}
   storyDescription: "\uB300\uC7AC\uC559 \uC774\uD6C4, \uC774 \uC8FC\uC720\uC18C\uB294
     \uD55C\uB54C \uC0DD\uC874\uC790\uB4E4\uC758 \uD53C\uB09C\uCC98\uC774\uC790 \uB9CC\uB0A8\uC758
     \uC7A5\uC18C\uC600\uC2B5\uB2C8\uB2E4. \uC5F0\uB8CC\uB294 \uB354 \uC774\uC0C1

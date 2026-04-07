@@ -15,8 +15,10 @@ MonoBehaviour:
   id: subwayStation
   displayText: "\uC5ED"
   descripiton: "\uC5ED"
-  categoryList: []
+  categoryList:
+  - {fileID: 11400000, guid: 66db5e5bf66f5504f9285223f08d5de1, type: 2}
   image: {fileID: 21300000, guid: c33e5fb01c2f16e4a9adb252fafecd59, type: 3}
+  category: {fileID: 0}
   storyDescription: "\uC774 \uC9C0\uD558\uCCA0\uC5ED\uC740 \uC7AC\uB09C \uC9C1\uD6C4
     \uC0AC\uB78C\uB4E4\uC774 \uC880\uBE44\uB97C \uD53C\uD574 \uBAB0\uB824\uB4E0 \uC7A5\uC18C\uC600\uB2E4.
     \uC5F4\uCC28\uB294 \uBA48\uCDC4\uC9C0\uB9CC, \uC77C\uBD80 \uC0DD\uC874\uC790\uB4E4\uC774

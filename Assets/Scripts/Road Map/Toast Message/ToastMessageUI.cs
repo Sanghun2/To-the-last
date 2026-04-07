@@ -65,8 +65,8 @@ public class ToastMessageUI : UIBase, IPool
     public void ShowToast(string text, Toast.Type toastType, Vector2 startPos, Vector2 endPos, float viewDuration) {
         InitToast(text, toastType, startPos);
         RectRebuilder.Rebuild();
-        presenter.PresentToast(this, endPos, viewDuration);
         PlaySound(toastType);
+        presenter.PresentToast(this, endPos, viewDuration);
     }
 
     private void PlaySound(Toast.Type toastType) {
