@@ -14,7 +14,6 @@ public class LocationManager : IInitializable
             var prevLocation = currentLocation;
             currentLocation = value;
 
-            Debug.Log($"location? {currentLocation.LocationUID}");
             if (currentLocation != prevLocation) {
                 OnLocationChanged?.Invoke(currentLocation, prevLocation);
             }

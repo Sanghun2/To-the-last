@@ -105,7 +105,6 @@ public sealed class PlayerData : IInitializable
 
     public void SetCurrentLocation(string locationUID) {
         currentLocationUID = locationUID;
-        Debug.Log($"location set. id?{locationUID}");
     }
     public void SetCurrentLocation(Location currentLocation, Location prevLocation) {
         SetCurrentLocation(currentLocation.Data);
