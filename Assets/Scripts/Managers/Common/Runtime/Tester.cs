@@ -98,7 +98,7 @@ public class Tester : MonoBehaviour
     }
 
     public void ActivateLocation() {
-        Managers.Location.UnlockLocation(locationSD.ID, progress);
+        Managers.Location.TryUnlockLocation(locationSD.ID, progress);
     }
     public void DeactivateLocation() {
         Managers.Location.DeactivateLocation(locationSD);

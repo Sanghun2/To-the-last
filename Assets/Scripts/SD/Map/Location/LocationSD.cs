@@ -9,21 +9,25 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "LocationSD", menuName = "Scriptable Objects/LocationSD")]
 public class LocationSD : ImageSDBase, IEquatable<LocationSD>
 {
-    public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
+    public Sprite IconImage => locationIcon.Image;
+
+    public Sprite MainImage => Image;
+    public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
     public Vector2 AnchoredPosition => anchoredPosition;
     public float Distance => distance;
-    public Sprite IconImage => iconImage;
-    public Sprite MainImage => Image;
+    public LocationSD NextLocation => nextLocation;
 
-    [SerializeField] Sprite iconImage;
+
+    [SerializeField] LocationIconSD locationIcon;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
     [SerializeField] List<EncounterEvent> locationEventList = new List<EncounterEvent>();
+    [SerializeField] LocationSD nextLocation;
     private float distance;
 
-    protected virtual void OnValidate() {
-        RenameAsset(ID, suffix:"_LocationSD");
+    protected override void OnValidate() {
+        base.OnValidate();
 
         for (int i = 0; i < locationEventList.Count; i++) {
             var locationData = locationEventList[i];

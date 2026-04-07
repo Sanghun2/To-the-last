@@ -54,6 +54,8 @@ public class ExplorationManager
             return;
         }
 
+        string nextLocation = location.NextLocationID;
+        Managers.Location.TryUnlockLocation(nextLocation);
         OnExplorationCompleted?.Invoke();
     }
     private Location GetLocation(string locationID) {

@@ -47,6 +47,7 @@ public class Location : IValue<int>, IEquatable<Location>
         }
     }
 
+    public string NextLocationID => nextLocationID;
 
     [SerializeField][HideInInspector] string locationID;
     [SerializeField] int currentProgress;
@@ -55,11 +56,13 @@ public class Location : IValue<int>, IEquatable<Location>
     [SerializeField] SimpleInventory _inventory;
 
     [NonSerialized] private LocationData data;
+    private string nextLocationID;
 
     public Location(LocationData locationData) {
         this.data = locationData;
         locationID = locationData.LocationID;
         _currentState = LocationState.Undiscovered;
+        nextLocationID = locationData.NextLocationID;
     }
 
     public Location(CoordinateData coordinate) {

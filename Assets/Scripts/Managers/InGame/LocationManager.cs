@@ -129,7 +129,8 @@ public class LocationManager : IInitializable
         DeactivateLocation(locationSD.ID);
     }
 
-    public bool UnlockLocation(string locationID, int currentProgress=1, Action<Location> onActivated=null) {
+    public bool TryUnlockLocation(string locationID, int currentProgress=1, Action<Location> onActivated=null) {
+        if (string.IsNullOrEmpty(locationID)) return false;
         var location = RegisterLocation(locationID, currentProgress);
         return TryActivateLocation(location, onActivated);
     }
@@ -152,8 +153,8 @@ public class LocationManager : IInitializable
     private void SetAsDefaultLocation() {
         string basementID = "basement";
         string houseID = "house";
-        UnlockLocation(basementID, 0);
-        UnlockLocation(houseID, 1);
+        TryUnlockLocation(basementID, 0);
+        TryUnlockLocation(houseID, 1);
     }
     private void CreateLocationUI(Location location) {
         var locationUI = LocationUIContainer.GetObj();

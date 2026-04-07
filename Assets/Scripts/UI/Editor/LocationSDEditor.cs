@@ -1,33 +1,33 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+
 [CustomEditor(typeof(LocationSD))]
 public class LocationSDEditor : Editor
 {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Auto Assign Icon")) {
-            var locationSD = (LocationSD)target;
-            string[] guids = AssetDatabase.FindAssets($"{locationSD.ID}_Icon t:Sprite", new[] {
-                $"{Define.Path.ICON_ASSET_LOAD_PATH}/Location"
+        if (GUILayout.Button("Auto Assign Icon SD")) {
+            var locationIconSD = (LocationSD)target;
+            var targetName = $"{locationIconSD.ID}_LocationIconSD";
+            string[] guids = AssetDatabase.FindAssets($"{targetName} t:LocationIconSD", new[] {
+                $"Assets/Resources/SD/Location Icon"
             });
 
             if (guids.Length == 0) {
-                Debug.LogError($"{locationSD.ID}_Icon 스프라이트를 찾을 수 없음");
+                Debug.LogError($"{targetName}를 찾을 수 없음");
                 return;
             }
 
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            var sd = AssetDatabase.LoadAssetAtPath<LocationIconSD>(path);
 
-            Undo.RecordObject(locationSD, "Auto Assign Icon");
-            var so = new SerializedObject(locationSD);
-            so.FindProperty("iconImage").objectReferenceValue = sprite;
+            Undo.RecordObject(locationIconSD, "Auto Assign Icon SD");
+            var so = new SerializedObject(locationIconSD);
+            so.FindProperty("locationIcon").objectReferenceValue = sd;
             so.ApplyModifiedProperties();
 
-            Debug.Log($"{locationSD.ID}_Icon 할당 완료: {path}");
+            Debug.Log($"{locationIconSD.ID}_LocationIconSD 할당 완료: {path}");
         }
     }
 }
-#endif

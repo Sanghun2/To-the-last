@@ -17,7 +17,7 @@ MonoBehaviour:
   descripiton: "\uC637\uAC00\uAC8C"
   categoryList: []
   image: {fileID: 21300000, guid: 438cf744c79265f4394d898a1db93efd, type: 3}
-  iconImage: {fileID: 21300000, guid: 7612932258b971f4593ba41f8d64f2fc, type: 3}
+  locationIcon: {fileID: 11400000, guid: 8c0b8fc1aac82d244ac556a151669994, type: 2}
   storyDescription: "\uC1FC\uC708\uB3C4\uB294 \uAE68\uC9C0\uACE0, \uBA3C\uC9C0 \uB36E\uC778
     \uB9C8\uB124\uD0B9\uB4E4\uC774 \uAE30\uBB18\uD558\uAC8C \uC11C \uC788\uB294 \uD3D0\uD5C8.\n\uC9C4\uC5F4\uB300\uC5D4
     \uB0A1\uACE0 \uC0C9\uC774 \uBC14\uB79C \uC637\uB4E4\uC774 \uB0A8\uC544 \uC788\uACE0,
@@ -29,3 +29,4 @@ MonoBehaviour:
     \uC218 \uC788\uB294 \uC7A5\uC18C."
   anchoredPosition: {x: 0, y: 0}
   locationEventList: []
+  nextLocation: {fileID: 0}

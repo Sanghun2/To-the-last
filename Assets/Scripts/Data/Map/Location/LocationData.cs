@@ -12,6 +12,7 @@ public class LocationData : IEquatable<LocationData>
     public Sprite IconImage => iconImage;
     public string DisplayText => displayText;
 
+    public string NextLocationID => nextLocationID;
 
     private IReadOnlyList<EncounterEvent> locationEventList;
     private string storyDescription;
@@ -20,6 +21,7 @@ public class LocationData : IEquatable<LocationData>
     private Sprite mainImage;
     private Sprite iconImage;
     private string displayText;
+    private string nextLocationID;
 
     public LocationData(
         string id, 
@@ -28,7 +30,8 @@ public class LocationData : IEquatable<LocationData>
         string storyDescription, 
         Vector2 anchoredPosition,
         Sprite mainImage,
-        Sprite iconImage) {
+        Sprite iconImage,
+        string nextLocationID) {
 
         this.locationID = id;
         this.locationEventList = locationEventList;
@@ -37,6 +40,7 @@ public class LocationData : IEquatable<LocationData>
         this.mainImage = mainImage;
         this.iconImage = iconImage;
         this.displayText = displayText;
+        this.nextLocationID = nextLocationID;
     }
 
     public LocationData(CoordinateData coordinate) {

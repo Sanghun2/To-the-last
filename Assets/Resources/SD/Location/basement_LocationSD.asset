@@ -17,10 +17,11 @@ MonoBehaviour:
   descripiton: "\uC9C0\uD558\uC2E4"
   categoryList: []
   image: {fileID: 21300000, guid: 5a1b2e94282456842b02dfd1928c09ff, type: 3}
-  iconImage: {fileID: 21300000, guid: e5770443442a943c99b55f782b3f0bed, type: 3}
+  locationIcon: {fileID: 11400000, guid: f901ebdb70c3c4049b23b964c4f57f57, type: 2}
   storyDescription: "\uB9DD\uD55C \uC138\uC0C1\uC5D0\uC11C \uD604\uC7AC\uB85C\uC368\uB294
     \uC720\uC77C\uD558\uAC8C \uBAB8\uC744 \uD53C\uD560 \uC218 \uC788\uB294 \uACF5\uAC04\uC774\uB2E4.\n\uD558\uC9C0\uB9CC
     \uC5B8\uC81C \uC774 \uD3C9\uD654\uAC00 \uAE68\uC9C8\uC9C0\uB294 \uC54C \uC218
     \uC5C6\uB2E4..."
   anchoredPosition: {x: 252, y: -800}
   locationEventList: []
+  nextLocation: {fileID: 0}

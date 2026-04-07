@@ -53,7 +53,8 @@ public static partial class Extension
             locationSD.StoryDescription,
             locationSD.AnchoredPosition,
             locationSD.MainImage,
-            locationSD.IconImage
+            locationSD.IconImage,
+            locationSD.NextLocation.ID
             );
     }
 

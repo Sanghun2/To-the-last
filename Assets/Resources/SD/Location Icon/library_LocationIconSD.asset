@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57d05f419a009d449ee24f7915e206a, type: 3}
+  m_Name: library_LocationIconSD
+  m_EditorClassIdentifier: Assembly-CSharp::LocationIconSD
+  id: library
+  displayText: 
+  descripiton: 
+  categoryList: []
+  image: {fileID: 21300000, guid: f1b0ef5964dd4433b9ed83705db456e3, type: 3}
