@@ -13,7 +13,7 @@ public class LocationInfoPopUpData : PopUpData, IImageContent
 
 
     public LocationInfoPopUpData(Location location, ActionData[] buttonActions)
-        : base(location.DisplayText, location.StoryDescription, buttonActions) {
+        : base(location.TitleText, location.StoryDescription, buttonActions) {
         this.location = location;
     }
 }
