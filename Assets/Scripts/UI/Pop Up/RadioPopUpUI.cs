@@ -43,6 +43,8 @@ public class RadioPopUpUI : StructureUIBase
     private void OnEnable() {
         rotaryDial.OnValueChanged -= hz.UpdateHz;
         rotaryDial.OnValueChanged += hz.UpdateHz;
+        rotaryDial.OnValueChanged -= battery.ConsumeValue;
+        rotaryDial.OnValueChanged += battery.ConsumeValue;
 
         hz.OnHzChanged -= hzViewer.UpdateHz;
         hz.OnHzChanged += hzViewer.UpdateHz;
@@ -74,10 +76,14 @@ public class RadioPopUpUI : StructureUIBase
     }
 
     private void CheckAvailableLocation() {
+
+        if (battery.IsEmpty) {
+            Debug.LogAssertion($"not enough battery amount");
+            Managers.Sound.PlaySound(Define.Sound.NOT_ENOUGH);
+            return;
+        }
+
         Managers.Sound.PlaySound(Define.Sound.CLICKED);
-
-        if (battery.IsEmpty) return;
-
         for (int i = 0; i < availableCoordinateList.Count; i++) {
             CoordinateData coordinateData = availableCoordinateList[i];
             if (coordinateData.IsHzMatched(hz.CurrentHz)) {
@@ -95,6 +101,7 @@ public class RadioPopUpUI : StructureUIBase
 #if TEST || UNITY_EDITOR
     [ContextMenu("Add Test Location")]
     private void TestLocation() {
+        InitUI();
         var newCoordinate = Managers.Location.CreateNewLocationCoordinate();
         AddCoordinate(newCoordinate);
 

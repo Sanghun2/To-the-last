@@ -16,6 +16,10 @@ public class RotaryDial : UIBase, IPointerDownHandler, IDragHandler, IPointerUpH
 
     public float DegreesPerUnit => _degreesPerUnit;
 
+    /// <summary>
+    /// float1 = value,
+    /// float2 = delta value
+    /// </summary>
     public event Action<float, float> OnValueChanged;
     public float Value { get; private set; }
 

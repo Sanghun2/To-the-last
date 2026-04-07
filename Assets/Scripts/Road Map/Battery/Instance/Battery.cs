@@ -10,10 +10,11 @@ public class Battery
 
 
     [SerializeField] float consumeRatePerMinutes = 0.0139f;
+    [SerializeField] float consumeRatePerRotation = 0.0139f;
     [SerializeField] float startValue = 100;
     [SerializeField] float maxValue = 100;
+    [SerializeField] float currentValue;
     private float minValue = 0;
-    private float currentValue;
 
     public event Action<float, float> OnValueChanged;
 
@@ -23,12 +24,16 @@ public class Battery
     }
 
     public void ChangeValue(float delta) {
-        if (currentValue + delta <= minValue) return;
         currentValue = Mathf.Clamp(currentValue + delta, minValue, maxValue);
         OnValueChanged?.Invoke(currentValue, maxValue);
     }
 
-    internal void ConsumeValue(int day, int hour, int minute, int deltaMinutes) {
+    public void ConsumeValue(int day, int hour, int minute, int deltaMinutes) {
         ChangeValue(deltaMinutes * -consumeRatePerMinutes);
+    }
+
+    public void ConsumeValue(float _, float deltaValue) {
+        var absValue = Mathf.Abs(deltaValue);
+        ChangeValue(absValue * -consumeRatePerRotation);
     }
 }

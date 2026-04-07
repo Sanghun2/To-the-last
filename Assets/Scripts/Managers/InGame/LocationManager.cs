@@ -142,6 +142,7 @@ public class LocationManager : IInitializable
 
     public CoordinateData CreateNewLocationCoordinate() {
         if (!Managers.SD.TryGetContainer<LocationInfoSD>(out var container)) { Debug.LogError($"<color=red>couldn't find location info container</color>"); return null; }
+
         var locationList = container.SDDict.Values.Where(
             l =>
             !l.ID.Equals(Define.Tag.BASEMENT) &&
@@ -151,7 +152,7 @@ public class LocationManager : IInitializable
 
         LocationInfoSD randomLocationSD = locationList[UnityEngine.Random.Range(0, locationList.Count)];
 
-        string locationUID = CreateLocationUID(randomLocationSD);
+        string locationUID = CreateNewLocationUID(randomLocationSD);
         string locationName = CraeteLocationName(randomLocationSD);
 
         return new CoordinateData(
@@ -172,7 +173,7 @@ public class LocationManager : IInitializable
     private Vector2 CreateRandomCoordinate() {
         return new Vector2(Random.Range(-350, 350), Random.Range(-550, 420));
     }
-    private string CreateLocationUID(LocationInfoSD randomLocationSD) {
+    private string CreateNewLocationUID(LocationInfoSD randomLocationSD) {
         return $"{randomLocationSD.ID}-{Guid.NewGuid()}";
     }
     private string CraeteLocationName(LocationInfoSD randomLocationSD) {
