@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 650, y: 100}
+  m_SizeDelta: {x: 650, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3382824858927892043
 MonoBehaviour:
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CoordinateContentUI
   locationImage: {fileID: 4466177023267451626}
   locationNameText: {fileID: 5351334391579370403}
-  targetHz: 0
+  hzText: {fileID: 657079841500732066}
 --- !u!114 &5819996533450439267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +390,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 730dcca122404a844acd2480482755b4, type: 3}
+--- !u!114 &657079841500732066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 309535856558108125, guid: 730dcca122404a844acd2480482755b4, type: 3}
+  m_PrefabInstance: {fileID: 960915553656829823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &4353158762073282387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3547813197570187308, guid: 730dcca122404a844acd2480482755b4, type: 3}

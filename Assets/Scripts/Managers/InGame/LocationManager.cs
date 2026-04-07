@@ -159,7 +159,8 @@ public class LocationManager : IInitializable
             randomLocationSD.ID,
             locationName,
             CreateRandomCoordinate(),
-            CreateNewHz()
+            CreateNewHz(),
+            randomLocationSD.IconImage
             );
     }
 

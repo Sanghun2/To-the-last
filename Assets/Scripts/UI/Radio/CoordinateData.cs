@@ -9,6 +9,7 @@ public class CoordinateData
     public string LocationName => locationName;
     public Vector2 AnchoredPosition => anchoredPosition;
     public float TargetHz => radioHz;
+    public Sprite IconImage => iconImage;
 
 
     private float radioHz;
@@ -17,19 +18,22 @@ public class CoordinateData
     private string locationCategoryID;
     private string locationName;
     private Vector2 anchoredPosition;
+    private Sprite iconImage;
 
     public CoordinateData(
         string locationID, 
         string locationCategoryID,
         string locationName,
         Vector2 locationCoordinate, 
-        float radioHz) {
+        float radioHz,
+        Sprite iconImage=null) {
 
         this.locationUID = locationID;
         this.locationCategoryID = locationCategoryID;
         this.locationName = locationName;
         this.anchoredPosition = locationCoordinate;
         this.radioHz = radioHz;
+        this.iconImage = iconImage;
     }
 
     public bool IsHzMatched(float currentHz) {

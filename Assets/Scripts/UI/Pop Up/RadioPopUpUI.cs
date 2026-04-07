@@ -60,10 +60,17 @@ public class RadioPopUpUI : StructureUIBase
     }
 
     public void AddCoordinate(CoordinateData coordinateData) {
+        var contentUI = coordinateContentUIContainer.GetObj();
+        contentUI.transform.SetAsFirstSibling();
+        contentUI.InitContent(coordinateData);
         availableCoordinateList.Add(coordinateData);
     }
     public void RemoveCoordinate(CoordinateData coordinateData) {
-        availableCoordinateList.Remove(coordinateData);
+        var targetIndex = availableCoordinateList.FindIndex(x => x.LocationUID.Equals(coordinateData.LocationUID));
+        var targetData = availableCoordinateList[targetIndex];
+        CoordinateContentUI contentUI = coordinateContentUIContainer.FindContent(x => x.LocationUID.Equals(coordinateData.LocationUID));
+        contentUI.Return();
+        availableCoordinateList.RemoveAt(targetIndex);
     }
 
     private void CheckAvailableLocation() {
@@ -72,13 +79,14 @@ public class RadioPopUpUI : StructureUIBase
         if (battery.IsEmpty) return;
 
         for (int i = 0; i < availableCoordinateList.Count; i++) {
-            var coordinate = availableCoordinateList[i];
-            if (coordinate.IsHzMatched(hz.CurrentHz)) {
-                Debug.Log($"<color=cyan>hz matched. hz? {coordinate.TargetHz} location? ({coordinate.LocationName}) pos? {coordinate.AnchoredPosition}</color>");
+            CoordinateData coordinateData = availableCoordinateList[i];
+            if (coordinateData.IsHzMatched(hz.CurrentHz)) {
+                Debug.Log($"<color=cyan>hz matched. hz? {coordinateData.TargetHz} location? ({coordinateData.LocationName}) pos? {coordinateData.AnchoredPosition}</color>");
 
                 // 오픈된 지역 메세지 발행
 
-                Managers.Location.UnlockLocation(coordinate);
+                Managers.Location.UnlockLocation(coordinateData);
+                RemoveCoordinate(coordinateData);
                 return;
             }
         }

@@ -782,8 +782,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 15
+    m_Bottom: 15
   m_ChildAlignment: 1
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
@@ -1871,9 +1871,8 @@ MonoBehaviour:
   batteryUI: {fileID: 1676096520585903841}
   battery:
     consumeRatePerMinutes: 0.0139
-    minValue: 0
-    maxValue: 100
     startValue: 100
+    maxValue: 100
   hz:
     hzModifier: 0.01
     defaultHz: 100
