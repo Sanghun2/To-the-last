@@ -3,5 +3,5 @@ using UnityEngine;
 
 public abstract class EncounterContentBuilderBase
 {
-    public abstract IReadOnlyList<EncounterSelectCondition> BuildContent();
+    public abstract IReadOnlyList<EncounterInfo> BuildContent();
 }

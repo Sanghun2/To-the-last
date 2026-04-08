@@ -26,7 +26,7 @@ public class LocationBuilder
         return true;
     }
 
-    private IReadOnlyList<EncounterSelectCondition> BuildLocationEvents() {
+    private IReadOnlyList<EncounterInfo> BuildLocationEvents() {
         return encounterContentBuilder.BuildContent();
     }
 }

@@ -6,17 +6,17 @@ using Random = UnityEngine.Random;
 
 public class EncounterContentBuilder : EncounterContentBuilderBase
 {
-    public override IReadOnlyList<EncounterSelectCondition> BuildContent() {
+    public override IReadOnlyList<EncounterInfo> BuildContent() {
         int minEncounterCount = 8;
         int maxEncounterCount = 12;
         int encounterCount = Random.Range(minEncounterCount, maxEncounterCount);
 
-        var slots = new List<EncounterSelectCondition>();
+        var slots = new List<EncounterInfo>();
 
-        IReadOnlyList<EncounterSelectCondition> _dedicated = GetDedicatedEncounters();
-        IReadOnlyList<EncounterSelectCondition> _common = GetCommonEnciybters();
-        EncounterSelectCondition _finalBoss = GetLastBoss();
-        EncounterSelectCondition _finalReward = GetLastReward();
+        IReadOnlyList<EncounterInfo> _dedicated = GetDedicatedEncounters();
+        IReadOnlyList<EncounterInfo> _common = GetCommonEnciybters();
+        EncounterInfo _finalBoss = GetLastBoss();
+        EncounterInfo _finalReward = GetLastReward();
 
         Fill(_dedicated, slots);
         Fill(_common, slots);
@@ -29,23 +29,23 @@ public class EncounterContentBuilder : EncounterContentBuilderBase
         return slots;
     }
 
-    private EncounterSelectCondition GetLastReward() {
+    private EncounterInfo GetLastReward() {
         throw new NotImplementedException();
     }
 
-    private EncounterSelectCondition GetLastBoss() {
+    private EncounterInfo GetLastBoss() {
         throw new NotImplementedException();
     }
 
-    private IReadOnlyList<EncounterSelectCondition> GetCommonEnciybters() {
+    private IReadOnlyList<EncounterInfo> GetCommonEnciybters() {
         throw new NotImplementedException();
     }
 
-    private IReadOnlyList<EncounterSelectCondition> GetDedicatedEncounters() {
+    private IReadOnlyList<EncounterInfo> GetDedicatedEncounters() {
         throw new NotImplementedException();
     }
 
-    private void Fill(IReadOnlyList<EncounterSelectCondition> common, List<EncounterSelectCondition> slots) {
+    private void Fill(IReadOnlyList<EncounterInfo> common, List<EncounterInfo> slots) {
         throw new NotImplementedException();
     }
 }

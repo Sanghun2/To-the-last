@@ -8,7 +8,7 @@ public class ExplorationData
 {
     //public Location Location => location;
     //public Data Data => location == null ? null : location.Data;
-    public EncounterSelectCondition CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
+    public EncounterInfo CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
 
     [SerializeField] Location location;
 
