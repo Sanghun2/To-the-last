@@ -405,6 +405,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new ExpensionSDContainer("SD/Expension"));
         SD.TryRegisterSD(new NPCSDContainer("SD/NPC"));
         SD.TryRegisterSD(new LocationIconSDContainer("SD/Location Info"));
+        SD.TryRegisterSD(new SelectionSDRunnerContainer("SD/Selection Runner"));
         //SD.TryRegisterSD(new ExpensionSDContainer("SD/Quest"));
 
 

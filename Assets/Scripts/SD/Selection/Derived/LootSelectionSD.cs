@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/Selection/LootSelectionSD")]
+[CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/Selection/Selection/LootSelectionSD")]
 public class LootSelectionSD : SelectionSDBase
 {
     public IReadOnlyList<LootInfo> LootItemDataList => lootList;

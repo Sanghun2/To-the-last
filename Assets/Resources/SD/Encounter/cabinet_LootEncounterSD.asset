@@ -19,9 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 84793e5038867da46bad6ec4e69c0dd0, type: 2}
   eventImage: {fileID: 21300000, guid: 333096abb7f9e4bc887b8e36d80f711a, type: 3}
   selectionList:
-  - {fileID: 11400000, guid: 4c1cb43d1445c26419f6a33c47e80444, type: 2}
-  - {fileID: 11400000, guid: d62972c9ea21a8244a748321eade81d6, type: 2}
-  rewards:
-  - rewardTypeSD: {fileID: 11400000, guid: 69f40ec4a97ed0c4ab71dafcc5598b4a, type: 2}
-    rewardTarget: {fileID: 11400000, guid: dbf635fc2746d7d41b999a9830bf038a, type: 2}
-    amount: 3
+  - selectionSD: {fileID: 11400000, guid: 4c1cb43d1445c26419f6a33c47e80444, type: 2}
+    selectionRunnerSD: {fileID: 11400000, guid: 4ead60852e7c7604d85a7942afcb92f1, type: 2}
+  - selectionSD: {fileID: 11400000, guid: d62972c9ea21a8244a748321eade81d6, type: 2}
+    selectionRunnerSD: {fileID: 11400000, guid: 4ead60852e7c7604d85a7942afcb92f1, type: 2}
