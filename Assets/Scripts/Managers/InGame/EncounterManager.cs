@@ -5,12 +5,17 @@ using UnityEngine;
 public class EncounterManager : IInitializable
 {
     public bool IsInit => _isInit;
+    public EncounterContextBase CurrentEncounterContext
+    {
+        get => currentEncounterContext;
+    }
 
     private Dictionary<string, List<EncounterSD>> encounterDict = new();
 
     private EncounterParserContainer encounterParserContainer = new EncounterParserContainer();
     private EncounterContextBuilderContainer contextBuilderContainer = new EncounterContextBuilderContainer();
-    private EncounterExecutorContainer encounterExecutorContainer = new EncounterExecutorContainer(); 
+    private EncounterExecutorContainer encounterExecutorContainer = new EncounterExecutorContainer();
+    private EncounterContextBase currentEncounterContext;
     private bool _isInit;
 
 
@@ -42,6 +47,7 @@ public class EncounterManager : IInitializable
             Debug.LogError($"<color=red>{context.GetType()}에 해당하는 executor 없음</color>");
         }
 
+        currentEncounterContext = context;
         executor.ExecuteEncounter(context);
     }
 

@@ -11,6 +11,7 @@ public class LootSelectionSD : SelectionSD
 
     [Space]
     [SerializeField] float defaultLootCount = 10;
+    [SerializeField] SDBase selectAction;
     [SerializeField] List<LootInfo> lootList;
 }
 
