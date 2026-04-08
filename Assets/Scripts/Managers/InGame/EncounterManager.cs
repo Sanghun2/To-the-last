@@ -6,6 +6,8 @@ public class EncounterManager : IInitializable
 {
     public bool IsInit => _isInit;
 
+    private Dictionary<string, List<EncounterSD>> encounterDict = new();
+
     private EncounterParserContainer encounterParserContainer = new EncounterParserContainer();
     private EncounterContextBuilderContainer contextBuilderContainer = new EncounterContextBuilderContainer();
     private EncounterExecutorContainer encounterExecutorContainer = new EncounterExecutorContainer(); 
@@ -49,19 +51,30 @@ public class EncounterManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        // parser
-        encounterParserContainer.Register<LootEncounterSD>(new LootEncounterParser());
-
-        // context builder
-        contextBuilderContainer.Register<LootEncounterData>(new LootEncounterContextBuilder());
-
-        // executor
-        encounterExecutorContainer.Register<LootEncounterContext>(new LootEncounterExecutor());
+        LoadEncounters();
 
         _isInit = true;
     }
     public void Release() {
 
+    }
+
+
+    private void LoadEncounters() {
+        if (!Managers.SD.TryGetContainer<EncounterSD>(out var container)) { return; }
+
+        var encounterSDs = container.SDDict.Values;
+
+        foreach (var encounterSD in encounterSDs) {
+            var categoryID = encounterSD.FirstCategory;
+            if (string.IsNullOrEmpty(categoryID)) continue;
+
+            if (!encounterDict.TryGetValue(categoryID, out var list)) {
+                list = new List<EncounterSD>();
+            }
+
+            list.Add(encounterSD);
+        }
     }
 
     #endregion

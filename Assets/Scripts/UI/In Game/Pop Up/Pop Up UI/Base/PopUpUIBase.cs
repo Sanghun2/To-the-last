@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml;
+﻿using System.Collections.Generic;
 using BilliotGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class PopUpUIBase : UIBase 
+public abstract class PopUpUIBase : UIBase
 {
     [SerializeField] protected TextUI titleText;
     [SerializeField] protected TextMeshProUGUI subText;

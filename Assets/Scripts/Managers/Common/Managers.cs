@@ -421,6 +421,9 @@ public sealed class Managers : MonoBehaviour
             Character,
         };
 
+        Sound.SetClipLoader(new ResourceClipLoader("Sound"));
+        Sound.InitClips("Sound");
+
         for (int i = 0; i < initList.Count; i++) {
             initList[i]?.Init();
         }

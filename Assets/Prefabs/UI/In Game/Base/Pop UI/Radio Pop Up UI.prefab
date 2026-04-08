@@ -673,8 +673,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RotaryDialUI
   maxAngle: 2000
   minAngle: -2000
-  deadZoneAngle: 0.5
-  sensitivity: -0.9
+  deadZoneAngle: 0.7
+  sensitivity: -0.7
   _degreesPerUnit: 1
 --- !u!1 &3332798524701129995
 GameObject:

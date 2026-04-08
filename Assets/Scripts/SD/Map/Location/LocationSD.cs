@@ -13,7 +13,7 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     public Sprite MainImage => locationInfo.Image;
     public Sprite IconImage => locationInfo.IconImage;
 
-    public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
+    public IReadOnlyList<EncounterSelectCondition> LocationEventList => locationEventList;
     public Vector2 AnchoredPosition => anchoredPosition;
     public float Distance => distance;
     public LocationSD NextLocation => nextLocation;
@@ -22,7 +22,7 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     [SerializeField] LocationInfoSD locationInfo;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
-    [SerializeField] List<EncounterEvent> locationEventList = new List<EncounterEvent>();
+    [SerializeField] List<EncounterSelectCondition> locationEventList = new List<EncounterSelectCondition>();
     [SerializeField] LocationSD nextLocation;
     private float distance;
 
@@ -81,7 +81,7 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
 }
 
 [Serializable]
-public class EncounterEvent
+public class EncounterSelectCondition
 {
     public int Level => level;
     public int Weight => weight;

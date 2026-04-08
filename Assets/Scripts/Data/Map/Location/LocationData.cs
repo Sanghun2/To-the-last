@@ -5,7 +5,7 @@ using UnityEngine;
 public class LocationData : IEquatable<LocationData>
 {
     public string LocationUID => locationUID;
-    public IReadOnlyList<EncounterEvent> LocationEventList => locationEventList;
+    public IReadOnlyList<EncounterSelectCondition> LocationEventList => locationEventList;
     public string StoryDescription => storyDescription;
     public Vector2 AnchoredPosition => anchoredPosition;
     public Sprite MainImage => mainImage;
@@ -16,7 +16,7 @@ public class LocationData : IEquatable<LocationData>
 
 
 
-    private IReadOnlyList<EncounterEvent> locationEventList;
+    private IReadOnlyList<EncounterSelectCondition> locationEventList;
     private string storyDescription;
     private Vector2 anchoredPosition;
     private string locationUID;
@@ -29,7 +29,7 @@ public class LocationData : IEquatable<LocationData>
     public LocationData(
         string uid, 
         string categoryID,
-        IReadOnlyList<EncounterEvent> locationEventList, 
+        IReadOnlyList<EncounterSelectCondition> locationEventList, 
         string displayText,
         string storyDescription, 
         Vector2 anchoredPosition,

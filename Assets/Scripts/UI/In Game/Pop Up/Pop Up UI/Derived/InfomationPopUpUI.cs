@@ -1,7 +1,4 @@
-﻿using System;
-using BilliotGames;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class InfomationPopUpUI : PopUpUIBase
 {

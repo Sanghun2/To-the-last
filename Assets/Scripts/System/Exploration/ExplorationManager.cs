@@ -48,7 +48,7 @@ public class ExplorationManager
     private void ContinueToExploreLocation(Location location) {
         if (location == null) { Debug.LogError($"<color=red>location null. failed to explore.</color>"); return; }
 
-        if (TryGetNextEncounter(location, out EncounterEvent nextEncounterEvent)) {
+        if (TryGetNextEncounter(location, out EncounterSelectCondition nextEncounterEvent)) {
             Debug.Log("encounter 실행 구현");
             Managers.Encounter.ExecuteEncounter(nextEncounterEvent.EncounterSD);
             return;
@@ -65,7 +65,7 @@ public class ExplorationManager
 
         return null;
     }
-    private bool TryGetNextEncounter(Location location, out EncounterEvent encounterEvent) {
+    private bool TryGetNextEncounter(Location location, out EncounterSelectCondition encounterEvent) {
         var eventList = location.Data.LocationEventList;
         int currentProgress = location.CurrentValue;
         encounterEvent = eventList[currentProgress-1];

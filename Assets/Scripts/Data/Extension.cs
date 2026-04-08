@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using BilliotGames;
 using UnityEngine;
 
@@ -132,12 +131,18 @@ public static partial class Extension
 
     public static FocusJob WithBlockScreen(this FocusJob focusJob) {
         var newJob = new FocusJob(
-            focusJob.TotalMinutes, 
-            focusJob.Duration, 
-            onStart:() => { Managers.ScreenBlocker.SetActive(true); focusJob.OnStart?.Invoke(); },  
-            onProgress:focusJob.OnProgress, 
-            onComplete:() => { Managers.ScreenBlocker.SetActive(false); focusJob.OnComplete?.Invoke(); });
+            focusJob.TotalMinutes,
+            focusJob.Duration,
+            onStart: () => { Managers.ScreenBlocker.SetActive(true); focusJob.OnStart?.Invoke(); },
+            onProgress: focusJob.OnProgress,
+            onComplete: () => { Managers.ScreenBlocker.SetActive(false); focusJob.OnComplete?.Invoke(); });
         return newJob;
+    }
+    public static void Shuffle<T>(this List<T> list) {
+        for (int i = list.Count - 1; i > 0; i--) {
+            int j = Random.Range(0, i + 1);
+            (list[i], list[j]) = (list[j], list[i]);
+        }
     }
 
     #endregion

@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: zombie_BattleEncounterSD
   m_EditorClassIdentifier: Assembly-CSharp::CombatEncounterSD
   id: zombie
-  displayName: 
+  displayText: 
   descripiton: 
+  categoryList:
+  - {fileID: 11400000, guid: 84793e5038867da46bad6ec4e69c0dd0, type: 2}
+  eventImage: {fileID: 0}
+  selectionList: []
