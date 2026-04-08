@@ -13,7 +13,7 @@ public abstract class SelectionSDBase : SDBase
     [SerializeField] protected Define.RequirementType requirementType;
     [SerializeField] protected Ingredient requirement;
 
-    protected virtual void OnValidate() {
+    protected override void OnValidate() {
         RenameAsset(ID, suffix:$"_{GetType()}");
     }
 }
