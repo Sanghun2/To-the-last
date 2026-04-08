@@ -16,7 +16,7 @@ public class SelectionManager
 
     #region 확정
 
-    public bool TryBuildSelectionContext(SelectionSD selectionSD, out SelectionContextBase selectionContext) {
+    public bool TryBuildSelectionContext(SelectionSDBase selectionSD, out SelectionContextBase selectionContext) {
         selectionContext = null;
 
         // SD -> Data

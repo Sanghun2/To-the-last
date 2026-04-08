@@ -4,7 +4,7 @@ using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LootSelectionSD", menuName = "Scriptable Objects/Selection/LootSelectionSD")]
-public class LootSelectionSD : SelectionSD
+public class LootSelectionSD : SelectionSDBase
 {
     public IReadOnlyList<LootInfo> LootItemDataList => lootList;
     public float DefaultLootCount => defaultLootCount;

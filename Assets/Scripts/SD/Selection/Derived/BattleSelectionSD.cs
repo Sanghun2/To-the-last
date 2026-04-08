@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "BattleSelectionSD", menuName = "Scriptable Objects/Selection/BattleSelectionSD")]
-public class BattleSelectionSD : SelectionSD
+public class BattleSelectionSD : SelectionSDBase
 {
     public EnemySD[] Enemies => enemies;
 

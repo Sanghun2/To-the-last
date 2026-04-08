@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LootEncounterData : EncounterDataBase
 {
-    public LootEncounterData(Sprite eventImage, string description, IReadOnlyList<SelectionSD> selectList) : base(eventImage, description, selectList) {
+    public LootEncounterData(Sprite eventImage, string description, IReadOnlyList<SelectionSDBase> selectList) : base(eventImage, description, selectList) {
 
     }
 }
