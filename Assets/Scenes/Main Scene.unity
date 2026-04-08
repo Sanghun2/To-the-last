@@ -10016,7 +10016,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
   m_PrefabInstance: {fileID: 5227000480771928113}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2002452077
+--- !u!114 &2002452074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10025,10 +10025,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2002452073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f1c965362dd624bbccaa85a06a7629, type: 3}
+  m_Script: {fileID: 11500000, guid: 16d688da4c3ff024fa7c25db4e666d6d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProcessTester
-  testChainType: 1
+  m_EditorClassIdentifier: Assembly-CSharp::EncounterTester
+  testLocationInfo: {fileID: 11400000, guid: c34eb368e48bbac4487b60e2da1976c0, type: 2}
 --- !u!1 &2023623212
 GameObject:
   m_ObjectHideFlags: 0
@@ -11151,7 +11151,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2002452077}
+      addedObject: {fileID: 2002452074}
   m_SourcePrefab: {fileID: 100100000, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
 --- !u!1001 &5811555396548711079
 PrefabInstance:

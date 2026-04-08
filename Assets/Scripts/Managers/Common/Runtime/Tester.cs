@@ -47,7 +47,7 @@ public class Tester : MonoBehaviour
     [SerializeField] float moveDuration = 2f;
 
     [Space]
-    [SerializeField] LootSelectionSD lootSelectionSD;
+    //[SerializeField] LootSelectionSD lootSelectionSD;
     [SerializeField] SkillSD[] testSkills;
     [SerializeField] EnemySD enemySD;
     [SerializeField] BattleEntity enemy;
@@ -98,7 +98,7 @@ public class Tester : MonoBehaviour
     }
 
     public void ActivateLocation() {
-        Managers.Location.TryUnlockLocationBySD(locationSD.ID, progress);
+        Managers.Location.TryUnlockMainLocation(locationSD.ID, progress);
     }
     public void DeactivateLocation() {
         Managers.Location.DeactivateLocation(locationSD);

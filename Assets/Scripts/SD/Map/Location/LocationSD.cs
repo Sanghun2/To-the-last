@@ -13,26 +13,27 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     public Sprite MainImage => locationInfo.Image;
     public Sprite IconImage => locationInfo.IconImage;
 
-    public IReadOnlyList<EncounterInfo> LocationEventList => locationEventList;
+    public IReadOnlyList<EssentialEncounterInfo> EssentialLocationEventList => essentialLocationEventList;
     public Vector2 AnchoredPosition => anchoredPosition;
     public float Distance => distance;
-    public LocationSD NextLocation => nextLocation;
+    public LocationSD[] NextLocation => nextLocations;
 
+    public string CategoryID => categoryList.Count > 0 ? categoryList[0].ID : null;
 
     [SerializeField] LocationInfoSD locationInfo;
     [SerializeField][TextArea(1, 20)] string storyDescription;
     [SerializeField] Vector2 anchoredPosition;
-    [SerializeField] List<EncounterInfo> locationEventList = new List<EncounterInfo>();
-    [SerializeField] LocationSD nextLocation;
+    [SerializeField] List<EssentialEncounterInfo> essentialLocationEventList = new List<EssentialEncounterInfo>();
+    [SerializeField] LocationSD[] nextLocations;
     private float distance;
 
     protected override void OnValidate() {
         base.OnValidate();
 
-        for (int i = 0; i < locationEventList.Count; i++) {
-            var locationData = locationEventList[i];
-            if (locationData.Level <= 0) {
-                locationData.SetLevel(1);
+        for (int i = 0; i < essentialLocationEventList.Count; i++) {
+            var locationData = essentialLocationEventList[i];
+            if (locationData.Index <= 0) {
+                locationData.SetIndex(1);
             }
         }
     }
@@ -80,18 +81,4 @@ public class LocationSD : ImageSDBase, IEquatable<LocationSD>
     }
 }
 
-[Serializable]
-public class EncounterInfo
-{
-    public int Level => level;
-    public int Weight => weight;
-    public EncounterSDBase EncounterSD => encounterSD;
 
-    [SerializeField] int level;
-    [SerializeField] int weight;
-    [SerializeField] EncounterSDBase encounterSD;
-
-    public void SetLevel(int level) {
-        this.level = level;
-    }
-}

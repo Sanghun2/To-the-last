@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5170197607072501266}
   - component: {fileID: 5583488426727989716}
   m_Layer: 5
-  m_Name: Item Image
+  m_Name: Requirement Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 6294643765107326807}
   - component: {fileID: 1923675843800965924}
   m_Layer: 5
-  m_Name: Amount Text
+  m_Name: Requirement Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,8 +419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b703ee2b0ae4948b1efcd5d08fdba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RequirementUI
-  itemImage: {fileID: 5583488426727989716}
-  amountText: {fileID: 1923675843800965924}
+  requirementImage: {fileID: 5583488426727989716}
+  requirementText: {fileID: 1923675843800965924}
   itemInfoButton: {fileID: 4604285012080890632}
 --- !u!114 &666216037860532368
 MonoBehaviour:

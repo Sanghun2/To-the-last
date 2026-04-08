@@ -37,20 +37,21 @@ public class SelectionButton : ButtonBase, IPool
 
     public void InitButton(SelectActionData actionData) {
         Init();
-        buttonText.text = actionData.Text;
+
+        SetDescriptionText(actionData.Text);
         buttonAction = actionData.Action;
 
-        // requirement가 필요하면 open ui & init
-        if (actionData.Requirement != null) {
-            var requirement = actionData.Requirement;
-            var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
-            Debug.Log($"count? {count}, require? {requirement.Amount}");
-            requirementUI.SetReqirementItem(requirement, count >= requirement.Amount);
-        }
-        requirementUI.gameObject.SetActive(actionData.Requirement != null);
+        SetRequirements(actionData.RequirementType, actionData.Requirement);
 
         // 선택 불가능한 선택지인 경우 lock on
-        lockObj.SetActive(actionData.IsLocked);
+        SetLock(actionData);
+    }
+    public void Clear() {
+        progressBarUI.Clear();
+        buttonAction = null;
+    }
+    public void UpdateProcessUI(float currentValue, float maxValue) {
+        progressBarUI.UpdateUI(currentValue, maxValue);
     }
 
 
@@ -72,12 +73,27 @@ public class SelectionButton : ButtonBase, IPool
         buttonAction?.Invoke();
     }
 
-    public void UpdateProcessUI(float currentValue, float maxValue) {
-        progressBarUI.UpdateUI(currentValue, maxValue);
+
+    private void SetRequirements(Define.RequirementType requirementType, Ingredient requirement) {
+        // requirement가 필요하면 open ui & init
+        if (requirement != null) {
+            // requirement의 trait, item에 따라 sprite, text 처리 후 반환
+            var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
+            Debug.LogAssertion($"<color=cyan>trait, item에 따라 처리 후 sprite, text 반환 필요</color>");
+
+            // 반환 된 내용으로 ui init
+            Sprite requirementImage = null;
+            string requirementText = string.Empty;
+            bool isMet = true;
+            requirementUI.SetReqirementUI(requirementImage, requirementText, isMet);
+        }
+        requirementUI.gameObject.SetActive(requirement != null);
     }
-    public void Clear() {
-        progressBarUI.Clear();
-        buttonAction = null;
+    private void SetLock(SelectActionData actionData) {
+        lockObj.SetActive(actionData.IsLocked);
+    }
+    private void SetDescriptionText(string text) {
+        buttonText.text = text;
     }
 
 

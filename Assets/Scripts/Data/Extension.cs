@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BilliotGames;
 using UnityEngine;
 
@@ -41,20 +42,6 @@ public static partial class Extension
             characterSD.Image,
             characterSD.Features,
             characterSD.IsDefaultCharacter
-            );
-    }
-
-    public static LocationData ToData(this LocationSD locationSD) {
-        return new LocationData(
-            locationSD.ID,
-            locationSD.ID,
-            locationSD.LocationEventList,
-            locationSD.DisplayText,
-            locationSD.StoryDescription,
-            locationSD.AnchoredPosition,
-            locationSD.MainImage,
-            locationSD.IconImage,
-            locationSD.NextLocation?.ID
             );
     }
 

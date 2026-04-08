@@ -6,9 +6,8 @@ public class LocationInfoSD : ImageSDBase
 {
     public Sprite IconImage => iconImage;
     public string StoryDescription => storyDescription;
-    public string CategoryID => category.ID;
+    public string CategoryID => categoryList.Count > 0 ? categoryList[0].ID : null;
 
-    [SerializeField] CategorySD category;
     [SerializeField][TextArea(1, 50)] string storyDescription;
     [SerializeField] Sprite iconImage;
 }

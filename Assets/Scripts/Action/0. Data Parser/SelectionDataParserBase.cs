@@ -2,16 +2,16 @@
 
 public abstract class SelectionDataParserBase
 {
-    public abstract SelectionDataBase Parse(SelectionSDBase sd); 
+    public abstract SelectionRunnerDataBase Parse(SelectionRunnerSDBase sd); 
 }
 
 public abstract class SelectionDataParserBase<TSD, TData> : SelectionDataParserBase
-    where TSD : SelectionSDBase
-    where TData : SelectionDataBase
+    where TSD : SelectionRunnerSDBase
+    where TData : SelectionRunnerDataBase
 {
     public abstract TData Parse(TSD sd);
 
-    public override SelectionDataBase Parse(SelectionSDBase sd) {
+    public override SelectionRunnerDataBase Parse(SelectionRunnerSDBase sd) {
         if (sd is TSD tsd) {
             return Parse(tsd);
         }

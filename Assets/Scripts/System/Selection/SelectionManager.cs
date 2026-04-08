@@ -14,32 +14,33 @@ public class SelectionManager
 
     private SelectionButton currentSelectedButton;
 
-    #region 확정
-
-    public bool TryBuildSelectionContext(SelectionSDBase selectionSD, out SelectionContextBase selectionContext) {
+    public bool TryBuildSelectionContext(SelectionPair selectionPair, out SelectionContextBase selectionContext) {
         selectionContext = null;
 
         // SD -> Data
-        if (!dataParserContainer.TryGet(selectionSD, out var parser)) { LogError($"no parser exist. sd type? {selectionSD.GetType()}"); return false; }
-        SelectionDataBase selectionData = parser.Parse(selectionSD);
+        var selectionRunnerSD = selectionPair.SelectionRunnerSD;
+        if (!dataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd type? {selectionPair.GetType()}"); return false; }
+        SelectionRunnerDataBase selectionData = parser.Parse(selectionRunnerSD);
 
         return TryBuildSelectionContext(selectionData, out selectionContext);
     }
-    public bool TryBuildSelectionContext(SelectionDataBase selectionData, out SelectionContextBase selectionContext) {
+    public bool TryBuildSelectionContext(SelectionRunnerDataBase selectionRunnerData, out SelectionContextBase selectionContext) {
         selectionContext = null;
-        if (selectionData == null) { LogError($"selection data null"); return false; }
+        if (selectionRunnerData == null) { LogError($"selection data null"); return false; }
 
         // Data -> Action Context
-        if (!contextBuilderContainer.TryGet(selectionData, out SelectActionContextBuilderBase actionContextBuilder)) { LogError($"get context builder failed"); return false; }
-        if (!actionContextBuilder.TryBuildActionContext(selectionData, out SelectActionContextBase actionContext)) { LogError($"context build failed"); return false; }
+        if (!contextBuilderContainer.TryGet(selectionRunnerData, out SelectActionContextBuilderBase actionContextBuilder)) { LogError($"get context builder failed"); return false; }
+
+        var actionContext = actionContextBuilder.BuildActionContext(selectionRunnerData);
+
 
         // Action Context -> ActionData
         if (!actionConverterContainer.TryGet(actionContext, out SelectActionConverterBase actionConverter)) { LogError($"converter get failed"); return false; }
         var actionData = actionConverter.ConvertAction(actionContext);
 
         // Selection Data + ActionData -> Selection Context
-        if (!selectionContextBuilderContainer.TryGet(selectionData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
-        if (!selectionContextBuilder.TryBuildSelectionContext(selectionData, actionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
+        if (!selectionContextBuilderContainer.TryGet(selectionRunnerData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
+        if (!selectionContextBuilder.TryBuildSelectionContext(selectionRunnerData, actionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
 
         return true;
     }
@@ -53,8 +54,6 @@ public class SelectionManager
         currentSelectedButton.Clear();
         currentSelectedButton = null;
     }
-
-    #endregion
 
     private void LogError(string message) {
         Debug.LogError($"<color=red>{message}</color>");

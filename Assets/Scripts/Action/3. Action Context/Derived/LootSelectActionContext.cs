@@ -12,7 +12,8 @@ public class LootSelectActionContext : SelectActionContextBase, IInventoryContex
 
     private List<InventoryBase> inventories = new List<InventoryBase>();
 
-    public LootSelectActionContext(SelectionDataBase selectionData, InventoryBase inventory, string locationID) : base(selectionData, selectionData.RequireMinutes) {
+    public LootSelectActionContext(SelectionRunnerDataBase selectionRunnerData, InventoryBase inventory, string locationID) 
+        : base(selectionRunnerData, selectionRunnerData.RequireMinutes) {
         inventories.Add(inventory);
         LocationID = locationID;
     }

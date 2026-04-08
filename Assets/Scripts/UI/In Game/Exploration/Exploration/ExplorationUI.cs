@@ -8,7 +8,7 @@ public class ExplorationData
 {
     //public Location Location => location;
     //public Data Data => location == null ? null : location.Data;
-    public EncounterInfo CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
+    public EncounterDataBase CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
 
     [SerializeField] Location location;
 
@@ -65,8 +65,8 @@ public class ExplorationUI : UIBase
 
         ShowSituationImage(encounterData.EventImage);
         descriptionText.SetText(encounterData.Description);
-        ShowSelections(encounterData.SelectionList.Select(selectionSD => {
-            if (Managers.Select.TryBuildSelectionContext(selectionSD, out var selectionContext)) {
+        ShowSelections(encounterData.SelectionList.Select(selectionPair => {
+            if (Managers.Select.TryBuildSelectionContext(selectionPair, out var selectionContext)) {
                 return new SelectActionData(selectionContext);
             }
             else {

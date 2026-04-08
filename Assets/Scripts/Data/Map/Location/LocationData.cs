@@ -4,32 +4,20 @@ using UnityEngine;
 
 public class LocationData : IEquatable<LocationData>
 {
-    public string LocationUID => locationUID;
-    public IReadOnlyList<EncounterInfo> LocationEventList => locationEventList;
-    public string StoryDescription => storyDescription;
-    public Vector2 AnchoredPosition => anchoredPosition;
-    public Sprite MainImage => mainImage;
-    public Sprite IconImage => iconImage;
-    public string DisplayText => displayText;
-    public string NextLocationID => nextLocationID;
-    public string LocationCategoryID => locationCategoryID;
-
-
-
-    private IReadOnlyList<EncounterInfo> locationEventList;
-    private string storyDescription;
-    private Vector2 anchoredPosition;
-    private string locationUID;
-    private string locationCategoryID;
-    private Sprite mainImage;
-    private Sprite iconImage;
-    private string displayText;
-    private string nextLocationID;
+    public string LocationUID { get; }
+    public IReadOnlyList<EncounterDataBase> LocationEventList { get; }
+    public string StoryDescription { get; }
+    public Vector2 AnchoredPosition { get; }
+    public Sprite MainImage { get; }
+    public Sprite IconImage { get; }
+    public string DisplayText { get; }
+    public string NextLocationID { get; }
+    public string LocationCategoryID { get; }
 
     public LocationData(
         string uid, 
         string categoryID,
-        IReadOnlyList<EncounterInfo> locationEventList, 
+        IReadOnlyList<EncounterDataBase> locationEventList, 
         string displayText,
         string storyDescription, 
         Vector2 anchoredPosition,
@@ -37,25 +25,25 @@ public class LocationData : IEquatable<LocationData>
         Sprite iconImage,
         string nextLocationID) {
 
-        this.locationUID = uid;
-        this.locationCategoryID = categoryID;
-        this.locationEventList = locationEventList;
-        this.storyDescription = storyDescription;
-        this.anchoredPosition = anchoredPosition;
-        this.mainImage = mainImage;
-        this.iconImage = iconImage;
-        this.displayText = displayText;
-        this.nextLocationID = nextLocationID;
+        LocationUID = uid;
+        LocationCategoryID = categoryID;
+        LocationEventList = locationEventList;
+        StoryDescription = storyDescription;
+        AnchoredPosition = anchoredPosition;
+        MainImage = mainImage;
+        IconImage = iconImage;
+        DisplayText = displayText;
+        NextLocationID = nextLocationID;
     }
 
     public LocationData(CoordinateData coordinate) {
-        locationUID = coordinate.LocationUID;
-        anchoredPosition = coordinate.AnchoredPosition;
+        LocationUID = coordinate.LocationUID;
+        AnchoredPosition = coordinate.AnchoredPosition;
     }
 
     public bool Equals(LocationData other) {
         if (this == null || other == null) return false;
 
-        return locationUID.Equals(other.locationUID);
+        return LocationUID.Equals(other.LocationUID);
     }
 }

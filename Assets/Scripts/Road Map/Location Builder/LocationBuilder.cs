@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class LocationBuilder
 {
-    private EncounterContentBuilder encounterContentBuilder = new EncounterContentBuilder();
+    private EncounterMapBuilder encounterContentBuilder = new EncounterMapBuilder();
 
-    public bool TryBuildLocation(LocationBuildContext context, out Location newLocation) {
+    public bool TryBuildLocation(LocationBuildContext locationContext, out Location newLocation) {
         newLocation = null;
-        if (!Managers.SD.TryGetSD(context.LocationCategoryID, out LocationInfoSD infoSD)) { Debug.LogError($"<color=red>infoSD of ({context.LocationCategoryID}) is not exist</color>"); return false; }
+        if (!Managers.SD.TryGetSD(locationContext.LocationCategoryID, out LocationInfoSD infoSD)) { Debug.LogError($"<color=red>infoSD of ({locationContext.LocationCategoryID}) is not exist</color>"); return false; }
 
         var builtLocationData = new LocationData(
-            context.LocationUID,
-            context.LocationCategoryID,
-            BuildLocationEvents(context.LocationCategoryID),
-            context.DisplayName,
+            locationContext.LocationUID,
+            locationContext.LocationCategoryID,
+            BuildLocationEvents(locationContext),
+            locationContext.DisplayName,
             infoSD.Description,
-            context.AnchoredPosition,
+            locationContext.AnchoredPosition,
             infoSD.Image,
             infoSD.IconImage,
             null
@@ -26,7 +26,11 @@ public class LocationBuilder
         return true;
     }
 
-    private IReadOnlyList<EncounterInfo> BuildLocationEvents(string locationCategoryID) {
-        return encounterContentBuilder.BuildContent(locationCategoryID);
+    private IReadOnlyList<EncounterDataBase> BuildLocationEvents(LocationBuildContext context) {
+        return encounterContentBuilder.BuildMap(new EncounterMapContext(
+            context.LocationCategoryID, 
+            7,
+            15,
+            context.EncounterDataList));
     }
 }

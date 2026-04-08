@@ -7,7 +7,7 @@ public class SelectActionData : ActionData
     public Define.RequirementType RequirementType => SelectionData.RequirementType;
     public Ingredient Requirement => SelectionData.Requirement;
     public bool IsLocked => locked;
-    private SelectionDataBase SelectionData
+    private SelectionRunnerDataBase SelectionData
     {
         get => _selectionContext.SelectionData;
     }

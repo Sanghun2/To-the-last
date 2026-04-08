@@ -23,7 +23,7 @@ public class SkillSD : ImageSDBase
 
     [Space]
     [SerializeField] TriggerSD[] triggers;
-    [SerializeField] ConditionSD[] conditions;
+    [SerializeField] Condition[] conditions;
     [SerializeField] Effect[] effects;
 
     [Space]

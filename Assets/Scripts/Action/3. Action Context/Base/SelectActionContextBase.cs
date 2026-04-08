@@ -2,14 +2,14 @@
 
 public abstract class SelectActionContextBase : ActionContextBase
 {
-    public SelectionDataBase SelectionData => selectionData;
+    public SelectionRunnerDataBase SelectionRunnerData => selectionRunnerData;
     public int JobDuration => jobDuration;
 
-    [SerializeField] SelectionDataBase selectionData;
+    [SerializeField] SelectionRunnerDataBase selectionRunnerData;
     [SerializeField] int jobDuration;
 
-    public SelectActionContextBase(SelectionDataBase selectionData, int jobDuration) {
-        this.selectionData = selectionData;
+    public SelectActionContextBase(SelectionRunnerDataBase selectionRunnerData, int jobDuration) {
+        this.selectionRunnerData = selectionRunnerData;
         this.jobDuration = jobDuration;
     }
 }

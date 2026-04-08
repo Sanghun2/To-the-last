@@ -91,7 +91,7 @@ public class RadioPopUpUI : StructureUIBase
                 // 오픈된 지역 메세지 발행
                 Managers.Toast.ShowToast($"새로운 지역 [{coordinateData.LocationName}]을 발견했습니다.", Toast.Type.Confirm);
 
-                Managers.Location.UnlockLocation(coordinateData);
+                Managers.Location.TryUnlockSubLocation(coordinateData);
                 RemoveCoordinate(coordinateData);
                 return;
             }

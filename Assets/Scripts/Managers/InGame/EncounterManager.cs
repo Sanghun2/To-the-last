@@ -11,19 +11,19 @@ public class EncounterManager : IInitializable
     }
 
     private Dictionary<string, List<EncounterSDBase>> encounterDict = new();
+    private Dictionary<string, List<EncounterSDBase>> lastEncounterDict = new();
 
-    private EncounterParserContainer encounterParserContainer = new EncounterParserContainer();
+    private EncounterContextBase currentEncounterContext;
+    private EncounterDataParserContainer encounterDataParserContainer = new EncounterDataParserContainer();
     private EncounterContextBuilderContainer contextBuilderContainer = new EncounterContextBuilderContainer();
     private EncounterExecutorContainer encounterExecutorContainer = new EncounterExecutorContainer();
-    private EncounterContextBase currentEncounterContext;
     private bool _isInit;
 
 
     public void ExecuteEncounter(EncounterSDBase encounterSD) {
-        if (encounterParserContainer.TryGet(encounterSD, out var parser)) {
-            if (!parser.TryParse(encounterSD, out EncounterDataBase data)) { Debug.LogError($"<color=red>({encounterSD.GetType()}) parser not exist</color>"); return; }
-
-            ExecuteEncounter(data);
+        if (encounterDataParserContainer.TryGet(encounterSD, out var parser)) {
+            EncounterDataBase encounterData = parser.ParseData(encounterSD);
+            ExecuteEncounter(encounterData);
         }
     }
     public void ExecuteEncounter(EncounterDataBase encounterData) {
@@ -35,20 +35,15 @@ public class EncounterManager : IInitializable
             return;
         }
 
-        var context = contextBuilder.BuildContext(encounterData);
-        if (context == null) {
-            Debug.LogError($"<color=red>생성된 context null</color>");
+        var encounterContext = contextBuilder.BuildEncounterContext(encounterData);
+
+        if (!encounterExecutorContainer.TryGet(encounterContext, out var executor)) {
+            Debug.LogError($"<color=red>{encounterContext.GetType()}에 해당하는 executor 없음</color>");
             return;
         }
 
-        //var contextType = context.GetType();
-        Debug.Log($"context type: {context.GetType()}");
-        if (!encounterExecutorContainer.TryGet(context, out var executor)) {
-            Debug.LogError($"<color=red>{context.GetType()}에 해당하는 executor 없음</color>");
-        }
-
-        currentEncounterContext = context;
-        executor.ExecuteEncounter(context);
+        currentEncounterContext = encounterContext;
+        executor.ExecuteEncounter(encounterContext);
     }
 
     public bool TryGetEncounters(string locationCategoryID, out IReadOnlyList<EncounterSDBase> encounterSDList) {
@@ -60,6 +55,43 @@ public class EncounterManager : IInitializable
         encounterSDList = null;
         return false;
     }
+
+    public IReadOnlyList<EncounterDataBase> ConvertToEncounterData(IReadOnlyList<EssentialEncounterInfo> essentialLocationEventList) {
+        var encounterDataList = new List<EncounterDataBase>();
+
+        for (int i = 0; i < essentialLocationEventList.Count; i++) {
+            var essentialEvent = essentialLocationEventList[i];
+            encounterDataList.Add(ConvertEncounterData(essentialEvent));
+        }
+
+        return encounterDataList;
+    }
+
+
+    public EncounterDataBase GetLastReward(string locationCategoryID) {
+        Debug.LogAssertion($"<color=cyan>last reward impletement needed</color>");
+        return null;
+    }
+    public EncounterDataBase GetLastBoss(string locationCategoryID) {
+        Debug.LogAssertion($"<color=cyan>last boss impletement needed</color>");
+        return null;
+    }
+
+
+    public EncounterDataBase ConvertToEncounterData(EncounterSDBase encounterSD) {
+        if (!encounterDataParserContainer.TryGet(encounterSD, out var dataParser)) { Debug.LogError($"<color=red>data parser of ({encounterSD.GetType()}) is not exist</color>"); return null; }
+        var data = dataParser.ParseData(encounterSD);
+        data.SetIndex(-1);
+        return data;
+    }
+    private EncounterDataBase ConvertEncounterData(EssentialEncounterInfo essentialEvent) {
+        if (encounterDataParserContainer.TryGet(essentialEvent.EncounterSD, out var dataParser)) { Debug.LogError($"<color=red>encounter data parser is not exist</color>"); return null; }
+        var encounterData = dataParser.ParseData(essentialEvent.EncounterSD);
+        encounterData.SetIndex(essentialEvent.Index);
+
+        return encounterData;
+    }
+
 
 
     #region Management
@@ -77,6 +109,9 @@ public class EncounterManager : IInitializable
 
 
     private void LoadEncounters() {
+        encounterDict.Clear();
+        lastEncounterDict.Clear();
+
         if (!Managers.SD.TryGetContainer<EncounterSDBase>(out var container)) { return; }
 
         var encounterSDs = container.SDDict.Values;
@@ -85,13 +120,23 @@ public class EncounterManager : IInitializable
             var categoryID = encounterSD.FirstCategory;
             if (string.IsNullOrEmpty(categoryID)) continue;
 
-            if (!encounterDict.TryGetValue(categoryID, out var list)) {
-                list = new List<EncounterSDBase>();
+            Dictionary<string, List<EncounterSDBase>> targetDict = null;
+            if (encounterSD is ILastEncounterContent) {
+                targetDict = lastEncounterDict;
+            }
+            else {
+                targetDict = encounterDict;
             }
 
-            list.Add(encounterSD);
+            if (!targetDict.TryGetValue(categoryID, out var targetList)) {
+                targetList = new List<EncounterSDBase>();
+            }
+
+            targetList.Add(encounterSD);
         }
     }
+
+
 
     #endregion
 }

@@ -22,7 +22,9 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
                 var requirement = requirementItems[i];
                 var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
                 RequirementUI requirementUI = GetOrCreateObjOf(i);
-                requirementUI.SetReqirementItem(requirement.ItemSD, requirement.Amount, count >= requirement.Amount);
+
+                var image = requirement.ItemSD.Image;
+                requirementUI.SetReqirementUI(requirement.ItemSD.ID, image, requirement.Amount, count >= requirement.Amount);
             }
             else {
                 contentList[i].CloseUI();

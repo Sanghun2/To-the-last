@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class EncounterSDBase : SDBase
 {
     public Sprite EventImage => eventImage;
-    public IReadOnlyList<SelectionSDBase> SelectionList => selectionList.Select(x => x.SelectionSD).ToList();
+    public IReadOnlyList<SelectionPair> SelectionList => selectionList;
     public string FirstCategory => categoryList.Count > 0 ? categoryList[0].ID : string.Empty;
 
 
@@ -22,9 +22,9 @@ public abstract class EncounterSDBase : SDBase
 [Serializable]
 public sealed class SelectionPair
 {
-    public SelectionSDBase SelectionSD => selectionSD;
+    public SelectionSD SelectionSD => selectionSD;
     public SelectionRunnerSDBase SelectionRunnerSD => selectionRunnerSD;
 
-    [SerializeField] SelectionSDBase selectionSD;
+    [SerializeField] SelectionSD selectionSD;
     [SerializeField] SelectionRunnerSDBase selectionRunnerSD;
 }

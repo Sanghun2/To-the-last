@@ -152,16 +152,21 @@ public class LocationManager : IInitializable
 
         LocationInfoSD randomLocationSD = locationList[UnityEngine.Random.Range(0, locationList.Count)];
 
-        string locationUID = CreateNewLocationUID(randomLocationSD);
-        string locationName = CraeteLocationName(randomLocationSD);
+        return CreateNewLocationCoordinate(randomLocationSD);
+    }
+    public CoordinateData CreateNewLocationCoordinate(LocationInfoSD locationInfo) {
+        if (locationInfo.CategoryID.Equals(Define.Tag.BASEMENT)) { Debug.LogError($"<color=red>basement can not be new location</color>"); return null; }
+
+        string locationUID = CreateNewLocationUID(locationInfo);
+        string locationName = CraeteLocationName(locationInfo);
 
         return new CoordinateData(
             locationUID,
-            randomLocationSD.ID,
+            locationInfo.ID,
             locationName,
             CreateRandomCoordinate(),
             CreateNewHz(),
-            randomLocationSD.IconImage
+            locationInfo.IconImage
             );
     }
 
@@ -191,14 +196,51 @@ public class LocationManager : IInitializable
 
 
 
-    public bool TryUnlockLocationBySD(string locationSDID, int currentProgress=1, Action<Location> onActivated=null) {
+    public bool TryUnlockMainLocation(string locationSDID, int currentProgress=1, Action<Location> onActivated=null) {
         if (string.IsNullOrEmpty(locationSDID)) return false;
 
         if (!TryGetLocationSD(locationSDID, out LocationSD locationSD)) { return false; }
 
-        var location = new Location(locationSD.ToData());
-        RegisterLocation(location);
-        return TryActivateLocation(location, onActivated);
+        var buildContext = CreateLocationBuildContext(locationSD);
+        if (locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) {           
+            RegisterLocation(newLocation);
+            return TryActivateLocation(newLocation, onActivated);
+        }
+
+        return false;   
+    }
+    public bool TryUnlockSubLocation(CoordinateData coordinate) {
+        // 최종 보스 + 최종 보상
+        var finalEncounterList = new List<EncounterDataBase>();
+
+        var buildContext = new LocationBuildContext(
+            coordinate.LocationUID, 
+            coordinate.LocationCategoryID,
+            coordinate.LocationName,
+            coordinate.AnchoredPosition,
+            finalEncounterList);
+
+        if (!locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
+
+        RegisterLocation(newLocation);
+        TryActivateLocation(newLocation.LocationUID);
+        return true;
+    }
+
+    private LocationBuildContext CreateLocationBuildContext(LocationSD locationSD) {
+        IReadOnlyList<EncounterDataBase> essentialEncounterList = Managers.Encounter.ConvertToEncounterData(locationSD.EssentialLocationEventList);
+        return new LocationBuildContext(
+            locationSD.ID,
+            locationSD.CategoryID,
+            locationSD.DisplayText,
+            locationSD.AnchoredPosition,
+            essentialEncounterList
+
+            //locationSD.StoryDescription,
+            //locationSD.MainImage,
+            //locationSD.IconImage,
+            //locationSD.NextLocation?.ID
+            );
     }
 
     private bool TryGetLocationSD(string locationSDID, out LocationSD locationSD) {
@@ -210,19 +252,6 @@ public class LocationManager : IInitializable
         return false;
     }
 
-    public void UnlockLocation(CoordinateData coordinate) {
-        var buildContext = new LocationBuildContext(
-            coordinate.LocationUID, 
-            coordinate.LocationCategoryID,
-            coordinate.LocationName,
-            coordinate.AnchoredPosition);
-
-        if (locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) {
-            CreateLocationUI(newLocation);
-            RegisterLocation(newLocation);
-            TryActivateLocation(newLocation.LocationUID);
-        }
-    }
 
 
     public void Init() {
@@ -236,10 +265,10 @@ public class LocationManager : IInitializable
         Debug.Log($"release need to implement");
     }
     private void SetAsDefaultLocation() {
-        string basementID = "basement";
+        string basementID = Define.Tag.BASEMENT;
         string houseID = "house";
-        TryUnlockLocationBySD(basementID, 0);
-        TryUnlockLocationBySD(houseID, 1);
+        TryUnlockMainLocation(basementID, 0);
+        TryUnlockMainLocation(houseID, 1);
     }
     private void CreateLocationUI(Location location) {
         var locationUI = LocationUIContainer.GetObj();

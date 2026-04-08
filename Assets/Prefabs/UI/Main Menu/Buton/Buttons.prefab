@@ -671,6 +671,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522190296032860474}
     m_Modifications:
+    - target: {fileID: 46908038699938273, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46908038699938273, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46908038699938273, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46908038699938273, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 46908038699938273, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6341581357474663949, guid: 566419ed7a5d07843b545aff12491d00, type: 3}
       propertyPath: m_Name
       value: Button

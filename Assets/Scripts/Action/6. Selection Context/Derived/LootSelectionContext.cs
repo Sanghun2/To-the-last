@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class LootSelectionContext : SelectionContextBase<LootSelectionData>
+public class LootSelectionContext : SelectionContextBase<LootSelectionRunnerData>
 {
-    public LootSelectionContext(LootSelectionData selectionData, ActionData actionData) {
+    public LootSelectionContext(LootSelectionRunnerData selectionData, ActionData actionData) {
         this.selectionData = selectionData;
         this.actionData = actionData;
     }

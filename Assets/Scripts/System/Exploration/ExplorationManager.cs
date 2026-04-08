@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Exploration
@@ -48,14 +49,14 @@ public class ExplorationManager
     private void ContinueToExploreLocation(Location location) {
         if (location == null) { Debug.LogError($"<color=red>location null. failed to explore.</color>"); return; }
 
-        if (TryGetNextEncounter(location, out EncounterInfo nextEncounterEvent)) {
+        if (TryGetNextEncounter(location, out EncounterDataBase nextEncounterEvent)) {
             Debug.Log("encounter 실행 구현");
-            Managers.Encounter.ExecuteEncounter(nextEncounterEvent.EncounterSD);
+            Managers.Encounter.ExecuteEncounter(nextEncounterEvent);
             return;
         }
 
         string nextLocation = location.NextLocationID;
-        Managers.Location.TryUnlockLocationBySD(nextLocation);
+        Managers.Location.TryUnlockMainLocation(nextLocation);
         OnExplorationCompleted?.Invoke();
     }
     private Location GetLocation(string locationID) {
@@ -65,8 +66,8 @@ public class ExplorationManager
 
         return null;
     }
-    private bool TryGetNextEncounter(Location location, out EncounterInfo encounterEvent) {
-        var eventList = location.Data.LocationEventList;
+    private bool TryGetNextEncounter(Location location, out EncounterDataBase encounterEvent) {
+        IReadOnlyList<EncounterDataBase> eventList = location.Data.LocationEventList;
         int currentProgress = location.CurrentValue;
         encounterEvent = eventList[currentProgress-1];
         return encounterEvent != null;

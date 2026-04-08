@@ -5,15 +5,22 @@ public abstract class EncounterDataBase
 {
     public Sprite EventImage => eventImage;
     public string Description => description;
-    public IReadOnlyList<SelectionSDBase> SelectionList => selectList;
+    public IReadOnlyList<SelectionPair> SelectionList => selectList;
+    public int Index => index;
 
     protected Sprite eventImage;
     protected string description;
-    protected IReadOnlyList<SelectionSDBase> selectList;
+    protected IReadOnlyList<SelectionPair> selectList;
+    private int index = -1;
 
-    public EncounterDataBase(Sprite eventImage, string description, IReadOnlyList<SelectionSDBase> selectList) {
+
+    public EncounterDataBase(Sprite eventImage, string description, IReadOnlyList<SelectionPair> selectList) {
         this.eventImage = eventImage;
         this.description = description;
         this.selectList = selectList;
+    }
+
+    public void SetIndex(int index) {
+        this.index = index;
     }
 }

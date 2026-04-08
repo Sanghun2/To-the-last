@@ -2,24 +2,21 @@
 
 public abstract class SelectActionContextBuilderBase
 {
-    public abstract bool TryBuildActionContext(SelectionDataBase selectionData, out SelectActionContextBase context);
+    public abstract SelectActionContextBase BuildActionContext(SelectionRunnerDataBase selectionData);
 }
 
-public abstract class SelectActionContextBuilderBase<TData, TContext> : SelectActionContextBuilderBase
-    where TData : SelectionDataBase
+public abstract class SelectActionContextBuilderBase<TRunnerData, TContext> : SelectActionContextBuilderBase
+    where TRunnerData : SelectionRunnerDataBase
     where TContext : SelectActionContextBase
 {
-    public abstract bool TryBuildActionContext(TData data, out TContext context);
+    public abstract TContext BuildActionContext(TRunnerData data);
 
-    public override bool TryBuildActionContext(SelectionDataBase selectionData, out SelectActionContextBase context) {
-        if (selectionData is TData convertedData) {
-            var result = TryBuildActionContext(convertedData, out TContext tContext);
-            context = tContext;
-            return result;
+    public override SelectActionContextBase BuildActionContext(SelectionRunnerDataBase selectionData) {
+        if (selectionData is TRunnerData convertedData) {
+            return BuildActionContext(convertedData);
         }
 
-        Debug.LogError($"<color=red>({selectionData.GetType()}) is not type of ({typeof(TData)})</color>");
-        context = null;
-        return false;
+        Debug.LogError($"<color=red>({selectionData.GetType()}) is not type of ({typeof(TRunnerData)})</color>");
+        return null;
     }
 }

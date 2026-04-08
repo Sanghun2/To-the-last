@@ -3,14 +3,13 @@ using BilliotGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class RequirementUI : UIBase, IPool
 {
-    [SerializeField] Image itemImage;
-    [SerializeField] TextMeshProUGUI amountText;
+    [SerializeField] Image requirementImage;
+    [SerializeField] TextMeshProUGUI requirementText;
     [SerializeField] ItemInfoButton itemInfoButton;
-    private string itemID;
-    private int itemAmount;
 
     public bool IsActive => IsOpened;
 
@@ -26,33 +25,47 @@ public class RequirementUI : UIBase, IPool
         CloseUI();
     }
 
-    public void SetReqirementItem(ItemSD itemSD, int amount, bool enough=true) {
-        itemID = itemSD.ID;
-        itemAmount = amount;
-        UpdateUI(itemID, itemAmount, enough);
+    public void SetReqirementUI(Sprite requirementImage, string requirementText, bool isMet, Action infoAction=null) {
+        UpdateUI(requirementImage, requirementText, isMet);
+
+        //itemInfoButton.SetData(itemID);
+    }
+    public void SetReqirementUI(string itemID, Sprite image, int amount, bool isMet) {
+        SetImage(image);
+        requirementText.SetText("x {0}", amount);
+        SetTextColor(isMet);
 
         itemInfoButton.SetData(itemID);
-    }
-    public void SetReqirementItem(Ingredient requirement, bool enough=true) {
-        SetReqirementItem(requirement.ItemSD, requirement.Amount, enough);
     }
 
     protected virtual void Reset() {
 
-        if (itemImage == null) {
-            itemImage = GetComponentInChildren<Image>();
+        if (requirementImage == null) {
+            requirementImage = GetComponentInChildren<Image>();
         }
 
-        if (amountText == null) {
-            amountText = GetComponentInChildren<TextMeshProUGUI>();
+        if (requirementText == null) {
+            requirementText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 
-    protected virtual void UpdateUI(string itemID, int amount, bool enough=true) {
-        if (Managers.SD.TryGetSD(itemID, out ItemSD targetSD)) {
-            itemImage.sprite = targetSD.Image;
-        }
-        amountText.SetText("x{0}", amount);
-        amountText.color = enough ? Color.white : Color.red;
+    protected virtual void UpdateUI(Sprite image, string text, bool isMet) {
+        SetImage(image);
+        SetText(text);
+        SetTextColor(isMet);
     }
+
+
+    private void SetImage(Sprite image) {
+        requirementImage.sprite = image;
+        requirementImage.gameObject.SetActive(image != null);
+    }
+    private void SetTextColor(bool isMet) {
+        requirementText.color = isMet ? Color.white : Color.red;
+    }
+    private void SetText(string text) {
+        requirementText.gameObject.SetActive(string.IsNullOrEmpty(text) == false);
+        requirementText.text = text;
+    }
+
 }

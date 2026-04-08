@@ -1,9 +1,9 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class SelectionContextBuilderContainer : TypeRegistry<SelectionDataBase, SelectionContextBuilderBase>
+public class SelectionContextBuilderContainer : TypeRegistry<SelectionRunnerDataBase, SelectionContextBuilderBase>
 {
     public SelectionContextBuilderContainer() {
-        Register<LootSelectionData>(new LootSelectionContextBuilder());
+        Register<LootSelectionRunnerData>(new LootSelectionContextBuilder());
     }
 }

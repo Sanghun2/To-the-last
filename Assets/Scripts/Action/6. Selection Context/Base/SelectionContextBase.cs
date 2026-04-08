@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class SelectionContextBase
 {
-    public SelectionDataBase SelectionData => selectionData;
+    public SelectionRunnerDataBase SelectionData => selectionData;
     public ActionData ActionData => actionData;
 
     protected ActionData actionData;
-    protected SelectionDataBase selectionData;
+    protected SelectionRunnerDataBase selectionData;
 }
 
 public abstract class SelectionContextBase<TData> : SelectionContextBase
-    where TData : SelectionDataBase
+    where TData : SelectionRunnerDataBase
 {
     public new TData SelectionData => (TData)selectionData;
 }

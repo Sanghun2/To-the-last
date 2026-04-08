@@ -6,7 +6,8 @@ public abstract class EncounterContextBase
 
 }
 
-public abstract class EncounterContextBase<TEncounterData> : EncounterContextBase where TEncounterData : EncounterDataBase
+public abstract class EncounterContextBase<TEncounterData> : EncounterContextBase 
+    where TEncounterData : EncounterDataBase
 {
     public TEncounterData EncounterData => encounterData;
 

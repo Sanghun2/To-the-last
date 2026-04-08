@@ -3,14 +3,14 @@ using UnityEngine;
 
 public abstract class SelectionContextBuilderBase
 {
-    public abstract bool TryBuildSelectionContext(SelectionDataBase selectionData, ActionData actionData, out SelectionContextBase selectionContext);
+    public abstract bool TryBuildSelectionContext(SelectionRunnerDataBase selectionData, ActionData actionData, out SelectionContextBase selectionContext);
 }
 
 public abstract class SelectionContextBuilderBase<TInData, TOutContext> : SelectionContextBuilderBase
-    where TInData : SelectionDataBase
+    where TInData : SelectionRunnerDataBase
     where TOutContext : SelectionContextBase
 {
-    public override bool TryBuildSelectionContext(SelectionDataBase selectionData, ActionData actionData, out SelectionContextBase selectionContext) {
+    public override bool TryBuildSelectionContext(SelectionRunnerDataBase selectionData, ActionData actionData, out SelectionContextBase selectionContext) {
         if (selectionData is TInData convertedData) {
             var result = TryBuildSelectionContext(convertedData, actionData, out TOutContext convertedContext);
             selectionContext = convertedContext;

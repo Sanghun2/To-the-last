@@ -1,9 +1,9 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class SelectionDataParserContainer : TypeRegistry<SelectionSDBase, SelectionDataParserBase>
+public class SelectionDataParserContainer : TypeRegistry<SelectionRunnerSDBase, SelectionRunnerDataParserBase>
 {
     public SelectionDataParserContainer() {
-        Register<LootSelectionSD>(new LootSelectionDataParser());
+        Register<LootSelectionRunnerSD>(new LootSelectionRunnerDataParser());
     }
 }

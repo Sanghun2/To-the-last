@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LocationBuildContext
 {
@@ -6,16 +7,19 @@ public class LocationBuildContext
     public string LocationCategoryID { get; }
     public Vector2 AnchoredPosition { get; }
     public string DisplayName { get; }
+    public IReadOnlyList<EncounterDataBase> EncounterDataList { get; }
 
     public LocationBuildContext(
         string locationUID, 
         string locationCategoryID, 
         string displayName,
-        Vector2 locationCoordinate) {
+        Vector2 locationCoordinate,
+        IReadOnlyList<EncounterDataBase> encounterDataList=null) {
 
         LocationUID = locationUID;
         LocationCategoryID = locationCategoryID;
         DisplayName = displayName;
         AnchoredPosition = locationCoordinate;
+        EncounterDataList = encounterDataList;
     }
 }
