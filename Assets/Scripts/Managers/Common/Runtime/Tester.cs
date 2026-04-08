@@ -90,7 +90,7 @@ public class Tester : MonoBehaviour
         //    int idx = i;
         //    list.Add(new SelectActionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
         //}
-        //var dd = new DialogData(characterSD.StructureImage, characterSD.TitleText, situation, list);
+        //var dd = new DialogData(characterSD.StructureImage, characterSD.LocationName, situation, list);
         //Managers.UI.OpenStructureUI<DialogUI>().ShowDialog(dd);
     }
     public void ExecuteEncounter() {
@@ -98,7 +98,7 @@ public class Tester : MonoBehaviour
     }
 
     public void ActivateLocation() {
-        Managers.Location.TryUnlockMainLocation(locationSD.ID, progress);
+        Managers.Location.TryUnlockMainLocation(locationSD.ID, progress, out var location);
     }
     public void DeactivateLocation() {
         Managers.Location.DeactivateLocation(locationSD);

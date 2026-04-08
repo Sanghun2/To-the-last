@@ -196,20 +196,23 @@ public class LocationManager : IInitializable
 
 
 
-    public bool TryUnlockMainLocation(string locationSDID, int currentProgress=1, Action<Location> onActivated=null) {
+    public bool TryUnlockMainLocation(string locationSDID, int currentProgress, out Location newLocation, Action<Location> onActivated = null) {
+        newLocation = null;
         if (string.IsNullOrEmpty(locationSDID)) return false;
 
         if (!TryGetLocationSD(locationSDID, out LocationSD locationSD)) { return false; }
 
         var buildContext = CreateLocationBuildContext(locationSD);
-        if (locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) {           
+        if (locationBuilder.TryBuildLocation(buildContext, out newLocation)) {
             RegisterLocation(newLocation);
             return TryActivateLocation(newLocation, onActivated);
         }
 
         return false;   
     }
-    public bool TryUnlockSubLocation(CoordinateData coordinate) {
+    public bool TryUnlockSubLocation(CoordinateData coordinate, out Location newLocation) {
+        newLocation = null;
+
         // 최종 보스 + 최종 보상
         var finalEncounterList = new List<EncounterDataBase>();
 
@@ -220,7 +223,7 @@ public class LocationManager : IInitializable
             coordinate.AnchoredPosition,
             finalEncounterList);
 
-        if (!locationBuilder.TryBuildLocation(buildContext, out Location newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
+        if (!locationBuilder.TryBuildLocation(buildContext, out newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
 
         RegisterLocation(newLocation);
         TryActivateLocation(newLocation.LocationUID);
@@ -267,8 +270,8 @@ public class LocationManager : IInitializable
     private void SetAsDefaultLocation() {
         string basementID = Define.Tag.BASEMENT;
         string houseID = "house";
-        TryUnlockMainLocation(basementID, 0);
-        TryUnlockMainLocation(houseID, 1);
+        TryUnlockMainLocation(basementID, 0, out var basement);
+        TryUnlockMainLocation(houseID, 1, out var house);
     }
     private void CreateLocationUI(Location location) {
         var locationUI = LocationUIContainer.GetObj();
