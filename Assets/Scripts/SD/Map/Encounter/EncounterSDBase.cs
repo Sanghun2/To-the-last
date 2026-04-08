@@ -2,7 +2,7 @@
 using BilliotGames;
 using UnityEngine;
 
-public abstract class EncounterSD : SDBase
+public abstract class EncounterSDBase : SDBase
 {
     public Sprite EventImage => eventImage;
     public IReadOnlyList<SelectionSD> SelectionList => selectionList;

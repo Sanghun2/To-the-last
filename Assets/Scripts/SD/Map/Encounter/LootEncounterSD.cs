@@ -1,8 +1,9 @@
-﻿using BilliotGames;
+﻿using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LootEncounterSD", menuName = "Scriptable Objects/Encounter/LootEncounterSD")]
-public class LootEncounterSD : EncounterSD
+public class LootEncounterSD : EncounterSDBase
 {
 
 }

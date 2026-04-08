@@ -85,11 +85,11 @@ public class EncounterInfo
 {
     public int Level => level;
     public int Weight => weight;
-    public EncounterSD EncounterSD => encounterSD;
+    public EncounterSDBase EncounterSD => encounterSD;
 
     [SerializeField] int level;
     [SerializeField] int weight;
-    [SerializeField] EncounterSD encounterSD;
+    [SerializeField] EncounterSDBase encounterSD;
 
     public void SetLevel(int level) {
         this.level = level;

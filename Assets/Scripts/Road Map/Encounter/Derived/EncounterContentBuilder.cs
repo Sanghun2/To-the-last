@@ -6,15 +6,15 @@ using Random = UnityEngine.Random;
 
 public class EncounterContentBuilder : EncounterContentBuilderBase
 {
-    public override IReadOnlyList<EncounterInfo> BuildContent() {
+    public override IReadOnlyList<EncounterInfo> BuildContent(string locationCategoryID) {
         int minEncounterCount = 8;
         int maxEncounterCount = 12;
         int encounterCount = Random.Range(minEncounterCount, maxEncounterCount);
 
         var slots = new List<EncounterInfo>();
 
-        IReadOnlyList<EncounterInfo> _dedicated = GetDedicatedEncounters();
-        IReadOnlyList<EncounterInfo> _common = GetCommonEnciybters();
+        IReadOnlyList<EncounterInfo> _dedicated = GetDedicatedEncounters(locationCategoryID);
+        IReadOnlyList<EncounterInfo> _common = GetCommonEncounters();
         EncounterInfo _finalBoss = GetLastBoss();
         EncounterInfo _finalReward = GetLastReward();
 
@@ -37,12 +37,17 @@ public class EncounterContentBuilder : EncounterContentBuilderBase
         throw new NotImplementedException();
     }
 
-    private IReadOnlyList<EncounterInfo> GetCommonEnciybters() {
+    private IReadOnlyList<EncounterInfo> GetCommonEncounters() {
         throw new NotImplementedException();
     }
 
-    private IReadOnlyList<EncounterInfo> GetDedicatedEncounters() {
-        throw new NotImplementedException();
+    private IReadOnlyList<EncounterInfo> GetDedicatedEncounters(string locationCategoryID) {
+        if (Managers.Encounter.TryGetEncounters(locationCategoryID, out var encounterSDList)) {
+            //return encounterSDList.Select(x => new EncounterInfo(x));
+            return null;
+        }
+
+        return null;
     }
 
     private void Fill(IReadOnlyList<EncounterInfo> common, List<EncounterInfo> slots) {

@@ -31,8 +31,10 @@ public class RewardInfo
     public RewardSDBase RewardTypeSD => rewardTypeSD;
     public SDBase RewardTarget => rewardTarget;
     public int Amount => amount;
+    public int Weight => weight;
 
     [SerializeField] RewardSDBase rewardTypeSD;
     [SerializeField] SDBase rewardTarget;
     [SerializeField] int amount;
+    [SerializeField] int weight;
 }

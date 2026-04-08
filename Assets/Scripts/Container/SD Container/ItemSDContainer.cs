@@ -32,7 +32,7 @@ public class CharacterSDContiner : SDContainerBase<CharacterSD>
     }
 }
 
-public class EncounterSDContainer : SDContainerBase<EncounterSD>
+public class EncounterSDContainer : SDContainerBase<EncounterSDBase>
 {
     public EncounterSDContainer(string sdResourcePath) : base(sdResourcePath) {
     }

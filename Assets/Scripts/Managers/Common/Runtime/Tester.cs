@@ -36,7 +36,7 @@ public class Tester : MonoBehaviour
     [SerializeField] int progress;
 
     [Space] 
-    [SerializeField] EncounterSD encounterSD;
+    [SerializeField] EncounterSDBase encounterSD;
     [SerializeField] CharacterSD characterSD;
     [SerializeField] string situation;
     [SerializeField] string[] descriptions;

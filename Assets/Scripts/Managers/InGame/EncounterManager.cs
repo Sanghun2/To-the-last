@@ -10,7 +10,7 @@ public class EncounterManager : IInitializable
         get => currentEncounterContext;
     }
 
-    private Dictionary<string, List<EncounterSD>> encounterDict = new();
+    private Dictionary<string, List<EncounterSDBase>> encounterDict = new();
 
     private EncounterParserContainer encounterParserContainer = new EncounterParserContainer();
     private EncounterContextBuilderContainer contextBuilderContainer = new EncounterContextBuilderContainer();
@@ -19,7 +19,7 @@ public class EncounterManager : IInitializable
     private bool _isInit;
 
 
-    public void ExecuteEncounter(EncounterSD encounterSD) {
+    public void ExecuteEncounter(EncounterSDBase encounterSD) {
         if (encounterParserContainer.TryGet(encounterSD, out var parser)) {
             if (!parser.TryParse(encounterSD, out EncounterDataBase data)) { Debug.LogError($"<color=red>({encounterSD.GetType()}) parser not exist</color>"); return; }
 
@@ -51,6 +51,16 @@ public class EncounterManager : IInitializable
         executor.ExecuteEncounter(context);
     }
 
+    public bool TryGetEncounters(string locationCategoryID, out IReadOnlyList<EncounterSDBase> encounterSDList) {
+        if (encounterDict.TryGetValue(locationCategoryID, out var list)) {
+            encounterSDList = list;
+            return true;
+        }
+
+        encounterSDList = null;
+        return false;
+    }
+
 
     #region Management
 
@@ -67,7 +77,7 @@ public class EncounterManager : IInitializable
 
 
     private void LoadEncounters() {
-        if (!Managers.SD.TryGetContainer<EncounterSD>(out var container)) { return; }
+        if (!Managers.SD.TryGetContainer<EncounterSDBase>(out var container)) { return; }
 
         var encounterSDs = container.SDDict.Values;
 
@@ -76,7 +86,7 @@ public class EncounterManager : IInitializable
             if (string.IsNullOrEmpty(categoryID)) continue;
 
             if (!encounterDict.TryGetValue(categoryID, out var list)) {
-                list = new List<EncounterSD>();
+                list = new List<EncounterSDBase>();
             }
 
             list.Add(encounterSD);

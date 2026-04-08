@@ -13,7 +13,7 @@ public class LocationBuilder
         var builtLocationData = new LocationData(
             context.LocationUID,
             context.LocationCategoryID,
-            BuildLocationEvents(),
+            BuildLocationEvents(context.LocationCategoryID),
             context.DisplayName,
             infoSD.Description,
             context.AnchoredPosition,
@@ -26,7 +26,7 @@ public class LocationBuilder
         return true;
     }
 
-    private IReadOnlyList<EncounterInfo> BuildLocationEvents() {
-        return encounterContentBuilder.BuildContent();
+    private IReadOnlyList<EncounterInfo> BuildLocationEvents(string locationCategoryID) {
+        return encounterContentBuilder.BuildContent(locationCategoryID);
     }
 }

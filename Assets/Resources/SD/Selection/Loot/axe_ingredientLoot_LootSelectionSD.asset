@@ -22,6 +22,7 @@ MonoBehaviour:
     itemSD: {fileID: 11400000, guid: bc3dc49a89f85b64cbc0f4f7b3728f4c, type: 2}
     amount: 1
   defaultLootCount: 10
+  selectAction: {fileID: 11400000, guid: 69f40ec4a97ed0c4ab71dafcc5598b4a, type: 2}
   lootList:
   - itemSD: {fileID: 11400000, guid: 2d555c4fd65c899419910a0ada27bba0, type: 2}
     weight: 3

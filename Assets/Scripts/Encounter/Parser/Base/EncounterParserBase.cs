@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class EncounterParserBase
 {
-    public abstract bool TryParse(EncounterSD encounterSD, out EncounterDataBase data);
+    public abstract bool TryParse(EncounterSDBase encounterSD, out EncounterDataBase data);
 }
 
 

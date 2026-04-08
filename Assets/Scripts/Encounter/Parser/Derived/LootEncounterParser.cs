@@ -2,7 +2,7 @@
 
 public class LootEncounterParser : EncounterParserBase
 {
-    public override bool TryParse(EncounterSD encounterSD, out EncounterDataBase data) {
+    public override bool TryParse(EncounterSDBase encounterSD, out EncounterDataBase data) {
         var lootEncounterSD = encounterSD as LootEncounterSD;
         if (lootEncounterSD != null) {
             data = new LootEncounterData(
