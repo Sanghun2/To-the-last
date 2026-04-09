@@ -2,6 +2,7 @@
   "dependencies": {
     "com.billiotgames.coroutinemanager": "http://github.com/Sanghun2/Coroutine-Manager.git",
     "com.billiotgames.devpackagemanager": "https://github.com/Sanghun2/Dev-Package-Manager.git#",
+    "com.billiotgames.eventbus": "https://github.com/Sanghun2/Event-Bus.git",
     "com.billiotgames.fsm": "http://github.com/Sanghun2/FSM.git",
     "com.billiotgames.inventory": "https://github.com/Sanghun2/Inventory.git",
     "com.billiotgames.scenecontroller": "https://github.com/Sanghun2/Scene-Controller.git",

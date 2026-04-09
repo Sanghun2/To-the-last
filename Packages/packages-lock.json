@@ -12,7 +12,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9c44ed39f580a25fe8b9997b7a1e95962538e52a"
+      "hash": "3339b8a47a1ca935570b175711862e67ac290843"
+    },
+    "com.billiotgames.eventbus": {
+      "version": "https://github.com/Sanghun2/Event-Bus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "61b1fc9a996efc098a254f15705a1d74937255e6"
     },
     "com.billiotgames.fsm": {
       "version": "http://github.com/Sanghun2/FSM.git",
