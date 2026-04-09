@@ -5,5 +5,6 @@ public class EncounterContextBuilderContainer : TypeRegistry<EncounterDataBase, 
 {
     public EncounterContextBuilderContainer() {
         Register<LootEncounterData>(new LootEncounterContextBuilder());
+        Register<BattleEncounterData>(new BattleEncounterContextBuilder());
     }
 }

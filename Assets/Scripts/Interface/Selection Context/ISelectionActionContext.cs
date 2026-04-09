@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface ISelectionActionContext
 {
-    SelectActionContextBase Create(SelectionSD selectionSD);
+    SelectionRunnerContextBase Create(SelectionSD selectionSD);
 }

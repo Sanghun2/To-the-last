@@ -1,9 +1,9 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public class SelectActionConverterContainer : TypeRegistry<ActionContextBase,  SelectActionConverterBase>
+public class SelectActionConverterContainer : TypeRegistry<SelectionRunnerContextBase,  SelectActionConverterBase>
 {
     public SelectActionConverterContainer() {
-        Register<LootSelectActionContext>(new LootSelectActionConverter());
+        Register<LootSelectionRunnerContext>(new LootSelectActionConverter());
     }
 }

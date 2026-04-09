@@ -52,7 +52,7 @@ public class LocationManager : IInitializable
         return true;
     }
     //public Location TryRegisterLocation(string locationSDID, int currentProgress=1) {
-    //    if (Managers.SD.TryGetSD(locationSDID, out LocationSD targetSD)) {
+    //    if (Managers.RunnerSD.TryGetSD(locationSDID, out LocationSD targetSD)) {
     //        return TryRegisterLocation(targetSD.ToData(), currentProgress);
     //    }
 
@@ -203,6 +203,7 @@ public class LocationManager : IInitializable
         if (!TryGetLocationSD(locationSDID, out LocationSD locationSD)) { return false; }
 
         var buildContext = CreateLocationBuildContext(locationSD);
+        buildContext.SetProgress(currentProgress);
         if (locationBuilder.TryBuildLocation(buildContext, out newLocation)) {
             if (!TryRegisterLocation(newLocation)) return false;
             return TryActivateLocation(newLocation, onActivated);

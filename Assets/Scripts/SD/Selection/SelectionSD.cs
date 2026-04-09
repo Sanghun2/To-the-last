@@ -13,7 +13,7 @@ public class SelectionSD : SDBase
     [Space]
     [SerializeField] Condition[] unlockConditions;
     [SerializeField] Condition conditionToSelect;
-    [SerializeField] protected int requireMinutes;
+    [SerializeField] int requireMinutes;
 
     protected override void OnValidate() {
         RenameAsset(ID, suffix:$"_{GetType()}");

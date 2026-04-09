@@ -32,23 +32,26 @@ public class SelectionButton : ButtonBase, IPool
     [SerializeField] RequirementUI requirementUI;
     [SerializeField] ProgressBarUI progressBarUI;
     [SerializeField] GameObject lockObj;
-    private Action buttonAction;
+    private Action selectAction;
+    //private SelectionContext selectionContext;
 
 
-    public void InitButton(SelectActionData actionData) {
+    public void InitButton(SelectionContext selectionContext) {
         Init();
 
-        SetDescriptionText(actionData.Text);
-        buttonAction = actionData.Action;
+        SetDescriptionText(selectionContext.Description);
+        selectAction = selectionContext.SelectAction;
 
-        SetRequirements(actionData.RequirementType, actionData.Requirement);
+        SetRequirements(selectionContext.RequirementType, selectionContext.Requirement);
 
         // 선택 불가능한 선택지인 경우 lock on
-        SetLock(actionData);
+        SetLock(selectionContext.IsLocked);
+        //this.selectionContext = selectionContext;
     }
     public void Clear() {
         progressBarUI.Clear();
-        buttonAction = null;
+        selectAction = null;
+        //selectionContext = null;
     }
     public void UpdateProcessUI(float currentValue, float maxValue) {
         progressBarUI.UpdateUI(currentValue, maxValue);
@@ -70,27 +73,22 @@ public class SelectionButton : ButtonBase, IPool
         if (Managers.Job.IsFocusJobRunning) { Debug.Log($"already job is runnning"); return; }
 
         Managers.Select.SetButton(this);
-        buttonAction?.Invoke();
+        selectAction?.Invoke();
     }
 
 
-    private void SetRequirements(Define.RequirementType requirementType, Ingredient requirement) {
+    private void SetRequirements(Define.RequirementType requirementType, Requirement requirement) {
         // requirement가 필요하면 open ui & init
-        if (requirement != null) {
-            // requirement의 trait, item에 따라 sprite, text 처리 후 반환
-            var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
-            Debug.LogAssertion($"<color=cyan>trait, item에 따라 처리 후 sprite, text 반환 필요</color>");
-
-            // 반환 된 내용으로 ui init
-            Sprite requirementImage = null;
-            string requirementText = string.Empty;
+        if (requirement != null && requirementType != Define.RequirementType.Free) {
+            Sprite requirementImage = requirement.Image;
+            string requirementText = requirement.Amount.ToString();
             bool isMet = true;
             requirementUI.SetReqirementUI(requirementImage, requirementText, isMet);
         }
-        requirementUI.gameObject.SetActive(requirement != null);
+        requirementUI.gameObject.SetActive(requirementType != Define.RequirementType.Free);
     }
-    private void SetLock(SelectActionData actionData) {
-        lockObj.SetActive(actionData.IsLocked);
+    private void SetLock(bool isLocked) {
+        lockObj.SetActive(isLocked);
     }
     private void SetDescriptionText(string text) {
         buttonText.text = text;
@@ -113,7 +111,7 @@ public class SelectionButton : ButtonBase, IPool
     }
     public void Return() {
         CloseUI();
-        buttonAction = null;
+        selectAction = null;
     }
 
     #endregion

@@ -31,9 +31,9 @@ public abstract class TextAnimatorBase : MonoBehaviour, ITextAnimator
         get => currentState;
         set
         {
-            //var prevState = currentProcess;
+            //var prevState = _currentProgress;
             currentState = value;
-            //if (prevState != currentProcess) {
+            //if (prevState != _currentProgress) {
             //    UpdateState
             //}
         }

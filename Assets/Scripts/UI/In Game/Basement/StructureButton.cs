@@ -106,7 +106,7 @@ public class StructureButton : ButtonBase
     private ActionBase CreateActionOnEmpty() {
         if (!Managers.SD.TryGetContainer<UpgradeSDBase>(out var container)) { return null; }
 
-        // upgrade SD data에서 가장 1렙 구조물 데이터만 추출
+        // upgrade RunnerSD data에서 가장 1렙 구조물 데이터만 추출
         List<UpgradeSDBase<StructureSDBase>> upgradeSDBases = container.SDDict.Where(x => {
             var structureSD = x.Value as UpgradeSDBase<StructureSDBase>;
             return structureSD != null;

@@ -47,7 +47,6 @@ public class GameBootStrapper
         Managers.Player.PlayerData.SetAsDefaultLocation();
         Managers.Location.OnLocationChanged -= playerData.SetCurrentLocation;
         Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
-        Debug.Log($"location set event added");
 
         // structure
         Managers.Structure.UnlockLocations(targetExpensionLevel:0);

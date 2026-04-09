@@ -5,5 +5,6 @@ public class EncounterDataParserContainer : TypeRegistry<EncounterSDBase, Encoun
 {
     public EncounterDataParserContainer() {
         Register<LootEncounterSD>(new LootEncounterDataParser());
+        Register<BattleEncounterSD>(new BattleEncounterDataParser());
     }
 }

@@ -140,7 +140,7 @@ public sealed class PlayerData : IInitializable
             traitSet.Add(trait.Data.ID);
         }
 
-        Debug.Log($"trait set. total count? {traitSet.Count}");
+        //Debug.Log($"trait set. total count? {traitSet.Count}");
     }
     public int GetAvailableTraitPoint() {
         return traitPoint == 0 ? 5 : traitPoint;

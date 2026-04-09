@@ -6,7 +6,7 @@ public class LootEncounterData : EncounterDataBase
     public LootEncounterData(
         Sprite eventImage, 
         string description, 
-        IReadOnlyList<SelectionPair> selectList) : base(eventImage, description, selectList) {
+        IReadOnlyList<SelectionSDContext> selectList) : base(eventImage, description, selectList) {
 
     }
 }

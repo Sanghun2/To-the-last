@@ -33,6 +33,7 @@ public class RequirementUI : UIBase, IPool
     public void SetReqirementUI(string itemID, Sprite image, int amount, bool isMet) {
         SetImage(image);
         requirementText.SetText("x {0}", amount);
+        requirementText.gameObject.SetActive(amount >= 0);
         SetTextColor(isMet);
 
         itemInfoButton.SetData(itemID);

@@ -7,47 +7,51 @@ public class SelectionManager
 {
     public SelectionButton CurrentSelectedButton => currentSelectedButton;
 
-    private SelectionDataParserContainer dataParserContainer = new SelectionDataParserContainer();
-    private SelectActionContextBuilderContainer contextBuilderContainer = new SelectActionContextBuilderContainer();
+    private SelectionRunnerDataParserContainer runnerDataParserContainer = new SelectionRunnerDataParserContainer();
+    private SelectionRunnerContextBuilderContainer runnerContextBuilderContainer = new SelectionRunnerContextBuilderContainer();
     private SelectActionConverterContainer actionConverterContainer = new SelectActionConverterContainer();
     private SelectionContextBuilderContainer selectionContextBuilderContainer = new SelectionContextBuilderContainer();
 
     private SelectionButton currentSelectedButton;
 
-    public bool TryBuildSelectionContext(SelectionPair selectionPair, out SelectionContextBase selectionContext) {
+    public bool TryBuildSelectionContext(SelectionSDContext selectionSDContext, out SelectionContext selectionContext) {
         selectionContext = null;
 
-        // SD -> Data
-        var selectionRunnerSD = selectionPair.SelectionRunnerSD;
-        if (!dataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd type? {selectionPair.GetType()}"); return false; }
-        SelectionRunnerDataBase selectionData = parser.Parse(selectionRunnerSD);
+        // RunnerSD -> Data
+        var selectionData = new SelectionData(selectionSDContext.SelectionSD);
+        var selectionRunnerSD = selectionSDContext.SelectionRunnerSD;
+        if (!runnerDataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd type? {selectionSDContext.GetType()}"); return false; }
+        SelectionRunnerDataBase selectionRunnerData = parser.ParseRunnerData(selectionRunnerSD, selectionData.RequireMinutes);
+        
+        var selectionBuildContext = new SelectionBuildContext(selectionData, selectionRunnerData);
 
-        return TryBuildSelectionContext(selectionData, out selectionContext);
+        return TryBuildSelectionContext(selectionBuildContext, out selectionContext);
     }
-    public bool TryBuildSelectionContext(SelectionRunnerDataBase selectionRunnerData, out SelectionContextBase selectionContext) {
+    public bool TryBuildSelectionContext(SelectionBuildContext selectionBuildContext, out SelectionContext selectionContext) {
         selectionContext = null;
-        if (selectionRunnerData == null) { LogError($"selection data null"); return false; }
+        if (selectionBuildContext == null) { LogError($"selectionBuildContext is null"); return false; }
 
         // Data -> Action Context
-        if (!contextBuilderContainer.TryGet(selectionRunnerData, out SelectActionContextBuilderBase actionContextBuilder)) { LogError($"get context builder failed"); return false; }
-
-        var actionContext = actionContextBuilder.BuildActionContext(selectionRunnerData);
+        var selectionRunnerData = selectionBuildContext.SelectionRunnerDataBase;
+        if (!runnerContextBuilderContainer.TryGet(selectionRunnerData, out SelectionRunnerContextBuilderBase selectionRunnerContextBuilder)) { LogError($"get context builder failed"); return false; }
+        var selectionRunnerContext = selectionRunnerContextBuilder.BuildSelectionRunnerContext(selectionRunnerData);
 
 
         // Action Context -> ActionData
-        if (!actionConverterContainer.TryGet(actionContext, out SelectActionConverterBase actionConverter)) { LogError($"converter get failed"); return false; }
-        var actionData = actionConverter.ConvertAction(actionContext);
+        if (!actionConverterContainer.TryGet(selectionRunnerContext, out SelectActionConverterBase selecActionConverter)) { LogError($"converter get failed"); return false; }
+        var selectActionData = selecActionConverter.ConvertAction(selectionRunnerContext);
 
         // Selection Data + ActionData -> Selection Context
-        if (!selectionContextBuilderContainer.TryGet(selectionRunnerData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
-        if (!selectionContextBuilder.TryBuildSelectionContext(selectionRunnerData, actionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
+        //if (!selectionContextBuilderContainer.TryGet(selectionRunnerData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
+        //if (!selectionContextBuilder.TryBuildSelectionContext(selectionBuildContext.SelectionData, selectActionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
+
+        selectionContext = new SelectionContext(selectionBuildContext.SelectionData, selectActionData);
 
         return true;
     }
 
     public void SetButton(SelectionButton selectionButton) {
         currentSelectedButton = selectionButton;
-        Debug.Log($"button set");
     }
 
     public void ResetSelectedButton() {

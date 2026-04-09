@@ -8,14 +8,14 @@ public class DialogData
     public Sprite CharacterImage => characterImage;
     public string CharacterName => characterName;
     public string Description => description;
-    public IReadOnlyList<SelectActionData> Selections => selections;
+    public IReadOnlyList<SelectionContext> Selections => selections;
 
     [SerializeField] Sprite characterImage;
     [SerializeField] string characterName;
     [SerializeField] string description;
-    private IReadOnlyList<SelectActionData> selections;
+    private IReadOnlyList<SelectionContext> selections;
 
-    public DialogData( Sprite characterImage, string characterName, string description, IReadOnlyList<SelectActionData> selections) {
+    public DialogData(Sprite characterImage, string characterName, string description, IReadOnlyList<SelectionContext> selections) {
         this.characterImage = characterImage;
         this.characterName = characterName;
         this.description = description;
@@ -52,7 +52,7 @@ public class DialogUI : UIBase
             selectionButtonContainer = GetComponentInChildren<SelectionButtonContainer>();
         }
     }
-    private void ShowSelections(IReadOnlyList<SelectActionData> selections) {
+    private void ShowSelections(IReadOnlyList<SelectionContext> selections) {
         selectionButtonContainer.Clear();
         var container = selectionButtonContainer;
         for (int i = 0; i < selections.Count; i++) {

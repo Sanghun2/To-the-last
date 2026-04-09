@@ -130,6 +130,7 @@ public class EncounterManager : IInitializable
 
             if (!targetDict.TryGetValue(categoryID, out var targetList)) {
                 targetList = new List<EncounterSDBase>();
+                targetDict.Add(categoryID, targetList);
             }
 
             targetList.Add(encounterSD);

@@ -7,12 +7,12 @@ using UnityEngine;
 public abstract class EncounterSDBase : SDBase
 {
     public Sprite EventImage => eventImage;
-    public IReadOnlyList<SelectionPair> SelectionList => selectionList;
+    public IReadOnlyList<SelectionSDContext> SelectionList => selectionList;
     public string FirstCategory => categoryList.Count > 0 ? categoryList[0].ID : string.Empty;
 
 
     [SerializeField] Sprite eventImage;
-    [SerializeField] List<SelectionPair> selectionList = new List<SelectionPair>();
+    [SerializeField] List<SelectionSDContext> selectionList = new List<SelectionSDContext>();
 
     protected override void OnValidate() {
         RenameAsset(ID, suffix:$"_{GetType()}");
@@ -20,7 +20,7 @@ public abstract class EncounterSDBase : SDBase
 }
 
 [Serializable]
-public sealed class SelectionPair
+public sealed class SelectionSDContext
 {
     public SelectionSD SelectionSD => selectionSD;
     public SelectionRunnerSDBase SelectionRunnerSD => selectionRunnerSD;

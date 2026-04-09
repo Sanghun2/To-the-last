@@ -18,6 +18,4 @@ MonoBehaviour:
   categoryList:
   - {fileID: 11400000, guid: a17e0fa03b23f554da1fb43184843485, type: 2}
   eventImage: {fileID: 21300000, guid: 333096abb7f9e4bc887b8e36d80f711a, type: 3}
-  selectionList:
-  - {fileID: 11400000, guid: 4c1cb43d1445c26419f6a33c47e80444, type: 2}
-  - {fileID: 11400000, guid: d62972c9ea21a8244a748321eade81d6, type: 2}
+  selectionList: []

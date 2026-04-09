@@ -19,6 +19,6 @@ MonoBehaviour:
   unlockConditions: []
   conditionToSelect:
     requirementType: 2
-    requireSD: {fileID: 11400000, guid: bc3dc49a89f85b64cbc0f4f7b3728f4c, type: 2}
+    requireTarget: {fileID: 11400000, guid: bc3dc49a89f85b64cbc0f4f7b3728f4c, type: 2}
     requiredAmount: 1
-  requireMinutes: 40
+  requireMinutes: 20

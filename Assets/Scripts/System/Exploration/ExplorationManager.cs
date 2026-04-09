@@ -68,6 +68,7 @@ public class ExplorationManager
     }
     private bool TryGetNextEncounter(Location location, out EncounterDataBase encounterEvent) {
         IReadOnlyList<EncounterDataBase> eventList = location.Data.LocationEventList;
+        Debug.Log($"event count? {eventList.Count}");
         int currentProgress = location.CurrentValue;
         encounterEvent = eventList[currentProgress-1];
         return encounterEvent != null;

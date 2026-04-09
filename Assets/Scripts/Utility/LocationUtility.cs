@@ -40,7 +40,7 @@ public static class LocationUtility
 
     [MenuItem("Tools/Location/Recalculate Location Distances")]
     public static void Recalculate() {
-        // 기준 집 SD 찾기
+        // 기준 집 RunnerSD 찾기
         LocationSD basementSD = FindHomeSD();
         if (basementSD == null) {
             Debug.LogError("basementSD not found");

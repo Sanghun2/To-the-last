@@ -406,7 +406,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new NPCSDContainer("SD/NPC"));
         SD.TryRegisterSD(new LocationIconSDContainer("SD/Location Info"));
         SD.TryRegisterSD(new SelectionSDRunnerContainer("SD/Selection Runner"));
-        //SD.TryRegisterSD(new ExpensionSDContainer("SD/Quest"));
+        //RunnerSD.TryRegisterSD(new ExpensionSDContainer("RunnerSD/Quest"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {

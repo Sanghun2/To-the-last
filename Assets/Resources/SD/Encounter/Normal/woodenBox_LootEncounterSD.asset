@@ -20,4 +20,8 @@ MonoBehaviour:
   categoryList:
   - {fileID: 11400000, guid: 84793e5038867da46bad6ec4e69c0dd0, type: 2}
   eventImage: {fileID: 21300000, guid: 333096abb7f9e4bc887b8e36d80f711a, type: 3}
-  selectionList: []
+  selectionList:
+  - selectionSD: {fileID: 11400000, guid: 2ab04561d530e7546b078c65c4d2af29, type: 2}
+    selectionRunnerSD: {fileID: 11400000, guid: 4ead60852e7c7604d85a7942afcb92f1, type: 2}
+  - selectionSD: {fileID: 11400000, guid: bdf62069da2c32049b4a7a6f611d4ae9, type: 2}
+    selectionRunnerSD: {fileID: 11400000, guid: 4ead60852e7c7604d85a7942afcb92f1, type: 2}

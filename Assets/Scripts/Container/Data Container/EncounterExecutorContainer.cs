@@ -5,5 +5,6 @@ public class EncounterExecutorContainer : TypeRegistry<EncounterContextBase, Enc
 {
     public EncounterExecutorContainer() {
         Register<LootEncounterContext>(new LootEncounterExecutor());
+        Register<BattleEncounterContext>(new BattleEncounterExecutor());
     }
 }

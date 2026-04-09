@@ -43,7 +43,6 @@ public class LocationPointer : UIBase
     }
     public void MovePosition(Vector2 startPos, Vector2 endPos, float duration = MOVE_DURATION, Action callback = null) {
         StopMove(currentRoutineID);
-        Debug.Log($"startPos?{startPos}");
         currentRoutineID = Managers.Coroutine.StartCoroutine(MoveRoutine(startPos, endPos, duration, callback));
     }
     internal void PauseMove(bool pause) {

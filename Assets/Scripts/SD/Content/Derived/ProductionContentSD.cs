@@ -11,22 +11,33 @@ public class ProductionContentSD : ContentSDBase
 
     [SerializeField] protected Ingredient[] outputs;
 
-    protected virtual void OnValidate() {
+    protected override void OnValidate() {
         RenameAsset(ID, suffix: "_ProductionContentSD");
     }
 }
 
 [Serializable]
-public class Ingredient
+public class Ingredient : Requirement
 {
     public ItemSD ItemSD => itemSD;
-    public int Amount => amount;
 
     [SerializeField] ItemSD itemSD;
-    [SerializeField] int amount;
 
-    public Ingredient(ItemSD itemSD, int amount) {
+    public Ingredient(ItemSD itemSD, int amount) : base(itemSD.Image, amount){
         this.itemSD = itemSD;
+    }
+}
+
+public class Requirement
+{
+    public Sprite Image => image;
+    public int Amount => amount;
+
+    private Sprite image;
+    private int amount;
+
+    public Requirement(Sprite image, int amount) {
+        this.image = image;
         this.amount = amount;
     }
 }
