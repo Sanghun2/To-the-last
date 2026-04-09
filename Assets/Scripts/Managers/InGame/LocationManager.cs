@@ -43,31 +43,31 @@ public class LocationManager : IInitializable
     public event Action<Location, Location> OnLocationChanged;
     public event Action<Location, LocationUI> OnLocationActived;
 
-    public Location RegisterLocation(Location newLocation) {
+    public bool TryRegisterLocation(Location newLocation) {
         if (locationDict.TryAdd(newLocation.LocationUID, newLocation) == false) {
             Debug.Log($"<color=yellow>{newLocation.LocationUID}는 이미 존재함</color>");
-            return locationDict[newLocation.LocationUID]; ;
+            return false;
         }
 
-        return newLocation;
+        return true;
     }
-    //public Location RegisterLocation(string locationSDID, int currentProgress=1) {
+    //public Location TryRegisterLocation(string locationSDID, int currentProgress=1) {
     //    if (Managers.SD.TryGetSD(locationSDID, out LocationSD targetSD)) {
-    //        return RegisterLocation(targetSD.ToData(), currentProgress);
+    //        return TryRegisterLocation(targetSD.ToData(), currentProgress);
     //    }
 
     //    Debug.LogError($"<color=red>newLocation ({locationSDID}) is null</color>");
     //    return null;
     //}
-    public Location RegisterLocation(LocationData locationData, int currentProgress=1) {
+    public bool TryRegisterLocation(LocationData locationData, int currentProgress=1) {
         var location = new Location(locationData);
         if (locationDict.TryAdd(locationData.LocationUID, location) == false) {
             Debug.Log($"<color=yellow>{locationData.LocationUID}는 이미 존재함</color>");
-            return locationDict[locationData.LocationUID];
+            return false;
         }
 
         location.InitProgress(currentProgress, locationData.LocationEventList.Count).Deactivate();
-        return location;
+        return true;
     }
 
     public void UnregisterLocation(LocationSD locationSD) {
@@ -204,7 +204,7 @@ public class LocationManager : IInitializable
 
         var buildContext = CreateLocationBuildContext(locationSD);
         if (locationBuilder.TryBuildLocation(buildContext, out newLocation)) {
-            RegisterLocation(newLocation);
+            if (!TryRegisterLocation(newLocation)) return false;
             return TryActivateLocation(newLocation, onActivated);
         }
 
@@ -225,7 +225,7 @@ public class LocationManager : IInitializable
 
         if (!locationBuilder.TryBuildLocation(buildContext, out newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
 
-        RegisterLocation(newLocation);
+        if (!TryRegisterLocation(newLocation)) return false;
         TryActivateLocation(newLocation.LocationUID);
         return true;
     }

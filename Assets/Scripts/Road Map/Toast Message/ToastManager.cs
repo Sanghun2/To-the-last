@@ -48,7 +48,7 @@ public sealed class ToastManager : MonoBehaviour
         //toastPresenter = presenter;
     }
 
-    public void ShowToast(string text, Toast.Type toastType, float viewDuration=1f) {
+    public void ShowToast(string text, Toast.Type toastType, float viewDuration=1.2f) {
         var toast = ToastContainer.GetObj();
         //toast.SetPresenter(toastPresenter);
         toast.ShowToast(
