@@ -5,5 +5,6 @@ public class SelectionRunnerDataParserContainer : TypeRegistry<SelectionRunnerSD
 {
     public SelectionRunnerDataParserContainer() {
         Register<LootSelectionRunnerSD>(new LootSelectionRunnerDataParser());
+        Register<DialogSelectionRunnerSD>(new DialogSelectionRunnerDataParser());
     }
 }

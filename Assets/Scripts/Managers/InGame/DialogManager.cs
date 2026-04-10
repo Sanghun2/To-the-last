@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
@@ -7,24 +8,46 @@ public class DialogManager : IInitializable
 {
     public bool IsInit => _isInit;
 
+    public Dialog CurrentDialog => currentDialog;
+
     private Dictionary<string, Dialog> availableDialogDict = new Dictionary<string, Dialog>(200);
     private Dictionary<string, Dialog> completedDialogDict = new(200);
+    private Dialog currentDialog;
     private bool _isInit;
 
+    public event Action<Dialog> OnDialogCompleted;
+    public event Action<Dialog> OnDialogStarted;
 
-    public void RegisterDialog(DialogSD newDialogSD) {
-        RegisterDialog(newDialogSD, Dialog.State.Idle);
+    public bool TryStartDialog(string dialogBookID, out Dialog startedDialog) {
+        startedDialog = null;
+        if (!Managers.SD.TryGetSD<DialogBookSD>(dialogBookID, out var dialogBookSD)) { return false; }
+
+        var dialog = new Dialog(new DialogBookData(dialogBookSD));
+        currentDialog = dialog;
+
+        // nessasary
+        dialog.CurrentState = Dialog.State.InProgress;
+        DialogUIBase dialogUIBase = Managers.UI.OpenUI<DialogUI>();
+        dialog.OnPageChanged -= dialogUIBase.UpdatePage;
+        dialog.OnPageChanged += dialogUIBase.UpdatePage;
+        dialogUIBase.StartDialog(dialog);
+        startedDialog = dialog;
+
+        OnDialogStarted?.Invoke(dialog);
+        return true;
     }
-    public void CompleteDialog(Dialog targetDialog) {
-        availableDialogDict.Remove(targetDialog.DialogID);
-        RegisterDialog(targetDialog.DialogSD, Dialog.State.Done);
+    public bool TryCompleteCurrentDialog() {
+        if (currentDialog == null) { return false; }
+
+        CompleteDialog(currentDialog);
+        return true;
     }
 
     public bool TryGetDialog(string dialogID, out Dialog dialog) {
-        if (TryGetDialog(dialogID, Dialog.State.Done, out dialog)) {
+        if (TryGetDialog(dialogID, Dialog.State.Complete, out dialog)) {
             return true;
         }
-        else if (TryGetDialog(dialogID, Dialog.State.Idle, out dialog)) {
+        else if (TryGetDialog(dialogID, Dialog.State.Waiting, out dialog)) {
             return true;
         }
 
@@ -35,11 +58,11 @@ public class DialogManager : IInitializable
         Dictionary<string, Dialog> targetDict = null;
 
         switch (state) {
-            case Dialog.State.Idle:
-            case Dialog.State.Running:
+            case Dialog.State.Waiting:
+            case Dialog.State.InProgress:
                 targetDict = availableDialogDict;
                 break;
-            case Dialog.State.Done:
+            case Dialog.State.Complete:
                 targetDict = completedDialogDict;
                 break;
             default:
@@ -54,39 +77,26 @@ public class DialogManager : IInitializable
         return false;
     }
 
+    private void CompleteDialog(Dialog targetDialog) {
+        if (targetDialog == null) return;
+        targetDialog.CurrentState = Dialog.State.Complete;
 
-    private Dialog RegisterDialog(DialogSD dialogSD, Dialog.State state) {
-        var dialog = new Dialog(dialogSD, state);
-        Dictionary<string, Dialog> targetDict = null;
-        switch (state) {
-            case Dialog.State.Idle:
-            case Dialog.State.Running:
-                targetDict = availableDialogDict;
-                break;
-            case Dialog.State.Done:
-                targetDict = completedDialogDict;
-                break;
-            default:
-                break;
-        }
+        availableDialogDict.Remove(targetDialog.DialogID);
+        completedDialogDict.Add(targetDialog.DialogID, targetDialog);
 
-        if (targetDict == null) {
-            Debug.LogError($"({state}) is undefined state");
-            return null;
-        }
-
-        if (!targetDict.TryAdd(dialogSD.ID, dialog)) {
-            Debug.Log($"({dialogSD.ID}) dialog 중복");
-        }
-
-        return dialog;
+        currentDialog = null;
+        OnDialogCompleted?.Invoke(targetDialog);
     }
+
+    #region Init
+
     public void Init() {
         if (IsInit) return;
 
         _isInit = true;
     }
     public void Release() {
-        throw new System.NotImplementedException();
     }
+
+    #endregion
 }

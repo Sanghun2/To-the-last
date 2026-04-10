@@ -1,23 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EncounterDataBase
 {
+    public string ID => id;
     public Sprite EventImage => eventImage;
     public string Description => description;
-    public IReadOnlyList<SelectionSDContext> SelectionList => selectList;
+    public IReadOnlyList<SelectionSDContext> SelectionList { get; }
     public int Index => index;
 
+    private string id;
     protected Sprite eventImage;
     protected string description;
-    protected IReadOnlyList<SelectionSDContext> selectList;
     private int index = -1;
 
 
-    public EncounterDataBase(Sprite eventImage, string description, IReadOnlyList<SelectionSDContext> selectList) {
+    public EncounterDataBase(string id, Sprite eventImage, string description, IReadOnlyList<SelectionSDContext> selectList) {
+        this.id = id;
         this.eventImage = eventImage;
         this.description = description;
-        this.selectList = selectList;
+        SelectionList = selectList;
     }
 
     public void SetIndex(int index) {

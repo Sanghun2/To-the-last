@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BattleEncounterData : EncounterDataBase
 {
-    public BattleEncounterData(Sprite eventImage, string description, IReadOnlyList<SelectionSDContext> selectList) : base(eventImage, description, selectList) {
+    public BattleEncounterData(string id, Sprite eventImage, string description, IReadOnlyList<SelectionSDContext> selectList) 
+        : base(id, eventImage, description, selectList) {
     }
 }

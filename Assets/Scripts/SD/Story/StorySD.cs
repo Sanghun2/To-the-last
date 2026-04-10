@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StorySD", menuName = "Scriptable Objects/Story/StorySD")]
 public class StorySD : SDBase
 {
-    public IReadOnlyList<DialogSD> Dialogs => dialogs;
+    public IReadOnlyList<DialogPageData> Dialogs => dialogs;
 
-    [SerializeField] DialogSD[] dialogs;
+    [SerializeField] DialogPageData[] dialogs;
 }

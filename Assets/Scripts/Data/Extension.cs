@@ -45,6 +45,16 @@ public static partial class Extension
             );
     }
 
+    public static DialogPageData ToData(this DialogPageSD dialogSD) {
+        return new DialogPageData(
+            dialogSD.ID,
+            dialogSD.Image,
+            dialogSD.TalkerName,
+            dialogSD.Description,
+            dialogSD.Selections
+            );
+    }
+
     public static ItemEventArgs ToArgs(this ItemStack itemStack) {
         return new ItemEventArgs(itemStack.ItemData.ItemID, itemStack.Amount);
     }

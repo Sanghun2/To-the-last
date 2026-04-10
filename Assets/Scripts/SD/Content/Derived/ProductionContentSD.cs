@@ -28,13 +28,14 @@ public class Ingredient : Requirement
     }
 }
 
+[Serializable]
 public class Requirement
 {
     public Sprite Image => image;
     public int Amount => amount;
 
+    [SerializeField] int amount;
     private Sprite image;
-    private int amount;
 
     public Requirement(Sprite image, int amount) {
         this.image = image;

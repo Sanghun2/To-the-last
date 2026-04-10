@@ -337,6 +337,17 @@ public sealed class Managers : MonoBehaviour
             return _toastManager;
         }
     }
+    public static EventBus Event
+    {
+        get
+        {
+            if (_eventBus == null) {
+                _eventBus = new EventBus();
+            }
+
+            return _eventBus;
+        }
+    }
 
 
     // InGame
@@ -363,6 +374,7 @@ public sealed class Managers : MonoBehaviour
     private static CharacterManager _characterManager;
 
     // Common
+    private static EventBus _eventBus;
     private static ScreenBlockCanvas _screenBlocker;
     private static SoundManager _soundManager;
     private static TraitManager _traitManager;
@@ -395,7 +407,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new ActivitySDContainer("SD/Content/Activity"));
         SD.TryRegisterSD(new ProductionSDContainer("SD/Content/Production"));
         SD.TryRegisterSD(new SelectionSDContainer("SD/Selection"));
-        SD.TryRegisterSD(new DialogSDContainer("SD/Dialog"));
+        SD.TryRegisterSD(new DialogBookSDContainer("SD/Dialog/Book"));
         SD.TryRegisterSD(new IconSDContainer("SD/Icon"));
         SD.TryRegisterSD(new SkillSDContainer("SD/Skill"));
         SD.TryRegisterSD(new EffectSDContainer("SD/Effect"));

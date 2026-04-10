@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EncounterManager : IInitializable
@@ -116,11 +117,19 @@ public class EncounterManager : IInitializable
 
         var encounterSDs = container.SDDict.Values;
 
+        FilterEncounters(encounterSDs);
+    }
+
+    private void FilterEncounters(IEnumerable<EncounterSDBase> encounterSDs) {
         foreach (var encounterSD in encounterSDs) {
             var categoryID = encounterSD.FirstCategory;
             if (string.IsNullOrEmpty(categoryID)) continue;
+            if (encounterSD is DialogEncounterSD) continue;
 
             Dictionary<string, List<EncounterSDBase>> targetDict = null;
+
+
+            // resolve target dict
             if (encounterSD is ILastEncounterContent) {
                 targetDict = lastEncounterDict;
             }
@@ -128,6 +137,8 @@ public class EncounterManager : IInitializable
                 targetDict = encounterDict;
             }
 
+
+            // reigster encounter
             if (!targetDict.TryGetValue(categoryID, out var targetList)) {
                 targetList = new List<EncounterSDBase>();
                 targetDict.Add(categoryID, targetList);

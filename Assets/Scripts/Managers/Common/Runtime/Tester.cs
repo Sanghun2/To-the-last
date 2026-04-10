@@ -90,8 +90,8 @@ public class Tester : MonoBehaviour
         //    int idx = i;
         //    list.Add(new SelectActionData(descriptions[idx], () => Debug.Log($"{descriptions[idx]} selected")));
         //}
-        //var dd = new DialogData(characterSD.StructureImage, characterSD.LocationName, situation, list);
-        //Managers.UI.OpenStructureUI<DialogUI>().ShowDialog(dd);
+        //var dd = new DialogPageData(characterSD.StructureImage, characterSD.LocationName, situation, list);
+        //Managers.UI.OpenStructureUI<DialogUI>().InitPage(dd);
     }
     public void ExecuteEncounter() {
 

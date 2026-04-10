@@ -4,9 +4,11 @@ using UnityEngine;
 public class LootEncounterData : EncounterDataBase
 {
     public LootEncounterData(
+        string id,
         Sprite eventImage, 
         string description, 
-        IReadOnlyList<SelectionSDContext> selectList) : base(eventImage, description, selectList) {
+        IReadOnlyList<SelectionSDContext> selectList) 
+        : base(id, eventImage, description, selectList) {
 
     }
 }

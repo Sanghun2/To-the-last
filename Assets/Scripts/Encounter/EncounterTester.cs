@@ -14,7 +14,7 @@ public class EncounterTester : MonoBehaviour
     public void UnlockSubLocation() {
         var coordinate = Managers.Location.CreateNewLocationCoordinate(testLocationInfo);
         if (Managers.Location.TryUnlockSubLocation(coordinate, out var location)) {
-            Managers.Toast.ShowToast($"새로운 지역을 발견했습니다\n[{location.LocationName}]", Toast.Type.Confirm);
+            Managers.Toast.ShowToast($"새로운 지역을 발견했습니다<br><color=orange>[{location.LocationName}]</color>", Toast.Type.Confirm);
         }
     }
 }

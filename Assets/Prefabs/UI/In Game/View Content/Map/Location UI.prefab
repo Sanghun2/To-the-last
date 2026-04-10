@@ -125,7 +125,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationUI
   contentUI: {fileID: 316432414592483886}
-  locationSD: {fileID: 0}
+  location:
+    locationUID: 
+    locationCategoryID: 
+    displayName: 
+    currentProgress: 0
+    maxProgress: 0
+    _currentState: 0
+    _inventory:
+      capacity: 0
+      inventoryID: 
+      searchPriority: 0
+      tag: 
+      itemList: []
 --- !u!1001 &2222834437339154911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 1187549780120407152, guid: 639ab0e480e673e4f95294dfb8c70d54, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5b27ae7bd35884fc7871f9263ee05288, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2205938009350070345, guid: 639ab0e480e673e4f95294dfb8c70d54, type: 3}
       propertyPath: m_Sprite
       value: 
