@@ -19,6 +19,7 @@ public abstract class DialogUIBase : UIBase
         protected set
         {
             _currentPageState = value;
+            Debug.Log($"page ui state changed. {_currentPageState}");
         }
     }
 
@@ -38,13 +39,14 @@ public abstract class DialogUIBase : UIBase
     public void StartDialog(Dialog dialog) {
         InitUI();
         InitBook(dialog);
-        UpdatePage();
+        ShowPage();
         Managers.UI.OpenUI(this);
     }
-    public void UpdatePage() {
-        UpdatePage(dialog.CurrentProgress, dialog.CurrentPage);
+    public void ShowPage() {
+        ShowPage(dialog.CurrentProgress, dialog.CurrentPage);
     }
-    public void UpdatePage(int currentProgress, DialogPageData pageData) {        
+    public void ShowPage(int currentProgress, DialogPageData pageData) {        
+        CurrentPageState = PageState.InProgress;
         InitPage(pageData);
         AnimatePage();
     }

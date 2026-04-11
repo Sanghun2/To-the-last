@@ -5,5 +5,6 @@ public class SelectActionConverterContainer : TypeRegistry<SelectionRunnerContex
 {
     public SelectActionConverterContainer() {
         Register<LootSelectionRunnerContext>(new LootSelectActionConverter());
+        Register<DialogSelectionRunnerContext>(new DialogSelectActionConverter());
     }
 }

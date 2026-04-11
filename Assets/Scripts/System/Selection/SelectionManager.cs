@@ -10,7 +10,7 @@ public class SelectionManager
     private SelectionRunnerDataParserContainer runnerDataParserContainer = new SelectionRunnerDataParserContainer();
     private SelectionRunnerContextBuilderContainer runnerContextBuilderContainer = new SelectionRunnerContextBuilderContainer();
     private SelectActionConverterContainer actionConverterContainer = new SelectActionConverterContainer();
-    private SelectionContextBuilderContainer selectionContextBuilderContainer = new SelectionContextBuilderContainer();
+    //private SelectionContextBuilderContainer selectionContextBuilderContainer = new SelectionContextBuilderContainer();
 
     private SelectionButton currentSelectedButton;
 
@@ -20,7 +20,7 @@ public class SelectionManager
         // RunnerSD -> Data
         var selectionData = new SelectionData(selectionSDContext.SelectionSD);
         var selectionRunnerSD = selectionSDContext.SelectionRunnerSD;
-        if (!runnerDataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd type? {selectionSDContext.GetType()}"); return false; }
+        if (!runnerDataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd id? {selectionRunnerSD.ID} sd type? {selectionSDContext.GetType()}"); return false; }
         SelectionRunnerDataBase selectionRunnerData = parser.ParseRunnerData(selectionRunnerSD, selectionData.RequireMinutes);
         
         var selectionBuildContext = new SelectionBuildContext(selectionData, selectionRunnerData);

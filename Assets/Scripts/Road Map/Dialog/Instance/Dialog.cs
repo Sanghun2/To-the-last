@@ -6,7 +6,7 @@ public class Dialog
     public enum State {
         Waiting,
         InProgress,
-        Complete,
+        Completed,
     }
 
     public State CurrentState

@@ -15,9 +15,10 @@ public class DialogUI : DialogUIBase
     }
 
     public override void SkipDialogAnimation() {
-        if (CurrentPageState == PageState.Completed) return;
+        if (CurrentPageState != PageState.InProgress) return;
         if (routineID != default) Managers.Coroutine.StopCoroutine(routineID);
         dialogText.maxVisibleCharacters = dialogText.text.Length;
+        CurrentPageState = PageState.Completed;
     }
 
     protected override void AnimatePage() {

@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5385e41be95ae0c4fad03d998f3eb70a, type: 3}
-  m_Name: df_DialogPageSD
+  m_Name: talk_DialogPageSD
   m_EditorClassIdentifier: Assembly-CSharp::DialogSD
-  id: df
+  id: talk
   displayText: "\uAC70\uAE30"
   descripiton: "\uAC70\uAE30 \uB2F9\uC2E0! \uB204\uAD7D\uB2C8\uAE4C!?"
   categoryList: []
   image: {fileID: 0}
   talkerName: katarina
-  selections:
-  - selectionSD: {fileID: 11400000, guid: a52eac9abc5ccaa43be264f7efb5aa80, type: 2}
-    selectionRunnerSD: {fileID: 11400000, guid: bcfee35c611a9db4f9f7d0cf245cabb8, type: 2}
+  selections: []

@@ -15,7 +15,6 @@ public class DialogPageData
     public string TalkerName => talkerName;
     public string Description => description;
     public IReadOnlyList<SelectionContext> Selections => selections;
-    public int MaxProgress { get; }
     public State CurrentState => currentState;
 
 
@@ -38,12 +37,12 @@ public class DialogPageData
         this.talkerName = talkerName;
         this.description = description;
         this.selections = ConvertSelections(selections);
-        MaxProgress = selections.Count;
     }
 
     private IReadOnlyList<SelectionContext> ConvertSelections(IReadOnlyList<SelectionSDContext> selections) {
         var list = new List<SelectionContext>();
-        for (int i = 0; i < selections.Count; i++) {
+        int count = selections?.Count ?? 0;
+        for (int i = 0; i < count; i++) {
             SelectionSDContext selection = selections[i];
             if (Managers.Select.TryBuildSelectionContext(selection, out var selectionContext)) {
                 list.Add(selectionContext);

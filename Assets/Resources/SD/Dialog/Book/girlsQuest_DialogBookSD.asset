@@ -18,3 +18,7 @@ MonoBehaviour:
   categoryList: []
   dialogPages:
   - {fileID: 11400000, guid: 5132a16662cd063458e165eea6235bd5, type: 2}
+  - {fileID: 11400000, guid: 5132a16662cd063458e165eea6235bd5, type: 2}
+  - {fileID: 11400000, guid: 5132a16662cd063458e165eea6235bd5, type: 2}
+  - {fileID: 11400000, guid: 5132a16662cd063458e165eea6235bd5, type: 2}
+  - {fileID: 11400000, guid: 106b444849900d2478e5a5cdbcbcfce4, type: 2}

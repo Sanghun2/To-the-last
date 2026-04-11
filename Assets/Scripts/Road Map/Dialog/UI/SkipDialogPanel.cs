@@ -9,6 +9,14 @@ public class SkipDialogPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     }
 
     public void OnPointerUp(PointerEventData _) {
-        dialogUI.SkipDialogAnimation();
+        var dialog = Managers.Dialog.CurrentDialog;
+        var page = dialog.CurrentPage;
+        Debug.Log("touched");
+        if (dialogUI.CurrentPageState == DialogUIBase.PageState.InProgress) {
+            dialogUI.SkipDialogAnimation();
+        }
+        else if (dialogUI.CurrentPageState == DialogUIBase.PageState.Completed) {
+            dialog.JumpToNextPage();
+        }
     }
 }

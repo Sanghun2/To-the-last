@@ -28,8 +28,8 @@ public class DialogManager : IInitializable
         // nessasary
         dialog.CurrentState = Dialog.State.InProgress;
         DialogUIBase dialogUIBase = Managers.UI.OpenUI<DialogUI>();
-        dialog.OnPageChanged -= dialogUIBase.UpdatePage;
-        dialog.OnPageChanged += dialogUIBase.UpdatePage;
+        dialog.OnPageChanged -= dialogUIBase.ShowPage;
+        dialog.OnPageChanged += dialogUIBase.ShowPage;
         dialogUIBase.StartDialog(dialog);
         startedDialog = dialog;
 
@@ -44,7 +44,7 @@ public class DialogManager : IInitializable
     }
 
     public bool TryGetDialog(string dialogID, out Dialog dialog) {
-        if (TryGetDialog(dialogID, Dialog.State.Complete, out dialog)) {
+        if (TryGetDialog(dialogID, Dialog.State.Completed, out dialog)) {
             return true;
         }
         else if (TryGetDialog(dialogID, Dialog.State.Waiting, out dialog)) {
@@ -62,7 +62,7 @@ public class DialogManager : IInitializable
             case Dialog.State.InProgress:
                 targetDict = availableDialogDict;
                 break;
-            case Dialog.State.Complete:
+            case Dialog.State.Completed:
                 targetDict = completedDialogDict;
                 break;
             default:
@@ -79,7 +79,7 @@ public class DialogManager : IInitializable
 
     private void CompleteDialog(Dialog targetDialog) {
         if (targetDialog == null) return;
-        targetDialog.CurrentState = Dialog.State.Complete;
+        targetDialog.CurrentState = Dialog.State.Completed;
 
         availableDialogDict.Remove(targetDialog.DialogID);
         completedDialogDict.Add(targetDialog.DialogID, targetDialog);

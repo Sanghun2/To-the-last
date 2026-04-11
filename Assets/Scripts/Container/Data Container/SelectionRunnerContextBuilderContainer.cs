@@ -5,5 +5,6 @@ public class SelectionRunnerContextBuilderContainer : TypeRegistry<SelectionRunn
 {
     public SelectionRunnerContextBuilderContainer() {
         Register<LootSelectionRunnerData>(new LootSelectionRunnerContextBuilder());
+        Register<DialogSelectionRunnerData>(new DialogSelectionRunnerContextBuilder());
     }
 }
