@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class NPCFactory : NPCFactoryBase<NPCData, NPC>
+public class NPCFactory : NPCFactoryBase<QuestNPCData, QuestNPC>
 {
-    public override NPC CreateNPC(NPCData data) {
-        return new NPC(data);
+    public override QuestNPC CreateNPC(QuestNPCData data) {
+        return new QuestNPC(data);
     }
 }

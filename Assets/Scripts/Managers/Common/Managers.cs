@@ -348,9 +348,31 @@ public sealed class Managers : MonoBehaviour
             return _eventBus;
         }
     }
+    public static QuestManager Quest
+    {
+        get
+        {
+            if (_questManager == null) {
+                _questManager = new QuestManager();
+            }
 
+            return _questManager;
+        }
+    }
+    public static NPCManager NPC
+    {
+        get
+        {
+            if (_npcManager == null) {
+                _npcManager = new NPCManager();
+            }
+
+            return _npcManager;
+        }
+    }
 
     // InGame
+    private static NPCManager _npcManager;
     private static StructureManager _structureManager;
     private static UpgradeManager _upgradeManager;
     private static InventoryManager _inventoryManager;
@@ -374,6 +396,7 @@ public sealed class Managers : MonoBehaviour
     private static CharacterManager _characterManager;
 
     // Common
+    private static QuestManager _questManager;
     private static EventBus _eventBus;
     private static ScreenBlockCanvas _screenBlocker;
     private static SoundManager _soundManager;

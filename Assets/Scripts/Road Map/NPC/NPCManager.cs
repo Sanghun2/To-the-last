@@ -8,7 +8,7 @@ public sealed class NPCManager : IInitializable
 
     private Dictionary<string, NPCBase> npcDict = new Dictionary<string, NPCBase>();
     private NPCDataParserContainer npcDataParserContainer = new NPCDataParserContainer();
-    private NPCFactoryContainer npcFactoryContainer = new NPCFactoryContainer();
+    private NPCCreatorContainer npcCreatorContainer = new NPCCreatorContainer();
     private bool _isInit;
 
     public void Init() {
@@ -16,11 +16,6 @@ public sealed class NPCManager : IInitializable
 
         _isInit = true;
     }
-
-    // 전체 캐릭터
-
-    // 현재 맵에 활성화 된 캐릭터
-
 
     public void RegisterNPC(NPCSDBase npcSD) {
         RegisterNPC(CreateNPC(npcSD));
@@ -46,7 +41,7 @@ public sealed class NPCManager : IInitializable
         return CreateNPC(npcData);
     }
     private NPCBase CreateNPC(NPCDataBase npcData) {
-        if (!npcFactoryContainer.TryGet(npcData, out var factory)) { Debug.LogError($"({npcData.GetType()}) factory is not exist"); return null; }
+        if (!npcCreatorContainer.TryGet(npcData, out var factory)) { Debug.LogError($"({npcData.GetType()}) factory is not exist"); return null; }
         return factory.CreateNPC(npcData);
     }
 }
