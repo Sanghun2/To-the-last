@@ -9856,7 +9856,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 780813280064379446, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1288795695610642450, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
       propertyPath: m_Name
@@ -9976,7 +9976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8301787622869113953, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8352181642207831885, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
       propertyPath: expensionLevel
@@ -10523,6 +10523,10 @@ PrefabInstance:
     - target: {fileID: 7141098096287531403, guid: c56ee8a1064eab94b97622b9ca61b811, type: 3}
       propertyPath: m_Name
       value: Dialog Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141098096287531403, guid: c56ee8a1064eab94b97622b9ca61b811, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

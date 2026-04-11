@@ -7,6 +7,7 @@ public sealed class NPCManager : IInitializable
     public bool IsInit => _isInit;
 
     private Dictionary<string, NPCBase> npcDict = new Dictionary<string, NPCBase>();
+
     private NPCDataParserContainer npcDataParserContainer = new NPCDataParserContainer();
     private NPCCreatorContainer npcCreatorContainer = new NPCCreatorContainer();
     private bool _isInit;
@@ -17,11 +18,24 @@ public sealed class NPCManager : IInitializable
         _isInit = true;
     }
 
-    public void RegisterNPC(NPCSDBase npcSD) {
-        RegisterNPC(CreateNPC(npcSD));
+    public bool TryActivateNPC(NPCSDBase npcSD) {
+        return TryActivateNPC(CreateNPC(npcSD));
     }
-    public void RegisterNPC(NPCBase npcBase) {
+    public bool TryActivateNPC(NPCBase npcBase) {
+        if (npcBase == null) { Debug.LogError($"npc is null"); return false; }
+
+        npcBase.InitNPC();
         npcDict[npcBase.ID] = npcBase;
+        return true;
+    }
+    public bool TryInactivateNPC(string npcID) {
+        if (npcDict.TryGetValue(npcID, out var targetNPC)) {
+            targetNPC.ReleaseNPC();
+            npcDict.Remove(npcID);
+            return true;
+        }
+
+        return false;
     }
 
     public bool TryGetNPC(string npcID, out NPCBase npc) {

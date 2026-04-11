@@ -5,7 +5,9 @@ public class QuestRegisterSelectActionConverter : SelectActionConverterBase<Ques
 {
     protected override Action SelectAction(QuestRegisterSelectionRunnerContext context) {
         return () => {
-            Managers.NPC.RegisterNPC(new QuestNPC(context.NPCData));
+            if (Managers.NPC.TryActivateNPC(new QuestNPC(context.NPCData))) {
+                
+            }
         };
     }
 }

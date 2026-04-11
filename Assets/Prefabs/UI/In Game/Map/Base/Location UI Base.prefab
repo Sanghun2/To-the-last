@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7946948930190371635}
   - component: {fileID: -3021669726770511855}
   m_Layer: 5
-  m_Name: Location UI
+  m_Name: Location UI Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

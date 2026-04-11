@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class NPCDataParser : NPCDataParserBase<NPCSD, NPCData>
+public class NPCDataParser : NPCDataParserBase<NPCSD, TradeNPCData>
 {
-    public override NPCData ParseData(NPCSD npcSD) {
-        return new NPCData(npcSD.ID);
+    public override TradeNPCData ParseData(NPCSD npcSD) {
+        return new TradeNPCData(npcSD.ID);
     }
 }
