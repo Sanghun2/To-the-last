@@ -7,12 +7,13 @@ public class ItemSD : ImageSDBase
 {
     public int MaxStackCount => maxStackCount;
     public int Weight => weight;
-
+    public float Value => value;
 
     [SerializeField] int weight = 2;
+    [SerializeField] float value = 1;
     [SerializeField] int maxStackCount;
 
-    protected virtual void OnValidate() {
+    protected override void OnValidate() {
         RenameAsset(ID, suffix: "_ItemSD");
     }
 }
