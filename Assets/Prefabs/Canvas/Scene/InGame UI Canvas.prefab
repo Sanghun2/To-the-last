@@ -1299,6 +1299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGame UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5876670413800338492, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7112041921639577271, guid: c7f505cda2ed80749bb809b70a636bb7, type: 3}
       propertyPath: m_Pivot.x
       value: 0

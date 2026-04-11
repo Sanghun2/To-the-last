@@ -11,5 +11,6 @@ public abstract class NPCBase
 
 
     public abstract void InitNPC();
+    public abstract void ActiveNPC();
     public abstract void ReleaseNPC();
 }

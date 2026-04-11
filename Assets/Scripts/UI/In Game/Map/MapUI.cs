@@ -8,7 +8,7 @@ public class MapUI : UIBase
         get
         {
             if (_locationPointer == null) {
-                _locationPointer = FindAnyObjectByType<LocationPointer>(FindObjectsInactive.Include);  
+                _locationPointer = GetComponentInChildren<LocationPointer>(true);  
                 if (_locationPointer == null) { Debug.LogError($"<color=red>failed to find location pointer</color>"); }
             }
 

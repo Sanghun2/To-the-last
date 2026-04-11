@@ -1513,10 +1513,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2878741141085099400, guid: bfdfd5bd88c016243816d9ce83a5d765, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5929608810473597395, guid: bfdfd5bd88c016243816d9ce83a5d765, type: 3}
       propertyPath: m_Name
       value: Message Canvas
@@ -1925,7 +1921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044411773274155447, guid: 148d107414c38944a81c453a750ee986, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7719,10 +7715,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2021880856187124884, guid: ed88c9ea1774b8d4b8de77ec6707b855, type: 3}
-      propertyPath: m_SortingOrder
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3400786190078361119, guid: ed88c9ea1774b8d4b8de77ec6707b855, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9866,6 +9858,10 @@ PrefabInstance:
       propertyPath: expensionLevel
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3026016229638018979, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
+      propertyPath: m_Name
+      value: Location Marker UI Container
+      objectReference: {fileID: 0}
     - target: {fileID: 3778245259227810805, guid: b7a463ad00a4f9f478ea2a73a0bd0222, type: 3}
       propertyPath: expensionLevel
       value: 7
@@ -10355,10 +10351,6 @@ PrefabInstance:
     - target: {fileID: 1257643324386704142, guid: c56ee8a1064eab94b97622b9ca61b811, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1631185943292542416, guid: c56ee8a1064eab94b97622b9ca61b811, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1985008117769050945, guid: c56ee8a1064eab94b97622b9ca61b811, type: 3}
       propertyPath: m_Value

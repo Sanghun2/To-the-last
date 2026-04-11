@@ -6,10 +6,13 @@ public class QuestNPC : NPCBase
 
     }
 
+
     public override void InitNPC() {
         throw new System.NotImplementedException();
     }
-
+    public override void ActiveNPC() {
+        throw new System.NotImplementedException();
+    }
     public override void ReleaseNPC() {
         throw new System.NotImplementedException();
     }

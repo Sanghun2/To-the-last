@@ -5,12 +5,24 @@ using UnityEngine;
 public sealed class NPCManager : IInitializable
 {
     public bool IsInit => _isInit;
+    public TradeNPCMarkerUIContainer tradeNPCMarkerUIContainer
+    {
+        get
+        {
+            if(_tradeNPCMarkerUIContainer == null) {
+                _tradeNPCMarkerUIContainer = GameObject.FindAnyObjectByType<TradeNPCMarkerUIContainer>(FindObjectsInactive.Exclude);
+            }
+
+            return _tradeNPCMarkerUIContainer;
+        }
+    }
 
     private Dictionary<string, NPCBase> npcDict = new Dictionary<string, NPCBase>();
 
     private NPCDataParserContainer npcDataParserContainer = new NPCDataParserContainer();
     private NPCCreatorContainer npcCreatorContainer = new NPCCreatorContainer();
     private bool _isInit;
+    private TradeNPCMarkerUIContainer _tradeNPCMarkerUIContainer;
 
     public void Init() {
         if (IsInit) return;
@@ -25,6 +37,7 @@ public sealed class NPCManager : IInitializable
         if (npcBase == null) { Debug.LogError($"npc is null"); return false; }
 
         npcBase.InitNPC();
+        npcBase.ActiveNPC();
         npcDict[npcBase.ID] = npcBase;
         return true;
     }
@@ -49,7 +62,7 @@ public sealed class NPCManager : IInitializable
 
 
     private NPCBase CreateNPC(NPCSDBase npcSD) {
-        if (npcDataParserContainer.TryGet(npcSD, out var parser)) { Debug.LogError($"<color=red>({npcSD.GetType()}) data parser is null</color>"); return null; }
+        if (!npcDataParserContainer.TryGet(npcSD, out var parser)) { Debug.LogError($"<color=red>({npcSD.GetType()}) data parser is null</color>"); return null; }
         NPCDataBase npcData = parser.ParseData(npcSD);
 
         return CreateNPC(npcData);

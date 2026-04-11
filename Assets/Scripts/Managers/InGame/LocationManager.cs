@@ -19,29 +19,29 @@ public class LocationManager : IInitializable
             }
         }
     }
-    private LocationUIContainer LocationUIContainer
-    {
-        get
-        {
-            if (_container == null) {
-                _container = GameObject.FindAnyObjectByType<LocationUIContainer>(FindObjectsInactive.Include);
-                if (_container == null) Debug.LogError($"LocationUIContainer is null");
-            }
+    //private LocationMarkerUIContainer LocationUIContainer
+    //{
+    //    get
+    //    {
+    //        if (_container == null) {
+    //            _container = GameObject.FindAnyObjectByType<LocationMarkerUIContainer>(FindObjectsInactive.Include);
+    //            if (_container == null) Debug.LogError($"LocationUIContainer is null");
+    //        }
 
-            return _container;
-        }
-    }
+    //        return _container;
+    //    }
+    //}
 
     public bool IsInit => _isInit;
 
     private Dictionary<string, Location> locationDict = new Dictionary<string, Location>();
-    private LocationUIContainer _container;
+    //private LocationMarkerUIContainer _container;
     private bool _isInit;
     private Location currentLocation;
     private LocationBuilder locationBuilder = new LocationBuilder();
 
     public event Action<Location, Location> OnLocationChanged;
-    public event Action<Location, LocationUI> OnLocationActived;
+    public event Action<Location, LocationMarkerUI> OnLocationActived;
 
     public bool TryRegisterLocation(Location newLocation) {
         if (locationDict.TryAdd(newLocation.LocationUID, newLocation) == false) {
@@ -123,7 +123,7 @@ public class LocationManager : IInitializable
     public bool TryActivateLocation(Location location, Action<Location> onActivated =null) {
         if (location == null) { Debug.LogError($"<color=red>location null</color>"); return false; }
 
-        if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
+        //if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
 
         CreateLocationUI(location);
         onActivated?.Invoke(location);
@@ -275,11 +275,13 @@ public class LocationManager : IInitializable
         TryUnlockMainLocation(houseID, 1, out var house);
     }
     private void CreateLocationUI(Location location) {
-        var locationUI = LocationUIContainer.GetObj();
-        locationUI.InitLocation(location);
-        location.ClearLocationEvent();
-        location.OnLocationStateChanged += locationUI.UpdateUI;
-        location.Activate();
-        OnLocationActived?.Invoke(location, locationUI);
+        if (Managers.MapMarker.TryGet<LocationMarkerUI, LocationMarkerUIContainer>(out var container)) {
+            LocationMarkerUI locationUI = container.GetObj();
+            locationUI.InitLocation(location);
+            location.ClearLocationEvent();
+            location.OnLocationStateChanged += locationUI.UpdateUI;
+            location.Activate();
+            OnLocationActived?.Invoke(location, locationUI);
+        }
     }
 }

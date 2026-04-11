@@ -370,8 +370,20 @@ public sealed class Managers : MonoBehaviour
             return _npcManager;
         }
     }
+    public static MapMarkerActivator MapMarker
+    {
+        get
+        {
+            if (_mapMarkerActivator == null) {
+                _mapMarkerActivator = new MapMarkerActivator();
+            }
+
+            return _mapMarkerActivator;
+        }
+    }
 
     // InGame
+    private static MapMarkerActivator _mapMarkerActivator;
     private static NPCManager _npcManager;
     private static StructureManager _structureManager;
     private static UpgradeManager _upgradeManager;

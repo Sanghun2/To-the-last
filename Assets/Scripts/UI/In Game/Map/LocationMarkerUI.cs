@@ -3,10 +3,8 @@ using System.Net.NetworkInformation;
 using BilliotGames;
 using UnityEngine;
 
-public class LocationUI : UIBase, IPool
+public class LocationMarkerUI : MarkerUIBase
 {
-    public bool IsActive => IsOpened;
-
     [SerializeField] ContentUI contentUI;
     [SerializeField] Location location;
 
@@ -45,18 +43,6 @@ public class LocationUI : UIBase, IPool
     }
 
 
-    #region Pool
-    public void Init() {
-        InitUI();
-    }
-    public void Activate() {
-        OpenUI();
-    }
-    public void Return() {
-        CloseUI();
-    }
-
-    #endregion
 
     protected override void Start() {
         base.Start();
