@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class TradeNPCMarkerUI : NPCMarkerUIBase, IPool
+public class TradeNPCMarkerUI : MarkerUIBase, IPool
 {
-
 }

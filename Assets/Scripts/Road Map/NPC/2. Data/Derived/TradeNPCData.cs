@@ -2,7 +2,9 @@
 
 public class TradeNPCData : NPCDataBase
 {
-    public TradeNPCData(string npcID) : base(npcID) {
-        
+    public Sprite IconImage { get; }
+
+    public TradeNPCData(string npcID, Sprite iconImage) : base(npcID) {
+        IconImage = iconImage;
     }
 }

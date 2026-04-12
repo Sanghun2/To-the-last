@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa56d329ac95dae4b80d070485ef4db0, type: 3}
-  m_Name: raggedGirl_NPCSD
+  m_Name: raggedGirl_TradeNPCSD
   m_EditorClassIdentifier: Assembly-CSharp::NPCSD
   id: raggedGirl
   displayText: "\uAF80\uC8C4\uC8C4\uD55C \uC18C\uB140"

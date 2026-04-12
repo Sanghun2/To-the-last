@@ -1,9 +1,10 @@
 ﻿using BilliotGames;
 using UnityEngine;
 
-public sealed class NPCCreatorContainer : TypeRegistry<NPCDataBase, NPCFactoryBase>
+public sealed class NPCCreatorContainer : TypeRegistry<NPCDataBase, NPCCreatorBase>
 {
     public NPCCreatorContainer() {
-        Register<TradeNPCData>(new NPCFactory());
+        Register<QuestNPCData>(new QuestNPCCreator());
+        Register<TradeNPCData>(new TradeNPCCreator());
     }
 }

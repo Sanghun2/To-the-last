@@ -90,27 +90,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189964185898138483, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
       propertyPath: m_Name
-      value: Location UI
+      value: Location Marker UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2339347904290331402, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8189964185898138483, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8458661616968635801}
   m_SourcePrefab: {fileID: 100100000, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
---- !u!114 &3257274959141037596 stripped
+--- !u!114 &1834942484608496086 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 316432414592483886, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3469774732445390308, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
   m_PrefabInstance: {fileID: 2976909914671424562}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070469985f1ef2244afbc842245ecf35, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ContentUI
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1903082722392123793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3690981836248944035, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
+  m_PrefabInstance: {fileID: 2976909914671424562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &6411017845470469953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8189964185898138483, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
@@ -128,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c0a895f594e424f922ec7f25119e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationUI
-  contentUI: {fileID: 3257274959141037596}
+  markerImage: {fileID: 1834942484608496086}
+  actionButton: {fileID: 1903082722392123793}
   location:
     locationUID: 
     locationCategoryID: 

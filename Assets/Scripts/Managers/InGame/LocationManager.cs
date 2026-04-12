@@ -77,14 +77,14 @@ public class LocationManager : IInitializable
         locationDict.Remove(locationSD.ID);
     }
 
-    public bool TryGetLocation(string locationID, out Location location) {
+    public bool TryGetLocation(string locationUID, out Location location) {
         location = null;
-        if (string.IsNullOrEmpty(locationID)) { Debug.LogError($"<color=red>location null</color>"); return false; }
-        if (locationDict.TryGetValue(locationID, out location)) {
+        if (string.IsNullOrEmpty(locationUID)) { Debug.LogError($"<color=red>location null</cTryGetLocationolor>"); return false; }
+        if (locationDict.TryGetValue(locationUID, out location)) {
             return true;
         }
 
-        Debug.LogError($"<color=red>진행중인 ({locationID}) Location이 없음</color>");
+        Debug.LogError($"<color=red>진행중인 ({locationUID}) Location이 없음</color>");
         return false;
     }
     public bool TryGetLocation(LocationSD locationSD, out Location location) {
@@ -175,8 +175,8 @@ public class LocationManager : IInitializable
         var targetHz = Random.Range(Define.Value.MIN_HZ_VALUE, Define.Value.MAX_HZ_VALUE);
         return Mathf.Round(targetHz * 10f) / 10f;
     }
-    private Vector2 CreateRandomCoordinate() {
-        return new Vector2(Random.Range(-350, 350), Random.Range(-550, 420));
+    private (int markerInex, Vector2 point)? CreateRandomCoordinate() {
+        return LocationUtility.GenerateRandomLocationCoordinate();
     }
     private string CreateNewLocationUID(LocationInfoSD randomLocationSD) {
         return $"{randomLocationSD.ID}-{Guid.NewGuid()}";
@@ -221,6 +221,7 @@ public class LocationManager : IInitializable
             coordinate.LocationUID, 
             coordinate.LocationCategoryID,
             coordinate.LocationName,
+            coordinate.MarkerIndex,
             coordinate.AnchoredPosition,
             finalEncounterList);
 
@@ -237,14 +238,9 @@ public class LocationManager : IInitializable
             locationSD.ID,
             locationSD.CategoryID,
             locationSD.DisplayText,
-            locationSD.AnchoredPosition,
-            essentialEncounterList
-
-            //locationSD.StoryDescription,
-            //locationSD.MainImage,
-            //locationSD.IconImage,
-            //locationSD.NextLocation?.ID
-            );
+            locationSD.MarkerIndex,
+            LocationUtility.TryGetGridOrRandom(locationSD.MarkerIndex, out var pointInfo) ? pointInfo.point,
+            essentialEncounterList);
     }
 
     private bool TryGetLocationSD(string locationSDID, out LocationSD locationSD) {

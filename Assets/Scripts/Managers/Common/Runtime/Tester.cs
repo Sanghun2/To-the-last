@@ -71,12 +71,12 @@ public class Tester : MonoBehaviour
     }
 
     public void MovePointer() {
-        var start = startLocationSD.AnchoredPosition;
-        var end = endLocationSD.AnchoredPosition;
-        Managers.Job.StopFocusJob();
-        Managers.UI.GetUI<LocationPointer>().MovePosition(start, end, moveDuration, () => {
-            Debug.Log($"이동 완료");
-        });
+        //var start = startLocationSD.AnchoredPosition;
+        //var end = endLocationSD.AnchoredPosition;
+        //Managers.Job.StopFocusJob();
+        //Managers.UI.GetUI<LocationPointer>().MovePosition(start, end, moveDuration, () => {
+        //    Debug.Log($"이동 완료");
+        //});
     }
     public void PausePointer() {
         var pointer = Managers.UI.GetUI<LocationPointer>();

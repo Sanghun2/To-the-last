@@ -4,6 +4,6 @@ using UnityEngine;
 public class NPCDataParserContainer : TypeRegistry<NPCSDBase, NPCDataParserBase>
 {
     public NPCDataParserContainer() {
-        Register<NPCSD>(new NPCDataParser());
+        Register<TradeNPCSD>(new NPCDataParser());
     }
 }

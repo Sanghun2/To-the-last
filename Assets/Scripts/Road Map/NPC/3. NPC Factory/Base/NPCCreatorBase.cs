@@ -1,12 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class NPCFactoryBase
+public abstract class NPCCreatorBase
 {
     public abstract NPCBase CreateNPC(NPCDataBase npcData);
 }
 
-public abstract class NPCFactoryBase<TData, TInstance> : NPCFactoryBase
+public abstract class NPCCreatorBase<TData, TInstance> : NPCCreatorBase
     where TData : NPCDataBase
     where TInstance : NPCBase
 {

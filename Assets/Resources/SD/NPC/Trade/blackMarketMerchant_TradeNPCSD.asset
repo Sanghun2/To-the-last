@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa56d329ac95dae4b80d070485ef4db0, type: 3}
+  m_Name: blackMarketMerchant_TradeNPCSD
+  m_EditorClassIdentifier: Assembly-CSharp::TradeNPCSD
+  id: blackMarketMerchant
+  displayText: "\uC554\uC2DC\uC7A5 \uC0C1\uC778"
+  descripiton: "\uC554\uC2DC\uC7A5 \uC0C1\uC778\uC774\uB2E4"
+  categoryList: []
+  iconImage: {fileID: 21300000, guid: 1a02185071e4fd94b95281875fd45c37, type: 3}
+  tradeItemList:
+  - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
+    initAmount: 3

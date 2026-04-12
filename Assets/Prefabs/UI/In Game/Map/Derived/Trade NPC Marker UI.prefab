@@ -117,3 +117,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f619f2202479f64693eebb51843fcfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TradeNPCMarkerUI
+  markerImage: {fileID: 7493638792875541788}
+  actionButton: {fileID: 7269052891987320155}
+--- !u!114 &7269052891987320155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3690981836248944035, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
+  m_PrefabInstance: {fileID: 6330334272643633400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &7493638792875541788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3469774732445390308, guid: a4987a4ad5812864fa834826b83e88e4, type: 3}
+  m_PrefabInstance: {fileID: 6330334272643633400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
