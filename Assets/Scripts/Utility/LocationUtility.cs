@@ -1,20 +1,31 @@
-﻿using System;
-using Unity.VisualScripting;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class LocationUtility
 {
+    public static MarkerGridGenerator MarkerGridGenerator
+    {
+        get
+        {
+            if (_markerGridGenerator == null) {
+                _markerGridGenerator = GameObject.FindAnyObjectByType<MarkerGridGenerator>();
+            }
+
+            return _markerGridGenerator;
+        }
+    }
+
     public static string basementSDID = "basement";
+    private static MarkerGridGenerator _markerGridGenerator;
 
     public static float CalculateDistance(Vector2 startPos, Vector2 endPos) {
         //Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
         return Vector2.Distance(startPos, endPos);
     }
-    public static float CalculateDistance(LocationSD currentLocation, LocationSD destination) {
+    public static float CalculateDistance(Location currentLocation, Location destination) {
         return CalculateDistance(currentLocation.AnchoredPosition, destination.AnchoredPosition);
     }
     public static int ConvertToMinutes(this float distance) {
@@ -26,7 +37,7 @@ public static class LocationUtility
     public static (int hour, int minutes) ConvertToTime(this float distance) {
         return (GetHour(distance), GetMinute(distance));
     }
- 
+
     public static Location FindLocation(string locationID) {
         if (Managers.Location.TryGetLocation(locationID, out Location location)) {
             return location;
@@ -35,38 +46,21 @@ public static class LocationUtility
         return null;
     }
 
+    public static (int markerIndex, Vector2 point)? GenerateRandomLocationCoordinate() {
+        return MarkerGridGenerator.GetRandomAvailableGrid();
+    }
+    public static bool TryGetGridOrRandom(int markerIndex, out (int index, Vector2 point) pointInfo) {
+        if (MarkerGridGenerator.TryGetGridOrRandom(markerIndex, out pointInfo)) {
+            return true;
+        }
+
+        return false;
+    }
 
 #if UNITY_EDITOR
 
-    [MenuItem("Tools/Location/Recalculate Location Distances")]
-    public static void Recalculate() {
-        // 기준 집 RunnerSD 찾기
-        LocationSD basementSD = FindHomeSD();
-        if (basementSD == null) {
-            Debug.LogError("basementSD not found");
-            return;
-        }
+    private static Vector2 CompletelyRandomCoordinate() => new Vector2(Random.Range(-350, 350), Random.Range(-550, 420));
 
-        Vector2 basementPos = basementSD.AnchoredPosition;
-
-        // 모든 Location 로드
-        var guids = AssetDatabase.FindAssets("t:LocationSD");
-
-        foreach (var guid in guids) {
-            string path = AssetDatabase.GUIDToAssetPath(guid);
-            var location = AssetDatabase.LoadAssetAtPath<LocationSD>(path);
-
-            if (location.ID.Equals(basementSDID)) continue;
-            float dist = CalculateDistance(basementPos, location.AnchoredPosition);
-
-            Undo.RecordObject(location, "Recalculate Distance");
-            location.SetDistance(dist);
-            EditorUtility.SetDirty(location);
-        }
-
-        AssetDatabase.SaveAssets();
-        Debug.Log("Location distances recalculated");
-    }
     private static LocationSD FindHomeSD() {
         var guids = AssetDatabase.FindAssets("t:LocationSD");
 
