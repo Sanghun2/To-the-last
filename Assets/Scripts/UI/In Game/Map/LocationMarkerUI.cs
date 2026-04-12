@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class LocationMarkerUI : MarkerUIBase
 {
-    [SerializeField] ContentUI contentUI;
     [SerializeField] Location location;
 
 
@@ -13,9 +12,10 @@ public class LocationMarkerUI : MarkerUIBase
         if (location == null || location.Data == null) return;
 
         this.location = location;
-        SetUIView(location.Data);
-        SetPosition(location.Data.AnchoredPosition);
-        contentUI.SetButtonAction(() => OpenPopUp(location));
+
+        gameObject.name = $"Location UI_{location.Data.LocationUID}";
+        InitMarker(location.Data.IconImage, () => OpenPopUp(location));
+        SetPosition(new (location.Data.MarkerIndex, location.Data.AnchoredPosition));
     }
 
 
@@ -50,20 +50,6 @@ public class LocationMarkerUI : MarkerUIBase
         InitLocation(location);
     }
 
-    private void Reset() {
-        if (contentUI == null) {
-            contentUI = GetComponentInChildren<ContentUI>();
-        }
-    }
-
-    private void SetUIView(LocationData locationData) {
-        if (locationData == null) { Debug.Log($"location sd null. location 정보 set 불가"); return; }
-        gameObject.name = $"Location UI_{locationData.LocationUID}";
-        contentUI.SetContentImage(locationData.IconImage);
-    }
-    private void SetPosition(Vector2 anchoredPosition) {
-        GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-    }
     private void OpenPopUp(Location location) {
         Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(location);
     }
