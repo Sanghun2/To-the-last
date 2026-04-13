@@ -64,6 +64,10 @@ public class Job
     public void ChangeMinutes(int day, int hour, int minute, int deltaMinutes) {
         ChangeMinutes(deltaMinutes);
     }
+
+    public void SetCurrentMinutes(int currentMinutes) {
+        this.currentMinutes = currentMinutes;
+    }
 }
 
 [Serializable]
