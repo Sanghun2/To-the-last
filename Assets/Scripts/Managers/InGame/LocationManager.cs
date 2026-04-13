@@ -35,7 +35,6 @@ public class LocationManager : IInitializable
     public bool IsInit => _isInit;
 
     private Dictionary<string, LocationBase> locationDict = new Dictionary<string, LocationBase>();
-    //private LocationMarkerUIContainer _container;
     private bool _isInit;
     private LocationBase currentLocation;
     private LocationBuilder locationBuilder = new LocationBuilder();
