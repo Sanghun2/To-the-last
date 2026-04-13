@@ -6,7 +6,7 @@ public class ExplorationInfoUI : UIBase
 {
     [SerializeField] TextMeshProUGUI locationNameText;
 
-    public void InitInfoUI(Location location) {
+    public void InitInfoUI(ExplorationLocation location) {
         locationNameText.text = location.LocationName;
     }
 }

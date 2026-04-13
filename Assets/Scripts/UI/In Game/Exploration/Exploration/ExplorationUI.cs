@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ExplorationData
 {
-    //public Location Location => location;
+    //public ExplorationLocation ExplorationLocation => location;
     //public Data Data => location == null ? null : location.Data;
     public EncounterDataBase CurrentEvent => location.Data.LocationEventList[location.CurrentValue];
 
-    [SerializeField] Location location;
+    [SerializeField] ExplorationLocation location;
 
-    public ExplorationData(Location location) {
+    public ExplorationData(ExplorationLocation location) {
         this.location = location;
     }
 }
@@ -47,7 +47,7 @@ public class ExplorationUI : UIBase
         _isInit = true;
     }
 
-    public void InitLocationUI(Location location) {
+    public void InitLocationUI(ExplorationLocation location) {
         InitUI();
         mainBackgroundImage.sprite = location.Data.MainImage;
         HideSituation();

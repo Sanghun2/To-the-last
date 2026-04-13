@@ -3,7 +3,7 @@ using BilliotGames;
 using UnityEngine;
 
 [Serializable]
-public class Location : IValue<int>, IEquatable<Location>
+public class ExplorationLocation : LocationBase, IValue<int>
 {
     public enum LocationState {
         Undiscovered,
@@ -25,9 +25,7 @@ public class Location : IValue<int>, IEquatable<Location>
             }
         }
     }
-    public string LocationUID => data.LocationUID;
     public string LocationName => displayName;
-    public LocationData Data => data;
 
     public InventoryBase Inventory
     {
@@ -63,28 +61,31 @@ public class Location : IValue<int>, IEquatable<Location>
     [NonSerialized] private LocationData data;
     private string nextLocationID;
 
-    public Location(LocationData locationData) {
-        this.data = locationData;
-        locationUID = locationData.LocationUID;
-        locationCategoryID = locationData.LocationCategoryID;
-        _currentState = LocationState.Undiscovered;
-        nextLocationID = locationData.NextLocationID;
-        displayName = locationData.DisplayText;
-        AnchoredPosition = locationData.AnchoredPosition;
+    public ExplorationLocation(LocationData data) : base(data) {
+        this.data = data;
     }
+    //public ExplorationLocation(LocationData locationData) {
+    //    this.data = locationData;
+    //    locationUID = locationData.LocationUID;
+    //    locationCategoryID = locationData.LocationCategoryID;
+    //    _currentState = LocationState.Undiscovered;
+    //    nextLocationID = locationData.NextLocationID;
+    //    displayName = locationData.DisplayText;
+    //    AnchoredPosition = locationData.AnchoredPosition;
+    //}
 
-    public Location(CoordinateData coordinate) {
-        data = new LocationData(coordinate);
-        locationUID = coordinate.LocationUID;
-        displayName = coordinate.LocationName;
-        _currentState = LocationState.Undiscovered;
-        AnchoredPosition = coordinate.AnchoredPosition;
-    }
+    //public ExplorationLocation(CoordinateData coordinate) {
+    //    data = new LocationData(coordinate);
+    //    locationUID = coordinate.LocationUID;
+    //    displayName = coordinate.LocationName;
+    //    _currentState = LocationState.Undiscovered;
+    //    AnchoredPosition = coordinate.AnchoredPosition;
+    //}
 
     public event Action<int, int> OnProgressChanged;
     public event Action<LocationState, LocationState> OnLocationStateChanged;
 
-    public Location InitProgress(int current, int max) {
+    public ExplorationLocation InitProgress(int current, int max) {
         currentProgress = current;
         maxProgress = max;
         OnProgressChanged?.Invoke(current, max);
@@ -99,11 +100,11 @@ public class Location : IValue<int>, IEquatable<Location>
         }
     }
 
-    public Location Activate() {
+    public ExplorationLocation Activate() {
         CurrentState = LocationState.Exploring;
         return this;
     }
-    public Location Deactivate() {
+    public ExplorationLocation Deactivate() {
         CurrentState = LocationState.Undiscovered;
         return this;
     }
@@ -111,11 +112,5 @@ public class Location : IValue<int>, IEquatable<Location>
     public void ClearLocationEvent() {
         OnLocationStateChanged = null;
         OnProgressChanged = null;
-    }
-
-    public bool Equals(Location other) {
-        if (this == null || other == null) return false;
-
-        return locationUID.Equals(other.locationUID);
     }
 }

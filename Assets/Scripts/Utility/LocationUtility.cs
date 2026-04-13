@@ -25,7 +25,7 @@ public static class LocationUtility
         //Debug.Log($"[Test] distance: {Vector2.Distance(startPos, endPos)}");
         return Vector2.Distance(startPos, endPos);
     }
-    public static float CalculateDistance(Location currentLocation, Location destination) {
+    public static float CalculateDistance(ExplorationLocation currentLocation, ExplorationLocation destination) {
         return CalculateDistance(currentLocation.AnchoredPosition, destination.AnchoredPosition);
     }
     public static int ConvertToMinutes(this float distance) {
@@ -38,8 +38,8 @@ public static class LocationUtility
         return (GetHour(distance), GetMinute(distance));
     }
 
-    public static Location FindLocation(string locationID) {
-        if (Managers.Location.TryGetLocation(locationID, out Location location)) {
+    public static ExplorationLocation FindLocation(string locationID) {
+        if (Managers.Location.TryGetLocation(locationID, out ExplorationLocation location)) {
             return location;
         }
 

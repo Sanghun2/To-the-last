@@ -35,7 +35,7 @@ public class LocationPointer : UIBase
         }
     }
 
-    public void MovePosition(Location startLocation, Location endLocation, float duration = MOVE_DURATION, Action callback = null) {
+    public void MovePosition(ExplorationLocation startLocation, ExplorationLocation endLocation, float duration = MOVE_DURATION, Action callback = null) {
         MovePosition(startLocation.Data, endLocation.Data, duration, callback);
     }
     public void MovePosition(LocationData startLocationData, LocationData endLocationData, float duration = MOVE_DURATION, Action callback = null) {

@@ -26,7 +26,7 @@ public class LootSelectActionConverter : SelectActionConverterBase<LootSelection
             //    }
             //}
 
-            //var locationUID = Managers.Location.CurrentLocation.LocationUID;
+            //var locationUID = Managers.ExplorationLocation.CurrentLocation.LocationUID;
             //Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(locationUID, Exploration.PageState.Exploring);
         };
     }

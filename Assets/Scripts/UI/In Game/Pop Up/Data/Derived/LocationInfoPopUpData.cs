@@ -2,17 +2,17 @@
 
 public class LocationInfoPopUpData : PopUpData, IImageContent
 {
-    public Location Location => location;
+    public ExplorationLocation Location => location;
     public Sprite Image => location.Data.MainImage;
 
-    [SerializeField] Location location;
+    [SerializeField] ExplorationLocation location;
 
 
     public LocationInfoPopUpData(string title, string description, ActionData[] buttonActions) : base(title, description, buttonActions) {
     }
 
 
-    public LocationInfoPopUpData(Location location, ActionData[] buttonActions)
+    public LocationInfoPopUpData(ExplorationLocation location, ActionData[] buttonActions)
         : base(location.LocationName, location.StoryDescription, buttonActions) {
         this.location = location;
     }

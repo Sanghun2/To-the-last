@@ -17,11 +17,11 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         int maxProgress = locationData.LocationEventList?.Count ?? -1;
         InitProgressUI(currentProgress, maxProgress);
 
-        Location destination = popUpData.Location;
-        Location currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        ExplorationLocation destination = popUpData.Location;
+        ExplorationLocation currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
         InitMoveTimeUI(currentLocation, destination);
     }
-    public void InitPopUp(Location location) {
+    public void InitPopUp(ExplorationLocation location) {
         var popUpData = new LocationInfoPopUpData(
             location,
             new ActionData[] {
@@ -38,7 +38,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         }
         progressText.gameObject.SetActive(showProgress);
     }
-    private void InitMoveTimeUI(Location currentLocation, Location destination) {
+    private void InitMoveTimeUI(ExplorationLocation currentLocation, ExplorationLocation destination) {
         bool isSamePosition = currentLocation.Equals(destination);
         moveTimeExpectationText.gameObject.SetActive(!isSamePosition);
         if (isSamePosition) return;
@@ -50,16 +50,16 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
 
     #region UI Info
-    private string GetButtonText(Location destination) {
-        Location currentSD = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
-        Location destinationSD = destination;
+    private string GetButtonText(ExplorationLocation destination) {
+        ExplorationLocation currentSD = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        ExplorationLocation destinationSD = destination;
         if (currentSD.Equals(destinationSD)) {
             return "들어간다";
         }
 
         return "이동한다";
     }
-    private Action ExecuteLocationEvent(Location destination) {
+    private Action ExecuteLocationEvent(ExplorationLocation destination) {
         LocationData currentLocationData = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID)?.Data;
         LocationData endLocationData = destination.Data;
         if (currentLocationData.Equals(endLocationData)) {
@@ -69,7 +69,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
             return () => MoveLocation(currentLocationData, endLocationData);
         }
     }
-    private void EnterLocation(Location destination) {
+    private void EnterLocation(ExplorationLocation destination) {
         Managers.UI.CloseUI<LocationInfoPopUpUI>();
 
         if (destination.LocationUID.Equals(Define.Tag.BASEMENT)) {

@@ -104,7 +104,7 @@ public class Tester : MonoBehaviour
         Managers.Location.DeactivateLocation(locationSD);
     }
     public void ShowLocationPopUp() {
-        if (Managers.Location.TryGetLocation(locationSD, out Location location)) {
+        if (Managers.Location.TryGetLocation(locationSD, out ExplorationLocation location)) {
             Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
            location,
            new ActionData[] {

@@ -13,7 +13,7 @@ public class Exploration
 
 public class ExplorationManager
 {
-    public Location CurrentLocation
+    public ExplorationLocation CurrentLocation
     {
         get
         {
@@ -46,7 +46,7 @@ public class ExplorationManager
     }
 
 
-    private void ContinueToExploreLocation(Location location) {
+    private void ContinueToExploreLocation(ExplorationLocation location) {
         if (location == null) { Debug.LogError($"<color=red>location null. failed to explore.</color>"); return; }
 
         if (TryGetNextEncounter(location, out EncounterDataBase nextEncounterEvent)) {
@@ -59,14 +59,14 @@ public class ExplorationManager
         Managers.Location.TryUnlockMainLocation(nextLocation, 1, out var newLocation);
         OnExplorationCompleted?.Invoke();
     }
-    private Location GetLocation(string locationID) {
-        if (Managers.Location.TryGetLocation(locationID, out Location location)) {
+    private ExplorationLocation GetLocation(string locationID) {
+        if (Managers.Location.TryGetLocation(locationID, out ExplorationLocation location)) {
             return location;
         }
 
         return null;
     }
-    private bool TryGetNextEncounter(Location location, out EncounterDataBase encounterEvent) {
+    private bool TryGetNextEncounter(ExplorationLocation location, out EncounterDataBase encounterEvent) {
         IReadOnlyList<EncounterDataBase> eventList = location.Data.LocationEventList;
         Debug.Log($"event count? {eventList.Count}");
         int currentProgress = location.CurrentValue;

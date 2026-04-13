@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LocationMarkerUI : MarkerUIBase
 {
-    [SerializeField] Location location;
+    [SerializeField] ExplorationLocation location;
 
 
-    public void InitLocation(Location location) {
+    public void InitLocation(ExplorationLocation location) {
         if (location == null || location.Data == null) return;
 
         this.location = location;
@@ -19,13 +19,13 @@ public class LocationMarkerUI : MarkerUIBase
     }
 
 
-    public void UpdateUI(Location.LocationState currentState, Location.LocationState prevState) {
+    public void UpdateUI(ExplorationLocation.LocationState currentState, ExplorationLocation.LocationState prevState) {
         switch (currentState) {
-            case Location.LocationState.Undiscovered:
-            case Location.LocationState.Completed:
+            case ExplorationLocation.LocationState.Undiscovered:
+            case ExplorationLocation.LocationState.Completed:
                 CloseUI();
                 break;
-            case Location.LocationState.Exploring:
+            case ExplorationLocation.LocationState.Exploring:
                 OpenUI();
                 break;
             default:
@@ -50,7 +50,7 @@ public class LocationMarkerUI : MarkerUIBase
         InitLocation(location);
     }
 
-    private void OpenPopUp(Location location) {
+    private void OpenPopUp(ExplorationLocation location) {
         Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(location);
     }
 }

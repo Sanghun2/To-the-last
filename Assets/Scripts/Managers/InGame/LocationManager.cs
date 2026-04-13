@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class LocationManager : IInitializable
 {
-    public Location CurrentLocation
+    public ExplorationLocation CurrentLocation
     {
         get => currentLocation;
         set
@@ -34,16 +34,16 @@ public class LocationManager : IInitializable
 
     public bool IsInit => _isInit;
 
-    private Dictionary<string, Location> locationDict = new Dictionary<string, Location>();
+    private Dictionary<string, ExplorationLocation> locationDict = new Dictionary<string, ExplorationLocation>();
     //private LocationMarkerUIContainer _container;
     private bool _isInit;
-    private Location currentLocation;
+    private ExplorationLocation currentLocation;
     private LocationBuilder locationBuilder = new LocationBuilder();
 
-    public event Action<Location, Location> OnLocationChanged;
-    public event Action<Location, LocationMarkerUI> OnLocationActived;
+    public event Action<ExplorationLocation, ExplorationLocation> OnLocationChanged;
+    public event Action<ExplorationLocation, LocationMarkerUI> OnLocationActived;
 
-    public bool TryRegisterLocation(Location newLocation) {
+    public bool TryRegisterLocation(ExplorationLocation newLocation) {
         if (locationDict.TryAdd(newLocation.LocationUID, newLocation) == false) {
             Debug.Log($"<color=yellow>{newLocation.LocationUID}는 이미 존재함</color>");
             return false;
@@ -51,7 +51,7 @@ public class LocationManager : IInitializable
 
         return true;
     }
-    //public Location TryRegisterLocation(string locationSDID, int currentProgress=1) {
+    //public ExplorationLocation TryRegisterLocation(string locationSDID, int currentProgress=1) {
     //    if (Managers.RunnerSD.TryGetSD(locationSDID, out LocationSD targetSD)) {
     //        return TryRegisterLocation(targetSD.ToData(), currentProgress);
     //    }
@@ -60,7 +60,7 @@ public class LocationManager : IInitializable
     //    return null;
     //}
     public bool TryRegisterLocation(LocationData locationData, int currentProgress=1) {
-        var location = new Location(locationData);
+        var location = new ExplorationLocation(locationData);
         if (locationDict.TryAdd(locationData.LocationUID, location) == false) {
             Debug.Log($"<color=yellow>{locationData.LocationUID}는 이미 존재함</color>");
             return false;
@@ -77,7 +77,7 @@ public class LocationManager : IInitializable
         locationDict.Remove(locationSD.ID);
     }
 
-    public bool TryGetLocation(string locationUID, out Location location) {
+    public bool TryGetLocation(string locationUID, out ExplorationLocation location) {
         location = null;
         if (string.IsNullOrEmpty(locationUID)) { Debug.LogError($"<color=red>location null</cTryGetLocationolor>"); return false; }
         if (locationDict.TryGetValue(locationUID, out location)) {
@@ -87,7 +87,7 @@ public class LocationManager : IInitializable
         Debug.LogError($"<color=red>진행중인 ({locationUID}) Location이 없음</color>");
         return false;
     }
-    public bool TryGetLocation(LocationSD locationSD, out Location location) {
+    public bool TryGetLocation(LocationSD locationSD, out ExplorationLocation location) {
         if (TryGetLocation(locationSD.ID, out location)) {
             return true;
         }
@@ -97,10 +97,10 @@ public class LocationManager : IInitializable
     }
 
 
-    public bool TryActivateLocation(string locationID, Action<Location> onActivated = null) {
+    public bool TryActivateLocation(string locationID, Action<ExplorationLocation> onActivated = null) {
         if (string.IsNullOrEmpty(locationID)) { Debug.LogError($"<color=red>location id is null</color>"); return false; }
 
-        if (TryGetLocation(locationID, out Location location)) {
+        if (TryGetLocation(locationID, out ExplorationLocation location)) {
             if (TryActivateLocation(location, onActivated)) {
                 return true;
             }
@@ -111,8 +111,8 @@ public class LocationManager : IInitializable
 
         return false;
     }
-    public bool TryActivateLocation(LocationSD locationSD, Action<Location> onActivated=null) {
-        if (TryGetLocation(locationSD.ID, out Location location)) {
+    public bool TryActivateLocation(LocationSD locationSD, Action<ExplorationLocation> onActivated=null) {
+        if (TryGetLocation(locationSD.ID, out ExplorationLocation location)) {
             if (TryActivateLocation(location, onActivated)) {
                 return true;
             }
@@ -120,7 +120,7 @@ public class LocationManager : IInitializable
 
         return false;
     }
-    public bool TryActivateLocation(Location location, Action<Location> onActivated =null) {
+    public bool TryActivateLocation(ExplorationLocation location, Action<ExplorationLocation> onActivated =null) {
         if (location == null) { Debug.LogError($"<color=red>location null</color>"); return false; }
 
         //if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
@@ -132,7 +132,7 @@ public class LocationManager : IInitializable
 
 
     public void DeactivateLocation(string locationID) {
-        if (TryGetLocation(locationID, out Location location)) {
+        if (TryGetLocation(locationID, out ExplorationLocation location)) {
             location.Deactivate();
         }
     }
@@ -196,7 +196,7 @@ public class LocationManager : IInitializable
 
 
 
-    public bool TryUnlockMainLocation(string locationSDID, int currentProgress, out Location newLocation, Action<Location> onActivated = null) {
+    public bool TryUnlockMainLocation(string locationSDID, int currentProgress, out ExplorationLocation newLocation, Action<ExplorationLocation> onActivated = null) {
         newLocation = null;
         if (string.IsNullOrEmpty(locationSDID)) return false;
 
@@ -211,7 +211,7 @@ public class LocationManager : IInitializable
 
         return false;   
     }
-    public bool TryUnlockSubLocation(CoordinateData coordinate, out Location newLocation) {
+    public bool TryUnlockSubLocation(CoordinateData coordinate, out ExplorationLocation newLocation) {
         newLocation = null;
 
         // 최종 보스 + 최종 보상
@@ -268,7 +268,7 @@ public class LocationManager : IInitializable
         TryUnlockMainLocation(basementID, 0, out var basement);
         TryUnlockMainLocation(houseID, 1, out var house);
     }
-    private void CreateLocationUI(Location location) {
+    private void CreateLocationUI(ExplorationLocation location) {
         if (Managers.MapMarker.TryGet<LocationMarkerUI, LocationMarkerUIContainer>(out var container)) {
             LocationMarkerUI locationUI = container.GetObj();
             locationUI.InitLocation(location);
