@@ -5,7 +5,6 @@ using UnityEngine;
 public class LocationData : IEquatable<LocationData>
 {
     public string LocationUID { get; }
-    public IReadOnlyList<EncounterDataBase> LocationEventList { get; }
     public string StoryDescription { get; }
     public Vector2 AnchoredPosition { get; }
     public Sprite MainImage { get; }
@@ -17,23 +16,20 @@ public class LocationData : IEquatable<LocationData>
     public LocationData(
         string uid, 
         string categoryID,
-        IReadOnlyList<EncounterDataBase> locationEventList, 
-        string displayText,
+        string displayName,
         string storyDescription, 
         Vector2 anchoredPosition,
         Sprite mainImage,
-        Sprite iconImage,
-        string nextLocationID) {
+        Sprite iconImage
+        ) {
 
         LocationUID = uid;
         LocationCategoryID = categoryID;
-        LocationEventList = locationEventList;
+        DisplayName = displayName;
         StoryDescription = storyDescription;
         AnchoredPosition = anchoredPosition;
         MainImage = mainImage;
         IconImage = iconImage;
-        DisplayName = displayText;
-        NextLocationID = nextLocationID;
     }
 
     public LocationData(CoordinateData coordinate) {

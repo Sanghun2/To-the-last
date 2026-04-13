@@ -6,23 +6,20 @@ public class LocationBuilder
 {
     private EncounterMapBuilder encounterContentBuilder = new EncounterMapBuilder();
 
-    public bool TryBuildLocation(LocationBuildContext locationContext, out ExplorationLocation newLocation) {
+    public bool TryBuildxplorationLocation(LocationBuildContext locationContext, out ExplorationLocation newLocation) {
         newLocation = null;
         if (!Managers.SD.TryGetSD(locationContext.LocationCategoryID, out LocationInfoSD infoSD)) { Debug.LogError($"<color=red>infoSD of ({locationContext.LocationCategoryID}) is not exist</color>"); return false; }
 
-        var builtLocationData = new LocationData(
+        var newLocationData = new LocationData(
             locationContext.LocationUID,
             locationContext.LocationCategoryID,
-            BuildLocationEvents(locationContext),
             locationContext.DisplayName,
             infoSD.Description,
             locationContext.AnchoredPosition,
             infoSD.Image,
-            infoSD.IconImage,
-            null
-            );
+            infoSD.IconImage);
 
-        newLocation = new ExplorationLocation(builtLocationData);
+        newLocation = new ExplorationLocation(newLocationData, BuildLocationEvents(locationContext));
 
         int currentProgress = locationContext.CurrentProgress;
         int maxProgress = locationContext.EncounterDataList.Count;

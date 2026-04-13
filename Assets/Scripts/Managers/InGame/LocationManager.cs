@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class LocationManager : IInitializable
 {
-    public ExplorationLocation CurrentLocation
+    public LocationBase CurrentLocation
     {
         get => currentLocation;
         set
@@ -34,16 +34,26 @@ public class LocationManager : IInitializable
 
     public bool IsInit => _isInit;
 
-    private Dictionary<string, ExplorationLocation> locationDict = new Dictionary<string, ExplorationLocation>();
+    private Dictionary<string, LocationBase> locationDict = new Dictionary<string, LocationBase>();
     //private LocationMarkerUIContainer _container;
     private bool _isInit;
-    private ExplorationLocation currentLocation;
+    private LocationBase currentLocation;
     private LocationBuilder locationBuilder = new LocationBuilder();
+    private MarkerDataGeneratorContainer markerDataGeneratorContainer = new MarkerDataGeneratorContainer();
 
-    public event Action<ExplorationLocation, ExplorationLocation> OnLocationChanged;
-    public event Action<ExplorationLocation, LocationMarkerUI> OnLocationActived;
+    public event Action<LocationBase, LocationBase> OnLocationChanged;
+    public event Action<LocationBase, MarkerUIBase> OnLocationActived;
 
-    public bool TryRegisterLocation(ExplorationLocation newLocation) {
+    public MarkerPopUpDataBase GenerateMarkerData(LocationBase location) {
+        if (markerDataGeneratorContainer.TryGet(location, out var generator)) {
+            return generator.GenerateData(location);
+        }
+
+        Debug.LogError($"<color=red>no marker data generator exist of ({location.GetType()})</color>");
+        return null;
+    }
+
+    public bool TryRegisterLocation(LocationBase newLocation) {
         if (locationDict.TryAdd(newLocation.LocationUID, newLocation) == false) {
             Debug.Log($"<color=yellow>{newLocation.LocationUID}는 이미 존재함</color>");
             return false;
@@ -59,16 +69,6 @@ public class LocationManager : IInitializable
     //    Debug.LogError($"<color=red>newLocation ({locationSDID}) is null</color>");
     //    return null;
     //}
-    public bool TryRegisterLocation(LocationData locationData, int currentProgress=1) {
-        var location = new ExplorationLocation(locationData);
-        if (locationDict.TryAdd(locationData.LocationUID, location) == false) {
-            Debug.Log($"<color=yellow>{locationData.LocationUID}는 이미 존재함</color>");
-            return false;
-        }
-
-        location.InitProgress(currentProgress, locationData.LocationEventList.Count).Deactivate();
-        return true;
-    }
 
     public void UnregisterLocation(LocationSD locationSD) {
         if (locationDict.TryGetValue(locationSD.ID, out var location)) {
@@ -77,7 +77,7 @@ public class LocationManager : IInitializable
         locationDict.Remove(locationSD.ID);
     }
 
-    public bool TryGetLocation(string locationUID, out ExplorationLocation location) {
+    public bool TryGetLocation(string locationUID, out LocationBase location) {
         location = null;
         if (string.IsNullOrEmpty(locationUID)) { Debug.LogError($"<color=red>location null</cTryGetLocationolor>"); return false; }
         if (locationDict.TryGetValue(locationUID, out location)) {
@@ -87,7 +87,7 @@ public class LocationManager : IInitializable
         Debug.LogError($"<color=red>진행중인 ({locationUID}) Location이 없음</color>");
         return false;
     }
-    public bool TryGetLocation(LocationSD locationSD, out ExplorationLocation location) {
+    public bool TryGetLocation(LocationSD locationSD, out LocationBase location) {
         if (TryGetLocation(locationSD.ID, out location)) {
             return true;
         }
@@ -97,10 +97,10 @@ public class LocationManager : IInitializable
     }
 
 
-    public bool TryActivateLocation(string locationID, Action<ExplorationLocation> onActivated = null) {
+    public bool TryActivateLocation(string locationID, Action<LocationBase> onActivated = null) {
         if (string.IsNullOrEmpty(locationID)) { Debug.LogError($"<color=red>location id is null</color>"); return false; }
 
-        if (TryGetLocation(locationID, out ExplorationLocation location)) {
+        if (TryGetLocation(locationID, out LocationBase location)) {
             if (TryActivateLocation(location, onActivated)) {
                 return true;
             }
@@ -111,8 +111,8 @@ public class LocationManager : IInitializable
 
         return false;
     }
-    public bool TryActivateLocation(LocationSD locationSD, Action<ExplorationLocation> onActivated=null) {
-        if (TryGetLocation(locationSD.ID, out ExplorationLocation location)) {
+    public bool TryActivateLocation(LocationSD locationSD, Action<LocationBase> onActivated=null) {
+        if (TryGetLocation(locationSD.ID, out LocationBase location)) {
             if (TryActivateLocation(location, onActivated)) {
                 return true;
             }
@@ -120,7 +120,7 @@ public class LocationManager : IInitializable
 
         return false;
     }
-    public bool TryActivateLocation(ExplorationLocation location, Action<ExplorationLocation> onActivated =null) {
+    public bool TryActivateLocation(LocationBase location, Action<LocationBase> onActivated =null) {
         if (location == null) { Debug.LogError($"<color=red>location null</color>"); return false; }
 
         //if (LocationUIContainer == null) { Debug.LogError($"<color=red>LocationUIContainer null</color>"); return false; }
@@ -132,7 +132,7 @@ public class LocationManager : IInitializable
 
 
     public void DeactivateLocation(string locationID) {
-        if (TryGetLocation(locationID, out ExplorationLocation location)) {
+        if (TryGetLocation(locationID, out LocationBase location)) {
             location.Deactivate();
         }
     }
@@ -196,7 +196,7 @@ public class LocationManager : IInitializable
 
 
 
-    public bool TryUnlockMainLocation(string locationSDID, int currentProgress, out ExplorationLocation newLocation, Action<ExplorationLocation> onActivated = null) {
+    public bool TryUnlockMainLocation(string locationSDID, int currentProgress, out LocationBase newLocation, Action<LocationBase> onActivated = null) {
         newLocation = null;
         if (string.IsNullOrEmpty(locationSDID)) return false;
 
@@ -204,8 +204,10 @@ public class LocationManager : IInitializable
 
         var buildContext = CreateLocationBuildContext(locationSD);
         buildContext.SetProgress(currentProgress);
-        if (locationBuilder.TryBuildLocation(buildContext, out newLocation)) {
+        if (locationBuilder.TryBuildxplorationLocation(buildContext, out var explorationLocation)) {
             if (!TryRegisterLocation(newLocation)) return false;
+
+            newLocation = explorationLocation;
             return TryActivateLocation(newLocation, onActivated);
         }
 
@@ -224,7 +226,7 @@ public class LocationManager : IInitializable
             coordinate.AnchoredPosition,
             finalEncounterList);
 
-        if (!locationBuilder.TryBuildLocation(buildContext, out newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
+        if (!locationBuilder.TryBuildxplorationLocation(buildContext, out newLocation)) { Debug.LogError($"<color=red>failed to build new location</color>"); return false; }
 
         if (!TryRegisterLocation(newLocation)) return false;
         TryActivateLocation(newLocation.LocationUID);
@@ -268,7 +270,7 @@ public class LocationManager : IInitializable
         TryUnlockMainLocation(basementID, 0, out var basement);
         TryUnlockMainLocation(houseID, 1, out var house);
     }
-    private void CreateLocationUI(ExplorationLocation location) {
+    private void CreateLocationUI(LocationBase location) {
         if (Managers.MapMarker.TryGet<LocationMarkerUI, LocationMarkerUIContainer>(out var container)) {
             LocationMarkerUI locationUI = container.GetObj();
             locationUI.InitLocation(location);

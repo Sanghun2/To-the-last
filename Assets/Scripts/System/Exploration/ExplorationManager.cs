@@ -13,7 +13,7 @@ public class Exploration
 
 public class ExplorationManager
 {
-    public ExplorationLocation CurrentLocation
+    public LocationBase CurrentLocation
     {
         get
         {
@@ -27,7 +27,7 @@ public class ExplorationManager
 
     public void ContinueToExploreCurrentLocation() {
         var location = CurrentLocation;
-        ContinueToExploreLocation(location);
+        ContinueToExploreLocation(location as ExplorationLocation);
     }
     public void GoToEnterance() {
         var ui = Managers.UI.OpenUI<ExplorationUI>();
@@ -55,19 +55,22 @@ public class ExplorationManager
             return;
         }
 
-        string nextLocation = location.NextLocationID;
-        Managers.Location.TryUnlockMainLocation(nextLocation, 1, out var newLocation);
+        string[] nextLocationIDs = location.NextLocationIDs;
+        for (int i = 0; i < nextLocationIDs.Length; i++) {
+            var id = nextLocationIDs[i];
+            Managers.Location.TryUnlockMainLocation(id, 1, out var newLocation);
+        }
         OnExplorationCompleted?.Invoke();
     }
-    private ExplorationLocation GetLocation(string locationID) {
-        if (Managers.Location.TryGetLocation(locationID, out ExplorationLocation location)) {
+    private LocationBase GetLocation(string locationUID) {
+        if (Managers.Location.TryGetLocation(locationUID, out LocationBase location)) {
             return location;
         }
 
         return null;
     }
     private bool TryGetNextEncounter(ExplorationLocation location, out EncounterDataBase encounterEvent) {
-        IReadOnlyList<EncounterDataBase> eventList = location.Data.LocationEventList;
+        IReadOnlyList<EncounterDataBase> eventList = location.LocationEventList;
         Debug.Log($"event count? {eventList.Count}");
         int currentProgress = location.CurrentValue;
         encounterEvent = eventList[currentProgress-1];

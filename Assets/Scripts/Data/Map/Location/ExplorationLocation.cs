@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
@@ -9,7 +10,8 @@ public class ExplorationLocation : LocationBase, IValue<int>
     public int MaxValue => maxProgress;
 
     public string LocationCategoryID => locationCategoryID;
-    public string NextLocationID => nextLocationID;
+    public string[] NextLocationIDs => nextLocationIDs;
+    public IReadOnlyList<EncounterDataBase> LocationEventList { get; }
 
 
     [SerializeField][HideInInspector] string locationUID;
@@ -17,17 +19,21 @@ public class ExplorationLocation : LocationBase, IValue<int>
 
     [SerializeField] int currentProgress;
     [SerializeField] int maxProgress;
-    private string nextLocationID;
+    private string[] nextLocationIDs;
 
-    public ExplorationLocation(LocationData data) : base(data) {
+    public ExplorationLocation(
+        LocationData data, 
+        IReadOnlyList<EncounterDataBase> locationEventList,
+        string[] nextLocationIDs=null) : base(data) {
 
+        LocationEventList = locationEventList;
     }
     //public ExplorationLocation(LocationData locationData) {
     //    this.data = locationData;
     //    locationUID = locationData.LocationUID;
     //    locationCategoryID = locationData.LocationCategoryID;
     //    _currentState = LocationState.Inactive;
-    //    nextLocationID = locationData.NextLocationID;
+    //    nextLocationIDs = locationData.NextLocationIDs;
     //    displayName = locationData.DisplayName;
     //    AnchoredPosition = locationData.AnchoredPosition;
     //}

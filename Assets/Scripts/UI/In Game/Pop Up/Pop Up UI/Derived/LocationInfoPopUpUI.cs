@@ -14,11 +14,12 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         LocationData locationData = popUpData.Location.Data;
 
         int currentProgress = popUpData.Location.CurrentValue;
-        int maxProgress = locationData.LocationEventList?.Count ?? -1;
+        int maxProgress = 99;
+        //int maxProgress = LocationEventList?.Count ?? -1;
         InitProgressUI(currentProgress, maxProgress);
 
-        ExplorationLocation destination = popUpData.Location;
-        ExplorationLocation currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        LocationBase destination = popUpData.Location;
+        LocationBase currentLocation = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
         InitMoveTimeUI(currentLocation, destination);
     }
     public void InitPopUp(ExplorationLocation location) {
@@ -38,7 +39,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
         }
         progressText.gameObject.SetActive(showProgress);
     }
-    private void InitMoveTimeUI(ExplorationLocation currentLocation, ExplorationLocation destination) {
+    private void InitMoveTimeUI(LocationBase currentLocation, LocationBase destination) {
         bool isSamePosition = currentLocation.Equals(destination);
         moveTimeExpectationText.gameObject.SetActive(!isSamePosition);
         if (isSamePosition) return;
@@ -51,8 +52,8 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
 
     #region UI Info
     private string GetButtonText(ExplorationLocation destination) {
-        ExplorationLocation currentSD = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
-        ExplorationLocation destinationSD = destination;
+        LocationBase currentSD = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID);
+        LocationBase destinationSD = destination;
         if (currentSD.Equals(destinationSD)) {
             return "들어간다";
         }
@@ -94,7 +95,7 @@ public class LocationInfoPopUpUI : PopUpUIBase<LocationInfoPopUpData>
             callback: () => {
                 if (Managers.Location.TryGetLocation(endLocationData.LocationUID, out var destination)) {
                     Managers.Location.CurrentLocation = destination;
-                    InitPopUp(destination);
+                    InitPopUp(Managers.Location.GenerateMarkerData(destination));
                     Managers.UI.OpenUI(this);
                 }
             });

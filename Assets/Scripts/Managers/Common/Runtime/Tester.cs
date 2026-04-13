@@ -104,14 +104,14 @@ public class Tester : MonoBehaviour
         Managers.Location.DeactivateLocation(locationSD);
     }
     public void ShowLocationPopUp() {
-        if (Managers.Location.TryGetLocation(locationSD, out ExplorationLocation location)) {
-            Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
-           location,
-           new ActionData[] {
-                new ActionData("확인", () => Managers.UI.CloseTopUI()),
-                new ActionData("진입", null)
-           }));
-        }
+        //if (Managers.Location.TryGetLocation(locationSD, out LocationBase location)) {
+        //    Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
+        //   location,
+        //   new ActionData[] {
+        //        new ActionData("확인", () => Managers.UI.CloseTopUI()),
+        //        new ActionData("진입", null)
+        //   }));
+        //}
     }
 
     public void ChangeValue() {

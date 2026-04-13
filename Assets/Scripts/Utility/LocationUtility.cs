@@ -38,8 +38,8 @@ public static class LocationUtility
         return (GetHour(distance), GetMinute(distance));
     }
 
-    public static ExplorationLocation FindLocation(string locationID) {
-        if (Managers.Location.TryGetLocation(locationID, out ExplorationLocation location)) {
+    public static LocationBase FindLocation(string locationID) {
+        if (Managers.Location.TryGetLocation(locationID, out LocationBase location)) {
             return location;
         }
 

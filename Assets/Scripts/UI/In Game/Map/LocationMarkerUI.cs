@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class LocationMarkerUI : MarkerUIBase
 {
-    [SerializeField] ExplorationLocation location;
+    [SerializeField] LocationBase location;
 
 
-    public void InitLocation(ExplorationLocation location) {
+    public void InitLocation(LocationBase location) {
         if (location == null || location.Data == null) return;
 
         this.location = location;
 
         gameObject.name = $"Location UI_{location.Data.LocationUID}";
-        InitMarker(location.Data.IconImage, () => OpenPopUp(location));
+        InitMarker(location.Data.IconImage, () => OpenPopUp(location as ExplorationLocation));
         SetPosition(location.Data.AnchoredPosition);
     }
 
