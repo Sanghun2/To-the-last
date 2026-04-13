@@ -21,11 +21,11 @@ public class LocationMarkerUI : MarkerUIBase
 
     public void UpdateUI(ExplorationLocation.LocationState currentState, ExplorationLocation.LocationState prevState) {
         switch (currentState) {
-            case ExplorationLocation.LocationState.Undiscovered:
+            case ExplorationLocation.LocationState.Inactive:
             case ExplorationLocation.LocationState.Completed:
                 CloseUI();
                 break;
-            case ExplorationLocation.LocationState.Exploring:
+            case ExplorationLocation.LocationState.Active:
                 OpenUI();
                 break;
             default:

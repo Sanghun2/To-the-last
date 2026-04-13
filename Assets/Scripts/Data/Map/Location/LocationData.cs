@@ -10,7 +10,7 @@ public class LocationData : IEquatable<LocationData>
     public Vector2 AnchoredPosition { get; }
     public Sprite MainImage { get; }
     public Sprite IconImage { get; }
-    public string DisplayText { get; }
+    public string DisplayName { get; }
     public string NextLocationID { get; }
     public string LocationCategoryID { get; }
 
@@ -32,7 +32,7 @@ public class LocationData : IEquatable<LocationData>
         AnchoredPosition = anchoredPosition;
         MainImage = mainImage;
         IconImage = iconImage;
-        DisplayText = displayText;
+        DisplayName = displayText;
         NextLocationID = nextLocationID;
     }
 
