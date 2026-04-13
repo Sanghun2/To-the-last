@@ -12,6 +12,7 @@ public abstract class LocationBase : IEquatable<LocationBase>
     }
 
     public string LocationUID => data.LocationUID;
+    public Sprite MainImage => data.MainImage;
     public string StoryDescription => data.StoryDescription;
     public string LocationName => data.DisplayName;
     public Vector2 AnchoredPosition => data.AnchoredPosition;
@@ -48,6 +49,8 @@ public abstract class LocationBase : IEquatable<LocationBase>
             return _inventory;
         }
     }
+
+
     private LocationState _currentState;
     private LocationData data;
     [SerializeField] SimpleInventory _inventory;

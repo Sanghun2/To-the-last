@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TradeNPCSD", menuName = "Scriptable Objects/NPC/TradeNPCSD")]
 public class TradeNPCSD : NPCSDBase
 {
-    public Sprite IconImage => iconImage;
     public IReadOnlyList<TradableItemData> TradeItemList => tradeItemList;
+    public float MaxAffinity => maxAffinity;
 
-    [SerializeField] Sprite iconImage;
+    [SerializeField] float maxAffinity = 10;
     [SerializeField] List<TradableItemData> tradeItemList = new List<TradableItemData>();
 }
 

@@ -14,7 +14,7 @@ public class StructureInfoButton : InfoButtonBase
         if (infoUI.IsOpened) return;
 
         InfomationPopUpData infoData = new InfomationPopUpData(
-            structureSD.DisplayText,
+            structureSD.DisplayName,
             structureSD.Description,
             new ActionData[] { new ActionData("확인", () => Managers.UI.CloseUI(infoUI)) },
             image: structureSD.Image);

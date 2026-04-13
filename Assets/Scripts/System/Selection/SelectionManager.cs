@@ -17,7 +17,7 @@ public class SelectionManager
     public bool TryBuildSelectionContext(SelectionSDContext selectionSDContext, out SelectionContext selectionContext) {
         selectionContext = null;
 
-        // RunnerSD -> Data
+        // RunnerSD -> Location
         var selectionData = new SelectionData(selectionSDContext.SelectionSD);
         var selectionRunnerSD = selectionSDContext.SelectionRunnerSD;
         if (!runnerDataParserContainer.TryGet(selectionRunnerSD, out var parser)) { LogError($"no parser exist. sd id? {selectionRunnerSD.ID} sd type? {selectionSDContext.GetType()}"); return false; }
@@ -31,7 +31,7 @@ public class SelectionManager
         selectionContext = null;
         if (selectionBuildContext == null) { LogError($"selectionBuildContext is null"); return false; }
 
-        // Data -> Action Context
+        // Location -> Action Context
         var selectionRunnerData = selectionBuildContext.SelectionRunnerDataBase;
         if (!runnerContextBuilderContainer.TryGet(selectionRunnerData, out SelectionRunnerContextBuilderBase selectionRunnerContextBuilder)) { LogError($"get context builder failed"); return false; }
         var selectionRunnerContext = selectionRunnerContextBuilder.BuildSelectionRunnerContext(selectionRunnerData);
@@ -41,7 +41,7 @@ public class SelectionManager
         if (!actionConverterContainer.TryGet(selectionRunnerContext, out SelectActionConverterBase selecActionConverter)) { LogError($"converter get failed"); return false; }
         var selectActionData = selecActionConverter.ConvertAction(selectionRunnerContext);
 
-        // Selection Data + ActionData -> Selection Context
+        // Selection Location + ActionData -> Selection Context
         //if (!selectionContextBuilderContainer.TryGet(selectionRunnerData, out SelectionContextBuilderBase selectionContextBuilder)) { LogError($"selection context builder is not exist"); return false; }
         //if (!selectionContextBuilder.TryBuildSelectionContext(selectionBuildContext.SelectionData, selectActionData, out selectionContext)) { LogError($"selection context build failed"); return false; }
 

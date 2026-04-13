@@ -191,7 +191,7 @@ public class LocationManager : IInitializable
             "영등포",
         };
         var randomRegion = regions[UnityEngine.Random.Range(0, regions.Length)];
-        return $"{randomRegion} {randomLocationSD.DisplayText}";
+        return $"{randomRegion} {randomLocationSD.DisplayName}";
     }
 
 
@@ -205,7 +205,7 @@ public class LocationManager : IInitializable
         var buildContext = CreateLocationBuildContext(locationSD);
         buildContext.SetProgress(currentProgress);
         if (locationBuilder.TryBuildxplorationLocation(buildContext, out var explorationLocation)) {
-            if (!TryRegisterLocation(newLocation)) return false;
+            if (!TryRegisterLocation(explorationLocation)) return false;
 
             newLocation = explorationLocation;
             return TryActivateLocation(newLocation, onActivated);
@@ -238,7 +238,7 @@ public class LocationManager : IInitializable
         return new LocationBuildContext(
             locationSD.ID,
             locationSD.CategoryID,
-            locationSD.DisplayText,
+            locationSD.DisplayName,
             LocationUtility.GenerateRandomLocationCoordinate(),
             essentialEncounterList);
     }

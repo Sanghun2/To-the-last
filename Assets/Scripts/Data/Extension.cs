@@ -28,7 +28,7 @@ public static partial class Extension
     public static TraitData ToData(this TraitSD traitSD) {
         return new TraitData(
             traitSD.ID,
-            traitSD.DisplayText,
+            traitSD.DisplayName,
             traitSD.Description,
             traitSD.Image,
             traitSD.Cost);
@@ -37,7 +37,7 @@ public static partial class Extension
     public static CharacterData ToData(this CharacterSD characterSD) {
         return new CharacterData(
             characterSD.ID,
-            characterSD.DisplayText,
+            characterSD.DisplayName,
             characterSD.Description,
             characterSD.Image,
             characterSD.Features,

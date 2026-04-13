@@ -25,7 +25,7 @@ public sealed class CharacterSelectionUI : UIBase
 
     public void ShowCharacter(string characterID, string prevCharacterID) {
         if (Managers.SD.TryGetSD(characterID, out CharacterSD characterSD)) {
-            characterNameText.text = characterSD.DisplayText;
+            characterNameText.text = characterSD.DisplayName;
             characterImage.sprite = characterSD.Image;
             descriptionText.text = BuildCharacterDescription(characterSD);
         }

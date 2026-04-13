@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.NetworkInformation;
-using BilliotGames;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LocationMarkerUI : MarkerUIBase
 {
@@ -14,7 +11,7 @@ public class LocationMarkerUI : MarkerUIBase
         this.location = location;
 
         gameObject.name = $"Location UI_{location.Data.LocationUID}";
-        InitMarker(location.Data.IconImage, () => OpenPopUp(location as ExplorationLocation));
+        InitMarker(location.Data.IconImage, () => OpenPopUp(Managers.Location.GenerateMarkerData(location)));
         SetPosition(location.Data.AnchoredPosition);
     }
 
@@ -50,7 +47,9 @@ public class LocationMarkerUI : MarkerUIBase
         InitLocation(location);
     }
 
-    private void OpenPopUp(ExplorationLocation location) {
-        Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(location);
+    private void OpenPopUp(MarkerPopUpDataBase markerPopUpData) {
+        Managers.UI
+            .OpenUI<MarkerInfoPopUpUI>()
+            .InitPopUp(markerPopUpData);
     }
 }

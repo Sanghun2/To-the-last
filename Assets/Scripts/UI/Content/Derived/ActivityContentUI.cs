@@ -15,7 +15,7 @@ public class ActivityContentUI : ContentUIBase<ActivityContentSD>
         base.InitContent(contentSD);
 
         var requirements = contentSD.Requirements;
-        SetActivityNameText((requirements == null || requirements.Count == 0) ? contentSD.DisplayText : null);
+        SetActivityNameText((requirements == null || requirements.Count == 0) ? contentSD.DisplayName : null);
         SetRequirements(requirements);
         activityInfoButton.SetData(contentSD.ID);
     }

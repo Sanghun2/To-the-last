@@ -60,7 +60,7 @@ public abstract class PopUpUIBase : UIBase
     protected virtual void SetIconImage(IImageContent imageContent) {
         if (iconImage == null) return;
         iconImage.gameObject.SetActive(imageContent != null);
-        iconImage.sprite = imageContent?.Image;
+        iconImage.sprite = imageContent?.MainImage;
     }
     protected virtual void SetSubText(ISubTextContent subTextContent) {
         if (subText == null) return;

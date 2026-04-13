@@ -1,8 +1,21 @@
 ﻿using System;
 using UnityEngine;
 
-public class TradeNPCMarkerPopUpData : MarkerPopUpDataBase
+public class TradeNPCMarkerPopUpData : MarkerPopUpDataBase, IAffinityContent
 {
-    public TradeNPCMarkerPopUpData(ActionData[] buttonActions, Action onCloseByPanel = null) : base(buttonActions, onCloseByPanel) {
+    public float MaxAffinity { get; }
+    public float CurrentAffinity { get; }
+
+
+    public TradeNPCMarkerPopUpData(
+        LocationBase location, 
+        float currentAffinity,
+        float maxAffinity,
+        ActionData[] buttonActions, 
+        Action onCloseByPanel = null) 
+        : base(location, buttonActions, onCloseByPanel) {
+
+        CurrentAffinity = currentAffinity;
+        MaxAffinity = maxAffinity;
     }
 }

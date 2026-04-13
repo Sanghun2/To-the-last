@@ -2,5 +2,5 @@
 
 public interface IImageContent
 {
-    public Sprite Image { get; }
+    public Sprite MainImage { get; }
 }

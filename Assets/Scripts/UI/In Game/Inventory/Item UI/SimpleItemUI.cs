@@ -13,7 +13,7 @@ public class SimpleItemUI : ItemUIBase
     public override void SetUI(ItemEventArgs itemArgs) {
         if (Managers.SD.TryGetSD(itemArgs.itemID, out ItemSD targetSD)) {
             itemImage.sprite = targetSD.Image;
-            itemNameText.text = targetSD.DisplayText;
+            itemNameText.text = targetSD.DisplayName;
             amountText.text = GetAmountText(itemArgs.delta);
             Activate();
         }

@@ -3,7 +3,7 @@
 public class LocationInfoPopUpData : PopUpData, IImageContent
 {
     public ExplorationLocation Location => location;
-    public Sprite Image => location.Data.MainImage;
+    public Sprite MainImage => location.Data.MainImage;
 
     [SerializeField] ExplorationLocation location;
 

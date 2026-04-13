@@ -6,7 +6,7 @@ public class ProductionStructureDataParser : StructureDataParserBase<ProductionS
         return new ProductionStructureData(
             structureSD.ID,
             structureSD.FirstCategory,
-            structureSD.DisplayText,
+            structureSD.DisplayName,
             structureSD.Image,
             structureSD.ConstructionTime,
             structureSD.Requirements,

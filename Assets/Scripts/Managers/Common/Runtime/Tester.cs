@@ -105,7 +105,7 @@ public class Tester : MonoBehaviour
     }
     public void ShowLocationPopUp() {
         //if (Managers.Location.TryGetLocation(locationSD, out LocationBase location)) {
-        //    Managers.UI.OpenUI<LocationInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
+        //    Managers.UI.OpenUI<MarkerInfoPopUpUI>().InitPopUp(new LocationInfoPopUpData(
         //   location,
         //   new ActionData[] {
         //        new ActionData("확인", () => Managers.UI.CloseTopUI()),

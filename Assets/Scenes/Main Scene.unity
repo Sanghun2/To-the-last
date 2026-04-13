@@ -3936,6 +3936,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776530687}
   m_CullTransparentMesh: 1
+--- !u!114 &779303001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3193591390534618198, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
 --- !u!1 &795325363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +4004,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8263077351592407343, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
   m_PrefabInstance: {fileID: 993717506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &857084509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1214156706812569095, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
 --- !u!1001 &869412723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5257,6 +5279,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.00024577955
       objectReference: {fileID: 0}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: iconImage
+      value: 
+      objectReference: {fileID: 1988987114}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 779303001}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: progressText
+      value: 
+      objectReference: {fileID: 1963575046}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: buttonContainer
+      value: 
+      objectReference: {fileID: 1064799773}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 1565470975}
+    - target: {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+      propertyPath: moveTimeExpectationText
+      value: 
+      objectReference: {fileID: 857084509}
     - target: {fileID: 4601735550832958147, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
       propertyPath: expensionLevel
       value: 1
@@ -6337,7 +6383,8 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4520668911172736714, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6610070945255934894, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
     - {fileID: 6881260631534759804, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
@@ -6493,6 +6540,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5d14865ca4e574c873654c3baba644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleEntityUI
+--- !u!114 &1064799773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3242975098995527790, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d957c4b238ccb409853651b35225a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomButtonContainer
 --- !u!1 &1086336999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7908,6 +7966,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 1290665071}
   infoButton: {fileID: 0}
+--- !u!114 &1565470975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 654777615784710956, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1572224167
 GameObject:
   m_ObjectHideFlags: 0
@@ -10067,6 +10136,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979a7e22a136a21469c615e35c688e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasementUI
+--- !u!114 &1963575046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4866582807173491910, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687756e395d45ec48afcb863910bd02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIManager.Runtime::BilliotGames.TextUI
 --- !u!1 &1965460608
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,6 +10199,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocationItemUI
   itemImage: {fileID: 521412725}
   infoButton: {fileID: 0}
+--- !u!114 &1988987114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122413228730519449, guid: c723b3a660e311c42b17851af6bf223c, type: 3}
+  m_PrefabInstance: {fileID: 993717506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &2002452073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}

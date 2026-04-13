@@ -2,6 +2,11 @@
 
 public class TradeNPCLocation : LocationBase
 {
-    public TradeNPCLocation(LocationData data) : base(data) {
+    public TradeNPC TradeNPC => tradeNPC;   
+
+    private TradeNPC tradeNPC;
+
+    public TradeNPCLocation(TradeNPC tradeNPC, LocationData data) : base(data) {
+        this.tradeNPC = tradeNPC;
     }
 }

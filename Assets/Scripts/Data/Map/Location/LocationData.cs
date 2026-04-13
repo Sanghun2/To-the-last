@@ -5,13 +5,12 @@ using UnityEngine;
 public class LocationData : IEquatable<LocationData>
 {
     public string LocationUID { get; }
-    public string StoryDescription { get; }
-    public Vector2 AnchoredPosition { get; }
+    public string LocationCategoryID { get; }
+    public string DisplayName { get; }
     public Sprite MainImage { get; }
     public Sprite IconImage { get; }
-    public string DisplayName { get; }
-    public string NextLocationID { get; }
-    public string LocationCategoryID { get; }
+    public string StoryDescription { get; }
+    public Vector2 AnchoredPosition { get; }
 
     public LocationData(
         string uid, 

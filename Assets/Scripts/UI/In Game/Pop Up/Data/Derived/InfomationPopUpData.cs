@@ -9,7 +9,7 @@ public class InfomationPopUpData : PopUpDataBase,
 {
     public string Title { get; }
     public string SubText { get; }
-    public Sprite Image { get; }
+    public Sprite MainImage { get; }
     public string Description { get; }
 
     public InfomationPopUpData(
@@ -22,7 +22,7 @@ public class InfomationPopUpData : PopUpDataBase,
         : base(buttonActions, onCloseByPanel) {
 
         Title = mainText;
-        Image = image;
+        MainImage = image;
         SubText = subText;
         Description = description;
     }

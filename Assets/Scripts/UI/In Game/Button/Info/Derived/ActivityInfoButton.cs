@@ -10,7 +10,7 @@ public class ActivityInfoButton : InfoButtonBase
         if (infoUI.IsOpened) return;
 
         InfomationPopUpData infoData = new InfomationPopUpData(
-            contentSD.DisplayText,
+            contentSD.DisplayName,
             contentSD.Description,
             new ActionData[] { new ActionData("확인", () => Managers.UI.CloseUI(infoUI)) },
             image: contentSD.Image);

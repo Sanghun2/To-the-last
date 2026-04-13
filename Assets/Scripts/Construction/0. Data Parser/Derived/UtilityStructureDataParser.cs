@@ -6,7 +6,7 @@ public class UtilityStructureDataParser : StructureDataParserBase<UtilityStructu
         return new UtilityStructureData(
             structureSD.ID,
             structureSD.FirstCategory,
-            structureSD.DisplayText,
+            structureSD.DisplayName,
             structureSD.Image,
             structureSD.ConstructionTime,
             structureSD.Requirements,

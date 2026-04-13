@@ -6,7 +6,7 @@ public class SpecialStructureDataParser : StructureDataParserBase<SpecialStructu
         return new SpecialStructureData(
             structureSD.ID,
             structureSD.FirstCategory,
-            structureSD.DisplayText,
+            structureSD.DisplayName,
             structureSD.Image,
             structureSD.ConstructionTime,
             structureSD.Requirements,

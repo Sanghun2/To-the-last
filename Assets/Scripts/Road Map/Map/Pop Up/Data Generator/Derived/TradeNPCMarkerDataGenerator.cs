@@ -4,7 +4,10 @@ public class TradeNPCMarkerDataGenerator : MarkerDataGeneratorBase<TradeNPCLocat
 {
     public override TradeNPCMarkerPopUpData GenerateData(TradeNPCLocation location) {
         return new TradeNPCMarkerPopUpData(
-            null
+            location,
+            location.TradeNPC.CurrentAffinity,
+            location.TradeNPC.MaxAffinity,
+            GetButtonAction(location)
             );
     }
 }

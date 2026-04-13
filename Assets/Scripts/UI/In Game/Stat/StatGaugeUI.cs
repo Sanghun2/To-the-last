@@ -26,7 +26,7 @@ public class StatGaugeUI : StatUIBase
 
         // info pop up init
         var popUpData = new InfomationPopUpData(
-            statSD.DisplayText,
+            statSD.DisplayName,
             statSD.Description,
             new ActionData[] {
                 new ActionData("확인", () => {

@@ -12,7 +12,7 @@ public abstract class SelectionDataBase
     public SelectionDataBase(SelectionSD sd) {
         UnlockConditions = sd.UnlockConditions;
         ConditionToSelect = sd.ConditionToSelect;
-        Description = sd.DisplayText;
+        Description = sd.DisplayName;
         RequireMinutes = sd.RequireMinutes;
     }
 }

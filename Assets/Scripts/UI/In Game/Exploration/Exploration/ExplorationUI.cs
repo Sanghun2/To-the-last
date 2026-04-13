@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ExplorationData
 {
     //public ExplorationLocation ExplorationLocation => location;
-    //public Data Data => location == null ? null : location.Data;
+    //public Location Location => location == null ? null : location.Location;
     public EncounterDataBase CurrentEvent => location.LocationEventList[location.CurrentValue];
 
     [SerializeField] ExplorationLocation location;

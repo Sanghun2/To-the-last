@@ -20,7 +20,7 @@ public sealed class EffectManager
     }
 
     public void ApplyEffect(EffectDataBase effectData, Entity caster, IReadOnlyList<Entity> targets=null) {
-        // Efffect Data -> Effect Context
+        // Efffect Location -> Effect Context
         if (!effectContextBuilderContainer.TryGet(effectData, out EffectContextBuilderBase contextBuilder)) { LogError($"no ({effectData.GetType()}) context builder exist"); return; }
         if (!contextBuilder.TryBuildContext(effectData, caster, targets, out EffectContextBase effectContext)) { LogError($"({effectData.GetType()}) context build failed"); return; }
 

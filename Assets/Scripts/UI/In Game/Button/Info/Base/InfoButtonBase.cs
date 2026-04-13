@@ -22,7 +22,7 @@ public abstract class InfoButtonBase : ButtonBase
         if (infoUI.IsOpened) return;
 
         InfomationPopUpData infoData = new InfomationPopUpData(
-            itemSD.DisplayText,
+            itemSD.DisplayName,
             itemSD.Description,
             new ActionData[] { new ActionData("확인", () => Managers.UI.CloseUI(infoUI)) },
             image: itemSD.Image);

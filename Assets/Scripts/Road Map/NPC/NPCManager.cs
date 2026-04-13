@@ -30,8 +30,9 @@ public sealed class NPCManager : IInitializable
         _isInit = true;
     }
 
-    public bool TryActivateNPC(NPCSDBase npcSD) {
-        return TryActivateNPC(CreateNPC(npcSD));
+    public bool TryActivateNPC(NPCSDBase npcSD, out NPCBase targetNPC) {
+        targetNPC = CreateNPC(npcSD);
+        return TryActivateNPC(targetNPC);
     }
     public bool TryActivateNPC(NPCBase npcBase) {
         if (npcBase == null) { Debug.LogError($"npc is null"); return false; }
