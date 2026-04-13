@@ -51,19 +51,7 @@ public class Job
 
         currentMinutes += deltaMinutes;
         onProgress?.Invoke(currentMinutes, totalMinutes);
-        if (Mathf.Approximately(ProgressRate, 1)) {
-            currentMinutes = totalMinutes;
-            _currentState = State.Completed;
-            onComplete?.Invoke();
-        }
-    }
-
-    public void ChangeMinutes(int day, int hour, int minute, int deltaMinutes) {
-        if (CurrentState == State.Wait) return;
-
-        currentMinutes += deltaMinutes;
-        onProgress?.Invoke(currentMinutes, totalMinutes);
-        if (Mathf.Approximately(ProgressRate, 1)) {
+        if (ProgressRate >= 1) {
             currentMinutes = totalMinutes;
             _currentState = State.Completed;
             onComplete?.Invoke();
@@ -71,6 +59,10 @@ public class Job
             onComplete = null;
             onProgress = null;
         }
+    }
+
+    public void ChangeMinutes(int day, int hour, int minute, int deltaMinutes) {
+        ChangeMinutes(deltaMinutes);
     }
 }
 

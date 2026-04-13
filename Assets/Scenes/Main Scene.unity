@@ -10241,6 +10241,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCTester
   testNPCSD: {fileID: 11400000, guid: 1394b21e18632d4448b97a41415dcb78, type: 2}
+--- !u!114 &2002452083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002452073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174b4eda21d1e9e41b6ef99820104ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeTester
+  delayTime: 3
+  testText: new location discovered
 --- !u!1 &2023623212
 GameObject:
   m_ObjectHideFlags: 0
@@ -11553,6 +11567,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2002452082}
+    - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2002452083}
   m_SourcePrefab: {fileID: 100100000, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
 --- !u!1001 &5811555396548711079
 PrefabInstance:
