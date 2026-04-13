@@ -175,7 +175,7 @@ public class LocationManager : IInitializable
         var targetHz = Random.Range(Define.Value.MIN_HZ_VALUE, Define.Value.MAX_HZ_VALUE);
         return Mathf.Round(targetHz * 10f) / 10f;
     }
-    private (int markerInex, Vector2 point)? CreateRandomCoordinate() {
+    private Vector2 CreateRandomCoordinate() {
         return LocationUtility.GenerateRandomLocationCoordinate();
     }
     private string CreateNewLocationUID(LocationInfoSD randomLocationSD) {
@@ -221,7 +221,6 @@ public class LocationManager : IInitializable
             coordinate.LocationUID, 
             coordinate.LocationCategoryID,
             coordinate.LocationName,
-            coordinate.MarkerIndex,
             coordinate.AnchoredPosition,
             finalEncounterList);
 
@@ -238,8 +237,7 @@ public class LocationManager : IInitializable
             locationSD.ID,
             locationSD.CategoryID,
             locationSD.DisplayText,
-            locationSD.MarkerIndex,
-            LocationUtility.TryGetGridOrRandom(locationSD.MarkerIndex, out var pointInfo) ? pointInfo.point,
+            LocationUtility.GenerateRandomLocationCoordinate(),
             essentialEncounterList);
     }
 

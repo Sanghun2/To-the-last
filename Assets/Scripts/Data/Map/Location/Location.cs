@@ -49,6 +49,7 @@ public class Location : IValue<int>, IEquatable<Location>
     public string LocationCategoryID => locationCategoryID;
     public string NextLocationID => nextLocationID;
     public string StoryDescription => data.StoryDescription;
+    public Vector2 AnchoredPosition { get; }
 
 
     [SerializeField][HideInInspector] string locationUID;
@@ -69,6 +70,7 @@ public class Location : IValue<int>, IEquatable<Location>
         _currentState = LocationState.Undiscovered;
         nextLocationID = locationData.NextLocationID;
         displayName = locationData.DisplayText;
+        AnchoredPosition = locationData.AnchoredPosition;
     }
 
     public Location(CoordinateData coordinate) {
@@ -76,6 +78,7 @@ public class Location : IValue<int>, IEquatable<Location>
         locationUID = coordinate.LocationUID;
         displayName = coordinate.LocationName;
         _currentState = LocationState.Undiscovered;
+        AnchoredPosition = coordinate.AnchoredPosition;
     }
 
     public event Action<int, int> OnProgressChanged;

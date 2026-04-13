@@ -15,7 +15,7 @@ public class LocationMarkerUI : MarkerUIBase
 
         gameObject.name = $"Location UI_{location.Data.LocationUID}";
         InitMarker(location.Data.IconImage, () => OpenPopUp(location));
-        SetPosition(new (location.Data.MarkerIndex, location.Data.AnchoredPosition));
+        SetPosition(location.Data.AnchoredPosition);
     }
 
 

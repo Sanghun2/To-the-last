@@ -46,8 +46,8 @@ public static class LocationUtility
         return null;
     }
 
-    public static (int markerIndex, Vector2 point)? GenerateRandomLocationCoordinate() {
-        return MarkerGridGenerator.GetRandomAvailableGrid();
+    public static Vector2 GenerateRandomLocationCoordinate() {
+        return CompletelyRandomCoordinate();
     }
     public static bool TryGetGridOrRandom(int markerIndex, out (int index, Vector2 point) pointInfo) {
         if (MarkerGridGenerator.TryGetGridOrRandom(markerIndex, out pointInfo)) {

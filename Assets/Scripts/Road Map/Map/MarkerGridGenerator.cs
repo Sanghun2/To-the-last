@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MarkerGridGenerator : MonoBehaviour
 {
+    [SerializeField] bool drawGizmos;
     [SerializeField] Vector2Int gridSize; // 가로/세로 칸 수
     [SerializeField] RectTransform targetRect;
 
@@ -166,6 +167,7 @@ public class MarkerGridGenerator : MonoBehaviour
         if (targetRect == null) targetRect = GetComponent<RectTransform>();
     }
     private void OnDrawGizmos() {
+        if (!drawGizmos) return;
         RectTransform rectTr = GetComponent<RectTransform>();
         if (rectTr == null) return;
 

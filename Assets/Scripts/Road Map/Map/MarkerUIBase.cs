@@ -29,14 +29,9 @@ public abstract class MarkerUIBase : UIBase, IPool
         SetAction(markerAction);
     }
 
-    public void SetPosition((int markerIndex, Vector2 point)? v) {
-        if (v != null) {
-            markerIndex = v.Value.markerIndex;
-            Rect.anchoredPosition = v.Value.point;
-            return;
-        }
-
-        Debug.LogError($"<color=red>marker point is null. couldn't get available marker point</color>");
+    public void SetPosition(Vector2 position) {
+        Rect.anchoredPosition = position;
+        return;
     }
 
     private void SetImage(Sprite markerImage) {
