@@ -7088,6 +7088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trade UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5195480362432282290, guid: 372213af9c105724092c3c4e7db38595, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7500976521714102893, guid: 372213af9c105724092c3c4e7db38595, type: 3}
       propertyPath: m_IsActive
       value: 0
