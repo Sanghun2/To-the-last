@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
 
@@ -9,15 +10,23 @@ public class InventoryViewUI : UIBase
     [SerializeField] BackButton backButton;
     [SerializeField] CustomButtonContainer customButtonContainer;
 
+    public event Action OnClosed;
+
     public override void InitUI() {
         if (IsInit) return;
 
         CloseUI();
+        backButton.InitUI();
+        backButton.SetButtonAction(() => {
+            Managers.UI.CloseUI(this);
+            OnClosed?.Invoke();
+        });
 
         _isInit = true;
     }
 
     public void ShowInventory(string locationID, Exploration.State state) {
+        InitUI();
         if (!Managers.Inventory.TryGetInventoryByID(locationID, out InventoryBase locationInventory)) {
             locationInventory = Managers.Inventory.AddInventory(new SimpleInventory(locationID, 50));
         }

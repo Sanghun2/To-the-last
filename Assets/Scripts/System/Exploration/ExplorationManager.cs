@@ -22,6 +22,7 @@ public class ExplorationManager
             return string.IsNullOrEmpty(currentLocationID) ? null : GetLocation(currentLocationID);
         }
     }
+    public LocationUIBase CurrentOpenedUI { get; set; }
 
     public event Action OnExplorationCompleted;
 
@@ -35,7 +36,10 @@ public class ExplorationManager
     }
 
     public void ExitLocation() {
-        Managers.UI.CloseUI<ExplorationUI>();
+        if (CurrentOpenedUI != null) {
+            Managers.UI.CloseUI(CurrentOpenedUI);
+            CurrentOpenedUI = null;
+        }
         Managers.UI.CloseUI<DialogUI>();
     }
 

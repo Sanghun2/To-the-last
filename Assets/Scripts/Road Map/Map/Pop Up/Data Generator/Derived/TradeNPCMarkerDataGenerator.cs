@@ -15,6 +15,7 @@ public class TradeNPCMarkerDataGenerator : MarkerDataGeneratorBase<TradeNPCLocat
         var ui = Managers.UI.GetUI<TradeUI>();
         ui.InitUI();
         ui.InitLocationUI(destination);
+        ui.ShowEnterance();
         ui.OpenUI();
     }
 }

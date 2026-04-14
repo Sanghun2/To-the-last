@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class EnteranceUI : UIBase
 {
-    [SerializeField] BackButton backButton;
+    [SerializeField] BackButton exitButton;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] Image mainImage;
     [SerializeField] TextMeshProUGUI description;
@@ -16,9 +16,9 @@ public class EnteranceUI : UIBase
     public override void InitUI() {
         if (IsInit) return;
 
-        backButton.InitUI();
         buttonContainer.InitUI();
-        backButton.SetButtonAction(QuitLocation);
+        exitButton.InitUI();
+        exitButton.SetButtonAction(QuitLocation);
 
         _isInit = true;
     }

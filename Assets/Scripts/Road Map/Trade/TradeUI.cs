@@ -23,11 +23,19 @@ public class TradeUI : LocationUIBase<TradeNPCLocation>
                 Managers.Player.PlayerData.Inventory, 
                 location.Inventory,
                 null);
-            tradeView.OpenUI();
+            Managers.UI.OpenUI(tradeView);
         }));
     }
 
     protected override void OnShowEnterance() {
         tradeView.CloseUI();
+    }
+
+    private void OnEnable() {
+        tradeView.OnClosed -= ShowEnterance;
+        tradeView.OnClosed += ShowEnterance;
+    }
+    private void OnDisable() {
+        tradeView.OnClosed -= ShowEnterance;
     }
 }

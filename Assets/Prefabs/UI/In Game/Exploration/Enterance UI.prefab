@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f9f3b84fa95174dbf31a4e403b8758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnteranceUI
-  backButton: {fileID: 7343105009400807316}
+  exitButton: {fileID: 7343105009400807316}
   nameText: {fileID: 876414548153871510}
   mainImage: {fileID: 3381523491361418989}
   description: {fileID: 2534745644261448745}

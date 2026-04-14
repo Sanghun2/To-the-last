@@ -9,7 +9,7 @@ public abstract class LocationUIBase : UIBase
         get
         {
             if (_enteranceUI == null) {
-                _enteranceUI = GetComponentInChildren<EnteranceUI>();
+                _enteranceUI = GetComponentInChildren<EnteranceUI>(true);
                 //_enteranceUI = Managers.UI.GetUI<EnteranceUI>();
             }
 
@@ -17,14 +17,10 @@ public abstract class LocationUIBase : UIBase
         }
     }
 
-    [SerializeField] BackButton backButton;
     private EnteranceUI _enteranceUI;
 
     public override void InitUI() {
         if (IsInit) return;
-
-        backButton.InitUI();
-        backButton.SetButtonAction(ShowEnterance);
 
         _isInit = true;
     }
@@ -33,6 +29,7 @@ public abstract class LocationUIBase : UIBase
 
     public virtual void ShowEnterance() {
         EnteranceUI.OpenUI();
+        Managers.Exploration.CurrentOpenedUI = this;
         OnShowEnterance();
     }
 
