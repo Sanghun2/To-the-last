@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using BilliotGames;
 using UnityEngine;
 
 public class TradeNPC : NPCBase
@@ -11,14 +13,26 @@ public class TradeNPC : NPCBase
     public float MaxAffinity => maxAffinity;
     public Vector2 AnchoredPosition => anchoredPosition;
 
+
     private Vector2 anchoredPosition;
+    private Dictionary<string, int> currentItemDict = new();
+    private InventoryBase npcInventory;
 
     public TradeNPC(TradeNPCData data) : base(data.ID) {
         this.data = data;
         currentAffinity = 0;
         maxAffinity = data.MaxAffinity;
+        ResetCurrentItemList();
     }
 
+    public void ResetCurrentItemList() {
+        var itemList = data.DefaultItemList;
+        currentItemDict.Clear();
+        for (int i = 0; i < itemList.Count; i++) {
+            var item = itemList[i];
+            currentItemDict[item.ItemSD.ID] = currentItemDict.GetValueOrDefault(item.ItemSD.ID) + item.InitAmount;
+        }
+    }
 
     public override void InitNPC() {
 

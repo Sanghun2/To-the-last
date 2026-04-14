@@ -10,4 +10,11 @@ public class TradeNPCMarkerDataGenerator : MarkerDataGeneratorBase<TradeNPCLocat
             GetButtonAction(location)
             );
     }
+
+    protected override void ExecuteEnter(LocationBase destination) {
+        var ui = Managers.UI.GetUI<TradeUI>();
+        ui.InitUI();
+        ui.InitLocationUI(destination);
+        ui.OpenUI();
+    }
 }

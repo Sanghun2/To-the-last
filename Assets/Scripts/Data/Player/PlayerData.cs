@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using BilliotGames;
 using UnityEngine;
 
@@ -51,7 +52,7 @@ public sealed class PlayerData : IInitializable
     private bool _isInit;
     private Entity playerEntity = new Entity("player", new StatContainer());
     private MetabolicSystem metabolicSystem = new MetabolicSystem();
-    private InventoryBase _inventory = new SimpleInventory("player inventory", 100);
+    private InventoryBase _inventory = new SimpleInventory("player inventory", 100, "가방");
     private Define.VitalState vitalState;
     private HashSet<string> traitSet = new HashSet<string>();
     private int traitPoint;
@@ -68,6 +69,9 @@ public sealed class PlayerData : IInitializable
 
         Managers.Time.OnTimeChanged -= ConsumeStatAdaptor;
         Managers.Time.OnTimeChanged += ConsumeStatAdaptor;
+
+        Managers.Location.OnLocationChanged -= SetCurrentLocation;
+        Managers.Location.OnLocationChanged += SetCurrentLocation;
 
         RegisterEvent(OnPlayerDead, Define.Stat.Hp, Define.StatDetail.current);
 

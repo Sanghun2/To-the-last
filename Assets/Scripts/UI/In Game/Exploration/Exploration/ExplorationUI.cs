@@ -17,19 +17,8 @@ public class ExplorationData
     }
 }
 
-public class ExplorationUI : UIBase
+public class ExplorationUI : LocationUIBase<ExplorationLocation>
 {
-    public EnteranceUI EnteranceUI
-    {
-        get
-        {
-            if (_enteranceUI == null) {
-                _enteranceUI = Managers.UI.GetUI<EnteranceUI>();
-            }
-
-            return _enteranceUI;
-        }
-    }
 
     [SerializeField] Image mainBackgroundImage;
     [SerializeField] GameObject siuationObj;
@@ -37,7 +26,6 @@ public class ExplorationUI : UIBase
     [SerializeField] TextUI descriptionText;
     [SerializeField] SelectionButtonContainer selectionButtonContainer;
     [SerializeField] ExplorationInfoUI explorationInfoUI;
-    private EnteranceUI _enteranceUI;
 
     public override void InitUI() {
         if (IsInit) return;
@@ -47,16 +35,16 @@ public class ExplorationUI : UIBase
         _isInit = true;
     }
 
-    public void InitLocationUI(ExplorationLocation location) {
+    public override void InitLocationUI(ExplorationLocation location) {
         InitUI();
+        EnteranceUI.InitEnteracne(location, new ActionData("탐색한다", () => Managers.Exploration.ContinueToExploreCurrentLocation()));
+
         mainBackgroundImage.sprite = location.Data.MainImage;
         HideSituation();
         explorationInfoUI.InitInfoUI(location);
     }
-    public void ShowEnterance() {
-        InitUI();
-        EnteranceUI.InitButtons();
-        EnteranceUI.OpenUI();
+    public override void ShowEnterance() {
+        base.ShowEnterance();
         siuationObj.SetActive(false);
     }
     public void ShowSituation(EncounterDataBase encounterData) {

@@ -9,4 +9,8 @@ public class TradeNPCLocation : LocationBase
     public TradeNPCLocation(TradeNPC tradeNPC, LocationData data) : base(data) {
         this.tradeNPC = tradeNPC;
     }
+
+    protected override string GetInventoryName() {
+        return DisplayName;
+    }
 }

@@ -37,27 +37,36 @@ public abstract class LocationBase : IEquatable<LocationBase>
         get
         {
             if (_inventory == null) {
-                if (Managers.Inventory.TryGetInventoryByID(LocationUID, out var inven)) {
-                    _inventory = inven as SimpleInventory;
-                }
-                else {
-                    _inventory = new SimpleInventory($"{LocationUID}", 50);
-                    Managers.Inventory.AddInventory(_inventory);
-                }
+                GetOrCreateInvetory();
             }
 
             return _inventory;
         }
     }
 
+    public string DisplayName => data.DisplayName;
 
     private LocationState _currentState;
     private LocationData data;
-    [SerializeField] SimpleInventory _inventory;
+    [SerializeField] protected SimpleInventory _inventory;
 
     public LocationBase(LocationData data) {
         this.data = data;
+        GetOrCreateInvetory();
     }
+
+    protected virtual void GetOrCreateInvetory() {
+        if (Managers.Inventory.TryGetInventoryByID(LocationUID, out var inven)) {
+            _inventory = inven as SimpleInventory;
+        }
+        else {
+            _inventory = new SimpleInventory($"{LocationUID}", 50, GetInventoryName());
+            Debug.Log($"inventory name: {GetInventoryName()}");
+            Managers.Inventory.AddInventory(_inventory);
+        }
+    }
+
+    protected abstract string GetInventoryName();
 
     public bool Equals(LocationBase other) {
         if (this == null || other == null) return false;

@@ -42,7 +42,7 @@ public class ExplorationManager
     public void OpenCurrentStorage() {
         if (CurrentLocation == null) { Debug.Log($"location is null"); return; }
 
-        Managers.UI.OpenUI<LocationInventoryUI>().ShowInventory(CurrentLocation.LocationUID, Exploration.State.Enterance);
+        Managers.UI.OpenUI<InventoryViewUI>().ShowInventory(CurrentLocation.LocationUID, Exploration.State.Enterance);
     }
 
 

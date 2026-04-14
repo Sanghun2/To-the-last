@@ -60,18 +60,13 @@ public abstract class MarkerDataGeneratorBase<TLocation, TMarkerData> : MarkerDa
             Managers.UI.CloseUI<MapUI>();
             basementUI.OpenUI();
         }
-        // trade npc
-        else if (false) { }
         // exploration
         else {
-            var ui = Managers.UI.GetUI<ExplorationUI>();
-            ui.InitUI();
-            ui.OpenUI();
-
-            ui.InitLocationUI(destination as ExplorationLocation);
-            ui.ShowEnterance();
+            ExecuteEnter(destination);
         }
     }
+    protected abstract void ExecuteEnter(LocationBase destination);
+
     private void MoveLocation(LocationData currentLocationData, LocationData endLocationData) {
         Managers.UI.CloseUI<MarkerInfoPopUpUI>();
         Managers.UI.GetUI<MapUI>().LocationPointer.MovePosition(

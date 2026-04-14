@@ -9,4 +9,13 @@ public class LocationMarkerDataGenerator : MarkerDataGeneratorBase<ExplorationLo
             GetButtonAction(location)
             );
     }
+
+    protected override void ExecuteEnter(LocationBase destination) {
+        var ui = Managers.UI.GetUI<ExplorationUI>();
+        ui.InitUI();
+        ui.OpenUI();
+
+        ui.InitLocationUI(destination);
+        ui.ShowEnterance();
+    }
 }

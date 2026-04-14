@@ -67,4 +67,8 @@ public class ExplorationLocation : LocationBase, IValue<int>
         base.ClearLocationEvent();
         OnProgressChanged = null;
     }
+
+    protected override string GetInventoryName() {
+        return "보관함";
+    }
 }

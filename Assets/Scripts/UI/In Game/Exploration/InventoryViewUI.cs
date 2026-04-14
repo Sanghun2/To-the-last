@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
-public class LocationInventoryUI : UIBase
+public class InventoryViewUI : UIBase
 {
     [SerializeField] ItemStorageInventoryUI topInventoryUI;
     [SerializeField] ItemStorageInventoryUI bottomInventoryUI;
@@ -30,11 +28,15 @@ public class LocationInventoryUI : UIBase
 
     public void ShowInventory(InventoryBase top, InventoryBase bottom, IReadOnlyList<ActionData> buttons) {
         InitUI();
+        topInventoryUI.InitInventory(top);
+        bottomInventoryUI.InitInventory(bottom);
 
         topInventoryUI.ShowInventory(top);
         bottomInventoryUI.ShowInventory(bottom);
 
-        customButtonContainer.InitButtons(buttons);
+        if (customButtonContainer != null) {
+            customButtonContainer.InitButtons(buttons);
+        }
 
         OpenUI();
     }
@@ -46,7 +48,7 @@ public class LocationInventoryUI : UIBase
                     new ActionData(
                         "확인",
                         () => {
-                            Managers.UI.CloseUI<LocationInventoryUI>();
+                            Managers.UI.CloseUI<InventoryViewUI>();
                         })
                 };
             case Exploration.State.Exploring:
@@ -54,14 +56,14 @@ public class LocationInventoryUI : UIBase
                     new ActionData(
                         "나간다",
                         () => {
-                            Managers.UI.CloseUI<LocationInventoryUI>();
+                            Managers.UI.CloseUI<InventoryViewUI>();
                             Managers.Exploration.GoToEnterance();
                         }
                         ),
                     new ActionData(
                         "탐색한다",
                         () => {
-                            Managers.UI.CloseUI<LocationInventoryUI>();
+                            Managers.UI.CloseUI<InventoryViewUI>();
                             Managers.Exploration.ContinueToExploreCurrentLocation();
                         })
                 };

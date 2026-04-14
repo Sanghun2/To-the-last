@@ -25,7 +25,7 @@ public class SimpleInventory : InventoryBase
     public override event Action<ItemEventArgs> OnItemRemoved;
     public override event Action<ItemEventArgs> OnItemChanged;
 
-    public SimpleInventory(string id, int capacitiy = 15) : base(id, capacitiy) {
+    public SimpleInventory(string id, int capacitiy = 15, string displayName="") : base(id, capacitiy, displayName:displayName) {
         InitInventory();
     }
 

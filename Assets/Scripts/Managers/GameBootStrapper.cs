@@ -47,8 +47,8 @@ public class GameBootStrapper
         //int basementMarkerIndex = 5;
         //LocationUtility.MarkerGridGenerator.InitGrid(basementMarkerIndex);
         Managers.Player.PlayerData.SetAsDefaultLocation();
-        Managers.Location.OnLocationChanged -= playerData.SetCurrentLocation;
-        Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
+        //Managers.Location.OnLocationChanged -= playerData.SetCurrentLocation;
+        //Managers.Location.OnLocationChanged += playerData.SetCurrentLocation;
 
         // structure
         Managers.Structure.UnlockLocations(targetExpensionLevel:0);

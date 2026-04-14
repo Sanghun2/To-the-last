@@ -1,29 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 using BilliotGames;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnteranceUI : UIBase
 {
+    [SerializeField] BackButton backButton;
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] Image mainImage;
+    [SerializeField] TextMeshProUGUI description;
     [SerializeField] CustomButtonContainer buttonContainer;
 
     public override void InitUI() {
         if (IsInit) return;
 
+        backButton.InitUI();
         buttonContainer.InitUI();
+        backButton.SetButtonAction(QuitLocation);
 
         _isInit = true;
     }
 
-    public void InitButtons() {
-        InitUI();
-        buttonContainer.InitButtons(new ActionData[] {
-            new ActionData("나간다", QuitLocation),
-            new ActionData("탐색한다", ExploreLocation)
-        });
+    public void InitEnteracne(LocationBase location,params ActionData[] actions) {
+        nameText.text = location.DisplayName;
+        mainImage.sprite = location.MainImage;
+        description.text = location.StoryDescription;
+        InitButtons(actions);
     }
 
-    private void ExploreLocation() {
-        Managers.Exploration.ContinueToExploreCurrentLocation();
+    private void InitButtons(ActionData[] additionalActions) {
+        InitUI();
+        var actions = new List<ActionData> { new ActionData("나간다", QuitLocation) };
+        actions.AddRange(additionalActions);
+        buttonContainer.InitButtons(actions);
     }
 
     private void QuitLocation() {

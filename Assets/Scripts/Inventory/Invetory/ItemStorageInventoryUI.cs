@@ -1,9 +1,11 @@
 ﻿using System;
 using BilliotGames;
+using TMPro;
 using UnityEngine;
 
 public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
 {
+    [SerializeField] TextMeshProUGUI inventoryNameText;
     [SerializeField] ItemSlotContainer itemSlotContainer;
     [SerializeField] WeightUI weightUI;
 
@@ -34,6 +36,8 @@ public class ItemStorageInventoryUI : InventoryUIBase<SimpleInventory>
 
     public override void ShowInventory(SimpleInventory simpleInventory) {
         var list = simpleInventory.ItemList;
+
+        inventoryNameText.text = inventory.DisplayName;
 
         itemSlotContainer.Clear();
         for (int i = 0; i < list.Count; i++) {

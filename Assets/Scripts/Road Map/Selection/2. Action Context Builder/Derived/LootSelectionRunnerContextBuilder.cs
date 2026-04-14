@@ -4,7 +4,7 @@ public class LootSelectionRunnerContextBuilder : SelectionRunnerContextBuilderBa
 {
     //public override LootSelectActionContext BuildActionContext(SelectionData data) {  
     //    if (data == null) { Debug.LogError($"<color=red>selection data is null</color>"); return null; }
-    //    var targetInven = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID)?.Inventory;
+    //    var targetInven = LocationUtility.FindLocation(Managers.Player.PlayerData.CurrentLocationID)?.NPCInventory;
 
     //    if (targetInven == null) { Debug.LogError($"target inven null"); return null; }
 

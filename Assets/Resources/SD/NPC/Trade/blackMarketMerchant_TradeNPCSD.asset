@@ -17,6 +17,10 @@ MonoBehaviour:
   descripiton: "\uC554\uC2DC\uC7A5 \uC0C1\uC778\uC774\uB2E4"
   categoryList: []
   iconImage: {fileID: 21300000, guid: 1a02185071e4fd94b95281875fd45c37, type: 3}
+  mainImage: {fileID: 21300000, guid: e231cafbe3dc88a4294bda511d13aa5f, type: 3}
+  maxAffinity: 10
   tradeItemList:
   - itemSD: {fileID: 11400000, guid: d4d5dbccd919aab4dab79eb271a41eaf, type: 2}
     initAmount: 3
+  - itemSD: {fileID: 11400000, guid: 1be391bc56737b64dbe94534575e4d9b, type: 2}
+    initAmount: 1
