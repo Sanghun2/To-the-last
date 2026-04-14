@@ -6,6 +6,7 @@ public class InventoryViewUI : UIBase
 {
     [SerializeField] ItemStorageInventoryUI topInventoryUI;
     [SerializeField] ItemStorageInventoryUI bottomInventoryUI;
+    [SerializeField] BackButton backButton;
     [SerializeField] CustomButtonContainer customButtonContainer;
 
     public override void InitUI() {
