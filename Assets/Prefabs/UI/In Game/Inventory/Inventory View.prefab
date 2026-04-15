@@ -647,10 +647,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -765,8 +761,24 @@ PrefabInstance:
       value: Bottom Inventory
       objectReference: {fileID: 0}
     - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236847197619927698, guid: 629cfa55d2b78e84ea939e8a9a52e55e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

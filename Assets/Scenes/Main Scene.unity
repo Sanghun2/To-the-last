@@ -7064,10 +7064,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4510465010366063149, guid: 372213af9c105724092c3c4e7db38595, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 685
-      objectReference: {fileID: 0}
     - target: {fileID: 4631565179100338191, guid: 372213af9c105724092c3c4e7db38595, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7206,6 +7202,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142221009}
   m_CullTransparentMesh: 1
+--- !u!114 &1150423237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6838013452569415694, guid: 372213af9c105724092c3c4e7db38595, type: 3}
+  m_PrefabInstance: {fileID: 1129215287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ceb06abc2c2f44497307b9425f5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocationInventoryUI
 --- !u!1 &1150986980
 GameObject:
   m_ObjectHideFlags: 0
@@ -7415,6 +7422,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153496331}
   m_CullTransparentMesh: 1
+--- !u!114 &1171760704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5307052878715349023, guid: 372213af9c105724092c3c4e7db38595, type: 3}
+  m_PrefabInstance: {fileID: 1129215287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ceb06abc2c2f44497307b9425f5c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocationInventoryUI
 --- !u!1 &1175565980
 GameObject:
   m_ObjectHideFlags: 0
@@ -10470,6 +10488,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCTester
   testNPCSD: {fileID: 11400000, guid: 1394b21e18632d4448b97a41415dcb78, type: 2}
+--- !u!114 &2002452087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002452073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05323cf5445a6840ad5d5aa5959238e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryTester
+  itemLists:
+  - {fileID: 11400000, guid: 5b014158f7b7760418c2d5d454b35158, type: 2}
+  - {fileID: 11400000, guid: 403b4f4eb84caa640ac8e6a3962c5cd5, type: 2}
+  createAmount: 10
+  targetInvenUI: {fileID: 1150423237}
+  playerInvenUI: {fileID: 1171760704}
+--- !u!114 &2002452091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002452073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c965362dd624bbccaa85a06a7629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProcessTester
+  testChainType: 0
 --- !u!1 &2023623212
 GameObject:
   m_ObjectHideFlags: 0
@@ -11779,6 +11828,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2002452082}
+    - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2002452087}
+    - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2002452091}
   m_SourcePrefab: {fileID: 100100000, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
 --- !u!1001 &5811555396548711079
 PrefabInstance:

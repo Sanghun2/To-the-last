@@ -11,7 +11,7 @@ public class GameBootStrapper
         // 연출
 
         // 체인 시작
-        Managers.Process.StartProcess(Define.FlowType.BootStrapGame);
+        Managers.Process.TryStartProcess(Define.FlowType.BootStrapGame);
     }
 
     public void CancelBootStrap() {

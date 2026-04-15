@@ -92,7 +92,7 @@ public class Structure : IValue<float>
         if (IsLocked == false) { Debug.Log("<color=yellow>Lock 상태가 아닌데 unlock 시도</color>"); return; }
 
         if (StructureContext != null) {
-            StructureContext.ProcessState = Process.State.Wait;
+            StructureContext.ProcessState = ProcessBase.State.Wait;
         }
 
         CurrentStructureState = StructureState.Empty;
@@ -100,7 +100,7 @@ public class Structure : IValue<float>
     public void DestroyStrucure() {
         if (CanDestroy == false) { return; }
         CurrentStructureState = StructureState.Empty;
-        StructureContext.ProcessState = Process.State.Wait;
+        StructureContext.ProcessState = ProcessBase.State.Wait;
         structureContext = null;
         //structureID = null;
     }

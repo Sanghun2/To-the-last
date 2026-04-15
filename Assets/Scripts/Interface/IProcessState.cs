@@ -2,5 +2,5 @@
 
 public interface IProcessState
 {
-    Process.State ProcessState { get; set; }
+    ProcessBase.State ProcessState { get; set; }
 }

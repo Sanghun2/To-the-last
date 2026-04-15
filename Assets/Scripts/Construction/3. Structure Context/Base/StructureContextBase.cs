@@ -15,7 +15,7 @@ public abstract class StructureContextBase : IProcessState
     public string CategoryID => _data.CategoryID;
 
     public IReadOnlyList<Ingredient> Requirements => _data.RequirementItems;
-    public Process.State ProcessState
+    public ProcessBase.State ProcessState
     {
         get => _processState;
         set
@@ -30,13 +30,13 @@ public abstract class StructureContextBase : IProcessState
 
 
     protected StructureDataBase _data;
-    protected Process.State _processState;
+    protected ProcessBase.State _processState;
 
     public StructureContextBase(StructureDataBase data) {
         this._data = data;
     }
 
-    public event Action<Process.State, Process.State> OnProcessStateChanged;
+    public event Action<ProcessBase.State, ProcessBase.State> OnProcessStateChanged;
 
     public abstract StructureUIBase OpenStructureUI();
 }

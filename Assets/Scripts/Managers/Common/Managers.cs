@@ -205,7 +205,7 @@ public sealed class Managers : MonoBehaviour
 
                 //var loginChain = new ProcessChain("log in");
                 //var prepareChain = new ProcessChain("prepare");
-                    //.AddProcess(new Process());
+                    //.AddProcess(new ProcessBase());
 
                 //_processManager.RegisterChain(loginChain);
                 //_processManager.RegisterChain(prepareChain);

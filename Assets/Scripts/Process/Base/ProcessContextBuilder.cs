@@ -8,7 +8,7 @@ public abstract class ProcessContextBuilder
 
 public abstract class ProcessContextBuilder<TContext> : ProcessContextBuilder where TContext : ProcessContext
 {
-    public sealed override ProcessContext BuildContext() => BuildTypedContext();
+    public sealed override ProcessContext BuildContext() => BuildProcessContext();
 
-    public abstract TContext BuildTypedContext();
+    public abstract TContext BuildProcessContext();
 }

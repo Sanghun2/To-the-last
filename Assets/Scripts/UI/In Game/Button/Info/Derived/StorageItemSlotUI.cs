@@ -3,61 +3,40 @@ using BilliotGames;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StorageItemButton : InfoButtonBase, IPointerDownHandler, IPointerUpHandler
+public class StorageItemSlotUI : InfoButtonBase
 {
-    // 길게 누르기 판단 기준 시간 (초)
-    private const float LONG_PRESS_DURATION = 0.25f;
-
+    [SerializeField] LongPressHandler longPressHandler;
 
     // 아이템을 이동시킬 인벤토리
     // 외부에서 SetInventory로 주입받아 사용
     private InventoryBase fromInventory;
     private InventoryBase toInventory;
 
-    private bool isPointerDown;
-    // 길게 누르기가 이미 발동됐으면 short press(이동) 동작을 막기 위한 플래그
-    private bool longPressTriggered;
-    private Coroutine longPressCoroutine;
 
+    public override void InitUI() {
+        if (IsInit) return;
+        base.InitUI();
+
+        if (longPressHandler != null) {
+            longPressHandler.SetLongPressAction(ShowInfomation);
+        }
+
+        _isInit = true;
+    }
 
     public void SetInventory(InventoryBase from, InventoryBase to) {
         fromInventory = from;
         toInventory = to;
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
-        isPointerDown = true;
-        longPressTriggered = false;
-        // 누르는 순간 코루틴 시작 → 1초 후 자동 발동
-        longPressCoroutine = StartCoroutine(LongPressRoutine());
-    }
-
-    public void OnPointerUp(PointerEventData eventData) {
-        // 손 떼면 코루틴 취소
-        if (longPressCoroutine != null) {
-            StopCoroutine(longPressCoroutine);
-            longPressCoroutine = null;
-        }
-
-        if (!isPointerDown) return;
-        isPointerDown = false;
-
-        // 길게 누르기가 이미 발동됐으면 short press 동작 무시
-        if (longPressTriggered) return;
-
-        // 1초 미만으로 눌렀다 뗀 경우 → 아이템 1개 이동
-        TryMoveOneItem();
-    }
 
     // ButtonBase의 ButtonAction은 OnPointerDown/Up에서 직접 처리하므로
     // 기본 클릭 동작은 비워둠
-    protected override void ButtonAction() { }
-
-    private IEnumerator LongPressRoutine() {
-        yield return new WaitForSeconds(LONG_PRESS_DURATION);
-        // 1초 경과 → 길게 누르기 발동
-        longPressTriggered = true;
-        ShowInfomation();
+    protected override void ButtonAction() { 
+        if (longPressHandler?.IsLongPressTriggered == false) {
+            TryMoveOneItem();
+            Debug.Log("single touched");
+        }
     }
 
     private void TryMoveOneItem() {

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3107966115702561088}
   - component: {fileID: 4719775885376063780}
   - component: {fileID: 3807979413895459795}
+  - component: {fileID: 2718398422793650350}
   m_Layer: 5
   m_Name: Item Info Button
   m_TagString: Untagged
@@ -134,6 +135,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StorageItemButton
   targetButton: {fileID: 4719775885376063780}
+  longPressHandler: {fileID: 2718398422793650350}
+--- !u!114 &2718398422793650350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031860216341556414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e339a44ad23d549b75b2ada433b220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressHandler
+  longPressDuration: 0.5
 --- !u!1 &6164341304211348390
 GameObject:
   m_ObjectHideFlags: 0

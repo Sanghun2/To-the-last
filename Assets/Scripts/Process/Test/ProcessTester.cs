@@ -7,13 +7,13 @@ public class ProcessTester : MonoBehaviour
     [SerializeField] Define.FlowType testChainType;
 
     public void StartProcess() {
-        Managers.Process.StartProcess(testChainType);
+        Managers.Process.TryStartProcess(testChainType);
     }
     public void NextProcess() {
-        Managers.Process.ExecuteNextProcess();
+        Managers.Process.TryExecuteNextProcess();
     }
 
     public void PrevProcess() {
-        Managers.Process.ExecutePrevProcess();
+        Managers.Process.TryExecutePrevProcess();
     }
 }

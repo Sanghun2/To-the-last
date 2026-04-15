@@ -9,17 +9,18 @@ public class ProcessTesterEditor : Editor
 
         var _script = (ProcessTester)target;
 
-        GUILayout.Space(20); 
-        if (GUILayout.Button("Start Process")) {
-            _script.StartProcess();
-        }
-
+        GUILayout.Space(20);
         GUILayout.BeginHorizontal();
         {
-            if (GUILayout.Button("Prev Process")) {
+            if (GUILayout.Button("◀Prev Process")) {
                 _script.PrevProcess();
             }
-            if (GUILayout.Button("Next Process")) {
+            GUI.backgroundColor = Color.cyan;
+            if (GUILayout.Button("Start Process")) {
+                _script.StartProcess();
+            }
+            GUI.backgroundColor = Color.white;
+            if (GUILayout.Button("Next Process▶")) {
                 _script.NextProcess();
             }
         }

@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05585ff21bb47094f873eaaae4ef44bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TradeUI
-  backButton: {fileID: 6039036234498190922}
   tradeView: {fileID: 6518419015293994989}
 --- !u!1001 &7717304818132282340
 PrefabInstance:
@@ -393,10 +392,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6161271596844435913, guid: 8c5cbaf1f825b484287384c684ff32f7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6350676590584230472, guid: 8c5cbaf1f825b484287384c684ff32f7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -411,17 +406,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2439452323220927197, guid: 8c5cbaf1f825b484287384c684ff32f7, type: 3}
   m_PrefabInstance: {fileID: 7717304818132282340}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6039036234498190922 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4095927849563014574, guid: 8c5cbaf1f825b484287384c684ff32f7, type: 3}
-  m_PrefabInstance: {fileID: 7717304818132282340}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7175f451ba087b4c9574445b89a119e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackButton
 --- !u!114 &6518419015293994989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3562149766751022089, guid: 8c5cbaf1f825b484287384c684ff32f7, type: 3}

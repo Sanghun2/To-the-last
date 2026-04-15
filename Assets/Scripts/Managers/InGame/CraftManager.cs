@@ -88,13 +88,13 @@ public sealed class CraftManager
                    targetUI.ExecutionButton.SetExecuteAction("획득");
                    var context = targetUI.Structure.StructureContext;
                    if (context != null) {
-                       context.ProcessState = Process.State.InProgress;
+                       context.ProcessState = ProcessBase.State.InProgress;
                    }
                },
                onProgress: targetUI.ProgressBarUI.UpdateUI,
                onComplete: () => {
                    targetUI.ProgressBarUI.Clear();
-                   targetUI.Structure.StructureContext.ProcessState = Process.State.Wait;
+                   targetUI.Structure.StructureContext.ProcessState = ProcessBase.State.Wait;
                    targetUI.ExecutionButton.SetExecuteAction(new ActionData(
                        "획득",
                        () => {

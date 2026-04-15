@@ -18,7 +18,7 @@ public sealed class ProcessChain
     public string ChainID => chainID;
 
     public int LastProcessIndex => processList.Count - 1;
-    public Process CurrentProcess => currentProcess;
+    public ProcessBase CurrentProcess => currentProcess;
     public bool IsLastProcess => _currentProcessIndex == LastProcessIndex;
     public bool IsFirstProcess => _currentProcessIndex == 0;
     public int CurrentProcessIndex
@@ -36,19 +36,19 @@ public sealed class ProcessChain
     }
 
     private string chainID;
-    private List<Process> processList = new List<Process>();
-    private Process currentProcess;
+    private List<ProcessBase> processList = new List<ProcessBase>();
+    private ProcessBase currentProcess;
     private int _currentProcessIndex;
     private Action onChainCanceled;
     private Action onChainCompleted;
 
-    public ProcessChain(string groupID, Action onChainCompleted, Action onChainCanceled) {
+    public ProcessChain(string groupID, Action onChainCompleted=null, Action onChainCanceled=null) {
         this.chainID = groupID;
         this.onChainCompleted = onChainCompleted;
         this.onChainCanceled = onChainCanceled;
 
-        OnChainCompleted += onChainCompleted;
-        OnChainCanceled += onChainCanceled;
+        if (onChainCompleted != null) OnChainCompleted += onChainCompleted;
+        if (onChainCanceled != null) OnChainCanceled += onChainCanceled;
     }
 
     public event Action OnChainCompleted;
@@ -66,12 +66,30 @@ public sealed class ProcessChain
         OnChainCompleted += onChainCompleted;
     }
 
-    public ProcessChain AddProcess(Process process) {
+    public ProcessChain AddProcess(ProcessBase process) {
         processList.Add(process);
         return this;
     }
+    public ProcessChain AddCompleteEvent(Action completeEvent) {
+        OnChainCompleted -= completeEvent;
+        OnChainCompleted += completeEvent;
+        return this;
+    }
+    public ProcessChain RemoveCompleteEvent(Action completeEvent) {
+        OnChainCompleted -= completeEvent;
+        return this;
+    }
+    public ProcessChain AddCancelEvent(Action cancelEvent) {
+        OnChainCanceled -= cancelEvent;
+        OnChainCanceled += cancelEvent;
+        return this;
+    }
+    public ProcessChain RemoveCancelEvent(Action cancelEvent) {
+        OnChainCanceled -= cancelEvent;
+        return this;
+    }
 
-    public bool TryExecuteProcess(Process process) {
+    public bool TryExecuteProcess(ProcessBase process) {
         ClearCurrentProcess();
         if (process != null) {
             currentProcess = process;
@@ -83,7 +101,7 @@ public sealed class ProcessChain
         return false;
     }
     public bool TryExecuteCurrentProcess() {
-        var result = TryGetProcess(out Process targetProcess);
+        var result = TryGetProcess(out ProcessBase targetProcess);
 
         if (targetProcess != null) {
             TryExecuteProcess(targetProcess);
@@ -96,7 +114,7 @@ public sealed class ProcessChain
     public bool TryExecuteNextProcess() {
         ClearCurrentProcess();
 
-        if (TryGetNextProcess(out Process nextProcess)) {
+        if (TryGetNextProcess(out ProcessBase nextProcess)) {
             if (TryExecuteProcess(nextProcess)) {
                 ++CurrentProcessIndex;
                 return true;
@@ -109,7 +127,7 @@ public sealed class ProcessChain
     public bool TryExecutePrevProcess() {
         ClearCurrentProcess();
 
-        if (TryGetPrevProcess(out Process prevProcess)) {
+        if (TryGetPrevProcess(out ProcessBase prevProcess)) {
             if (TryExecuteProcess(prevProcess)) {
                 --CurrentProcessIndex;
                 return true;
@@ -125,14 +143,14 @@ public sealed class ProcessChain
         currentProcess = null;
     }
 
-    private Result TryGetProcess(out Process process) {
+    private Result TryGetProcess(out ProcessBase process) {
         if (TryGetProcess(_currentProcessIndex, out process)) {
             return Result.InProgress;
         }
 
         return Result.Completed;
     }
-    private bool TryGetNextProcess(out Process process) {
+    private bool TryGetNextProcess(out ProcessBase process) {
         var targetIndex = _currentProcessIndex + 1;
         if (TryGetProcess(targetIndex, out process)) {
             return true;
@@ -140,7 +158,7 @@ public sealed class ProcessChain
 
         return false;
     }
-    private bool TryGetPrevProcess(out Process process) {
+    private bool TryGetPrevProcess(out ProcessBase process) {
         var targetIndex = _currentProcessIndex - 1;
         if (TryGetProcess(targetIndex, out process)) {
             return true;
@@ -148,7 +166,7 @@ public sealed class ProcessChain
 
         return false;
     }
-    private bool TryGetProcess(int index, out Process process) {
+    private bool TryGetProcess(int index, out ProcessBase process) {
         process = null;
         //index = Mathf.Clamp(index, 0, processList.Count);
         if (0 <= index && index < processList.Count) {
@@ -176,4 +194,5 @@ public sealed class ProcessChain
                 break;
         }
     }
+
 }

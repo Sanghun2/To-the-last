@@ -6,17 +6,15 @@ public class InventoryTester : MonoBehaviour
     [SerializeField] ItemSD[] itemLists;
     [SerializeField] int createAmount;
 
-    [SerializeField] InventoryBase playerInven;
-    [SerializeField] InventoryBase targetInven;
     private ItemMoveProcessorBase collector = new SimpleItemMoveProcessor();
     [SerializeField] InventoryUIBase targetInvenUI;
     [SerializeField] InventoryUIBase playerInvenUI;
+    private InventoryBase targetInven;
+    private InventoryBase playerInven;
 
     public void CreateRandomItems() {
-        Init();
-        var explorationUI = Managers.UI.GetUI<ExplorationUI>();
-        explorationUI.InitUI();
-        explorationUI.OpenUI();
+        targetInven = targetInvenUI.Inventory;
+        playerInven = playerInvenUI.Inventory;
 
         for (int i = 0; i < createAmount; i++) {
             var item = itemLists[Random.Range(0, itemLists.Length)];
@@ -38,13 +36,5 @@ public class InventoryTester : MonoBehaviour
 
         targetInvenUI.ShowInventory(targetInven);
         playerInvenUI.ShowInventory(playerInven);
-    }
-
-    private void Init() {
-        targetInven = new SimpleInventory("location");
-        playerInven = new SimpleInventory(Define.Tag.PLAYER).SetWeightCounter(50);
-
-        targetInvenUI.InitInventory(targetInven);
-        playerInvenUI.InitInventory(playerInven);
     }
 }
