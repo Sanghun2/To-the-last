@@ -3416,6 +3416,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &653613991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1732651082820622635, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
+  m_PrefabInstance: {fileID: 5227000480771928113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &653613994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653613991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c965362dd624bbccaa85a06a7629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProcessTester
+  testChainType: 0
 --- !u!1 &676967710
 GameObject:
   m_ObjectHideFlags: 0
@@ -10506,19 +10524,6 @@ MonoBehaviour:
   createAmount: 10
   targetInvenUI: {fileID: 1150423237}
   playerInvenUI: {fileID: 1171760704}
---- !u!114 &2002452091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002452073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f1c965362dd624bbccaa85a06a7629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProcessTester
-  testChainType: 0
 --- !u!1 &2023623212
 GameObject:
   m_ObjectHideFlags: 0
@@ -11831,9 +11836,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2002452087}
-    - targetCorrespondingSourceObject: {fileID: 3777920584798621348, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1732651082820622635, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2002452091}
+      addedObject: {fileID: 653613994}
   m_SourcePrefab: {fileID: 100100000, guid: 0a51e4ee39485544bb21e195427d6d0b, type: 3}
 --- !u!1001 &5811555396548711079
 PrefabInstance:

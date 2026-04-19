@@ -337,7 +337,7 @@ public sealed class Managers : MonoBehaviour
             return _toastManager;
         }
     }
-    public static EventBus Event
+    public static EventBus EventBus
     {
         get
         {
