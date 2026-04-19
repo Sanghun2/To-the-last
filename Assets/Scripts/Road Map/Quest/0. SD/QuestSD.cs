@@ -19,9 +19,11 @@ public class QuestSD : SDBase
 public class TaskInfo
 {
     public TaskSD TaskSD => taskSD;
+    public SDBase TargetSD => targetSD;
     public int RequiredCount => requiredCount;
 
     [SerializeField] TaskSD taskSD;
+    [SerializeField] SDBase targetSD;
     [SerializeField] int requiredCount;
 }
 

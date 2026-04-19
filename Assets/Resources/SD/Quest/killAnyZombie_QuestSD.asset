@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a88fb4233c499a84fb0bf58c6b47d7f6, type: 3}
-  m_Name: killZombie100_QuestSD
+  m_Name: killAnyZombie_QuestSD
   m_EditorClassIdentifier: Assembly-CSharp::QuestSD
-  id: killZombie100
-  displayText: "\uC880\uBE44 100\uB9C8\uB9AC \uC0AC\uB0E5"
+  id: killAnyZombie
+  displayText: "\uC880\uBE44 {0}\uB9C8\uB9AC \uC0AC\uB0E5"
   descripiton: 
   categoryList: []
   type: 0
   taskInfos:
-  - taskSD: {fileID: 11400000, guid: dd1c428648cc97c419caf7a332c23369, type: 2}
-    targetSD: {fileID: 11400000, guid: 536ab8e470ba93f49848d16b6e79481f, type: 2}
+  - taskSD: {fileID: 11400000, guid: 81d129726aeafe344a4e55f86ed08b1c, type: 2}
+    targetSD: {fileID: 11400000, guid: 57a536035ef9361499addcf017309927, type: 2}
     requiredCount: 100
   rewardInfos:
   - rewardTypeSD: {fileID: 11400000, guid: 69f40ec4a97ed0c4ab71dafcc5598b4a, type: 2}

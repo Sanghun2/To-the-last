@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[Serializable]
 public class Task
 {
     public enum CountType
@@ -11,6 +12,7 @@ public class Task
     public enum State {
         Wait,
         InProgress,
+        CanComplete,
         Completed,
     }
     public int CurrentCount => currentCount;
@@ -24,14 +26,18 @@ public class Task
             _currentState = value;
             if (_currentState != prevState) {
                 OnStateChanged?.Invoke(this, _currentState);
+                Debug.Log($"task state? {_currentState}");
             }
         }
     }
 
+    private bool CanComplete => currentCount >= requiredCount;
+
     [SerializeField] TaskData data;
     [SerializeField] protected int currentCount;
     [SerializeField] protected int requiredCount;
-    private State _currentState;
+    [SerializeField] State _currentState;
+    private ITaskCompleteCondition taskCompleteCondition;
 
     public event Action<Task, int, int> OnCountChanged; 
     //public event Action<Task> OnTaskCompleted;
@@ -43,22 +49,44 @@ public class Task
         this.requiredCount = taskInfo.RequiredCount;
     }
 
+    public bool TryComplete() {
+        if (CurrentState != State.CanComplete) return false;
+
+        Debug.Log($"<color=cyan>complete process action context required</color>");
+        if (taskCompleteCondition != null && !taskCompleteCondition.Execute()) {
+            return false;
+        }
+
+        CurrentState = State.Completed;
+        return true;
+    }
+    public void StartTask() {
+        CurrentState = State.InProgress;
+    }
+
+
     public bool TryAddCount(int count) {
         if (count <= 0) return false;
+        if (CurrentState == State.Wait) return false;
 
         int prevCount = currentCount;
         SetCount(currentCount + count);
 
-        if (prevCount < requiredCount && currentCount >= requiredCount) {
+        if (prevCount < requiredCount && CanComplete) {
             //OnTaskCompleted?.Invoke(this);
-            CurrentState = State.Completed;
+            CurrentState = State.CanComplete;
         }
 
         return true;
     }
     public bool TryRemoveCount(int count) {
         if (count <= 0) return false;
+        int prevCount = currentCount;
         SetCount(currentCount - count);
+
+        if (prevCount >= requiredCount && CurrentState == State.CanComplete) {
+            CurrentState = State.InProgress;
+        }
 
         return true;
     }
@@ -74,9 +102,5 @@ public class Task
         currentCount = newCount;
         OnCountChanged?.Invoke(this, currentCount, prevCount);
 
-    }
-
-    public void Complete() {
-        CurrentState = State.Completed;
     }
 }

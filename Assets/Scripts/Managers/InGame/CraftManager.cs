@@ -51,7 +51,7 @@ public class CraftContext
 
 public sealed class CraftManager
 {
-    //public ProductionContentSD CraftTarget => craftContext == null ? null : craftContext.Target;
+    //public ProductionContentSD CraftTarget => craftContext == null ? null : craftContext.TargetSDs;
     //public CraftContext CraftContext => craftContext;
 
     //[SerializeField] CraftContext craftContext = new CraftContext();

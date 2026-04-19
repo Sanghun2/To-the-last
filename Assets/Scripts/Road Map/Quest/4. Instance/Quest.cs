@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
+[Serializable]
 public class Quest
 {
     public enum Type {
@@ -38,8 +39,8 @@ public class Quest
 
     [SerializeField] QuestData questData;
     [SerializeField] List<Task> taskList;
-    private State _currentState;
-    private int currentProgressIndex;
+    [SerializeField] State _currentState;
+    [SerializeField] int currentProgressIndex;
 
     public event Action<Quest, State> OnStateChanged;
 
@@ -49,12 +50,22 @@ public class Quest
         _currentState = State.Wait;
     }
 
-    public void CompleteCurrentTask() {
-        if (CurrentState == State.Completed) return;
+    public void StartQuest() {
+        CurrentState = State.InProgress;
+        CurrentTask.StartTask();
+    }
+    public bool TryCompleteCurrentTask() {
+        if (CurrentState != State.InProgress) return false;
 
-        CurrentTask.Complete();
-        currentProgressIndex = Mathf.Clamp(currentProgressIndex+1, 0, LastProgressIndex);
+        var task = CurrentTask;
+        if (task.CurrentState != Task.State.CanComplete) return false;
 
-        if (currentProgressIndex == LastProgressIndex) CurrentState = State.Completed;
+        if (CurrentTask.TryComplete()) {
+            currentProgressIndex = Mathf.Clamp(currentProgressIndex + 1, 0, LastProgressIndex);
+            if (currentProgressIndex == LastProgressIndex) CurrentState = State.Completed;
+            return true;
+        }
+
+        return false;
     }
 }

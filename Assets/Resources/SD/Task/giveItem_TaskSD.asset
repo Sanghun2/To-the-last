@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9cce6c2ab8d80943bac5802875423a5, type: 3}
-  m_Name: killZombie_TaskSD
+  m_Name: giveItem_TaskSD
   m_EditorClassIdentifier: Assembly-CSharp::TaskSD
-  id: killZombie
-  displayText: "\uC880\uBE44 \uC0AC\uB0E5"
+  id: giveItem
+  displayText: "\uAC00\uC838\uB2E4\uC8FC\uAE30"
   descripiton: 
   categoryList: []
-  countType: 1
+  countType: 0

@@ -20,10 +20,12 @@ public static partial class Extension
     public static TaskData ToData(this TaskSD taskSD) {
         return new TaskData(taskSD.ID, taskSD.CountType);
     }
-    //public static QuestData ToData(this QuestSD questSD) {
-    //    TaskData[] taskInfos = questSD.TaskInfos.Select(tSD => tSD.ToData()).ToArray();
-    //    return new QuestData(questSD.LocationUID, questSD.Type, taskInfos);
+    //public static TaskData ToData(this TaskInfo taskInfo) {
+    //    return new TaskData(taskInfo.TaskSD.ID, taskInfo.TaskSD.CountType);
     //}
+    public static QuestData ToData(this QuestSD testQuestSD) {
+        return new QuestData(testQuestSD.ID, testQuestSD.Type, testQuestSD.TaskInfos);
+    }
 
     public static TraitData ToData(this TraitSD traitSD) {
         return new TraitData(
@@ -73,7 +75,29 @@ public static partial class Extension
 
         return false;
     }
+    public static bool TryRemoveItem(this IReadOnlyList<InventoryBase> inventories, string itemID, int required) {
+        // 1. 수량 충분한지 먼저 체크
+        int totalCount = 0;
+        for (int i = 0; i < inventories.Count; i++) {
+            totalCount += inventories[i].GetItemCount(itemID);
+            if (totalCount >= required) break;
+        }
+        if (totalCount < required) { Debug.LogAssertion($"<color=orange>ingredient insufficient. required? {required}. have? {totalCount}</color>"); return false; }
 
+        // 2. 충분하면 순서대로 제거
+        int remaining = required;
+        for (int i = 0; i < inventories.Count; i++) {
+            if (remaining <= 0) break;
+            var inventory = inventories[i];
+            int available = inventory.GetItemCount(itemID);
+            if (available <= 0) continue;
+
+            int toRemove = Mathf.Min(available, remaining);
+            inventory.TryRemoveItem(itemID, toRemove);
+            remaining -= toRemove;
+        }
+        return true;
+    }
 
     #endregion
 
