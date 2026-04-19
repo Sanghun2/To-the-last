@@ -15,8 +15,20 @@ public sealed class QuestManager : IInitializable
 
         _isInit = true;
     }
-
     public void Release() {
         _isInit = false;
+    }
+
+    public void PublishQuest(Quest quest) {
+        if (activeQuests.TryAdd(quest.ID, quest)) {
+
+        }
+    }
+    public void UnpublishQuest(string questID) {
+        if (activeQuests.TryGetValue(questID, out var targetQuest)) {
+            targetQuest.Cancel();
+        }
+
+        activeQuests.Remove(questID);
     }
 }

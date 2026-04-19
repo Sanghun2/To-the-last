@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 [Serializable]
 public class Quest
 {
-    public enum Type {
+    public enum Type
+    {
         Main,
         Sub,
         Daily,
         Achievement,
     }
-    public enum State {
+    public enum State
+    {
         Wait,
         InProgress,
         Completed,
+        Canceled,
     }
 
+    public string ID => Data.ID;
     public QuestData Data => questData;
     public IReadOnlyList<Task> TaskList => taskList;
     public Task CurrentTask => taskList[currentProgressIndex];
     private int LastProgressIndex => taskList.Count - 1;
-    private State CurrentState
+    public State CurrentState
     {
         get => _currentState;
-        set
+        private set
         {
             var prevState = _currentState;
             _currentState = value;
-            if(_currentState != prevState) {
+            if (_currentState != prevState) {
                 OnStateChanged?.Invoke(this, _currentState);
             }
         }
@@ -43,6 +46,7 @@ public class Quest
     [SerializeField] int currentProgressIndex;
 
     public event Action<Quest, State> OnStateChanged;
+    public event Action<Quest> OnCanceled;
 
     public Quest(QuestData data) {
         questData = data;
@@ -54,18 +58,27 @@ public class Quest
         CurrentState = State.InProgress;
         CurrentTask.StartTask();
     }
-    public bool TryCompleteCurrentTask() {
+    public bool TryCompleteCurrentTask(bool continueNextTask=true) {
         if (CurrentState != State.InProgress) return false;
 
         var task = CurrentTask;
         if (task.CurrentState != Task.State.CanComplete) return false;
 
         if (CurrentTask.TryComplete()) {
-            currentProgressIndex = Mathf.Clamp(currentProgressIndex + 1, 0, LastProgressIndex);
             if (currentProgressIndex == LastProgressIndex) CurrentState = State.Completed;
+            else {
+                currentProgressIndex = Mathf.Clamp(currentProgressIndex + 1, 0, LastProgressIndex);
+                if (continueNextTask) CurrentTask.StartTask();
+            }
+
             return true;
         }
 
         return false;
+    }
+
+    public void Cancel() {
+        CurrentState = State.Canceled;
+        OnCanceled?.Invoke(this);
     }
 }

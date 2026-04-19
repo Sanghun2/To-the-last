@@ -44,9 +44,10 @@ public class Task
     public event Action<Task, State> OnStateChanged;
 
     public Task(TaskInfo taskInfo) {
-        this.data = taskInfo.TaskSD.ToData();
+        data = taskInfo.TaskSD.ToData();
         currentCount = 0;
-        this.requiredCount = taskInfo.RequiredCount;
+        requiredCount = taskInfo.RequiredCount;
+        CurrentState = State.Wait;
     }
 
     public bool TryComplete() {
