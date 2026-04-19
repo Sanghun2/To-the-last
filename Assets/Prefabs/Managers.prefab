@@ -120,7 +120,6 @@ MonoBehaviour:
   startLocationSD: {fileID: 11400000, guid: 3a80d5184046f4546bd68c227b49970f, type: 2}
   endLocationSD: {fileID: 11400000, guid: b7c66581014ff27469abcb475582604a, type: 2}
   moveDuration: 2
-  lootSelectionSD: {fileID: 11400000, guid: 4c1cb43d1445c26419f6a33c47e80444, type: 2}
   testSkills:
   - {fileID: 11400000, guid: 33e3b219ca53ae84b9819fff46e8f911, type: 2}
   - {fileID: 11400000, guid: 6300fe8a3b415eb40ba00b9474030326, type: 2}
@@ -232,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   _mainTimer: {fileID: 317509048928678925}
   _turnTimer: {fileID: 969427394847564497}
+  timeSourceURL: www.naver.com
   day: 1
   hour: 7
   minute: 30

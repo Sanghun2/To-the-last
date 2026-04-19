@@ -6,6 +6,7 @@ using UnityEngine;
 public sealed class QuestManager : IInitializable
 {
     private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
+    private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
 
     public bool IsInit => _isInit;
     private bool _isInit;

@@ -1,5 +1,10 @@
-﻿using BilliotGames;
+﻿using System;
+using System.Collections;
+using System.Threading.Tasks;
+using BilliotGames;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.Rendering;
 
 public class TimeManager : MonoBehaviour, IInitializable
@@ -40,6 +45,7 @@ public class TimeManager : MonoBehaviour, IInitializable
 
     [SerializeField] Timer _mainTimer;
     [SerializeField] Timer _turnTimer;
+    [SerializeField] string timeSourceURL;
 
     [Space]
     [Header("[  Current Time  ]")]
@@ -58,6 +64,17 @@ public class TimeManager : MonoBehaviour, IInitializable
     }
     public void PauseMainTime(bool pause) {
         MainTimer.Pause(pause);
+    }
+    public async UniTask<string> GetServerTimeAsync(string timeSourceURL) {
+        var request = UnityWebRequest.Get(timeSourceURL);
+        await request.SendWebRequest().ToUniTask();
+
+        if (request.result != UnityWebRequest.Result.Success) {
+            Debug.LogError($"<color=orange>Server time fetch failed: {request.error}</color>");
+            return null;
+        }
+
+        return request.GetResponseHeader("date");
     }
 
     private void InitMainTime(int day, int hour, int minute) {
@@ -96,8 +113,11 @@ public class TimeManager : MonoBehaviour, IInitializable
     private void Reset() {
         _mainTimer = GetComponentInChildren<Timer>();
     }
-    private void Start() {
+    private async void Start() {
         TurnTimer.Pause(true);
+
+        var date = await GetServerTimeAsync(timeSourceURL);
+        Debug.Log($"time? {DateTime.Parse(date).ToLocalTime()}");
     }
 
     public void Init() {
@@ -112,4 +132,5 @@ public class TimeManager : MonoBehaviour, IInitializable
     public void Release() {
 
     }
+
 }

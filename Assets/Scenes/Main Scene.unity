@@ -10537,6 +10537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestTester
   testQuestSD: {fileID: 11400000, guid: bcc51d35e26682b498821f59bfc8ea44, type: 2}
+  taskCount: 0
   currentQuest:
     questData:
       id: 
