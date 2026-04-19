@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TaskData : BaseData
+public sealed class TaskData : BaseData
 {
     public Task.CountType CountType_ => countType;
 

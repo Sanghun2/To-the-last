@@ -69,13 +69,13 @@ public class CraftButton : ButtonBase
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
-    //private void UpdateState(CraftContext.LocationState currentState, CraftContext.LocationState state2) {
-    //    UpdateAction(currentState);
-    //    UpdateButtonText(currentState);
+    //private void UpdateState(CraftContext.LocationState _currentState, CraftContext.LocationState state2) {
+    //    UpdateAction(_currentState);
+    //    UpdateButtonText(_currentState);
     //}
 
-    //private void UpdateAction(CraftContext.LocationState currentState) {
-    //    switch (currentState) {
+    //private void UpdateAction(CraftContext.LocationState _currentState) {
+    //    switch (_currentState) {
     //        case CraftContext.LocationState.None:
     //            break;
     //        case CraftContext.LocationState.Selected:

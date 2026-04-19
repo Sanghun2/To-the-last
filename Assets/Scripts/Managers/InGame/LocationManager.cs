@@ -60,9 +60,9 @@ public class LocationManager : IInitializable
 
         return true;
     }
-    //public ExplorationLocation TryRegisterLocation(string locationSDID, int currentProgress=1) {
+    //public ExplorationLocation TryRegisterLocation(string locationSDID, int currentProgressIndex=1) {
     //    if (Managers.RunnerSD.TryGetSD(locationSDID, out LocationSD targetSD)) {
-    //        return TryRegisterLocation(targetSD.ToData(), currentProgress);
+    //        return TryRegisterLocation(targetSD.ToData(), currentProgressIndex);
     //    }
 
     //    Debug.LogError($"<color=red>newLocation ({locationSDID}) is null</color>");

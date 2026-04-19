@@ -8,15 +8,34 @@ public class Task
         Overflow,
         Clamped,
     }
+    public enum State {
+        Wait,
+        InProgress,
+        Completed,
+    }
     public int CurrentCount => currentCount;
     public int RequiredCount => requiredCount;
+    public State CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            var prevState = _currentState;
+            _currentState = value;
+            if (_currentState != prevState) {
+                OnStateChanged?.Invoke(this, _currentState);
+            }
+        }
+    }
 
     [SerializeField] TaskData data;
     [SerializeField] protected int currentCount;
     [SerializeField] protected int requiredCount;
+    private State _currentState;
 
     public event Action<Task, int, int> OnCountChanged; 
-    public event Action<Task> OnTaskCompleted;
+    //public event Action<Task> OnTaskCompleted;
+    public event Action<Task, State> OnStateChanged;
 
     public Task(TaskInfo taskInfo) {
         this.data = taskInfo.TaskSD.ToData();
@@ -24,18 +43,24 @@ public class Task
         this.requiredCount = taskInfo.RequiredCount;
     }
 
-    public void AddCount(int count) {
-        if (count <= 0) return;
+    public bool TryAddCount(int count) {
+        if (count <= 0) return false;
 
         int prevCount = currentCount;
         SetCount(currentCount + count);
 
-        if (prevCount < requiredCount && currentCount >= requiredCount)
-            OnTaskCompleted?.Invoke(this);
+        if (prevCount < requiredCount && currentCount >= requiredCount) {
+            //OnTaskCompleted?.Invoke(this);
+            CurrentState = State.Completed;
+        }
+
+        return true;
     }
-    public void RemoveCount(int count) {
-        if (count <= 0) return;
+    public bool TryRemoveCount(int count) {
+        if (count <= 0) return false;
         SetCount(currentCount - count);
+
+        return true;
     }
 
     private void SetCount(int newCount) {
@@ -49,5 +74,9 @@ public class Task
         currentCount = newCount;
         OnCountChanged?.Invoke(this, currentCount, prevCount);
 
+    }
+
+    public void Complete() {
+        CurrentState = State.Completed;
     }
 }
