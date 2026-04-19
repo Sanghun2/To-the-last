@@ -78,7 +78,7 @@ public class Quest
     }
 
     public void Cancel() {
-        CurrentState = State.Canceled;
+        if (CurrentState != State.Completed) { CurrentState = State.Canceled; }
         OnCanceled?.Invoke(this);
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Define
 {
@@ -99,6 +100,13 @@ public class Define
         StabAttack,
         Dodge,
         Charge,
+    }
+
+    [Flags]
+    public enum InventoryTarget {
+        None = 0,
+        Player = 1 << 0,
+        Storage = 1 << 1,
     }
 
     public const string MAINMENU_SCENE_ID = "main";
