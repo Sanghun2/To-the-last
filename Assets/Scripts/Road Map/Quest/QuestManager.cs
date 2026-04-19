@@ -13,10 +13,6 @@ public sealed class QuestManager : IInitializable
     public void Init() {
         if (IsInit) return;
 
-        foreach (var quest in activeQuests) {
-            //Managers.EventBus.RegisterEvent();
-        }
-
         _isInit = true;
     }
 
