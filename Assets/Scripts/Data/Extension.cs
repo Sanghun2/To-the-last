@@ -65,10 +65,10 @@ public static partial class Extension
 
     #region Inventory
 
-    public static bool TryPushItem(this IReadOnlyList<InventoryBase> inventories, ItemStack item, bool ignoreConditions) {
+    public static bool TryPushItem(this IReadOnlyList<InventoryBase> inventories, ItemStack item, bool ignorePushConditions) {
         for (int i = 0; i < inventories.Count; i++) {
             var inventory = inventories[i];
-            if (inventory.TryPushItem(item, out ItemStack overStack, ignoreConditions)) {
+            if (inventory.TryPushItem(item, out ItemStack overStack, ignorePushConditions)) {
                 return true;
             }
         }

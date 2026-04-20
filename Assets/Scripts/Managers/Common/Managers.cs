@@ -453,7 +453,7 @@ public sealed class Managers : MonoBehaviour
         SD.TryRegisterSD(new NPCSDContainer("SD/NPC"));
         SD.TryRegisterSD(new LocationIconSDContainer("SD/Location Info"));
         SD.TryRegisterSD(new SelectionSDRunnerContainer("SD/Selection Runner"));
-        //RunnerSD.TryRegisterSD(new ExpensionSDContainer("RunnerSD/Quest"));
+        SD.TryRegisterSD(new QuestSDContainer("SD/Quest"));
 
 
         List<IInitializable> initList = new List<IInitializable>() {
@@ -467,6 +467,7 @@ public sealed class Managers : MonoBehaviour
             Encounter,
             Location,
             Character,
+            Quest,
         };
 
         Sound.SetClipLoader(new ResourceClipLoader("Sound"));

@@ -17,4 +17,4 @@ MonoBehaviour:
   descripiton: 
   categoryList: []
   countType: 0
-  completeConditionType: 0
+  completeConditionType: 1

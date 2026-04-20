@@ -10536,7 +10536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabfd1ae771a6fa448b7d3dfb4f031dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestTester
-  testQuestSD: {fileID: 11400000, guid: bcc51d35e26682b498821f59bfc8ea44, type: 2}
+  testQuestSD: {fileID: 11400000, guid: a78c74acc3d31504cb2aa006bb378043, type: 2}
   taskCount: 0
   currentQuest:
     questData:
@@ -10545,6 +10545,7 @@ MonoBehaviour:
     taskList: []
     _currentState: 0
     currentProgressIndex: 0
+  testTargetItem: {fileID: 11400000, guid: 05788632fc4c1d44d8d451056e75736f, type: 2}
 --- !u!1 &2023623212
 GameObject:
   m_ObjectHideFlags: 0

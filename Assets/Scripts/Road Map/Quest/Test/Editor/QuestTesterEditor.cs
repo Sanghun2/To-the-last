@@ -20,5 +20,11 @@ public class QuestTesterEditor : Editor
         if (GUILayout.Button("Complete Task")) {
             _script.CompleteTask();
         }
+        if (GUILayout.Button("Add Test Item")) {
+            _script.AddTestItem();
+        }
+        if (GUILayout.Button("Log Item Count")) {
+            _script.LogCurrentItem();
+        }
     }
 }

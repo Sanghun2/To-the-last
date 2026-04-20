@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public sealed class QuestManager : IInitializable
 {
@@ -10,6 +11,15 @@ public sealed class QuestManager : IInitializable
 
     public void Init() {
         if (IsInit) return;
+
+        if (Managers.SD.TryGetContainer<QuestSD>(out var container)) {
+            foreach (QuestSD questData in container.SDDict.Values) {
+                if (questData.Type == Quest.Type.Achievement) {
+                    PublishQuest(new Quest(questData.ToData()));
+                    //Debug.LogAssertion($"published quest. ({questData.ID})");
+                }
+            }
+        }
 
         _isInit = true;
     }

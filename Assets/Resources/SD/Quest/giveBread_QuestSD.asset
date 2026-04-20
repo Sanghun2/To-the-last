@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a88fb4233c499a84fb0bf58c6b47d7f6, type: 3}
-  m_Name: giveItem_QuestSD
+  m_Name: giveBread_QuestSD
   m_EditorClassIdentifier: Assembly-CSharp::QuestSD
-  id: giveItem
-  displayText: "\uC544\uC774\uD15C \uAC00\uC838\uB2E4 \uC8FC\uAE30"
-  descripiton: 
+  id: giveBread
+  displayText: "\uBE75 \uAC00\uC838\uB2E4 \uC8FC\uAE30"
+  descripiton: "\uBE75\uC744 \uAC00\uC838\uB2E4 \uC8FC\uC790"
   categoryList: []
   type: 0
   taskInfos:

@@ -18,7 +18,7 @@ MonoBehaviour:
   categoryList: []
   type: 0
   taskInfos:
-  - taskSD: {fileID: 11400000, guid: 81d129726aeafe344a4e55f86ed08b1c, type: 2}
+  - taskSD: {fileID: 11400000, guid: dd1c428648cc97c419caf7a332c23369, type: 2}
     targetSD: {fileID: 11400000, guid: 57a536035ef9361499addcf017309927, type: 2}
     requiredCount: 100
   rewardInfos:

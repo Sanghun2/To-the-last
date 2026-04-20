@@ -259,7 +259,9 @@ public class SimpleInventory : InventoryBase
     }
 
     private void NotifyItemChanged(string itemID, int currentCount, int delta) {
-        if (tag.Equals(Define.Tag.PLAYER) || tag.Equals(Define.Tag.BASEMENT)) 
+        if (tag.Equals(Define.Tag.PLAYER) || tag.Equals(Define.Tag.BASEMENT)) {
             Managers.EventBus.Invoke(Define.Event.GET_ITEM, itemID, currentCount, delta);
+            Debug.Log($"item chagned. current? {currentCount}, delta? {delta}");
+        }            
     }
 }

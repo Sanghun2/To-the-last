@@ -73,6 +73,7 @@ public class Task
         if (CurrentState != State.CanComplete) return false;
 
         // complete condition check
+        Debug.Log($"complete condition? {taskCompleteCondition?.GetType()}");
         if (taskCompleteCondition != null && !taskCompleteCondition.TryPassCondition()) {
             Debug.LogError($"<color=orange>complete process action context required</color>");
             return false;
@@ -83,6 +84,7 @@ public class Task
         return true;
     }
     public void StartTask() {
+        if (CurrentState == State.InProgress) return;
         CurrentState = State.InProgress;
         Managers.EventBus.RegisterEvent<string, int, int>(EventKey, ChangeCount);
     }
