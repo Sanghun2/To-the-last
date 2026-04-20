@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public sealed class QuestManager : IInitializable
 {
     private Dictionary<string, Quest> activeQuests = new Dictionary<string, Quest>();
-    private Dictionary<string, Quest> completedQuests = new Dictionary<string, Quest>();
+    private HashSet<string> completedQuests = new HashSet<string>();
 
     public bool IsInit => _isInit;
     private bool _isInit;
@@ -31,5 +28,20 @@ public sealed class QuestManager : IInitializable
         }
 
         activeQuests.Remove(questID);
+    }
+
+    public bool TryComplete(Quest quest) {
+        return TryComplete(quest.ID);
+    }
+    public bool TryComplete(string questID) {
+        if (!activeQuests.TryGetValue(questID, out var quest)) return false;
+        if (!completedQuests.Add(questID)) return false;
+
+        activeQuests.Remove(questID); 
+        return true;
+    }
+
+    private void RegisterCompleteQuest(string questID) {
+        completedQuests.Add(questID);
     }
 }

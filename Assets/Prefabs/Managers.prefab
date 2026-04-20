@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   _mainTimer: {fileID: 317509048928678925}
   _turnTimer: {fileID: 969427394847564497}
-  timeSourceURL: www.naver.com
+  timeSourceURL: www.google.com
   day: 1
   hour: 7
   minute: 30

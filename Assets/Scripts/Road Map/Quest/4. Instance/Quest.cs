@@ -48,10 +48,17 @@ public class Quest
     public event Action<Quest, State> OnStateChanged;
     public event Action<Quest> OnCanceled;
 
-    public Quest(QuestData data) {
+    public Quest(QuestData data, int startIndex=0) {
         questData = data;
         taskList = data.TaskInfos.Select(t => new Task(t)).ToList();
         _currentState = State.Wait;
+
+        if (startIndex == Mathf.Clamp(startIndex, 0, taskList.Count - 1)) {
+            currentProgressIndex = startIndex;
+        }
+        else {
+            Debug.LogError($"<color=red>start index {startIndex} out of range. max index? {taskList.Count-1}</color>");
+        }
     }
 
     public void StartQuest() {
