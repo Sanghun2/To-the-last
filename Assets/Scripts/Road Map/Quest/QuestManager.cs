@@ -19,10 +19,11 @@ public sealed class QuestManager : IInitializable
 
     public void PublishQuest(Quest quest) {
         if (activeQuests.TryAdd(quest.ID, quest)) {
-
+            var task = quest.CurrentTask;
+            task.StartTask();
         }
     }
-    public void UnpublishQuest(string questID) {
+    public void CancelQuest(string questID) {
         if (activeQuests.TryGetValue(questID, out var targetQuest)) {
             targetQuest.Cancel();
         }

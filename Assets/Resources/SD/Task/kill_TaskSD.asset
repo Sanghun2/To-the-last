@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9cce6c2ab8d80943bac5802875423a5, type: 3}
-  m_Name: killCategory_TaskSD
+  m_Name: kill_TaskSD
   m_EditorClassIdentifier: Assembly-CSharp::TaskSD
-  id: killCategory
+  id: kill
   displayText: "\uC880\uBE44 \uC0AC\uB0E5"
   descripiton: 
   categoryList: []
   countType: 1
+  completeConditionType: 0

@@ -20,7 +20,7 @@ public class RequirementUIContainer : ListContainerBase<RequirementUI>
         for (int i = 0; i < maxCount; i++) {
             if (i < itemCount) {
                 var requirement = requirementItems[i];
-                var count = InventoryUtility.GetItemCount(requirement.ItemSD.ID);
+                var count = InventoryUtility.GetItemCountInBasement(requirement.ItemSD.ID);
                 RequirementUI requirementUI = GetOrCreateObjOf(i);
 
                 var image = requirement.ItemSD.Image;

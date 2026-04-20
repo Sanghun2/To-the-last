@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BilliotGames;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 [Serializable]
 public class SimpleInventory : InventoryBase
@@ -51,17 +52,6 @@ public class SimpleInventory : InventoryBase
         WeightCounter = new WeightCounter(limitWeight);
         AddCondition(WeightCounter);
         return this;
-
-        //this.weightCounter = weightCounter;
-
-        //OnItemAdded -= UpdateWeight;
-        //OnItemAdded += UpdateWeight;
-
-        //OnItemMerged -= UpdateWeight;
-        //OnItemMerged += UpdateWeight;
-
-        //OnItemRemoved -= UpdateWeight;
-        //OnItemRemoved += UpdateWeight;
     }
 
     public override void ClearInventory() {
@@ -152,7 +142,9 @@ public class SimpleInventory : InventoryBase
                     itemCountDict[inputItemID] =
                         (itemCountDict.TryGetValue(inputItemID, out int cur) ? cur : 0) + mergedAmount; // 추가
                     OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, mergedAmount));
-                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, mergedAmount));
+                    OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, mergedAmount)); 
+
+                    NotifyItemChanged(inputItemID, itemCountDict[inputItemID], mergedAmount);
                     return true;
 
 
@@ -163,7 +155,9 @@ public class SimpleInventory : InventoryBase
                         (itemCountDict.TryGetValue(inputItemID, out int cur2) ? cur2 : 0) + mergedAmount2;
                     OnItemMerged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
                     OnItemChanged?.Invoke(new ItemEventArgs(targetStack.ItemData.ItemID, prevInputAmount - currentInputAmount));
-                    return TryPushItem(inputStack, out overflowedStack);
+
+                    NotifyItemChanged(inputItemID, itemCountDict[inputItemID], mergedAmount2);
+                    return TryPushItem(inputStack, out overflowedStack, ignoreConditions);
 
                 case ItemStack.MergeResult.Failed_DifferentItemType:
                 case ItemStack.MergeResult.Failed_InvalidIStack:
@@ -176,41 +170,33 @@ public class SimpleInventory : InventoryBase
         else {
             itemList.Add(inputStack);
 
-            // capacity 초과 여부 확인
-            // Add 후에 체크하는 이유: Add 전에는 Count가 아직 반영 안 됨
             if (itemList.Count > Capacity) {
-                // 롤백: 방금 추가한 스택을 제거하고 전량 overflow로 반환
                 itemList.RemoveAt(itemList.Count - 1);
-                // 무게로 이미 잘린 overflowedStack이 있을 수 있으므로
-                // 이번에 못 넣은 snapshotAmount도 합산해서 반환
                 int existingOverflow = overflowedStack?.Amount ?? 0;
                 overflowedStack = new ItemStack(inputStack.ItemData, snapshotAmount + existingOverflow);
                 return false;
             }
 
-            // MaxStackAmount 초과분을 overflow로 분리
-            // ex. MaxStack=10, inputAmount=13 → resultAmount=10, overflow=3
             int resultAmount = Mathf.Min(inputStack.Amount, inputStack.ItemData.MaxStackAmount);
 
-            // 무게로 잘린 overflow(이미 존재할 수 있음)와
-            // MaxStack 초과로 잘린 overflow를 합산
+            // ★ 추가: 실제 들어간 수량으로 스택 교체
+            if (resultAmount < inputStack.Amount) {
+                inputStack = new ItemStack(inputStack.ItemData, resultAmount);
+                itemList[itemList.Count - 1] = inputStack;
+            }
+
             int existingOverflowAmount = overflowedStack?.Amount ?? 0;
             overflowedStack = new ItemStack(
                 inputStack.ItemData,
-                existingOverflowAmount + (inputStack.Amount - resultAmount));
+                existingOverflowAmount + (inputStack.Amount - resultAmount)); // resultAmount로 잘렸으므로 항상 0
 
-            // itemCountDict 갱신: 실제로 들어간 수량(resultAmount)으로 등록
             itemCountDict[inputItemID] =
-    (itemCountDict.TryGetValue(inputItemID, out int existing) ? existing : 0) + resultAmount;
-
-            // OnValueChanged 이벤트 구독
-            // 중복 구독 방지를 위해 먼저 제거 후 추가
-            //inputStack.OnValueChanged -= UpdateItemCount;
-            //inputStack.OnValueChanged += UpdateItemCount;
+                (itemCountDict.TryGetValue(inputItemID, out int existing) ? existing : 0) + resultAmount;
 
             int unitWeight = (inputStack.ItemData as ExtendedItemData)?.Weight ?? 0;
-            OnItemAdded?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount, -1, unitWeight));
-            OnItemChanged?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, inputStack.Amount));
+            OnItemAdded?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, resultAmount, -1, unitWeight)); // ★ resultAmount
+            OnItemChanged?.Invoke(new ItemEventArgs(inputStack.ItemData.ItemID, resultAmount));
+            NotifyItemChanged(inputStack.ItemData.ItemID, itemCountDict[inputItemID], resultAmount);
             return true;
         }
     }
@@ -225,16 +211,20 @@ public class SimpleInventory : InventoryBase
         RemoveFromStacks(itemID, targetAmount);
         OnItemRemoved?.Invoke(new ItemEventArgs(itemID, -targetAmount));
         OnItemChanged?.Invoke(new ItemEventArgs(itemID, -targetAmount));
+
+        NotifyItemChanged(itemID, GetItemCount(itemID), -targetAmount); 
         return true;
     }
 
     public override int RemoveItemPartial(string itemID, int requestAmount) {
         InitInventory();
-        int toRemove = Mathf.Min(GetItemCount(itemID), requestAmount);
+        var itemCount = GetItemCount(itemID);
+        int toRemove = Mathf.Min(itemCount, requestAmount);
         if (toRemove <= 0) return 0;
         RemoveFromStacks(itemID, toRemove);
         OnItemRemoved?.Invoke(new ItemEventArgs(itemID, -toRemove));
         OnItemChanged?.Invoke(new ItemEventArgs(itemID, -toRemove));
+        NotifyItemChanged(itemID, GetItemCount(itemID), -toRemove);
         return toRemove;
     }
 
@@ -266,5 +256,10 @@ public class SimpleInventory : InventoryBase
             if (newCount <= 0) itemCountDict.Remove(itemID);
             else itemCountDict[itemID] = newCount;
         }
+    }
+
+    private void NotifyItemChanged(string itemID, int currentCount, int delta) {
+        if (tag.Equals(Define.Tag.PLAYER) || tag.Equals(Define.Tag.BASEMENT)) 
+            Managers.EventBus.Invoke(Define.Event.GET_ITEM, itemID, currentCount, delta);
     }
 }

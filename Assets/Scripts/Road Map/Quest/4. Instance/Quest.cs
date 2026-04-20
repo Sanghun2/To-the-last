@@ -51,10 +51,11 @@ public class Quest
     public Quest(QuestData data, int startIndex=0) {
         questData = data;
         taskList = data.TaskInfos.Select(t => new Task(t)).ToList();
-        _currentState = State.Wait;
+        _currentState = startIndex == 0 ? State.Wait : State.InProgress;
 
         if (startIndex == Mathf.Clamp(startIndex, 0, taskList.Count - 1)) {
             currentProgressIndex = startIndex;
+            CurrentTask.StartTask();
         }
         else {
             Debug.LogError($"<color=red>start index {startIndex} out of range. max index? {taskList.Count-1}</color>");

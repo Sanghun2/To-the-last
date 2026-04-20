@@ -18,7 +18,7 @@ public static partial class Extension
         return newData;
     }
     public static TaskData ToData(this TaskSD taskSD) {
-        return new TaskData(taskSD.ID, taskSD.CountType);
+        return new TaskData(taskSD.ID, taskSD.CountType, taskSD.CompleteConditionType);
     }
     //public static TaskData ToData(this TaskInfo taskInfo) {
     //    return new TaskData(taskInfo.TaskSD.ID, taskInfo.TaskSD.CountType);

@@ -14,7 +14,7 @@ public class ConsumeItemCondition : ITaskCompleteCondition, IInventoryContext
         this.amount = amount;
     }
 
-    public bool Execute() {
+    public bool TryPassCondition() {
         return TargetInventories.TryRemoveItem(itemID, amount);
     }
 }

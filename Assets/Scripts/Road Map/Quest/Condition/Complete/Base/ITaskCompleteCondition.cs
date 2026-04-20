@@ -2,5 +2,5 @@
 
 public interface ITaskCompleteCondition
 {
-    bool Execute();
+    bool TryPassCondition();
 }

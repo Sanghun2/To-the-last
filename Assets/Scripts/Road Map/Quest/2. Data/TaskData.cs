@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public sealed class TaskData : BaseData
 {
     public Task.CountType CountType_ => countType;
 
-    [SerializeField] Task.CountType countType;
+    public Task.Temp_CompleteConditionType CompleteConditionType => completeConditionType;   
 
-    public TaskData(string id, Task.CountType countType) : base(id) {
+    [SerializeField] Task.CountType countType;
+    [SerializeField] Task.Temp_CompleteConditionType completeConditionType;
+
+    public TaskData(string id, Task.CountType countType, Task.Temp_CompleteConditionType completeCondition) : base(id) {
         this.countType = countType;
+        this.completeConditionType = completeCondition;
     }
 }

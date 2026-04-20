@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using BilliotGames;
 using UnityEngine;
 
 [Serializable]
@@ -15,6 +17,12 @@ public class Task
         CanComplete,
         Completed,
     }
+    public enum Temp_CompleteConditionType
+    {
+        None,
+        ConsumeItem,
+    }
+
     public int CurrentCount => currentCount;
     public int RequiredCount => requiredCount;
     public State CurrentState
@@ -32,11 +40,17 @@ public class Task
     }
 
     private bool CanComplete => currentCount >= requiredCount;
+    public readonly string EventKey;
 
+
+    [SerializeField] State _currentState;
     [SerializeField] TaskData data;
     [SerializeField] protected int currentCount;
+
+    [SerializeField] string taskType;
+    [SerializeField] SDBase taskTarget;
     [SerializeField] protected int requiredCount;
-    [SerializeField] State _currentState;
+
     private ITaskCompleteCondition taskCompleteCondition;
 
     public event Action<Task, int, int> OnCountChanged; 
@@ -45,27 +59,38 @@ public class Task
 
     public Task(TaskInfo taskInfo) {
         data = taskInfo.TaskSD.ToData();
+        taskType = taskInfo.TargetSD.ID;
+        taskTarget = taskInfo.TargetSD;
         currentCount = 0;
         requiredCount = taskInfo.RequiredCount;
         CurrentState = State.Wait;
+        taskCompleteCondition = BuildCompleteCondition(data.CompleteConditionType);
+        EventKey = BuildEventKey(taskType, taskTarget);
     }
+
 
     public bool TryComplete() {
         if (CurrentState != State.CanComplete) return false;
 
-        Debug.Log($"<color=cyan>complete process action context required</color>");
-        if (taskCompleteCondition != null && !taskCompleteCondition.Execute()) {
+        // complete condition check
+        if (taskCompleteCondition != null && !taskCompleteCondition.TryPassCondition()) {
+            Debug.LogError($"<color=orange>complete process action context required</color>");
             return false;
         }
 
         CurrentState = State.Completed;
+        Managers.EventBus.UnregisterEvent<string, int, int>(EventKey, ChangeCount);
         return true;
     }
     public void StartTask() {
         CurrentState = State.InProgress;
+        Managers.EventBus.RegisterEvent<string, int, int>(EventKey, ChangeCount);
     }
 
 
+    public void ChangeCount(string targetName, int currentCount, int delta) {
+        var result = delta >= 0 ? TryAddCount(delta) : TryRemoveCount(-delta);
+    }
     public bool TryAddCount(int count) {
         if (count <= 0) return false;
         if (CurrentState == State.Wait) return false;
@@ -104,4 +129,28 @@ public class Task
         OnCountChanged?.Invoke(this, currentCount, prevCount);
 
     }
+
+
+    private string BuildEventKey(string taskType, SDBase taskTaret) {
+        StringBuilder keyBuilder = new StringBuilder();
+
+        if (taskTarget is ItemSD) {
+            keyBuilder.Append(Define.Event.GET_ITEM);
+        }
+
+        return keyBuilder.ToString();
+    }
+    private ITaskCompleteCondition BuildCompleteCondition(Temp_CompleteConditionType completeConditionType) {
+        switch (completeConditionType) {
+            case Temp_CompleteConditionType.None:
+            default:
+                return null;
+            case Temp_CompleteConditionType.ConsumeItem:
+                return new ConsumeItemCondition(
+                    taskTarget.ID, 
+                    requiredCount, 
+                    InventoryUtility.GetInventoriesByCurrentLocation());
+        }
+    }
+
 }

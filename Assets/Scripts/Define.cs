@@ -10,6 +10,11 @@ public class Define
 
     }
 
+    public class Event {
+        public const string GET_ITEM = "getItem";
+        public const string KILL = "kill";
+    }
+
     public class Value {
         public const float MIN_HZ_VALUE = 80;
         public const float MAX_HZ_VALUE = 120;

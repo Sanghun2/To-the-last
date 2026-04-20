@@ -34,10 +34,10 @@ public class InventoryUtility
         return result;
     }
 
-    public static int GetItemCount(string id) {
-        return GetItemCount(Define.Tag.PLAYER, Define.Tag.STORAGE);
+    public static int GetItemCountInBasement(string id) {
+        return GetItemCountInInventories(Define.Tag.PLAYER, Define.Tag.STORAGE);
     }
-    public static int GetItemCount(string id, params string[] inventoryTags) {
+    public static int GetItemCountInInventories(string id, params string[] inventoryTags) {
         if (!Managers.Inventory.TryGetInventoryByTag(out var inventories, inventoryTags)) {
             return 0;
         }
@@ -60,6 +60,15 @@ public class InventoryUtility
 
         Debug.LogError($"<color=red>no inventory of tag ({Define.Tag.PLAYER}) & ({Define.Tag.STORAGE})</color>");
         return null;
+    }
+    public static IReadOnlyList<InventoryBase> GetInventoriesByCurrentLocation() {
+        var locationID = Managers.Player.PlayerData.CurrentLocationID;
+        if (locationID.Equals(Define.Tag.BASEMENT)) {
+            return GetInventoriesInBasement();
+        }
+        else {
+            return Managers.Inventory.TryGetInventoryByTag(out var inventoryList, Define.Tag.PLAYER) ? inventoryList : null;
+        }
     }
 
     public static bool TryConsumeIngredients(IReadOnlyList<InventoryBase> inventories, IReadOnlyList<Ingredient> ingredients) {
@@ -111,7 +120,7 @@ public class InventoryUtility
         foreach (var inventory in inventoryList) {
             inventory.OnItemChanged += (args) => {
                 if (!itemID.Equals(args.itemID)) return;
-                int current = GetItemCount(itemID);
+                int current = GetItemCountInBasement(itemID);
                 onItemChanged?.Invoke(current, args.delta);
             };
         }
@@ -120,4 +129,5 @@ public class InventoryUtility
     public static bool TryPushItem(IReadOnlyList<InventoryBase> inventories, ItemStack createdItem, bool ignoreConditions=false) {
         return inventories.TryPushItem(createdItem, ignoreConditions);
     }
+
 }

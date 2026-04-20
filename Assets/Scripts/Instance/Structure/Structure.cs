@@ -131,7 +131,7 @@ public class Structure : IValue<float>
             Action<ItemEventArgs> handler = (args) =>
             {
                 if (!itemID.Equals(args.itemID)) return;
-                int current = InventoryUtility.GetItemCount(itemID);
+                int current = InventoryUtility.GetItemCountInBasement(itemID);
                 int prev = current - args.delta;
                 bool wasEnough = prev >= requiredAmount;
                 bool isEnough = current >= requiredAmount;
